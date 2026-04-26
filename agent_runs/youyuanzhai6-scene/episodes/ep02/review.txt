@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "第02集 clean-format 自审通过，两个 segment 已按全局组号汇总。",
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,181 @@
+# Agent 分镜生产工作流
+
+这套流程已经作为项目的生产主流程：Python 不负责调用模型，也不负责启动 Codex/Qwen/Claude CLI；Python 只做文件工作区准备、客观格式校验和结果收集。真正的分镜生成、审核、局部修复由 Codex、Claude Code、Qwen Code 这类 agent 在自己的会话里完成。
+
+## 为什么用这套流程
+
+- 生成和审核在同一个 agent 会话里完成，避免“换会话越修越歪”。
+- 每集是独立任务，可以并发；每集内部可按场景拆段，降低长剧本文本漂移。
+- Python 只检查客观边界：文件是否存在、自然格式是否干净、是否残留机器标签、是否能收集结果。
+- 最终稿是自然分镜格式，不再使用 `<<<GROUP_END>>>`、`SHOT` 等机器标签。
+- 失败也保留 `draft.txt`、`review.md`、`final.txt` 和 `status.json`，方便人工或 agent 继续接力。
+
+## 目录约定
+
+- `inputs/`：原始剧本文档或文本。
+- `split_scripts/`：拆好的一集一集剧本文本。
+- `agent_skills/storyboard-generator/SKILL.md`：生成 skill。
+- `agent_skills/storyboard-reviewer/SKILL.md`：审核 skill。
+- `agent_runs/`：每次 agent 运行的工作区。
+- `outputs_agent_*`：收集后的最终分镜输出目录。
+
+## 模式选择
+
+`single`：整集一次生成、一次审核。适合短集、格式规整、场景很少的剧本。
+
+`scene`：先按场景拆段，每段生成审核，最后组装整集。生产默认推荐 `scene`，尤其适合长集、场景切换明显、剧情密度高的剧本。
+
+## 标准流程
+
+### 1. 准备输入
+
+如果剧本已经是一集一个 `.txt` 或 `.docx`，直接把目录作为 `-Source`。
+
+如果一个文件里包含多集，先拆成一集一集。规则不稳定的剧本不要盲目硬编码；先让 agent 识别集数边界，再写一个专用、可复用的拆分脚本。
+
+示例：
+
+```powershell
+.\split-youyuanzhai6.ps1
+```
+
+### 2. 创建 agent 工作区
+
+推荐用 `scene`：
+
+```powershell
+.\prepare-agent.ps1 scene youyuanzhai6-scene `
+  -Source .\split_scripts\youyuanzhai-6 `
+  -OutDir .\outputs_agent_youyuanzhai6_scene `
+  -Force
+```
+
+如果要用整集模式：
+
+```powershell
+.\prepare-agent.ps1 single test-single `
+  -Source .\split_scripts\youyuanzhai-6 `
+  -OutDir .\outputs_agent_test_single `
+  -Force
+```
+
+生成后会得到：
+
+```text
+agent_runs\<run-name>\
+├── context.md
+├── manifest.json
+├── NEXT_STEPS.md
+├── COLLECT_RESULTS.ps1
+└── episodes\
+    ├── ep01\
+    │   ├── TASK.md
+    │   ├── agent_prompt.md
+    │   ├── script.txt
+    │   └── segments\seg01\script.txt
+    └── ...
+```
+
+### 3. 分发 agent
+
+打开 `agent_runs\<run-name>\NEXT_STEPS.md`，按里面的 `agent_prompt.md` 分发任务。
+
+在 Codex app 里，推荐直接用 subagents 并发处理，例如：
+
+- worker 1：`ep01-ep04`
+- worker 2：`ep05-ep08`
+- worker 3：`ep09-ep11`
+- worker 4：`ep12-ep14`
+
+注意：不要让 Python 调用 CLI。可以人工在 Codex、Claude Code、Qwen Code 里跑，也可以在 Codex app 当前会话里派发 subagents。
+
+### 4. 单集必须写出的文件
+
+`scene` 模式下，每个 segment：
+
+- `segments/segXX/draft.txt`
+- `segments/segXX/review.md`
+- `segments/segXX/final.txt`
+
+每集目录：
+
+- `final.txt`
+- `review.txt`
+- `status.json`
+
+`status.json` 建议：
+
+```json
+{
+  "status": "done",
+  "hard_issues_remaining": [],
+  "warnings": []
+}
+```
+
+如果仍有硬问题但需要保留当前最佳稿，写 `status: "needs_review"`，并把残留问题写清楚。
+
+### 5. 校验
+
+单集校验：
+
+```powershell
+python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_runs\youyuanzhai6-scene\episodes\ep01
+```
+
+整轮校验可在 PowerShell 中跑：
+
+```powershell
+$failed=@()
+Get-ChildItem .\agent_runs\youyuanzhai6-scene\episodes -Directory | Sort-Object Name | ForEach-Object {
+  python .\storyboard_agent_workspace.py validate-episode --episode-dir $_.FullName
+  if ($LASTEXITCODE -ne 0) { $failed += $_.Name }
+}
+if ($failed.Count -gt 0) { throw "Validation failed: $($failed -join ', ')" }
+```
+
+### 6. 收集结果
+
+```powershell
+.\collect-agent.ps1 .\agent_runs\youyuanzhai6-scene
+```
+
+收集后检查：
+
+- `outputs_agent_*` 下应有每集一个最终分镜 `.txt`。
+- `agent_runs\<run-name>\SUMMARY.md` 应显示全部 `clean_format_passed`。
+
+## 生产审核口径
+
+- 忠于原剧本：不删关键台词，不乱改人物关系，不额外添加剧情。
+- 对话指向：真人对话必须写清“谁对谁说”。
+- 台词速度：有效字数 / 秒 > 7 才是硬问题；6-7 是 warning，不阻断。
+- 镜头过长也要审：不能靠新增停顿、长凝视、慢动作凑时长。
+- 无台词镜头通常 2-3 秒，不能用 4-5 秒凑组时长。
+- 组总时长 10-15 秒，标题总时长要等于镜头时长相加。
+- 景别重复不要机械判错，正反打同景别可接受。
+- 最终稿禁止机器标签和 JSON，必须是自然分镜文本。
+
+## 当前验证过的落地案例
+
+- `legacy/old_outputs/outputs_agent_youyuanzhai_scene`：旧版《有缘斋剧本》scene 模式，15 集已通过。
+- `outputs_agent_youyuanzhai6_scene`：新版《有缘斋剧本-6》scene 模式，14 集已通过。
+- `legacy/old_outputs/outputs_agent_6688_clean`：早期 agent-clean 输出，可作为格式参考，但生产推荐用当前 `scene` 工作流。
+
+## 常见问题
+
+### 为什么不要 Python 调 CLI？
+
+之前的 GUI/API 链路和“Python 启动 CLI”都会引入额外不稳定因素：进程管理、编码、日志、token 消耗、失败恢复都更复杂。现在的做法是文件工作区 + agent 原生会话，失败点更少，也更容易人工接管。
+
+### 为什么不是所有剧本都自动拆集？
+
+剧本格式经常不统一。有的有“第X集完”，有的只有“本集完”，有的后半段没有标题。生产上更稳的方式是先识别边界，再写专用拆分脚本，避免通用硬编码误拆。
+
+### 什么时候用 `single`？
+
+当单集很短、只有一个场景、模型一次性处理稳定时用 `single`。否则默认 `scene`。
+
+### agent 生成慢怎么办？
+
+优先增加“集级并发”，不要把多集合并到一个请求。一般 3-5 个并发 worker 比较稳；单集内按场景拆段已经能减少偏移。

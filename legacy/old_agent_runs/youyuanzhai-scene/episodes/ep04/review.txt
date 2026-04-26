@@ -1,0 +1,7 @@
+# Review
+
+- pass: true
+- scope: ep04 full episode assembled from seg01
+- hard_issues_remaining: none
+- warnings: none
+- clean_format: passed

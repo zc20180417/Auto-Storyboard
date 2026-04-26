@@ -1,0 +1,10 @@
+{
+  "episode_id": "ep13",
+  "status": "done",
+  "output_name": "有缘斋-ep13-agent-cli-storyboard.txt",
+  "summary": "鬼眼先生深夜闯入有缘斋，以引魂幡和镇墓兽试探陆知微，又激活阴煞粉破阵，陆知微拆开躺椅取出镇脉尺。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "少数反派长台词语速偏快但未超过7字/秒硬性阈值。"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "第01集 clean-format 自审通过，剧情关键台词和现代视觉关系保留。",
+  "issues": [],
+  "warnings": []
+}

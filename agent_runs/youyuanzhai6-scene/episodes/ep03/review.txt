@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "第03集 clean-format 和分镜规则自审通过，暂无硬性问题。",
+  "issues": [],
+  "warnings": []
+}

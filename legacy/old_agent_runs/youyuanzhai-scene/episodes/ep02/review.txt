@@ -1,0 +1,7 @@
+# Review
+
+- pass: true
+- scope: ep02 assembled from seg01-seg02 with global group numbering preserved
+- hard_issues_remaining: none
+- warnings: none
+- clean_format: passed

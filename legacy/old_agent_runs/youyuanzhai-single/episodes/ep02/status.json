@@ -1,0 +1,11 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "有缘斋-ep02-agent-cli-storyboard.txt",
+  "summary": "已完成《有缘斋》第2集自然分镜，覆盖棋牌室连环倒霉和玉蝉噩梦。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第6组6-1台词密度接近7字/秒上限。",
+    "第10组10-3电话咆哮台词密度接近7字/秒上限。"
+  ]
+}

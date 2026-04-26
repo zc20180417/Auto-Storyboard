@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "有缘斋-ep01-agent-cli-storyboard.txt",
+  "summary": "已完成《有缘斋》第1集自然分镜，覆盖病房悬赏线与有缘斋玉蝉线。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第13组13-3台词密度接近7字/秒上限，可人工复核节奏。",
+    "第16组16-1台词密度接近7字/秒上限，但符合当前放宽审核标准。",
+    "本集为现代都市题材，已按原剧本现代场景生成。"
+  ]
+}
