@@ -136,7 +136,7 @@ def make_agent_context(
         - 每集最终产出 `final.txt` 和 `status.json`。
         - 如果硬错误无法修完，也要保留最好的 `final.txt`，并在 `status.json` 标记 `needs_review`。
         - 不要调用 DeepSeek/Qwen API 批处理脚本生成正文；这次由当前 CLI agent 自己完成文本生成和审核。
-        - 最终 `final.txt` 必须是自然分镜格式，禁止三尖括号机器标签。
+        - 最终 `final.txt` 必须是自然分镜格式，不输出 JSON、调试标记或其他非分镜正文内容。
         """
     ).strip()
 
@@ -170,9 +170,10 @@ def make_episode_task(
             1. Read `../../context.md`, both standard `SKILL.md` files, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
             3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings and shot numbers globally from 第1组 / 1-1.
-            4. Run clean-format validation.
-            5. If validation reports clean-format issues, fix `final.txt` and rerun validation.
-            6. Write `review.txt` and `status.json`.
+            4. Review the assembled `final.txt` once using `storyboard-reviewer`; write the raw reviewer JSON to `review.txt`.
+            5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `storyboard-reviewer` after repairs.
+            6. Write `status.json` with reviewer metadata, then run validation.
+            7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
         ).strip()
     else:
@@ -190,9 +191,9 @@ def make_episode_task(
             2. Generate the full episode directly into `final.txt`.
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
-            5. Run clean-format validation.
-            6. If validation reports clean-format issues, fix `final.txt` and rerun validation.
-            7. Write `status.json`.
+            5. Re-run `storyboard-reviewer` after repairs and update `review.txt`.
+            6. Write `status.json` with reviewer metadata, then run validation.
+            7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
         ).strip()
     return f"""# Task: {episode.display_name}
@@ -227,11 +228,16 @@ python "{Path(__file__).resolve()}" validate-episode --episode-dir "{episode_dir
   "output_name": "{output_name}",
   "summary": "short Chinese summary",
   "hard_issues_remaining": [],
-  "warnings": []
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
 }}
 ```
 
 Use `status: "needs_review"` only if hard issues remain after two focused repair attempts.
+`review.txt` and `segments/segXX/review.md` must contain real raw JSON returned by `storyboard-reviewer`; clean-format validation is not a substitute for reviewer审稿 and placeholder review JSON will fail validation.
 
 ## Important Constraints
 - Rules live in the two `SKILL.md` files. Do not duplicate or reinterpret them here.
@@ -326,7 +332,7 @@ def write_runner_scripts(
     task_lines = []
     for task in tasks:
         task_lines.append(
-            f"- `{task['episode_id']}`: open `{task['prompt_file']}` and run it as one independent agent task. "
+            f"- `{task['episode_id']}`: open `{task['prompt_file']}` and process it as an independent episode. "
             f"Required outputs are under `{task['episode_dir']}`."
         )
 
@@ -352,7 +358,9 @@ It must not launch Codex CLI, Qwen CLI, or any model process.
 ## Recommended Dispatch
 
 Use the current Codex session or Codex subagents to process episodes.
-Each episode is an independent task; run up to {parallelism} in parallel if the host agent supports safe parallel work.
+Quality is checked per episode. Dispatch can use one episode per worker, or two adjacent short/simple episodes per worker when the scripts are small.
+Run up to {parallelism} workers in parallel if the host agent supports safe parallel work.
+When one worker handles two episodes, finish generation, review, repair, and validation for the first episode before starting the second. Never merge reviews or outputs across episodes.
 
 ## Episode Tasks
 
@@ -411,6 +419,18 @@ CLEAN_SHOT_SECONDS_RE = re.compile(r"本镜估算时长[：:]\s*(?P<seconds>\d{1
 CLEAN_GROUP_TOTAL_RE = re.compile(r"总时长[：:]\s*(?P<seconds>\d{1,3})\s*秒")
 CLEAN_GROUP_SHOTS_RE = re.compile(r"镜头数[：:]\s*(?P<shots>\d{1,3})\s*个")
 MACHINE_TAG_RE = re.compile(r"(?m)^\ufeff?\s*<<<(?:GROUP|GROUP_END|SHOT|SHOT_END)\b.*?>>>\s*$")
+LOW_QUALITY_TEMPLATE_PATTERNS = (
+    "空间先被交代出来",
+    "镜头从场景布局转向在场人物",
+    "视线关系落在当前冲突中心",
+    "人物面部肌肉随局势绷紧",
+    "眉头和嘴角随情绪细微变化",
+    "现场冲突继续推进",
+)
+SCENE_ESTABLISHING_RE = re.compile(
+    r"镜头描述[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)[\s\S]{0,160}?"
+    r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3})\s*秒"
+)
 
 
 def strip_machine_tags(content: str) -> str:
@@ -527,6 +547,149 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
                 issues.append(f"第{group_number}组标题镜头数={declared_shots}，实际镜头数={len(shot_matches)}。")
 
         expected_group += 1
+
+    return issues
+
+
+def validate_storyboard_quality_floor(content: str) -> list[str]:
+    issues: list[str] = []
+    for pattern in LOW_QUALITY_TEMPLATE_PATTERNS:
+        if pattern in content:
+            issues.append(f"最终分镜包含模板化镜头描述：`{pattern}`，请改为贴合剧本现场的具体动作、道具和人物站位。")
+    for match in SCENE_ESTABLISHING_RE.finditer(content):
+        seconds = int(match.group("seconds"))
+        if seconds > 2:
+            issues.append(
+                f"普通空间/环境交代镜头标为{seconds}秒；生产规则要求通常2秒，"
+                "只有原剧本明确连续动作时才可到3秒。"
+            )
+    return issues
+
+
+def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
+    if not path.is_file():
+        return None, f"missing review file: {path.name}"
+
+    raw = path.read_text(encoding="utf-8-sig", errors="replace").strip()
+    if not raw:
+        return None, f"empty review file: {path.name}"
+
+    try:
+        payload = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        return None, f"{path.name} must contain raw storyboard-reviewer JSON: {exc}"
+
+    if not isinstance(payload, dict):
+        return None, f"{path.name} must contain a JSON object"
+
+    required_types = {
+        "pass": bool,
+        "summary": str,
+        "issues": list,
+        "warnings": list,
+    }
+    for key, expected_type in required_types.items():
+        if not isinstance(payload.get(key), expected_type):
+            return None, f"{path.name} missing reviewer field `{key}` with type {expected_type.__name__}"
+
+    summary = payload["summary"].strip()
+    if not summary:
+        return None, f"{path.name} reviewer summary is empty"
+    placeholder_markers = (
+        "占位",
+        "placeholder",
+        "待脚本校验",
+        "客观格式",
+        "clean-format",
+        "clean format",
+    )
+    if any(marker.lower() in summary.lower() for marker in placeholder_markers):
+        return None, f"{path.name} looks like a placeholder review, not storyboard-reviewer output"
+
+    return payload, None
+
+
+def _status_reviewer_metadata(status_payload: dict) -> dict | None:
+    nested = status_payload.get("reviewer")
+    if isinstance(nested, dict):
+        return {
+            "source": nested.get("source"),
+            "pass": nested.get("pass"),
+            "issues_count": nested.get("issues_count", nested.get("hard_issues_count")),
+            "warnings_count": nested.get("warnings_count"),
+        }
+
+    if any(key in status_payload for key in ("reviewer_pass", "reviewer_issues_count", "reviewer_source")):
+        return {
+            "source": status_payload.get("reviewer_source"),
+            "pass": status_payload.get("reviewer_pass"),
+            "issues_count": status_payload.get("reviewer_issues_count"),
+            "warnings_count": status_payload.get("reviewer_warnings_count"),
+        }
+
+    return None
+
+
+def validate_review_artifacts(episode_dir: Path) -> list[str]:
+    """Require evidence that storyboard-reviewer ran; clean format is not review."""
+    issues: list[str] = []
+
+    review_payload, review_error = _read_review_json(episode_dir / "review.txt")
+    if review_error:
+        issues.append(review_error)
+
+    status_path = episode_dir / "status.json"
+    status_payload: dict | None = None
+    if not status_path.is_file():
+        issues.append("missing status.json with reviewer metadata")
+    else:
+        try:
+            status_payload = read_json(status_path)
+        except Exception as exc:
+            issues.append(f"status.json is not valid JSON: {exc}")
+
+    if status_payload is not None:
+        metadata = _status_reviewer_metadata(status_payload)
+        if metadata is None:
+            issues.append(
+                "status.json missing reviewer metadata: add reviewer_source, "
+                "reviewer_pass, reviewer_issues_count, and reviewer_warnings_count"
+            )
+        else:
+            if metadata.get("source") != "storyboard-reviewer":
+                issues.append("status.json reviewer_source must be `storyboard-reviewer`")
+            if not isinstance(metadata.get("pass"), bool):
+                issues.append("status.json reviewer_pass must be a boolean")
+            if not isinstance(metadata.get("issues_count"), int):
+                issues.append("status.json reviewer_issues_count must be an integer")
+            if not isinstance(metadata.get("warnings_count"), int):
+                issues.append("status.json reviewer_warnings_count must be an integer")
+
+            if review_payload is not None:
+                review_pass = review_payload["pass"]
+                review_issues_count = len(review_payload["issues"])
+                review_warnings_count = len(review_payload["warnings"])
+                if metadata.get("pass") != review_pass:
+                    issues.append("status.json reviewer_pass does not match review.txt pass")
+                if metadata.get("issues_count") != review_issues_count:
+                    issues.append("status.json reviewer_issues_count does not match review.txt issues length")
+                if metadata.get("warnings_count") != review_warnings_count:
+                    issues.append("status.json reviewer_warnings_count does not match review.txt warnings length")
+
+                status = status_payload.get("status")
+                if status == "done" and (not review_pass or review_issues_count):
+                    issues.append("status.json cannot be `done` when storyboard-reviewer reports hard issues")
+                if status == "done" and status_payload.get("hard_issues_remaining"):
+                    issues.append("status.json cannot be `done` with hard_issues_remaining")
+
+    segments_dir = episode_dir / "segments"
+    if segments_dir.is_dir():
+        for segment_dir in sorted(path for path in segments_dir.iterdir() if path.is_dir()):
+            if not (segment_dir / "script.txt").is_file():
+                continue
+            _, segment_error = _read_review_json(segment_dir / "review.md")
+            if segment_error:
+                issues.append(f"{segment_dir.name}: {segment_error}")
 
     return issues
 
@@ -696,21 +859,38 @@ def validate_episode(args: argparse.Namespace) -> int:
             write_utf8(final_path, content)
             print("[fixed] " + " | ".join(fix_messages))
 
-    issues = validate_clean_storyboard_format(content)
-    report_lines = ["# Clean Format Validation", ""]
+    clean_issues = validate_clean_storyboard_format(content)
+    quality_issues = validate_storyboard_quality_floor(content)
+    review_issues = validate_review_artifacts(episode_dir)
+    issues = clean_issues + quality_issues + review_issues
+    report_lines = ["# Episode Validation", ""]
     if issues:
         report_lines.append("status: failed")
         report_lines.append("")
-        report_lines.extend(f"- {issue}" for issue in issues)
+        if clean_issues:
+            report_lines.append("## Clean Format")
+            report_lines.extend(f"- {issue}" for issue in clean_issues)
+            report_lines.append("")
+        if quality_issues:
+            report_lines.append("## Quality Floor")
+            report_lines.extend(f"- {issue}" for issue in quality_issues)
+            report_lines.append("")
+        if review_issues:
+            report_lines.append("## Storyboard Reviewer Evidence")
+            report_lines.extend(f"- {issue}" for issue in review_issues)
         write_utf8(episode_dir / "protocol_report.md", "\n".join(report_lines))
-        print(f"[failed] {len(issues)} protocol issue(s)")
+        print(f"[failed] {len(issues)} validation issue(s)")
         for issue in issues:
             print(f"- {issue}")
         return 1
 
     report_lines.append("status: passed")
+    report_lines.append("")
+    report_lines.append("- clean_format: passed")
+    report_lines.append("- quality_floor: passed")
+    report_lines.append("- storyboard_reviewer: passed")
     write_utf8(episode_dir / "protocol_report.md", "\n".join(report_lines))
-    print("[passed] clean format validation")
+    print("[passed] episode validation")
     return 0
 
 
@@ -739,7 +919,10 @@ def collect_run(args: argparse.Namespace) -> int:
 
         content = strip_machine_tags(final_path.read_text(encoding="utf-8", errors="replace"))
         content, changes = normalize_clean_storyboard_numbering(content)
-        issues = validate_clean_storyboard_format(content)
+        clean_issues = validate_clean_storyboard_format(content)
+        quality_issues = validate_storyboard_quality_floor(content)
+        review_issues = validate_review_artifacts(episode_dir)
+        issues = clean_issues + quality_issues + review_issues
         write_utf8(output_path, content)
         copied += 1
         status = "unknown"
@@ -750,17 +933,19 @@ def collect_run(args: argparse.Namespace) -> int:
                 status = "invalid status.json"
         if issues:
             failed += 1
-            summary_lines.append(f"- status: {status}, clean_format_failed")
-            summary_lines.extend(f"- clean_format: {issue}" for issue in issues[:8])
+            summary_lines.append(f"- status: {status}, validation_failed")
+            summary_lines.extend(f"- clean_format: {issue}" for issue in clean_issues[:8])
+            summary_lines.extend(f"- quality_floor: {issue}" for issue in quality_issues[:8])
+            summary_lines.extend(f"- storyboard_reviewer: {issue}" for issue in review_issues[:8])
         else:
-            summary_lines.append(f"- status: {status}, clean_format_passed")
+            summary_lines.append(f"- status: {status}, clean_format_passed, quality_floor_passed, storyboard_reviewer_passed")
         if changes:
             summary_lines.append(f"- clean_numbering_fixed: {'; '.join(changes[:8])}")
         summary_lines.append(f"- copied: `{output_path}`")
         summary_lines.append("")
 
     summary_lines.append(f"Copied: {copied}")
-    summary_lines.append(f"Clean-format/collection failures: {failed}")
+    summary_lines.append(f"Validation/collection failures: {failed}")
     write_utf8(run_dir / "SUMMARY.md", "\n".join(summary_lines))
     print(f"[done] copied {copied} final file(s) to {out_dir}")
     print(f"[summary] {run_dir / 'SUMMARY.md'}")

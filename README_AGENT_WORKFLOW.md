@@ -6,8 +6,8 @@
 
 - 生成和审核在同一个 agent 会话里完成，避免“换会话越修越歪”。
 - 每集是独立任务，可以并发；每集内部可按场景拆段，降低长剧本文本漂移。
-- Python 只检查客观边界：文件是否存在、自然格式是否干净、是否残留机器标签、是否能收集结果。
-- 最终稿是自然分镜格式，不再使用 `<<<GROUP_END>>>`、`SHOT` 等机器标签。
+- Python 只检查客观边界：文件是否存在、自然格式是否干净、是否能收集结果。
+- 最终稿是自然分镜格式，不输出 JSON、调试标记或其他非分镜正文内容。
 - 失败也保留 `draft.txt`、`review.md`、`final.txt` 和 `status.json`，方便人工或 agent 继续接力。
 
 ## 目录约定
@@ -80,12 +80,25 @@ agent_runs\<run-name>\
 
 打开 `agent_runs\<run-name>\NEXT_STEPS.md`，按里面的 `agent_prompt.md` 分发任务。
 
-在 Codex app 里，推荐直接用 subagents 并发处理，例如：
+在 Codex app 里，推荐直接用 subagents 并发处理。质量单位永远是单集；调度单位可以是 1 集 / worker，也可以在短集、单段、剧情密度低时使用 2 集 / worker。最多同时运行 5 个 worker，完成一个再补下一个。
 
-- worker 1：`ep01-ep04`
-- worker 2：`ep05-ep08`
-- worker 3：`ep09-ep11`
-- worker 4：`ep12-ep14`
+默认安全模式例如先启动：
+
+- worker 1：`ep01`
+- worker 2：`ep02`
+- worker 3：`ep03`
+- worker 4：`ep04`
+- worker 5：`ep05`
+
+短集批处理模式可以先启动：
+
+- worker 1：`ep01`, `ep02`
+- worker 2：`ep03`, `ep04`
+- worker 3：`ep05`, `ep06`
+- worker 4：`ep07`, `ep08`
+- worker 5：`ep09`, `ep10`
+
+其中任意一个完成后，再启动新的 worker 处理后续 1-2 集，依次滚动。2 集 / worker 时，必须先完整完成第一集的生成、审核、修复、校验，再处理第二集；每集仍独立写 `final.txt`、`review.txt`、`status.json`，不能合并审核或合并输出。不要把 3 集以上交给同一个 worker，除非用户明确批准。
 
 注意：不要让 Python 调用 CLI。可以人工在 Codex、Claude Code、Qwen Code 里跑，也可以在 Codex app 当前会话里派发 subagents。
 
@@ -109,11 +122,19 @@ agent_runs\<run-name>\
 {
   "status": "done",
   "hard_issues_remaining": [],
-  "warnings": []
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
 }
 ```
 
 如果仍有硬问题但需要保留当前最佳稿，写 `status: "needs_review"`，并把残留问题写清楚。
+
+`review.txt` 和 `segments/segXX/review.md` 必须是 `storyboard-reviewer` 返回的原始 JSON。`validate-episode` 会检查 reviewer 证据；clean-format 校验不能替代审稿，占位 review 会导致校验失败。
+
+质量下限也会被校验：禁止“空间先被交代出来”“人物面部肌肉随局势绷紧”等模板化镜头描述；普通空间/环境交代镜头默认应为 2 秒，不能批量用 3 秒凑时长。
 
 ### 5. 校验
 
@@ -143,7 +164,7 @@ if ($failed.Count -gt 0) { throw "Validation failed: $($failed -join ', ')" }
 收集后检查：
 
 - `outputs_agent_*` 下应有每集一个最终分镜 `.txt`。
-- `agent_runs\<run-name>\SUMMARY.md` 应显示全部 `clean_format_passed`。
+- `agent_runs\<run-name>\SUMMARY.md` 应显示全部 `clean_format_passed, quality_floor_passed, storyboard_reviewer_passed`。
 
 ## 生产审核口径
 
@@ -154,7 +175,7 @@ if ($failed.Count -gt 0) { throw "Validation failed: $($failed -join ', ')" }
 - 无台词镜头通常 2-3 秒，不能用 4-5 秒凑组时长。
 - 组总时长 10-15 秒，标题总时长要等于镜头时长相加。
 - 景别重复不要机械判错，正反打同景别可接受。
-- 最终稿禁止机器标签和 JSON，必须是自然分镜文本。
+- 最终稿禁止 JSON、调试标记或其他非分镜正文内容，必须是自然分镜文本。
 
 ## 当前验证过的落地案例
 

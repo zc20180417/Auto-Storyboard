@@ -30,3 +30,4 @@ if ($OutDir) {
 
 Write-Host "[collect-agent] run=$RunDir"
 python @cmdArgs
+exit $LASTEXITCODE
