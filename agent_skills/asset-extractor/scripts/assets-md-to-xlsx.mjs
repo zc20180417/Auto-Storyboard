@@ -16,6 +16,7 @@ const SHEET_NAMES = {
   "二、人物资产": "人物资产",
   "三、服装资产": "服装资产",
   "四、道具资产": "道具资产",
+  "五、特殊视角": "特殊视角资产",
 };
 
 async function loadArtifactTool() {
