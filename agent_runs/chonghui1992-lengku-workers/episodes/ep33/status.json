@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep33",
+  "status": "done",
+  "output_name": "EP-33-ep33-agent-cli-storyboard.txt",
+  "summary": "陆行川与陆振海检查北方原料仓库，确认冻害返潮和仓储改造问题，并决定先查旧厂生产线是否值得接手。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

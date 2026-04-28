@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "第20集分镜完整覆盖食堂欠薪谈判、二厂设备检修和旧冷库品牌部署，所有组时长、镜头编号、空间锁定和台词指向符合 storyboard-reviewer 规则。",
+  "issues": [],
+  "warnings": []
+}

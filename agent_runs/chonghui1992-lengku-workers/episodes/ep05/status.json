@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "EP-05-ep05-agent-cli-storyboard.txt",
+  "summary": "陆行川在旧冷库试冻菜肉团，通过小批量记录找出问题；清晨包装厂老板求助受潮纸箱，陆行川看见冷链之外的包装缺口。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

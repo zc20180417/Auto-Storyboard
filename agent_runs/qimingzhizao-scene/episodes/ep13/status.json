@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep13",
+  "status": "done",
+  "output_name": "qimingzhizao-ep13-ep13-agent-cli-storyboard.txt",
+  "summary": "江启明在南方重工门口指出进口机床故障，被大老板放进车间试修；他快速接线改参数让流水线恢复运转，却因拒绝高薪留下被大老板锁门威胁。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

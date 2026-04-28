@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "ep21整集分镜已按五个场景组装为14组，覆盖会所收网、黑风山通车和周长海设局，组号镜号连续，台词指向、时长和自然分镜格式符合storyboard-reviewer规则。",
+  "issues": [],
+  "warnings": []
+}

@@ -16,6 +16,7 @@
 - `split_scripts/`：拆好的一集一集剧本文本。
 - `agent_skills/storyboard-generator/SKILL.md`：生成 skill。
 - `agent_skills/storyboard-reviewer/SKILL.md`：审核 skill。
+- `agent_skills/asset-extractor/SKILL.md`：分镜完成后的生图资产表抽取 skill。
 - `agent_runs/`：每次 agent 运行的工作区。
 - `outputs_agent_*`：收集后的最终分镜输出目录。
 
@@ -165,6 +166,49 @@ if ($failed.Count -gt 0) { throw "Validation failed: $($failed -join ', ')" }
 
 - `outputs_agent_*` 下应有每集一个最终分镜 `.txt`。
 - `agent_runs\<run-name>\SUMMARY.md` 应显示全部 `clean_format_passed, quality_floor_passed, storyboard_reviewer_passed`。
+
+### 7. 可选：生成生图资产表
+
+当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，读取 `agent_skills/asset-extractor/SKILL.md`，从单集 `final.txt` 生成 `assets.md` 和 `assets.xlsx`。
+
+多集项目不要让每集各自临场编人物设定。先创建 run 级别全局资产设定：
+
+```text
+agent_runs\<run-name>\asset_bible.md
+```
+
+`asset_bible.md` 用来固定：
+
+- 人物：角色名、年龄段、性别、身份、身高体态、面部稳定特征、发型、主要服装状态、气质关键词。
+- 全身装造：上装、下装、鞋、配饰、颜色、面料、年代感、磨损程度。
+- 核心场景：布景名称、年代、空间结构、材质、灯光、色调、关键陈设。
+- 关键道具：材质、形状、文字限制、年代质感。
+
+分集资产 worker 必须读取 `asset_bible.md` 后再生成每集 `assets.md`。如果发现本集新增人物、服装、场景或道具，只在交付说明中标记“建议同步到 asset_bible.md”，不要多个 worker 并发改写全局设定。
+
+资产表固定包含四部分：
+
+- 场景资产（均为空镜）
+- 人物资产
+- 服装资产
+- 道具资产
+
+要求：
+
+- 场景资产提示词必须明确“空镜、无人、无人脸”，不得包含人物；提示词要包含年代感、空间结构、材质、陈设、光线、色调和视频背景用途。
+- 人物资产按“角色 + 服装状态”合并，适用镜号必须来自分镜。
+- 人物资产必须偏“全身装造/角色定妆照”，提示词包含年龄段、性别、身份气质、身高体态、面部稳定特征、发型、上装、下装、鞋/配饰、关键表情动作。
+- 服装和道具资产偏产品特写，不带人物脸。
+- 不得杜撰分镜中不存在的地点、角色、道具。
+- `assets.md` 方便审稿和版本管理；`assets.xlsx` 方便筛选、复制单元格和生产使用。
+
+资产阶段调度建议：
+
+- 默认 3 集 / worker。
+- 单集短、复用度高、全局设定稳定时可用 4 集 / worker。
+- 不要超过 4 集 / worker，避免资产表过长后漏道具或串镜号。
+- 每个 worker 必须逐集闭环：生成 `assets.md`，检查四类表格和提示词，再用脚本转换 `assets.xlsx`，然后进入下一集。
+- `assets.xlsx` 由本地脚本从 `assets.md` 转换，不额外消耗模型 token。
 
 ## 生产审核口径
 

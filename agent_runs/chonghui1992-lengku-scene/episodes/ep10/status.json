@@ -1,0 +1,8 @@
+{
+  "episode_id": "ep10",
+  "status": "done",
+  "output_name": "EP-10-ep10-agent-cli-storyboard.txt",
+  "summary": "已生成自然中文分镜，并保留原剧本主要台词和动作。",
+  "hard_issues_remaining": [],
+  "warnings": []
+}

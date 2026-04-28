@@ -10,6 +10,7 @@
 2. `README_AGENT_WORKFLOW.md`
 3. `agent_skills/storyboard-generator/SKILL.md`
 4. `agent_skills/storyboard-reviewer/SKILL.md`
+5. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md`
 
 ## 两种生产模式
 
@@ -129,6 +130,32 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 ```powershell
 .\collect-agent.ps1 .\agent_runs\<run-name>
 ```
+
+## 资产表生成
+
+分镜完成后，如用户需要给其他 AI 生图/视频模型提前准备资产，使用 `agent_skills/asset-extractor/SKILL.md` 从单集 `final.txt` 生成资产表。
+
+资产表生成规则：
+
+- 输入必须是已经完成的单集分镜 `final.txt`。
+- 输出写入该集目录下的 `assets.md` 和 `assets.xlsx`，不要改写 `final.txt`。
+- 资产表包含：场景资产、人物资产、服装资产、道具资产。
+- 场景资产必须为空镜；人物、服装、道具必须按可复用资产去重合并。
+- 多集项目必须先维护 run 级别 `asset_bible.md`，再分集生成资产表。推荐路径：`agent_runs/<run-name>/asset_bible.md`。
+- `asset_bible.md` 用于固定跨集人物全身装造、面部稳定特征、核心场景、关键道具和服装状态。分集 worker 必须读取它，不能在不同集里随意改变同一人物的脸型、发型、体态、主服装颜色。
+- 人物资产必须偏“全身装造/角色定妆照”，提示词要包含年龄段、性别、身份气质、身高体态、面部稳定特征、发型、上装、下装、鞋/配饰、关键表情动作。
+- 场景资产提示词要足够丰富：年代感、空间结构、前中后景、材质、陈设、光线、色调、空镜、无人、无人脸、可作为视频背景资产。
+- `适用镜号` 必须来自分镜原文，不得杜撰。
+- 资产抽取不得替代分镜审核，也不得改变分镜生产结果。
+
+资产阶段调度规则：
+
+- 资产抽取不同于分镜生成，可以在保证 `asset_bible.md` 已稳定的前提下提高 batch。
+- 默认推荐：3 集 / worker。
+- 单集短、场景和人物复用度高、前 1-2 个资产 worker 结果稳定后，可用 4 集 / worker。
+- 未经用户明确批准，不要超过 4 集 / worker。
+- 同一个 worker 处理 3-4 集时，必须逐集闭环：先完成某集 `assets.md`、检查四类表格、转换 `assets.xlsx`，再处理下一集。
+- worker 可以读取全局 `asset_bible.md`，但不要并发写它；新增人物/服装/场景/道具只在交付说明中标记，最后由主线程统一合并。
 
 ## 当前生产参考
 

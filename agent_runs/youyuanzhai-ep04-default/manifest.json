@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "run_id": "youyuanzhai-ep04-default",
+  "created_at": "2026-04-27T14:20:14",
+  "project_root": "G:\\Auto-Storyboard",
+  "source": "G:\\Auto-Storyboard\\inputs\\有缘斋-第4集.txt",
+  "prompt_path": "G:\\Auto-Storyboard\\6688竖屏古装分镜prompt.txt",
+  "generator_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-generator\\SKILL.md",
+  "reviewer_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-reviewer\\SKILL.md",
+  "out_dir": "G:\\Auto-Storyboard\\outputs_agent_youyuanzhai_ep04_default",
+  "agent": "codex",
+  "mode": "scene",
+  "parallelism": 5,
+  "episodes": [
+    {
+      "episode_id": "ep04",
+      "episode_number": 4,
+      "display_name": "有缘斋-第4集",
+      "series_title": "有缘斋",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\有缘斋-第4集.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_youyuanzhai_ep04_default\\有缘斋-ep04-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\youyuanzhai-ep04-default\\episodes\\ep04",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\youyuanzhai-ep04-default\\episodes\\ep04\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\youyuanzhai-ep04-default\\episodes\\ep04\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\youyuanzhai-ep04-default\\episodes\\ep04\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\youyuanzhai-ep04-default\\episodes\\ep04\\agent-stdout.log",
+      "segments": 1
+    }
+  ]
+}

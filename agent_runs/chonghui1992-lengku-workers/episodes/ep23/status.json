@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep23",
+  "status": "done",
+  "output_name": "EP-23-ep23-agent-cli-storyboard.txt",
+  "summary": "陆行川在原料涨价和扩产压力下决定暂不涨价，转向分批供货、锁核心原料，并用真实订单推动新厂区谈判。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

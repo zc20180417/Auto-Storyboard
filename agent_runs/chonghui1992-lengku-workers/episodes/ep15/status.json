@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep15",
+  "status": "done",
+  "output_name": "EP-15-ep15-agent-cli-storyboard.txt",
+  "summary": "陆行川团队通过信用社与县里审查，授信批复后决定先稳住样品小线，从最容易裂的设备环节开始改造。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

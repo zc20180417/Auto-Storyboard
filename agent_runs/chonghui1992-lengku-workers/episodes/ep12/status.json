@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep12",
+  "status": "done",
+  "output_name": "EP-12-ep12-agent-cli-storyboard.txt",
+  "summary": "陆行川在旧冷库现金吃紧和急单风险中，要求重签条款后接单卸货。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

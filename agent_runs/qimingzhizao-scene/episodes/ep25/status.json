@@ -1,0 +1,23 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "qimingzhizao-ep25-ep25-agent-cli-storyboard.txt",
+  "summary": "江启明在港口用控股协议反制魏天成拦货逼签，魏天成转而威胁断电。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第2组",
+      "rule": "台词语速",
+      "note": "2-2约6.4字/秒，偏快但可接受。"
+    },
+    {
+      "group": "第8组",
+      "rule": "台词语速",
+      "note": "8-2约6.5字/秒，偏快但可接受。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

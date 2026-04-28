@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "ep27最终分镜覆盖原剧本所有场景、动作和对白，格式、组时长、对白指向、空间锁定与组尾衔接均符合storyboard-reviewer规则。",
+  "issues": [],
+  "warnings": []
+}

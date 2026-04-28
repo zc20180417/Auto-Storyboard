@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "EP-25-ep25-agent-cli-storyboard.txt",
+  "summary": "陆行川在银行审核中用订单、回款、设备和分批放款条件回应风险质疑，最终签下带有食品安全冻结条款的授信批复。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第六组陆行川长台词为单镜头承载，节奏略紧但未超过规则阈值。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

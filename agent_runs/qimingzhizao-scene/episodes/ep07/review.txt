@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "ep07 整集分镜覆盖原剧本四个场景和全部台词动作，组号镜头号连续，组时长均为 10-15 秒，对话对象、空间锁定和组尾衔接符合 storyboard-reviewer 审核规则。",
+  "issues": [],
+  "warnings": []
+}

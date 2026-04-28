@@ -1,0 +1,18 @@
+{
+  "episode_id": "ep26",
+  "status": "done",
+  "output_name": "qimingzhizao-ep26-ep26-agent-cli-storyboard.txt",
+  "summary": "废料厂被断电后，江启明用报废柴油发动机改装串联发电机组，反制魏天成的停电威胁。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第6组",
+      "rule": "台词语速",
+      "note": "6-1约6.5字/秒，偏快但可接受。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

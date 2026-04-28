@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep11",
+  "status": "done",
+  "output_name": "EP-11-ep11-agent-cli-storyboard.txt",
+  "summary": "梅知夏查出冷库账目和流程漏洞，在冷库门口要求财务、人事和流程权限，最终接过钥匙从陆家熟人账开刀。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

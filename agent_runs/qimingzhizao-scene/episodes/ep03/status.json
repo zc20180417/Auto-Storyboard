@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "qimingzhizao-ep03-ep03-agent-cli-storyboard.txt",
+  "summary": "江启明遭遇断电破坏后用旧拖拉机改出发电方案恢复生产，并在厂门口迎上江大海带来的假质检刁难。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

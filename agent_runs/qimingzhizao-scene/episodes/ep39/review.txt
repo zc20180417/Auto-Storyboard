@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "整集终稿完整覆盖第39集全部动作和台词，分组总时长均为10至15秒，组首空间锁定、对话指向、镜头编号和组尾衔接符合storyboard-reviewer规则。",
+  "issues": [],
+  "warnings": []
+}

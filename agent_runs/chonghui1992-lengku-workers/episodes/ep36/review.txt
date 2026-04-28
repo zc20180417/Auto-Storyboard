@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "ep36 分镜完整覆盖设备厂车间、办公室和资料室门口三段剧情，台词指向、空间锁定、组时长和镜头编号均符合 storyboard-reviewer 规则。",
+  "issues": [],
+  "warnings": []
+}

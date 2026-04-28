@@ -1,0 +1,10 @@
+{
+    "pass":  true,
+    "summary":  "已按 storyboard-reviewer 规则审核第23集整集分镜，所有原剧本对白、动作和场景均已覆盖，组时长与镜头编号满足要求，未发现硬性问题。",
+    "issues":  [
+
+               ],
+    "warnings":  [
+
+                 ]
+}

@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep09",
+  "status": "done",
+  "output_name": "qimingzhizao-ep09-ep09-agent-cli-storyboard.txt",
+  "summary": "孙大德买通司机堵路，江启明车队被拦后识破阴谋，并准备用高强度航空钢索让货物越过路障。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "少数长台词镜头信息密度偏高，但未触发硬性语速问题。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

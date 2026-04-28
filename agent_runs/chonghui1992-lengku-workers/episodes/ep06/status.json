@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep06",
+  "status": "done",
+  "output_name": "EP-06-ep06-agent-cli-storyboard.txt",
+  "summary": "陆行川用纸箱保货单和院门招工规则，把旧冷库从单一存货扩展成冷链周转生意。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

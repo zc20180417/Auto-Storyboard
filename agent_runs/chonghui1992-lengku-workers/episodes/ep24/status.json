@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep24",
+  "status": "done",
+  "output_name": "EP-24-ep24-agent-cli-storyboard.txt",
+  "summary": "投资人从冷库订单、小卖部补货本看到真实货流，但要求陆行川先拿到银行千万授信再谈估值。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,18 @@
+{
+  "episode_id": "ep30",
+  "status": "done",
+  "output_name": "苍南风云-ep30-agent-cli-storyboard.txt",
+  "summary": "龙天傲围堵项目部施压，陆凡调动商会调解和护卫力量反制，并接下龙家主京城威胁。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第3组",
+      "rule": "台词语速",
+      "problem": "3-3约40字/6秒，语速偏快但可接受。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

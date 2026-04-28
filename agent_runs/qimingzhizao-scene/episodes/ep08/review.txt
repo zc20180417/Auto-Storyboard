@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "ep08 整集分镜完整保留原剧本台词动作，14 个自然分镜组编号连续，每组 10-15 秒，对话对象、证据展示、录音闪回和最终反应均符合 storyboard-reviewer 审核规则。",
+  "issues": [],
+  "warnings": []
+}

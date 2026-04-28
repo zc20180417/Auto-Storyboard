@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep13",
+  "status": "done",
+  "output_name": "EP-13-ep13-agent-cli-storyboard.txt",
+  "summary": "已生成并通过storyboard-reviewer审稿。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

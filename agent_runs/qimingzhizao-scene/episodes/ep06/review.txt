@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "已对照第6集完整剧本和storyboard-generator规则审查整集final.txt，台词、关键动作、组首空间锁定、对话指向、组时长和镜头数均满足要求。",
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "ep05整集分镜完整覆盖村口接触、仓库抢救鱼干、赵大江封路、土路对峙反制等剧情，组号镜号连续，时长、空间锁定、对话指向和质量底线符合storyboard-reviewer规则。",
+  "issues": [],
+  "warnings": []
+}

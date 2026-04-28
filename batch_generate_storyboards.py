@@ -951,7 +951,9 @@ def build_generation_messages(
     ]
 
 
-SCENE_HEADING_RE = re.compile(r"(?m)^\s*(场\s*\d+(?:[-－—]\d+)?[^\n]*)$")
+SCENE_HEADING_RE = re.compile(
+    r"(?m)^[\ufeff\s]*((?:场\s*\d+(?:[-－—]\d+)?|第\s*[0-9一二三四五六七八九十百零〇两]+\s*集\s+\d+\s*[-－—]\s*\d+)[^\n]*)$"
+)
 
 
 def split_episode_into_segments(

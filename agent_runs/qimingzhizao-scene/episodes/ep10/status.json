@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep10",
+  "status": "done",
+  "output_name": "qimingzhizao-ep10-ep10-agent-cli-storyboard.txt",
+  "summary": "江启明用钢索滑轮把货物送过断桥，赢下赌约并收到全款，随后决定南下寻找新料源。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组货箱飞越段动作密度高，但已按动作节点拆镜。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

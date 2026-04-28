@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep23",
+  "status": "done",
+  "output_name": "qimingzhizao-ep23-ep23-agent-cli-storyboard.txt",
+  "summary": "史密斯封厂验货，孙大德闯入诬陷，重压测试反而压坏水压机，航空齿轮完好证明江启明胜出。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

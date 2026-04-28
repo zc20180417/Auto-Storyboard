@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep33",
+  "status": "done",
+  "output_name": "qimingzhizao-ep33-ep33-agent-cli-storyboard.txt",
+  "summary": "顾长风指使调度暗线制造断桥杀局，江启明在高速失控的蒸汽机车内发现制动被破坏后下令以钛合金板和液压推杆强行刹车。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第8组",
+      "rule": "台词语速",
+      "problem": "工人甲台词略密，但低于硬错误阈值且画面动作简单。",
+      "evidence": "8-1 有效字数约26字 / 7秒 / 约3.7字每秒。",
+      "fix": "无需硬修；如后续精修可保留7秒或拆为反应镜头。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

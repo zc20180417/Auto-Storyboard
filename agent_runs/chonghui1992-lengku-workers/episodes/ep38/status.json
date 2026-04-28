@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep38",
+  "status": "done",
+  "output_name": "EP-38-ep38-agent-cli-storyboard.txt",
+  "summary": "陆行川与叶承稷团队围绕样品塌陷、实验线成本和数据归属达成合作，确认技术壁垒要靠下一轮实验做出来。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}
