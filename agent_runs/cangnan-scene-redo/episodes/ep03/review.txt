@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "ep03最终分镜完整覆盖六个场景段落，台词、关键动作、空间锁定、组号、时间段和组尾衔接均符合storyboard-reviewer规则。",
+  "issues": [],
+  "warnings": []
+}

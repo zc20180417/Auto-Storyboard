@@ -1,15 +1,26 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const [inputDirArg, outputDirArg] = process.argv.slice(2);
+const [inputDirArg, outputDirArg, ...optionArgs] = process.argv.slice(2);
 
 if (!inputDirArg || !outputDirArg) {
-  console.error("Usage: node extract-flat-storyboard-assets.mjs <flat-storyboard-dir> <output-dir>");
+  console.error("Usage: node extract-flat-storyboard-assets.mjs <flat-storyboard-dir> <output-dir> [--era=modern2020] [--project=<name>]");
   process.exit(2);
 }
 
 const inputDir = path.resolve(inputDirArg);
 const outputDir = path.resolve(outputDirArg);
+const options = Object.fromEntries(
+  optionArgs
+    .filter((arg) => arg.startsWith("--"))
+    .map((arg) => {
+      const [key, ...rest] = arg.slice(2).split("=");
+      return [key, rest.join("=") || "true"];
+    }),
+);
+const era = options.era || "";
+const projectOverride = options.project || "";
+const biblePath = options.bible ? path.resolve(options.bible) : "";
 
 const NEG_CN_SCENE = "模糊，低分辨率，扭曲，变形，卡通，3D渲染，塑料感，过曝，色彩失真，伪影，错误的透视，消失点扭曲，倾斜地平线，墙面不垂直，比例失调，物体断层，桶形畸变，枕形畸变，鱼眼效果，景深不合理，漂浮，塑料光泽，平滑无痕，完美无缺，游戏引擎感，无大气透视，阴影缺失，光线扁平，反射假亮，材质模糊，贴图重复，无接触阴影，人物，人，人脸";
 const NEG_CN_PERSON = "模糊，低分辨率，扭曲，变形，卡通，3D渲染，塑料感，过曝，色彩失真，伪影，错误的透视，比例失调，身体比例错误，手部畸形，西方人脸，塑料光泽，平滑无痕，完美无缺，游戏引擎感";
@@ -18,30 +29,8 @@ const NEG_EN_SCENE = "blurry, low resolution, distorted, deformed, cartoon, 3D r
 const NEG_EN_PERSON = "blurry, low resolution, distorted, deformed, cartoon, 3D render, plastic, overexposed, color distortion, artifacts, incorrect perspective, disproportionate, distorted hands, western faces, glossy perfection, smooth and spotless, game-like CGI, flat lighting, missing shadows";
 const NEG_EN_ASSET = "blurry, low resolution, distorted, deformed, cartoon, 3D render, plastic, overexposed, color distortion, artifacts, incorrect perspective, skewed vanishing point, disproportionate, broken geometry, barrel distortion, pincushion distortion, fisheye, floating objects, mismatched scale, glossy perfection, smooth and spotless, game-like CGI, flat lighting, missing shadows";
 
-const ROLE_PROFILES = {
-  "林跃": ["二十多岁男性，农村青年转型创业者", "中等偏高，肩背挺直，体态干练", "黑色短发，眉眼冷静，面部线条清晰，眼神沉稳", "朴素深色夹克或旧衬衫，深色长裤，布鞋/旧皮鞋", "冷静、克制、锋利"],
-  "林建国": ["五十岁上下男性，林跃父亲，老实农民", "中等身材，肩背略弯，手掌粗糙", "短发夹白，额纹明显，面容疲惫朴实", "旧棉布上衣，深色裤子，解放鞋", "忠厚、焦急、隐忍"],
-  "张桂兰": ["五十岁上下女性，林跃母亲，农村妇人", "中等偏瘦，动作拘谨", "头发挽起或短发夹白，眼角细纹明显，脸色朴素", "深色碎花旧上衣，布裤，布鞋", "心疼、慌乱、坚韧"],
-  "林小雅": ["十岁左右女性，林跃妹妹，学生", "瘦小，动作轻快", "黑发扎辫，脸庞稚气，眼神明亮", "干净朴素的儿童上衣，新裙子或学生装，布鞋", "天真、依赖、希望"],
-  "赵百川": ["五十岁上下男性，村干部，赵大强父亲", "中等偏壮，站姿端着架子", "短发偏灰，浓眉，法令纹重，眼神阴沉", "旧干部夹克，中山装式外套，深色长裤，黑布鞋", "阴鸷、强势、算计"],
-  "赵大强": ["二十多岁男性，村霸式青年，赵百川之子", "偏壮，动作虚张声势", "短发，眉眼浮躁，表情嚣张或惊惧", "不合身西装或花衬衫，深色裤子，皮鞋/布鞋", "嚣张、怯懦、贪婪"],
-  "李二狗": ["二十多岁男性，村里混混", "偏瘦，肩膀内缩", "短发，脸颊发紧，眼神躲闪", "旧汗衫或灰旧外套，沾泥长裤，泥鞋", "心虚、猥琐、胆怯"],
-  "供水员王四": ["三四十岁男性，村里供水员", "中等身材，动作小心", "短发，眼神闪躲，额头易出汗", "蓝灰色旧工装，深色裤子，胶鞋", "怯懦、听命、紧张"],
-  "马主任": ["四十多岁男性，县供销社干部", "中等身材，坐姿端正", "短发，面部严肃，眼镜可选", "灰色干部外套，白衬衫，深色长裤", "谨慎、官气、审视"],
-  "马秘书": ["三十多岁男性，镇上秘书", "中等身材，动作利落", "短发，表情刻板，眼神审视", "灰色夹克或干部装，深色裤子，皮鞋", "傲慢、谨慎、官僚"],
-  "陈干事": ["三十多岁男性，基层干事", "中等身材，手持本子", "短发，戴眼镜，表情认真", "朴素干部夹克，深色裤子，布鞋", "认真、务实、观察"],
-  "纪委老李": ["五十岁上下男性，纪委干部", "中等偏瘦，站姿稳", "短发灰白，眼神锐利，面部严肃", "深色干部夹克，白衬衫，深色长裤", "严肃、压迫、克制"],
-  "钱厂长": ["五十岁上下男性，县加工厂厂长", "中等偏胖，坐姿沉稳", "短发，脸部圆厚，眼神精明", "深色西装或厂长夹克，皮鞋", "精明、权衡、体面"],
-  "钱秘书": ["三十多岁男性，厂长秘书", "中等身材，动作谨慎", "短发，表情紧绷，眼神会察言观色", "浅色衬衫，深色裤子，夹克或西装外套", "谨慎、圆滑、执行"],
-  "赵雷": ["三十岁上下男性，退伍兵/司机队负责人", "高大结实，肩背宽，站姿笔直", "寸头，眉骨硬朗，眼神警觉", "军绿色旧外套，深色工装裤，军靴", "可靠、果断、硬朗"],
-  "王总": ["五十岁上下男性，市级企业负责人", "中等偏壮，气场稳", "短发，面部沉稳，眼神有压迫感", "深色西装，白衬衫，皮鞋", "权威、审慎、强势"],
-  "吴总": ["五十岁上下男性，药业老板/反派商人", "中等偏胖，姿态松弛但压迫", "背头或短发，眼神阴沉，脸部保养较好", "高档深色西装，皮鞋，手表", "傲慢、危险、老辣"],
-  "吴总秘书": ["三十岁上下女性或男性秘书，商务随从", "中等身材，姿态职业", "短发或盘发，表情克制，眼神警惕", "职业西装，衬衫，皮鞋", "冷静、精明、执行"],
-  "龙海天": ["五十多岁男性，省城资本大佬", "高大或偏壮，气场强", "背头，眉眼凌厉，面部线条硬", "高档深色西装，皮鞋，腕表", "强势、傲慢、压迫"],
-  "阿虎": ["三十多岁男性，杀手打手", "强壮，动作凶狠", "短发，脸部粗硬，眼神狠厉", "深色夹克，工装裤，靴子，雨衣状态可选", "凶狠、危险、沉默"],
-  "杀手阿虎": ["三十多岁男性，杀手打手", "强壮，动作凶狠", "短发，脸部粗硬，眼神狠厉", "深色夹克，工装裤，靴子，雨衣状态可选", "凶狠、危险、沉默"],
-  "放贷人光头": ["四十岁上下男性，高利贷头目", "偏壮，脖颈粗，压迫感强", "光头，眉骨重，鼻翼粗，眼神凶狠", "黑色短袖或深色夹克，深色裤子，皮鞋", "凶狠、贪婪、暴躁"],
-};
+const ROLE_PROFILES = {};
+let assetBibleProfiles = new Map();
 
 function escapeCell(value) {
   return String(value ?? "")
@@ -55,6 +44,78 @@ function mdTable(headers, rows) {
   const sep = `| ${headers.map(() => "---").join(" |")} |`;
   const body = rows.map((row) => `| ${headers.map((h) => escapeCell(row[h])).join(" |")} |`);
   return [head, sep, ...body].join("\n");
+}
+
+function splitMarkdownRow(line) {
+  return line
+    .trim()
+    .replace(/^\|/u, "")
+    .replace(/\|$/u, "")
+    .split("|")
+    .map((cell) => cell.trim().replace(/<br>/gu, " "));
+}
+
+function parseAssetBibleProfiles(text) {
+  const lines = text.split(/\r?\n/u);
+  const profiles = new Map();
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (!line.startsWith("|") || !line.includes("角色名")) continue;
+    const headers = splitMarkdownRow(line);
+    index += 2;
+    while (index < lines.length && lines[index].startsWith("|")) {
+      const cells = splitMarkdownRow(lines[index]);
+      if (!cells.length || cells.every((cell) => /^-+$/u.test(cell))) {
+        index += 1;
+        continue;
+      }
+      const row = Object.fromEntries(headers.map((header, cellIndex) => [header, cells[cellIndex] || ""]));
+      const name = row["角色名"];
+      if (name) {
+        profiles.set(name, {
+          identity: row["身份/关系"] || row["身份"] || "",
+          ageGender: row["年龄段/性别"] || "",
+          body: row["身高体态"] || "",
+          face: row["面部稳定特征"] || "",
+          hair: row["发型"] || "",
+          clothes: row["主要服装状态"] || row["全身装造"] || "",
+          shoes: row["鞋/配饰"] || "",
+          tone: row["气质关键词"] || "",
+        });
+      }
+      index += 1;
+    }
+  }
+  return profiles;
+}
+
+function projectNameFromFile(fileName) {
+  return fileName.replace(/-?ep\d+.*$/iu, "").replace(/[-_]+$/u, "").trim();
+}
+
+function applyEra(text) {
+  if (era !== "modern2020") return text;
+  return text
+    .replace(/八九十年代中国农村创业、县城商业、药材加工、现实题材短剧/g, "2020年代中国乡镇创业、县城商业、药材加工、现实题材短剧")
+    .replace(/八九十年代中国现实题材短剧/g, "2020年代中国现实题材短剧")
+    .replace(/八九十年代中国现实题材/g, "2020年代中国现实题材")
+    .replace(/八九十年代办公空间/g, "2020年代县城/乡镇办公空间")
+    .replace(/八九十年代车辆道具/g, "2020年代车辆道具")
+    .replace(/八九十年代/g, "2020年代左右")
+    .replace(/八九十年代/g, "2020年代左右")
+    .replace(/1980s-1990s Chinese realistic short drama setting/g, "around-2020s Chinese realistic short drama setting")
+    .replace(/1980s-1990s Chinese realistic drama wardrobe/g, "around-2020s Chinese realistic drama wardrobe")
+    .replace(/1980s-1990s Chinese office interior/g, "around-2020s Chinese township or county office interior")
+    .replace(/realistic 1980s-1990s Chinese drama set/g, "realistic around-2020s Chinese drama set")
+    .replace(/1980s-1990s vehicle prop/g, "around-2020s vehicle prop")
+    .replace(/1980s-1990s/g, "around 2020s")
+    .replace(/period-appropriate/g, "contemporary realistic")
+    .replace(/旧工装/g, "工装")
+    .replace(/旧干部夹克/g, "干部夹克")
+    .replace(/旧西装/g, "商务西装")
+    .replace(/旧物质感/g, "真实使用痕迹")
+    .replace(/年代质感/g, "现实质感")
+    .replace(/商业年代质感/g, "当代县城商业质感");
 }
 
 function splitList(value) {
@@ -158,11 +219,34 @@ function scenePrompt(name, item) {
 
 function roleProfile(name) {
   if (ROLE_PROFILES[name]) return ROLE_PROFILES[name];
-  if (/村民|群众|工人|司机|打手|保镖|警察|工商人员|民兵|专家|采购商|散户|果农|安保|特警|干事/u.test(name)) {
-    return [`${name}，群像或职能配角`, "中等身材，符合职业身份", "中国面孔，普通现实五官，表情服务剧情", "符合身份的旧工装/制服/便装，深色裤子，布鞋或皮鞋", "真实、克制、年代感"];
+  const bible = assetBibleProfiles.get(name);
+  if (bible) {
+    const identity = [bible.ageGender, bible.identity].filter(Boolean).join("，") || `${name}，身份气质见 asset_bible`;
+    const face = [bible.face, bible.hair ? `发型：${bible.hair}` : ""].filter(Boolean).join("，");
+    const clothes = [bible.clothes, bible.shoes ? `鞋/配饰：${bible.shoes}` : ""].filter(Boolean).join("，");
+    return [
+      identity,
+      bible.body || "身高体态见 asset_bible",
+      face || "真实面容、发型和五官稳定特征见 asset_bible",
+      clothes || "全身装造、上装、下装、鞋和配饰见 asset_bible",
+      bible.tone || "气质关键词见 asset_bible",
+    ];
   }
-  if (/秘书/u.test(name)) return [`${name}，商务/机关秘书`, "中等身材，姿态职业", "中国面孔，短发或整齐发型，表情克制", "职业西装或干部夹克，衬衫，皮鞋", "谨慎、职业、执行"];
-  return [`${name}，剧情配角`, "中等身材，真实普通体态", "中国面孔，发型朴素，五官自然", "符合八九十年代身份的朴素服装，深色裤子，布鞋或皮鞋", "真实、克制、短剧质感"];
+  return [
+    `${name}，待从全剧 asset_bible 固定身份气质`,
+    "待从全剧 asset_bible 固定身高体态",
+    "待从全剧 asset_bible 固定真实面容、发型和五官稳定特征",
+    "待从全剧 asset_bible 固定全身装造、上装、下装、鞋和配饰",
+    "待从全剧 asset_bible 固定气质关键词",
+  ];
+}
+
+function faceDetailCn(face) {
+  const text = String(face || "");
+  if (/脸型|方脸|圆脸|椭圆|眉|眼|鼻|嘴|唇|法令纹|额纹|皮肤/u.test(text)) {
+    return text;
+  }
+  return `${text}，真实面容：脸型普通偏方圆，眉眼自然，鼻梁中等，嘴唇厚薄正常，皮肤有真实毛孔和轻微瑕疵`;
 }
 
 function costumeState(name, groups) {
@@ -171,14 +255,14 @@ function costumeState(name, groups) {
   if (/西装|皮鞋|商务|酒楼|办公室|老板|大佬/u.test(text)) return "商务/干部状态";
   if (/工装|工人|车间|仓库|司机|退役|军绿/u.test(text)) return "工装/执行状态";
   if (/雨衣|泥水|修理厂|杀手/u.test(text)) return "行动/冲突状态";
-  if (name === "林跃" && /被绑|血迹|青紫|伤痕/u.test(text)) return "受伤落难状态";
+  if (/被绑|血迹|青紫|伤痕/u.test(text) && new RegExp(name, "u").test(text)) return "受伤落难状态";
   return "常规剧情状态";
 }
 
 function characterPrompt(name, item) {
   const [identity, body, face, clothes, temperament] = roleProfile(name);
   const state = costumeState(name, item.groups);
-  return `${name}角色定妆照，${identity}，${body}，${face}，全身装造：${clothes}，服装状态：${state}，多种姿态，表情动作参考镜号归并：${mergeRefs(item.refs)}，纯色或弱化场景背景，竖屏构图，50mm镜头，浅景深，主光从左前方进入，脸部阴影柔和且方向一致，皮肤有真实毛孔、轻微瑕疵和布料起球磨损，人物身高比例约1:7，身体结构自然，接触阴影真实，电影质感，8K，物理材质。--neg ${NEG_CN_PERSON}`;
+  return `${name}角色定妆照，${identity}，${body}，真实面容：${faceDetailCn(face)}，全身装造：${clothes}，服装状态：${state}，多种姿态，表情克制并符合剧情状态，纯色或弱化场景背景，竖屏构图，50mm镜头，浅景深，主光从左前方进入，脸部阴影柔和且方向一致，皮肤有真实毛孔、轻微瑕疵和布料起球磨损，人物身高比例约1:7，身体结构自然，接触阴影真实，电影质感，8K，物理材质。--neg ${NEG_CN_PERSON}`;
 }
 
 function costumePrompt(name, item) {
@@ -222,25 +306,34 @@ function enSceneDescription(name) {
 }
 
 function enRoleProfile(name) {
-  const known = {
-    "林跃": ["male in his twenties, rural young entrepreneur", "medium-tall, upright shoulders, capable posture", "short black hair, calm eyes, defined facial lines", "plain dark jacket or worn shirt, dark trousers, cloth shoes or old leather shoes"],
-    "林建国": ["male around fifty, Lin Yue's father, honest farmer", "medium build, slightly hunched shoulders, rough hands", "short graying hair, forehead lines, tired plain face", "worn cotton jacket, dark trousers, liberation shoes"],
-    "张桂兰": ["female around fifty, Lin Yue's mother, rural woman", "medium-slim build, restrained movements", "tied or short graying hair, fine eye wrinkles, plain face", "dark old floral top, cloth trousers, cloth shoes"],
-    "林小雅": ["girl around ten, Lin Yue's younger sister, student", "small and slim, light movements", "black braided hair, youthful face, bright eyes", "clean simple child top, new skirt or student outfit, cloth shoes"],
-    "赵百川": ["male around fifty, village cadre and Zhao Daqiang's father", "medium-strong build, authoritative posture", "short graying hair, thick brows, deep nasolabial lines, gloomy eyes", "old cadre jacket, Zhongshan-style outerwear, dark trousers, black cloth shoes"],
-    "赵大强": ["male in his twenties, village bully type, Zhao Baichuan's son", "stocky build, blustering posture", "short hair, restless eyes, arrogant or frightened expression", "ill-fitting suit or patterned shirt, dark trousers, leather or cloth shoes"],
-    "李二狗": ["male in his twenties, village loafer", "thin build, shoulders pulled inward", "short hair, tense cheeks, evasive eyes", "old undershirt or gray worn jacket, muddy trousers, muddy shoes"],
-    "供水员王四": ["male in his thirties or forties, village water-supply worker", "medium build, cautious movements", "short hair, evasive eyes, sweaty forehead", "blue-gray worn workwear, dark trousers, rubber shoes"],
-    "赵雷": ["male around thirty, veteran soldier and driver-team lead", "tall, solid build, broad shoulders, upright stance", "buzz cut, hard brow structure, alert eyes", "army-green old jacket, dark work trousers, military boots"],
-    "吴总": ["male around fifty, pharmaceutical boss and antagonist businessman", "medium-heavy build, relaxed but oppressive posture", "slicked-back or short hair, gloomy eyes, well-kept face", "high-end dark suit, leather shoes, wristwatch"],
-    "龙海天": ["male in his fifties, provincial capital power broker", "tall or strong build, dominant presence", "slicked-back hair, sharp eyes, hard facial lines", "premium dark suit, leather shoes, wristwatch"],
-  };
+  const known = {};
   if (known[name]) return known[name];
-  if (/村民|群众|工人|司机|打手|保镖|警察|工商人员|民兵|专家|采购商|散户|果农|安保|特警|干事/u.test(name)) {
-    return [`${name}, functional supporting or crowd character`, "medium build matching the occupation", "Chinese face, ordinary realistic features, expression serves the scene", "period-appropriate workwear, uniform or plain clothes, dark trousers, cloth or leather shoes"];
+  const bible = assetBibleProfiles.get(name);
+  if (bible) {
+    const identity = [bible.ageGender, bible.identity].filter(Boolean).join(", ") || `${name}, identity and temperament from asset_bible`;
+    const face = [bible.face, bible.hair ? `hairstyle: ${bible.hair}` : ""].filter(Boolean).join(", ");
+    const clothes = [bible.clothes, bible.shoes ? `shoes and accessories: ${bible.shoes}` : ""].filter(Boolean).join(", ");
+    return [
+      identity,
+      bible.body || "height and body type from asset_bible",
+      face || "realistic face, hairstyle and stable facial features from asset_bible",
+      clothes || "full-body wardrobe, top, bottom, shoes and accessories from asset_bible",
+    ];
   }
-  if (/秘书/u.test(name)) return [`${name}, business or government secretary`, "medium build, professional posture", "Chinese face, neat hair, restrained expression", "business suit or cadre jacket, shirt, leather shoes"];
-  return [`${name}, supporting drama character`, "medium realistic body type", "Chinese face, simple hairstyle, natural features", "plain period-appropriate clothing, dark trousers, cloth or leather shoes"];
+  return [
+    `${name}, identity and temperament to be fixed by the model-generated asset_bible`,
+    "height and body type to be fixed by the model-generated asset_bible",
+    "realistic face, hairstyle and stable facial features to be fixed by the model-generated asset_bible",
+    "full-body wardrobe, top, bottom, shoes and accessories to be fixed by the model-generated asset_bible",
+  ];
+}
+
+function faceDetailEn(face) {
+  const text = String(face || "");
+  if (/(face|brow|eye|nose|lip|wrinkle|skin|cheek|jaw|facial)/i.test(text)) {
+    return text;
+  }
+  return `${text}, realistic facial features: ordinary square-oval face shape, natural brows and eyes, medium nose bridge, average lips, visible skin pores and subtle imperfections`;
 }
 
 function enPropDescription(name) {
@@ -260,7 +353,7 @@ function enScenePrompt(name, item) {
 function enCharacterPrompt(name, item) {
   const [identity, body, face, clothes] = enRoleProfile(name);
   const state = costumeState(name, item.groups);
-  return `${name} character design reference, ${identity}, ${body}, ${face}, full-body wardrobe: ${clothes}, costume state: ${state}, multiple poses, expressions and actions referenced by shots ${mergeRefs(item.refs)}. Clean or simplified background, vertical composition, 50mm lens, shallow depth of field, key light from front-left with soft consistent shadows. Realistic skin pores, subtle facial imperfections, fabric pilling and worn edges, correct human proportion around 1:7, natural body structure, grounded contact shadows, cinematic, 8K, physically-based materials. --neg ${NEG_EN_PERSON}`;
+  return `${name} character design reference, ${identity}, ${body}, realistic facial features: ${faceDetailEn(face)}, full-body wardrobe: ${clothes}, costume state: ${state}, multiple poses, restrained expression matching the story state. Clean or simplified background, vertical composition, 50mm lens, shallow depth of field, key light from front-left with soft consistent shadows. Realistic skin pores, subtle facial imperfections, fabric pilling and worn edges, correct human proportion around 1:7, natural body structure, grounded contact shadows, cinematic, 8K, physically-based materials. --neg ${NEG_EN_PERSON}`;
 }
 
 function enCostumePrompt(name, item) {
@@ -430,8 +523,21 @@ function combineAssets(allAssets) {
   return combined;
 }
 
-function renderBible(combined) {
-  const people = combined.charRows.slice(0, 80).map((row) => {
+function renderBible(combined, projectName) {
+  const characterRows = [...combined.charRows];
+  const seenCharacters = new Set(characterRows.map((row) => row["资产名称"]));
+  for (const row of combined.costumeRows) {
+    const owner = row["资产名称"].replace(/服装$/u, "");
+    if (!seenCharacters.has(owner) && assetBibleProfiles.has(owner)) {
+      characterRows.push({
+        "资产名称": owner,
+        "服装状态": row["描述"] || "按剧情状态",
+        "适用镜号": row["适用镜号"],
+      });
+      seenCharacters.add(owner);
+    }
+  }
+  const people = characterRows.slice(0, 120).map((row) => {
     const [identity, body, face, clothes, tone] = roleProfile(row["资产名称"]);
     return {
       "角色名": row["资产名称"],
@@ -448,9 +554,9 @@ function renderBible(combined) {
   });
   const scenes = combined.sceneRows.slice(0, 80).map((row) => ({
     "场景名称": row["资产名称"],
-    "年代/题材": "八九十年代中国现实题材短剧",
+    "年代/题材": "2020年代左右中国现代都市现实题材短剧",
     "空间结构": row["描述"],
-    "主要材质与陈设": "按分镜原文的木门、土墙、水泥地、办公桌、药材货袋、车辆等真实材质固定",
+    "主要材质与陈设": "按分镜原文的现代医院、豪门宅邸、商务会场、街区、车辆、医疗器械等真实材质固定",
     "光线/色调": row["时间"],
     "可复用状态": `适用镜号：${row["适用镜号"]}`,
     "提示词关键词": row["静态生图提示词(中文)"],
@@ -459,8 +565,8 @@ function renderBible(combined) {
     "服装名称": row["资产名称"],
     "对应角色": row["资产名称"].replace(/服装$/u, ""),
     "描述": row["描述"],
-    "面料/颜色": "按角色身份保持朴素年代质感，真实面料纹理",
-    "年代感/磨损": "八九十年代，轻微磨损和自然褶皱",
+    "面料/颜色": "按角色身份保持2020年代现代现实质感，真实面料纹理",
+    "年代感/磨损": "2020年代左右，轻微磨损和自然褶皱",
     "适用状态": `适用镜号：${row["适用镜号"]}`,
     "提示词关键词": row["静态生图提示词(中文)"],
   }));
@@ -469,13 +575,13 @@ function renderBible(combined) {
     "描述": row["描述"],
     "材质/尺寸感": "按道具类型表现真实材质、尺寸和使用痕迹",
     "文字限制": "不添加分镜原文未出现的文字",
-    "年代质感": "八九十年代真实旧物质感",
+    "年代质感": "2020年代左右真实使用质感",
     "适用角色/场景": `适用镜号：${row["适用镜号"]}`,
     "提示词关键词": row["静态生图提示词(中文)"],
   }));
 
   return [
-    "# 《谁说泥腿子不能当老板》全局资产设定",
+    `# 《${projectName}》全局资产设定`,
     "",
     "## 一、人物全身装造",
     "",
@@ -499,10 +605,15 @@ function renderBible(combined) {
     "- 质感：电影质感，真实光影，真实材质，避免卡通、3D 渲染、塑料感。",
     "- 人物：保持中国短剧人物审美，不使用西方人脸。",
     "- 场景：场景资产必须为空镜、无人、无人脸。",
-    "- 年代/题材关键词：八九十年代中国农村创业、县城商业、药材加工、现实题材短剧。",
+    "- 年代/题材关键词：2020年代左右中国现代都市玄医、古武、豪门、医疗现实题材短剧。",
     "- 禁用新增元素：不添加分镜原文未出现的品牌、文字、徽章、标语。",
     "",
   ].join("\n");
+}
+
+if (biblePath) {
+  const bibleText = await fs.readFile(biblePath, "utf8");
+  assetBibleProfiles = parseAssetBibleProfiles(bibleText);
 }
 
 await fs.mkdir(outputDir, { recursive: true });
@@ -511,6 +622,12 @@ const files = entries
   .filter((name) => /ep\d+.*storyboard\.txt$/iu.test(name))
   .sort((a, b) => a.localeCompare(b, "zh-CN", { numeric: true }));
 
+if (!files.length) {
+  console.error(`No storyboard files found in ${inputDir}`);
+  process.exit(1);
+}
+
+const projectName = projectOverride || projectNameFromFile(files[0]) || path.basename(inputDir);
 const allAssets = [];
 for (const file of files) {
   const text = await fs.readFile(path.join(inputDir, file), "utf8");
@@ -520,7 +637,7 @@ for (const file of files) {
   const epName = `ep${parsed.episode}`;
   await fs.writeFile(
     path.join(outputDir, `${epName}-assets.md`),
-    renderAssets(`谁说泥腿子不能当老板-${epName}`, assets),
+    applyEra(renderAssets(`${projectName}-${epName}`, assets)),
     "utf8",
   );
 }
@@ -528,9 +645,9 @@ for (const file of files) {
 const combined = combineAssets(allAssets);
 await fs.writeFile(
   path.join(outputDir, "all-assets.md"),
-  renderAssets("谁说泥腿子不能当老板-全剧", combined),
+  applyEra(renderAssets(`${projectName}-全剧`, combined)),
   "utf8",
 );
-await fs.writeFile(path.join(outputDir, "asset_bible.md"), renderBible(combined), "utf8");
+await fs.writeFile(path.join(outputDir, "asset_bible.md"), applyEra(renderBible(combined, projectName)), "utf8");
 
 console.log(`Generated ${files.length} episode asset markdown files in ${outputDir}`);

@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "已按 storyboard-reviewer 对第1集全集逐项复核：剧情台词完整，时间段连续，组标题总时长与镜头数匹配，组首空间锁定已标注为非独立镜头约束，未发现硬伤。",
+  "issues": [],
+  "warnings": []
+}

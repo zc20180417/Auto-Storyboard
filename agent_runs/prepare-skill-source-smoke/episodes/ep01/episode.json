@@ -1,0 +1,8 @@
+{
+  "episode_id": "ep01",
+  "episode_number": 1,
+  "display_name": "script",
+  "series_title": "script",
+  "source_path": "G:\\Auto-Storyboard\\agent_runs\\jiaqianyi-skill-format-test2\\episodes\\ep01\\script.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_prepare_skill_source_smoke\\script-ep01-agent-cli-storyboard.txt"
+}

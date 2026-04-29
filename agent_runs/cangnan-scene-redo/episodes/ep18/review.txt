@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "ep18 assembled final keeps all four source scenes, group headings are continuous, each group uses 0-based continuous time ranges, and no hard storyboard issues remain.",
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "节奏",
+      "problem": "王局长撤退台词偏快但在放宽上限内。",
+      "evidence": "有效字数26 / 镜头秒数4 / 字秒比6.50",
+      "fix": "无需强制修改；如需要更舒适语速，可单独延长该镜并重组相邻动作。"
+    }
+  ]
+}

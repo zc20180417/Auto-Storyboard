@@ -106,7 +106,8 @@ def make_episode_id(episode: EpisodeInput, sequence_index: int) -> str:
 def make_agent_context(
     *,
     project_root: Path,
-    prompt_path: Path,
+    generation_rules_source: Path,
+    reviewer_rules_source: Path,
     out_dir: Path,
     episodes_count: int,
     generator_skill_path: Path,
@@ -119,7 +120,8 @@ def make_agent_context(
 
         ## Workspace
         - Project root: `{project_root}`
-        - Prompt source: `{prompt_path}`
+        - Generation rules source: `{generation_rules_source}`
+        - Review rules source: `{reviewer_rules_source}`
         - Final output directory: `{out_dir}`
         - Episodes in this run: `{episodes_count}`
         - Generation mode: `{mode}`
@@ -169,7 +171,7 @@ def make_episode_task(
             """
             1. Read `../../context.md`, both standard `SKILL.md` files, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
-            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings and shot numbers globally from 第1组 / 1-1.
+            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds.
             4. Review the assembled `final.txt` once using `storyboard-reviewer`; write the raw reviewer JSON to `review.txt`.
             5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `storyboard-reviewer` after repairs.
             6. Write `status.json` with reviewer metadata, then run validation.
@@ -276,9 +278,9 @@ def make_standard_skill_md(*, name: str, description: str, title: str, body: str
 def ensure_project_agent_skills(
     *,
     project_root: Path,
-    prompt_text: str,
-    review_skill_text: str,
-) -> tuple[Path, Path]:
+    prompt_path: Path | None,
+    review_skill_path: Path | None,
+) -> tuple[Path, Path, Path, Path]:
     skills_root = project_root / PROJECT_AGENT_SKILLS_DIR
     generator_skill_dir = skills_root / "storyboard-generator"
     reviewer_skill_dir = skills_root / "storyboard-reviewer"
@@ -287,31 +289,68 @@ def ensure_project_agent_skills(
 
     generator_skill_path = generator_skill_dir / "SKILL.md"
     reviewer_skill_path = reviewer_skill_dir / "SKILL.md"
-    write_utf8(
-        generator_skill_path,
-        make_standard_skill_md(
-            name="storyboard-generator",
-            description=(
-                "Generate vertical Chinese costume-drama storyboard prompts from episode scripts. "
-                "Use when converting short-drama scripts into natural grouped storyboard output."
+    if prompt_path is not None:
+        prompt_text = read_utf8_text(prompt_path)
+        write_utf8(
+            generator_skill_path,
+            make_standard_skill_md(
+                name="storyboard-generator",
+                description=(
+                    "Generate vertical Chinese costume-drama storyboard prompts from episode scripts. "
+                    "Use when converting short-drama scripts into natural grouped storyboard output."
+                ),
+                title="Storyboard Generator",
+                body=prompt_text,
             ),
-            title="Storyboard Generator",
-            body=prompt_text,
-        ),
-    )
-    write_utf8(
-        reviewer_skill_path,
-        make_standard_skill_md(
-            name="storyboard-reviewer",
-            description=(
-                "Review vertical storyboard drafts against the source script, natural format, timing, "
-                "space locking, and dialogue-direction rules. Use after storyboard generation."
+        )
+        generation_rules_source = prompt_path.resolve()
+    elif generator_skill_path.is_file():
+        generation_rules_source = generator_skill_path.resolve()
+    else:
+        raise FileNotFoundError(
+            f"Generation skill not found: {generator_skill_path}. "
+            "Create agent_skills/storyboard-generator/SKILL.md or pass --prompt explicitly."
+        )
+
+    if review_skill_path is not None:
+        review_skill_text = read_utf8_text(review_skill_path.resolve())
+        write_utf8(
+            reviewer_skill_path,
+            make_standard_skill_md(
+                name="storyboard-reviewer",
+                description=(
+                    "Review vertical storyboard drafts against the source script, natural format, timing, "
+                    "space locking, and dialogue-direction rules. Use after storyboard generation."
+                ),
+                title="Storyboard Reviewer",
+                body=review_skill_text,
             ),
-            title="Storyboard Reviewer",
-            body=review_skill_text,
-        ),
+        )
+        reviewer_rules_source = review_skill_path.resolve()
+    elif reviewer_skill_path.is_file():
+        reviewer_rules_source = reviewer_skill_path.resolve()
+    else:
+        review_skill_text = load_review_skill_text(None)
+        write_utf8(
+            reviewer_skill_path,
+            make_standard_skill_md(
+                name="storyboard-reviewer",
+                description=(
+                    "Review vertical storyboard drafts against the source script, natural format, timing, "
+                    "space locking, and dialogue-direction rules. Use after storyboard generation."
+                ),
+                title="Storyboard Reviewer",
+                body=review_skill_text,
+            ),
+        )
+        reviewer_rules_source = reviewer_skill_path.resolve()
+
+    return (
+        generator_skill_path.resolve(),
+        reviewer_skill_path.resolve(),
+        generation_rules_source,
+        reviewer_rules_source,
     )
-    return generator_skill_path.resolve(), reviewer_skill_path.resolve()
 
 
 def write_runner_scripts(
@@ -412,9 +451,15 @@ After agents finish writing `final.txt` and `status.json` in each episode direct
 
 
 CLEAN_GROUP_RE = re.compile(
-    r"(?m)^\s*===\s*第(?P<num>[0-9一二三四五六七八九十百千万零〇两]+)组(?!结束)(?P<rest>.*?)$"
+    r"(?m)^\ufeff?\s*===\s*第(?P<num>[0-9一二三四五六七八九十百千万零〇两]+)组(?!结束)(?P<rest>.*?)$"
 )
-CLEAN_SHOT_RE = re.compile(r"(?m)^\s*(?P<group>\d{1,3})-(?P<shot>\d{1,2})(?:\s|\[|$)")
+CLEAN_LEGACY_SHOT_RE = re.compile(r"(?m)^\s*(?P<group>\d{1,3})-(?P<shot>\d{1,2})(?:\s|\[|$)")
+CLEAN_SHOT_TIME_RANGE_RE = re.compile(
+    r"(?:时间段[：:]\s*)?(?P<start>\d{1,3})\s*[-－—–到至]\s*(?P<end>\d{1,3})\s*秒"
+)
+CLEAN_SHOT_TIME_RANGE_LINE_RE = re.compile(
+    r"(?m)^\s*(?:时间段[：:]\s*)?(?P<start>\d{1,3})\s*[-－—–到至]\s*(?P<end>\d{1,3})\s*秒[：:]?\s*$"
+)
 CLEAN_SHOT_SECONDS_RE = re.compile(r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3})\s*秒")
 CLEAN_GROUP_TOTAL_RE = re.compile(r"总时长[：:]\s*(?P<seconds>\d{1,3})\s*秒")
 CLEAN_GROUP_SHOTS_RE = re.compile(r"镜头数[：:]\s*(?P<shots>\d{1,3})\s*个")
@@ -429,7 +474,8 @@ LOW_QUALITY_TEMPLATE_PATTERNS = (
 )
 SCENE_ESTABLISHING_RE = re.compile(
     r"镜头描述[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)[\s\S]{0,160}?"
-    r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3})\s*秒"
+    r"(?:(?:时间段[：:]\s*)?(?P<start>\d{1,3})\s*[-－—–到至]\s*(?P<end>\d{1,3})\s*秒|"
+    r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3})\s*秒)"
 )
 
 
@@ -472,7 +518,11 @@ def normalize_clean_storyboard_numbering(content: str) -> tuple[str, list[str]]:
             shot_counter += 1
             return f"{match.group(1)}{index}-{shot_counter}{match.group(3)}"
 
-        block = re.sub(r"(?m)^(\s*)\d{1,3}-(\d{1,2})(.*)$", replace_shot, block)
+        block = re.sub(
+            r"(?m)^(\s*)\d{1,3}-(\d{1,2})(\s*(?:\[.*\])?\s*)$",
+            replace_shot,
+            block,
+        )
 
         if heading_count and old_number != index:
             changes.append(f"第{old_number or old_raw}组->{index}组")
@@ -488,6 +538,47 @@ def _group_number(value: str) -> int | None:
     if value.isdigit():
         return int(value)
     return chinese_numeral_to_int(value)
+
+
+def _extract_time_range_durations(time_matches: list[re.Match]) -> tuple[list[int], list[str]]:
+    durations: list[int] = []
+    issues: list[str] = []
+    previous_end: int | None = None
+
+    for index, match in enumerate(time_matches):
+        start = int(match.group("start"))
+        end = int(match.group("end"))
+        duration = end - start
+        label = f"{start}-{end}秒"
+        durations.append(duration)
+        if duration <= 0:
+            issues.append(f"{label} 时间段结束秒数必须大于开始秒数。")
+        if index == 0 and start != 0:
+            issues.append(f"{label} 时间段应从 0 秒开始。")
+        if previous_end is not None and start != previous_end:
+            issues.append(f"{label} 时间段起点={start}秒，但上一镜结束={previous_end}秒。")
+        previous_end = end
+
+    return durations, issues
+
+
+def _extract_legacy_shot_durations(block: str, shot_matches: list[re.Match]) -> tuple[list[int], list[str]]:
+    durations: list[int] = []
+    issues: list[str] = []
+
+    for index, shot_match in enumerate(shot_matches):
+        shot_label = f"{shot_match.group('group')}-{shot_match.group('shot')}"
+        shot_start = shot_match.end()
+        shot_end = shot_matches[index + 1].start() if index + 1 < len(shot_matches) else len(block)
+        shot_block = block[shot_start:shot_end]
+
+        seconds_match = CLEAN_SHOT_SECONDS_RE.search(shot_block)
+        if seconds_match:
+            durations.append(int(seconds_match.group("seconds")))
+        else:
+            issues.append(f"{shot_label} 缺少时间段，例如：0-4秒：。")
+
+    return durations, issues
 
 
 def validate_clean_storyboard_format(content: str) -> list[str]:
@@ -513,21 +604,32 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
         block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
         block = content[block_start:block_end]
 
-        shot_matches = list(CLEAN_SHOT_RE.finditer(block))
-        seconds = [int(match.group("seconds")) for match in CLEAN_SHOT_SECONDS_RE.finditer(block)]
-        if not shot_matches:
-            issues.append(f"第{group_number}组缺少镜头编号，例如 {group_number}-1。")
-        for shot_index, shot_match in enumerate(shot_matches, start=1):
-            shot_group = int(shot_match.group("group"))
-            shot_number = int(shot_match.group("shot"))
-            if shot_group != group_number:
-                issues.append(f"第{group_number}组内出现跨组镜头编号：{shot_group}-{shot_number}。")
-            if shot_number != shot_index:
-                issues.append(f"第{group_number}组镜头编号不连续：期望 {group_number}-{shot_index}，实际 {shot_group}-{shot_number}。")
+        time_matches = list(CLEAN_SHOT_TIME_RANGE_LINE_RE.finditer(block))
+        legacy_shot_matches = list(CLEAN_LEGACY_SHOT_RE.finditer(block))
 
-        if len(seconds) != len(shot_matches):
+        if time_matches:
+            seconds, time_issues = _extract_time_range_durations(time_matches)
+            shot_count = len(time_matches)
+        else:
+            seconds, time_issues = _extract_legacy_shot_durations(block, legacy_shot_matches)
+            shot_count = len(legacy_shot_matches)
+        issues.extend(time_issues)
+        if not time_matches and not legacy_shot_matches:
+            issues.append(f"第{group_number}组缺少时间段，例如 0-4秒：。")
+        if not time_matches:
+            for shot_index, shot_match in enumerate(legacy_shot_matches, start=1):
+                shot_group = int(shot_match.group("group"))
+                shot_number = int(shot_match.group("shot"))
+                if shot_group != group_number:
+                    issues.append(f"第{group_number}组内出现跨组镜头编号：{shot_group}-{shot_number}。")
+                if shot_number != shot_index:
+                    issues.append(
+                        f"第{group_number}组镜头编号不连续：期望 {group_number}-{shot_index}，实际 {shot_group}-{shot_number}。"
+                    )
+
+        if len(seconds) != shot_count:
             issues.append(
-                f"第{group_number}组镜头数量与“本镜估算时长”数量不一致：镜头{len(shot_matches)}个，时长{len(seconds)}个。"
+                f"第{group_number}组镜头数量与时间段数量不一致：镜头{shot_count}个，时长{len(seconds)}个。"
             )
         if any(value <= 1 for value in seconds):
             issues.append(f"第{group_number}组出现 1 秒或更短镜头。")
@@ -543,8 +645,8 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
             issues.append(f"第{group_number}组镜头时长相加={seconds_sum}秒，不在10-15秒范围内。")
         if shots_match:
             declared_shots = int(shots_match.group("shots"))
-            if declared_shots != len(shot_matches):
-                issues.append(f"第{group_number}组标题镜头数={declared_shots}，实际镜头数={len(shot_matches)}。")
+            if declared_shots != shot_count:
+                issues.append(f"第{group_number}组标题镜头数={declared_shots}，实际镜头数={shot_count}。")
 
         expected_group += 1
 
@@ -557,7 +659,7 @@ def validate_storyboard_quality_floor(content: str) -> list[str]:
         if pattern in content:
             issues.append(f"最终分镜包含模板化镜头描述：`{pattern}`，请改为贴合剧本现场的具体动作、道具和人物站位。")
     for match in SCENE_ESTABLISHING_RE.finditer(content):
-        seconds = int(match.group("seconds"))
+        seconds = int(match.group("seconds")) if match.group("seconds") else int(match.group("end")) - int(match.group("start"))
         if seconds > 2:
             issues.append(
                 f"普通空间/环境交代镜头标为{seconds}秒；生产规则要求通常2秒，"
@@ -697,9 +799,7 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
 def prepare_workspace(args: argparse.Namespace) -> int:
     project_root = Path.cwd().resolve()
     source = args.source.resolve()
-    prompt_path = find_prompt_file(project_root, args.prompt).resolve()
-    prompt_text = read_utf8_text(prompt_path)
-    review_skill_text = load_review_skill_text(args.review_skill)
+    prompt_path = find_prompt_file(project_root, args.prompt).resolve() if args.prompt else None
     episodes = resolve_source_episodes(source)
     if not episodes:
         print("[error] no episodes found", file=sys.stderr)
@@ -721,15 +821,16 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     run_dir.mkdir(parents=True, exist_ok=True)
     (run_dir / "episodes").mkdir(exist_ok=True)
     out_dir.mkdir(parents=True, exist_ok=True)
-    generator_skill_path, reviewer_skill_path = ensure_project_agent_skills(
+    generator_skill_path, reviewer_skill_path, generation_rules_source, reviewer_rules_source = ensure_project_agent_skills(
         project_root=project_root,
-        prompt_text=prompt_text,
-        review_skill_text=review_skill_text,
+        prompt_path=prompt_path,
+        review_skill_path=args.review_skill,
     )
 
     write_utf8(run_dir / "context.md", make_agent_context(
         project_root=project_root,
-        prompt_path=prompt_path,
+        generation_rules_source=generation_rules_source,
+        reviewer_rules_source=reviewer_rules_source,
         out_dir=out_dir,
         episodes_count=len(episodes),
         generator_skill_path=generator_skill_path,
@@ -742,7 +843,9 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         "created_at": datetime.now().isoformat(timespec="seconds"),
         "project_root": str(project_root),
         "source": str(source),
-        "prompt_path": str(prompt_path),
+        "prompt_path": str(prompt_path) if prompt_path else None,
+        "generation_rules_source": str(generation_rules_source),
+        "reviewer_rules_source": str(reviewer_rules_source),
         "generator_skill_path": str(generator_skill_path),
         "reviewer_skill_path": str(reviewer_skill_path),
         "out_dir": str(out_dir),

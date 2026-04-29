@@ -162,6 +162,7 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 
 - 最新已验证 `scene` 工作区：`agent_runs/youyuanzhai6-scene`
 - 最新已验证 `single` 工作区：`agent_runs/youyuanzhai-single`
-- 当前主提示词：`6688竖屏古装分镜prompt.txt`
+- 当前主生成规则：`agent_skills/storyboard-generator/SKILL.md`
+- 不再默认使用 `6688竖屏古装分镜prompt.txt` 覆盖生成 skill；只有用户明确要求临时替换生成规则时，才可使用 prompt override。
 
 旧 GUI/API 文件已归档到 `legacy/`。除非用户明确要求恢复旧流程，否则不要使用归档文件。

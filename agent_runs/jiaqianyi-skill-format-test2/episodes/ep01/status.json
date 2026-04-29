@@ -1,0 +1,17 @@
+{
+  "episode_id": "ep01",
+  "status": "needs_review",
+  "output_name": "嫁给千亿大佬后我发疯爆红-第01集.txt",
+  "summary": "时间段格式校验可读，但人工 reviewer 复核发现台词密度、动作承载和台词对象问题，当前不能标记完成。",
+  "hard_issues_remaining": [
+    "第6组 10-15秒台词密度过高",
+    "第7组 11-15秒动作和台词过载",
+    "第2组 3-6秒双人互怼偏紧",
+    "多处台词缺少明确对象"
+  ],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": false,
+  "reviewer_issues_count": 4,
+  "reviewer_warnings_count": 0
+}

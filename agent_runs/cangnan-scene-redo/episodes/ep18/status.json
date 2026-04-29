@@ -1,0 +1,18 @@
+{
+  "episode_id": "ep18",
+  "status": "done",
+  "output_name": "苍南风云-ep18-agent-cli-storyboard.txt",
+  "summary": "宋子昂在黑风山争地失败，陆凡以土地捐赠证书反制并逼退他；宋子昂转入地下拳馆雇佣疯狗报复。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第5组",
+      "rule": "节奏",
+      "problem": "王局长撤退台词偏快但在放宽上限内。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

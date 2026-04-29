@@ -8,6 +8,7 @@ param(
 
     [string]$Source = "",
     [string]$Prompt = "",
+    [switch]$AllowPromptOverride,
     [string]$OutDir = ".\outputs_agent_6688_clean",
     [string]$WorkspaceDir = ".\agent_runs",
     [ValidateSet("codex", "qwen")]
@@ -30,26 +31,14 @@ if (-not $Source) {
     $Source = $sourceFile.FullName
 }
 
-if (-not $Prompt) {
-    $promptFile = Get-ChildItem -LiteralPath . -Filter "6688*prompt*.txt" -File |
-        Sort-Object LastWriteTime -Descending |
-        Select-Object -First 1
-    if (-not $promptFile) {
-        $promptFile = Get-ChildItem -LiteralPath . -Filter "*prompt*.txt" -File |
-            Sort-Object LastWriteTime -Descending |
-            Select-Object -First 1
-    }
-    if (-not $promptFile) {
-        throw "No *prompt*.txt found in $PSScriptRoot. Pass -Prompt explicitly."
-    }
-    $Prompt = $promptFile.FullName
+if ($Prompt -and -not $AllowPromptOverride) {
+    throw "Prompt overrides are disabled by default. Use the mature agent_skills/storyboard-generator/SKILL.md, or pass -AllowPromptOverride if you intentionally need to rewrite that skill from a prompt file."
 }
 
 $cmdArgs = @(
     ".\storyboard_agent_workspace.py",
     "prepare",
     "--source", $Source,
-    "--prompt", $Prompt,
     "--out-dir", $OutDir,
     "--workspace-dir", $WorkspaceDir,
     "--agent", $Agent,
@@ -62,12 +51,20 @@ if ($RunName) {
     $cmdArgs += @("--run-name", $RunName)
 }
 
+if ($Prompt -and $AllowPromptOverride) {
+    $cmdArgs += @("--prompt", $Prompt)
+}
+
 if ($Force) {
     $cmdArgs += "--force"
 }
 
 Write-Host "[prepare-agent] mode=$Mode"
 Write-Host "[prepare-agent] source=$Source"
-Write-Host "[prepare-agent] prompt=$Prompt"
+if ($Prompt -and $AllowPromptOverride) {
+    Write-Host "[prepare-agent] prompt override=$Prompt"
+} else {
+    Write-Host "[prepare-agent] generation skill=agent_skills/storyboard-generator/SKILL.md"
+}
 
 python @cmdArgs

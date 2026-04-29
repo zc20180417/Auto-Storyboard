@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep29",
+  "status": "done",
+  "output_name": "嫁给千亿大佬后我发疯爆红-ep29-agent-cli-storyboard.txt",
+  "summary": "林初夏清算陆老太太，将其送入城西煤窑劳教；陆氏顶层短暂平静后，京城夜家封杀令突然压来。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "节奏",
+      "problem": "4-4哭诉镜头为5秒，节奏略慢但不构成硬问题。",
+      "evidence": "有效字数约10 / 镜头5秒 / 2字每秒，台词为痛哭状态且不超长。",
+      "fix": "如后续整体节奏需要更紧，可将4-4压到4秒，并在同组加入2秒陆老太太继续扶煤车的反应镜头。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}
