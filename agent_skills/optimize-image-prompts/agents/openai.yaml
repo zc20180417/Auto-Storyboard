@@ -1,0 +1,4 @@
+interface:
+  display_name: "Optimize Image Prompts"
+  short_description: "Optimize scene prompts for image models"
+  default_prompt: "Use $optimize-image-prompts to rewrite my scene prompts for Nano Banana Pro and GPT Image 2."
