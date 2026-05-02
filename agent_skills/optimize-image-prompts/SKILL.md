@@ -1,64 +1,65 @@
 ---
 name: optimize-image-prompts
-description: Optimize image generation prompts for cinematic scene, storyboard, character, prop, product, or poster generation. Use when the user provides rough prompts, scene lists, screenplay locations, storyboard descriptions, character/scene/prop settings, or prompt files and wants rewritten prompts for Nano Banana Pro, GPT Image 2, or other image models, especially for realistic short-drama, film still, Chinese period setting, brand-consistent, or multi-scene production workflows.
+description: 优化任意题材、任意风格的图片生成提示词。用户提供粗略提示词、图片创意、场景列表、人物/场景/道具/产品设定、海报概念、参考说明或提示词文件，并希望改写成更清晰、更可控、适合 Nano Banana Pro、GPT Image 2 或其他图片模型的提示词时使用。
 ---
 
-# Optimize Image Prompts
+# 优化图片提示词
 
-## Overview
+## 概述
 
-Rewrite rough visual descriptions into model-ready image prompts that preserve story intent while improving controllability, period accuracy, composition, lighting, and negative constraints.
+将粗略的视觉描述改写成可直接用于图片模型的提示词。改写时保留用户意图，同时提升可控性、视觉具体度、构图、光影、风格清晰度和负面约束质量。
 
-Default to practical production prompts: clear enough for batch generation, stable across scenes, and easy to paste into an API or image UI.
+默认输出实用的生产级提示词：需要批量生成时足够清晰，同一组提示词之间保持稳定，并且方便直接粘贴到接口或图片生成界面。除非用户或源材料明确说明，不要预设任何特定年代、文化、媒介、类型、画幅比例或写实程度。
 
-## Workflow
+## 工作流程
 
-1. Identify the user's target model(s), output format, aspect ratio, and visual style.
-2. Extract the essential visual facts from the source.
-3. Build a reusable global style baseline when multiple prompts belong to one project.
-4. Rewrite each prompt with model-specific phrasing.
-5. Add controlled negative constraints without fighting the requested content.
-6. Preserve IDs, scene names, episode ranges, and user-provided factual details.
+1. 确认用户的目标模型、输出格式、画幅比例、媒介和视觉风格。
+2. 从源内容中提取必要的视觉事实。
+3. 多个提示词属于同一项目或同一视觉系统时，建立可复用的全局风格基准。
+4. 按目标模型的表达习惯改写每条提示词。
+5. 添加受控的负面约束，但不能与用户需要的内容冲突。
+6. 保留编号、名称、场景名、集数范围和用户提供的事实细节。
 
-If the user gives files, create a new optimized file unless they explicitly ask to overwrite the original.
+如果用户提供文件，默认创建新的优化结果文件；只有用户明确要求时才覆盖原文件。
 
-## Input Handling
+## 输入处理
 
-For each prompt or scene, preserve:
+对每条提示词或每个场景，保留：
 
-- scene number, title, episode range, location, and time of day
-- required objects, props, people, action, environment, and story function
-- period, region, genre, and continuity details
-- existing model parameters only if they still make sense
+- 已有的编号、名称、标题、场景编号、集数范围、地点和时间。
+- 必须出现的物体、道具、人物、动作、环境和叙事功能。
+- 已给出的年代、地区、类型、品牌、媒介、情绪、风格和连续性细节。
+- 仍然合理的已有模型参数。
 
-Remove or rewrite:
+删除或改写：
 
-- repeated low-value tags such as "4K" when better quality language is present
-- syntax that only belongs to another model, such as `--neg`, unless the target model accepts it
-- contradictions like "daylight night scene" or "empty room with many people"
-- fake exact text requirements unless the target model is expected to render text well
+- 重复且价值低的标签，例如已有更具体质量描述时仍反复出现的 "4K"。
+- 只属于其他模型的语法，例如目标模型不支持的 `--neg`。
+- 自相矛盾的描述，例如“白天夜景”或“空房间里有很多人”。
+- 不适合模型能力的精确文字渲染要求，除非目标模型确实擅长生成文字。
+- 来自旧模板、但不属于当前题材的限制，例如多余的年代、地区、写实程度、镜头或画幅假设。
 
-## Model Targeting
+## 模型适配
 
-Use these defaults unless the user specifies otherwise:
+除非用户另有指定，使用以下默认规则：
 
-- **Nano Banana Pro**: Chinese structured prompt. Strong emphasis on semantic fidelity, object placement, period detail, real-world materials, and readable environment design.
-- **GPT Image 2**: English natural-language prompt. Strong emphasis on concise intent, composition, lighting, production design, and explicit avoid-list.
-- **Generic image model**: Chinese or bilingual prompt depending on the user's source language. Avoid model-specific syntax.
+- **Nano Banana Pro**：默认使用用户源语言的结构化提示词。重点保证语义忠实、物体位置清楚、材质和细节具体、视觉关系明确。
+- **GPT Image 2**：默认使用用户请求的语言；未指定时优先使用中文。重点保证意图简洁、构图明确、光影清楚、风格稳定，并给出明确的规避项。
+- **通用图片模型**：根据用户源语言使用中文或双语提示词。避免混入某个模型专属的语法。
 
-For detailed prompt templates and examples, read `references/prompt-patterns.md` only when needed.
+需要具体模板和例子时，再读取 `references/prompt-patterns.md`。
 
-## Rewrite Structure
+## 改写结构
 
-For multiple scenes, output this structure:
+处理多条提示词或多个场景时，使用这个结构：
 
 ```markdown
 全局风格基准：
 ...
 
-1. 场景名
-出现集数：...
-场景描述：...
+1. 名称/编号
+来源信息：...
+画面描述：...
 
 Nano Banana Pro 优化提示词：
 ...
@@ -67,47 +68,49 @@ GPT Image 2 优化提示词：
 ...
 ```
 
-For a single scene, use only the requested model sections and keep the answer concise.
+处理单条提示词时，只输出用户需要的模型段落，并保持简洁。
 
-## Prompt Quality Rules
+## 提示词质量规则
 
-Make every optimized prompt include:
+每条优化后的提示词应包含下列相关信息。某项不适用于当前图片类型时，不要强行加入。
 
-- **subject and location**: what the image must show
-- **production design**: period, region, materials, props, wear, signage limits
-- **composition**: aspect ratio, shot size, lens feel, foreground/midground/background
-- **lighting and color**: time of day, key light direction, practical lights, color restraint
-- **style**: photorealistic, cinematic still, documentary realism, or the user's requested style
-- **constraints**: what to avoid, especially modern objects, fake logos, watermarks, distorted anatomy, and unwanted illustration styles
+- **主体和环境**：画面必须呈现什么，必要时说明它处在什么空间或背景中。
+- **视觉属性**：根据题材补充形状、材质、颜色、纹理、比例、状态、字体、品牌、服装、道具或环境细节。
+- **构图**：画幅比例、取景、视角、空间层次、焦点位置或版式层级。
+- **光影和色彩**：时间、主光方向、实际光源、色彩控制和氛围。
+- **风格/媒介**：写实摄影、电影剧照、插画、动漫、3D 渲染、产品渲染、界面样机、海报、概念设定图，或用户指定的其他风格。
+- **约束**：需要避免的内容，尤其是与需求冲突的元素、不需要的文字/标志/水印、有人物时的肢体畸形，以及不需要的风格漂移。
 
-Prefer concrete visual language over generic aesthetic stacking.
+优先使用具体的视觉语言，不要堆砌空泛的审美词。
 
-## Chinese Short-Drama Defaults
+## 题材自适应默认规则
 
-When the task involves Chinese short drama, period business stories, county-town factories, cold chain, retail terminals, or 1990s settings, apply these defaults:
+只有用户明确要求，或源内容中清楚出现时，才应用题材专属默认规则。例如：
 
-- realistic 1990s China county-town or township production design
-- used local spaces rather than polished studio sets
-- paper documents, analog tools, older vehicles, worn walls, simple clothing, practical lighting
-- realistic Chinese faces when people appear
-- avoid modern phones, modern cars, LED displays, English signage, luxury interiors, and fashion editorial styling
+- 写实场景：强调可信的材质、光学感、照明、比例和不模板化的美术设计。
+- 插画、动漫、概念设定图或其他风格化输出：保留用户要求的艺术方向，不要强行写实化。
+- 产品图：强调产品形状、材质、使用场景、表面工艺、比例参照、背景和品牌/文字约束。
+- 人物图：保留年龄段、体态、面部或身份锚点、服装、姿势、表情和风格。
+- 建筑、室内、景观：保留空间规划、材质体系、照明、气候、年代和是否有人。
+- 海报/主视觉：强调视觉层级、主体位置、文字区域约束、留白、情绪和交付比例。
+- 年代、文化、地域或类型片题材：只针对已指定的设定添加准确性约束。
 
-## Batch File Output
+## 批量文件输出
 
-When optimizing a prompt file:
+优化提示词文件时：
 
-1. Read the source as UTF-8.
-2. Keep the original file unchanged unless asked to overwrite.
-3. Save a sibling file with a clear suffix such as `_优化提示词` or `_optimized_prompts`.
-4. Use UTF-8 BOM for Chinese `.txt` files on Windows if the original workflow depends on Notepad or PowerShell 5.1 compatibility.
-5. Report the output path and count of processed scenes/prompts.
+1. 按 UTF-8 读取源文件。
+2. 除非用户要求覆盖，否则保持原文件不变。
+3. 在同级目录保存新文件，后缀使用 `_优化提示词` 这类清晰名称。
+4. 如果原工作流依赖 Windows 记事本或 PowerShell 5.1 读取中文 `.txt`，中文文本文件可使用 UTF-8 BOM。
+5. 汇报输出路径和已处理的提示词/场景数量。
 
-## Final Check
+## 最终检查
 
-Before finalizing, verify:
+交付前确认：
 
-- no source scene is dropped
-- no required story object is removed
-- model-specific syntax is not mixed accidentally
-- negative constraints do not forbid required content
-- the prompts remain usable without extra explanation
+- 没有漏掉源内容中的场景或条目。
+- 没有删除必须出现的故事、主体或物件。
+- 没有误混不同模型的专属语法。
+- 负面约束没有禁止用户真正需要的内容。
+- 提示词不依赖额外解释也能直接使用。

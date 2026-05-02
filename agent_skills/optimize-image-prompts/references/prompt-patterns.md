@@ -1,64 +1,61 @@
-# Prompt Patterns
+# 提示词模式
 
-Use this reference when a task needs concrete templates, model-specific phrasing, or consistent batch output.
+当任务需要具体模板、模型适配表达或稳定的批量输出格式时，使用本参考。模板只是起点，不是固定题材规则。凡是用户或源材料没有要求的年代、地区、媒介、画幅比例、写实程度或人物特征，都应替换或删除。
 
-## Nano Banana Pro Template
-
-```text
-写实电影剧照，[时代/地区/类型]场景：[场景名]。
-画面内容：[地点、主体物件、人物动作、关键道具、背景关系]。
-时代细节：[建筑、家具、车辆、服装、纸质文件、设备、磨损痕迹]；不要现代化装修。
-镜头语言：竖屏9:16，35mm纪实摄影视角，中景到广角，主体清楚，前景/中景/背景有纵深，适合短剧分镜定场。
-光影色彩：[时间、主光方向、冷暖关系、反射、雾气/灰尘/水汽]，低饱和胶片色彩，避免过曝。
-质量要求：photorealistic, cinematic still, high detail, realistic Chinese faces if people appear, no western faces, no AI gloss, no plastic skin.
-不要出现：[负面约束]。
-```
-
-Use Chinese for Nano Banana Pro by default when the source is Chinese. Keep the prompt structured and literal.
-
-## GPT Image 2 Template
+## Nano Banana Pro 模板
 
 ```text
-Create a photorealistic vertical 9:16 cinematic still for [project type / genre / period]. Scene: [scene name].
-The image should show: [location, required objects, action, people, background].
-Keep all production design period-accurate: [materials, props, vehicles, furniture, documents, equipment]. The location should feel [used/local/lived-in/etc.], not [unwanted style].
-Composition: documentary film still, 35mm lens feeling, medium-wide framing, clear spatial depth with foreground, midground, and background.
-Lighting and color: [time of day, light direction, practical lights, reflections]. Use restrained film color, natural contrast, realistic texture, and no over-polished AI look.
-If people are included, use [demographic / role / clothing / pose guidance].
-Avoid: [negative constraints].
+[图像类型/媒介/风格]，[主题或项目类型]：[名称/编号]。
+画面内容：[主体、场所或背景、动作/状态、关键物件、空间或视觉关系]。
+视觉细节：[形状、材质、颜色、纹理、比例、年代/地区/品牌/服装/道具等；只保留适用项]。
+构图与视角：[画幅比例、镜头/视角、景别或布局、主体位置、前景/中景/背景或视觉层级]。
+光影色彩：[时间或光源、主光方向、冷暖关系、反射、阴影、氛围、色彩倾向]。
+质量与风格要求：[清晰度、细节密度、真实/插画/3D/产品渲染/海报等风格要求]。
+不要出现：[只列与当前主题相关的负面约束]。
 ```
 
-Use English for GPT Image 2 by default. It usually responds well to complete sentences and explicit scene intent.
+源内容为中文时，Nano Banana Pro 默认使用中文。提示词应结构清楚、表达直接。
 
-## Common Negative Constraints
-
-Choose only relevant items:
+## GPT Image 2 模板
 
 ```text
-cartoons, anime, illustration, oil painting, 3D render, plastic texture, modern objects, modern smartphones, LED displays, contemporary cars, English signage, fake readable text, subtitles, watermark, logo, distorted faces, merged faces, extra fingers, heavy blur, oversaturation, overexposure, strong HDR, luxury interior, fashion editorial styling
+为 [项目类型或主题] 生成一张 [媒介/图像类型/风格] 图片。名称：[名称或编号]。
+画面应呈现：[主体、场所/背景、动作/状态、必须出现的物件、视觉关系]。
+需要保留的视觉细节：[材质、颜色、纹理、比例、年代/地区/品牌/服装/道具等；只保留相关项]。
+构图：[画幅比例、取景、视角/镜头或版式、主体位置、空间深度或视觉层级]。
+光影和色彩：[光源、方向、对比、反射、氛围、色彩倾向]。
+风格和完成度：[写实摄影/插画/动漫/3D 渲染/产品渲染/海报/概念设定图，以及质量要求]。
+避免：[只列与当前主题相关的负面约束]。
 ```
 
-Chinese version:
+GPT Image 2 也可以直接使用中文。通常适合用完整句子说明画面意图、构图和限制。
+
+## 常用负面约束
+
+只选择相关项。如果某个负面约束会阻止用户要求的风格或主体，就不要加入。
 
 ```text
-卡通、动漫、插画、油画、3D渲染、塑料质感、现代物件、现代手机、LED屏、当代汽车、英文招牌、虚假可读文字、字幕、水印、logo、面部扭曲、面部融合、多余手指、严重模糊、过饱和、过曝、强HDR、豪华装修、时尚大片感
+不需要的卡通风、不需要的动漫风、不需要的插画风、不需要的油画风、不需要的3D渲染、不需要的写实摄影、塑料质感、与设定不符的物件、虚假可读文字、字幕、水印、不需要的标志、面部扭曲、面部融合、多余手指、手部畸形、严重模糊、过饱和、过曝、强HDR、构图杂乱、主体被裁切、低清纹理、风格漂移
 ```
 
-## Lighting Phrases
+## 可复用短语组
 
-- cold-chain / freezer: `冷白工业光与轻微冷雾，金属和水汽质感清晰`
-- morning / daytime: `自然日光主导，真实环境反射补光`
-- dusk: `傍晚侧逆光，暖色边缘光与环境冷色形成对比`
-- night / roadside work: `低照度夜景，冷暖光源交叠，保留暗部细节`
-- factory interior: `高窗斜光切入厂房，灰尘或水汽在光束中可见`
+- 写实场景：`真实光学质感，材质和空间比例可信，避免过度磨皮和 AI 塑料感`
+- 产品渲染：`主体轮廓清晰，材质反射可控，背景干净但保留比例参照`
+- 风格化插画：`线条、色块、笔触和角色比例遵循指定风格，避免突然写实化`
+- 海报/主视觉：`主视觉层级明确，标题或文字区域留白充足，不生成乱码文字`
+- 清晨/白天：`自然日光主导，真实环境反射补光`
+- 傍晚：`傍晚侧逆光，暖色边缘光与环境冷色形成对比`
+- 夜晚：`低照度夜景，冷暖光源交叠，保留暗部细节`
+- 室内：`室内主光与环境反射形成层次，材质边缘和阴影保持清楚`
 
-## Batch Output Rules
+## 批量输出规则
 
-For scene lists, keep the original order. Do not compress multiple scenes into one prompt. If a scene has variants, create named variants such as:
+处理场景列表时，保持原始顺序。不要把多个场景压缩成一条提示词。如果某个场景确实需要变体，可以创建命名变体，例如：
 
 - `空景版`
 - `有人物调度版`
 - `冲突剧情版`
 - `产品/道具特写版`
 
-Only create variants when useful for production; otherwise produce one strong prompt per model.
+只有对生产有帮助时才创建变体；否则每个模型输出一条质量扎实的提示词即可。

@@ -473,6 +473,11 @@ LOW_QUALITY_TEMPLATE_PATTERNS = (
     "现场冲突继续推进",
 )
 SCENE_ESTABLISHING_RE = re.compile(
+    # Alt 1: natural format "0-3秒：\n镜头描述：全景..." (time-before-description)
+    r"(?m)^\s*(?P<start2>\d{1,3})\s*[-－—–到至]\s*(?P<end2>\d{1,3})\s*秒\s*[：:]?\s*\n"
+    r"\s*镜头描述[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)"
+    r"|"
+    # Alt 2: original format (description-then-time)
     r"镜头描述[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)[\s\S]{0,160}?"
     r"(?:(?:时间段[：:]\s*)?(?P<start>\d{1,3})\s*[-－—–到至]\s*(?P<end>\d{1,3})\s*秒|"
     r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3})\s*秒)"
@@ -659,8 +664,13 @@ def validate_storyboard_quality_floor(content: str) -> list[str]:
         if pattern in content:
             issues.append(f"最终分镜包含模板化镜头描述：`{pattern}`，请改为贴合剧本现场的具体动作、道具和人物站位。")
     for match in SCENE_ESTABLISHING_RE.finditer(content):
-        seconds = int(match.group("seconds")) if match.group("seconds") else int(match.group("end")) - int(match.group("start"))
-        if seconds > 2:
+        if match.group("start2") is not None:
+            seconds = int(match.group("end2")) - int(match.group("start2"))
+        elif match.group("seconds"):
+            seconds = int(match.group("seconds"))
+        else:
+            seconds = int(match.group("end")) - int(match.group("start"))
+        if seconds > 3:
             issues.append(
                 f"普通空间/环境交代镜头标为{seconds}秒；生产规则要求通常2秒，"
                 "只有原剧本明确连续动作时才可到3秒。"
