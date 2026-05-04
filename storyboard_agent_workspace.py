@@ -379,25 +379,54 @@ def write_runner_scripts(
     sample_task = tasks[0] if tasks else None
     codex_example = ""
     qwen_example = ""
+    kimi_example = ""
     if sample_task:
         codex_example = (
             f'codex exec --skip-git-repo-check --sandbox workspace-write --cd "{run_dir}"'
             f'{codex_model_arg} - < "{sample_task["prompt_file"]}"'
         )
         qwen_example = f'qwen < "{sample_task["prompt_file"]}"'
+        kimi_example = (
+            f'Open Kimi Code in the workspace and use the Agent tool with the prompt '
+            f'from `{sample_task["prompt_file"]}`.'
+        )
     tasks_markdown = "\n".join(task_lines)
+
+    if agent == "kimi":
+        dispatch_text = (
+            "Use the current Kimi Code session or Kimi Code Agent tools to process episodes. "
+            "Quality is checked per episode. Dispatch can use one episode per worker, or two adjacent short/simple episodes per worker when the scripts are small."
+        )
+    elif agent == "qwen":
+        dispatch_text = (
+            "Use Qwen Code to process episodes. "
+            "Quality is checked per episode. Dispatch can use one episode per worker, or two adjacent short/simple episodes per worker when the scripts are small."
+        )
+    else:
+        dispatch_text = (
+            "Use the current Codex session or Codex subagents to process episodes. "
+            "Quality is checked per episode. Dispatch can use one episode per worker, or two adjacent short/simple episodes per worker when the scripts are small."
+        )
+
+    manual_cli_blocks = []
+    if codex_example:
+        manual_cli_blocks.append(f"Codex example:\n\n```powershell\n{codex_example}\n```")
+    if qwen_example:
+        manual_cli_blocks.append(f"Qwen example:\n\n```powershell\n{qwen_example}\n```")
+    if agent == "kimi" and kimi_example:
+        manual_cli_blocks.append(f"Kimi Code example:\n\n{kimi_example}")
+    manual_cli_section = "\n\n".join(manual_cli_blocks)
 
     write_utf8(
         run_dir / "NEXT_STEPS.md",
         f"""# Agent Dispatch
 
 Python is intentionally limited to prepare / validate / collect.
-It must not launch Codex CLI, Qwen CLI, or any model process.
+It must not launch Codex CLI, Qwen CLI, Kimi Code, or any model process.
 
 ## Recommended Dispatch
 
-Use the current Codex session or Codex subagents to process episodes.
-Quality is checked per episode. Dispatch can use one episode per worker, or two adjacent short/simple episodes per worker when the scripts are small.
+{dispatch_text}
 Run up to {parallelism} workers in parallel if the host agent supports safe parallel work.
 When one worker handles two episodes, finish generation, review, repair, and validation for the first episode before starting the second. Never merge reviews or outputs across episodes.
 
@@ -409,15 +438,7 @@ When one worker handles two episodes, finish generation, review, repair, and val
 
 If a human explicitly chooses to run a CLI, run it manually from PowerShell instead of through Python:
 
-```powershell
-{codex_example}
-```
-
-Qwen example:
-
-```powershell
-{qwen_example}
-```
+{manual_cli_section}
 
 ## Collect Results
 
@@ -1085,7 +1106,7 @@ def parse_args() -> argparse.Namespace:
     prepare.add_argument("--workspace-dir", type=Path, default=Path(DEFAULT_AGENT_RUNS_DIR))
     prepare.add_argument("--out-dir", type=Path, default=Path(DEFAULT_AGENT_OUTPUT_DIR))
     prepare.add_argument("--run-name", default=None)
-    prepare.add_argument("--agent", choices=["codex", "qwen"], default="codex")
+    prepare.add_argument("--agent", choices=["codex", "qwen", "kimi"], default="codex")
     prepare.add_argument("--model", default=None, help="Optional CLI model override.")
     prepare.add_argument("--output-model-suffix", default="agent-cli")
     prepare.add_argument("--parallelism", type=int, default=3)

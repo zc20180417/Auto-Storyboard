@@ -11,7 +11,7 @@ param(
     [switch]$AllowPromptOverride,
     [string]$OutDir = ".\outputs_agent_6688_clean",
     [string]$WorkspaceDir = ".\agent_runs",
-    [ValidateSet("codex", "qwen")]
+    [ValidateSet("codex", "qwen", "kimi")]
     [string]$Agent = "codex",
     [int]$Parallelism = 5,
     [string]$OutputModelSuffix = "agent-cli",
@@ -19,6 +19,8 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$env:PYTHONIOENCODING = "utf-8"
 Set-Location -LiteralPath $PSScriptRoot
 
 if (-not $Source) {

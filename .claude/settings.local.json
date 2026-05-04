@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python ./storyboard_agent_workspace.py prepare --source \"./inputs/谁说泥腿子不能当老板.txt\" --out-dir \"./outputs_agent_nitui_test\" --workspace-dir \"./agent_runs\" --agent codex --mode scene --run-name \"nitui-test\" --force)",
+      "Bash(python ./storyboard_agent_workspace.py prepare --source \"./split_scripts/nitui-test\" --out-dir \"./outputs_agent_nitui_test\" --workspace-dir \"./agent_runs\" --agent codex --mode scene --run-name \"nitui-test\" --force)",
+      "Bash(python ./storyboard_agent_workspace.py validate-episode --episode-dir \"./agent_runs/nitui-test/episodes/ep01\")",
+      "Bash(python ./storyboard_agent_workspace.py validate-episode --episode-dir \"./agent_runs/nitui-test/episodes/ep02\")",
+      "WebSearch",
+      "Bash(python *)",
+      "Bash(chcp 65001)",
+      "Bash(PYTHONIOENCODING=utf-8 python *)"
+    ]
+  }
+}

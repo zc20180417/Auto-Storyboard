@@ -731,7 +731,11 @@ def extract_collection_series_title(text: str, fallback_name: str) -> str:
 def extract_collection_expected_episode_count(text: str) -> int | None:
     header_lines = [line.strip() for line in text.splitlines()[:5] if line.strip()]
     for source in header_lines:
-        match = re.search(r"([0-9]+)\s*集", source)
+        # 排除单纯的单集标题（如"第1集"），避免误把第一集标题当成总集数声明
+        if re.match(r"^第\s*\d+\s*集\s*$", source):
+            continue
+        # 匹配明确的总集数声明（如"共20集""全20集""合计20集"）
+        match = re.search(r"(?:共|全|合计|总共)\s*(\d+)\s*集", source)
         if match:
             return int(match.group(1))
     return None
@@ -952,7 +956,7 @@ def build_generation_messages(
 
 
 SCENE_HEADING_RE = re.compile(
-    r"(?m)^[\ufeff\s]*((?:场\s*\d+(?:[-－—]\d+)?|第\s*[0-9一二三四五六七八九十百零〇两]+\s*集\s+\d+\s*[-－—]\s*\d+)[^\n]*)$"
+    r"(?m)^[\ufeff\s#]*((?:场\s*[-－—]?\s*\d+(?:[-－—]\d+)?|第\s*[0-9一二三四五六七八九十百零〇两]+\s*集\s+\d+\s*[-－—]\s*\d+)[^\n]*)$"
 )
 
 
