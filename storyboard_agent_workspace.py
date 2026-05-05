@@ -641,10 +641,19 @@ NECESSARY_LONG_ACTION_MARKERS = (
 )
 AUTO_MULTISHOT_MARKERS = (
     "连续短句交锋",
-    "自动正反打",
-    "Seedance 自动分镜",
-    "自动分镜",
     "连续对话节拍",
+    "快速短句交锋",
+    "短促交锋",
+    "快速问答",
+    "来回对话",
+)
+MODEL_META_PROMPT_PATTERNS = (
+    "Seedance 可",
+    "由 Seedance",
+    "Seedance 自动",
+    "Seedance自动",
+    "自动正反打",
+    "自动分镜",
 )
 
 
@@ -818,7 +827,7 @@ def validate_dialogue_pacing_floor(content: str) -> list[str]:
             block_target_seconds = math.ceil(chars / target_speed + speaker_switches * switch_gap + action_extra)
             if seconds > block_target_seconds + 1 and not is_slow:
                 issues.append(
-                    f"{shot_label} 自动分镜对话块时长偏长；有效字数 {chars}，"
+                    f"{shot_label} 连续对话节拍时长偏长；有效字数 {chars}，"
                     f"台词轮次 {dialogue_turns}，镜头 {seconds} 秒，字秒比 {cps:.1f}。"
                     f"请按整块台词量、换人间隙和必要动作压到约 {block_target_seconds} 秒，"
                     "或合并相邻同场景冲突内容，不要拉慢短句凑时长。"
@@ -924,6 +933,12 @@ def validate_storyboard_quality_floor(content: str) -> list[str]:
     for pattern in LOW_QUALITY_TEMPLATE_PATTERNS:
         if pattern in content:
             issues.append(f"最终分镜包含模板化镜头描述：`{pattern}`，请改为贴合剧本现场的具体动作、道具和人物站位。")
+    for pattern in MODEL_META_PROMPT_PATTERNS:
+        if pattern in content:
+            issues.append(
+                f"最终分镜正文包含模型说明词 `{pattern}`，应改成自然画面描述，"
+                "不要在 prompt 中指挥 Seedance 自动分镜。"
+            )
     for match in SCENE_ESTABLISHING_RE.finditer(content):
         if match.group("start2") is not None:
             seconds = int(match.group("end2")) - int(match.group("start2"))
