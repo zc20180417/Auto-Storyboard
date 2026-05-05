@@ -23,7 +23,7 @@ dispatcher 必须创建 subagents/workers 并发分发，每个 worker 默认处
 2. `README_AGENT_WORKFLOW.md`
 3. `agent_skills/storyboard-generator/SKILL.md`
 4. `agent_skills/storyboard-reviewer/SKILL.md`
-5. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md`
+5. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`
 
 ## 两种生产模式
 
@@ -166,21 +166,24 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 
 ## 资产表生成
 
-分镜完成后，如用户需要给其他 AI 生图/视频模型提前准备资产，使用 `agent_skills/asset-extractor/SKILL.md` 从单集 `final.txt` 生成资产表。
+分镜完成后，如用户需要给其他 AI 生图/视频模型提前准备资产，使用 `agent_skills/asset-extractor/SKILL.md` 从单集 `final.txt` 生成资产表，并使用 `agent_skills/asset-reviewer/SKILL.md` 做真实审核。
 
 资产表生成规则：
 
 - 输入必须是已经完成的单集分镜 `final.txt`。
-- 输出写入该集目录下的 `assets.md` 和 `assets.xlsx`，不要改写 `final.txt`。
-- 资产表包含：场景资产、人物资产、服装资产、道具资产、特殊视角/构图资产。
-- 场景资产必须为空镜；人物、服装、道具、特殊构图必须按可复用资产去重合并。
-- 资产表继续使用 Markdown + Excel 输出，不使用 HTML；提示词列拆成 `静态生图提示词(中文)` 和 `静态生图提示词(英文)`。
+- 输出写入该集目录下的 `assets.md`、`assets.xlsx`、`asset_review.json` 和 `asset_status.json`，不要改写 `final.txt`。
+- 资产表是“资产增量与使用索引”，不是逐集完整资产表；必须包含：本集复用资产索引、本集新增资产状态、本集新增基础资产、本集关键道具与场景状态、本集不建议入库元素。
+- 基础人物、基础场景、基础服装、基础道具只入库一次；同一角色/场景/道具的脏污、夜雨、受伤、换装、破损、盖章等变化新增 `state_id`，不要重复写成新的基础资产。
+- 资产表继续使用 Markdown + Excel 输出，不使用 HTML；新增基础资产和新增状态的提示词列拆成 `静态生图提示词(中文)`、`负面提示词(中文)`、`静态生图提示词(英文)`、`负面提示词(英文)`。
 - 多集项目必须先维护 run 级别 `asset_bible.md`，再分集生成资产表。推荐路径：`agent_runs/<run-name>/asset_bible.md`。
 - `asset_bible.md` 用于固定跨集人物全身装造、面部稳定特征、核心场景、关键道具和服装状态。分集 worker 必须读取它，不能在不同集里随意改变同一人物的脸型、发型、体态、主服装颜色。
-- 人物资产必须偏“全身装造/角色定妆照”，提示词要包含年龄段、性别、身份气质、身高体态、面部稳定特征、发型、上装、下装、鞋/配饰、关键表情动作。
-- 场景资产提示词要足够丰富：年代感、空间结构、前中后景、材质、陈设、光线、色调、空镜、无人、无人脸、可作为视频背景资产，并包含真实世界比例参照和至少两项真实瑕疵细节。
+- 基础人物资产只记录身份、脸、体态、发型、气质；服装细节由服装资产或人物状态引用，不要在每集自由重写。
+- 场景基础资产和场景状态必须为空镜；场景状态用于记录白天、夜雨、断电、爆炸后、整洁后、破损后等变化。
+- 短暂表情、眼神、手势、台词动作、一次性背景杂物、普通桌椅门窗通常不入库，应写入“本集不建议入库元素”或由分镜即时生成。
 - `适用镜号` 必须来自分镜原文，不得杜撰。
 - 资产抽取不得替代分镜审核，也不得改变分镜生产结果。
+- `asset_review.json` 必须来自 `asset-reviewer` 对照 `final.txt`、`assets.md`、`asset_bible.md` 和相关 skill 的真实审核；不能用 Excel 转换、脚本检查或空 issues JSON 伪造通过。
+- 只有 `asset_status.json` 中 `status=done`、`reviewer_source=asset-reviewer`、`reviewer_pass=true`、`reviewer_issues_count=0` 的资产可以收集。
 
 资产阶段调度规则：
 
@@ -188,8 +191,8 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 - 默认推荐：3 集 / worker。
 - 单集短、场景和人物复用度高、前 1-2 个资产 worker 结果稳定后，可用 4 集 / worker。
 - 未经用户明确批准，不要超过 4 集 / worker。
-- 同一个 worker 处理 3-4 集时，必须逐集闭环：先完成某集 `assets.md`、检查五类表格和中英双语提示词、转换 `assets.xlsx`，再处理下一集。
-- worker 可以读取全局 `asset_bible.md`，但不要并发写它；新增人物/服装/场景/道具只在交付说明中标记，最后由主线程统一合并。
+- 同一个 worker 处理 3-4 集时，必须逐集闭环：先完成某集 `assets.md`，用 `asset-reviewer` 审核，局部修复 hard issues 并复审，写 `asset_status.json`，转换 `assets.xlsx`，再处理下一集。
+- worker 可以读取全局 `asset_bible.md`，但不要并发写它；新增人物/服装/场景/道具在 `assets.md`、`asset_status.json` 或交付说明中标记，最后由主线程统一合并。
 
 ## 当前生产参考
 

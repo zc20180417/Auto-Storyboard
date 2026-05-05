@@ -169,48 +169,55 @@ if ($failed.Count -gt 0) { throw "Validation failed: $($failed -join ', ')" }
 
 ### 7. 可选：生成生图资产表
 
-当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，读取 `agent_skills/asset-extractor/SKILL.md`，从单集 `final.txt` 生成 `assets.md` 和 `assets.xlsx`。
+当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，读取 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，从单集 `final.txt` 生成 `assets.md`、`assets.xlsx`、`asset_review.json` 和 `asset_status.json`。
 
-多集项目不要让每集各自临场编人物设定。先创建 run 级别全局资产设定：
+多集项目不要让每集各自临场编人物设定。必须先创建 run 级别全局资产设定：
 
 ```text
 agent_runs\<run-name>\asset_bible.md
 ```
 
-`asset_bible.md` 用来固定：
+`asset_bible.md` 用来固定基础资产和状态资产：
 
-- 人物：角色名、年龄段、性别、身份、身高体态、面部稳定特征、发型、主要服装状态、气质关键词。
-- 全身装造：上装、下装、鞋、配饰、颜色、面料、年代感、磨损程度。
-- 核心场景：布景名称、年代、空间结构、材质、灯光、色调、关键陈设。
-- 关键道具：材质、形状、文字限制、年代质感。
+- 基础人物：角色名、年龄段、性别、身份、身高体态、面部稳定特征、发型、气质关键词。
+- 人物状态：服装变化、脏污、湿身、受伤、身份阶段等会影响多镜头一致性的变化。
+- 服装资产：上装、下装、鞋、配饰、颜色、面料、年代感、磨损程度。
+- 场景基础与状态：布景结构、材质、陈设，以及白天、夜雨、断电、爆炸后、破损后等状态。
+- 道具基础与状态：材质、形状、文字限制，以及完整、破损、盖章、沾血等状态。
 
-分集资产 worker 必须读取 `asset_bible.md` 后再生成每集 `assets.md`。如果发现本集新增人物、服装、场景或道具，只在交付说明中标记“建议同步到 asset_bible.md”，不要多个 worker 并发改写全局设定。
+分集资产 worker 必须读取 `asset_bible.md` 后再生成每集 `assets.md`。分集默认不重复输出 `asset_bible.md` 已有基础资产的完整提示词；如果发现本集新增基础资产或新增状态，只在 `assets.md`、`asset_status.json` 的 `bible_update_candidates` 或交付说明中标记，不要多个 worker 并发改写全局设定。
 
 资产表固定包含五部分：
 
-- 场景资产（均为空镜）
-- 人物资产
-- 服装资产
-- 道具资产
-- 特殊视角/构图资产
+- 本集复用资产索引
+- 本集新增资产状态
+- 本集新增基础资产
+- 本集关键道具与场景状态
+- 本集不建议入库元素
 
-资产表继续输出 Markdown + Excel，不输出 HTML。所有资产表的提示词列拆成 `静态生图提示词(中文)` 和 `静态生图提示词(英文)`，用于同时交付中文生产和英文生图模型。
+资产表继续输出 Markdown + Excel，不输出 HTML。新增基础资产和新增状态必须有稳定 `asset_id` 或 `state_id`。需要生成新图的条目，提示词列拆成 `静态生图提示词(中文)`、`负面提示词(中文)`、`静态生图提示词(英文)`、`负面提示词(英文)`，用于同时交付中文生产和英文生图模型。
 
 要求：
 
-- 场景资产提示词必须明确“空镜、无人、无人脸”，不得包含人物；提示词要包含年代感、空间结构、材质、陈设、光线、色调、视频背景用途、真实比例参照和至少两项真实瑕疵细节。
-- 人物资产按“角色 + 服装状态”合并，适用镜号必须来自分镜。
-- 人物资产必须偏“全身装造/角色定妆照”，提示词包含年龄段、性别、身份气质、身高体态、面部稳定特征、发型、上装、下装、鞋/配饰、关键表情动作。
-- 服装和道具资产偏产品特写，不带人物脸。
+- 基础人物资产只记录身份、脸、体态、发型、气质；服装细节由服装资产或人物状态引用，不要每集重写完整人物定妆。
+- 场景基础资产和场景状态必须明确“空镜、无人、无人脸”，不得包含人物；场景状态用于记录白天、夜雨、断电、爆炸后、整洁后、破损后等变化。
+- 道具基础资产和道具状态只提取需要稳定生成的关键物件；普通桌椅、门窗、背景灯具、一次性纸张、短暂表情、普通手势写入“不建议入库元素”。
+- 适用时间段必须来自分镜。
 - 不得杜撰分镜中不存在的地点、角色、道具。
-- `assets.md` 方便审稿和版本管理；`assets.xlsx` 方便筛选、复制单元格和生产使用。
+- `assets.md` 方便审稿和版本管理；`assets.xlsx` 方便筛选、复制单元格和生产使用；`asset_review.json` 和 `asset_status.json` 是收集门禁。
+
+资产 reviewer 门禁：
+
+- `asset_review.json` 必须来自 `asset-reviewer` 对照 `final.txt`、`assets.md`、`asset_bible.md` 和两份资产 skill 的真实审核。
+- 如果 reviewer 返回 hard issues，必须局部修复后复审，不能只跑 Excel 转换。
+- 只有 `asset_status.json` 中 `status=done`、`reviewer_source=asset-reviewer`、`reviewer_pass=true`、`reviewer_issues_count=0` 的 episode 可以进入正式资产收集。
 
 资产阶段调度建议：
 
 - 默认 3 集 / worker。
 - 单集短、复用度高、全局设定稳定时可用 4 集 / worker。
 - 不要超过 4 集 / worker，避免资产表过长后漏道具或串镜号。
-- 每个 worker 必须逐集闭环：生成 `assets.md`，检查五类表格和中英双语提示词，再用脚本转换 `assets.xlsx`，然后进入下一集。
+- 每个 worker 必须逐集闭环：生成 `assets.md`，用 `asset-reviewer` 真实审核，修复 hard issues 并复审，通过后写 `asset_status.json`，再用脚本转换 `assets.xlsx`，然后进入下一集。
 - `assets.xlsx` 由本地脚本从 `assets.md` 转换，不额外消耗模型 token。
 
 ## 生产审核口径

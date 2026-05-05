@@ -12,11 +12,20 @@ if (!inputPath || !outputPath) {
 }
 
 const SHEET_NAMES = {
-  "一、场景资产": "场景资产",
-  "二、人物资产": "人物资产",
-  "三、服装资产": "服装资产",
-  "四、道具资产": "道具资产",
-  "五、特殊视角": "特殊视角资产",
+  "一、本集复用资产索引": "复用资产索引",
+  "二、本集新增资产状态": "新增资产状态",
+  "三、本集新增基础资产": "新增基础资产",
+  "四、本集关键道具与场景状态": "关键道具与场景状态",
+  "五、本集不建议入库元素": "不建议入库元素",
+};
+
+const REQUIRED_SHEETS = Object.values(SHEET_NAMES);
+const REQUIRED_COLUMNS = {
+  "复用资产索引": ["使用ID", "asset_id", "state_id", "asset_type", "source", "episode_usage", "本集用途", "needs_generation"],
+  "新增资产状态": ["state_id", "asset_id", "parent_state_id", "asset_type", "status_type", "state_summary", "changed_fields", "reuse_policy", "first_seen_episode", "episode_usage", "needs_generation", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
+  "新增基础资产": ["asset_id", "asset_type", "asset_name", "description", "reuse_policy", "first_seen_episode", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
+  "关键道具与场景状态": ["state_id", "asset_id", "asset_type", "state_summary", "episode_usage", "needs_generation", "入库建议"],
+  "不建议入库元素": ["元素", "出现位置", "不入库原因"],
 };
 
 async function loadArtifactTool() {
@@ -106,6 +115,45 @@ function safeSheetName(section, fallbackIndex) {
   return key ? SHEET_NAMES[key] : `资产表${fallbackIndex + 1}`;
 }
 
+function standardSheetName(section) {
+  const key = Object.keys(SHEET_NAMES).find((prefix) => section.startsWith(prefix));
+  return key ? SHEET_NAMES[key] : "";
+}
+
+function validateTables(tables) {
+  const standardTables = tables
+    .map((table) => ({ ...table, sheetName: standardSheetName(table.section) }))
+    .filter((table) => table.sheetName);
+  const foundSheets = new Set(standardTables.map((table) => table.sheetName));
+  const missing = REQUIRED_SHEETS.filter((sheet) => !foundSheets.has(sheet));
+  if (missing.length > 0) {
+    throw new Error(`Missing required asset tables: ${missing.join(", ")}`);
+  }
+
+  for (const table of standardTables) {
+    const [header, ...dataRows] = table.rows;
+    if (!header || header.length === 0) {
+      throw new Error(`Missing header row in ${table.section}`);
+    }
+
+    const required = REQUIRED_COLUMNS[table.sheetName] || [];
+    const missingColumns = required.filter((column) => !header.includes(column));
+    if (missingColumns.length > 0) {
+      throw new Error(`${table.section} is missing required columns: ${missingColumns.join(", ")}`);
+    }
+
+    dataRows.forEach((row, index) => {
+      if (row.length !== header.length) {
+        throw new Error(
+          `${table.section} row ${index + 2} has ${row.length} cells but header has ${header.length}. Avoid raw "|" inside cells; use Chinese punctuation or <br>.`,
+        );
+      }
+    });
+  }
+
+  return standardTables;
+}
+
 function columnName(colCount) {
   let n = colCount;
   let name = "";
@@ -125,10 +173,18 @@ if (tables.length === 0) {
   process.exit(1);
 }
 
+let standardTables;
+try {
+  standardTables = validateTables(tables);
+} catch (error) {
+  console.error(error.message);
+  process.exit(1);
+}
+
 const { SpreadsheetFile, Workbook } = await loadArtifactTool();
 const workbook = Workbook.create();
 
-tables.forEach((table, index) => {
+standardTables.forEach((table, index) => {
   const sheet = workbook.worksheets.add(safeSheetName(table.section, index));
   const rows = table.rows;
   const rowCount = rows.length;
