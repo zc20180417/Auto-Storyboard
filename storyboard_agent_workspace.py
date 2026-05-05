@@ -242,7 +242,9 @@ Do not prefill `reviewer_pass=true` or issue/warning counts before writing the r
 Use `status: "needs_review"` only if hard issues remain after two focused repair attempts.
 `review.txt` and `segments/segXX/review.md` must contain real raw JSON returned by `storyboard-reviewer`; clean-format validation is not a substitute for reviewer审稿 and placeholder review JSON will fail validation.
 Reviewer JSON must include non-empty `checked_groups` and full `audit_coverage` fields as required by `storyboard-reviewer/SKILL.md`.
-Reviewer JSON must also include at least 3 `spot_checks` items with `group`, `type`, and `evidence`, and `status.json` reviewer fields must stay consistent with `review.txt`.
+Reviewer JSON must also include at least 3 `spot_checks` items with `group`, `type`, and `evidence`.
+Reviewer JSON must include at least 3 `semantic_checks` items with `group`, `type`, `result`, `evidence`, and `fix_instruction`; this is the reviewer semantic audit record, not a substitute for fixing hard issues.
+`status.json` reviewer fields must stay consistent with `review.txt`.
 
 ## Important Constraints
 - Rules live in the two `SKILL.md` files. Do not duplicate or reinterpret them here.
@@ -566,6 +568,9 @@ REQUIRED_AUDIT_COVERAGE_KEYS = (
     "dialogue_pacing",
     "space_locking",
     "format",
+    "character_availability",
+    "handoff_continuity",
+    "filmability",
 )
 LOW_QUALITY_TEMPLATE_PATTERNS = (
     "空间先被交代出来",
@@ -977,6 +982,7 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
         "checked_groups": list,
         "audit_coverage": dict,
         "spot_checks": list,
+        "semantic_checks": list,
         "issues": list,
         "warnings": list,
     }
@@ -1015,6 +1021,16 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
             return None, f"{path.name} spot_checks[{index}] must be an object"
         if not item.get("group") or not item.get("type") or not item.get("evidence"):
             return None, f"{path.name} spot_checks[{index}] missing group/type/evidence"
+
+    semantic_checks = payload["semantic_checks"]
+    if len(semantic_checks) < 3:
+        return None, f"{path.name} must include at least 3 reviewer semantic_checks"
+    for index, item in enumerate(semantic_checks, start=1):
+        if not isinstance(item, dict):
+            return None, f"{path.name} semantic_checks[{index}] must be an object"
+        for key in ("group", "type", "result", "evidence", "fix_instruction"):
+            if not item.get(key):
+                return None, f"{path.name} semantic_checks[{index}] missing {key}"
 
     return payload, None
 
