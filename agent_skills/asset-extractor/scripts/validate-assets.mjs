@@ -53,6 +53,26 @@ const SEMANTIC_COVERAGE_GROUPS = {
   time_or_xlsx: ["time_range_error", "xlsx_readiness"],
 };
 
+const ENUMS = {
+  source: ["asset_bible", "episode_new", "episode_variant"],
+  asset_type: ["character", "costume", "scene", "prop", "composition"],
+  status_type: [
+    "base",
+    "costume_change",
+    "dirt_damage",
+    "lighting_time",
+    "injury",
+    "scene_condition",
+    "prop_condition",
+    "composition_reference",
+    "other",
+  ],
+  reuse_policy: ["global", "episode_range", "one_episode", "shot_only"],
+  needs_generation: ["yes", "no", "conditional"],
+  sync_to_bible: ["yes", "no", "candidate"],
+  semantic_result: ["pass", "warning", "issue"],
+};
+
 const REQUIRED_COLUMNS = {
   "复用资产索引": ["使用ID", "asset_id", "state_id", "asset_type", "source", "episode_usage", "本集用途", "needs_generation", "generation_note"],
   "新增资产状态": ["state_id", "asset_id", "parent_state_id", "asset_type", "status_type", "state_summary", "changed_fields", "reuse_policy", "first_seen_episode", "episode_usage", "needs_generation", "generation_note", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
@@ -67,6 +87,38 @@ const SECTION_TO_SHEET = {
   "三、本集新增基础资产": "新增基础资产",
   "四、本集关键道具与场景状态": "关键道具与场景状态",
   "五、本集不建议入库元素": "不建议入库元素",
+};
+
+const TABLE_ENUM_COLUMNS = {
+  "复用资产索引": {
+    source: ENUMS.source,
+    asset_type: ENUMS.asset_type,
+    needs_generation: ENUMS.needs_generation,
+  },
+  "新增资产状态": {
+    asset_type: ENUMS.asset_type,
+    status_type: ENUMS.status_type,
+    reuse_policy: ENUMS.reuse_policy,
+    needs_generation: ENUMS.needs_generation,
+    sync_to_bible: ENUMS.sync_to_bible,
+  },
+  "新增基础资产": {
+    asset_type: ENUMS.asset_type,
+    reuse_policy: ENUMS.reuse_policy,
+    sync_to_bible: ENUMS.sync_to_bible,
+  },
+  "关键道具与场景状态": {
+    asset_type: ENUMS.asset_type,
+    needs_generation: ENUMS.needs_generation,
+  },
+};
+
+const REQUIRED_NONEMPTY_COLUMNS = {
+  "复用资产索引": ["使用ID", "asset_id", "state_id", "asset_type", "source", "episode_usage", "needs_generation"],
+  "新增资产状态": ["state_id", "asset_id", "asset_type", "status_type", "reuse_policy", "episode_usage", "needs_generation", "sync_to_bible"],
+  "新增基础资产": ["asset_id", "asset_type", "asset_name", "reuse_policy", "first_seen_episode", "sync_to_bible"],
+  "关键道具与场景状态": ["state_id", "asset_id", "asset_type", "episode_usage", "needs_generation"],
+  "不建议入库元素": ["元素", "出现位置", "不入库原因"],
 };
 
 const errors = [];
@@ -158,8 +210,37 @@ function validateAssetsMarkdown(markdown) {
     dataRows.forEach((row, index) => {
       if (row.length !== header.length) {
         errors.push(`${table.section} row ${index + 2} has ${row.length} cells but header has ${header.length}`);
+        return;
       }
+
+      validateRowValues(table, header, row, index + 2);
     });
+  }
+}
+
+function columnValue(header, row, column) {
+  const index = header.indexOf(column);
+  return index >= 0 ? row[index] : "";
+}
+
+function validateRowValues(table, header, row, rowNumber) {
+  for (const column of REQUIRED_NONEMPTY_COLUMNS[table.sheetName] || []) {
+    if (!columnValue(header, row, column)) {
+      errors.push(`${table.section} row ${rowNumber} column ${column} must not be empty`);
+    }
+  }
+
+  const enumColumns = TABLE_ENUM_COLUMNS[table.sheetName] || {};
+  for (const [column, allowedValues] of Object.entries(enumColumns)) {
+    const value = columnValue(header, row, column);
+    if (value && !allowedValues.includes(value)) {
+      errors.push(`${table.section} row ${rowNumber} column ${column} has invalid value "${value}". Allowed: ${allowedValues.join(", ")}`);
+    }
+  }
+
+  const stateId = columnValue(header, row, "state_id");
+  if (header.includes("state_id") && !stateId) {
+    errors.push(`${table.section} row ${rowNumber} state_id must not be empty; use BASE when no state applies`);
   }
 }
 
@@ -194,6 +275,12 @@ function validateReview(review) {
     for (const field of ["table", "type", "result", "evidence", "fix_instruction"]) {
       if (!check?.[field]) errors.push(`asset_review.semantic_checks[${index}] missing ${field}`);
     }
+    if (check?.result && !ENUMS.semantic_result.includes(check.result)) {
+      errors.push(`asset_review.semantic_checks[${index}].result has invalid value "${check.result}"`);
+    }
+    if (review.pass === true && check?.result === "issue") {
+      errors.push(`asset_review.semantic_checks[${index}] result=issue but asset_review.pass=true`);
+    }
   });
 
   const semanticTypes = new Set(review.semantic_checks.map((check) => check.type));
@@ -222,6 +309,15 @@ function validateStatus(status, review) {
   if (!Array.isArray(status.bible_update_candidates)) errors.push("asset_status.bible_update_candidates must be an array");
 }
 
+async function validateWorkbookFreshness() {
+  if (!(await exists(requiredFiles.assets)) || !(await exists(requiredFiles.workbook))) return;
+  const assetsStat = await fs.stat(requiredFiles.assets);
+  const workbookStat = await fs.stat(requiredFiles.workbook);
+  if (workbookStat.mtimeMs + 1000 < assetsStat.mtimeMs) {
+    errors.push("assets.xlsx is older than assets.md; rerun assets-md-to-xlsx.mjs");
+  }
+}
+
 for (const [label, filePath] of Object.entries(requiredFiles)) {
   if (!(await exists(filePath))) errors.push(`Missing ${label}: ${filePath}`);
 }
@@ -237,6 +333,7 @@ if (await exists(requiredFiles.status)) status = await readJson(requiredFiles.st
 
 validateReview(review);
 validateStatus(status, review);
+await validateWorkbookFreshness();
 
 if (errors.length > 0) {
   console.error(`Asset validation failed for ${episodeDir}`);

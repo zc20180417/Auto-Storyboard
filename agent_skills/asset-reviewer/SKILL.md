@@ -111,11 +111,39 @@ JSON 结构如下：
   ],
   "semantic_checks": [
     {
-      "table": "本集新增资产状态",
-      "type": "duplicate_base_asset",
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
       "result": "pass",
-      "evidence": "引用具体组别、时间段、资产名称或分镜事实。",
-      "fix_instruction": "若不通过，说明应补充或删除的具体资产；通过时写无。"
+      "evidence": "具体说明哪些 asset_bible 已有资产或状态被复用，是否避免重复生成。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "具体说明脏污、夜雨、受伤、破损、换装或光线变化是否作为状态处理。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "具体说明新增基础资产没有覆盖、重复或改写 asset_bible 已有角色、场景、服装或道具。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "具体说明提示词没有新增 final.txt 或 asset_bible 没有的品牌、文字、徽章、外观设定或剧情。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "具体说明 episode_usage 均来自 final.txt，未把资产未出现的时间段强行归并。",
+      "fix_instruction": "无"
     }
   ],
   "issues": [
