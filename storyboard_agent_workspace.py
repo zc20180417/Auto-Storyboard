@@ -130,15 +130,17 @@ def make_agent_context(
         - Review Skill: `{reviewer_skill_path}`
 
         ## Core Rules
-        - 你是竖屏古装短剧分镜生产 agent。
+        - dispatcher 不生成、不审核、不修稿；dispatcher 只创建 subagents/workers 并分发 episode prompt。
+        - episode worker 是竖屏短剧分镜生产 agent，只处理自己被分配的单个 episode。
         - 生成和审核规则全部以两个标准 `SKILL.md` 为准，不要在任务文件里重新解释规则。
-        - 生成和审核必须在同一个 agent 会话内完成，避免“换会话越修越歪”。
+        - episode worker 可以生成和初审，但 `review.txt` 必须按 `storyboard-reviewer/SKILL.md` 逐项审稿，不能写空泛通过。
+        - 若用户要求强审核模式，reviewer-only worker 必须独立复审 `final.txt`。
         - `single` 模式：整集一次生成，再整集审核一次。
         - `scene` 模式：按场景标题拆段生成，再组装整集并审核。
         - 审核后只修硬错误；不要每次全量重写。
         - 每集最终产出 `final.txt` 和 `status.json`。
         - 如果硬错误无法修完，也要保留最好的 `final.txt`，并在 `status.json` 标记 `needs_review`。
-        - 不要调用 DeepSeek/Qwen API 批处理脚本生成正文；这次由当前 CLI agent 自己完成文本生成和审核。
+        - 不要调用 DeepSeek/Qwen API 批处理脚本生成正文；Python 只准备、校验和收集。
         - 最终 `final.txt` 必须是自然分镜格式，不输出 JSON、调试标记或其他非分镜正文内容。
         """
     ).strip()
@@ -222,25 +224,24 @@ Validation command:
 python "{Path(__file__).resolve()}" validate-episode --episode-dir "{episode_dir}"
 ```
 
-`status.json` shape:
+`status.json` requirements:
 
-```json
-{{
-  "episode_id": "{episode_id}",
-  "status": "done",
-  "output_name": "{output_name}",
-  "summary": "short Chinese summary",
-  "hard_issues_remaining": [],
-  "warnings": [],
-  "reviewer_source": "storyboard-reviewer",
-  "reviewer_pass": true,
-  "reviewer_issues_count": 0,
-  "reviewer_warnings_count": 0
-}}
-```
+- `episode_id`: `{episode_id}`
+- `status`: `done` only after the real `review.txt` passes with no hard issues; otherwise `needs_review`
+- `output_name`: `{output_name}`
+- `summary`: short Chinese summary
+- `hard_issues_remaining`: copy unresolved hard issues from the real reviewer result
+- `warnings`: copy or summarize warnings from the real reviewer result
+- `reviewer_source`: must be `storyboard-reviewer`
+- `reviewer_pass`: copy the boolean `pass` from `review.txt` after `review.txt` exists
+- `reviewer_issues_count`: copy `len(review.txt.issues)` after `review.txt` exists
+- `reviewer_warnings_count`: copy `len(review.txt.warnings)` after `review.txt` exists
+
+Do not prefill `reviewer_pass=true` or issue/warning counts before writing the real `review.txt`.
 
 Use `status: "needs_review"` only if hard issues remain after two focused repair attempts.
 `review.txt` and `segments/segXX/review.md` must contain real raw JSON returned by `storyboard-reviewer`; clean-format validation is not a substitute for reviewer审稿 and placeholder review JSON will fail validation.
+Reviewer JSON must include non-empty `checked_groups` and full `audit_coverage` fields as required by `storyboard-reviewer/SKILL.md`.
 
 ## Important Constraints
 - Rules live in the two `SKILL.md` files. Do not duplicate or reinterpret them here.
@@ -557,6 +558,14 @@ CLEAN_SHOT_SECONDS_RE = re.compile(r"本镜估算时长[：:]\s*(?P<seconds>\d{1
 CLEAN_GROUP_TOTAL_RE = re.compile(r"总时长[：:]\s*(?P<seconds>\d{1,3})\s*秒")
 CLEAN_GROUP_SHOTS_RE = re.compile(r"镜头数[：:]\s*(?P<shots>\d{1,3})\s*个")
 MACHINE_TAG_RE = re.compile(r"(?m)^\ufeff?\s*<<<(?:GROUP|GROUP_END|SHOT|SHOT_END)\b.*?>>>\s*$")
+REQUIRED_AUDIT_COVERAGE_KEYS = (
+    "script_fidelity",
+    "dialogue_direction",
+    "timing_math",
+    "dialogue_pacing",
+    "space_locking",
+    "format",
+)
 LOW_QUALITY_TEMPLATE_PATTERNS = (
     "空间先被交代出来",
     "镜头从场景布局转向在场人物",
@@ -926,6 +935,8 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
     required_types = {
         "pass": bool,
         "summary": str,
+        "checked_groups": list,
+        "audit_coverage": dict,
         "issues": list,
         "warnings": list,
     }
@@ -947,7 +958,36 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
     if any(marker.lower() in summary.lower() for marker in placeholder_markers):
         return None, f"{path.name} looks like a placeholder review, not storyboard-reviewer output"
 
+    checked_groups = payload["checked_groups"]
+    if not checked_groups or not all(isinstance(item, str) and item.strip() for item in checked_groups):
+        return None, f"{path.name} missing non-empty checked_groups list"
+
+    audit_coverage = payload["audit_coverage"]
+    for key in REQUIRED_AUDIT_COVERAGE_KEYS:
+        if audit_coverage.get(key) != "checked":
+            return None, f"{path.name} audit_coverage missing `{key}`"
+
     return payload, None
+
+
+def _storyboard_group_labels(content: str) -> list[str]:
+    labels: list[str] = []
+    for group_match in CLEAN_GROUP_RE.finditer(content):
+        group_number = _group_number(group_match.group("num"))
+        if group_number is not None:
+            labels.append(f"第{group_number}组")
+    return labels
+
+
+def _validate_review_checked_groups(payload: dict, content: str, review_name: str) -> list[str]:
+    expected = _storyboard_group_labels(content)
+    if not expected:
+        return []
+    checked = {item.strip() for item in payload.get("checked_groups", []) if isinstance(item, str)}
+    missing = [label for label in expected if label not in checked]
+    if missing:
+        return [f"{review_name} checked_groups missing reviewed groups: {', '.join(missing[:8])}"]
+    return []
 
 
 def _status_reviewer_metadata(status_payload: dict) -> dict | None:
@@ -978,6 +1018,11 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
     review_payload, review_error = _read_review_json(episode_dir / "review.txt")
     if review_error:
         issues.append(review_error)
+    elif review_payload is not None:
+        final_path = episode_dir / "final.txt"
+        if final_path.is_file():
+            final_content = final_path.read_text(encoding="utf-8", errors="replace")
+            issues.extend(_validate_review_checked_groups(review_payload, final_content, "review.txt"))
 
     status_path = episode_dir / "status.json"
     status_payload: dict | None = None
@@ -1028,9 +1073,17 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
         for segment_dir in sorted(path for path in segments_dir.iterdir() if path.is_dir()):
             if not (segment_dir / "script.txt").is_file():
                 continue
-            _, segment_error = _read_review_json(segment_dir / "review.md")
+            segment_payload, segment_error = _read_review_json(segment_dir / "review.md")
             if segment_error:
                 issues.append(f"{segment_dir.name}: {segment_error}")
+            elif segment_payload is not None:
+                segment_final = segment_dir / "final.txt"
+                segment_draft = segment_dir / "draft.txt"
+                review_target = segment_final if segment_final.is_file() else segment_draft
+                if review_target.is_file():
+                    target_content = review_target.read_text(encoding="utf-8", errors="replace")
+                    for issue in _validate_review_checked_groups(segment_payload, target_content, "review.md"):
+                        issues.append(f"{segment_dir.name}: {issue}")
 
     return issues
 
@@ -1164,6 +1217,22 @@ def prepare_workspace(args: argparse.Namespace) -> int:
 
             This directory is an agent-native workspace. Each `episodes/epXX` folder is an independent task.
 
+            ## Dispatcher Hard Stop
+
+            If this run contains 2 or more episodes, the host/main agent is a dispatcher only.
+
+            Dispatcher must:
+            - Create subagents/workers and dispatch `episodes/epXX/agent_prompt.md`.
+            - Run up to the configured worker limit in parallel.
+            - Stop with `NEED_USER_DISPATCH` and list prompt paths if worker creation is unavailable or requires user authorization.
+
+            Dispatcher must not:
+            - Directly generate storyboard body text.
+            - Sequentially process multiple episodes in the main thread.
+            - Open `episodes/ep*/script.txt` and begin production work.
+            - Write `episodes/ep*/draft.txt`, `final.txt`, `review.txt`, or `status.json`.
+            - Downgrade to main-thread sequential production when subagents/workers are unavailable.
+
             Agents must:
             - Read the task files instead of relying on hidden state.
             - Write durable outputs to files.
@@ -1175,7 +1244,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     write_runner_scripts(run_dir=run_dir, agent=args.agent, parallelism=args.parallelism, model=args.model)
 
     print(f"[done] agent workspace: {run_dir}")
-    print(f"[next] read: {run_dir / 'NEXT_STEPS.md'}")
+    print(f"[next] read: {run_dir / 'DISPATCH_PROMPT.md'}")
     print("[next] dispatch episode agents outside Python; then run .\\COLLECT_RESULTS.ps1")
     return 0
 
@@ -1265,8 +1334,6 @@ def collect_run(args: argparse.Namespace) -> int:
         quality_issues = validate_storyboard_quality_floor(content)
         review_issues = validate_review_artifacts(episode_dir)
         issues = clean_issues + quality_issues + review_issues
-        write_utf8(output_path, content)
-        copied += 1
         status = "unknown"
         if status_path.is_file():
             try:
@@ -1275,11 +1342,18 @@ def collect_run(args: argparse.Namespace) -> int:
                 status = "invalid status.json"
         if issues:
             failed += 1
+            if output_path.exists():
+                output_path.unlink()
             summary_lines.append(f"- status: {status}, validation_failed")
             summary_lines.extend(f"- clean_format: {issue}" for issue in clean_issues[:8])
             summary_lines.extend(f"- quality_floor: {issue}" for issue in quality_issues[:8])
             summary_lines.extend(f"- storyboard_reviewer: {issue}" for issue in review_issues[:8])
+            summary_lines.append("- copied: skipped because validation failed")
+            summary_lines.append("")
+            continue
         else:
+            write_utf8(output_path, content)
+            copied += 1
             summary_lines.append(f"- status: {status}, clean_format_passed, quality_floor_passed, storyboard_reviewer_passed")
         if changes:
             summary_lines.append(f"- clean_numbering_fixed: {'; '.join(changes[:8])}")

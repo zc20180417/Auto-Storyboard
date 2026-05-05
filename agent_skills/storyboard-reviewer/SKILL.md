@@ -56,11 +56,22 @@ description: Review vertical storyboard drafts against the source script, natura
 - issues 最多返回 5 条；只放硬错误，优先返回最关键、最能代表问题的条目
 - warnings 最多返回 5 条；只放不阻断产出的质检提醒
 - 所有时长类 issues 或 warnings 都必须写明“有效字数 / 镜头秒数 / 字秒比”或“无台词镜头 / 镜头秒数 / 超出原因”；连续无台词铺垫问题要写明“连续无台词累计秒数 / 所在镜头范围 / 为什么拖慢关键台词或冲突”
+- `checked_groups` 必须列出本次实际审过的全部组别，例如 `["第1组", "第2组"]`，不能留空，不能只写“全部”。
+- `audit_coverage` 六项必须全部写成 `"checked"`，表示已逐项检查：原剧本忠实度、对话指向、时长数学、台词节奏、空间锁定、格式。
 
 JSON 结构如下：
 {
   "pass": true,
   "summary": "一句话总结",
+  "checked_groups": ["第1组", "第2组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
   "issues": [
     {
       "severity": "hard",
