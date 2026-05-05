@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep18",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep18-agent-cli-storyboard.txt",
+  "summary": "第18集分镜完成，共9组，覆盖县局办公室还款、砖厂任命庆祝、法院门口与西装男对峙三大场景。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第9组0-2秒\"拿命争\"字秒比1.5，偏慢",
+    "第7组8-10秒\"你是哪位\"字秒比2.5，偏慢"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

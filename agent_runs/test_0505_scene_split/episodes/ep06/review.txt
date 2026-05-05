@@ -1,0 +1,38 @@
+{
+  "pass": true,
+  "summary": "ep06已对照完整剧本和组装后final.txt复审，seg01办公室文件对峙、seg02办公区谣言扩散、seg03旧街口查到张立均按原剧本保留台词、动作、人物关系和冲突推进；组首空间锁定、对话指向、时间段连续性、组时长、镜头数和单时间段单主体规则均已逐项检查。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组",
+    "第13组",
+    "第14组",
+    "第15组",
+    "第16组",
+    "第17组",
+    "第18组",
+    "第19组",
+    "第20组",
+    "第21组",
+    "第22组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

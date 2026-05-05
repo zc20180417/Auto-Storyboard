@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "EP-01-ep01-agent-cli-storyboard.txt",
+  "summary": "张诚接连帮邻居修好水管和台灯，又发现小区配电箱老化隐患却被物业经理李虎敷衍，雨夜火花埋下危险。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第5组小雅对白语速偏快但低于硬错误阈值。",
+    "第6组张诚拒绝收钱对白语速偏快但可接受。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

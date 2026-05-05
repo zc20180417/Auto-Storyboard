@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "整集已逐组对照 ep18 剧本和最终分镜，台词、动作、空间锁定、时长与格式均通过审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

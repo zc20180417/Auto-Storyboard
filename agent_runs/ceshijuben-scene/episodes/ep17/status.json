@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep17",
+  "status": "done",
+  "output_name": "ep17-ep17-agent-cli-storyboard.txt",
+  "summary": "第17集分镜完成，包含7组分镜，覆盖车间烂果曝光、研发室果冻转型、医院门口闹事及质监现身三个场景。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第6组（县医院门口首个组）缺少全景镜头交代新场景环境"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

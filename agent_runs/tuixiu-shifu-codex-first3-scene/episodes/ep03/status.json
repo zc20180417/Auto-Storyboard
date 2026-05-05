@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "EP-03-ep03-agent-cli-storyboard.txt",
+  "summary": "EP03按scene模式完成：群聊风向、小雅反驳、张诚家中受辱和群公告逼他到场均已生成并审核通过。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

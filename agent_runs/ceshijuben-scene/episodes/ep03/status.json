@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "ep03-ep03-agent-cli-storyboard.txt",
+  "summary": "罐头厂门口家族冲突戏，10组分镜完整覆盖对峙、围观、动手、闹自杀、拿喇叭揭露等全剧情",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第3组3-8秒实际5秒略短于目标6秒",
+    "第4组5-8秒实际3秒略短于目标4秒",
+    "第6组9-12秒实际3秒略短于目标4秒"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep02-agent-cli-storyboard.txt",
+  "summary": "ep02分镜完成，修复了胖监工台词缺失、组首空间锁定预测性描述、苏默台词缺失三处硬性问题，整集通过审核。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第5组0-2秒'面无表情'偏抽象",
+    "第12组9-11秒'眼中闪过一丝冷光'偏抽象"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

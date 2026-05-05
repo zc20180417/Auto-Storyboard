@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "test_0505-ep01-agent-cli-storyboard.txt",
+  "summary": "林浩在民政局被许知禾一家逼签背债协议，陆承远现身挑衅，夏一曼与疑似亲生父母先后赶到护住林浩。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

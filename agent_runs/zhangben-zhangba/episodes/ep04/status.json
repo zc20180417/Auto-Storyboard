@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep04-agent-cli-storyboard.txt",
+  "summary": "第4集分镜完成，包含砖厂空地羞辱对峙和办公楼夜潜暴露两大场景，共10组分镜。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第2组两镜均为苏刚近景，景别未形成差异",
+    "第7组两镜均为苏默近景，景别未形成差异",
+    "第6组老瞎头\"啥？\"2字分配2秒，语速偏慢"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

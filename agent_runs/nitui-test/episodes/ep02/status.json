@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "EP-02-ep02-agent-cli-storyboard.txt",
+  "summary": "第2集分镜稿，6组共26个镜头。林家小屋场景2组（林建国怒砸桌抄锄头→林跃劝阻并决定出面解决），村委会场景4组（林跃假意低头签订转让协议→交出协议→暗中加字按手印→赵大强狂笑后林跃门外露出复仇冷笑与心声）。严格遵循三新规则：每时间段单主体、远景无微表情、无镜头切换描述。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第2组8-10秒：4字台词标注2秒，字秒比2.0偏慢，因最低镜头时长>1秒故属合理处理",
+    "第5组11-14秒：无台词动作镜头3秒处于上限，三组连续动作节奏紧凑"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

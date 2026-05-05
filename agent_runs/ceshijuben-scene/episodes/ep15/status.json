@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep15",
+  "status": "done",
+  "output_name": "ep15-ep15-agent-cli-storyboard.txt",
+  "summary": "第15集分镜完成，共13组，覆盖罐头厂门口对峙、破旧平房被搜、豪华办公室幕后交易三个场景。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第7组镜头数偏多，节奏紧凑"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

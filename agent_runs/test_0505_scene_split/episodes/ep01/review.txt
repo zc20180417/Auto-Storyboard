@@ -1,0 +1,35 @@
+{
+  "pass": true,
+  "summary": "ep01已对照完整剧本和组装后final.txt复审，三段场景均保留原剧本动作、台词、人物关系和冲突推进，组首空间锁定、台词指向、镜头时间段与组时长均已逐项检查。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组",
+    "第13组",
+    "第14组",
+    "第15组",
+    "第16组",
+    "第17组",
+    "第18组",
+    "第19组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

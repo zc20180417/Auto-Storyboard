@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "EP-25-ep25-agent-cli-storyboard.txt",
+  "summary": "银行审查二厂扩产授信，陆行川用订单、回款和分批放款条件回应风险，最终签下带食品安全冻结条款的批复。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

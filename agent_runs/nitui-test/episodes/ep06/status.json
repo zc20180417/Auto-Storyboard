@@ -1,0 +1,37 @@
+{
+  "episode_id": "ep06",
+  "status": "done",
+  "output_name": "EP-06-ep06-agent-cli-storyboard.txt",
+  "summary": "第六集已按新规则生成：林跃借钱受阻后买下草根，并通过城里采购员识货完成反打脸。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "台词语速",
+      "problem": "林跃劝村民借钱一句为短促表达，语速略快但仍可接受。",
+      "evidence": "第1组 2-4秒，有效字数约12，镜头2秒，字秒比约6.0。",
+      "fix": "如后续成片听感偏急，可把该句并入前后同冲突节拍做自动正反打，而不是单独加停顿。"
+    },
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "台词语速",
+      "problem": "赵百川威胁村民一句节奏偏快但符合短剧压迫感。",
+      "evidence": "第1组 8-10秒，有效字数约13，镜头2秒，字秒比约6.5。",
+      "fix": "如需要更稳，可与6-8秒出门咳嗽动作合并为一个自动分镜对话节拍。"
+    },
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "台词语速",
+      "problem": "林跃报价一句为2秒短剧节拍，略快但不构成硬问题。",
+      "evidence": "第2组 9-11秒，有效字数约12，镜头2秒，字秒比约6.0。",
+      "fix": "如后续视频模型口型偏急，可把第2组9-13秒改成连续短句交锋自动分镜块。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

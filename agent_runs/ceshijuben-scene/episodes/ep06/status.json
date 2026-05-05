@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep06",
+  "status": "done",
+  "output_name": "ep06-ep06-agent-cli-storyboard.txt",
+  "summary": "第6集分镜完成，共10组，覆盖宗族祠堂绑缚、破门救援、警察介入及停供威胁全剧情。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组壮汉倒地镜头时长偏紧（2秒）"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

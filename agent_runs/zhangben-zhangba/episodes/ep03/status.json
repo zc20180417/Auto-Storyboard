@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep03-agent-cli-storyboard.txt",
+  "summary": "第3集分镜完成，包含废弃土屋姐弟夜谈和砖厂窑炉救险两大场景，共12组分镜。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第2组第3-4镜均为苏刚近景，景别未形成差异",
+    "第4组第2-3镜均为苏默中景，景别未形成差异"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

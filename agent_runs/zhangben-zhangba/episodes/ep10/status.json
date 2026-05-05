@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep10",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep10-agent-cli-storyboard.txt",
+  "summary": "第10集含10组分镜，覆盖夜探保险柜取证、走廊金蝉脱壳、砖厂主干道堵婚车三大场景，苏默以县局批文逼退赵宝强。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "Group 6作为新场景首组全景镜头仅3秒，环境交代偏紧凑"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

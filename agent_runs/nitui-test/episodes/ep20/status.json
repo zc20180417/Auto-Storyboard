@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep20",
+  "status": "done",
+  "output_name": "EP-20-ep20-agent-cli-storyboard.txt",
+  "summary": "钱厂长高价收下劣质药材后崩溃，林跃揭开地下恒温库，证明真正特供药材早已入库。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

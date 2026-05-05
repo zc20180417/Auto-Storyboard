@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep17",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep17-agent-cli-storyboard.txt",
+  "summary": "本集讲述钱老板带打手闯砖厂逼苏默退钱，苏默亮出供销社发票揭穿胖监工投毒真相，钱老板暴打胖监工后仍威胁苏默，苏默报警，王局长带队逮捕钱老板，最终点破苏默借刀杀人之计。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组胖监工台词镜头时长比目标多1秒",
+    "第7组钱老板震惊台词镜头时长比目标多1秒"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

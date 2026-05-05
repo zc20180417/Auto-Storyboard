@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep08",
+  "status": "done",
+  "output_name": "EP-08-ep08-agent-cli-storyboard.txt",
+  "summary": "第8集完成冷库配送试行、通行条确认和包装环节扩展的自然中文分镜。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

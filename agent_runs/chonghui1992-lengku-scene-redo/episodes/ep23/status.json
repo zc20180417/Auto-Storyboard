@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep23",
+  "status": "done",
+  "output_name": "EP-23-ep23-agent-cli-storyboard.txt",
+  "summary": "陆行川在成本上涨压力下暂不涨价，转向渠道分批供货，并以真实订单推动锁原料和分段扩产。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组陆行川最后一句约20个有效字 / 3秒 / 约6.7字秒比，节奏偏快但未超过放宽上限。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

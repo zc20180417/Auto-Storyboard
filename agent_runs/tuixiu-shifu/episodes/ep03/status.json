@@ -1,0 +1,14 @@
+﻿{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "EP-03-ep03-agent-cli-storyboard.txt",
+  "summary": "第三集分镜完成，共9组。包含微信群聊舆论发酵、张诚老伴家中怒斥、李虎发群公告宣布居民大会三组核心场景。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第2组两个相邻镜头均为手机屏幕特写，景别无差异"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

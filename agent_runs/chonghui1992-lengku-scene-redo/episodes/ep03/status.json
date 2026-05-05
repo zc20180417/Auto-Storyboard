@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "EP-03-ep03-agent-cli-storyboard.txt",
+  "summary": "陆行川说服父亲押上旧冷库门牌，到信用社争取贷款，把冷库风险转成下一步周转机会。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

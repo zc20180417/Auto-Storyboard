@@ -1,0 +1,15 @@
+﻿{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "EP-01-ep01-agent-cli-storyboard.txt",
+  "summary": "退休工人张诚帮王婶修水管、帮小雅修台灯均分文不取，傍晚发现小区配电箱隐患却遭物业经理李虎嘲讽无视，最终雨夜中配电箱迸出危险火花。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第6组缺少客厅全景交代",
+    "第4组中景出现偏精细的面部皮肤细节"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

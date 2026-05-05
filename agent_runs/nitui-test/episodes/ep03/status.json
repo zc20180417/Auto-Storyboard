@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "EP-03-ep03-agent-cli-storyboard.txt",
+  "summary": "ep03分镜共8组：村口启程(11s)→村民议论(13s)→坚毅背影与OS(11s)→供销社纷乱(14s)→林跃用英语解围(11s)→史密斯重金酬谢(12s)→马主任试探拉拢(14s)→林跃看到对赌协议眼中闪过精光(10s)，全部通过审核。",
+  "hard_issues_remaining": [],
+  "warnings": ["第2组村民丙镜头多出1秒（12字÷4=3秒目标，实际4秒）", "第8组林跃反应镜头3秒内细节密度偏高"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

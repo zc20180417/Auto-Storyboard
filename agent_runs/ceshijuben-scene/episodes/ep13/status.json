@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep13",
+  "status": "done",
+  "output_name": "ep13-ep13-agent-cli-storyboard.txt",
+  "summary": "第13集分镜完成，包含警察押走王宝、赵朵朵对峙王家夫妇、李翠花教导处诬告、校长办公室取消保送资格对峙共10组",
+  "hard_issues_remaining": [],
+  "warnings": ["第8组首镜未用全景交代新场景"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

@@ -1,0 +1,8 @@
+{
+  "episode_id": "ep12",
+  "episode_number": 12,
+  "display_name": "测试剧本第12集",
+  "series_title": "测试剧本",
+  "source_path": "G:\\Auto-Storyboard\\inputs\\测试剧本.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_6688_clean\\测试剧本-ep12-agent-cli-storyboard.txt"
+}

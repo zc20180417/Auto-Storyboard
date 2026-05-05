@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "EP-02-ep02-agent-cli-storyboard.txt",
+  "summary": "EP02标准流程修复完成：李虎发现配电箱焦黑、煽动王婶、群里带节奏均已按合规时长输出。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

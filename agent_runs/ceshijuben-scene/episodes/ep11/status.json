@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep11",
+  "status": "done",
+  "output_name": "ep11-ep11-agent-cli-storyboard.txt",
+  "summary": "ep11共8组分镜，覆盖深夜纵火、街头造谣、废墟找证据三个场景，总镜头数37个",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组9-11秒王大强台词语速偏快(6字/秒)",
+    "第7组10-13秒赵朵朵台词语速偏快(5字/秒)"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

@@ -638,6 +638,13 @@ NECESSARY_LONG_ACTION_MARKERS = (
     "拖着",
     "背起",
 )
+AUTO_MULTISHOT_MARKERS = (
+    "连续短句交锋",
+    "自动正反打",
+    "Seedance 自动分镜",
+    "自动分镜",
+    "连续对话节拍",
+)
 
 
 def strip_machine_tags(content: str) -> str:
@@ -798,8 +805,24 @@ def validate_dialogue_pacing_floor(content: str) -> list[str]:
         is_emotional = _has_any_marker(shot_text, EMOTIONAL_DIALOGUE_MARKERS)
         is_slow = _has_any_marker(shot_text, SLOW_DIALOGUE_MARKERS)
         has_necessary_action = _has_any_marker(shot_text, NECESSARY_LONG_ACTION_MARKERS)
-        target_speed = 6.0 if is_emotional else 5.2
+        is_auto_multishot = _has_any_marker(shot_text, AUTO_MULTISHOT_MARKERS)
+        target_speed = 4.2 if is_slow else (6.0 if is_emotional else 5.2)
         target_seconds = math.ceil(chars / target_speed)
+
+        if is_auto_multishot:
+            dialogue_turns = len(DIALOGUE_QUOTE_RE.findall(shot_text))
+            speaker_switches = max(0, dialogue_turns - 1)
+            switch_gap = 0.3 if is_emotional else 0.4
+            action_extra = 1 if has_necessary_action else 0
+            block_target_seconds = math.ceil(chars / target_speed + speaker_switches * switch_gap + action_extra)
+            if seconds > block_target_seconds + 1 and not is_slow:
+                issues.append(
+                    f"{shot_label} 自动分镜对话块时长偏长；有效字数 {chars}，"
+                    f"台词轮次 {dialogue_turns}，镜头 {seconds} 秒，字秒比 {cps:.1f}。"
+                    f"请按整块台词量、换人间隙和必要动作压到约 {block_target_seconds} 秒，"
+                    "或合并相邻同场景冲突内容，不要拉慢短句凑时长。"
+                )
+            continue
 
         if seconds >= 8 and not (is_slow or has_necessary_action):
             issues.append(
@@ -1205,6 +1228,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
                 "last_message_file": str(episode_dir / "agent-last-message.txt"),
                 "agent_log_file": str(episode_dir / "agent-stdout.log"),
                 "segments": len(segments),
+                "segment_titles": [segment.title for segment in segments],
             }
         )
 

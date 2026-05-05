@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep29",
+  "status": "done",
+  "output_name": "ep29-ep29-agent-cli-storyboard.txt",
+  "summary": "第29集分镜完成，共6组：会议室定调、全国布局、街头偶遇、冷漠相对、交易所风云、巅峰宣言。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

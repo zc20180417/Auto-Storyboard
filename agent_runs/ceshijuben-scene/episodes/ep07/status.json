@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep07",
+  "status": "done",
+  "output_name": "ep07-ep07-agent-cli-storyboard.txt",
+  "summary": "第7集分镜完成：罐头厂门口王宝挑衅堵路，赵朵朵果断决定赴邻省北沟村采购苹果，果园以现钱高价成功收果，返程途中石桥被炸，陷入绝境。共10组，时长合规。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第9组组首空间锁定与第1镜动作存在轻微状态不一致",
+    "第7组总时长15秒处于上限，镜头数6个，信息密度高"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

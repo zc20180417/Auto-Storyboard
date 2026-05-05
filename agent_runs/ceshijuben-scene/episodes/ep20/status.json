@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep20",
+  "status": "done",
+  "output_name": "ep20-ep20-agent-cli-storyboard.txt",
+  "summary": "第20集分镜覆盖百货大楼对峙、广场试吃与混混冲突三段剧情，共12组，节奏紧凑。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第1组7-10秒孙老板台词'算你懂事'5字占3秒，偏慢约2秒",
+    "第7组2-4秒大学生甲台词'真免费啊？'5字占2秒，偏慢约1秒"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

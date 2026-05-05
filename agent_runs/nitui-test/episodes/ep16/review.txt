@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "整集 final.txt 已对照 ep16 剧本和 storyboard 规则完成审核，未发现硬性问题或软性警告。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep22",
+  "status": "done",
+  "output_name": "ep22-ep22-agent-cli-storyboard.txt",
+  "summary": "第22集分镜完成。顾长海在罐头厂空地揭穿身世真相并认亲被拒，回省城后与顾雪密谋断供逼降；赵朵朵识破阴谋，决定赴省城正面对抗。",
+  "hard_issues_remaining": [],
+  "warnings": ["第9组部分对话方向语可更自然"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

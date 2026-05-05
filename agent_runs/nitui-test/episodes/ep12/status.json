@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep12",
+  "status": "done",
+  "output_name": "EP-12-ep12-agent-cli-storyboard.txt",
+  "summary": "赵百川夜里纵火被林跃抓现行，随后威胁报复并谎称账本已毁，林跃揭出账本藏在猪圈底下，赵百川崩溃。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

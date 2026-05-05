@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "run_id": "tuixiu-shifu-codex-fresh-first3-scene",
+  "created_at": "2026-05-05T01:43:31",
+  "project_root": "G:\\Auto-Storyboard",
+  "source": "G:\\Auto-Storyboard\\agent_runs\\_tmp_tuixiu_first3_fresh_source",
+  "prompt_path": null,
+  "generation_rules_source": "G:\\Auto-Storyboard\\agent_skills\\storyboard-generator\\SKILL.md",
+  "reviewer_rules_source": "G:\\Auto-Storyboard\\agent_skills\\storyboard-reviewer\\SKILL.md",
+  "generator_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-generator\\SKILL.md",
+  "reviewer_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-reviewer\\SKILL.md",
+  "out_dir": "G:\\Auto-Storyboard\\outputs_agent_tuixiu_shifu_codex_fresh_first3_scene",
+  "agent": "codex",
+  "mode": "scene",
+  "parallelism": 5,
+  "episodes": [
+    {
+      "episode_id": "ep01",
+      "episode_number": null,
+      "display_name": "EP-01",
+      "series_title": "EP-01",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_tuixiu_first3_fresh_source\\EP-01.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_tuixiu_shifu_codex_fresh_first3_scene\\EP-01-ep01-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep01",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep01\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep01\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep01\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep01\\agent-stdout.log",
+      "segments": 1
+    },
+    {
+      "episode_id": "ep02",
+      "episode_number": null,
+      "display_name": "EP-02",
+      "series_title": "EP-02",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_tuixiu_first3_fresh_source\\EP-02.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_tuixiu_shifu_codex_fresh_first3_scene\\EP-02-ep02-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep02",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep02\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep02\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep02\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep02\\agent-stdout.log",
+      "segments": 1
+    },
+    {
+      "episode_id": "ep03",
+      "episode_number": null,
+      "display_name": "EP-03",
+      "series_title": "EP-03",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_tuixiu_first3_fresh_source\\EP-03.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_tuixiu_shifu_codex_fresh_first3_scene\\EP-03-ep03-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep03",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep03\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep03\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep03\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\tuixiu-shifu-codex-fresh-first3-scene\\episodes\\ep03\\agent-stdout.log",
+      "segments": 1
+    }
+  ]
+}

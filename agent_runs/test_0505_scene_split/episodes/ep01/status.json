@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "test_0505-ep01-agent-cli-storyboard.txt",
+  "summary": "林浩在民政局被许知禾一家逼签离婚和项目赔偿，陆承远挑衅后夏一曼赶来维护，随后疑似亲生父母带旧坠子出现并阻止林浩背锅。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

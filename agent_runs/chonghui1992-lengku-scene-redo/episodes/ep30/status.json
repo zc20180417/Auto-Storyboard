@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep30",
+  "status": "done",
+  "output_name": "EP-30-ep30-agent-cli-storyboard.txt",
+  "summary": "陆行川在韩策推动下建立大宗原料风控账户，先写规则、明确责任，再到银行完成开户。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

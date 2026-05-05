@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "ep07 组装稿已对照原剧本和 storyboard-generator 规则逐组审核，所有原台词和关键动作完整保留，短句交锋使用 Seedance 自动正反打块处理，未发现 hard issues。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

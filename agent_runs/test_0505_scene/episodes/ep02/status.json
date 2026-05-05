@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "test_0505-ep02-agent-cli-storyboard.txt",
+  "summary": "林浩在民政局被逼签离婚协议，周建民夫妇揭露坑债条款并确认亲子线索，最终离婚完成后林浩遭遇工位和账号被停，冷静离场。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

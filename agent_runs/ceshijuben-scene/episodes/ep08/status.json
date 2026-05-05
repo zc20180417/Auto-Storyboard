@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep08",
+  "status": "done",
+  "output_name": "ep08-ep08-agent-cli-storyboard.txt",
+  "summary": "第8集共分12组分镜，涵盖河边租船赶货、码头交货揭穿炸桥阴谋、供销社毒罐头危机三个段落，总镜数46个，节奏紧凑。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第8组镜2语速偏慢（1.0字/秒）",
+    "第7组镜4语速偏慢（2.0字/秒）",
+    "第5组镜2对话指向可更具体"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

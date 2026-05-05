@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "test_0505-ep04-agent-cli-storyboard.txt",
+  "summary": "林浩在会议室接下烂项目，现场识破资料缺口和方案问题，夜里与夏一曼重做被删的核心数据。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

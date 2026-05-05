@@ -1,0 +1,16 @@
+﻿{
+    "episode_id":  "ep20",
+    "status":  "done",
+    "output_name":  "EP-20-ep20-agent-cli-storyboard.txt",
+    "summary":  "陆行川在二厂欠薪和设备改造压力下划清付款与改造边界，并把冷库业务推进为区域品牌计划。",
+    "hard_issues_remaining":  [
+
+                              ],
+    "warnings":  [
+
+                 ],
+    "reviewer_source":  "storyboard-reviewer",
+    "reviewer_pass":  true,
+    "reviewer_issues_count":  0,
+    "reviewer_warnings_count":  0
+}

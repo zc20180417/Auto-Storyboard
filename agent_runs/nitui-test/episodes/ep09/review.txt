@@ -1,0 +1,23 @@
+{
+  "pass": true,
+  "summary": "已对照 ep09 原剧本、组装后的 final.txt 和两份标准 skill 审核，最终稿保留全部剧情动作与台词，短句交锋使用 Seedance 自动正反打承载，未发现硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

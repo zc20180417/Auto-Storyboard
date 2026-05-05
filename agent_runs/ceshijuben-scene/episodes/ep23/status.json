@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep23",
+  "status": "done",
+  "output_name": "ep23-ep23-agent-cli-storyboard.txt",
+  "summary": "第23集分镜完成，共11组，涵盖顾氏集团大堂对峙、掌掴冲突、顾长海施压、赵大雷电话求救、医院探病及走廊电话借资买厂等场景。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第10组0-3秒无台词镜头时长3秒，处于规则允许上限。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

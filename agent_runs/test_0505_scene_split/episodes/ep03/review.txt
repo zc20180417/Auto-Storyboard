@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "已对照第3集完整脚本和组装后的final.txt逐组复审，第1至第21组覆盖小区门口受阻、茶摊接活、旧城区小院认亲与坠子确认，台词指向、时长、空间锁定和格式均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组", "第14组", "第15组", "第16组", "第17组", "第18组", "第19组", "第20组", "第21组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

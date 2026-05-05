@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep20",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep20-agent-cli-storyboard.txt",
+  "summary": "第20集分镜完成。全集7组：看守所会见室赵德海崩溃、苏家废墟推房植树、砖厂开门红发车。无硬错误，2处语速/节奏警告。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第6组苏刚台词19字/3秒，语速6.33字/秒，偏快",
+    "第4组苏默单字台词'推'标注2秒，较目标时长1秒略长"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

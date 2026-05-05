@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "已按 storyboard-reviewer 规则对 ep23 组装后的 final.txt 逐组复审，原剧本信息完整保留，台词指向、时长数学、台词节奏、空间锁定和自然分镜格式均已检查通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

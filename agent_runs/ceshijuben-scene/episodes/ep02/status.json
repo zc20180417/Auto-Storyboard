@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "ep02-ep02-agent-cli-storyboard.txt",
+  "summary": "第2集共9组分镜，覆盖县办主任办公室谈办厂、罐头厂开业、李翠花一家上门认亲闹事三个场景，时长与对话指向均符合规范。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "EP-01-ep01-agent-cli-storyboard.txt",
+  "summary": "第1集分镜终稿，共7组覆盖三个场景（晒谷场开场对峙、林跃反客为主揭露李二狗、赵百川密谋断水）。严格按照新三条规则生成：每时间段单一主体、远景全景不写微表情、时间段内无镜头切换描述。原剧本全部台词和动作悉数保留。reviewer pass。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第2组5-9秒中景描写'眼眶发红'属近景级别细节，可保留但不建议推广至更远景别"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

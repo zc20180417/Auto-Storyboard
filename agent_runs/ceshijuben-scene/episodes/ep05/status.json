@@ -1,0 +1,17 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "ep05-ep05-agent-cli-storyboard.txt",
+  "summary": "第5集分镜完成，共9组。涵盖罐头厂车间伏击擒贼、派出所审问对峙、宗族祠堂告状三个场景，时长与分组均符合规范。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第1组0-2秒夜景面部亮度表述偏模糊",
+    "第7组镜头数6个密度偏高",
+    "第8组全景环境交代3秒处于上限",
+    "第9组组首空间锁定新增原剧本未明确提及的手下角色"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 4
+}

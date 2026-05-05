@@ -1,0 +1,18 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "EP-02-ep02-agent-cli-storyboard.txt",
+  "summary": "李虎发现配电箱焦黑后借题发挥，先挑拨王婶，再在业主群暗示张师傅乱动公共设施。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第6组",
+      "rule": "台词语速",
+      "problem": "文字消息镜头语速略快但可接受。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

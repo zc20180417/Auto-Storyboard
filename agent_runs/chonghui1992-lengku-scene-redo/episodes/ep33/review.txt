@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "终稿完整覆盖第33集北方仓库、仓库院内和临时办公室三场戏，台词指向、组首锁定、组尾衔接、组时长与镜头数均符合 storyboard-reviewer 规则。",
+  "issues": [],
+  "warnings": []
+}

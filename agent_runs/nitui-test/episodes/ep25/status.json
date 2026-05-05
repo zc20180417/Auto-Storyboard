@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "EP-25-ep25-agent-cli-storyboard.txt",
+  "summary": "吴总抢报告失败后企图转移问题药材，赵雷护住证据，王总带复检组确认药材剧毒，吴总驾车逃窜，林跃和赵雷追查账本。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep14",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep14-agent-cli-storyboard.txt",
+  "summary": "苏默就任砖厂代理厂长，以追回伙食费稳定工人军心，当众开除煽动的胖监工，并委任老瞎头主管技术。随后苏默带苏刚前往钱老板办公室追讨尾款，钱老板撕毁合同拒不认账，苏默亮出原件副本并撂下狠话后离去。",
+  "hard_issues_remaining": [],
+  "warnings": ["第8组12-14秒钱老板镜头语速偏快（13字/2秒=6.5字/秒）"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

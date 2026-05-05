@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "ep04-ep04-agent-cli-storyboard.txt",
+  "summary": "第4集分镜完成，罐头厂门口对峙与饭馆密谋两场戏共8组分镜，时长与分组均符合规范。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第5组赵朵朵前半句台词定向可更精确",
+    "第6组群像台词处理可优化群嘲氛围"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

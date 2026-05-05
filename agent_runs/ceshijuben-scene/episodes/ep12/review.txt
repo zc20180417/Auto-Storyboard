@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "整集组装完整，剧情无遗漏，格式规范，说话动词已修正",
+  "issues": [],
+  "warnings": []
+}

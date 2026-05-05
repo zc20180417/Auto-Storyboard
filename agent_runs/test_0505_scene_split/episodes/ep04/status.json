@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "test_0505-ep04-agent-cli-storyboard.txt",
+  "summary": "第4集按scene模式完成会议室接项目、现场排查、夜间重做方案三段分镜，林浩被迫接下烂项目并与夏一曼通宵补救。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

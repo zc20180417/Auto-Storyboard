@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep08",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep08-agent-cli-storyboard.txt",
+  "summary": "第8集含15组分镜，覆盖县局批煤、修车铺寻援堵路、锅炉房对峙三大场景，苏默以红头批文设局初八阻婚车。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "Group 5和Group 13作为新场景首组未配置全景/远景镜头，仅靠组首空间锁定文字描述"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

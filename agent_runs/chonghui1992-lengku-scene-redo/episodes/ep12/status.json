@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep12",
+  "status": "done",
+  "output_name": "EP-12-ep12-agent-cli-storyboard.txt",
+  "summary": "陆行川在现金紧张和设备风险下接急单，通过停机预案与重签条款把风险拆开，最终让客户签字卸货。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

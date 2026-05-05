@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "test_0505-ep05-agent-cli-storyboard.txt",
+  "summary": "林浩在会议中用重做方案稳住客户，接手项目后察觉有人阻挠，回到小院又接到许知禾威胁，决意站起来。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep28",
+  "status": "done",
+  "output_name": "EP-28-ep28-agent-cli-storyboard.txt",
+  "summary": "陆行川在邻县拒绝价格战，转向学校和单位食堂责任链路，用试锅打开邻县渠道回流。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第3组末镜节奏略稳但不阻断产出。",
+    "第4组梅知夏长句信息密度高但语速合规。",
+    "第8组乔南枝说明责任路线信息集中但时长可接受。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

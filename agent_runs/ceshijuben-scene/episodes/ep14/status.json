@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep14",
+  "status": "done",
+  "output_name": "ep14-ep14-agent-cli-storyboard.txt",
+  "summary": "第14集分镜完成，包含赵朵朵亮奖章反击、王大强借高利贷、派出所行贿被拒共9组",
+  "hard_issues_remaining": [],
+  "warnings": ["第8组首镜未用全景交代新场景"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

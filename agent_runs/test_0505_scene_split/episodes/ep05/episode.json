@@ -1,0 +1,8 @@
+{
+  "episode_id": "ep05",
+  "episode_number": 5,
+  "display_name": "test_0505第05集",
+  "series_title": "test_0505",
+  "source_path": "G:\\Auto-Storyboard\\inputs\\test_0505.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_test_0505_scene_split\\test_0505-ep05-agent-cli-storyboard.txt"
+}

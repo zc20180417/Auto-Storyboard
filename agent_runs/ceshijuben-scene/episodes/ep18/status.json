@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep18",
+  "status": "done",
+  "output_name": "ep18-ep18-agent-cli-storyboard.txt",
+  "summary": "第18集分镜完成，包含7组分镜，覆盖大强罐头厂被查封、钱老板跑路、县百货大楼果冻热卖三个场景。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第1组（大强罐头厂门口首个组）缺少全景镜头交代新场景环境",
+    "第4组（豪华办公室首个组）缺少全景镜头交代新场景环境"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

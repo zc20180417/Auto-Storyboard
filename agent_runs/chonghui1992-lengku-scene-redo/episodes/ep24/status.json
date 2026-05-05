@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep24",
+  "status": "done",
+  "output_name": "EP-24-ep24-agent-cli-storyboard.txt",
+  "summary": "投资人实地核验旧冷库、小卖部和二厂改造，最终把估值谈判前提压到银行千万授信。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

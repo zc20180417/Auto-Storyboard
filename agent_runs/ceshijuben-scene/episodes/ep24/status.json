@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep24",
+  "status": "done",
+  "output_name": "ep24-ep24-agent-cli-storyboard.txt",
+  "summary": "第24集分镜完成，共11组。涵盖顾雪带混混堵门、赵朵朵自建玻璃厂反击、顾长海掌掴顾雪、李翠花王大强敲诈顾长海等关键情节。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第1组群体喊话场景中视线未严格指向对方眼睛",
+    "第7组顾长海连续两镜均为近景，同角色景别无差异",
+    "第10组王大强连续两镜均为近景，同角色景别无差异"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

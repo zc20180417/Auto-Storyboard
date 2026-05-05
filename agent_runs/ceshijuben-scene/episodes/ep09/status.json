@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep09",
+  "status": "done",
+  "output_name": "ep09-ep09-agent-cli-storyboard.txt",
+  "summary": "第9集共分10组，覆盖罐头厂门口闹事、局长验瓶、仓库追查内鬼三条场景线，总时长约135秒，无硬错误。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

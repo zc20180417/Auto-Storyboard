@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep01-agent-cli-storyboard.txt",
+  "summary": "第1集共18组，覆盖苏家院子强拆冲突与废弃土屋密谋两个场景，苏默以智退赵宝强并争取到砖厂工作机会，为后续扳倒村霸埋下伏笔。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "部分说话动词不在标准允许列表中（如大喊道、惊呼道、愣道等）",
+    "废弃土屋作为新场景首个组缺少全景/远景交代镜头",
+    "第14组跨越苏家院子和废弃土屋两个场景"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 5
+}

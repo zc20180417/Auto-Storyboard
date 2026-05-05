@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep26",
+  "status": "done",
+  "output_name": "ep26-ep26-agent-cli-storyboard.txt",
+  "summary": "第26集共13组分镜，覆盖顾家密谋、展销会陷害、真相揭露与逮捕三个场景，时长节奏合规，无硬性问题。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "test_0505-ep02-agent-cli-storyboard.txt",
+  "summary": "第2集完成民政局调解室债务条款反转、走廊认亲确认、新协议签字及林浩离场反击。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

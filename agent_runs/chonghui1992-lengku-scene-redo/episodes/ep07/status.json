@@ -1,0 +1,18 @@
+{
+  "episode_id": "ep07",
+  "status": "done",
+  "output_name": "EP-07-ep07-agent-cli-storyboard.txt",
+  "summary": "县里干部贺远桥突查旧冷库，围绕用电、消防、赔付和工人责任连续追问，最终给陆行川三天现场交付期限，陆行川决定重排出入库。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第6组",
+      "rule": "节奏",
+      "note": "陆行川关于县域农产品外运路线的台词约43字/7秒，语速偏快但未超过审核放宽上限。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

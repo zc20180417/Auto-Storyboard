@@ -1,0 +1,23 @@
+{
+  "pass": true,
+  "summary": "ep08整集共7组通过真实审核。已对照script.txt、final.txt、storyboard-generator和storyboard-reviewer规则逐项检查：所有原剧本台词、人物动作、道具信息和场景转换均保留；对话对象明确；组首空间锁定完整；组时长均为10-12秒且时间段连续；短句交锋使用Seedance自动正反打块，未拉长凑时长；未发现新增剧情或模板化描述。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

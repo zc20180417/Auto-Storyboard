@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep19",
+  "status": "done",
+  "output_name": "ep19-ep19-agent-cli-storyboard.txt",
+  "summary": "第19集分镜完成，包含派出所门口家属围攻、废弃码头仓库钱老板落网、罐头厂办公室谋划进军省城三组场景，共13组。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第3组李翠花9字台词标注3秒偏长约1秒",
+    "第12组赵朵朵12字台词标注4秒偏长约1秒"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

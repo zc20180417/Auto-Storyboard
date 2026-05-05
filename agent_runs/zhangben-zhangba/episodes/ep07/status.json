@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep07",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep07-agent-cli-storyboard.txt",
+  "summary": "第7集分镜完成，共20组。scene 7-1砖厂空地6组，scene 7-2县局办事处8组，scene 7-3县局走廊6组。苏默带弟赴县局力争煤配额，从被办事员刘刁难到王局长拍板批煤，剧情完整转化。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "部分组首空间锁定中背景人物的身体朝向可进一步细化"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

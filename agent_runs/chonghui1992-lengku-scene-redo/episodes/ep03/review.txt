@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "整集分镜完整覆盖旧冷库办公室和信用社两场内容，组号连续，时间段连续且均在10-15秒内，关键动作、道具、对话指向和空间锁定符合storyboard-reviewer规则。",
+  "issues": [],
+  "warnings": []
+}

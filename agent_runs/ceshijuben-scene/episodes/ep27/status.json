@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep27",
+  "status": "done",
+  "output_name": "ep27-ep27-agent-cli-storyboard.txt",
+  "summary": "第27集分镜完成，共10组，涵盖书房密谋、大厅对峙、警方收网及赵朵朵终结顾家四条主线。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第7组第4镜语速6字/秒，偏快但可接受"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

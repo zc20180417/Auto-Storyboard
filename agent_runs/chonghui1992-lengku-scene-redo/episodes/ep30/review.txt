@@ -1,0 +1,6 @@
+{
+  "pass": true,
+  "summary": "ep30 assembled final preserves all three source scenes: meeting-room price-risk explanation,开户规则争议与责任链条, and bank-window account opening; global group numbering, 10-15秒组时长、对话指向、空间锁定和自然分镜格式均符合要求。",
+  "issues": [],
+  "warnings": []
+}

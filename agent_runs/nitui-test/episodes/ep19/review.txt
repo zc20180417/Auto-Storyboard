@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "ep19最终稿已逐组对照原剧本、生成规则和当前分镜完成审核，四个场景和全部台词均保留，未发现硬错误。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

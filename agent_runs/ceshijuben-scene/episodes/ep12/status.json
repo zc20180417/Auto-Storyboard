@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep12",
+  "status": "done",
+  "output_name": "ep12-ep12-agent-cli-storyboard.txt",
+  "summary": "ep12共9组分镜，覆盖记者堵门、亮证据、警车抓人、以死相逼、赵朵朵反制五个场景，总镜头数46个",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,12 @@
+﻿{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "EP-02-ep02-agent-cli-storyboard.txt",
+  "summary": "EP02共6组分镜，涵盖小区院子配电箱异常、王婶家门口李虎煽风点火、手机微信群造谣三段剧情，总时长80秒，无硬性问题。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

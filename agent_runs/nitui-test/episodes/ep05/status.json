@@ -1,0 +1,17 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "EP-05-ep05-agent-cli-storyboard.txt",
+  "summary": "第5集分镜审核修复完成。原草稿存在8处无台词镜头超3秒、4处有台词镜头时长超标、1处镜头数不一致等硬性问题。修复方案：统一将4秒无台词镜头压缩至3秒，对话镜头按目标时长收紧，第2组拆分为4镜头以满足组时长要求，第11组镜头数从3修正为4。修复后12组全部通过审核，无硬性问题残留。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "5处对话镜头时长处于边界（差值=2秒），节奏偏松",
+    "无台词镜头几乎全部3秒，缺少2秒快切形成节奏变化",
+    "第2组因约束从3镜头拆为4镜头",
+    "第10组8-11秒动作密度偏高"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 4
+}

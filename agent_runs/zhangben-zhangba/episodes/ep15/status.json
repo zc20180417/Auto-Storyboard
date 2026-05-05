@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep15",
+  "status": "done",
+  "output_name": "我靠一本账本，扳倒村霸-ep15-agent-cli-storyboard.txt",
+  "summary": "第15集讲述钱老板封杀砖厂反遭断砖反噬，亲自登门施压却被苏默以价格翻倍反击，剧情紧凑，共分9组。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第6组跨场景衔接由 narration 镜头承担空间转换",
+    "第4组包工头首句语速偏快（3.5字/秒）"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

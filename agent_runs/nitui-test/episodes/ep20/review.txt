@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "ep20整集final已按storyboard-reviewer对照原剧本和当前分镜完成真实审核，全部5组无硬错误。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

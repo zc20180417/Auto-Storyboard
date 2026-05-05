@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "ep01-ep01-agent-cli-storyboard.txt",
+  "summary": "第1集分镜完成，含闪回弃婴与集市救人两场景，共9组，时长与对话指向合规",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

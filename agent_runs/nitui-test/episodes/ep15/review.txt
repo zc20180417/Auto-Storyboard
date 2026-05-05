@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "ep15 组装稿完整保留林家大院被质疑、现金分红证明、村民领钱和钱厂长觊觎接管的剧情，审核未发现硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}

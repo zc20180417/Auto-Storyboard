@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep21",
+  "status": "done",
+  "output_name": "ep21-ep21-agent-cli-storyboard.txt",
+  "summary": "第21集分镜完成，共12组，覆盖省报主编室对峙、百货大楼执法、罐头厂神秘来客三个场景。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组孙老板'你诈我！'语速偏慢（2字/秒）",
+    "第5组、第9组存在跨场景合并"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

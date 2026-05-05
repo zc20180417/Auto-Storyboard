@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "test_0505-ep05-agent-cli-storyboard.txt",
+  "summary": "林浩在会议室用重做方案争取到三天机会，门口接手项目后得知有人打招呼阻拦，回到小院又接到许知禾威胁电话，决心重新站起来。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

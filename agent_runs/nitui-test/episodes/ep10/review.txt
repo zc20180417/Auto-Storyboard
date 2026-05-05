@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "summary": "整集 final.txt 已对照 ep10 原剧本、生成 skill 和 reviewer skill 完成真实审核，所有原始动作与台词均纳入分镜，连续短句按 Seedance 自动正反打审核通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked"
+  },
+  "issues": [],
+  "warnings": []
+}
