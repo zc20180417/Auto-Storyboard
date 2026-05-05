@@ -2,7 +2,20 @@
 
 本文件用于固化已经验证过的“文件工作区式 Agent 工作流”，避免后续 agent 自作主张降级成脚本批量生成、伪造审核、或把多集合并到同一个上下文里。
 
-如果本文件与项目脚本生成的 `NEXT_STEPS.md` / `TASK.md` 冲突，以当前 run 的 `NEXT_STEPS.md` / `TASK.md` 为准，因为它们是该工作区的具体任务书。
+如果本文件与项目脚本生成的 `DISPATCH_PROMPT.md` / `NEXT_STEPS.md` / `TASK.md` 冲突，以当前 run 的 `DISPATCH_PROMPT.md` / `NEXT_STEPS.md` / `TASK.md` 为准，因为它们是该工作区的具体任务书。
+
+## 启动前硬检查
+
+如果当前任务包含 2 集以上 episode，当前会话默认是 dispatcher。
+
+dispatcher 禁止直接生产分镜正文。
+dispatcher 禁止顺序处理多个 episode。
+dispatcher 禁止写入 `episodes/ep*/draft.txt`、`episodes/ep*/final.txt`、`episodes/ep*/review.txt`、`episodes/ep*/status.json`。
+dispatcher 必须创建 subagents/workers 并发分发，每个 worker 默认处理 1 集。
+
+如果当前环境不能创建 subagent/worker，或者创建 worker 需要用户授权，必须立即停止并向用户请求分发授权，或按当前 run 的 `DISPATCH_PROMPT.md` 输出 `NEED_USER_DISPATCH` 和待分发 prompt 路径。
+
+不得因为不能创建 subagent/worker，就降级为主线程顺序处理 episode。
 
 ## 先读这些文件
 
@@ -63,10 +76,11 @@ worker 处理的每个 episode 都必须：
 1. 读取自己的 `TASK.md`、`agent_prompt.md`、`script.txt`、两份标准 skill。
 2. 按 `TASK.md` 的 `Mode` 执行，不要自行改模式。
 3. 使用 `storyboard-generator` 生成分镜草稿。
-4. 使用 `storyboard-reviewer` 做真实审核。
+4. 使用 `storyboard-reviewer` 做真实审核，审核必须对照原剧本和当前分镜逐项检查。
 5. 只修 reviewer 指出的 hard issues，不做无关重写。
-6. 写出该模式要求的全部文件。
-7. 运行 `TASK.md` 中的 `validate-episode` 命令直到通过，或在确实无法修复时标记 `needs_review`。
+6. 修复后必须再次使用 `storyboard-reviewer` 复审，不能只跑格式校验。
+7. 写出该模式要求的全部文件。
+8. 运行 `TASK.md` 中的 `validate-episode` 命令直到通过，或在确实无法修复时标记 `needs_review`。
 
 `single` 模式要求：
 
@@ -83,7 +97,19 @@ worker 处理的每个 episode 都必须：
 - `review.txt`
 - `status.json`
 
+### Reviewer 硬门槛
+
 `review.txt` 和 `segments/segXX/review.md` 必须是真实审核结果，不能写占位文本、JSON、或伪造通过状态。`validate-episode` 只是客观格式校验和 reviewer 证据校验，不能替代真实审核。
+
+真实审核必须满足以下证据要求：
+
+- reviewer 必须读取并对照同一 episode 的 `script.txt`、当前 `final.txt`，以及两份标准 skill。
+- `scene` 模式下，每个 `segments/segXX/review.md` 必须是该 segment 草稿的真实 reviewer JSON；整集 `review.txt` 必须是组装后 `final.txt` 的真实 reviewer JSON。
+- reviewer 至少检查：原剧本台词是否漏删改、人物关系是否错置、对话对象是否明确、组首空间锁定是否完整、组尾衔接是否自然、组时长和镜头时长是否符合规则、是否新增剧情或模板化描述。
+- 如果 reviewer 没有逐项审查，不允许写 `pass: true`；应写 `status: "needs_review"`，并在 `hard_issues_remaining` 中说明“reviewer 未完成”。
+- 如果 reviewer 返回 hard issues，必须先局部修复对应组，再复审；复审前不允许把 `status.json` 写成 `done`。
+- 不允许把 `validate-episode`、`SUMMARY.md`、脚本检查、人工粗看、或空 issues JSON 当作 reviewer 结果。
+- 交付说明必须明确写出：哪些 episode 已执行真实 reviewer，哪些 episode 修过 hard issues，哪些仍为 `needs_review`。
 
 ## Python / 脚本边界
 
@@ -118,6 +144,13 @@ worker 处理的每个 episode 都必须：
 普通空间 / 环境交代镜头通常 2 秒；只有原剧本明确存在连续动作时才可到 3 秒。不能用 3 秒环境镜头批量凑组时长。
 
 ## 校验与收集
+
+收集前必须先确认每集已完成真实 reviewer：
+
+- 查看每集 `review.txt`，确认它是按 `storyboard-reviewer` 对照原剧本和 `final.txt` 生成的审核 JSON。
+- 查看 `status.json`，确认 `reviewer_source` 为 `storyboard-reviewer`，且 `reviewer_pass`、`reviewer_issues_count`、`reviewer_warnings_count` 与 `review.txt` 一致。
+- 如果发现 `review.txt` 是占位、空 issues 伪通过、只来自脚本校验、或没有真实审稿过程，必须停止收集，重新审核该 episode。
+- 只有真实 reviewer 通过或明确标记 `needs_review` 的 episode，才能进入收集；不能把未审核 episode 包装成 `done`。
 
 校验单集：
 

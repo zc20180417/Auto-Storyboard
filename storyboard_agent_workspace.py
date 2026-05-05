@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import shutil
 import sys
@@ -369,11 +370,16 @@ def write_runner_scripts(
             stale_path.unlink()
 
     task_lines = []
-    for task in tasks:
+    initial_worker_lines = []
+    pending_prompt_lines = []
+    for index, task in enumerate(tasks, start=1):
         task_lines.append(
-            f"- `{task['episode_id']}`: open `{task['prompt_file']}` and process it as an independent episode. "
-            f"Required outputs are under `{task['episode_dir']}`."
+            f"- `{task['episode_id']}`: dispatch `{task['prompt_file']}` to one worker. "
+            f"Worker writes only under `{task['episode_dir']}`."
         )
+        pending_prompt_lines.append(f"- `{task['prompt_file']}`")
+        if index <= parallelism:
+            initial_worker_lines.append(f"- worker {index}: `{task['prompt_file']}`")
 
     codex_model_arg = f" -m {model}" if model else ""
     sample_task = tasks[0] if tasks else None
@@ -393,20 +399,11 @@ def write_runner_scripts(
     tasks_markdown = "\n".join(task_lines)
 
     if agent == "kimi":
-        dispatch_text = (
-            "Use the current Kimi Code session or Kimi Code Agent tools to process episodes. "
-            "Quality is checked per episode. Dispatch can use one episode per worker, or two adjacent short/simple episodes per worker when the scripts are small."
-        )
+        worker_capability = "Kimi Code Agent tools"
     elif agent == "qwen":
-        dispatch_text = (
-            "Use Qwen Code to process episodes. "
-            "Quality is checked per episode. Dispatch can use one episode per worker, or two adjacent short/simple episodes per worker when the scripts are small."
-        )
+        worker_capability = "Qwen worker/subagent tools"
     else:
-        dispatch_text = (
-            "Use the current Codex session or Codex subagents to process episodes. "
-            "Quality is checked per episode. Dispatch can use one episode per worker, or two adjacent short/simple episodes per worker when the scripts are small."
-        )
+        worker_capability = "Codex subagents/workers"
 
     manual_cli_blocks = []
     if codex_example:
@@ -419,20 +416,46 @@ def write_runner_scripts(
 
     write_utf8(
         run_dir / "NEXT_STEPS.md",
-        f"""# Agent Dispatch
+        f"""# Dispatcher Instructions
 
 Python is intentionally limited to prepare / validate / collect.
 It must not launch Codex CLI, Qwen CLI, Kimi Code, or any model process.
 
-## Recommended Dispatch
+Do not treat this file as a production task list.
+Give `DISPATCH_PROMPT.md` to the host agent. The host agent is a dispatcher only and must not write episode files itself.
 
-{dispatch_text}
-Run up to {parallelism} workers in parallel if the host agent supports safe parallel work.
-When one worker handles two episodes, finish generation, review, repair, and validation for the first episode before starting the second. Never merge reviews or outputs across episodes.
+## Hard Stop
+
+- Main thread is the dispatcher, not a storyboard production worker.
+- Main thread must not directly process any episode.
+- Main thread must not open `episodes/ep*/script.txt` and start writing storyboard content.
+- Main thread must not write `episodes/ep*/draft.txt`, `final.txt`, `review.txt`, or `status.json`.
+- Main thread's only job is to create subagents/workers and dispatch episode prompts.
+- If the current environment cannot create subagents/workers, or needs user authorization before creating them, immediately stop and reply `NEED_USER_DISPATCH` with the pending prompt list.
+- Do not downgrade to sequential main-thread episode processing.
+
+## Required Dispatch
+
+Use {worker_capability}.
+Run up to {parallelism} workers in parallel.
+Default to one episode per worker.
+Use two episodes per worker only for short/simple episodes and only after explicit user approval.
+When one worker handles two episodes, it must fully finish generation, review, repair, and validation for the first episode before starting the second.
+Never merge reviews or outputs across episodes.
+
+Initial worker wave:
+
+{chr(10).join(initial_worker_lines) if initial_worker_lines else "- No episodes found."}
+
+When any worker finishes, dispatch the next unfinished episode prompt.
 
 ## Episode Tasks
 
 {tasks_markdown}
+
+## Pending Prompt List
+
+{chr(10).join(pending_prompt_lines) if pending_prompt_lines else "- No episodes found."}
 
 ## Manual CLI Example
 
@@ -447,6 +470,55 @@ After agents finish writing `final.txt` and `status.json` in each episode direct
 ```powershell
 .\\COLLECT_RESULTS.ps1
 ```
+""",
+    )
+
+    write_utf8(
+        run_dir / "DISPATCH_PROMPT.md",
+        f"""# Auto-Storyboard Dispatcher Prompt
+
+You are the dispatcher, not a storyboard production worker.
+
+Your only tasks:
+1. Read this file.
+2. Create subagents/workers for the episode prompts below.
+3. Wait for workers to finish, then run collection and summary checks.
+
+## Absolute Prohibitions
+
+- Do not directly generate any storyboard body in the main thread.
+- Do not process `ep01`, `ep02`, `ep03`, or any other episode in the main thread.
+- Do not open `episodes/ep*/script.txt` and begin production work.
+- Do not write `episodes/ep*/draft.txt`, `episodes/ep*/final.txt`, `episodes/ep*/review.txt`, or `episodes/ep*/status.json` from the main thread.
+- Do not sequentially process all episodes yourself.
+- If you cannot create subagents/workers, immediately output `NEED_USER_DISPATCH` and list the prompt paths below.
+- Do not downgrade to sequential main-thread episode processing.
+
+## Worker Dispatch
+
+Use {worker_capability}.
+Run up to {parallelism} workers in parallel.
+Default to one episode per worker.
+Use two episodes per worker only for short/simple episodes and only after explicit user approval.
+When one worker handles two episodes, it must complete the first episode's generation, real review, hard-issue repair, re-review, and validation before starting the second.
+
+Initial worker wave:
+
+{chr(10).join(initial_worker_lines) if initial_worker_lines else "- No episodes found."}
+
+All episode prompts:
+
+{chr(10).join(pending_prompt_lines) if pending_prompt_lines else "- No episodes found."}
+
+## After Workers Finish
+
+After workers finish writing `final.txt`, `review.txt`, and `status.json` in each episode directory, run:
+
+```powershell
+.\\COLLECT_RESULTS.ps1
+```
+
+If any episode is unfinished or validation fails, dispatch only that episode's `agent_prompt.md` to a worker for focused repair.
 """,
     )
 
@@ -502,6 +574,60 @@ SCENE_ESTABLISHING_RE = re.compile(
     r"镜头描述[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)[\s\S]{0,160}?"
     r"(?:(?:时间段[：:]\s*)?(?P<start>\d{1,3})\s*[-－—–到至]\s*(?P<end>\d{1,3})\s*秒|"
     r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3})\s*秒)"
+)
+DIALOGUE_QUOTE_RE = re.compile(r"[“\"]([^”\"]+)[”\"]")
+DIALOGUE_PUNCT_RE = re.compile(r"[，。！？、；：,.!?;:\s“”\"'（）()《》【】\[\]—…]")
+EMOTIONAL_DIALOGUE_MARKERS = (
+    "喊",
+    "怒",
+    "吼",
+    "质问",
+    "反问",
+    "哭",
+    "哭喊",
+    "哽咽",
+    "发飙",
+    "崩溃",
+    "冷笑",
+    "讥讽",
+    "咬牙",
+    "厉声",
+    "急切",
+    "急促",
+    "紧急",
+    "反讽",
+    "嘲讽",
+    "爽点",
+)
+SLOW_DIALOGUE_MARKERS = (
+    "缓慢",
+    "停顿",
+    "哽咽",
+    "一字一顿",
+    "虚弱",
+    "无力",
+    "低声艰难",
+    "气若游丝",
+    "喘着气",
+)
+NECESSARY_LONG_ACTION_MARKERS = (
+    "走到",
+    "跑到",
+    "冲到",
+    "穿过",
+    "翻过",
+    "爬到",
+    "蹲下",
+    "跪下",
+    "站起身",
+    "坐下",
+    "转身离开",
+    "推开门",
+    "抱起",
+    "放下",
+    "搬起",
+    "拖着",
+    "背起",
 )
 
 
@@ -607,6 +733,87 @@ def _extract_legacy_shot_durations(block: str, shot_matches: list[re.Match]) -> 
     return durations, issues
 
 
+def _effective_dialogue_chars(text: str) -> int:
+    quoted = "".join(DIALOGUE_QUOTE_RE.findall(text))
+    return len(DIALOGUE_PUNCT_RE.sub("", quoted))
+
+
+def _has_any_marker(text: str, markers: tuple[str, ...]) -> bool:
+    return any(marker in text for marker in markers)
+
+
+def _iter_storyboard_shots(content: str) -> list[tuple[int | None, str, int, str]]:
+    shots: list[tuple[int | None, str, int, str]] = []
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    for index, group_match in enumerate(group_matches):
+        group_number = _group_number(group_match.group("num"))
+        block_start = group_match.end()
+        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
+        block = content[block_start:block_end]
+
+        time_matches = list(CLEAN_SHOT_TIME_RANGE_LINE_RE.finditer(block))
+        if time_matches:
+            for shot_index, time_match in enumerate(time_matches):
+                start = int(time_match.group("start"))
+                end = int(time_match.group("end"))
+                shot_start = time_match.end()
+                shot_end = time_matches[shot_index + 1].start() if shot_index + 1 < len(time_matches) else len(block)
+                label = f"第{group_number or '?'}组 {start}-{end}秒"
+                shots.append((group_number, label, end - start, block[shot_start:shot_end]))
+            continue
+
+        legacy_shot_matches = list(CLEAN_LEGACY_SHOT_RE.finditer(block))
+        for shot_index, shot_match in enumerate(legacy_shot_matches):
+            shot_label = f"{shot_match.group('group')}-{shot_match.group('shot')}"
+            shot_start = shot_match.end()
+            shot_end = legacy_shot_matches[shot_index + 1].start() if shot_index + 1 < len(legacy_shot_matches) else len(block)
+            shot_block = block[shot_start:shot_end]
+            seconds_match = CLEAN_SHOT_SECONDS_RE.search(shot_block)
+            if seconds_match:
+                shots.append((group_number, shot_label, int(seconds_match.group("seconds")), shot_block))
+
+    return shots
+
+
+def validate_dialogue_pacing_floor(content: str) -> list[str]:
+    issues: list[str] = []
+    for _group_number, shot_label, seconds, shot_text in _iter_storyboard_shots(content):
+        if seconds <= 0:
+            continue
+
+        chars = _effective_dialogue_chars(shot_text)
+        if chars == 0:
+            continue
+
+        cps = chars / seconds
+        is_emotional = _has_any_marker(shot_text, EMOTIONAL_DIALOGUE_MARKERS)
+        is_slow = _has_any_marker(shot_text, SLOW_DIALOGUE_MARKERS)
+        has_necessary_action = _has_any_marker(shot_text, NECESSARY_LONG_ACTION_MARKERS)
+        target_speed = 6.0 if is_emotional else 5.2
+        target_seconds = math.ceil(chars / target_speed)
+
+        if seconds >= 8 and not (is_slow or has_necessary_action):
+            issues.append(
+                f"{shot_label} 有台词镜头 {seconds} 秒过长；有效字数 {chars}，字秒比 {cps:.1f}。"
+                "除非原剧本明确慢语或必要长动作，否则 ≥8 秒台词镜头应拆成正反打、反应镜头或画外音反打。"
+            )
+            continue
+
+        # Tiny acknowledgements like “好” or “知道了” often ride on the action beat.
+        # Keep the deterministic slow-dialogue gate focused on substantive dialogue.
+        if chars < 12:
+            continue
+
+        min_cps = 5.2 if is_emotional else 4.5
+        if cps < min_cps and not is_slow and not (has_necessary_action and not is_emotional):
+            issues.append(
+                f"{shot_label} 台词节奏偏慢；有效字数 {chars}，镜头 {seconds} 秒，字秒比 {cps:.1f}，"
+                f"低于 {min_cps:.1f} 字/秒。请缩短到约 {target_seconds} 秒，或拆成正反打/反应镜头承载。"
+            )
+
+    return issues
+
+
 def validate_clean_storyboard_format(content: str) -> list[str]:
     issues: list[str] = []
     if MACHINE_TAG_RE.search(content):
@@ -696,6 +903,7 @@ def validate_storyboard_quality_floor(content: str) -> list[str]:
                 f"普通空间/环境交代镜头标为{seconds}秒；生产规则要求通常2秒，"
                 "只有原剧本明确连续动作时才可到3秒。"
             )
+    issues.extend(validate_dialogue_pacing_floor(content))
     return issues
 
 
