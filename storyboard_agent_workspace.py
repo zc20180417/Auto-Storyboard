@@ -242,6 +242,7 @@ Do not prefill `reviewer_pass=true` or issue/warning counts before writing the r
 Use `status: "needs_review"` only if hard issues remain after two focused repair attempts.
 `review.txt` and `segments/segXX/review.md` must contain real raw JSON returned by `storyboard-reviewer`; clean-format validation is not a substitute for reviewer审稿 and placeholder review JSON will fail validation.
 Reviewer JSON must include non-empty `checked_groups` and full `audit_coverage` fields as required by `storyboard-reviewer/SKILL.md`.
+Reviewer JSON must also include at least 3 `spot_checks` items with `group`, `type`, and `evidence`, and `status.json` reviewer fields must stay consistent with `review.txt`.
 
 ## Important Constraints
 - Rules live in the two `SKILL.md` files. Do not duplicate or reinterpret them here.
@@ -960,6 +961,7 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
         "summary": str,
         "checked_groups": list,
         "audit_coverage": dict,
+        "spot_checks": list,
         "issues": list,
         "warnings": list,
     }
@@ -990,7 +992,25 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
         if audit_coverage.get(key) != "checked":
             return None, f"{path.name} audit_coverage missing `{key}`"
 
+    spot_checks = payload["spot_checks"]
+    if len(spot_checks) < 3:
+        return None, f"{path.name} must include at least 3 reviewer spot_checks"
+    for index, item in enumerate(spot_checks, start=1):
+        if not isinstance(item, dict):
+            return None, f"{path.name} spot_checks[{index}] must be an object"
+        if not item.get("group") or not item.get("type") or not item.get("evidence"):
+            return None, f"{path.name} spot_checks[{index}] missing group/type/evidence"
+
     return payload, None
+
+
+def _storyboard_review_passed(payload: dict | None) -> bool:
+    return (
+        payload is not None
+        and payload.get("pass") is True
+        and isinstance(payload.get("issues"), list)
+        and len(payload["issues"]) == 0
+    )
 
 
 def _storyboard_group_labels(content: str) -> list[str]:
@@ -1297,7 +1317,11 @@ def validate_episode(args: argparse.Namespace) -> int:
     clean_issues = validate_clean_storyboard_format(content)
     quality_issues = validate_storyboard_quality_floor(content)
     review_issues = validate_review_artifacts(episode_dir)
-    issues = clean_issues + quality_issues + review_issues
+    review_payload, review_error = _read_review_json(episode_dir / "review.txt")
+    review_pass_issues: list[str] = []
+    if review_error is None and not _storyboard_review_passed(review_payload):
+        review_pass_issues.append("storyboard_reviewer: reviewer_not_passed")
+    issues = clean_issues + quality_issues + review_issues + review_pass_issues
     report_lines = ["# Episode Validation", ""]
     if issues:
         report_lines.append("status: failed")
@@ -1313,6 +1337,10 @@ def validate_episode(args: argparse.Namespace) -> int:
         if review_issues:
             report_lines.append("## Storyboard Reviewer Evidence")
             report_lines.extend(f"- {issue}" for issue in review_issues)
+            report_lines.append("")
+        if review_pass_issues:
+            report_lines.append("## Storyboard Reviewer Pass")
+            report_lines.extend(f"- {issue}" for issue in review_pass_issues)
         write_utf8(episode_dir / "protocol_report.md", "\n".join(report_lines))
         print(f"[failed] {len(issues)} validation issue(s)")
         for issue in issues:
@@ -1323,6 +1351,7 @@ def validate_episode(args: argparse.Namespace) -> int:
     report_lines.append("")
     report_lines.append("- clean_format: passed")
     report_lines.append("- quality_floor: passed")
+    report_lines.append("- review_evidence: passed")
     report_lines.append("- storyboard_reviewer: passed")
     write_utf8(episode_dir / "protocol_report.md", "\n".join(report_lines))
     print("[passed] episode validation")
@@ -1358,6 +1387,8 @@ def collect_run(args: argparse.Namespace) -> int:
         quality_issues = validate_storyboard_quality_floor(content)
         review_issues = validate_review_artifacts(episode_dir)
         issues = clean_issues + quality_issues + review_issues
+        review_payload, review_error = _read_review_json(episode_dir / "review.txt")
+        review_passed = review_error is None and _storyboard_review_passed(review_payload)
         status = "unknown"
         if status_path.is_file():
             try:
@@ -1366,19 +1397,33 @@ def collect_run(args: argparse.Namespace) -> int:
                 status = "invalid status.json"
         if issues:
             failed += 1
-            if output_path.exists():
-                output_path.unlink()
             summary_lines.append(f"- status: {status}, validation_failed")
             summary_lines.extend(f"- clean_format: {issue}" for issue in clean_issues[:8])
             summary_lines.extend(f"- quality_floor: {issue}" for issue in quality_issues[:8])
             summary_lines.extend(f"- storyboard_reviewer: {issue}" for issue in review_issues[:8])
             summary_lines.append("- copied: skipped because validation failed")
+            summary_lines.append("- existing_output: not modified")
             summary_lines.append("")
             continue
-        else:
-            write_utf8(output_path, content)
-            copied += 1
-            summary_lines.append(f"- status: {status}, clean_format_passed, quality_floor_passed, storyboard_reviewer_passed")
+        if status != "done" or not review_passed:
+            failed += 1
+            summary_lines.append(f"- status: {status}, reviewer_not_passed")
+            if review_error:
+                summary_lines.append(f"- review_evidence: failed: {review_error}")
+            else:
+                summary_lines.append("- review_evidence: passed")
+                summary_lines.append("- storyboard_reviewer: failed")
+            summary_lines.append("- copied: skipped because status is not done or storyboard reviewer did not pass")
+            summary_lines.append("- existing_output: not modified")
+            summary_lines.append("")
+            continue
+
+        write_utf8(output_path, content)
+        copied += 1
+        summary_lines.append(
+            f"- status: {status}, clean_format_passed, quality_floor_passed, "
+            f"review_evidence_passed, storyboard_reviewer_passed"
+        )
         if changes:
             summary_lines.append(f"- clean_numbering_fixed: {'; '.join(changes[:8])}")
         summary_lines.append(f"- copied: `{output_path}`")
