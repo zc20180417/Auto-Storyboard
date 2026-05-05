@@ -61,6 +61,54 @@ description: Review vertical storyboard drafts against the source script, natura
 - 最终分镜正文中出现“Seedance 可”“由 Seedance”“Seedance 自动”“Seedance自动”“自动正反打”“自动分镜”等模型说明词，属于格式/提示词污染 hard issue；应改成自然画面描述。
 - 对同类重复问题要合并，不要把整集几十个近似问题逐条展开；优先返回最能代表问题的 5 条。
 
+语义审稿必查项：
+
+reviewer 必须逐组检查以下语义问题，并在 spot_checks、semantic_checks、issues 或 warnings 中给出具体证据。
+
+### 1. 人物可用性检查
+
+检查本组内所有说话、行动、被攻击、被看见或推动剧情的人物，是否在组首空间锁定中拥有明确位置、身体朝向和可见状态，或是否在说话/行动前有明确入场、揭示、画外音、电话、屏幕画面等来源。
+
+如果人物在组首仅被写成“尚未进入/尚未出现/暂未到达”，但后续直接参与关键动作或台词，应判为 character_availability 或 space_locking issue。可接受的写法是“位于通道暗处、门后阴影、车辆遮挡处、远处人群后方，暂未被对手注意”等可生成位置。
+
+### 2. 组间连续性检查
+
+如果相邻两组发生在同一物理空间、同一时间段内，检查上一组组尾状态与下一组组首空间锁定是否兼容。
+
+重点检查：
+- 车内/车外、屋内/屋外、站立/倒地等人物位置状态。
+- 门开/门关、车窗完整/碎裂、手铐是否已锁、箱包/武器/手机在谁手里。
+- 人物是否被控制、押送、倒地、离开。
+- 关键位置是否突然跳变。
+
+若缺少必要过渡动作，判为 handoff_continuity issue。
+
+### 3. 可视化检查
+
+检查最终稿是否把不可直接生成的气味、心理判断、抽象概念当成主要画面。
+
+如果不可视信息没有被转译成可见动作、表情、道具、光影、声音或台词，应判 warning；如果该信息承载关键剧情，应判 hard issue。典型例子：“药香”应转译为药叶起伏、花穗受光、药包码放、人物深吸气后的表情；“压迫感”应转译为逼近、遮挡退路、对方后退、手指攥紧。
+
+### 4. 自然分镜语言检查
+
+最终稿必须是自然画面描述。内部工作流词、模型说明词、规则说明词不得进入正文。
+
+如果出现“Seedance 可”“由模型自动”“自动正反打”“自动分镜”“模型会处理”“本段用于”“规则要求”等说明，应判 prompt_pollution 或 format issue。
+
+### 5. 单组物理空间检查
+
+每组默认只包含一个主要物理空间。如果同组跨越两个主要物理空间，必须明确是蒙太奇、回忆、片尾意象、屏幕画面或主观想象。否则判 space_locking hard issue。
+
+稳定问题 taxonomy：
+
+- character_availability：本组关键人物没有在组首或行动前获得可生成位置/来源。
+- handoff_continuity：相邻同空间组的组尾与下一组组首不兼容。
+- filmability：不可视信息未转译成可见/可听信息。
+- prompt_pollution：模型说明词、内部工作流词或规则说明词进入最终正文。
+- space_locking：单组物理空间混乱、跨场景硬切、组首空间锁定不足。
+- dialogue_pacing：台词节奏过慢、过快、短句凑时长或长台词未拆。
+- script_fidelity：删减、错置、改写原剧本关键台词、动作、道具或人物关系。
+
 输出要求：
 - 只返回 JSON
 - 不要输出 markdown
@@ -72,6 +120,8 @@ description: Review vertical storyboard drafts against the source script, natura
 - `checked_groups` 必须列出本次实际审过的全部组别，例如 `["第1组", "第2组"]`，不能留空，不能只写“全部”。
 - `audit_coverage` 六项必须全部写成 `"checked"`，表示已逐项检查：原剧本忠实度、对话指向、时长数学、台词节奏、空间锁定、格式。
 - `spot_checks` 必须至少 3 条；即使 `pass=true`，也必须给出代表性审核证据，覆盖台词节奏、空间锁定、原剧本忠实度等关键维度。每条必须包含 `group`、`type`、`evidence`。
+- `semantic_checks` 应覆盖本次最关键的语义审稿点；每条必须包含 `group`、`type`、`result`、`evidence`、`fix_instruction`。`type` 使用上方稳定 taxonomy。`result` 使用 `pass`、`warning` 或 `issue`。
+- `spot_checks` 和 `semantic_checks` 的 evidence 不能只写“已检查/符合规则”，必须引用具体组别、人物、道具、动作、空间或台词作为证据。
 
 JSON 结构如下：
 {
@@ -84,7 +134,10 @@ JSON 结构如下：
     "timing_math": "checked",
     "dialogue_pacing": "checked",
     "space_locking": "checked",
-    "format": "checked"
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
   },
   "spot_checks": [
     {
@@ -103,11 +156,34 @@ JSON 结构如下：
       "evidence": "说明关键台词、动作、道具、人物关系是否保留。"
     }
   ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "说明本组关键人物在组首或行动前如何获得可生成位置/来源。",
+      "fix_instruction": "若不通过，说明应补充的位置、入场、揭示或画外来源。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "说明上一组组尾与本组组首的人物位置、道具状态或门窗状态如何连续。",
+      "fix_instruction": "若不通过，说明应在哪个组尾或组首补过渡动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "说明不可视信息是否已转译为可见动作、道具、表情、光影、声音或台词。",
+      "fix_instruction": "若不通过，说明应替换成哪些可拍细节。"
+    }
+  ],
   "issues": [
     {
       "severity": "hard",
       "group": "第3组",
-      "rule": "时长计算",
+      "rule": "dialogue_pacing",
       "problem": "具体问题",
       "evidence": "具体证据",
       "fix": "可执行修改建议"
