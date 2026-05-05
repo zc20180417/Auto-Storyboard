@@ -66,6 +66,7 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - 只存在不阻断生产的提醒时，`pass=true`，提醒放入 `warnings`。
 - `issues` 最多 8 条，优先列最影响生产的代表性问题；同类重复问题合并。
 - 即使 `pass=true`，也必须给出具体 `spot_checks` 和 `semantic_checks` 证据，不能只写“已检查，符合规则”。
+- `semantic_checks` 至少 5 条。`pass=true` 时也必须覆盖：重复归并/不必要再生成、状态建模、bible 一致性、提示词忠实度、时间段准确性或 xlsx readiness。
 - 不允许把 Excel 转换成功当作语义审核通过。转换只证明表格客观可读，不证明资产选择正确。
 
 ## 输出要求

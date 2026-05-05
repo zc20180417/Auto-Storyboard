@@ -210,6 +210,7 @@ agent_runs\<run-name>\asset_bible.md
 
 - `asset_review.json` 必须来自 `asset-reviewer` 对照 `final.txt`、`assets.md`、`asset_bible.md` 和两份资产 skill 的真实审核。
 - 如果 reviewer 返回 hard issues，必须局部修复后复审，不能只跑 Excel 转换。
+- 转换 Excel 后必须运行 `node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir>` 做机械门禁校验。
 - 只有 `asset_status.json` 中 `status=done`、`reviewer_source=asset-reviewer`、`reviewer_pass=true`、`reviewer_issues_count=0` 的 episode 可以进入正式资产收集。
 
 资产阶段调度建议：
@@ -217,7 +218,7 @@ agent_runs\<run-name>\asset_bible.md
 - 默认 3 集 / worker。
 - 单集短、复用度高、全局设定稳定时可用 4 集 / worker。
 - 不要超过 4 集 / worker，避免资产表过长后漏道具或串镜号。
-- 每个 worker 必须逐集闭环：生成 `assets.md`，用 `asset-reviewer` 真实审核，修复 hard issues 并复审，通过后写 `asset_status.json`，再用脚本转换 `assets.xlsx`，然后进入下一集。
+- 每个 worker 必须逐集闭环：生成 `assets.md`，用 `asset-reviewer` 真实审核，修复 hard issues 并复审，通过后写 `asset_status.json`，再用脚本转换 `assets.xlsx`，运行 `validate-assets.mjs`，然后进入下一集。
 - `assets.xlsx` 由本地脚本从 `assets.md` 转换，不额外消耗模型 token。
 
 ## 生产审核口径

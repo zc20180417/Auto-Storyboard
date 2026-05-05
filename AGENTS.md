@@ -183,6 +183,7 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 - `适用镜号` 必须来自分镜原文，不得杜撰。
 - 资产抽取不得替代分镜审核，也不得改变分镜生产结果。
 - `asset_review.json` 必须来自 `asset-reviewer` 对照 `final.txt`、`assets.md`、`asset_bible.md` 和相关 skill 的真实审核；不能用 Excel 转换、脚本检查或空 issues JSON 伪造通过。
+- 转换 Excel 后必须运行 `node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir>` 做机械门禁校验。
 - 只有 `asset_status.json` 中 `status=done`、`reviewer_source=asset-reviewer`、`reviewer_pass=true`、`reviewer_issues_count=0` 的资产可以收集。
 
 资产阶段调度规则：
@@ -191,7 +192,7 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 - 默认推荐：3 集 / worker。
 - 单集短、场景和人物复用度高、前 1-2 个资产 worker 结果稳定后，可用 4 集 / worker。
 - 未经用户明确批准，不要超过 4 集 / worker。
-- 同一个 worker 处理 3-4 集时，必须逐集闭环：先完成某集 `assets.md`，用 `asset-reviewer` 审核，局部修复 hard issues 并复审，写 `asset_status.json`，转换 `assets.xlsx`，再处理下一集。
+- 同一个 worker 处理 3-4 集时，必须逐集闭环：先完成某集 `assets.md`，用 `asset-reviewer` 审核，局部修复 hard issues 并复审，写 `asset_status.json`，转换 `assets.xlsx`，运行 `validate-assets.mjs`，再处理下一集。
 - worker 可以读取全局 `asset_bible.md`，但不要并发写它；新增人物/服装/场景/道具在 `assets.md`、`asset_status.json` 或交付说明中标记，最后由主线程统一合并。
 
 ## 当前生产参考

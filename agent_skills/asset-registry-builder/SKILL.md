@@ -19,7 +19,7 @@ description: Merge existing per-episode asset tables into a global asset registr
 默认输出到当前资产工作区：
 
 - `global_asset_registry.md`：全局基础资产和状态资产库。
-- `global_asset_registry.xlsx`：由 Markdown 转换得到的 Excel。
+- `global_asset_registry.xlsx`：由 Markdown 转换得到的 Excel，使用 `assets-md-to-xlsx.mjs --mode=registry` 生成。
 - `episodes/epXX/episode_asset_usage.md`：每集资产使用索引和新增状态。
 - `ASSET_REGISTRY_MERGE_REPORT.md`：归并说明，列出高置信归并、低置信冲突和需要人工确认项。
 
@@ -41,6 +41,12 @@ description: Merge existing per-episode asset tables into a global asset registr
 4. 为每集输出 `episode_asset_usage.md`，只保留复用资产索引、新增状态、新增基础资产、关键状态摘要和不入库元素。
 5. 对低置信冲突不要硬合并；写入 `ASSET_REGISTRY_MERGE_REPORT.md` 的“需要人工确认”。
 6. 使用 `asset-reviewer` 的重复归并和状态拆分规则自查一次，不要把 Excel 转换当作审核。
+
+转换全局资产库 Excel：
+
+```powershell
+node .\agent_skills\asset-extractor\scripts\assets-md-to-xlsx.mjs <global_asset_registry.md> <global_asset_registry.xlsx> --mode=registry
+```
 
 ## `global_asset_registry.md` 结构
 

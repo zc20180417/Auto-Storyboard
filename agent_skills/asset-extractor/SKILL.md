@@ -121,6 +121,12 @@ Markdown 正文不输出 JSON，不输出代码块。
 
 `reuse_policy` 使用：`global`、`episode_range`、`one_episode`、`shot_only`。`shot_only` 通常不建议入库，除非是明确可复用的特殊构图。
 
+`needs_generation` 使用固定枚举：`yes`、`no`、`conditional`。如果需要解释条件，写入 `generation_note`，不要把自然语言塞进 `needs_generation`。
+
+`sync_to_bible` 使用固定枚举：`yes`、`no`、`candidate`。
+
+复用索引里的 `state_id` 不允许留空。如果复用基础资产且没有单独状态，写 `BASE`；如果画面生成依赖服装、脏污、光线、破损等状态，必须写具体 `state_id`。
+
 分集 `assets.md` 默认不重复输出 `asset_bible.md` 已有基础资产的完整提示词。分集只输出：
 
 1. 本集引用了哪些已有基础资产或状态。
@@ -143,12 +149,14 @@ Markdown 正文不输出 JSON，不输出代码块。
 - episode_usage
 - 本集用途
 - needs_generation
+- generation_note
 
 规则：
 
 - 每行表示本集使用了某个已有基础资产或状态，而不是重新入库。
 - 如果 `state_id` 已存在于 `asset_bible.md`，`needs_generation` 写 `no`。
-- 如果基础资产已存在但本集状态尚未入库，`needs_generation` 写 `yes, if state not generated`，并且必须在“二、本集新增资产状态”中补充状态。
+- 如果基础资产已存在但本集状态尚未入库，`needs_generation` 写 `conditional`，`generation_note` 写 `if state not generated`，并且必须在“二、本集新增资产状态”中补充状态。
+- `state_id` 不得留空；基础资产无状态时写 `BASE`。
 - `episode_usage` 必须来自分镜原文，例如 `ep02 第1组-第3组` 或 `第1组 0-8秒`。
 - `使用ID` 建议格式：`EP02_USE_CHAR_001`、`EP02_USE_SCENE_001`、`EP02_USE_PROP_001`。
 
@@ -167,6 +175,7 @@ Markdown 正文不输出 JSON，不输出代码块。
 - first_seen_episode
 - episode_usage
 - needs_generation
+- generation_note
 - sync_to_bible
 - 静态生图提示词(中文)
 - 负面提示词(中文)
@@ -220,6 +229,7 @@ Markdown 正文不输出 JSON，不输出代码块。
 - state_summary
 - episode_usage
 - needs_generation
+- generation_note
 - 入库建议
 
 规则：
@@ -277,19 +287,31 @@ Markdown 正文不输出 JSON，不输出代码块。
 - 默认推荐：3 集 / worker。
 - 单集短、人物和场景复用度高、`asset_bible.md` 已稳定时，可用 4 集 / worker。
 - 新剧前 1-2 个 worker 建议先跑 3 集 / worker，检查资产风格稳定后再扩大到 4 集 / worker。
-- 单个 worker 必须顺序处理每集：读取 `asset_bible.md`、该集 `final.txt`、本 skill、`agent_skills/optimize-image-prompts/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，生成已完成提示词优化的 `assets.md`，用 `asset-reviewer` 真实审核输出 `asset_review.json`，只修 hard issues 并复审，通过后写 `asset_status.json`，再转换 `assets.xlsx`，然后进入下一集。
+- 单个 worker 必须顺序处理每集：读取 `asset_bible.md`、该集 `final.txt`、本 skill、`agent_skills/optimize-image-prompts/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，生成已完成提示词优化的 `assets.md`，用 `asset-reviewer` 真实审核输出 `asset_review.json`，只修 hard issues 并复审，通过后写 `asset_status.json`，转换 `assets.xlsx`，运行 `validate-assets.mjs`，然后进入下一集。
 - 不要把 5 集以上交给一个 worker；资产表会变长，容易漏掉本集关键道具或把多集时间段混在一起。
 - 多个 worker 可以并发读取 `asset_bible.md`，但不要并发写它。需要更新全局设定时，先在 worker 结果中标注，最后由主线程统一合并。
 
 ## Excel 转换
 
-先生成并检查 `assets.md`，再用本 skill 自带脚本转换为 `assets.xlsx`：
+Excel 工作簿应包含 5 个 sheet：`复用资产索引`、`新增资产状态`、`新增基础资产`、`关键道具与场景状态`、`不建议入库元素`。转换脚本只负责格式转换和客观表头校验，不负责抽取、归并或改写资产内容。
+
+分集资产表使用 episode 模式转换：
 
 ```powershell
-node .\agent_skills\asset-extractor\scripts\assets-md-to-xlsx.mjs <assets.md> <assets.xlsx>
+node .\agent_skills\asset-extractor\scripts\assets-md-to-xlsx.mjs <assets.md> <assets.xlsx> --mode=episode
 ```
 
-Excel 工作簿应包含 5 个 sheet：`复用资产索引`、`新增资产状态`、`新增基础资产`、`关键道具与场景状态`、`不建议入库元素`。转换脚本只负责格式转换和客观表头校验，不负责抽取、归并或改写资产内容。
+全局资产库使用 registry 模式转换：
+
+```powershell
+node .\agent_skills\asset-extractor\scripts\assets-md-to-xlsx.mjs <global_asset_registry.md> <global_asset_registry.xlsx> --mode=registry
+```
+
+转换后必须运行机械门禁校验：
+
+```powershell
+node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir>
+```
 
 ## 资产状态文件
 

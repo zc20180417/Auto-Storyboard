@@ -4,29 +4,70 @@ import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const [inputPath, outputPath] = process.argv.slice(2);
+const [inputPath, outputPath, ...optionArgs] = process.argv.slice(2);
+const options = Object.fromEntries(
+  optionArgs
+    .filter((arg) => arg.startsWith("--"))
+    .map((arg) => {
+      const [key, ...rest] = arg.slice(2).split("=");
+      return [key, rest.join("=") || "true"];
+    }),
+);
+const mode = options.mode || "episode";
 
 if (!inputPath || !outputPath) {
-  console.error("Usage: node assets-md-to-xlsx.mjs <assets.md> <assets.xlsx>");
+  console.error("Usage: node assets-md-to-xlsx.mjs <assets.md> <assets.xlsx> [--mode=episode|registry]");
   process.exit(2);
 }
 
-const SHEET_NAMES = {
-  "一、本集复用资产索引": "复用资产索引",
-  "二、本集新增资产状态": "新增资产状态",
-  "三、本集新增基础资产": "新增基础资产",
-  "四、本集关键道具与场景状态": "关键道具与场景状态",
-  "五、本集不建议入库元素": "不建议入库元素",
+const SCHEMAS = {
+  episode: {
+    sheetNames: {
+      "一、本集复用资产索引": "复用资产索引",
+      "二、本集新增资产状态": "新增资产状态",
+      "三、本集新增基础资产": "新增基础资产",
+      "四、本集关键道具与场景状态": "关键道具与场景状态",
+      "五、本集不建议入库元素": "不建议入库元素",
+    },
+    requiredColumns: {
+      "复用资产索引": ["使用ID", "asset_id", "state_id", "asset_type", "source", "episode_usage", "本集用途", "needs_generation", "generation_note"],
+      "新增资产状态": ["state_id", "asset_id", "parent_state_id", "asset_type", "status_type", "state_summary", "changed_fields", "reuse_policy", "first_seen_episode", "episode_usage", "needs_generation", "generation_note", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
+      "新增基础资产": ["asset_id", "asset_type", "asset_name", "description", "reuse_policy", "first_seen_episode", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
+      "关键道具与场景状态": ["state_id", "asset_id", "asset_type", "state_summary", "episode_usage", "needs_generation", "generation_note", "入库建议"],
+      "不建议入库元素": ["元素", "出现位置", "不入库原因"],
+    },
+  },
+  registry: {
+    sheetNames: {
+      "一、基础人物资产": "基础人物资产",
+      "二、人物状态资产": "人物状态资产",
+      "三、服装资产": "服装资产",
+      "四、场景基础资产": "场景基础资产",
+      "五、场景状态资产": "场景状态资产",
+      "六、道具基础资产": "道具基础资产",
+      "七、道具状态资产": "道具状态资产",
+      "八、特殊构图资产": "特殊构图资产",
+      "九、项目统一风格": "项目统一风格",
+    },
+    requiredColumns: {
+      "基础人物资产": ["asset_id", "角色名", "身份/关系", "年龄段/性别", "身高体态", "面部稳定特征", "发型", "气质关键词", "基础提示词"],
+      "人物状态资产": ["state_id", "asset_id", "状态类型", "状态名称", "服装ID", "外观变化", "首次出现", "复用范围", "状态提示词"],
+      "服装资产": ["costume_id", "对应角色asset_id", "服装名称", "描述", "面料/颜色", "年代感/磨损", "复用范围", "提示词"],
+      "场景基础资产": ["scene_id", "场景名称", "空间结构", "主要材质", "核心陈设", "基础光线", "基础提示词"],
+      "场景状态资产": ["scene_state_id", "scene_id", "状态类型", "光线/时间", "空间状态", "变化字段", "首次出现", "状态提示词"],
+      "道具基础资产": ["prop_id", "道具名称", "材质/形状", "尺寸感", "文字限制", "基础提示词"],
+      "道具状态资产": ["prop_state_id", "prop_id", "状态类型", "状态说明", "变化字段", "首次出现", "状态提示词"],
+      "特殊构图资产": ["composition_id", "构图名称", "关联资产ID", "是否含人物", "构图用途", "复用范围", "提示词"],
+      "项目统一风格": ["项目", "内容"],
+    },
+  },
 };
 
-const REQUIRED_SHEETS = Object.values(SHEET_NAMES);
-const REQUIRED_COLUMNS = {
-  "复用资产索引": ["使用ID", "asset_id", "state_id", "asset_type", "source", "episode_usage", "本集用途", "needs_generation"],
-  "新增资产状态": ["state_id", "asset_id", "parent_state_id", "asset_type", "status_type", "state_summary", "changed_fields", "reuse_policy", "first_seen_episode", "episode_usage", "needs_generation", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
-  "新增基础资产": ["asset_id", "asset_type", "asset_name", "description", "reuse_policy", "first_seen_episode", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
-  "关键道具与场景状态": ["state_id", "asset_id", "asset_type", "state_summary", "episode_usage", "needs_generation", "入库建议"],
-  "不建议入库元素": ["元素", "出现位置", "不入库原因"],
-};
+const schema = SCHEMAS[mode];
+if (!schema) {
+  console.error(`Unknown mode: ${mode}. Use --mode=episode or --mode=registry.`);
+  process.exit(2);
+}
 
 async function loadArtifactTool() {
   try {
@@ -111,13 +152,13 @@ function clampWidthPx(text, min, max) {
 }
 
 function safeSheetName(section, fallbackIndex) {
-  const key = Object.keys(SHEET_NAMES).find((prefix) => section.startsWith(prefix));
-  return key ? SHEET_NAMES[key] : `资产表${fallbackIndex + 1}`;
+  const key = Object.keys(schema.sheetNames).find((prefix) => section.startsWith(prefix));
+  return key ? schema.sheetNames[key] : `资产表${fallbackIndex + 1}`;
 }
 
 function standardSheetName(section) {
-  const key = Object.keys(SHEET_NAMES).find((prefix) => section.startsWith(prefix));
-  return key ? SHEET_NAMES[key] : "";
+  const key = Object.keys(schema.sheetNames).find((prefix) => section.startsWith(prefix));
+  return key ? schema.sheetNames[key] : "";
 }
 
 function validateTables(tables) {
@@ -125,7 +166,7 @@ function validateTables(tables) {
     .map((table) => ({ ...table, sheetName: standardSheetName(table.section) }))
     .filter((table) => table.sheetName);
   const foundSheets = new Set(standardTables.map((table) => table.sheetName));
-  const missing = REQUIRED_SHEETS.filter((sheet) => !foundSheets.has(sheet));
+  const missing = Object.values(schema.sheetNames).filter((sheet) => !foundSheets.has(sheet));
   if (missing.length > 0) {
     throw new Error(`Missing required asset tables: ${missing.join(", ")}`);
   }
@@ -136,7 +177,7 @@ function validateTables(tables) {
       throw new Error(`Missing header row in ${table.section}`);
     }
 
-    const required = REQUIRED_COLUMNS[table.sheetName] || [];
+    const required = schema.requiredColumns[table.sheetName] || [];
     const missingColumns = required.filter((column) => !header.includes(column));
     if (missingColumns.length > 0) {
       throw new Error(`${table.section} is missing required columns: ${missingColumns.join(", ")}`);
