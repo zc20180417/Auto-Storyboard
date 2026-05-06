@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "summary": "ep26整集已按storyboard-reviewer规则完成审核，分镜忠于原剧本，组时长、空间锁定、对话指向和格式均通过，无硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中的五十台重卡油表红灯、司机甲汇报全城加油站不给加、王百川强调两小时上船、林刚看表说“秦四海动作挺快”均按顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "秦爷电话画外音约16字/3秒，字秒比约5.3；王百川与林刚连续对电话交锋约22字/4秒，字秒比约5.5，并包含夺手机动作，节奏合理。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "本组始终在王氏中转站外场第一辆重卡旁，防水布、车厢和军绿油罐都属于同一物理空间，未发生硬切。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "林刚解释废弃油库时明确为对司机甲和司机们说道，命令流水线加油时明确为对司机们大喊，未出现无指向台词。"
+    },
+    {
+      "group": "第5组",
+      "type": "timing_math",
+      "evidence": "第5组标题10秒，时间段0-2、2-5、5-8、8-10连续相加为10秒，镜头数4个与实际时间段一致，三段无台词动作均不超过3秒；全稿没有1秒或更短独立镜头。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林刚、王百川、司机甲在组首均有画面位置和身体朝向，司机们只作为背景焦急张望，不承担未铺垫台词。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "秦爷被写成手机免提电话画外音，声音来源是王百川手中手机，组内现实空间仍为中转站外场。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组末尾林刚握手机、王百川焦急；第3组开头林刚仍握手机，王百川继续追问，随后林刚转向第一辆重卡下令，动作承接自然。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留林刚拿油枪、说明买天霸物流时盘下废弃油库、拉管插入第二辆重卡油箱、命令全体流水线加油和司机们迅速行动等剧情。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“重卡车队发出咆哮，冲出中转站，直奔高速”被转译为引擎轰鸣、车头亮起、车队冲出出口、沿道路驶向高速等可见可听信息。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

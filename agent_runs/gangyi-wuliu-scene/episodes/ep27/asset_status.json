@@ -1,0 +1,50 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "STATE_SCENE_TOLL_BLOCKADE_DAY_V1",
+      "type": "scene_state",
+      "reason": "收费站拦截状态贯穿ep27前五组，适合补入高速收费站状态"
+    },
+    {
+      "id": "CHAR_ROAD_ADMIN_CAPTAIN_BASE",
+      "type": "character",
+      "reason": "路政队长是ep27主要对抗角色，建议作为执法反派基础人物沉淀"
+    },
+    {
+      "id": "CHAR_ROAD_ADMIN_PERSONNEL_BASE",
+      "type": "character",
+      "reason": "路政人员群像多次执行贴封条和控制秦爷动作，可作为群像资产"
+    },
+    {
+      "id": "VEHICLE_ROAD_ADMIN_CAR_BASE",
+      "type": "prop",
+      "reason": "路政车区别于已有警车和防暴车，建议单独入库"
+    },
+    {
+      "id": "PROP_SPECIAL_PASS_BASE",
+      "type": "prop",
+      "reason": "红色特别通行证是ep27关键通关证据道具，建议入库"
+    },
+    {
+      "id": "STATE_PROP_SPECIAL_PASS_DISPLAYED_V1",
+      "type": "prop_state",
+      "reason": "通行证被展示并压住路政队长的状态用于关键镜头"
+    },
+    {
+      "id": "SCENE_WANG_OFFICE_BASE",
+      "type": "scene",
+      "reason": "王百川办公室首次实体出现，后续商业对话场景可能复用"
+    },
+    {
+      "id": "STATE_SCENE_WANG_OFFICE_NIGHT_V1",
+      "type": "scene_state",
+      "reason": "夜间办公室光线状态承载ep27后两组对话"
+    }
+  ]
+}

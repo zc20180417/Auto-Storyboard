@@ -1,0 +1,529 @@
+{
+  "version": 1,
+  "run_id": "gangyi-wuliu-scene",
+  "created_at": "2026-05-05T19:58:49",
+  "project_root": "G:\\Auto-Storyboard",
+  "source": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+  "prompt_path": null,
+  "generation_rules_source": "G:\\Auto-Storyboard\\agent_skills\\storyboard-generator\\SKILL.md",
+  "reviewer_rules_source": "G:\\Auto-Storyboard\\agent_skills\\storyboard-reviewer\\SKILL.md",
+  "generator_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-generator\\SKILL.md",
+  "reviewer_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-reviewer\\SKILL.md",
+  "out_dir": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene",
+  "agent": "codex",
+  "mode": "scene",
+  "parallelism": 5,
+  "episodes": [
+    {
+      "episode_id": "ep01",
+      "episode_number": 1,
+      "display_name": "刚毅物流第01集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep01-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep01",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep01\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep01\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep01\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep01\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第1集 1-1 日 外 林刚代收点 林刚、赵大强、村民甲、村民乙"
+      ]
+    },
+    {
+      "episode_id": "ep02",
+      "episode_number": 2,
+      "display_name": "刚毅物流第02集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep02-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep02",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep02\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep02\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep02\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep02\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第2集 2-1 日/阴 外 林刚家门外 林刚、赵大强、小混混、村民"
+      ]
+    },
+    {
+      "episode_id": "ep03",
+      "episode_number": 3,
+      "display_name": "刚毅物流第03集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep03-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep03",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep03\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep03\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep03\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep03\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第3集 3-1 日/晴 外 停车场 林刚、赵大强、警察、村民"
+      ]
+    },
+    {
+      "episode_id": "ep04",
+      "episode_number": 4,
+      "display_name": "刚毅物流第04集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep04-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep04",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep04\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep04\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep04\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep04\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第4集 4-1 夜/雨 外 死亡山道 林刚"
+      ]
+    },
+    {
+      "episode_id": "ep05",
+      "episode_number": 5,
+      "display_name": "刚毅物流第05集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep05-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep05",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep05\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep05\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep05\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep05\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第5集 5-1 夜/雨 外 别墅门口 林刚、管家、保安"
+      ]
+    },
+    {
+      "episode_id": "ep06",
+      "episode_number": 6,
+      "display_name": "刚毅物流第06集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep06-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep06",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep06\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep06\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep06\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep06\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第6集 6-1 日/阴 外 林刚家院子 林刚、赵大强、村民"
+      ]
+    },
+    {
+      "episode_id": "ep07",
+      "episode_number": 7,
+      "display_name": "刚毅物流第07集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep07-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep07",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep07\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep07\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep07\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep07\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第7集 7-1 日/大雪 外 盘山公路 赵大强、村民甲、村民乙"
+      ]
+    },
+    {
+      "episode_id": "ep08",
+      "episode_number": 8,
+      "display_name": "刚毅物流第08集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep08-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep08",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep08\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep08\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep08\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep08\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第8集 8-1 日/大雪 外 林刚家门外 林刚、赵大强、村民"
+      ]
+    },
+    {
+      "episode_id": "ep09",
+      "episode_number": 9,
+      "display_name": "刚毅物流第09集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep09-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep09",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep09\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep09\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep09\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep09\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第9集 9-1 日/大雪 外 盘山公路 林刚、县城司机"
+      ]
+    },
+    {
+      "episode_id": "ep10",
+      "episode_number": 10,
+      "display_name": "刚毅物流第10集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep10-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep10",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep10\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep10\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep10\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep10\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第10集 10-1 日/大雪 外 断桥前 林刚、县城司机甲、司机乙"
+      ]
+    },
+    {
+      "episode_id": "ep11",
+      "episode_number": 11,
+      "display_name": "刚毅物流第11集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep11-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep11",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep11\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep11\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep11\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep11\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第11集 11-1 日/阴 外 货运场 林刚、王百川、王强"
+      ]
+    },
+    {
+      "episode_id": "ep12",
+      "episode_number": 12,
+      "display_name": "刚毅物流第12集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep12-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep12",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep12\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep12\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep12\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep12\\agent-stdout.log",
+      "segments": 2,
+      "segment_titles": [
+        "第12集 12-1 夜/阴 外 盘山夜路 林刚、混混甲",
+        "12-2 夜/内 仓库办公室 林刚、王百川、王强"
+      ]
+    },
+    {
+      "episode_id": "ep13",
+      "episode_number": 13,
+      "display_name": "刚毅物流第13集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep13-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep13",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep13\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep13\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep13\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep13\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第13集 13-1 日/阴 内 赵大强家 赵大强、村民甲、村民乙"
+      ]
+    },
+    {
+      "episode_id": "ep14",
+      "episode_number": 14,
+      "display_name": "刚毅物流第14集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep14-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep14",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep14\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep14\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep14\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep14\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第14集 14-1 日/晴 外 银行门口 林刚、赵大强、村民甲、村民乙、保安"
+      ]
+    },
+    {
+      "episode_id": "ep15",
+      "episode_number": 15,
+      "display_name": "刚毅物流第15集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep15-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep15",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep15\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep15\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep15\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep15\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第15集 15-1 夜/阴 外 物流停泊场 林刚、赵大强、王强"
+      ]
+    },
+    {
+      "episode_id": "ep16",
+      "episode_number": 16,
+      "display_name": "刚毅物流第16集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep16-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep16",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep16\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep16\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep16\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep16\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第16集 16-1 夜/阴 外 废车回收站 林刚、赵大强、王强、警察"
+      ]
+    },
+    {
+      "episode_id": "ep17",
+      "episode_number": 17,
+      "display_name": "刚毅物流第17集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep17-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep17",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep17\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep17\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep17\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep17\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第17集 17-1 日/晴 内 重卡经销店 林刚、孙彪、经理、打手"
+      ]
+    },
+    {
+      "episode_id": "ep18",
+      "episode_number": 18,
+      "display_name": "刚毅物流第18集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep18-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep18",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep18\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep18\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep18\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep18\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第18集 18-1 日/晴 内 重卡经销店 林刚、孙彪、打手、王百川、经理"
+      ]
+    },
+    {
+      "episode_id": "ep19",
+      "episode_number": 19,
+      "display_name": "刚毅物流第19集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep19-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep19",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep19\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep19\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep19\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep19\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第19集 19-1 日/晴 外 盘山公路 孙彪、打手"
+      ]
+    },
+    {
+      "episode_id": "ep20",
+      "episode_number": 20,
+      "display_name": "刚毅物流第20集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep20-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep20",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep20\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep20\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep20\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep20\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第20集 20-1 日/晴 外 医药仓库 林刚、王百川、陈天霸、孙彪"
+      ]
+    },
+    {
+      "episode_id": "ep21",
+      "episode_number": 21,
+      "display_name": "刚毅物流第21集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep21-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep21",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep21\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep21\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep21\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep21\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第21集 21-1 日/晴 外 装货区 林刚、陈天霸"
+      ]
+    },
+    {
+      "episode_id": "ep22",
+      "episode_number": 22,
+      "display_name": "刚毅物流第22集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep22-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep22",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep22\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep22\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep22\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep22\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第22集 22-1 日/阴 外 烂泥路段 林刚、司机甲"
+      ]
+    },
+    {
+      "episode_id": "ep23",
+      "episode_number": 23,
+      "display_name": "刚毅物流第23集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep23-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep23",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep23\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep23\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep23\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep23\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第23集 23-1 日/阴 外 省医院接收区 林刚、王百川、李主任"
+      ]
+    },
+    {
+      "episode_id": "ep24",
+      "episode_number": 24,
+      "display_name": "刚毅物流第24集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep24-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep24",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep24\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep24\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep24\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep24\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第24集 24-1 日/阴 外 省医院接收区 林刚、李主任、保安、陈天霸"
+      ]
+    },
+    {
+      "episode_id": "ep25",
+      "episode_number": 25,
+      "display_name": "刚毅物流第25集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep25-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep25",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep25\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep25\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep25\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep25\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第25集 25-1 日/晴 外 天霸物流园 林刚、秦爷、陈天霸、众司机"
+      ]
+    },
+    {
+      "episode_id": "ep26",
+      "episode_number": 26,
+      "display_name": "刚毅物流第26集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep26-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep26",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep26\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep26\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep26\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep26\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第26集 26-1 日/晴 外 王氏中转站 林刚、王百川、司机甲"
+      ]
+    },
+    {
+      "episode_id": "ep27",
+      "episode_number": 27,
+      "display_name": "刚毅物流第27集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep27-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep27",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep27\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep27\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep27\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep27\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第27集 27-1 日/晴 外 高速收费站 林刚、秦爷、路政队长"
+      ]
+    },
+    {
+      "episode_id": "ep28",
+      "episode_number": 28,
+      "display_name": "刚毅物流第28集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep28-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep28",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep28\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep28\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep28\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep28\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第28集 28-1 日/晴 外 国际码头 林刚、王百川、码头主管"
+      ]
+    },
+    {
+      "episode_id": "ep29",
+      "episode_number": 29,
+      "display_name": "刚毅物流第29集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep29-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep29",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep29\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep29\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep29\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep29\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第29集 29-1 日/晴 外 国际码头 刀疤、混混、林刚、退伍兵"
+      ]
+    },
+    {
+      "episode_id": "ep30",
+      "episode_number": 30,
+      "display_name": "刚毅物流第30集",
+      "series_title": "刚毅物流",
+      "source_path": "G:\\Auto-Storyboard\\inputs\\刚毅物流.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_gangyi_wuliu_scene\\刚毅物流-ep30-agent-cli-storyboard.txt",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep30",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep30\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep30\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep30\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\gangyi-wuliu-scene\\episodes\\ep30\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第30集 30-1 日/晴 外 国际码头 赵大强、林刚、警察"
+      ]
+    }
+  ]
+}

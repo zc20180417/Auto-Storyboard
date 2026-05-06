@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "刚毅物流-ep04-agent-cli-storyboard.txt",
+  "summary": "林刚雨夜山道刹车失灵后强行撞坡脱险，带伤把加急海鲜货送到别墅门口，却被管家以迟到五分钟为由拒收。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "dialogue_pacing",
+      "problem": "管家首句略快但可接受。",
+      "evidence": "“你晚了五分钟。这货我不收。”有效13字/2秒，字秒比6.5，属于6-7字/秒偏快区间。",
+      "fix": "如需更稳可调整为3秒并重算组内节奏，但当前争执场景的短剧节奏不构成硬问题。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

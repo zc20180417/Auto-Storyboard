@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "EP-05-ep05-agent-cli-storyboard.txt",
+  "summary": "EP-05共11组分镜，覆盖HR报到、战投部会议室突袭、东湖湾公寓刀戏与心理博弈三大场景。无硬性问题，3处时长警告均在可接受范围。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第7组7-14秒单镜头时长7秒，情绪对白38字/6.0≈7秒，处于警告区间",
+    "第9组0-7秒单镜头时长7秒，情绪对白38字/6.0≈7秒，处于警告区间",
+    "第6组3-6秒和6-10秒镜头各比目标时长多1秒"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

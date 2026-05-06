@@ -1,0 +1,100 @@
+{
+  "pass": true,
+  "summary": "EP23全12组已对照完整剧本、storyboard-generator规则和最终分镜审核；办公室旧协议、朱家书房布局、秘密机房反制及龙建秋邀约均完整保留，无硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组完整保留朱天和签过对赌、五年内进入集团核心层即触发、朱家让出全部股权并净身出户等关键台词。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "第6组只发生在朱家别墅书房，朱天和、朱文浩、内部通报和茶杯在组首均有明确位置。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_direction",
+      "evidence": "第9组朱文浩两句VO均写明通过机房广播对田立民说，田立民和黑客的反应主体清楚。"
+    },
+    {
+      "group": "第11组",
+      "type": "timing_math",
+      "evidence": "第11组0-4秒、4-6秒、6-9秒、9-12秒合计12秒，标题总时长12秒且镜头数4个一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "田立民与李长庚在组首空间锁定中均有画面位置、身体朝向和视线关系，后续台词和动作都有可生成来源。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第8组到第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第8组以所有屏幕变红和倒计时收尾，第9组组首继续锁定血红倒计时界面，机房状态连续。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第10组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "第10组朱文浩只在通讯屏幕中可见，龙建秋只通过通讯线路发声，均非机房实体人物且来源明确。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第12组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "龙建秋暗处观察的抽象信息被转为监控缩略图、行动轨迹、关系图、朱文浩屏幕反应和OS台词，可见可听。",
+      "fix_instruction": "无需修复"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "短促惊呼语速略快但可接受",
+      "evidence": "第2组0-2秒'那可是杀敌一千自损八百啊'约13字/2秒=6.5字/秒，属于大惊状态下的短促台词。",
+      "fix": "如需更稳，可延至3秒并压缩后续动作。"
+    },
+    {
+      "severity": "soft",
+      "group": "第8组",
+      "rule": "dialogue_pacing",
+      "problem": "紧急汇报台词接近语速上限",
+      "evidence": "第8组2-4秒'董事长，十亿资金已汇入离岸通道'约14字/2秒=7.0字/秒，属于紧急汇报的可接受上限。",
+      "fix": "如需更稳，可延至3秒并压缩前后无对白动作。"
+    }
+  ]
+}

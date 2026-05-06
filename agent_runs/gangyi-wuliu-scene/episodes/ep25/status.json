@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "刚毅物流-ep25-agent-cli-storyboard.txt",
+  "summary": "林刚在天霸物流园以退伍汽车兵接管重卡，随后匿名为旧村修路并悄然离开。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组退伍兵甲汇报台词约14字/2秒，字秒比约7.0，属于短促军令式大吼，可接受但偏快。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

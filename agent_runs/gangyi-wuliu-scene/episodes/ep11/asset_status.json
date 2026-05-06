@@ -1,0 +1,19 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "STATE_SCENE_LOGISTICS_YARD_OVERCAST_REEFER_V1",
+    "VEHICLE_OLD_REFRIGERATED_TRUCK_BASE",
+    "STATE_VEHICLE_REEFER_DIRTY_FAULTY_V1",
+    "STATE_VEHICLE_REEFER_COMPRESSOR_OIL_LEAK_V1",
+    "PROP_REEFER_CONTROL_PANEL_BASE",
+    "STATE_PROP_REEFER_PANEL_CUT_WIRES_V1",
+    "STATE_PROP_REEFER_PANEL_TAPED_REPAIR_V1",
+    "STATE_LINGANG_BLACK_OIL_REPAIR_V1",
+    "PROP_LINGANG_WRISTWATCH_BASE"
+  ]
+}

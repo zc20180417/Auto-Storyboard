@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "summary": "ep21成片分镜完整覆盖装货区对比、陈天霸先行、烂泥路颠簸和林刚胎压减震决策，未发现硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中的两家车队装箱、高级空气悬挂、林刚要求垫海绵垫和固定绑带均在0-12秒内呈现，陈天霸与林刚两句台词完整保留且对象明确。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "陈天霸“垂死挣扎...”约19个有效字使用3秒，约6.3字/秒；林刚“关门，出发。”短句使用2秒并同步关门动作，符合短句节奏。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "组首明确锁定林刚重卡驾驶室内，司机甲只作为车载对讲通讯器画外音出现，挡风玻璃外烂泥路是同一车辆可见前方，不构成跨空间混用。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "林刚看向前方、陈天霸车队靠气囊减震在坑洼里快速穿行、林刚拿对讲机下达“轮胎放气百分之三十”三项关键内容均完整保留。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "司机甲质疑和林刚回应合并在0-5秒，约28个有效字使用5秒，约5.6字/秒，并与看向胎压控制阀动作衔接，没有过快或拖慢硬错。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首列出林刚在右侧重卡车厢尾部、陈天霸在左侧高级货车旁、装货工人在车厢旁搬运药箱，后续人物动作和台词都有可生成位置。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组结尾药箱已固定且陈天霸仍在旁边，第2组组首仍为装货区两家车队并排，之后陈天霸车队先行、林刚上车出发，连续性成立。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "车身剧烈摇晃、颠簸警报、深坑碎石和仪表盘读数都是可见或可听信息，未用不可视心理判断承载剧情。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "同组只在林刚驾驶室内拍摄，前方陈天霸车队通过挡风玻璃远景与主观视角呈现，属于同一路段可见对象，不是独立场景硬切。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "司机甲质疑放气、林刚冷笑回应、林刚按下胎压控制阀以及重卡轮胎肉眼可见瘪下去一截，均与原剧本顺序一致。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

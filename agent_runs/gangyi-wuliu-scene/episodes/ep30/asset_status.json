@@ -1,0 +1,35 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "STATE_SCENE_PORT_OPERATION_RESTORED_V1",
+      "type": "scene_state",
+      "reason": "港口装船区恢复运转是 ep30 准时装船核心画面，建议并入码头场景状态。"
+    },
+    {
+      "id": "STATE_SCENE_VILLAGE_ROAD_PAVED_STELE_V1",
+      "type": "scene_state",
+      "reason": "新铺村路和过客留路碑承载通村基金与前文回收，建议作为乡村道路状态入库。"
+    },
+    {
+      "id": "STATE_VEHICLE_GANGYI_LOGO_V1",
+      "type": "prop_state",
+      "reason": "刚毅物流虚构车标是片尾意象和车队品牌识别，建议作为重卡状态或车辆标识候选合并。"
+    },
+    {
+      "id": "CHAR_GLOBAL_SHIPPING_EXEC_BASE",
+      "type": "character",
+      "reason": "神秘外宾引出十亿跨国陆海联运合同和后续跨国干线，可作为国际航运商务高管角色候选。"
+    },
+    {
+      "id": "VEHICLE_BLACK_BUSINESS_HELICOPTER_BASE",
+      "type": "prop",
+      "reason": "黑色商务直升机在 ep30 降落和飞离两次出现，承载神秘外宾登场。"
+    }
+  ]
+}

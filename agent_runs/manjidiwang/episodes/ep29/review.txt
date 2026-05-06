@@ -1,0 +1,70 @@
+{
+  "pass": true,
+  "summary": "EP29全四组已按原剧本、生成规则和当前final.txt逐组审核，台词动作完整，空间锁定、时长和格式均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组总时长11秒，时间段2+3+2+2+2连续；朱文浩“星辰公司已全面接盘鼎丰的债务。”16字/3秒约5.3字秒比，“现在，龙爷可以安心上路了。”11字/2秒约5.5字秒比，未出现≥8秒台词镜头。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "第2组场景写为集团一楼大堂出口区域，玻璃门外警车和敞开车门在组首已可见，特勤押送龙建秋从门线到警车是同一连续出口动作，没有不相关空间跳切。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组保留朱天和已摘呼吸机、医生翻病历说明毒素完全清除且度过危险期、朱天和虚弱问集团怎么样了，台词和动作顺序与原剧本一致。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "朱文浩两句汇报均写明对朱天和说道，朱天和两句回应均写明对朱文浩说道；所有真人开口台词都有明确对象。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "龙建秋位于画面中央、朱文浩位于右侧、苏清寒位于左侧且文件在手，三人后续说话、看向和反应均有组首可生成位置。",
+      "fix_instruction": "无需修复；若增加其他行动人物，需在组首或行动前补充位置。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组以朱文浩面向出口、龙建秋伏地收尾，第2组开头龙建秋已被特勤架起并押向门口，人物位置和押送动作衔接清楚。",
+      "fix_instruction": "无需修复；若拆成室外组，应在第2组尾补充车门关闭或押入车内状态。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "病情好转用摘下呼吸机、病历、医生台词、朱天和苍白但平稳呼吸等可见可听信息表达，没有把“度过危险期”单独当作不可视画面。",
+      "fix_instruction": "无需修复；保持医疗道具和台词共同承载病情信息。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第4组完整保留朱文浩坐下、汇报田立民入狱龙建秋被抓、倒水并说鼎丰资本被吞并，以及朱天和欣慰和叹气后的两句交托台词。",
+      "fix_instruction": "无需修复；不得增加拥抱、起身或其他原剧本没有的强剧情动作。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

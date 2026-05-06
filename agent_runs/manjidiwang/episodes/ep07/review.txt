@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "summary": "EP07全集11组分镜忠于原剧本，三个场景（会议室、董事长办公室、书房）空间锁定清晰，人物可用性与组间连续性良好，无硬性错误",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "田立民'战投部群龙无首，必须速定新总监'14字/3秒=4.67字/秒，情绪对白接近5.2阈值但属于整数秒取整边界；苏长明'我提议李长庚，他业务最熟'13字/2秒=6.5字/秒，普通对白偏快但在可接受区间。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "集团董事长办公室单一物理空间，田立民办公桌后、朱天和客椅，两人位置与道具状态（茶具、文件、抽屉）在组首明确交代。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "田立民威胁台词'那督导组明天就会收到一封匿名信，举报你儿子在酒店……强迫苏总裁的女儿'完整保留33字，与朱天和'如果我们不答应'的对抗关系未改动。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "田立民主位、苏长明右侧席位、朱天和左侧席位均在组首空间锁定中有明确画面位置与身体朝向，朱天和手中钢笔状态明确。",
+      "fix_instruction": "无需修复，本项检查通过。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组组尾会议室内三人对峙气氛凝滞，第4组切换至董事长办公室新场景，田立民推茶、朱天和端茶，新空间交代完整，无连续性断裂。",
+      "fix_instruction": "无需修复，本项检查通过。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "田立民OS'朱家这把刀，够锋利。但刀太锋利，也会伤手'已转写为心声响起配合端起茶杯、眼神幽深、嘴角上扬等可见动作，无抽象概念残留。",
+      "fix_instruction": "无需修复，本项检查通过。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "dialogue_pacing",
+      "problem": "苏长明'我提议李长庚，他业务最熟'13字/2秒=6.5字/秒，普通对白偏快；苏长明'董事长思虑周全，我同意'12字/2秒=6.0字/秒，偏快但仍在可接受区间。",
+      "evidence": "第1组第2镜3-5秒、第4镜8-10秒",
+      "fix": "保持2秒，动作与台词同步完成，短剧节奏需要"
+    },
+    {
+      "severity": "soft",
+      "group": "第8组",
+      "rule": "dialogue_pacing",
+      "problem": "朱天和'成交。但安保部副部长，必须是我的人'19字/3秒=6.33字/秒，情绪对白偏快但在6-7字/秒可接受区间。",
+      "evidence": "第8组第3镜7-10秒",
+      "fix": "保持3秒，咬牙表情与台词同步"
+    },
+    {
+      "severity": "soft",
+      "group": "第10组",
+      "rule": "dialogue_pacing",
+      "problem": "朱文浩'他要平衡，我们才能撕开口子'13字/2秒=6.5字/秒，情绪对白偏快；朱天和'但这下把董事长也得罪了'13字/3秒=4.33字/秒，普通对白略慢但含揉眉动作。",
+      "evidence": "第10组第2镜3-6秒、第3镜6-8秒",
+      "fix": "分别保持3秒与2秒，动作与表情同步"
+    }
+  ]
+}

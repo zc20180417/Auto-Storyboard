@@ -1,0 +1,134 @@
+{
+  "pass": true,
+  "summary": "全20组按剧本、空间锁定、对话指向、时长数学和自然分镜格式复审后无硬性问题，仅保留少量语速偏快提醒。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组",
+    "第13组",
+    "第14组",
+    "第15组",
+    "第16组",
+    "第17组",
+    "第18组",
+    "第19组",
+    "第20组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留苏清寒抓被尖叫、朱文浩睁眼OS、走廊砸门与安保画外音、朱文浩披浴袍倒两杯红酒，未重复后续药物台词。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "evidence": "第8组组首明确酒店行政套房、落地窗前的朱文浩和苏清寒、正被猛然推开的套房门以及门外闪光灯，安保入场来源清楚。"
+    },
+    {
+      "group": "第17组",
+      "type": "dialogue_pacing",
+      "evidence": "第17组为10秒五镜电话对话，0-2秒、2-4秒、4-6秒、6-8秒、8-10秒连续承载父子通话，没有用长停顿凑时长。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组到第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组以朱文浩手持红酒杯看向苏清寒收尾，第2组组首承接为朱文浩手持红酒杯站在床前，苏清寒仍在床上。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第11组到第12组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第11组以房门关上、屋内恢复寂静、朱文浩站在原地收尾，第12组组首写房门已关闭、屋内无声，状态连续。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第16组到第17组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩始终在驾驶座，朱天和仅以手机听筒电话音出现；第16组和第17组均明确朱文浩一手握方向盘、一手持手机贴耳。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第19组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第19组现实车内与金銮殿记忆跨空间，但回忆时间段均写明'回忆闪回'，符合跨场景例外。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第20组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "重生誓言由朱文浩画外音承载，画面用目光、下颌、方向盘、红灯变绿和踩油门呈现可见动作。",
+      "fix_instruction": "无需修复"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "情绪台词语速偏快但可接受",
+      "evidence": "第5组6-8秒'他连亲生女儿声誉都牺牲？'14字/2秒=7.0字/秒。",
+      "fix": "如需更稳可延至3秒，但当前未超过硬错误阈值。"
+    },
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "dialogue_pacing",
+      "problem": "情绪台词语速偏快但可接受",
+      "evidence": "第6组4-6秒'我绝不当争权夺利的牺牲品。'14字/2秒=7.0字/秒。",
+      "fix": "如需更稳可延至3秒，但当前未超过硬错误阈值。"
+    },
+    {
+      "severity": "soft",
+      "group": "第10组",
+      "rule": "dialogue_pacing",
+      "problem": "多句压迫台词语速偏快但可接受",
+      "evidence": "第10组4-6秒'拿着薪水，干构陷的脏活。'13字/2秒=6.5字/秒；6-8秒'这身制服你们还想不想穿？'13字/2秒=6.5字/秒。",
+      "fix": "可选延长或拆分，但当前未超过7字/秒硬阈值。"
+    },
+    {
+      "severity": "soft",
+      "group": "第12组",
+      "rule": "dialogue_pacing",
+      "problem": "身份台词语速偏快但可接受",
+      "evidence": "第12组4-6秒'集团常务副董之子，朱文浩。'13字/2秒=6.5字/秒。",
+      "fix": "可选延至3秒。"
+    },
+    {
+      "severity": "soft",
+      "group": "第14组",
+      "rule": "dialogue_pacing",
+      "problem": "压迫台词语速接近上限",
+      "evidence": "第14组0-3秒'我查苏长明半年了。你，只是他最新的牺牲品。'21字/3秒=7.0字/秒。",
+      "fix": "可选拆成正反打，但当前未超过硬错误阈值。"
+    }
+  ]
+}

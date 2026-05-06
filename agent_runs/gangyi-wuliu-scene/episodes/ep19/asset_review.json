@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep19资产表覆盖了钉阵、推雪铲、盘山公路晴天状态和主要人物车辆，未发现阻断生产的硬问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、孙彪、刚毅司机群像、盘山公路、皮卡和重卡均优先引用asset_bible中的既有ID，未重复新建基础人物或车辆。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "晴天带钉阵的盘山路、孙彪纱布伤势、推雪铲降下和钉子散布均建模为状态或道具状态，符合final.txt中的连续画面变化。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "红色按钮、火星、扬尘、草叶遮挡和打手短暂表情被排除，避免把一次性动作细节过度入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_SUNBIAO_BASE、SCENE_MOUNTAIN_ROAD_BASE、VEHICLE_PICKUP_BASE、VEHICLE_HEAVY_TRUCK_BASE均复用既有资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "钉阵散布、推雪铲部署、孙彪纱布伤势和晴天盘山路都是基于已有或新增基础资产的状态变化，没有错误拆成重复人物资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产只包含asset_bible未覆盖的三角扎胎钉、液压推雪铲和清障构图，未改写既有人物、场景和车辆设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词只使用final.txt出现的晴天盘山路、三角扎胎钉、皮卡推雪铲、五辆重卡和孙彪纱布，没有添加品牌、可读车牌或额外剧情。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage均来自ep19 final.txt的组号和秒段，未把资产归并到未出现的时间段。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词在主体、状态、光线、材质和负面限制上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表均存在，表头完整，单元格未使用原始竖线字符，枚举值符合校验脚本要求。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

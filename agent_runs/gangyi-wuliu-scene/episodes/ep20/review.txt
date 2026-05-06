@@ -1,0 +1,65 @@
+{
+  "pass": true,
+  "summary": "已对照第20集原剧本、整集终稿和两份标准规则完成复审，台词、人物关系、空间锁定、时长数学和格式均通过，无硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组2-6秒王百川台词“准时准点！林兄弟，这批进口药交给你我放心。”约22个有效字，4秒，字秒比约5.5；其余0-2、6-8、8-11秒为2到3秒动作或入场镜头，未用长静默凑时长。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组依次保留陈天霸嘲讽王百川、王百川强调独家合同、孙彪指认林刚、陈天霸宣称天霸物流控制医药专线的台词和人物关系，没有删改关键台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组组首明确医药仓库外装卸区、五台重卡、黑色奔驰车队和疫苗药箱位置，后续赌约、阻拦、林刚接下挑战均在同一物理空间内完成。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首列出林刚在重卡驾驶室门边、王百川在仓库门前；陈天霸和孙彪作为远处奔驰车队内的可见来源，6-8秒车队驶入后8-11秒下车，行动前有明确来源。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组组尾陈天霸盯住林刚、孙彪退回奔驰车旁；第3组组首林刚仍在重卡车门旁、陈天霸在奔驰车头前、王百川在仓库门前，人物和车辆状态连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "疫苗必须恒温避震、剧烈颠簸会让药效作废均通过陈天霸和王百川对话表达，画面只展示药箱、车队、人物动作和表情，没有用不可视抽象信息做主要镜头。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第4组0-3秒陈天霸约19字/3秒，5-9秒约22字/4秒，9-13秒王百川约21字/4秒，均在短剧可接受节奏内；13-15秒“接了”为短台词2秒豁免。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

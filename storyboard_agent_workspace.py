@@ -15,8 +15,10 @@ import re
 import shutil
 import sys
 import textwrap
+import zipfile
 from datetime import datetime
 from pathlib import Path
+from xml.sax.saxutils import escape as xml_escape
 
 from batch_generate_storyboards import (
     EpisodeInput,
@@ -53,6 +55,80 @@ def read_json(path: Path) -> dict:
 
 def write_json(path: Path, payload: dict) -> None:
     write_utf8(path, json.dumps(payload, ensure_ascii=False, indent=2))
+
+
+def episode_id_for_cut_contract(episode_dir: Path) -> str:
+    meta_path = episode_dir / "episode.json"
+    if meta_path.is_file():
+        try:
+            meta = read_json(meta_path)
+            raw = str(meta.get("episode_id") or episode_dir.name)
+        except Exception:
+            raw = episode_dir.name
+    else:
+        raw = episode_dir.name
+
+    match = re.search(r"(\d+)", raw)
+    if match:
+        return f"EP{int(match.group(1)):02d}"
+    return re.sub(r"[^A-Za-z0-9_-]+", "_", raw).strip("_").upper()
+
+
+def _desired_cut_id(episode_id: str, group_index: int) -> str:
+    return f"{episode_id}-G{group_index:02d}"
+
+
+def _ensure_heading_cut_id(heading: str, desired_cut_id: str) -> str:
+    if CUT_ID_RE.search(heading):
+        return CUT_ID_RE.sub(f"cut_id：{desired_cut_id}", heading, count=1)
+
+    if "（" in heading:
+        return heading.replace("（", f"（cut_id：{desired_cut_id}，", 1)
+    if "(" in heading:
+        return heading.replace("(", f"(cut_id: {desired_cut_id}, ", 1)
+    return re.sub(r"\s*===\s*$", f"（cut_id：{desired_cut_id}） ===", heading, count=1)
+
+
+def ensure_storyboard_cut_ids(content: str, episode_id: str) -> tuple[str, list[str]]:
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    if not group_matches:
+        return content, []
+
+    parts: list[str] = []
+    changes: list[str] = []
+    cursor = 0
+    for index, group_match in enumerate(group_matches, start=1):
+        heading = group_match.group(0)
+        desired_cut_id = _desired_cut_id(episode_id, index)
+        updated_heading = _ensure_heading_cut_id(heading, desired_cut_id)
+        parts.append(content[cursor:group_match.start()])
+        parts.append(updated_heading)
+        cursor = group_match.end()
+        if updated_heading != heading:
+            changes.append(f"第{index}组->{desired_cut_id}")
+
+    parts.append(content[cursor:])
+    return "".join(parts), changes
+
+
+def validate_storyboard_cut_ids(content: str, episode_id: str) -> list[str]:
+    issues: list[str] = []
+    seen: set[str] = set()
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    for index, group_match in enumerate(group_matches, start=1):
+        heading = group_match.group(0)
+        cut_match = CUT_ID_RE.search(heading)
+        desired = _desired_cut_id(episode_id, index)
+        if not cut_match:
+            issues.append(f"第{index}组缺少 cut_id；应为 {desired}。")
+            continue
+        cut_id = cut_match.group("cut_id")
+        if cut_id != desired:
+            issues.append(f"第{index}组 cut_id={cut_id}，应为 {desired}。")
+        if cut_id in seen:
+            issues.append(f"cut_id 重复：{cut_id}。")
+        seen.add(cut_id)
+    return issues
 
 
 def resolve_source_episodes(source: Path) -> list[EpisodeInput]:
@@ -166,6 +242,8 @@ def make_episode_task(
             - `segments/segXX/review.md`
             - `segments/segXX/final.txt`
             - `final.txt`
+            - `storyboard_index.json`
+            - `storyboard_index.xlsx`
             - `review.txt`
             - `status.json`
             """
@@ -174,10 +252,10 @@ def make_episode_task(
             """
             1. Read `../../context.md`, both standard `SKILL.md` files, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
-            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds.
+            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== 第1组：标题（cut_id：EP02-G01，总时长：12秒，镜头数：4个） ===`.
             4. Review the assembled `final.txt` once using `storyboard-reviewer`; write the raw reviewer JSON to `review.txt`.
             5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `storyboard-reviewer` after repairs.
-            6. Write `status.json` with reviewer metadata, then run validation.
+            6. Write `status.json` with reviewer metadata, then run validation. Validation exports `storyboard_index.json` and `storyboard_index.xlsx` from `final.txt`.
             7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
         ).strip()
@@ -186,6 +264,8 @@ def make_episode_task(
         outputs = textwrap.dedent(
             """
             - `final.txt`
+            - `storyboard_index.json`
+            - `storyboard_index.xlsx`
             - `review.txt`
             - `status.json`
             """
@@ -193,11 +273,11 @@ def make_episode_task(
         workflow = textwrap.dedent(
             """
             1. Read `../../context.md`, both standard `SKILL.md` files, and `script.txt`.
-            2. Generate the full episode directly into `final.txt`.
+            2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== 第1组：标题（cut_id：EP02-G01，总时长：12秒，镜头数：4个） ===`.
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
             5. Re-run `storyboard-reviewer` after repairs and update `review.txt`.
-            6. Write `status.json` with reviewer metadata, then run validation.
+            6. Write `status.json` with reviewer metadata, then run validation. Validation exports `storyboard_index.json` and `storyboard_index.xlsx` from `final.txt`.
             7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
         ).strip()
@@ -245,6 +325,11 @@ Reviewer JSON must include non-empty `checked_groups` and full `audit_coverage` 
 Reviewer JSON must also include at least 3 `spot_checks` items with `group`, `type`, and `evidence`.
 Reviewer JSON must include at least 3 `semantic_checks` items with `group`, `type`, `result`, `evidence`, and `fix_instruction`; this is the reviewer semantic audit record, not a substitute for fixing hard issues.
 `status.json` reviewer fields must stay consistent with `review.txt`.
+`final.txt` cut_id contract:
+
+- Every group heading must include exactly one `cut_id`.
+- Use the current episode id and group number: `EP01-G01`, `EP01-G02`, ... for ep01; `EP30-G01`, ... for ep30.
+- Do not put asset IDs in `final.txt`; asset binding belongs to the asset extraction stage.
 
 ## Important Constraints
 - Rules live in the two `SKILL.md` files. Do not duplicate or reinterpret them here.
@@ -548,8 +633,10 @@ If any episode is unfinished or validation fails, dispatch only that episode's `
 
 
 CLEAN_GROUP_RE = re.compile(
-    r"(?m)^\ufeff?\s*===\s*第(?P<num>[0-9一二三四五六七八九十百千万零〇两]+)组(?!结束)(?P<rest>.*?)$"
+    r"(?m)^\ufeff?\s*===\s*(?:\[cut_id\s*[:：]\s*[A-Z0-9_-]+\]\s*)?"
+    r"第(?P<num>[0-9一二三四五六七八九十百千万零〇两]+)组(?!结束)(?P<rest>.*?)$"
 )
+CUT_ID_RE = re.compile(r"cut_id\s*[:：]\s*(?P<cut_id>[A-Z0-9_-]+)")
 CLEAN_LEGACY_SHOT_RE = re.compile(r"(?m)^\s*(?P<group>\d{1,3})-(?P<shot>\d{1,2})(?:\s|\[|$)")
 CLEAN_SHOT_TIME_RANGE_RE = re.compile(
     r"(?:时间段[：:]\s*)?(?P<start>\d{1,3})\s*[-－—–到至]\s*(?P<end>\d{1,3})\s*秒"
@@ -821,7 +908,7 @@ def validate_dialogue_pacing_floor(content: str) -> list[str]:
         is_slow = _has_any_marker(shot_text, SLOW_DIALOGUE_MARKERS)
         has_necessary_action = _has_any_marker(shot_text, NECESSARY_LONG_ACTION_MARKERS)
         is_auto_multishot = _has_any_marker(shot_text, AUTO_MULTISHOT_MARKERS)
-        target_speed = 4.2 if is_slow else (6.0 if is_emotional else 5.2)
+        target_speed = 3.8 if is_slow else (5.2 if is_emotional else 4.5)
         target_seconds = math.ceil(chars / target_speed)
 
         if is_auto_multishot:
@@ -839,10 +926,10 @@ def validate_dialogue_pacing_floor(content: str) -> list[str]:
                 )
             continue
 
-        if seconds >= 8 and not (is_slow or has_necessary_action):
+        if seconds >= 9 and not (is_slow or has_necessary_action):
             issues.append(
                 f"{shot_label} 有台词镜头 {seconds} 秒过长；有效字数 {chars}，字秒比 {cps:.1f}。"
-                "除非原剧本明确慢语或必要长动作，否则 ≥8 秒台词镜头应拆成正反打、反应镜头或画外音反打。"
+                "除非原剧本明确慢语或必要长动作，否则 ≥9 秒台词镜头应拆成正反打、反应镜头或画外音反打。"
             )
             continue
 
@@ -851,7 +938,7 @@ def validate_dialogue_pacing_floor(content: str) -> list[str]:
         if chars < 12:
             continue
 
-        min_cps = 5.2 if is_emotional else 4.5
+        min_cps = 4.5 if is_emotional else 3.8
         if cps < min_cps and not is_slow and not (has_necessary_action and not is_emotional):
             issues.append(
                 f"{shot_label} 台词节奏偏慢；有效字数 {chars}，镜头 {seconds} 秒，字秒比 {cps:.1f}，"
@@ -1051,6 +1138,200 @@ def _storyboard_group_labels(content: str) -> list[str]:
         if group_number is not None:
             labels.append(f"第{group_number}组")
     return labels
+
+
+def _split_list_field(value: str) -> list[str]:
+    value = value.strip()
+    if not value or value in {"无", "无明确"}:
+        return []
+    return [
+        item.strip()
+        for item in re.split(r"[、,，/]+", value)
+        if item.strip()
+    ]
+
+
+def _extract_bold_meta(block: str, label: str) -> list[str] | str:
+    pattern = re.compile(rf"(?m)^\s*\*\*{re.escape(label)}\*\*\s*[：:]\s*(?P<value>.+?)\s*$")
+    match = pattern.search(block)
+    if not match:
+        return [] if label in {"人物", "道具"} else ""
+    value = match.group("value").strip()
+    if label in {"人物", "道具"}:
+        return _split_list_field(value)
+    return value
+
+
+def _extract_group_title(heading_rest: str) -> str:
+    rest = re.sub(r"===\s*$", "", heading_rest).strip()
+    rest = CUT_ID_RE.sub("", rest)
+    rest = re.sub(r"[，,]?\s*\[cut_id\s*[:：]\s*[A-Z0-9_-]+\]\s*", "", rest)
+    rest = re.sub(r"^[：:]\s*", "", rest).strip()
+    rest = re.split(r"[（(]\s*(?:cut_id|总时长|镜头数)", rest, maxsplit=1)[0].strip()
+    return rest or "未命名分镜组"
+
+
+def build_storyboard_index_payload(
+    *,
+    content: str,
+    episode_dir: Path,
+    project: str | None = None,
+) -> dict:
+    episode_id = episode_id_for_cut_contract(episode_dir)
+    if project is None:
+        try:
+            project = read_json(episode_dir / "episode.json").get("series_title") or episode_dir.parent.parent.name
+        except Exception:
+            project = episode_dir.parent.parent.name
+
+    cuts: list[dict] = []
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    running_start = 0
+    for index, group_match in enumerate(group_matches, start=1):
+        block_start = group_match.end()
+        block_end = group_matches[index].start() if index < len(group_matches) else len(content)
+        block = content[block_start:block_end]
+        heading = group_match.group(0)
+        cut_match = CUT_ID_RE.search(heading)
+        cut_id = cut_match.group("cut_id") if cut_match else _desired_cut_id(episode_id, index)
+
+        time_matches = list(CLEAN_SHOT_TIME_RANGE_LINE_RE.finditer(block))
+        if time_matches:
+            durations, _ = _extract_time_range_durations(time_matches)
+            duration_sec = sum(value for value in durations if value > 0)
+        else:
+            duration_match = CLEAN_GROUP_TOTAL_RE.search(group_match.group("rest"))
+            duration_sec = int(duration_match.group("seconds")) if duration_match else 0
+
+        cuts.append(
+            {
+                "cut_id": cut_id,
+                "group_index": index,
+                "title": _extract_group_title(group_match.group("rest")),
+                "scene": _extract_bold_meta(block, "场景"),
+                "characters": _extract_bold_meta(block, "人物"),
+                "props": _extract_bold_meta(block, "道具"),
+                "duration_sec": duration_sec,
+                "group_start_sec": running_start,
+                "group_end_sec": running_start + duration_sec,
+                "source_group_label": f"第{index}组",
+            }
+        )
+        running_start += duration_sec
+
+    return {
+        "project": project,
+        "episode_id": episode_id,
+        "cuts": cuts,
+    }
+
+
+def write_simple_xlsx(path: Path, sheet_name: str, rows: list[list[object]]) -> None:
+    """Write a minimal XLSX file without adding a third-party runtime dependency."""
+
+    def column_name(number: int) -> str:
+        name = ""
+        while number:
+            number, rem = divmod(number - 1, 26)
+            name = chr(65 + rem) + name
+        return name
+
+    def cell_xml(value: object, row_index: int, col_index: int) -> str:
+        ref = f"{column_name(col_index)}{row_index}"
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            return f'<c r="{ref}"><v>{value}</v></c>'
+        text = xml_escape("" if value is None else str(value))
+        return f'<c r="{ref}" t="inlineStr"><is><t>{text}</t></is></c>'
+
+    sheet_rows = []
+    for row_index, row in enumerate(rows, start=1):
+        cells = "".join(cell_xml(value, row_index, col_index) for col_index, value in enumerate(row, start=1))
+        sheet_rows.append(f'<row r="{row_index}">{cells}</row>')
+
+    dimension = f"A1:{column_name(max(len(row) for row in rows) if rows else 1)}{max(len(rows), 1)}"
+    worksheet_xml = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
+        'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+        f'<dimension ref="{dimension}"/><sheetData>{"".join(sheet_rows)}</sheetData></worksheet>'
+    )
+    workbook_xml = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
+        'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+        f'<sheets><sheet name="{xml_escape(sheet_name)}" sheetId="1" r:id="rId1"/></sheets></workbook>'
+    )
+    content_types_xml = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+        '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+        '<Default Extension="xml" ContentType="application/xml"/>'
+        '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'
+        '<Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>'
+        '</Types>'
+    )
+    root_rels_xml = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>'
+        '</Relationships>'
+    )
+    workbook_rels_xml = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>'
+        '</Relationships>'
+    )
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        archive.writestr("[Content_Types].xml", content_types_xml)
+        archive.writestr("_rels/.rels", root_rels_xml)
+        archive.writestr("xl/workbook.xml", workbook_xml)
+        archive.writestr("xl/_rels/workbook.xml.rels", workbook_rels_xml)
+        archive.writestr("xl/worksheets/sheet1.xml", worksheet_xml)
+
+
+def write_storyboard_index_files(episode_dir: Path, content: str | None = None) -> tuple[Path, Path]:
+    final_path = episode_dir / "final.txt"
+    if content is None:
+        content = final_path.read_text(encoding="utf-8", errors="replace")
+    payload = build_storyboard_index_payload(content=content, episode_dir=episode_dir)
+    json_path = episode_dir / "storyboard_index.json"
+    xlsx_path = episode_dir / "storyboard_index.xlsx"
+    write_json(json_path, payload)
+
+    rows: list[list[object]] = [
+        [
+            "project",
+            "episode_id",
+            "cut_id",
+            "group_index",
+            "title",
+            "scene",
+            "characters",
+            "props",
+            "duration_sec",
+            "source_group_label",
+        ]
+    ]
+    for cut in payload["cuts"]:
+        rows.append(
+            [
+                payload["project"],
+                payload["episode_id"],
+                cut["cut_id"],
+                cut["group_index"],
+                cut["title"],
+                cut["scene"],
+                "、".join(cut["characters"]),
+                "、".join(cut["props"]),
+                cut["duration_sec"],
+                cut["source_group_label"],
+            ]
+        )
+    write_simple_xlsx(xlsx_path, "storyboard_index", rows)
+    return json_path, xlsx_path
 
 
 def _validate_review_checked_groups(payload: dict, content: str, review_name: str) -> list[str]:
@@ -1326,6 +1607,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
 
 def validate_episode(args: argparse.Namespace) -> int:
     episode_dir = args.episode_dir.resolve()
+    episode_id = episode_id_for_cut_contract(episode_dir)
     final_path = episode_dir / "final.txt"
     if not final_path.is_file():
         print(f"[error] final.txt not found: {final_path}", file=sys.stderr)
@@ -1341,18 +1623,22 @@ def validate_episode(args: argparse.Namespace) -> int:
         content, numbering_changes = normalize_clean_storyboard_numbering(content)
         if numbering_changes:
             fix_messages.append("renumbered " + "; ".join(numbering_changes[:8]))
+        content, cut_id_changes = ensure_storyboard_cut_ids(content, episode_id)
+        if cut_id_changes:
+            fix_messages.append("normalized cut_id " + "; ".join(cut_id_changes[:8]))
         if fix_messages:
             write_utf8(final_path, content)
             print("[fixed] " + " | ".join(fix_messages))
 
     clean_issues = validate_clean_storyboard_format(content)
+    cut_id_issues = validate_storyboard_cut_ids(content, episode_id)
     quality_issues = validate_storyboard_quality_floor(content)
     review_issues = validate_review_artifacts(episode_dir)
     review_payload, review_error = _read_review_json(episode_dir / "review.txt")
     review_pass_issues: list[str] = []
     if review_error is None and not _storyboard_review_passed(review_payload):
         review_pass_issues.append("storyboard_reviewer: reviewer_not_passed")
-    issues = clean_issues + quality_issues + review_issues + review_pass_issues
+    issues = clean_issues + cut_id_issues + quality_issues + review_issues + review_pass_issues
     report_lines = ["# Episode Validation", ""]
     if issues:
         report_lines.append("status: failed")
@@ -1360,6 +1646,10 @@ def validate_episode(args: argparse.Namespace) -> int:
         if clean_issues:
             report_lines.append("## Clean Format")
             report_lines.extend(f"- {issue}" for issue in clean_issues)
+            report_lines.append("")
+        if cut_id_issues:
+            report_lines.append("## Cut ID Contract")
+            report_lines.extend(f"- {issue}" for issue in cut_id_issues)
             report_lines.append("")
         if quality_issues:
             report_lines.append("## Quality Floor")
@@ -1381,9 +1671,11 @@ def validate_episode(args: argparse.Namespace) -> int:
     report_lines.append("status: passed")
     report_lines.append("")
     report_lines.append("- clean_format: passed")
+    report_lines.append("- cut_id_contract: passed")
     report_lines.append("- quality_floor: passed")
     report_lines.append("- review_evidence: passed")
     report_lines.append("- storyboard_reviewer: passed")
+    write_storyboard_index_files(episode_dir, content)
     write_utf8(episode_dir / "protocol_report.md", "\n".join(report_lines))
     print("[passed] episode validation")
     return 0
@@ -1414,10 +1706,14 @@ def collect_run(args: argparse.Namespace) -> int:
 
         content = strip_machine_tags(final_path.read_text(encoding="utf-8", errors="replace"))
         content, changes = normalize_clean_storyboard_numbering(content)
+        episode_contract_id = episode_id_for_cut_contract(episode_dir)
+        content, cut_id_changes = ensure_storyboard_cut_ids(content, episode_contract_id)
+        changes.extend(cut_id_changes)
         clean_issues = validate_clean_storyboard_format(content)
+        cut_id_issues = validate_storyboard_cut_ids(content, episode_contract_id)
         quality_issues = validate_storyboard_quality_floor(content)
         review_issues = validate_review_artifacts(episode_dir)
-        issues = clean_issues + quality_issues + review_issues
+        issues = clean_issues + cut_id_issues + quality_issues + review_issues
         review_payload, review_error = _read_review_json(episode_dir / "review.txt")
         review_passed = review_error is None and _storyboard_review_passed(review_payload)
         status = "unknown"
@@ -1430,6 +1726,7 @@ def collect_run(args: argparse.Namespace) -> int:
             failed += 1
             summary_lines.append(f"- status: {status}, validation_failed")
             summary_lines.extend(f"- clean_format: {issue}" for issue in clean_issues[:8])
+            summary_lines.extend(f"- cut_id_contract: {issue}" for issue in cut_id_issues[:8])
             summary_lines.extend(f"- quality_floor: {issue}" for issue in quality_issues[:8])
             summary_lines.extend(f"- storyboard_reviewer: {issue}" for issue in review_issues[:8])
             summary_lines.append("- copied: skipped because validation failed")
@@ -1450,6 +1747,11 @@ def collect_run(args: argparse.Namespace) -> int:
             continue
 
         write_utf8(output_path, content)
+        index_json_path, index_xlsx_path = write_storyboard_index_files(episode_dir, content)
+        index_output_json = out_dir / f"{output_path.stem}_index.json"
+        index_output_xlsx = out_dir / f"{output_path.stem}_index.xlsx"
+        shutil.copy2(index_json_path, index_output_json)
+        shutil.copy2(index_xlsx_path, index_output_xlsx)
         copied += 1
         summary_lines.append(
             f"- status: {status}, clean_format_passed, quality_floor_passed, "
@@ -1458,6 +1760,8 @@ def collect_run(args: argparse.Namespace) -> int:
         if changes:
             summary_lines.append(f"- clean_numbering_fixed: {'; '.join(changes[:8])}")
         summary_lines.append(f"- copied: `{output_path}`")
+        summary_lines.append(f"- storyboard_index_json: `{index_output_json}`")
+        summary_lines.append(f"- storyboard_index_xlsx: `{index_output_xlsx}`")
         summary_lines.append("")
 
     summary_lines.append(f"Copied: {copied}")
@@ -1465,6 +1769,54 @@ def collect_run(args: argparse.Namespace) -> int:
     write_utf8(run_dir / "SUMMARY.md", "\n".join(summary_lines))
     print(f"[done] copied {copied} final file(s) to {out_dir}")
     print(f"[summary] {run_dir / 'SUMMARY.md'}")
+    return 1 if failed else 0
+
+
+def export_storyboard_index(args: argparse.Namespace) -> int:
+    targets: list[Path] = []
+    if args.episode_dir:
+        targets.append(args.episode_dir.resolve())
+    if args.run_dir:
+        run_dir = args.run_dir.resolve()
+        manifest_path = run_dir / "manifest.json"
+        if manifest_path.is_file():
+            manifest = read_json(manifest_path)
+            targets.extend(Path(item["episode_dir"]) for item in manifest.get("episodes", []))
+        else:
+            targets.extend(sorted(path for path in (run_dir / "episodes").iterdir() if path.is_dir()))
+
+    if not targets:
+        print("[error] pass --episode-dir or --run-dir", file=sys.stderr)
+        return 2
+
+    exported = 0
+    failed = 0
+    for episode_dir in targets:
+        final_path = episode_dir / "final.txt"
+        if not final_path.is_file():
+            print(f"[skip] missing final.txt: {episode_dir}", file=sys.stderr)
+            failed += 1
+            continue
+        content = final_path.read_text(encoding="utf-8", errors="replace")
+        if args.fix_metadata:
+            content = strip_machine_tags(content)
+            content, _ = normalize_clean_storyboard_numbering(content)
+            content, _ = ensure_storyboard_cut_ids(content, episode_id_for_cut_contract(episode_dir))
+            write_utf8(final_path, content)
+
+        cut_issues = validate_storyboard_cut_ids(content, episode_id_for_cut_contract(episode_dir))
+        if cut_issues:
+            print(f"[failed] {episode_dir}", file=sys.stderr)
+            for issue in cut_issues:
+                print(f"- {issue}", file=sys.stderr)
+            failed += 1
+            continue
+        json_path, xlsx_path = write_storyboard_index_files(episode_dir, content)
+        print(f"[exported] {json_path}")
+        print(f"[exported] {xlsx_path}")
+        exported += 1
+
+    print(f"[done] exported {exported} storyboard index file set(s)")
     return 1 if failed else 0
 
 
@@ -1510,6 +1862,12 @@ def parse_args() -> argparse.Namespace:
     collect.add_argument("--run-dir", type=Path, required=True)
     collect.add_argument("--out-dir", type=Path, default=None)
     collect.set_defaults(func=collect_run)
+
+    export_index = subparsers.add_parser("export-storyboard-index", help="Export storyboard_index.json/xlsx for episode cuts.")
+    export_index.add_argument("--episode-dir", type=Path, default=None)
+    export_index.add_argument("--run-dir", type=Path, default=None)
+    export_index.add_argument("--fix-metadata", action="store_true")
+    export_index.set_defaults(func=export_storyboard_index)
 
     run = subparsers.add_parser("run", help="Disabled: Python does not launch agent CLIs.")
     run.add_argument("--run-dir", type=Path, required=True)

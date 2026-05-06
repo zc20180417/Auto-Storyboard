@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep14 资产表覆盖银行门口、黑色大皮箱、旧账本撕碎状态、持棍保安和村民群像，资产取舍与全局资产库保持一致。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、赵大强、旧账本和路边皮卡优先复用 asset_bible.md 的基础资产；旧账本只新增撕碎状态，没有重复创建新账本道具。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "旧账本撕碎和银行门口晴天状态均作为状态变化处理，分别绑定 PROP_LEDGER_BASE 和 SCENE_BANK_ENTRANCE_BASE。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "银行大门、树干、村民哭喊跪地、碎纸片贴脸和保安拉拽站位已明确不单独入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_ZHAODAQIANG_BASE、PROP_LEDGER_BASE 和 VEHICLE_PICKUP_BASE 已按复用或变体索引处理，未要求重复生成已有资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "账本从完整到撕碎属于道具状态，银行门口从基础场景到晴天围堵主场属于场景光线和布局状态，分类正确。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增银行门口、黑色大皮箱、银行保安、村民群像和木棍均未出现在 asset_bible.md 中，且没有覆盖已有车辆、账本或角色定义。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "银行场景提示词限制为无可读银行品牌；皮箱不暴露现金；账本碎片不显示可读账目或个人信息，符合 final.txt 和 bible 事实。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "SCENE_BANK_ENTRANCE_BASE 和 STATE_SCENE_BANK_ENTRANCE_DAY_EP14 均明确为空镜、无人、无人脸，没有把围堵人群写进场景资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "黑色大皮箱、银行门口、保安和村民群像的中英文提示词在主体、材质、光线和禁止项上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep14 final.txt 的第1至第4组及对应秒段，没有越界合并未出现资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集关键道具与场景状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个 Markdown 表的表头符合 episode schema，枚举值使用固定取值，单元格内未使用原始竖线。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

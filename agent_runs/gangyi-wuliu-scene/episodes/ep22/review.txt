@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "summary": "第22集成片分镜已完成真实审核，四组均忠于原剧本，台词指向、时长、空间锁定、组间连续性和格式均通过。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "evidence": "组首锁定阴天烂泥路段、林刚驾驶室、仪表屏和后方车队，司机甲以通讯画外音出现；全组围绕林刚车队稳住泥路并逼近陈家车队，没有跨入无标识新场景。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "陈天霸2-5秒有效17字/3秒，约5.7字/秒；陈家司机5-8秒有效17字/3秒，约5.7字/秒；陈天霸8-11秒有效16字/3秒，约5.3字/秒，均未超过7字/秒，也未低于短剧节奏底线。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "保留陈家重卡猛踩油门、冲深坑、底盘砸地、高压气囊被尖石划破、司机惨叫、车辆砸进烂泥和陈天霸撞头喊刹车的全部关键节点。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "evidence": "第4组总时长12秒，6个时间段均为2秒，标题镜头数6个与正文一致；三句短台词均为2秒短句节奏，最后泥水泼挡风玻璃为2秒动作镜头。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林刚位于驾驶室右侧并握方向盘，司机甲作为通讯画外音有明确来源；车队、仪表屏、碎石和泥坑均在组首可生成空间内。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "陈天霸从看后视镜到砸中控命令挡车，陈家司机提醒“前面全是尖石头”，陈天霸压过提醒命令踩油门，台词未删改且人物关系正确。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“气囊硬撑容易爆”“底盘塌了”等信息通过气囊破口喷气、底盘砸尖石、中控红光和车厢摇晃表现，均为可见可听信息。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组以陈家重卡陷泥、红色警报灯闪烁收尾，第4组组首延续为陈天霸抛锚车停在右侧且车头陷泥；林刚车队从旁驶过与第1组逼近动作连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "林刚和陈天霸的三句短台词均写明对话对象，并配套看向对方方向或透过挡风玻璃瞪向对方，未出现无对象对白。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

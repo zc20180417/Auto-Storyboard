@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep07 assets.md 覆盖了雪路故障、林家院门、水枪威慑和货损证据，未发现阻断生产的 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "已对照 asset_bible 复用 CHAR_ZHAODAQIANG_BASE、CHAR_LINGANG_BASE、SCENE_MOUNTAIN_ROAD_BASE、VEHICLE_OLD_VAN_BASE、VEHICLE_PICKUP_BASE，未把赵大强、林刚、雪路、旧面包车和皮卡重复写成新基础资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "面包车冒黑烟和底盘冻结、皮卡雪路行驶、林刚雪天工作服、林刚家院门雪天均建模为状态或变体；水枪和林刚家院门因 bible 不存在才作为新增基础资产。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "车钥匙、石头、门环、仪表盘闪灯、村民短暂表情和车内普通部件均列入不建议入库，避免把一次性动作和背景小件过度资产化。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "复用项明确引用 bible 中已有主角、反派、雪路、旧面包车和皮卡，新增仅限本集确有变化的状态。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "车辆损坏、雪天服装、雪天院门、冻硬海鲜均是相对基础资产的状态变化，没有被误写成重复基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增的村民群像、林刚家院门、高压水枪、海鲜货箱不在当前 asset_bible 的基础资产列表中，且没有改写已有角色脸型、服装主色或车辆设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词只包含 final.txt 和 asset_bible 出现的雪路、院门、皮卡、面包车、水枪、海鲜货箱等事实，没有新增品牌、可读文字、额外剧情或无依据徽章。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep07 final.txt 的组号和时间段，没有把未出现资产强行归入其他镜头。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中文和英文提示词在主体、状态、材质、光线和禁止项上保持一致，未出现中英文事实不一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "SCENE_LINGANG_HOME_GATE_BASE 和 STATE_SCENE_LINGANG_HOME_GATE_SNOW_V1 明确为空镜、无人、无人脸，没有把围堵村民写入场景基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表均存在，表头与 episode 模式要求一致，单元格未使用原始竖线字符。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

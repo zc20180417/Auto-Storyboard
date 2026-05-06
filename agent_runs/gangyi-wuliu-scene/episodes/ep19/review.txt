@@ -1,0 +1,88 @@
+{
+  "pass": true,
+  "summary": "已对照第19集原剧本与最终分镜逐组复审，设伏撒钉、林刚发现并启用推雪铲、钉子反砸孙彪和车队无损通过均完整保留，未发现硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留孙彪脸贴纱布、带打手往路面撒大把三角扎胎钉，并完整保留孙彪和打手两句台词。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "evidence": "司机甲的VO被写成车载对讲画外音对林刚喊，林刚拿对讲机对司机甲和后方车队回应，未出现无对象台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组包含林刚按下车内红色按钮、皮卡车头降下巨大液压推雪铲、林刚冷笑说“想爆我的胎？”三个关键点。"
+    },
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "evidence": "第1组0-3、3-5、5-7、7-10秒合计10秒，标题镜头数4个与实际时间段一致，孙彪14字情绪台词放在2秒镜头内，节奏符合短剧口径。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组组首同时锁定皮卡、后方五辆重卡、路边草丛里的孙彪和打手，飞钉砸向草丛与车队驶过都在同一盘山公路空间内。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "孙彪和打手在组首空间锁定中都有画面位置、身体朝向和道具袋来源，后续撒钉与对话不突兀。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组末尾孙彪等人退到路边草丛旁，第2组组首继续将孙彪置于路边草丛后，钉阵保持在路面中央。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "红色按钮下陷、液压推雪铲降下、林刚盯住钉阵并冷声说话均是可拍的动作、道具和声音信息。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第4组唯一台词“居然有推雪铲！”放在8-10秒2秒镜头内，动作镜头0-3、3-6、6-8秒均为推铲扫钉的连续动作节拍。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第5组保留钉子如暴雨般砸向草丛里的孙彪等人、孙彪惨叫、林刚车队毫发无损轰鸣驶过并扬尘的结尾。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

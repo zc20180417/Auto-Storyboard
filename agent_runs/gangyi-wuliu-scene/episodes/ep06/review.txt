@@ -1,0 +1,75 @@
+{
+  "pass": true,
+  "summary": "ep06整集分镜已按storyboard-reviewer对照原剧本、生成规则和修复后的final.txt完成复审，硬性问题已清零。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组逐项覆盖林刚扔最后一件行李、给轮胎绑防滑链，2-7秒保留村民甲嘲笑和林刚回骂，7-12秒保留赵大强炫耀三十万买海鲜和村民乙嘲讽穷一辈子，台词未删改。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组2-4秒林刚短句7字/2秒属短台词豁免；4-6秒村民甲约12字/2秒约6字/秒；6-11秒林刚与赵大强连续问答约29字/5秒约5.8字/秒，节奏合理。"
+    },
+    {
+      "group": "第3组",
+      "type": "timing_math",
+      "evidence": "第3组时间段0-2、2-4、4-7、7-12连续相加为12秒，标题总时长12秒，镜头数4个与实际时间段一致。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组主要在林刚家院子，9-11秒明确写为蒙太奇转场到村口道路，用于保留原剧本两车出村动作，跨空间例外标识清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首写明林刚在皮卡前轮旁、赵大强在院门方向、村民甲在院中、村民乙和村民在背景角落，各自位置和身体朝向完整，后续说话人物均可生成。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾林刚仍蹲在轮胎旁，赵大强和村民围在院中；第2组组首延续林刚蹲在前轮旁、村民甲靠近防冻液瓶子、防冻液随后被踢翻。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "暴雪和封路信息通过大喇叭广播声呈现，村民抬头、村民甲转向赵大强慌问海鲜货，赵大强挥手喊人出发，关键剧情均为可听可见信息。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第3组保留赵大强咬牙决定出发；第4组保留林刚坐进车并说找死别拉垫背、村民跑向快报废面包车、林刚冷笑指出防冻液兑水、两车出村等原剧本动作和台词。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

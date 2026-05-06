@@ -1,0 +1,166 @@
+{
+  "project": "EP-22",
+  "episode_id": "EP22",
+  "cuts": [
+    {
+      "cut_id": "EP22-G01",
+      "group_index": 1,
+      "title": "田立民定罪施压（，总时长：10秒，镜头数：5个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "田立民",
+        "孙耀",
+        "朱文浩",
+        "黑衣保镖"
+      ],
+      "props": [
+        "宴会台",
+        "甩棍"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 0,
+      "group_end_sec": 10,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP22-G02",
+      "group_index": 2,
+      "title": "保镖围住朱文浩（，总时长：12秒，镜头数：5个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "田立民",
+        "孙耀",
+        "朱文浩",
+        "黑衣保镖"
+      ],
+      "props": [
+        "宴会台",
+        "甩棍",
+        "袖口"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 10,
+      "group_end_sec": 22,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP22-G03",
+      "group_index": 3,
+      "title": "苏清寒入场护人（，总时长：11秒，镜头数：4个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "苏清寒",
+        "田立民",
+        "孙耀",
+        "朱文浩",
+        "黑衣保镖",
+        "苏清寒随行保镖"
+      ],
+      "props": [
+        "宴会厅大门",
+        "轮椅",
+        "甩棍",
+        "文件"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 22,
+      "group_end_sec": 33,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP22-G04",
+      "group_index": 4,
+      "title": "加急文件反转（，总时长：11秒，镜头数：5个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "苏清寒",
+        "孙耀",
+        "田立民",
+        "朱文浩",
+        "黑衣保镖",
+        "苏清寒随行保镖"
+      ],
+      "props": [
+        "轮椅",
+        "文件",
+        "甩棍"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 33,
+      "group_end_sec": 44,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP22-G05",
+      "group_index": 5,
+      "title": "督导组封锁会场（，总时长：12秒，镜头数：5个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "督导组长",
+        "督导组人员",
+        "田立民",
+        "孙耀",
+        "朱文浩",
+        "苏清寒",
+        "黑衣保镖"
+      ],
+      "props": [
+        "证件",
+        "文件",
+        "轮椅",
+        "甩棍"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 44,
+      "group_end_sec": 56,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP22-G06",
+      "group_index": 6,
+      "title": "孙耀被反剪双手（，总时长：10秒，镜头数：4个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "督导组长",
+        "两名特派员",
+        "田立民",
+        "孙耀",
+        "朱文浩",
+        "苏清寒",
+        "督导组人员"
+      ],
+      "props": [
+        "证件",
+        "文件",
+        "轮椅"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 56,
+      "group_end_sec": 66,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP22-G07",
+      "group_index": 7,
+      "title": "田立民断臂求生（，总时长：10秒，镜头数：4个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "督导组长",
+        "田立民",
+        "孙耀",
+        "朱文浩",
+        "苏清寒",
+        "两名特派员"
+      ],
+      "props": [
+        "证件",
+        "文件",
+        "轮椅"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 66,
+      "group_end_sec": 76,
+      "source_group_label": "第7组"
+    }
+  ]
+}

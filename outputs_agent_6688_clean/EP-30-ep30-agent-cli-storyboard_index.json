@@ -1,0 +1,124 @@
+{
+  "project": "EP-30",
+  "episode_id": "EP30",
+  "cuts": [
+    {
+      "cut_id": "EP30-G01",
+      "group_index": 1,
+      "title": "接掌集团（，总时长：10秒，镜头数：3个）",
+      "scene": "集团最高会议室",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "众高管"
+      ],
+      "props": [
+        "董事长主位",
+        "会议长桌",
+        "文件"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 0,
+      "group_end_sec": 10,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP30-G02",
+      "group_index": 2,
+      "title": "项目任命（，总时长：10秒，镜头数：4个）",
+      "scene": "集团最高会议室",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "李副总",
+        "众高管"
+      ],
+      "props": [
+        "董事长主位",
+        "会议长桌",
+        "文件"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 10,
+      "group_end_sec": 20,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP30-G03",
+      "group_index": 3,
+      "title": "立规警告（，总时长：10秒，镜头数：4个）",
+      "scene": "集团最高会议室",
+      "characters": [
+        "朱文浩",
+        "众高管"
+      ],
+      "props": [
+        "董事长主位",
+        "会议长桌"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 20,
+      "group_end_sec": 30,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP30-G04",
+      "group_index": 4,
+      "title": "阳光运行（，总时长：12秒，镜头数：4个）",
+      "scene": "集团最高会议室",
+      "characters": [
+        "朱文浩",
+        "众高管"
+      ],
+      "props": [
+        "会议长桌",
+        "落地窗"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 30,
+      "group_end_sec": 42,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP30-G05",
+      "group_index": 5,
+      "title": "夜色举杯（，总时长：10秒，镜头数：5个）",
+      "scene": "集团顶层办公室",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "酒杯",
+        "办公桌",
+        "加密卫星电话",
+        "落地窗"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 42,
+      "group_end_sec": 52,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP30-G06",
+      "group_index": 6,
+      "title": "本家来电（，总时长：10秒，镜头数：3个）",
+      "scene": "集团顶层办公室",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "画外音"
+      ],
+      "props": [
+        "加密卫星电话",
+        "办公桌",
+        "酒杯",
+        "落地窗"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 52,
+      "group_end_sec": 62,
+      "source_group_label": "第6组"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "summary": "ep11 assembled final已按storyboard-reviewer逐项审核，原剧本台词和动作完整保留，6组均满足自然分镜格式、空间锁定、对话指向与时长要求，无硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "8-10秒王强台词“瞎扯！出站前刚检修过！少找借口！”约13个有效字/2秒，约6.5字/秒，并同步脸色骤变、下颌绷紧和声音抬高；3-6秒无台词蹲下抹底盘面板为原剧本连续动作，3秒未超限。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组完整覆盖林刚掏螺丝刀撬开控制面板、说“过来看看”、控制板内两根电源线被整齐剪断、林刚以嘴角轻扯的表情质问和王强后退否认，未删改台词和因果。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "evidence": "第4组标题总时长11秒，镜头时间为0-3、3-6、6-8、8-11秒，相加11秒；4个时间段对应镜头数4个。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "第6组场景为货运场大门附近，组首列明林刚在驾驶室、王百川在车外、王强在堆货角落，冷藏车离开与王强拨号均在同一货运场大门空间连续完成。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首列明王强位于画面左侧、林刚位于画面中央、王百川位于画面左后方，并分别说明身体朝向和视线，三人后续台词均有可生成位置。",
+      "fix_instruction": "无需修复；本组人物可用性已满足。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“剪切口是新的”通过铜丝断口新亮、断线垂在灰尘和油渍旁等可见细节呈现，没有只写抽象判断。",
+      "fix_instruction": "无需修复；保留断口新亮等可拍证据。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾制冷机已恢复且三人看向指示灯，第5组首写明制冷机已经恢复运转、车头轻微震动，随后林刚拉驾驶室车门，为第6组冷藏车驶出建立连续动作。",
+      "fix_instruction": "无需修复；第5组尾已自然衔接第6组开车离场。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "6-10秒王强电话台词“豹哥，带几个人去南崖路堵个大车。往死里打！”约21个有效字/4秒，约5.3字/秒，且同步贴手机、看向大门外方向，节奏合理。",
+      "fix_instruction": "无需修复；电话台词保留4秒即可。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

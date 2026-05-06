@@ -1,0 +1,187 @@
+{
+  "project": "EP-16",
+  "episode_id": "EP16",
+  "cuts": [
+    {
+      "cut_id": "EP16-G01",
+      "group_index": 1,
+      "title": "审讯室开局施压（，总时长：12秒，镜头数：6个）",
+      "scene": "特勤局审讯室",
+      "characters": [
+        "朱文浩",
+        "雷震"
+      ],
+      "props": [
+        "白炽灯",
+        "审讯桌",
+        "照片",
+        "椅子",
+        "录音播放器"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP16-G02",
+      "group_index": 2,
+      "title": "录音逼出红星厂秘密（，总时长：15秒，镜头数：4个）",
+      "scene": "特勤局审讯室",
+      "characters": [
+        "朱文浩",
+        "雷震"
+      ],
+      "props": [
+        "白炽灯",
+        "审讯桌",
+        "照片",
+        "椅子",
+        "录音播放器"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 12,
+      "group_end_sec": 27,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP16-G03",
+      "group_index": 3,
+      "title": "病房醒来交出密钥信息（，总时长：15秒，镜头数：6个）",
+      "scene": "市医院特护病房",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "病床",
+        "氧气面罩",
+        "水杯",
+        "床头监护设备"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 27,
+      "group_end_sec": 42,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP16-G04",
+      "group_index": 4,
+      "title": "破解密钥后的警告（，总时长：10秒，镜头数：4个）",
+      "scene": "市医院特护病房",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "病床",
+        "水杯",
+        "床头监护设备"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 42,
+      "group_end_sec": 52,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP16-G05",
+      "group_index": 5,
+      "title": "总裁办下达焚厂命令（，总时长：12秒，镜头数：6个）",
+      "scene": "集团总裁办",
+      "characters": [
+        "苏长明",
+        "李长庚",
+        "黑皮"
+      ],
+      "props": [
+        "落地窗",
+        "核桃",
+        "办公桌"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 52,
+      "group_end_sec": 64,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP16-G06",
+      "group_index": 6,
+      "title": "火灾灭口与离岸转账（，总时长：10秒，镜头数：4个）",
+      "scene": "集团总裁办",
+      "characters": [
+        "苏长明",
+        "李长庚",
+        "黑皮"
+      ],
+      "props": [
+        "落地窗",
+        "核桃",
+        "办公桌"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 64,
+      "group_end_sec": 74,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP16-G07",
+      "group_index": 7,
+      "title": "田立民锁定新棋子（，总时长：12秒，镜头数：4个）",
+      "scene": "董事长办公室",
+      "characters": [
+        "田立民",
+        "孙耀"
+      ],
+      "props": [
+        "集团股权结构图",
+        "加密电话",
+        "办公桌",
+        "手机"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 74,
+      "group_end_sec": 86,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP16-G08",
+      "group_index": 8,
+      "title": "海外电话暴露朱天和软肋（，总时长：14秒，镜头数：5个）",
+      "scene": "董事长办公室",
+      "characters": [
+        "田立民",
+        "龙建秋"
+      ],
+      "props": [
+        "集团股权结构图",
+        "加密电话",
+        "另一部手机",
+        "办公桌"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 86,
+      "group_end_sec": 100,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP16-G09",
+      "group_index": 9,
+      "title": "田立民爆发野心（，总时长：13秒，镜头数：5个）",
+      "scene": "董事长办公室",
+      "characters": [
+        "田立民",
+        "龙建秋"
+      ],
+      "props": [
+        "海外手机",
+        "办公桌",
+        "墙面",
+        "集团股权结构图"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 100,
+      "group_end_sec": 113,
+      "source_group_label": "第9组"
+    }
+  ]
+}

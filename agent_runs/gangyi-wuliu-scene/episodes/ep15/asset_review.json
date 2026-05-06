@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep15 资产表复用了全局夜间停泊场、重卡破坏状态、黑桶工业沙和底盘构图，仅新增保安甲、保安服、皮卡夜间车灯和旧重卡诱饵状态，未发现硬问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "夜间物流停泊场、重卡被倒沙状态、黑桶工业沙、林刚手机和重卡底盘构图均复用 asset_bible.md 已有资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "皮卡夜间强车灯和旧重卡诱饵都建模为既有车辆资产的道具状态，未重复创建新车辆基础资产。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "油箱盖拧动、车门方向盘轮胎局部、黑烟发动机声、保安甲表演动作和老张画外音均未过度入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "SCENE_LOGISTICS_YARD_BASE、VEHICLE_HEAVY_TRUCK_BASE、PROP_BLACK_BUCKET_SAND_BASE、VEHICLE_PICKUP_BASE 和 COMPOSITION_TRUCK_UNDERCARRIAGE_V1 均按全局库复用或变体处理。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "皮卡开车灯和旧重卡近报废外观属于车辆状态变化，已放入新增资产状态表，未作为新基础车辆重复入库。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增保安甲线人和普通保安服不在 asset_bible.md 中，且未与警察群像、刚毅司机群像或已有服装资产混淆。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "车辆提示词明确禁止可读车牌、品牌 logo 和新增公司文字；保安服提示词限制为非警服，未新增 final.txt 之外身份。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集关键道具与场景状态",
+      "type": "prop_state_conflict",
+      "result": "pass",
+      "evidence": "STATE_VEHICLE_TRUCK_SABOTAGED_V1 复用全局油箱倒沙状态；旧重卡诱饵仅描述老旧可启动外观，没有改变重卡基础资产类别。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "保安甲、保安服、皮卡车灯和旧重卡诱饵的中英文提示词在主体、材质、光线、身份和负面限制上事实一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep15 final.txt 的第1至第7组对应秒段，未把未出现资产强行归入其他段落。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集关键道具与场景状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表完整，表头与转换脚本 schema 匹配，枚举值合法，未使用会破坏 Markdown 表格的原始竖线。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

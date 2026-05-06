@@ -1,0 +1,25 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "STATE_SCENE_MOUNTAIN_MUDDY_OVERCAST_V1",
+      "type": "scene_state",
+      "reason": "ep22主场景为阴天烂泥、尖石和深坑路段，可复用于后续泥路运输冲突。"
+    },
+    {
+      "id": "STATE_VEHICLE_GANGYI_DEFLATED_TIRE_MUD_V1",
+      "type": "prop_state",
+      "reason": "刚毅重卡放气轮胎泥路抓地状态是本集关键技术视觉。"
+    },
+    {
+      "id": "STATE_VEHICLE_CHEN_AIR_SUSPENSION_FAILED_V1",
+      "type": "prop_state",
+      "reason": "陈家重卡气囊减震破裂并陷泥，是本集反派失败关键状态。"
+    }
+  ]
+}

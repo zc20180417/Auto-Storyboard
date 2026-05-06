@@ -1,0 +1,40 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "SCENE_HOSPITAL_RECEIVING_BASE",
+      "type": "scene_base",
+      "reason": "ep23到ep24连续使用省医院接收区月台外，建议作为跨集核心场景。"
+    },
+    {
+      "id": "COSTUME_LIZHUREN_WHITE_COAT_V1",
+      "type": "costume_base",
+      "reason": "李主任在医院接收区连续穿白大褂，需固定服装。"
+    },
+    {
+      "id": "STATE_LIZHUREN_HOSPITAL_WHITE_COAT_V1",
+      "type": "character_state",
+      "reason": "李主任医院白大褂和平板状态贯穿接收区冲突。"
+    },
+    {
+      "id": "PROP_VIBRATION_MONITOR_BASE",
+      "type": "prop_base",
+      "reason": "震动仪是冷链验货的重要证明设备。"
+    },
+    {
+      "id": "PROP_BLACK_CARD_BASE",
+      "type": "prop_base",
+      "reason": "黑卡从ep23递出到ep24立案调查，属于跨镜头证据道具。"
+    },
+    {
+      "id": "STATE_VEHICLE_COLD_CHAIN_DELIVERY_V1",
+      "type": "prop_state",
+      "reason": "林刚冷链货车打开车厢验货状态是医药配送线关键状态。"
+    }
+  ]
+}

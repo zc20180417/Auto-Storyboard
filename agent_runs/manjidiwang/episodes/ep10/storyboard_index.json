@@ -1,0 +1,112 @@
+{
+  "project": "EP-10",
+  "episode_id": "EP10",
+  "cuts": [
+    {
+      "cut_id": "EP10-G01",
+      "group_index": 1,
+      "title": "绝密模拟题（，总时长：10秒，镜头数：4个）",
+      "scene": "集团四方会审室",
+      "characters": [
+        "刘海平",
+        "邱瑞",
+        "朱天和",
+        "田立民"
+      ],
+      "props": [
+        "文件",
+        "茶杯"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 0,
+      "group_end_sec": 10,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP10-G02",
+      "group_index": 2,
+      "title": "证据确凿（，总时长：10秒，镜头数：5个）",
+      "scene": "集团四方会审室",
+      "characters": [
+        "刘海平",
+        "朱天和",
+        "田立民",
+        "邱瑞"
+      ],
+      "props": [
+        "文件",
+        "茶杯"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 10,
+      "group_end_sec": 20,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP10-G03",
+      "group_index": 3,
+      "title": "走廊求救（，总时长：10秒，镜头数：3个）",
+      "scene": "会审室走廊",
+      "characters": [
+        "刘海平",
+        "苏长明"
+      ],
+      "props": [],
+      "duration_sec": 10,
+      "group_start_sec": 20,
+      "group_end_sec": 30,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP10-G04",
+      "group_index": 4,
+      "title": "过河拆桥（，总时长：10秒，镜头数：4个）",
+      "scene": "会审室走廊",
+      "characters": [
+        "刘海平",
+        "苏长明"
+      ],
+      "props": [
+        "手机"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 30,
+      "group_end_sec": 40,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP10-G05",
+      "group_index": 5,
+      "title": "天台密谋（，总时长：12秒，镜头数：5个）",
+      "scene": "集团天台",
+      "characters": [
+        "苏清寒",
+        "朱文浩"
+      ],
+      "props": [
+        "卷宗"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 40,
+      "group_end_sec": 52,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP10-G06",
+      "group_index": 6,
+      "title": "执棋人（，总时长：10秒，镜头数：2个）",
+      "scene": "集团天台",
+      "characters": [
+        "苏清寒",
+        "朱文浩"
+      ],
+      "props": [
+        "车钥匙"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 52,
+      "group_end_sec": 62,
+      "source_group_label": "第6组"
+    }
+  ]
+}

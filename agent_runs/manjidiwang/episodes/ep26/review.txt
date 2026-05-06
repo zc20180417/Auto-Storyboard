@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "summary": "EP26整集已按storyboard-reviewer逐组审核，所有原剧本台词和关键动作均保留，组时长、空间锁定、对话指向和格式符合要求。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组逐项保留窗外雷电交加、朱天和饮热茶、刘管家端果盘说“老爷，今晚风雨真大。”、朱天和揉眉心说“鼎丰资本的事，让我心神不宁。”以及茶杯脱手和“咳咳……这茶……”。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组主空间为朱家别墅客厅，二楼走廊在组首作为同一客厅上方空间列明，黑影从栏杆暗处跃下，朱文浩、朱天和和黑影都有明确位置来源。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "第5组总时长12秒，0-3秒为砸地动作，3-5秒“解药在哪！”为2秒短台词，5-7秒“没有解药！”为2秒短台词，7-9秒约11字/2秒，9-12秒约14字/3秒，均未超过7字/秒且未拖慢短句。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "第6组保留黑影挣扎逃跑、王队长一记擒拿制服、急救车警笛、医护人员冲进别墅、急救医生8-10秒说“心跳微弱，必须立刻上急救设备！”和朱文浩10-14秒两句台词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组结尾朱天和捂胸、茶杯落在茶几旁，第2组组首继续写朱天和前倾捂胸、茶杯落在茶几旁，随后吐血倒在沙发上，前后连续。",
+      "fix_instruction": "无须修复；若后续调整朱天和姿态，需在第1组尾或第2组首补足过渡。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩和朱天和在组首明确位于沙发前与沙发上；黑影位于二楼栏杆后的暗处，后续玻璃碎裂和跃下前已有明确位置来源。",
+      "fix_instruction": "无须修复；若隐藏人物行动，应继续在组首或行动前给出可生成位置。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "短棍直劈、扣腕、暴怒台词、过肩摔和短棍震开均是可见动作或可听台词，没有把打斗结果写成抽象判断。",
+      "fix_instruction": "无须修复；动作戏继续以身体动作、道具位置和视线关系表达。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "王队长在门口方向赶入，急救医生和医护人员在门口外雨光后方，均在参与制服或急救前获得位置来源。",
+      "fix_instruction": "无须修复；若新增急救人员台词，应确认其在组首或行动前已有来源。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

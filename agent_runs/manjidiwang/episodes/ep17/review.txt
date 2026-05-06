@@ -1,0 +1,91 @@
+{
+  "pass": true,
+  "summary": "EP17 assembled final covers the factory exterior, underground evidence rescue, fire escape, and closing arrest order with no hard storyboard issues remaining.",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组5-11秒承载王队长和朱文浩两句连续对话，约24个有效字加拔枪动作共6秒，按连续对话节拍计算合理。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组保留地下室铁皮柜、满地铁锈、朱文浩踹开防盗门、两名手下持火把准备点燃账本，以及两句原台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "evidence": "第4组四个无台词动作镜头为2秒、3秒、3秒、3秒，总时长11秒，未出现超过3秒的普通无台词镜头。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "evidence": "第5组朱文浩对自己低声说出原始注资合同，心声响起也标明对自己，台词和心声均有明确关联对象。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "第6组组首将朱文浩锁在厂房火墙后方的叉车驾驶位，王队长和黑皮在正门外，同属红星工厂正门外火场空间，没有地下室硬切。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩、王队长、内卫小队、黑皮和黑皮同伙在组首均有画面位置与身体朝向，后续逼近、倒汽油和对话都有可生成来源。",
+      "fix_instruction": "若不通过，应在组首补足参与人物的具体位置、朝向、可见状态或遮挡来源。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第3组只发生在红星厂地下二层，防盗门、铁皮柜、火把和账本均属于同一地下室空间。",
+      "fix_instruction": "若不通过，应将室外火场或其他物理空间另起一组。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "合同、公章和防火袋都以可见道具呈现，苏长明私刻公章通过心声说明，未把不可视判断直接当画面。",
+      "fix_instruction": "若不通过，应把证据信息替换为可见文件、公章、袋口动作或原台词。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾朱文浩握紧防火袋看向出口，第6组通过火场外部重新锁定叉车驾驶位，第7组接续叉车已经撞开火墙缺口，空间转移按剧本场景切换完成。",
+      "fix_instruction": "若不通过，应在正门外组首补足朱文浩位于叉车驾驶位或被烟火遮挡的位置。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第8组保留防火袋交给王队长后的证据确认，以及朱文浩原台词“铁证如山，收网。”和“去集团，拦住那五亿资金。”",
+      "fix_instruction": "若不通过，应恢复缺失台词、证据道具或王队长接防火袋后的收网动作。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

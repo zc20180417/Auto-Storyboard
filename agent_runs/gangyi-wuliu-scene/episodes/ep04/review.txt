@@ -1,0 +1,86 @@
+{
+  "pass": true,
+  "summary": "ep04组装稿已按storyboard-reviewer逐组审查，原剧本动作和台词完整，空间、对话指向、时长和格式均无硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "evidence": "林刚对白写为“对自己咬牙说道”，主管通过副驾驶手机“对林刚催逼说道”，林刚心声写明“心声响起（对自己）”，对话和声音来源明确。"
+    },
+    {
+      "group": "第2组",
+      "type": "timing_math",
+      "evidence": "第2组标题14秒，时间段为0-3、3-5、5-8、8-12、12-14，合计14秒；镜头数5个与实际时间段一致。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组只在豪华别墅门口雨夜展开，组首明确林刚在货车后车厢旁、保安在门岗前、管家在别墅大门内侧背景角落，未跨物理空间。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "林刚对管家的争执台词有效22字/4秒，字秒比5.5；管家末句有效18字/3秒，字秒比6.0；均在情绪对白可接受范围内。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林刚在驾驶位，主管只以副驾驶手机里的声音出现，手机在组首即位于画面右侧座椅上且屏幕亮起。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组结尾林刚盯住急弯，第2组组首延续货车冲到悬崖急转弯前；第2组结尾林刚踹开车门站在雨中，后续第3组已切换到别墅门口新空间，不存在同空间跳变。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "别墅门口、货车刮擦痕、额头流血、扯开后车厢门、保安后退半步、管家撑黑伞看手表均为可见动作或道具。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "管家“你晚了五分钟。这货我不收。”、林刚“晚五分钟？那条山路刹车管都被人剪了！我拿命送来的！”、管家“迟到就是迟到，首富的货你也敢耽误？”均逐句保留。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第4组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终稿只包含自然分镜正文、光影、画面风格和负面提示词，没有模型说明词、内部工作流词或自检说明。",
+      "fix_instruction": "无。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "dialogue_pacing",
+      "problem": "管家首句略快但可接受。",
+      "evidence": "“你晚了五分钟。这货我不收。”有效13字/2秒，字秒比6.5，属于6-7字/秒偏快区间。",
+      "fix": "如需更稳可调整为3秒并重算组内节奏，但当前争执场景的短剧节奏不构成硬问题。"
+    }
+  ]
+}

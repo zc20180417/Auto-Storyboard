@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "summary": "EP24整集12组已按storyboard-reviewer规则对照原剧本和最终分镜审核，董事会逼宫、举证入场、拔枪挟持、遥控炸弹、信号屏蔽、特勤控制和耳语收局均完整保留，无硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留田立民召开特别懂事会、提议罢免朱天和，以及朱天和推门反问“你还有资格罢免我？”，没有删改关键台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "第4组按剧本呈现田立民狂笑、掀翻桌子、拔出腰间手枪、众高管尖叫逃窜，并以“退后！都给我退后！”收束。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "evidence": "第7组组首锁定田立民挟持李长庚、朱文浩在右侧、特勤门口一线，炸弹露出和10:00倒计时均发生在同一会议室。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "evidence": "第9组把信号屏蔽信息写成手机屏幕可见文字“炸弹信号频率已被屏蔽，倒计时停止在09:47”，没有用不可见心理判断承载剧情。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_pacing",
+      "evidence": "第10组0-5秒、5-8秒、8-10秒分别承载朱文浩三段解释台词，10-12秒只呈现田立民按遥控器无反应，时间段连续且无超长单台词镜头。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩和特勤人员在第3组组首位于门口走廊一侧，0-3秒明确大步入场后，才发生摔文件和举证台词。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾田立民举枪逼退众人；第5组首延续为会议室桌椅文件散乱、田立民手枪在右手，随即挟持李长庚，枪械状态连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "朱文浩“脸色第一次变了”被处理为眼睑绷紧、压住呼吸、重新锁住田立民眼睛，是可拍表演细节。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第10组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第10组完整保留安防系统三年前由父亲升级、朱文浩海外远程参与、炸弹频率在黑名单里，以及田立民按遥控器无反应。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第12组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第11组尾田立民瘫软在地、朱文浩站在前方；第12组首延续为田立民在地、武器和遥控器已被特勤控制，朱文浩俯身耳语。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

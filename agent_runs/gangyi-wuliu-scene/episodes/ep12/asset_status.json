@@ -1,0 +1,23 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "STATE_SCENE_MOUNTAIN_NIGHT_BLOCKADE_V1",
+    "VEHICLE_OLD_REFRIGERATED_TRUCK_BASE",
+    "STATE_VEHICLE_REEFER_NIGHT_ATTACK_V1",
+    "STATE_VEHICLE_REEFER_CRACKED_WINDSHIELD_V1",
+    "STATE_VEHICLE_UNLICENSED_VAN_BLOCKADE_V1",
+    "STATE_VEHICLE_UNLICENSED_VAN_CRUSHED_V1",
+    "PROP_STEEL_PIPE_BASE",
+    "PROP_DASHCAM_BASE",
+    "STATE_PROP_DASHCAM_RECORDING_RED_LIGHT_V1",
+    "PROP_OFFICE_COMPUTER_BASE",
+    "STATE_PROP_COMPUTER_DASHCAM_PLAYBACK_V1",
+    "SCENE_WAREHOUSE_OFFICE_NIGHT_BASE",
+    "STATE_SCENE_OFFICE_DASHCAM_PLAYBACK_V1"
+  ]
+}

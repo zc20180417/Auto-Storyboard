@@ -1,0 +1,72 @@
+{
+  "pass": true,
+  "summary": "ep27整集分镜保留龙建秋清场逼签、重生威胁、黑客反制、枪口僵持和交出解药的完整链路，未发现硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "0-7秒承载龙建秋关于苏长明、田立民、孙耀和养狗邀约的连续台词，约51个有效字用7秒完成，字秒比约7.3；7-10秒和10-13秒为短句回应，符合短句豁免。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "第8组保留陈律师电话中海外钱庄主服务器被黑、洗钱名单上传国际刑警库、龙建秋追问以及朱文浩扔掉遥控器的原剧本内容。"
+    },
+    {
+      "group": "第11组",
+      "type": "space_locking",
+      "evidence": "第11组始终在集团一楼大堂，龙建秋从口袋取玻璃小瓶并扔给朱文浩，王队长在背景右侧入口旁接应，没有切换到医院空间。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "陈律师在第6组组首空间锁定中位于背景右后方且抱着厚文件，随后递文件给龙建秋具备明确位置来源。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组尾陈律师手机疯狂震动并接起电话，第8组首陈律师仍在画面右侧且手机贴耳，电话爆料连续发生。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "名单上传进度通过朱文浩手机、百分之二十和百分之三十台词表现；枪口压迫通过大堂内枪口、站位和龙建秋汗珠呈现，均为可见可听信息。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第11组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "王队长在第10组组首已被放置于背景右侧入口旁，第11组继续位于同一位置并在朱文浩喊话前可见。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第9组雇佣兵拔枪、龙建秋下令和朱文浩回应全部发生在集团一楼大堂，同组没有切到外部数据或服务器空间。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

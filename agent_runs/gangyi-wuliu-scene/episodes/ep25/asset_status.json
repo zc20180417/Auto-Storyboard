@@ -1,0 +1,30 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "STATE_SCENE_TIANBA_PARK_DAY_TRUCKS_V1",
+      "type": "scene_state",
+      "reason": "天霸物流园白天重卡车阵在ep25多组反复使用，可作为园区冲突状态复用"
+    },
+    {
+      "id": "STATE_SCENE_VILLAGE_ROAD_NIGHT_REPAIR_V1",
+      "type": "scene_state",
+      "reason": "村口土路夜间修路状态贯穿ep25后半集，适合沉淀为场景状态"
+    },
+    {
+      "id": "STATE_SCENE_VILLAGE_ROAD_REPAIRED_DAY_V1",
+      "type": "scene_state",
+      "reason": "修好后的村口柏油路承接后续村口场景，建议同步"
+    },
+    {
+      "id": "PROP_ROAD_MARKER_PASSERBY_BASE",
+      "type": "prop",
+      "reason": "写有过客留的路碑是明确剧情线索道具，可作为新路尾声资产"
+    }
+  ]
+}

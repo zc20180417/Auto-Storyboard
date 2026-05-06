@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep08 assets.md 覆盖了院门雪地、水枪结冰、电话出车和皮卡离院，没有发现 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、赵大强、皮卡和林刚手机均沿用已有 bible 基础资产或前集候选状态，未把同一主角、反派和车辆重复建为新基础资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "薄冰、院内雪天、水枪喷水和手机通话均作为场景或道具状态处理，未把一次性的摔倒动作、说话情绪拆成入库状态。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "车钥匙、踏板、挡杆、门环细节、手机来电文字和刘福画外音均被排除，避免过度抽取和无视觉依据建模。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_ZHAODAQIANG_BASE、VEHICLE_PICKUP_BASE、PROP_CRACKED_PHONE_BASE 均未重复写入新增基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "院门薄冰和水枪喷水是已有或候选基础资产的状态变化，建模边界正确。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增的村民群像、林刚家院门、林刚家院内和高压水枪未覆盖 asset_bible 中已有资产设定，且均标记为 candidate。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词没有新增品牌、电话号码、来电姓名、额外文字或与 final.txt 不符的角色外观。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep08 final.txt 的第1组到第5组对应时间段，没有跨组强行归并。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词对薄冰、院内雪地、水枪喷水、手机通话的主体与负面限制保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "两个场景基础资产都明确为空镜、无人、无人脸，没有把林刚、赵大强或村民写入场景基础图。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表标题和列名完整，枚举值使用合法值，单元格没有原始竖线。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

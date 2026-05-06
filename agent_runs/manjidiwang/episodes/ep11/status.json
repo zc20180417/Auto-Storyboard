@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep11",
+  "status": "done",
+  "output_name": "EP-11-ep11-agent-cli-storyboard.txt",
+  "summary": "EP11共10组分镜，覆盖暴雨盘山公路追车、悬崖跳车、坠崖遗言及崖底救援搜捕全流程；本轮已清理所有分段审核硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

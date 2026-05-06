@@ -1,0 +1,70 @@
+{
+  "pass": true,
+  "summary": "已对照第10集完整剧本和组装后分镜复审，断桥拖树、现金交付、冷链合同与老货车挑战均忠于原剧本且无硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中司机甲、司机乙嘲讽和林刚看手表回怼均保留；2-6秒两名司机分别对林刚说原台词，6-9秒林刚对他们说“闭上你们的臭嘴”。"
+    },
+    {
+      "group": "第3组",
+      "type": "timing_math",
+      "evidence": "第3组镜头为0-2、2-4、4-7、7-10秒，合计10秒，标题总时长10秒、镜头数4个一致；无台词动作镜头均不超过3秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组组首把皮卡车、钢缆、巨树、林刚在车内、司机乙和围观司机的位置全部锁定，整组只在断桥前表现皮卡咆哮、轮胎刨坑、钢缆崩直和巨树拖动。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "evidence": "第7组拆为6个2-3秒镜头承载王百川、林刚、王强的问答；最长单镜3秒，有效台词均在合理短剧语速内，没有8秒以上长台词镜头。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首列明林刚在车尾旁、司机甲乙在左侧偏后、几个县城司机在后方，后续林刚扯钢缆、司机甲嘲笑、林刚走到巨树旁均有可生成位置。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组结尾巨树开始移动且钢缆紧绷，第5组组首承接为巨树已离开原位一段距离、钢缆仍从车尾绷向巨树，动作连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "仓库门口场景用皮卡停稳、王百川军大衣、银色密码箱、王强撇嘴和视线动作表现交付关系，冷链货物信息由原台词“货全在后边。活蹦乱跳。”承载。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "王百川对王强呵斥并对林刚谈合同，林刚对王百川回复价钱，王强对王百川质疑再对林刚挑战，林刚对王强说带路，对话对象逐句明确。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep25资产表覆盖天霸园区对峙、夜间修路和新路尾声的关键复用资产与新增状态，未发现阻断生产的硬问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、陈天霸、秦爷、老村长、李婶、重卡、皮卡、合同和手机均优先引用asset_bible已有资产或状态，未重复创建基础资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "天霸园区白天车阵、村口夜间修路、修好柏油路和林刚匿名帽口罩均作为已有场景或人物的状态建模，而非重复基础资产。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "短暂怒视冷笑、手机操作界面、普通香烟、施工杂物和临时村民群像被明确排除，避免资产表变成物品清单。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "已有角色和车辆使用asset_bible的CHAR、SCENE、PROP、VEHICLE条目，needs_generation对已有状态保持no。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "夜间修路和修好柏油路是SCENE_VILLAGE_ROAD_BASE的光线和路况变化，林刚匿名装扮是CHAR_LINGANG_BASE的服装遮挡变化，分类正确。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增工头、施工队、工程车、路碑和红布包零钱均不覆盖asset_bible已有基础资产，路碑文字来自final.txt的“过客留”。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词没有新增品牌、车牌、字幕、额外碑文或人物脸型设定；场景状态均要求无人无人脸。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage均来自ep25 final.txt的组号和秒段，未把资产未出现的时间段强行归并。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中文和英文提示词对工头、施工队、工程车、路碑、红布包零钱的主体、材质、光线和限制保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集关键道具与场景状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表均存在，表头符合episode schema，单元格未使用竖线字符，适合Excel转换。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

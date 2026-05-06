@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "summary": "EP04全集13组分镜忠于原剧本，时长数学准确，对话指向清晰，空间锁定完整，无硬性问题",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "周正明发问与朱文浩三连答共37字普通对白，按5.2字/秒朗读约7.1秒，加换人间隙与邱瑞点头约1.5秒，总目标约9秒，实际分配9秒（2-11秒），连续对话节拍节奏合规。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_pacing",
+      "evidence": "苏晓晓跪诉台词31字情绪对白，按6.0字/秒计算约5.2秒，实际分配6秒（3-9秒），符合情绪对白语速要求。"
+    },
+    {
+      "group": "第12组",
+      "type": "space_locking",
+      "evidence": "第12组保持苏清寒公寓内单一物理空间，朱文浩仅以电话音出现，画面主体始终是苏清寒，无跨场景硬切。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "朱天和'总部刘家欺人太甚''竟然联手做局压你的分'、朱文浩'这是苏总裁的借刀杀人'等关键台词与砸杯、倒茶动作均完整保留，无删减。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩、周正明、考官甲在组首空间锁定中均有明确位置与朝向；朱文浩从坐下到起身有明确动作过渡。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组组尾朱文浩转身大步朝考场门口离去，第4组组首朱文浩已至考场外走廊门口，场景切换自然，有离场→到达的合理过渡。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "苏清寒滑动鼠标、瞳孔微缩、呼出一口气等将'验证完证据发现全部属实'转译为可见动作与表情，无抽象心理描述残留。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第13组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "苏清寒侧脸望窗、眼神复杂、背影立于窗前等将内心独白转译为可见画面，心声以画外音形式呈现，符合原剧本OS标注。",
+      "fix_instruction": "无需修复"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "光影",
+      "problem": "多组光影描述重复使用'前侧光从左侧45度照来'或类似模板，建议后续根据场景灵活变化。",
+      "evidence": "第1组、第2组、第3组、第6组、第8组等均出现前侧光45度或侧光左侧模板。",
+      "fix": "建议在考场、走廊、书房、公寓等不同场景中尝试顶光配合环境反光、窗边自然光、烛光等不同组合，避免重复。"
+    },
+    {
+      "severity": "soft",
+      "group": "第13组",
+      "rule": "节奏",
+      "problem": "第13组以3秒远景无台词背影收尾，虽在3秒上限内，但建议确保窗外夜景有足够动态视觉信息。",
+      "evidence": "7-10秒为远景背影无台词镜头，时长3秒。",
+      "fix": "可在远景中增加窗外车流或霓虹闪烁等动态元素，避免画面静止感。"
+    }
+  ]
+}

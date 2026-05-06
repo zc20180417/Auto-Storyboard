@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep09",
+  "status": "done",
+  "output_name": "EP-09-ep09-agent-cli-storyboard.txt",
+  "summary": "EP09完成五组分镜：走廊密谋、监控密谋、破门突袭、搜查对峙、铁证定格。全剧台词与动作保留完整，组间连续性良好，无硬错误。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第1组廖副总警告台词14字/2秒=7.0字/秒，处于情绪对白偏快区间",
+    "第2组朱文浩冷厉台词12字/2秒=6.0字/秒、命令台词13字/2秒=6.5字/秒，处于情绪对白偏快区间",
+    "第4组王队长冷笑台词14字/2秒=7.0字/秒，处于情绪对白偏快区间"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

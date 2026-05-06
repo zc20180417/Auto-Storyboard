@@ -1,0 +1,29 @@
+{
+  "episode_id": "ep23",
+  "status": "done",
+  "output_name": "EP-23-ep23-agent-cli-storyboard.txt",
+  "summary": "第23集共12组分镜，完成田立民旧协议反击、朱文浩布局接管、秘密机房资金反制与龙建秋天香楼邀约，真实审核通过。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "短促惊呼语速略快但可接受",
+      "evidence": "第2组0-2秒'那可是杀敌一千自损八百啊'约13字/2秒=6.5字/秒，属于大惊状态下的短促台词。",
+      "fix": "如需更稳，可延至3秒并压缩后续动作。"
+    },
+    {
+      "severity": "soft",
+      "group": "第8组",
+      "rule": "dialogue_pacing",
+      "problem": "紧急汇报台词接近语速上限",
+      "evidence": "第8组2-4秒'董事长，十亿资金已汇入离岸通道'约14字/2秒=7.0字/秒，属于紧急汇报的可接受上限。",
+      "fix": "如需更稳，可延至3秒并压缩前后无对白动作。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

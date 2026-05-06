@@ -1,0 +1,180 @@
+{
+  "project": "EP-18",
+  "episode_id": "EP18",
+  "cuts": [
+    {
+      "cut_id": "EP18-G01",
+      "group_index": 1,
+      "title": "五亿资金集结（，总时长：10秒，镜头数：4个）",
+      "scene": "集团财务中心",
+      "characters": [
+        "苏长明",
+        "财务总监"
+      ],
+      "props": [
+        "转账大屏幕",
+        "电脑操作台",
+        "眼镜"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 0,
+      "group_end_sec": 10,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP18-G02",
+      "group_index": 2,
+      "title": "权限冻结爆出（，总时长：10秒，镜头数：4个）",
+      "scene": "集团财务中心、屏幕画面",
+      "characters": [
+        "苏长明",
+        "财务总监"
+      ],
+      "props": [
+        "转账大屏幕",
+        "电脑操作台",
+        "眼镜"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 10,
+      "group_end_sec": 20,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP18-G03",
+      "group_index": 3,
+      "title": "账户锁死对峙（，总时长：11秒，镜头数：5个）",
+      "scene": "集团财务中心",
+      "characters": [
+        "朱文浩",
+        "苏长明",
+        "朱天和"
+      ],
+      "props": [
+        "防火袋",
+        "转账大屏幕",
+        "电脑操作台"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 20,
+      "group_end_sec": 31,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP18-G04",
+      "group_index": 4,
+      "title": "账本砸穿谎言（，总时长：11秒，镜头数：5个）",
+      "scene": "集团财务中心",
+      "characters": [
+        "朱文浩",
+        "苏长明",
+        "朱天和"
+      ],
+      "props": [
+        "防火袋",
+        "账本",
+        "转账大屏幕",
+        "电脑操作台"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 31,
+      "group_end_sec": 42,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP18-G05",
+      "group_index": 5,
+      "title": "五亿债务雷爆出（，总时长：10秒，镜头数：4个）",
+      "scene": "集团财务中心",
+      "characters": [
+        "朱文浩",
+        "苏长明",
+        "朱天和"
+      ],
+      "props": [
+        "账本",
+        "转账大屏幕",
+        "电脑操作台"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 42,
+      "group_end_sec": 52,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP18-G06",
+      "group_index": 6,
+      "title": "政策公告反转（，总时长：12秒，镜头数：5个）",
+      "scene": "集团财务中心、屏幕画面",
+      "characters": [
+        "朱文浩",
+        "苏长明"
+      ],
+      "props": [
+        "转账大屏幕",
+        "电脑操作台"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 52,
+      "group_end_sec": 64,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP18-G07",
+      "group_index": 7,
+      "title": "赚了钱也坐牢（，总时长：12秒，镜头数：5个）",
+      "scene": "集团财务中心",
+      "characters": [
+        "朱文浩",
+        "苏长明"
+      ],
+      "props": [
+        "转账大屏幕",
+        "账本",
+        "电脑操作台"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 64,
+      "group_end_sec": 76,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP18-G08",
+      "group_index": 8,
+      "title": "警车前的龙爷线索（，总时长：14秒，镜头数：5个）",
+      "scene": "集团楼下警车旁",
+      "characters": [
+        "苏长明",
+        "朱文浩",
+        "特勤人员"
+      ],
+      "props": [
+        "警车",
+        "手铐"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 76,
+      "group_end_sec": 90,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP18-G09",
+      "group_index": 9,
+      "title": "更大的棋局浮现（，总时长：10秒，镜头数：5个）",
+      "scene": "集团楼下警车旁",
+      "characters": [
+        "朱文浩",
+        "苏长明",
+        "特勤人员"
+      ],
+      "props": [
+        "警车",
+        "手铐"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 90,
+      "group_end_sec": 100,
+      "source_group_label": "第9组"
+    }
+  ]
+}

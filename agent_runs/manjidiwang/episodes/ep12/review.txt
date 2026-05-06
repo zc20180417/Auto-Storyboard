@@ -1,0 +1,84 @@
+{
+  "pass": true,
+  "summary": "EP12全集已按storyboard-reviewer逐组对照剧本、生成规则和最终分镜审查，杀手病房袭击、记录仪诱饵、机房钓内鬼均完整保留，无硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留病房仪器滴答、苏清寒戴呼吸机沉睡、李护士推医药车进门、说“换液了”、未贴标签针剂接近吊瓶、朱文浩指出“氰化钾，注射即死，心梗假象”、针管落地。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组王队长台词有效16字/3秒，字秒比5.3；朱文浩“苏长明好大的手笔”8字/2秒；“放话出去，就说车上的云端记录仪恢复了”17字/3秒，字秒比5.7，均未低于硬门槛。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组只发生在集团安保部机房内，组首写明乔安在服务器机柜旁、朱文浩坐在监控台暗处、U盘在手边，灯亮后再揭示朱文浩。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "第6组乔安求饶台词有效13字/2秒，字秒比6.5；朱文浩“去纪委把这话再说一遍”10字/2秒，为短台词正常节奏。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩和苏清寒在组首有明确位置；李护士在4-6秒推医药车入场后才说话和拿针剂，人物可用性清楚。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾针管落地、李护士僵在吊瓶旁；第2组组首延续李护士在吊瓶旁、脚边有针管，随后转身拔手术刀攻击。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第4组保持集团安保部办公室内单一空间，机房门作为办公室背景目标出现，乔安只移动到门口，机房内部另起第5组。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "记录仪被毁、钓出内鬼、定位发给黑皮等信息都由朱文浩台词承载；U盘、服务器网线、监控台以可见道具呈现。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组组尾乔安握着被拔下的网线僵在机柜旁、朱文浩把U盘压在监控台上；第6组组首延续乔安在机柜旁、网线仍在手边、U盘在朱文浩桌面。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

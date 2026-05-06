@@ -1,0 +1,97 @@
+{
+  "pass": true,
+  "summary": "EP28已对照完整剧本和生成规则审核5组分镜，剧情、台词指向、空间锁定、时长结构和组间衔接均满足交付要求，无硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组完整保留王队长拿解药冲出、龙建秋要求停上传、朱文浩按屏幕、龙建秋狂笑和下令开枪、警笛响、朱文浩说明定位已发出。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "第2组只在集团一楼大堂内表现催泪瓦斯砸入、特勤冲入、红外线锁定雇佣兵和拔枪威胁；入口和破窗均属于同一大堂空间。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组7-9秒“你的时代，结束了。”约8字/2秒，9-11秒“我的手！”约3字/2秒，短句与踩腕和惨叫动作同步，未出现拖慢凑时长。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "evidence": "第4组苏清寒在组首被放置于大堂门外通道阴影处，6-8秒推门入场后才举文件说账户冻结，人物来源明确。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "第5组保留苏清寒递破产清算书、龙建秋质问“不可能！你们怎么做到的！”、朱文浩回答“你的管家，收了我十倍的价码。”"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "名单停止和定位发出通过手机动作、朱文浩台词、警笛声和警灯扫过地面呈现，都是可见或可听信息。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "龙建秋、朱文浩、雇佣兵在组首可见；特勤从大堂入口冲入后才执行红外线锁定和队长口令。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组结尾龙建秋拔枪对准朱文浩，第3组组首延续为龙建秋举枪冲向朱文浩；第3组结尾倒地踩腕自然接第4组手铐控制。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第4组和第5组继续发生在集团一楼大堂；苏清寒推门进入同一大堂，没有跨越到新物理空间。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第5组0-2秒清算书台词约12字/2秒，2-4秒龙建秋质问约12字/2秒，4-6秒朱文浩最终台词约14字/2秒，均未超过硬性上限。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "朱文浩最终爽点短句接近偏快上限，但不构成硬性问题。",
+      "evidence": "4-6秒台词“你的管家，收了我十倍的价码。”约14字/2秒，字秒比约7.0，未超过>7字/秒硬错误阈值。",
+      "fix": "若生成口型显得吃紧，可将4-6秒扩为4-7秒，并将6-10秒反应压缩为7-10秒。"
+    }
+  ]
+}

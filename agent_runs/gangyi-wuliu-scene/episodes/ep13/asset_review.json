@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep13 资产表按增量索引组织，覆盖赵大强家内、总裁办公室、村民群像、林刚商务装和破菜刀等关键资产，未发现阻断生产的硬问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "赵大强、王强、王百川、签章合同均优先引用 asset_bible.md 中已有基础资产或状态；王强电话画外音标为 no，未要求生成无画面资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "赵大强被打后的脏污狼狈和林刚商务装均建模为既有人物的状态变化，没有重复创建新的赵大强或林刚基础人物。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "扫帚、茶杯、沙发茶几、手机震动和村民短暂动作已排除为普通道具或表演动作，未过度抽取。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_ZHAODAQIANG_BASE、CHAR_WANGQIANG_BASE、CHAR_WANGBAICHUAN_BASE 和 PROP_CONTRACT_BASE 均来自全局资产库，复用行的 needs_generation 设置合理。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "林刚正式办公室服装和赵大强被打后的脏污状态属于服装或外观状态变化，放在新增资产状态表而非基础人物表。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增的赵大强家内、总裁办公室、村民群像、林刚商务装和破菜刀均不在 asset_bible.md 中，且没有改写已有角色脸型、发型或主服装设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "SCENE_ZHAODAQIANG_HOME_BASE 和 SCENE_EXECUTIVE_OFFICE_BASE 的中英文提示词都明确为空镜、无人、无人脸。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词没有新增品牌、字幕、可读文件正文或 final.txt 与 asset_bible.md 之外的身份设定；破菜刀也限制为无品牌无文字。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "新增角色、场景、服装和道具的中文提示词与英文提示词在主体、材质、光线、空镜限制和负面约束上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep13 final.txt 的组号和秒段，没有把未出现资产强行归入不存在的时间段。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集关键道具与场景状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表均存在，表头与 asset-extractor episode schema 匹配，单元格内未使用原始竖线分隔。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

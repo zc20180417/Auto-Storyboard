@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "summary": "EP19整集分镜按三段场景完成，押送、常委会夺权和书房反制均忠于原剧本，格式、空间锁定、台词指向与时长均通过。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "苏长明被特勤押送上车、田立民带高管团队旁观，以及苏长明两句威胁和田立民“带走，集团绝不姑息。”均完整保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组组首只锁定集团最高常委会会议室，田立民、朱天和、孙耀、朱文浩和常委会成员均围绕会议桌布置，没有跨场景。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组0-4、4-8、8-11、11-14秒承载朱天和两句怒斥、孙耀一句嘲讽和田立民两句压场台词，总时长14秒，未出现8秒以上长台词镜头。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "朱文浩递茶、朱天和追问、朱文浩冷笑说“那是个带毒的桃子。”并落座说“没我的解药，谁吃谁死。”均按原顺序保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾苏长明到警车门边，第2组首警车车门已关并驶离，田立民仍在台阶前沿，警车离去后才转向朱文浩，动作连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "第4组组首明确孙耀在右侧座位旁、朱天和在左侧座位前、朱文浩在朱天和身后、田立民在主位，后续拍桌、嘲讽和敲锤都有可生成位置。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "朱天和的气愤通过踱步、咬牙、指窗外和对朱文浩发问表现；朱文浩的冷静通过倒茶和抬眼回答表现，没有使用不可见心理结论承载剧情。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第6组只发生在朱家别墅书房，茶杯、书桌、椅子均在组首锁定中明确，未跨越到其他空间。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

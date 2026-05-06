@@ -1,0 +1,88 @@
+{
+  "pass": true,
+  "summary": "已对第8集组装后的最终分镜逐组核对原剧本、台词指向、时长、空间锁定和组间衔接，未发现硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "赵大强“你卖的破车抛锚了！赔钱！”、林刚“滚出我家。”、赵大强“大家上！抢车钥匙！”均保留原文且顺序未改，村民冲门与林刚端起高压水枪也对应原剧本动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "timing_math",
+      "evidence": "本组时间段为0-2、2-5、5-8、8-12秒，合计12秒，标题标注总时长12秒、镜头数4个，与实际时间段一致。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "林刚警告台词有效字数约22字，安排在3-7秒的4秒镜头内，约5.5字/秒，符合冷声警告的短剧节奏，没有拉慢凑时长。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "组首明确林刚在院内皮卡旁、皮卡位置、高压水枪、手机和车门状态，0-3秒通过连续上车动作进入驾驶室，没有无说明硬切到新空间。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "evidence": "刘福以手机画外音对林刚说悬赏和车队被困，林刚对刘福回应“二十万？现结”“定位发我。马上到”，所有通话对象清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首已列明林刚在院门内、赵大强在门外、村民在赵大强身后，高压水枪在院门内侧墙边，后续说话、挥手、冲门和端枪都有可生成位置来源。",
+      "fix_instruction": "无须修复；若后续改稿新增人物，应先在组首或行动前给出明确位置。"
+    },
+    {
+      "group": "第2组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "零下结冰被转译为水柱打在泥地、水花溅开、薄冰发亮铺开，村民滑倒、踉跄、赵大强扒门框均为可拍动作。",
+      "fix_instruction": "无须修复；保持冰面、水花、脚滑和扒门框等可见细节。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组结尾赵大强扒门框、村民倒在冰面上，第3组组首延续赵大强双手扒门框、村民倒在薄冰上，位置和道具状态兼容。",
+      "fix_instruction": "无须修复；若调整第2组结尾，需同步第3组组首。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "林刚从院内皮卡旁通过0-3秒拉门坐进驾驶室进入车内，属于同一人物连续上车动作，手机响起后再接听，空间转换有动作承接。",
+      "fix_instruction": "无须修复；不可删除拉开车门坐进驾驶室的过渡动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "王总二十万悬赏、生鲜货送进城、城里车队全陷路上、林刚要求现结并马上到均按原剧本保留，未新增交易条件或改变关系。",
+      "fix_instruction": "无须修复；保持通话台词原文和订单因果。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,134 @@
+{
+  "project": "EP-12",
+  "episode_id": "EP12",
+  "cuts": [
+    {
+      "cut_id": "EP12-G01",
+      "group_index": 1,
+      "title": "特护病房暗处截杀（，总时长：15秒，镜头数：7个）",
+      "scene": "市医院特护病房内",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "李护士"
+      ],
+      "props": [
+        "呼吸机",
+        "病床",
+        "医药车",
+        "吊瓶",
+        "未贴标签的针剂",
+        "针管"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP12-G02",
+      "group_index": 2,
+      "title": "病床前制服杀手（，总时长：13秒，镜头数：5个）",
+      "scene": "市医院特护病房内",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "李护士",
+        "王队长"
+      ],
+      "props": [
+        "病床",
+        "呼吸机",
+        "医药车",
+        "手术刀",
+        "针管"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 15,
+      "group_end_sec": 28,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP12-G03",
+      "group_index": 3,
+      "title": "撞晕后的诱饵放话（，总时长：11秒，镜头数：4个）",
+      "scene": "市医院特护病房内",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "李护士",
+        "王队长"
+      ],
+      "props": [
+        "病床",
+        "呼吸机",
+        "医药车",
+        "手术刀"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 28,
+      "group_end_sec": 39,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP12-G04",
+      "group_index": 4,
+      "title": "安保办公室放出诱饵（，总时长：10秒，镜头数：4个）",
+      "scene": "集团安保部办公室内",
+      "characters": [
+        "乔安",
+        "王队长"
+      ],
+      "props": [
+        "手机",
+        "工位桌",
+        "办公室门",
+        "机房门"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 39,
+      "group_end_sec": 49,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP12-G05",
+      "group_index": 5,
+      "title": "机房灯亮钓出内鬼（，总时长：12秒，镜头数：5个）",
+      "scene": "集团安保部机房内",
+      "characters": [
+        "乔安",
+        "朱文浩"
+      ],
+      "props": [
+        "服务器机柜",
+        "服务器网线",
+        "监控台",
+        "U盘"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 49,
+      "group_end_sec": 61,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP12-G06",
+      "group_index": 6,
+      "title": "供出总裁威胁（，总时长：10秒，镜头数：4个）",
+      "scene": "集团安保部机房内",
+      "characters": [
+        "乔安",
+        "朱文浩"
+      ],
+      "props": [
+        "服务器机柜",
+        "服务器网线",
+        "监控台",
+        "U盘"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 61,
+      "group_end_sec": 71,
+      "source_group_label": "第6组"
+    }
+  ]
+}

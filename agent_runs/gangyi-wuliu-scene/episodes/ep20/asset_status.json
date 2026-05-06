@@ -1,0 +1,40 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "COSTUME_CHENTIANBA_MINK_COAT_V1",
+      "type": "costume_base",
+      "reason": "陈天霸在ep20明确换为深色貂皮大衣。"
+    },
+    {
+      "id": "STATE_CHENTIANBA_MINK_COAT_V1",
+      "type": "character_state",
+      "reason": "陈天霸貂皮大衣到场挑衅状态贯穿ep20。"
+    },
+    {
+      "id": "VEHICLE_BLACK_LUXURY_SEDAN_CONVOY_BASE",
+      "type": "prop_base",
+      "reason": "黑色豪华轿车队用于反派到场和堵路。"
+    },
+    {
+      "id": "STATE_SCENE_MEDICAL_WAREHOUSE_SUNNY_DELIVERY_V1",
+      "type": "scene_state",
+      "reason": "医药仓库外晴天装卸交接是ep20主场景状态。"
+    },
+    {
+      "id": "COMPOSITION_WAREHOUSE_BLOCKADE_CONFRONTATION_V1",
+      "type": "composition",
+      "reason": "仓库门前堵车对峙构图可复用于本段冲突。"
+    },
+    {
+      "id": "STATE_SUNBIAO_FACE_GAUZE_V1",
+      "type": "character_state",
+      "reason": "ep20继续使用孙彪脸侧纱布伤势，建议与ep19候选合并。"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "SCENE_OPEN_PARKING_LOT_BASE",
+      "type": "scene",
+      "reason": "露天停车场在 ep02 夜间破坏车辆和 ep03 白天取证中连续使用，建议统一合并。"
+    },
+    {
+      "id": "STATE_SCENE_PARKING_LOT_DAY_V1",
+      "type": "scene_state",
+      "reason": "白天晴天停车场状态用于警察出场和黑烟取证。"
+    },
+    {
+      "id": "STATE_VEHICLE_OLD_VAN_BLACK_SMOKE_V1",
+      "type": "prop_state",
+      "reason": "旧车冒黑烟是白糖破坏油箱后的关键视觉状态。"
+    },
+    {
+      "id": "STATE_PROP_PHONE_INFRARED_EVIDENCE_V1",
+      "type": "prop_state",
+      "reason": "手机红外监控证据是赵大强破坏油箱的关键证据画面。"
+    },
+    {
+      "id": "SCENE_LOGISTICS_OFFICE_BASE",
+      "type": "scene",
+      "reason": "物流中心办公室从 ep03 开始承载林刚求职和干线任务线。"
+    },
+    {
+      "id": "CHAR_LOGISTICS_SUPERVISOR_BASE",
+      "type": "character",
+      "reason": "物流主管是干线任务线的关键对接人物，建议入库保持后续一致。"
+    },
+    {
+      "id": "COSTUME_SUPERVISOR_OFFICE_V1",
+      "type": "costume",
+      "reason": "物流主管办公室服装建议随人物一起合并。"
+    },
+    {
+      "id": "PROP_CASH_STACK_BASE",
+      "type": "prop",
+      "reason": "五万现金贯穿私了和求职押金场景。"
+    },
+    {
+      "id": "PROP_DRIVER_LICENSE_BASE",
+      "type": "prop",
+      "reason": "林刚驾照用于证明驾驶经验，可能后续继续作为资质道具出现。"
+    },
+    {
+      "id": "PROP_OLD_WAYBILL_BASE",
+      "type": "prop",
+      "reason": "陈旧单子是送命件任务线索，建议合并为任务文件资产。"
+    }
+  ]
+}

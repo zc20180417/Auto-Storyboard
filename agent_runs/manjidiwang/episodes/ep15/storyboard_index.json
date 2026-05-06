@@ -1,0 +1,166 @@
+{
+  "project": "EP-15",
+  "episode_id": "EP15",
+  "cuts": [
+    {
+      "cut_id": "EP15-G01",
+      "group_index": 1,
+      "title": "账本箱被车灯围住（，总时长：13秒，镜头数：5个）",
+      "scene": "夜晚阴天，废弃红星工厂厂区空地",
+      "characters": [
+        "朱文浩",
+        "雷军",
+        "打手"
+      ],
+      "props": [
+        "强光手电",
+        "锈迹账本箱",
+        "车辆",
+        "木棍",
+        "废铁"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP15-G02",
+      "group_index": 2,
+      "title": "雷军下令废腿（，总时长：10秒，镜头数：3个）",
+      "scene": "夜晚阴天，废弃红星工厂厂区空地",
+      "characters": [
+        "朱文浩",
+        "雷军",
+        "打手"
+      ],
+      "props": [
+        "强光手电",
+        "锈迹账本箱",
+        "木棍",
+        "车辆",
+        "废铁"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 13,
+      "group_end_sec": 23,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP15-G03",
+      "group_index": 3,
+      "title": "朱文浩故意吃棍（，总时长：11秒，镜头数：5个）",
+      "scene": "夜晚阴天，废弃红星工厂厂区空地",
+      "characters": [
+        "朱文浩",
+        "雷军",
+        "打手"
+      ],
+      "props": [
+        "木棍",
+        "锈迹账本箱",
+        "车辆",
+        "废铁"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 23,
+      "group_end_sec": 34,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP15-G04",
+      "group_index": 4,
+      "title": "录音笔等到证词（，总时长：10秒，镜头数：4个）",
+      "scene": "夜晚阴天，废弃红星工厂厂区空地",
+      "characters": [
+        "朱文浩",
+        "雷军",
+        "打手"
+      ],
+      "props": [
+        "木棍",
+        "录音笔",
+        "车辆",
+        "废铁"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 34,
+      "group_end_sec": 44,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP15-G05",
+      "group_index": 5,
+      "title": "特勤队压制全场（，总时长：10秒，镜头数：4个）",
+      "scene": "夜晚阴天，废弃红星工厂厂区空地",
+      "characters": [
+        "朱文浩",
+        "雷军",
+        "打手",
+        "特勤队长",
+        "特勤队员"
+      ],
+      "props": [
+        "木棍",
+        "枪械",
+        "红外瞄准线",
+        "车辆",
+        "废铁"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 44,
+      "group_end_sec": 54,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP15-G06",
+      "group_index": 6,
+      "title": "雷震冲车护子（，总时长：10秒，镜头数：4个）",
+      "scene": "夜晚阴天，废弃红星工厂厂区空地",
+      "characters": [
+        "朱文浩",
+        "雷军",
+        "打手",
+        "特勤队长",
+        "特勤队员",
+        "雷震"
+      ],
+      "props": [
+        "特殊牌照越野车",
+        "录音笔",
+        "枪械",
+        "红外瞄准线",
+        "木棍"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 54,
+      "group_end_sec": 64,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP15-G07",
+      "group_index": 7,
+      "title": "朱文浩压住雷震（，总时长：10秒，镜头数：3个）",
+      "scene": "夜晚阴天，废弃红星工厂厂区空地",
+      "characters": [
+        "朱文浩",
+        "雷军",
+        "打手",
+        "特勤队长",
+        "特勤队员",
+        "雷震"
+      ],
+      "props": [
+        "录音笔",
+        "特殊牌照越野车",
+        "枪械",
+        "红外瞄准线",
+        "木棍"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 64,
+      "group_end_sec": 74,
+      "source_group_label": "第7组"
+    }
+  ]
+}

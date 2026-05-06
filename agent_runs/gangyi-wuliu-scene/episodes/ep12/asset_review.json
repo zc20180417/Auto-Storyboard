@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep12 资产表覆盖盘山夜路拦截、冷藏车突围、无牌面包车撞损、行车记录仪证据和办公室播放场景，未发现阻断生产的 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、王百川、王强、山路基础场景和破旧面包车基础资产均沿用 asset_bible；新建的是夜路堵截、撞损、记录仪和办公室等未覆盖增量。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "夜间湿路堵截、冷藏车受袭、挡风玻璃裂纹、无牌面包车撞损、行车记录仪红灯和电脑播放均建模为状态，未重复改写基础人物。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "刹车、挡杆、方向盘、火星、尾气、办公桌椅和跪地动作均被排除，避免过度提取临时动作和普通陈设。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "已有 CHAR_* 和 SCENE_MOUNTAIN_ROAD_BASE、VEHICLE_OLD_VAN_BASE 均复用，新增基础资产仅限 asset_bible 未覆盖的混混群像、冷藏车、钢管、记录仪、电脑和办公室。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "挡风玻璃裂纹、面包车撞损、夜间堵截、行车记录仪录制和电脑播放是道具或场景条件变化，已使用 state_id 建模。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增冷藏车未改写已有 VEHICLE_HEAVY_TRUCK_BASE，新增无牌面包车状态挂在 VEHICLE_OLD_VAN_BASE 下，办公室场景为空镜且不冲突已有物流场景。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词只包含 final.txt 出现的盘山夜路、无牌面包车、钢管、挡风玻璃裂纹、记录仪红灯、办公室电脑播放等事实，并禁止品牌、车牌和可读字幕。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep12 final.txt，例如撞损面包车限定第3组 3-8秒，记录仪限定第3组 10-15秒及办公室证据播放段落。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "盘山夜路和仓库办公室场景状态均明确为空镜、无人、无人脸，人物关系只出现在角色或证据播放状态中。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词在夜路湿面、无牌堵车、撞损面包车、裂纹玻璃、记录仪红灯和电脑播放等核心事实上一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表存在，表头符合 episode 模式，所有枚举值合法，单元格内未使用原始竖线字符。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

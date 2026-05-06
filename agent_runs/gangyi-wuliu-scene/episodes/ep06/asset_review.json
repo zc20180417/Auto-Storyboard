@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep06 资产表覆盖林刚家院子、冬季车辆准备、破面包车冒险出村和村广播预警，未发现阻断生产的问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、赵大强、村口道路、新皮卡基底和破面包车基底优先沿用 asset_bible.md；本集只补充冬季准备、超载破车和暴雪前道路等状态。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "新皮卡冬季准备、破面包车多人上车、防冻液洒出、村口道路暴雪前阴天均作为状态处理，林刚家院子因 bible 未覆盖才新增基础场景。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "行李、村民临时表情、拍掌、听广播、挥手、挤车动作、电线杆局部和湿痕细节均被排除，避免低价值拆分。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_ZHAODAQIANG_BASE、SCENE_VILLAGE_ROAD_BASE、VEHICLE_PICKUP_BASE、VEHICLE_OLD_VAN_BASE 均被复用，没有重复创建已有基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "车辆新旧状态、冬季准备、液体洒出和暴雪前光线都作为状态建模；短暂动作没有拆成状态。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增林刚家院子、防滑链、防冻液瓶和村里固定广播喇叭均不在当前 asset_bible.md 中；固定广播喇叭未与 ep05 手持大喇叭混同。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词只依据 final.txt 中的阴天院子、新皮卡、防滑链、防冻液、村广播、破面包车和暴雪前村路，未新增品牌、车牌、可读标语或字幕。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 分别对应 ep06 第1组至第4组，破面包车未覆盖到未出现的第1组前半段，村口道路只标记在蒙太奇转场秒段。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "林刚家院子、村口道路等场景状态提示词均明确无人无人脸，没有把村民围观写入场景空镜。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中文和英文提示词对院子、防滑链、防冻液瓶、固定广播喇叭的材质、用途和负面约束保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表齐全，列名符合 episode schema，单元格未使用额外竖线，适合 Markdown 转 Excel。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

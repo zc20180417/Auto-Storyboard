@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep03 资产表覆盖了停车场取证、旧车黑烟、红外监控、付款、现金和物流办公室求职资产，未发现阻断生产的问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、赵大强、警察群像、手铐、手机和旧车基础资产被复用；旧车糖油箱状态因来自前集候选而标为条件引用，没有重复改写 bible。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "停车场白天、旧车黑烟、手机红外证据、到账提醒、办公室白天、现金散开和陈旧单子均按状态建模；下跪、抱腿、流泪等表演没有入库。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "车钥匙、办公桌、笔筒、村民、警察个人脸、短暂动作和具体金额文字均被排除，避免资产表变成物品清单或错误文字生成需求。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_ZHAODAQIANG_BASE、CHAR_POLICE_BASE、PROP_HANDCUFFS_BASE、PROP_CRACKED_PHONE_BASE 和 VEHICLE_OLD_VAN_BASE 均沿用已有设定，避免重复生成。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "黑烟、红外证据画面、到账提示、现金散开、旧单据发黄和办公室窗光都是可复用视觉状态，已放入新增状态表和关键状态表。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产为 bible 未覆盖的停车场、物流办公室、物流主管、主管服装、现金、驾照、陈旧单子和帆布包，没有覆盖已有角色、警察、手铐、旧车或手机设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词忠实于 final.txt 的旧车黑烟、红外监控、到账提醒、现金、驾照、陈旧单子和办公室事实，并显式禁止品牌、可读车牌、可读个人信息、清晰金额和字幕。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "停车场资产只覆盖第1组-第5组，物流办公室只覆盖第6组-第7组，现金和旧单子只标在实际出现组，未强行跨镜头归并。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中文与英文提示词在停车场、旧车黑烟、手机证据、付款提醒、办公室、现金和旧单据的主体、材质、光线与限制上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prop_text_violation",
+      "result": "pass",
+      "evidence": "驾照、到账提醒、现金票面和陈旧单据均明确不可读或模糊，不擅自添加真实公司名、银行名、个人信息或清晰金额。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表、列名和枚举值符合 episode 转换脚本要求，单元格未使用竖线分隔，适合转换 Excel。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "EP-03整集复审通过。已补回朱天和出门台词，8组分镜覆盖朱家餐厅、高定男装店、苏家客厅三段剧情，台词、动作、对话指向、时长数学、空间锁定与组间衔接均合规。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "0-3秒明确保留源剧本朱天和台词\"我去集团，让你母亲陪你去。\"，并写为朱天和边大步朝餐厅门口走去边对朱文浩说道；后续保留朱天和离开、李娟下楼和朱文浩请求陪去苏家。"
+    },
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "evidence": "第1组0-3秒、3-5秒、5-7秒、7-11秒相加为11秒，与组标题总时长11秒一致；镜头数4个与实际时间段数一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组0-5秒为连续短句问答，5-9秒两句共20字分配4秒约5.0字/秒，9-13秒两句与转身动作共约20字分配4秒，未用空镜或拖慢台词凑时长。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组组首锁定高定男装店内部，朱文浩、李娟、导购均有明确位置；全组只在男装店内完成试装、摩挲虎口、心声和递卡动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "第6组完整保留\"关关雎鸠，在河之洲。\"、朱文浩扣住苏清寒手腕并拉到身侧、苏清寒心声\"他在教我如何下这盘棋。\"、以及朱文浩两句提亲说明。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "evidence": "5-7秒用中景表现苏清寒看向朱文浩与李娟背影，并明确写出背景中背影可见；苏晓晓发颤、李佳佳呆立等反应均是可拍表演细节。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱天和、朱文浩在组首空间锁定中已位于朱家餐厅；李娟在4-6秒下楼进入画面后才于6-8秒开口，人物可用性清楚。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾朱文浩站起面向李娟；第2组组首朱文浩仍位于餐桌旁面向李娟，李娟端茶杯面向朱文浩，人物与道具状态衔接自然。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "源剧本\"气场极具压迫感\"被转译为朱文浩站在穿衣镜前、左手大拇指摩挲虎口、衣料与手部细节清晰等可见画面信息。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "苏清寒未在第5组组首负面描述中出现，而是在10-13秒从楼梯走下后进入画面；第6组组首再将她置于楼梯下方面向朱文浩，人物出现顺序合规。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第7组全程发生在苏家别墅客厅，朱文浩、李娟、李佳佳、苏清寒、苏晓晓在组首均有明确位置；没有跨场景硬切或空间混用。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组以李娟冷笑对李佳佳说完话收尾；第8组从朱文浩与李娟转身朝门口走去开始，延续苏家客厅内离场动作和众人反应。",
+      "fix_instruction": "无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

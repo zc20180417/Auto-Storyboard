@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "summary": "EP21整集分镜按剧本顺序完成招标会开场、朱文浩闯入叫停、股权文件反转和田立民酒杯碎裂，未发现硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "孙耀举杯致辞、集团斥资十亿、田立民点头、某老总奉承、孙耀宣布竞标正式开始均按原剧本顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "3-5秒朱文浩台词约12字/2秒，7-10秒孙耀两句情绪台词合计约20字/3秒，字秒比约6.7，未超过7字/秒且没有拖慢短句。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "evidence": "第2组尾部安保围到朱文浩附近但未动手，第3组组首继续保持安保围在朱文浩几步外，朱文浩仍在通道中央。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "红头文件、宴会台和投影屏幕都在洲际酒店宴会厅内完成展示，9-12秒屏幕画面明确为同一宴会厅投影内容，不构成跨物理空间。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "孙耀的不可能质问、朱文浩说明早在苏长明入狱前、转向田立民质问卖地，以及田立民红酒杯碎裂均已呈现。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "孙耀、田立民、权贵和安保在组首已有位置；朱文浩先在0-3秒从宴会厅大门踏入，再在3-5秒开口叫停竞标。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组结束时安保停在朱文浩附近，第3组开始仍围在他周围；田立民仍在前排，孙耀仍在台前，人物位置连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "股权变更通过红头文件、投影设备和屏幕文字呈现，苏清寒控股信息是可读屏幕画面，非抽象说明。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "如遭雷击和脸色铁青被转译为孙耀血色褪去、眼睛睁大、田立民脸色发青、手指收紧并捏碎酒杯的可见动作。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "孙耀明确对台下众人说话，某老总明确对孙耀说话，孙耀回应某老总时也写明对象，未出现无对象对白。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

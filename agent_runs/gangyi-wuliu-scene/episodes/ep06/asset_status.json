@@ -1,0 +1,19 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "SCENE_LINGANG_HOME_YARD_BASE",
+    "STATE_SCENE_LINGANG_HOME_YARD_OVERCAST_V1",
+    "STATE_VEHICLE_PICKUP_NEW_WINTER_PREP_V1",
+    "STATE_VEHICLE_OLD_VAN_OVERLOADED_V1",
+    "PROP_SNOW_CHAIN_BASE",
+    "PROP_ANTIFREEZE_BOTTLE_BASE",
+    "STATE_PROP_ANTIFREEZE_SPILLED_V1",
+    "PROP_VILLAGE_POLE_SPEAKER_BASE",
+    "STATE_SCENE_VILLAGE_ROAD_OVERCAST_PRESNOW_V1"
+  ]
+}

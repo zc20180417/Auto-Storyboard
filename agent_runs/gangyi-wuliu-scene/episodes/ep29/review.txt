@@ -1,0 +1,97 @@
+{
+  "pass": true,
+  "summary": "ep29 assembled final已按storyboard-reviewer逐组复审，未发现hard issues，台词、动作、空间、组时长和审核证据均可交付。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "evidence": "刀疤台词明确为对林刚狞笑说道，林刚台词明确为对身后重卡方向沉声说道；两句原文均未改写。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "保留退伍兵仅队形逼近、不攻击，退伍兵甲喊“向前——一步！”，混混后退和悄悄扔铁钩，符合原剧本顺序。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "完整表现刀疤掏弹簧刀、冲出两步、林刚侧步扣腕、一拧一压、弹簧刀落地、反剪按上集装箱和刀疤惨叫。"
+    },
+    {
+      "group": "第5组",
+      "type": "timing_math",
+      "evidence": "第5组时间段为3秒、2秒、3秒、3秒、3秒，合计14秒，标题镜头数5个一致；主管和王强短台词均在2-3秒内承载。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "evidence": "第7组保持在国际码头吊机控制区外，退伍兵甲只是沿外侧通道跑向配电室门牌，没有切入新的室内空间。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首列明林刚、刀疤、混混和隐在重卡后方的退伍兵司机；退伍兵在行动前已有可生成位置来源。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "反剪、扣腕、弹簧刀落地、按上集装箱均为可拍动作；未用抽象心理描述替代关键武力动作。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾和第4组首都保持刀疤被按在集装箱上、弹簧刀落地、林刚扣手腕，状态连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "码头主管求饶开吊机、王强抓狂掏钥匙、钥匙因手抖掉在脚边、王强弯腰说“我……”均逐项保留。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "“你扔一个试试。”有效字数6，2秒承载；其余踩钥匙、捡钥匙、扔钥匙均为2-3秒动作镜头，没有用长停顿凑时长。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "王强面如死灰被落实为瘫坐、肩膀塌下去、脸色发灰、视线落向退伍兵甲跑远方向，画面可直接生成。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

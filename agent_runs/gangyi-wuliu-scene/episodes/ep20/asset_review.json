@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep20资产表覆盖了医药仓库外交接、黑色轿车队堵路、陈天霸貂皮状态、药箱和重卡对赌关系，未发现硬问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、王百川、重卡、医药冷链箱等已有资产均复用asset_bible，陈天霸和孙彪只新增服装或伤势状态。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "陈天霸貂皮大衣、孙彪纱布、医药仓库晴天交接和黑色轿车堵路均按状态建模，没有重建基础人物。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "香烟、吐烟、拍手、阻拦手势和群像表情被列为不入库，避免把一次性表演细节资产化。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_WANGBAICHUAN_BASE、VEHICLE_HEAVY_TRUCK_BASE、PROP_MEDICAL_COLD_BOX_BASE等已存在资产未被重复新建。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "貂皮大衣作为陈天霸服装状态，纱布作为孙彪伤势状态，仓库外景和轿车堵路作为场景与车辆状态，建模层级正确。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产只补充asset_bible缺失的陈天霸貂皮大衣、无品牌黑色豪华轿车队和仓库堵车构图，未覆盖既有角色脸型和主服装。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词严格基于final.txt的医药仓库、五台重卡、黑色车队、貂皮大衣和药箱，且主动规避品牌logo、车牌号和可读文字。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage均引用ep20 final.txt中的组号或秒段，没有把未出现资产归入其他时间段。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词在人物服装、车辆状态、仓库环境、光线和负面限制上事实一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表完整，表头符合episode模式，枚举值合法，单元格未使用会破坏Markdown表格的竖线字符。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

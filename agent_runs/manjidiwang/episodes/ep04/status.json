@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "EP-04-ep04-agent-cli-storyboard.txt",
+  "summary": "EP04共13组分镜，覆盖考场答题、考官发难、走廊对峙、书房密谋、公寓谈判五条故事线，时长与对话指向均合规。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "多组光影描述重复使用'前侧光从左侧45度照来'或类似模板，建议后续根据场景灵活变化。",
+    "第13组以3秒远景无台词背影收尾，虽在3秒上限内，但建议确保窗外夜景有足够动态视觉信息。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

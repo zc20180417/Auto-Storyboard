@@ -1,0 +1,58 @@
+# 《刚毅物流 ep10》资产增量与使用索引
+
+## 一、本集复用资产索引
+
+| 使用ID | asset_id | state_id | asset_type | source | episode_usage | 本集用途 | needs_generation | generation_note |
+|---|---|---|---|---|---|---|---|---|
+| EP10_USE_CHAR_001 | CHAR_LINGANG_BASE | STATE_LINGANG_TOWNSHIP_V1 | character | asset_bible | 第1组-第7组 | 林刚在断桥雪路拖开巨树，随后到生鲜仓库门口接过密码箱并接受老货车挑战 | no | reuse existing character state |
+| EP10_USE_CHAR_002 | CHAR_WANGBAICHUAN_BASE | STATE_WANGBAICHUAN_BOSS_V1 | character | asset_bible | 第6组-第7组 | 王百川在生鲜仓库门口交付现金并提出冷链合同 | conditional | if military coat state not generated |
+| EP10_USE_CHAR_003 | CHAR_WANGQIANG_BASE | BASE | character | asset_bible | 第6组-第7组 | 王强跟随王百川，在仓库门口挑刺并提出老货车挑战 | no | reuse base character |
+| EP10_USE_SCENE_001 | SCENE_MOUNTAIN_ROAD_BASE | STATE_SCENE_MOUNTAIN_SNOW_V1 | scene | asset_bible | 第1组-第5组 | 断桥前大雪路面和危险桥面基础环境 | conditional | if broken bridge tree state not generated |
+| EP10_USE_SCENE_002 | SCENE_FRESH_WAREHOUSE_SNOW_BASE | BASE | scene | episode_new | 第6组-第7组 | 生鲜仓库门口交钱和合同挑战场景 | yes | new episode scene base |
+| EP10_USE_PROP_001 | VEHICLE_PICKUP_BASE | BASE | prop | asset_bible | 第1组-第7组 | 林刚驾驶皮卡拖树并停在仓库门口 | no | reuse existing vehicle asset |
+| EP10_USE_PROP_002 | PROP_SILVER_CASH_CASE_BASE | STATE_PROP_CASH_CASE_HANDOFF_V1 | prop | episode_new | 第6组-第7组 | 王百川交付二十万现金，林刚接过并携带 | yes | new key prop and handoff state |
+| EP10_USE_PROP_003 | PROP_TOW_CABLE_BASE | STATE_PROP_TOW_CABLE_TENSIONED_V1 | prop | episode_new | 第2组-第5组 | 牵引钢缆从皮卡拖车钩连接倒伏巨树并绷紧拖动 | yes | new towing prop state |
+| EP10_USE_PROP_004 | PROP_FALLEN_GIANT_TREE_BASE | STATE_PROP_FALLEN_TREE_SNOW_DRAGGED_V1 | prop | episode_new | 第1组-第5组 | 倒伏巨树横压桥面并被皮卡拖开让出车道 | yes | new episode obstacle prop |
+| EP10_USE_PROP_005 | PROP_LINGANG_WRISTWATCH_BASE | BASE | prop | episode_new | 第1组 6-9秒，第5组 0-3秒 | 林刚查看时间，强化限时送货压力 | yes | new recurring personal prop candidate |
+
+## 二、本集新增资产状态
+
+| state_id | asset_id | parent_state_id | asset_type | status_type | state_summary | changed_fields | reuse_policy | first_seen_episode | episode_usage | needs_generation | generation_note | sync_to_bible | 静态生图提示词(中文) | 负面提示词(中文) | 静态生图提示词(英文) | 负面提示词(英文) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| STATE_SCENE_MOUNTAIN_BROKEN_BRIDGE_TREE_V1 | SCENE_MOUNTAIN_ROAD_BASE | STATE_SCENE_MOUNTAIN_SNOW_V1 | scene | scene_condition | 雪天断桥前，倒伏巨树横压桥面，皮卡停在桥头附近 | 断桥位置、倒伏巨树、厚积雪、桥面湿黑拖痕 | one_episode | ep10 | 第1组-第5组 | yes | generate broken bridge snow obstacle scene | candidate | 中国山区断桥前雪路空镜，窄桥桥面被厚雪覆盖，一棵巨大倒伏树横压桥面中段，桥头雪路有皮卡轮胎压痕和湿黑拖痕，冷白漫射雪光，无人无人脸，竖屏电影质感，真实材质比例 | 人物、人脸、可读文字、品牌logo、车牌号、卡通、3D渲染、塑料感、过曝、水印、字幕 | Empty vertical cinematic shot of a snowy mountain broken bridge approach in contemporary China, a huge fallen tree blocking the bridge deck, deep snow, pickup tire tracks and wet dark drag marks near the bridgehead, cold diffuse winter light, no people, no faces, realistic materials and proportions | people, faces, readable text, brand logos, license plates, cartoon style, 3D render, plastic look, overexposure, watermark, subtitles |
+| STATE_PROP_TOW_CABLE_TENSIONED_V1 | PROP_TOW_CABLE_BASE | BASE | prop | prop_condition | 手腕粗牵引钢缆绕住巨树并挂到皮卡拖车钩，拖动时绷紧颤动 | 钢缆磨痕、绕树死结、拖车钩连接、绷紧受力 | one_episode | ep10 | 第2组-第5组 | yes | generate tow cable under tension | candidate | 手腕粗金属牵引钢缆道具特写，钢缆绕过粗糙树干并打成死结，另一端连接皮卡拖车钩，表面有磨痕和雪粒，冷白雪光下呈现硬质金属反光，真实比例 | 人物脸、品牌logo、可读文字、夸张科幻设备、卡通、3D渲染、塑料质感、水印、字幕 | Close-up prop image of a wrist-thick metal towing cable, tied tightly around a rough tree trunk and connected to a pickup tow hook, worn steel texture with snow grains, hard metallic highlights under cold snowy daylight, realistic scale | faces, brand logos, readable text, sci-fi equipment, cartoon style, 3D render, plastic texture, watermark, subtitles |
+| STATE_PROP_FALLEN_TREE_SNOW_DRAGGED_V1 | PROP_FALLEN_GIANT_TREE_BASE | BASE | prop | prop_condition | 三吨级倒伏巨树被积雪包裹，拖动后树干下方留下湿黑痕迹和厚雪堆 | 倒伏状态、树皮冰渣、雪堆、湿黑拖痕 | one_episode | ep10 | 第1组-第5组 | yes | generate fallen tree obstacle and dragged state | no | 大型倒伏巨树道具特写与半景，粗壮树干横卧在积雪桥面上，树皮粗糙夹着冰渣，树干下方雪被推成厚堆并露出湿黑拖痕，冷白雪天光，真实自然材质 | 人物、人脸、可读文字、品牌logo、卡通、3D渲染、塑料感、过度戏剧化火焰、水印、字幕 | Prop-focused realistic shot of a massive fallen tree trunk lying across a snowy bridge deck, rough bark with ice chips, piled snow pushed under the trunk and wet dark drag marks exposed, cold winter daylight, realistic natural texture | people, faces, readable text, brand logos, cartoon style, 3D render, plastic look, exaggerated flames, watermark, subtitles |
+| STATE_PROP_CASH_CASE_HANDOFF_V1 | PROP_SILVER_CASH_CASE_BASE | BASE | prop | prop_condition | 银色密码箱在王百川和林刚之间交接，箱体边角反出冷白高光 | 银色金属箱体、提手、交接状态、无可读文字 | episode_range | ep10 | 第6组-第7组 | yes | generate silver cash case handoff state | candidate | 银色金属密码箱道具，硬质箱体、提手和边角结构清楚，箱面无品牌无文字，雪天仓库门口冷白光反射在金属边缘，可手持交接比例，真实商务现金箱质感 | 品牌logo、可读文字、钞票特写、二维码、人物脸、卡通、3D渲染、塑料感、水印、字幕 | Realistic silver metal cash case prop with a rigid body, handle and clear corner details, no brand or readable text, cold snowy warehouse entrance light reflecting on metal edges, believable handoff scale and business cash case texture | brand logos, readable text, close-up banknotes, QR codes, faces, cartoon style, 3D render, plastic look, watermark, subtitles |
+| STATE_WANGBAICHUAN_MILITARY_COAT_SNOW_V1 | CHAR_WANGBAICHUAN_BASE | STATE_WANGBAICHUAN_BOSS_V1 | character | costume_change | 王百川在雪天仓库门口穿军大衣拎密码箱 | 军大衣、雪天冷光、商务老板气场保持 | one_episode | ep10 | 第6组-第7组 | yes | generate winter military coat variant if needed | candidate | 基于 CHAR_WANGBAICHUAN_BASE 的王百川冬季仓库门口状态，引用 COSTUME_WANGBAICHUAN_MILITARY_COAT_V1，深色厚军大衣，手持银色密码箱或站在生鲜仓库雪地门口，脸型发型保持 asset_bible 设定，真人实拍电影质感 | 西方人脸、年轻化、改换发型、改换脸型、品牌logo、可读文字、卡通、3D渲染、塑料感、水印、字幕 | Wang Baichuan winter warehouse entrance state based on CHAR_WANGBAICHUAN_BASE, using COSTUME_WANGBAICHUAN_MILITARY_COAT_V1, dark heavy military-style coat, holding a silver cash case or standing at a snowy fresh warehouse entrance, same face shape and hair as the bible, realistic cinematic live-action look | Western face, younger age drift, changed hairstyle, changed face shape, brand logos, readable text, cartoon style, 3D render, plastic look, watermark, subtitles |
+
+## 三、本集新增基础资产
+
+| asset_id | asset_type | asset_name | description | reuse_policy | first_seen_episode | sync_to_bible | 静态生图提示词(中文) | 负面提示词(中文) | 静态生图提示词(英文) | 负面提示词(英文) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| CHAR_COUNTY_DRIVER_GROUP_BASE | character | 县城司机甲乙群像 | 几个县城司机，成年男性为主，冬季厚外套，带嘲讽围观气质；不固定为跨集主角脸，只用于本集断桥围观和起哄 | one_episode | ep10 | no | 中国县城货运司机群像，成年男性，冬季厚外套和普通棉服，身形普通，站在雪地路边围观，面部可区分但不做跨集固定明星脸，真人实拍电影质感 | 西方人脸、夸张黑社会装扮、品牌logo、可读文字、卡通、3D渲染、塑料感、水印、字幕 | Group of Chinese county freight drivers, adult men in winter padded jackets and ordinary coats, average builds, standing by a snowy roadside as onlookers, distinguishable but not celebrity-like fixed faces, realistic cinematic live-action look | Western faces, exaggerated gangster styling, brand logos, readable text, cartoon style, 3D render, plastic look, watermark, subtitles |
+| PROP_TOW_CABLE_BASE | prop | 牵引钢缆 | 手腕粗金属钢缆，用于皮卡拖拽巨树，表面有磨痕和雪粒，需保持粗细与金属质感稳定 | one_episode | ep10 | candidate | 手腕粗牵引钢缆道具，盘放或局部拉直状态，钢丝纹理清楚，表面有运输磨痕和少量雪粒，真实工业金属质感，无品牌无文字 | 人物脸、品牌logo、可读文字、塑料绳、科幻设备、卡通、3D渲染、水印、字幕 | Wrist-thick towing cable prop, coiled or partially straightened, clear steel wire texture, worn transport marks and light snow grains, realistic industrial metal material, no brand or text | faces, brand logos, readable text, plastic rope, sci-fi equipment, cartoon style, 3D render, watermark, subtitles |
+| PROP_FALLEN_GIANT_TREE_BASE | prop | 倒伏巨树 | 横压断桥的粗壮倒伏树干，三吨级体量感，粗糙树皮和冰渣是核心识别点 | one_episode | ep10 | no | 巨大倒伏树干道具，粗壮沉重，树皮纹理粗糙，枝杈被雪压住，表面夹着冰渣，适合雪路桥面障碍物画面，真实自然材质 | 人物、人脸、文字、品牌logo、卡通、3D渲染、塑料感、火焰、水印、字幕 | Massive fallen tree trunk prop, thick and heavy, rough bark texture, branches pressed by snow, ice chips on the surface, suitable as a snowy bridge road obstacle, realistic natural material | people, faces, text, brand logos, cartoon style, 3D render, plastic look, flames, watermark, subtitles |
+| PROP_SILVER_CASH_CASE_BASE | prop | 银色密码箱 | 王百川交给林刚的二十万现金箱，银色硬质金属箱体，禁止出现可读金额或品牌 | episode_range | ep10 | candidate | 银色金属密码箱道具，矩形硬壳，圆角、锁扣和提手清楚，箱面干净无品牌无可读文字，商务现金箱质感，手提比例真实 | 可读金额、品牌logo、二维码、真实银行标识、人物脸、卡通、3D渲染、塑料感、水印、字幕 | Silver metal cash case prop, rectangular hard shell with rounded corners, latches and handle, clean surface with no brand or readable text, business cash case texture and realistic hand-carried scale | readable amount, brand logos, QR codes, real bank marks, faces, cartoon style, 3D render, plastic look, watermark, subtitles |
+| PROP_LINGANG_WRISTWATCH_BASE | prop | 林刚手表 | 林刚查看时间用的朴素耐用手表，表盘只反光不显示可读品牌或精确数字 | episode_range | ep10 | candidate | 男士朴素耐用手表道具，深色表带，圆形或简洁表盘，表面有轻微磨损和冷白反光，无品牌logo，无可读精确时间，真实手腕比例 | 品牌logo、清晰可读数字、奢侈品夸张设计、人物脸、卡通、3D渲染、水印、字幕 | Simple durable men's wristwatch prop with a dark strap and clean round or minimal dial, slight wear and cold white reflection, no brand logo and no readable exact time, realistic wrist scale | brand logos, clearly readable numbers, exaggerated luxury design, faces, cartoon style, 3D render, watermark, subtitles |
+| SCENE_FRESH_WAREHOUSE_SNOW_BASE | scene | 生鲜仓库雪天门口 | 雪天生鲜仓库门口，卷帘门、薄雪地面、皮卡停靠区；作为交钱和合同挑战场景空镜 | episode_range | ep10 | candidate | 中国生鲜仓库门口雪天空镜，金属卷帘门、仓库外墙、薄雪覆盖的水泥地和车辆停靠区，冷白阴雪天光，地面有车轮雪泥痕迹，无人无人脸，真实仓储质感，竖屏电影构图 | 人物、人脸、人群、可读标牌、品牌logo、车牌号、卡通、3D渲染、塑料感、水印、字幕 | Empty vertical cinematic shot of a fresh goods warehouse entrance in snowy contemporary China, metal roller shutter, warehouse wall, thin snow over concrete ground and vehicle stopping area, cold overcast snow light, muddy tire tracks, no people, no faces, realistic warehouse texture | people, faces, crowds, readable signs, brand logos, license plates, cartoon style, 3D render, plastic look, watermark, subtitles |
+| COSTUME_WANGBAICHUAN_MILITARY_COAT_V1 | costume | 王百川军大衣 | 王百川雪天仓库门口穿的深色厚军大衣，偏保暖实用，不改变其物流老板基础身份 | one_episode | ep10 | candidate | 深色厚军大衣服装资产，长款保暖外套，厚呢或棉质面料，领口厚实，冬季雪天实用质感，平铺或无脸半身服装参考，无品牌无徽章 | 人物脸、可读徽章、军衔文字、品牌logo、过度制服化、卡通、3D渲染、塑料感、水印、字幕 | Dark heavy military-style coat costume asset, long warm outerwear, thick wool or cotton texture, substantial collar, practical winter snow-weather feel, flat-lay or faceless half-body clothing reference, no brand or insignia | faces, readable insignia, rank text, brand logos, overly formal uniform look, cartoon style, 3D render, plastic look, watermark, subtitles |
+
+## 四、本集关键道具与场景状态
+
+| state_id | asset_id | asset_type | state_summary | episode_usage | needs_generation | generation_note | 入库建议 |
+|---|---|---|---|---|---|---|---|
+| STATE_SCENE_MOUNTAIN_BROKEN_BRIDGE_TREE_V1 | SCENE_MOUNTAIN_ROAD_BASE | scene | 雪天断桥前倒伏巨树封路状态 | 第1组-第5组 | yes | generate before snow-road shots | 建议同步到asset_bible |
+| STATE_PROP_TOW_CABLE_TENSIONED_V1 | PROP_TOW_CABLE_BASE | prop | 牵引钢缆绕树并连接皮卡拖车钩，受力绷紧 | 第2组-第5组 | yes | generate cable prop and tensioned variant | 建议同步到asset_bible |
+| STATE_PROP_FALLEN_TREE_SNOW_DRAGGED_V1 | PROP_FALLEN_GIANT_TREE_BASE | prop | 倒伏巨树从桥面拖开并留下湿黑拖痕 | 第1组-第5组 | yes | generate one-episode obstacle state | 仅本集使用 |
+| STATE_PROP_CASH_CASE_HANDOFF_V1 | PROP_SILVER_CASH_CASE_BASE | prop | 银色密码箱交接状态 | 第6组-第7组 | yes | generate cash case for handoff and later carry shots | 建议同步到asset_bible |
+| STATE_WANGBAICHUAN_MILITARY_COAT_SNOW_V1 | CHAR_WANGBAICHUAN_BASE | character | 王百川雪天军大衣状态 | 第6组-第7组 | yes | generate if winter coat look will recur | 建议同步到asset_bible |
+
+## 五、本集不建议入库元素
+
+| 元素 | 出现位置 | 不入库原因 |
+|---|---|---|
+| 积雪、冰渣、雪坑、泥水飞溅 | 第1组-第5组 | 已由雪路场景状态和拖拽状态承载，属于环境效果，不单独入库 |
+| 司机甲抬手、司机乙后退、围观司机起哄 | 第1组-第5组 | 属于分镜表演和临时动作，不是稳定资产状态 |
+| 手套、方向盘、档杆、车门、尾灯 | 第2组-第5组 | 由人物状态、皮卡车辆或驾驶室画面承载，无独立跨镜头生产价值 |
+| 仓库卷帘门、门口薄雪、车身雪泥 | 第6组-第7组 | 已纳入生鲜仓库雪天门口场景基础资产或车辆即时状态 |
+| 王强撇嘴、王百川大笑、林刚冷眼 | 第6组-第7组 | 短暂表情，不应拆成入库状态 |

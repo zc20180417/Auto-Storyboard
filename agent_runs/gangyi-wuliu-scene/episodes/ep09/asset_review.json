@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep09 assets.md 覆盖了雪路堵车、防滑链冲坡、老桥断树堵路和牵引钢缆取用，未发现 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "已复用 CHAR_LINGANG_BASE、SCENE_MOUNTAIN_ROAD_BASE、VEHICLE_PICKUP_BASE 和 VEHICLE_HEAVY_TRUCK_BASE，重型防滑皮卡和冷链大货车堵路均建为状态而非重复基础车。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "防滑链皮卡、雪坑冷链车、老桥断树堵路、牵引钢缆沾雪和手表沾雪水都按状态或道具基础正确拆分。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "方向盘动作、车窗、后备箱边缘、背景司机身影、断树树皮细节和林刚短暂情绪动作均未过度抽取。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "皮卡和重卡均引用 asset_bible 已有车辆基础资产，仅新增雪地防滑和冷链堵车状态。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "车辆陷雪、防滑链、断树堵桥、钢缆沾雪和手表水痕均是明确状态变化，未误建为重复车辆基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增县城司机、老桥、防滑链、牵引钢缆、手表均不覆盖 asset_bible 已有角色、场景或道具设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词未添加品牌、可读车牌、可读路牌、额外救援设备或 final.txt 未出现的剧情。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "所有 episode_usage 均对应 ep09 final.txt 第1组到第4组的明确镜头时间段。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词在防滑链、冷链车、老桥断树、钢缆和手表状态上事实一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "SCENE_OLD_BRIDGE_BASE 和 STATE_SCENE_OLD_BRIDGE_SNOW_BLOCKED_V1 均要求无人无人脸，没有把林刚或车辆司机写入场景基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表齐全，列名完整，枚举值合法，单元格未使用原始竖线。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

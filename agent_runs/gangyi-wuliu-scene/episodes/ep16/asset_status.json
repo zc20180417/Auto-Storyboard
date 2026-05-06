@@ -1,0 +1,17 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "SCENE_RECYCLING_YARD_GATE_BASE",
+    "STATE_SCENE_RECYCLING_GATE_NIGHT_SMOKE_V1",
+    "STATE_VEHICLE_TRUCK_SCRAP_SMOKING_V1",
+    "CHAR_RECYCLING_BOSS_BASE",
+    "VEHICLE_BLACK_SEDAN_BASE",
+    "PROP_FLASHLIGHT_BASE",
+    "PROP_SLEDGEHAMMER_BASE"
+  ]
+}

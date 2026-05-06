@@ -1,0 +1,35 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "STATE_SCENE_PORT_CRANE_STOPPED_V1",
+      "type": "scene_state",
+      "reason": "ep28-ep30 港口吊机停摆和恢复是连续剧情核心，停摆状态建议并入码头场景状态。"
+    },
+    {
+      "id": "CHAR_DOCK_SUPERVISOR_BASE",
+      "type": "character",
+      "reason": "码头主管在 ep28 和 ep29 均承担吊机控制与钥匙剧情，建议作为港口阶段配角入库。"
+    },
+    {
+      "id": "CHAR_DAOBA_BASE",
+      "type": "character",
+      "reason": "刀疤从 ep28 围堵延续到 ep29 被制服，是港口反派头目，建议统一定妆。"
+    },
+    {
+      "id": "CHAR_DOCK_GANG_BASE",
+      "type": "character",
+      "reason": "码头混混群像在 ep28-ep30 被围堵、怯退和押走，建议作为不固定单人脸的群像资产。"
+    },
+    {
+      "id": "PROP_DOCK_WEAPONS_BASE",
+      "type": "prop",
+      "reason": "铁钩和砍刀在 ep28-ep29 多次出现并影响动作调度，建议作为港口冲突道具入库。"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "summary": "ep30整集分镜完整覆盖码头制服赵大强、货物准时装船、跨国合同、公益基金和片尾收束，未发现硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组", "第14组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "赵大强掏打火机并喊出三句威胁、冲向重卡副油箱、林刚扣腕夺打火机、踹膝反剪按车身，动作顺序与原剧本一致。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "神秘外宾第一句约24字用4-9秒承载，约4.8字每秒；第二句约28字用9-14秒承载，约5.6字每秒，均低于7字每秒硬线，且没有超过7秒单段长台词。"
+    },
+    {
+      "group": "第11组",
+      "type": "space_locking",
+      "evidence": "老村长只通过林刚手中的手机视频和声音出现，组首明确来源为手机，没有把乡村现场与码头空地混为同一现实空间。"
+    },
+    {
+      "group": "第13组",
+      "type": "dialogue_direction",
+      "evidence": "林刚面向刚毅车队司机在2-6秒说出“愣着干什么？卸完货，明天开始跑跨国干线。第一站，老挝。”，说话对象明确为司机们。"
+    },
+    {
+      "group": "第14组",
+      "type": "format",
+      "evidence": "片尾字幕作为原剧本明确内容保留在片尾意象画面中，组标题、时间段、镜头数、组尾衔接均完整。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "赵大强、林刚、王强和混混在组首有可生成位置，警察和特警通过4-10秒警车入场后才开始控制与上铐。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组王百川握住林刚感谢后，第5组延续同一装船区，让王百川递出股份文件，人物关系和空间连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组以神秘外宾递出名片、林刚准备接过收尾，第7组组首和0-3秒承接林刚接名片并回应，名片道具状态连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“通村”和老家路的成果通过手机照片中的崭新村路和“过客留”路碑呈现，王百川惊讶和林刚收手机形成可拍反应。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第14组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "林刚看村路照片、揣手机、拉车门、车标发光、片尾字幕和全剧终全部保留，没有新增改变结局的动作。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

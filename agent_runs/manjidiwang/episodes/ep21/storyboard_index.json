@@ -1,0 +1,113 @@
+{
+  "project": "EP-21",
+  "episode_id": "EP21",
+  "cuts": [
+    {
+      "cut_id": "EP21-G01",
+      "group_index": 1,
+      "title": "招标会开场（，总时长：12秒，镜头数：5个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "孙耀",
+        "田立民",
+        "某老总",
+        "各界权贵"
+      ],
+      "props": [
+        "香槟塔",
+        "酒杯",
+        "宴会台"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP21-G02",
+      "group_index": 2,
+      "title": "朱文浩破门叫停（，总时长：12秒，镜头数：5个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "孙耀",
+        "朱文浩",
+        "田立民",
+        "各界权贵",
+        "安保人员"
+      ],
+      "props": [
+        "宴会厅大门",
+        "酒杯",
+        "宴会台"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 12,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP21-G03",
+      "group_index": 3,
+      "title": "田立民斥责（，总时长：10秒，镜头数：4个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "孙耀",
+        "朱文浩",
+        "田立民",
+        "安保人员",
+        "各界权贵"
+      ],
+      "props": [
+        "宴会台",
+        "酒杯"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 24,
+      "group_end_sec": 34,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP21-G04",
+      "group_index": 4,
+      "title": "红头文件拍上台（，总时长：11秒，镜头数：5个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "朱文浩",
+        "孙耀",
+        "田立民",
+        "各界权贵"
+      ],
+      "props": [
+        "红头文件",
+        "投影屏幕",
+        "宴会台",
+        "酒杯"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 34,
+      "group_end_sec": 45,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP21-G05",
+      "group_index": 5,
+      "title": "股权真相压顶（，总时长：10秒，镜头数：4个）",
+      "scene": "洲际酒店宴会厅",
+      "characters": [
+        "朱文浩",
+        "孙耀",
+        "田立民",
+        "各界权贵"
+      ],
+      "props": [
+        "投影屏幕",
+        "红头文件",
+        "红酒杯"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 45,
+      "group_end_sec": 55,
+      "source_group_label": "第5组"
+    }
+  ]
+}

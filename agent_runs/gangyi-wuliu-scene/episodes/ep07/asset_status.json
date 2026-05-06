@@ -1,0 +1,16 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "CHAR_VILLAGER_CROWD_BASE",
+    "SCENE_LINGANG_HOME_GATE_BASE",
+    "STATE_SCENE_LINGANG_HOME_GATE_SNOW_V1",
+    "PROP_HIGH_PRESSURE_WASHER_BASE",
+    "STATE_LINGANG_SNOW_WORK_V1",
+    "STATE_PICKUP_SNOW_DRIVING_V1"
+  ]
+}

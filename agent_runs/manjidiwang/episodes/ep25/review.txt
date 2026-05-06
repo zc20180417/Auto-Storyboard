@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "summary": "EP25整集分镜按剧本完成会议室夺权危机与病房情报升级，台词、人物关系、空间锁定、时长和格式审查均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "朱天和签署接管文件、说“田立民的残余势力已全部清理”、盖章后说“集团终于重回正轨”，与25-1开场动作和台词顺序一致。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组总时长13秒，0-3秒承载陈律师首席法务台词，3-6秒承载18字对赌协议台词，6-8秒为文件推进，8-13秒承载朱天和翻看文件和11字质问；镜头时长连续且无1秒镜头。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "evidence": "朱文浩对陈律师说“鼎丰资本，胃口挺大”，陈律师对朱文浩问“你就是朱文浩”并说“三天时间”，所有真人台词均明确说话对象。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "evidence": "第7组仍在集团顶层会议室，组首列明朱文浩、陈律师、朱天和、高管们和黑衣人位置，8-11秒明确陈律师带黑衣人从双开大门离去。"
+    },
+    {
+      "group": "第10组",
+      "type": "script_fidelity",
+      "evidence": "苏清寒担忧雇佣兵、朱文浩拿枪上膛说“巧了，我做事，也从来不看底线”，随后看表说“父亲在家，我得回去一趟”，保留原剧本三项关键内容。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首写明门外走廊暗处可见陈律师和黑衣人，0-8秒先推门、涌入和走到桌前，陈律师到桌前后才对朱天和说话。",
+      "fix_instruction": "无需修复；人物在行动和台词前已有可生成位置来源。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组结尾朱天和攥着文件抬头质问，文件摊在会议桌上；第4组组首延续为朱天和手里拿着文件，陈律师手按文件旁。",
+      "fix_instruction": "无需修复；文件归属和桌前站位连续。"
+    },
+    {
+      "group": "第6组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "朱文浩拿起文件撕碎、纸片落在桌上、陈律师攥紧公文包等动作把协议无效冲突转成可见画面，没有依赖抽象解释。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第8组切到市医院特护病房，组首列明苏清寒在桌边、朱文浩在门外走廊靠近门口可见，2-5秒完成推门和反锁，没有与会议室同组混用。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第9组0-2秒承载苏清寒13字台词，2-6秒承载22字诱饵台词，6-9秒承载朱文浩14字回应，之后用手部和中景反应承接，组总时长13秒。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

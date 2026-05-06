@@ -1,0 +1,86 @@
+{
+  "project": "EP-29",
+  "episode_id": "EP29",
+  "cuts": [
+    {
+      "cut_id": "EP29-G01",
+      "group_index": 1,
+      "title": "大堂败局（，总时长：11秒，镜头数：5个）",
+      "scene": "集团一楼大堂",
+      "characters": [
+        "龙建秋",
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "文件",
+        "地面血迹"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 0,
+      "group_end_sec": 11,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP29-G02",
+      "group_index": 2,
+      "title": "押离与收束（，总时长：10秒，镜头数：4个）",
+      "scene": "集团一楼大堂出口区域",
+      "characters": [
+        "龙建秋",
+        "朱文浩",
+        "苏清寒",
+        "特勤"
+      ],
+      "props": [
+        "文件",
+        "警车",
+        "车门"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 11,
+      "group_end_sec": 21,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP29-G03",
+      "group_index": 3,
+      "title": "病房转危（，总时长：10秒，镜头数：4个）",
+      "scene": "市医院特护病房",
+      "characters": [
+        "朱天和",
+        "朱文浩",
+        "医生"
+      ],
+      "props": [
+        "病床",
+        "病历",
+        "呼吸机",
+        "水杯"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 21,
+      "group_end_sec": 31,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP29-G04",
+      "group_index": 4,
+      "title": "交托家业（，总时长：10秒，镜头数：4个）",
+      "scene": "市医院特护病房",
+      "characters": [
+        "朱天和",
+        "朱文浩"
+      ],
+      "props": [
+        "病床",
+        "水杯",
+        "床头柜"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 31,
+      "group_end_sec": 41,
+      "source_group_label": "第4组"
+    }
+  ]
+}

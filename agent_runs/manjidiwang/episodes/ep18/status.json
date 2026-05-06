@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep18",
+  "status": "done",
+  "output_name": "EP-18-ep18-agent-cli-storyboard.txt",
+  "summary": "苏长明转移五亿资金失败，朱文浩和朱天和冻结账户并拿出洗钱证据；政策公告反转债务危机，苏长明被押走前抛出龙爷和田立民线索。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第3组苏长明质问朱天和约12字/2秒，节奏偏快但未超硬性上限。",
+    "第5组苏长明债务雷反击两句节奏较快但可接受。",
+    "第8组苏长明揭底龙爷线索约18字/3秒，节奏偏快但可接受。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

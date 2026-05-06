@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep17资产表覆盖销售大厅、买车现金、孙彪及打手堵门、林刚脱外套迎战等关键资产，结构和语义审核通过。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、孙彪、五台重卡和林刚工装均复用asset_bible已有资产，未把已有重卡或服装重新写成新基础资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "销售大厅晴日光和黑皮箱现金打开状态均建模为状态，林刚脱外套作为一集内服装变化，没有改写基础人物设定。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "销售台、经理冒汗、孙彪冷笑挥手、打手甲临时姿势和棍影压近均被排除，避免把表演和陈设过度资产化。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_SUNBIAO_BASE、VEHICLE_HEAVY_TRUCK_BASE、COSTUME_LINGANG_WORK_JACKET_V1和COSTUME_WORKER_LOGISTICS_V1均从asset_bible复用。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "黑皮箱打开露现金和林刚脱外套均按状态建模，未重复创建新的林刚基础角色或新的现金事件剧情。"
+      ,"fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增经理、打手群像、销售大厅、黑皮箱现金、雪茄和棒球棍不与asset_bible已有资产重复或冲突。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词没有新增品牌、可读标识、车牌、枪械或剧本外场景；现金提示词明确避免可读编号和真实金融标识。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage均来自ep17 final.txt，例如第1组0-8秒黑皮箱现金、第3组10-12秒打手棒球棍、第4组2-14秒林刚脱外套迎战。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "销售大厅、经理、打手群像、黑皮箱现金、雪茄和棒球棍的中英文提示词事实一致，负面词均对齐品牌、文字、非写实风格等限制。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准章节和全部必需列齐全，单元格没有原始竖线，枚举值符合转换和校验脚本要求。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

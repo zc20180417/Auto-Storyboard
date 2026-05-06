@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep02 资产表覆盖了锁车、切链、撞摩托车、白糖破坏油箱和赵大强泥水状态，结构与 bible 复用边界符合资产抽取规则。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、赵大强、破面包车、乡村道路和手机均优先复用 asset_bible.md 已有资产；帆布包因不在 bible 中仅标为 episode_new 条件引用。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "前轮锁链、切断铁链、摩托车入沟、赵大强满身泥、夜晚停车场、白糖倒油箱和赵家门外夜景均按状态处理，没有把同一人物或车辆重复建成新基础资产。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "小混混、债主画外音、香烟、臭水沟和跳脚冷笑等一次性元素被排除，未把普通表演或无视觉角色过度入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "VEHICLE_OLD_VAN_BASE、CHAR_LINGANG_BASE、CHAR_ZHAODAQIANG_BASE、SCENE_VILLAGE_ROAD_BASE 和 PROP_CRACKED_PHONE_BASE 直接复用，避免重复生成已有基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "锁车、切链、白糖入油箱、摩托车入沟、赵大强黑泥和夜间光线都是可复用状态变化，已写入第二部分并在第四部分摘要。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产为 bible 未覆盖的林刚家门外、露天停车场、赵大强家门外、粗铁链、角磨机、摩托车和白糖袋，没有改写已有面包车或人物设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词只包含 final.txt 中出现的铁链、角磨机、摩托车、白糖、油箱、黑泥和门灯等事实，并限制品牌、车牌、可读包装文字和字幕。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 按 ep02 第1组-第6组分配，白糖油箱只标在第5组，赵家门外只标在第6组，未跨入未出现镜头。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "identity_drift",
+      "result": "pass",
+      "evidence": "赵大强满身黑泥状态引用 CHAR_ZHAODAQIANG_BASE 和 COSTUME_ZHAODAQIANG_DARK_JACKET_V1，只增加泥水湿脏，不改变脸型、发型或主服装基调。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "林刚家门外、停车场和赵大强家门外的场景状态均明确为空镜、无人、无人脸，没有把冲突人物写进场景资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表完整，表头与 episode schema 一致，枚举字段合法，单元格没有使用竖线字符造成错列。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

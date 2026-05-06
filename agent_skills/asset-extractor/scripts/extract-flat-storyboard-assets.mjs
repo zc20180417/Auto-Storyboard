@@ -53,6 +53,7 @@ function taskText({ episodeId, sourceFile, bibleRelativePath }) {
     "## 输入",
     "",
     `- 分镜文件：\`final.txt\``,
+    `- 分镜索引：\`storyboard_index.json\``,
     `- 源文件名：\`${sourceFile}\``,
     bibleLine,
     `- 资产抽取规则：\`${assetSkillRelativePath}\``,
@@ -61,21 +62,23 @@ function taskText({ episodeId, sourceFile, bibleRelativePath }) {
     "",
     "## 执行要求",
     "",
-    "1. 读取 `final.txt`、资产抽取规则、资产审核规则、提示词优化规则和全局资产设定。",
+    "1. 读取 `final.txt`、`storyboard_index.json`、资产抽取规则、资产审核规则、提示词优化规则和全局资产设定。",
     "2. 由大模型判断本集需要沉淀哪些可复用资产，不使用脚本模板或关键词硬编码代替判断。",
-    "3. 生成 `assets.md`，标题为 `《剧名 epXX》资产增量与使用索引`，必须包含：`一、本集复用资产索引`、`二、本集新增资产状态`、`三、本集新增基础资产`、`四、本集关键道具与场景状态`、`五、本集不建议入库元素`。",
+    "3. 生成 `assets.md`，标题为 `《剧名 epXX》资产增量与使用索引`，必须包含：`一、本集复用资产索引`、`二、本集新增资产状态`、`三、本集新增基础资产`、`四、本集关键道具与场景状态`、`五、本集不建议入库元素`、`六、本集分镜资产绑定索引`。",
     "4. 分集默认不重复输出 `asset_bible` 已有基础资产的完整提示词；已有资产写入复用索引，新状态写入新增资产状态，新人物/场景/服装/道具才写入新增基础资产。",
     "5. 只有状态变了、服装变了、外观条件变了、场景光线/破损状态变了、道具状态变了，才新增 `state_id`；短暂表情、手势、台词眼神通常写入不建议入库元素。",
-    "6. 用 `asset-reviewer` 对照 `final.txt`、`assets.md`、`asset_bible.md` 和两份 skill 做真实审核，输出 `asset_review.json`。",
-    "7. 如果 reviewer 返回 hard issues，只局部修复对应资产并复审；不要无关重写。通过后写 `asset_status.json`。",
-    "8. `asset_status.json` 必须记录 `reviewer_source: \"asset-reviewer\"`、`reviewer_pass`、issues/warnings 数量和 `bible_update_candidates`。",
-    "9. 检查 `assets.md` 后，再运行 `assets-md-to-xlsx.mjs --mode=episode` 转换出 `assets.xlsx`。",
-    "10. 运行 `validate-assets.mjs` 做机械门禁校验，通过后才算本集资产完成。",
+    "6. 额外输出 `asset_bindings.json`，内容必须与第六表绑定行一致，所有 `cut_id` 必须存在于 `storyboard_index.json`。",
+    "7. 用 `asset-reviewer` 对照 `final.txt`、`storyboard_index.json`、`assets.md`、`asset_bible.md` 和两份 skill 做真实审核，输出 `asset_review.json`。",
+    "8. 如果 reviewer 返回 hard issues，只局部修复对应资产并复审；不要无关重写。通过后写 `asset_status.json`。",
+    "9. `asset_status.json` 必须记录 `reviewer_source: \"asset-reviewer\"`、`reviewer_pass`、issues/warnings 数量和 `bible_update_candidates`。",
+    "10. 检查 `assets.md` 后，再运行 `assets-md-to-xlsx.mjs --mode=episode` 转换出 `assets.xlsx`。",
+    "11. 运行 `validate-assets.mjs --storyboard-index=<episode-dir>\\storyboard_index.json` 做机械门禁校验，通过后才算本集资产完成。",
     "",
     "## 输出",
     "",
     "- `assets.md`",
     "- `assets.xlsx`",
+    "- `asset_bindings.json`",
     "- `asset_review.json`",
     "- `asset_status.json`",
     "",
@@ -104,7 +107,7 @@ function nextStepsText(episodes, bibleTarget) {
     "",
     "```powershell",
     "node .\\agent_skills\\asset-extractor\\scripts\\assets-md-to-xlsx.mjs <episode-dir>\\assets.md <episode-dir>\\assets.xlsx --mode=episode",
-    "node .\\agent_skills\\asset-extractor\\scripts\\validate-assets.mjs <episode-dir>",
+    "node .\\agent_skills\\asset-extractor\\scripts\\validate-assets.mjs <episode-dir> --storyboard-index=<episode-dir>\\storyboard_index.json",
     "```",
     "",
     "只收集 `asset_status.json` 中 `status=done`、`reviewer_source=asset-reviewer`、`reviewer_pass=true`、`reviewer_issues_count=0` 的 episode。",
@@ -145,6 +148,16 @@ for (const [index, file] of files.entries()) {
   const episodeDir = path.join(outputDir, "episodes", episodeId);
   await fs.mkdir(episodeDir, { recursive: true });
   await fs.copyFile(path.join(inputDir, file), path.join(episodeDir, "final.txt"));
+  const stem = file.replace(/\.txt$/iu, "");
+  const indexCandidates = [`${stem}_index.json`, `${stem}_storyboard_index.json`, `${episodeId}_storyboard_index.json`];
+  for (const candidate of indexCandidates) {
+    try {
+      await fs.copyFile(path.join(inputDir, candidate), path.join(episodeDir, "storyboard_index.json"));
+      break;
+    } catch (error) {
+      if (error?.code !== "ENOENT") throw error;
+    }
+  }
 
   const bibleRelativePath = bibleTarget ? path.relative(episodeDir, bibleTarget).replace(/\\/gu, "/") : "";
   const taskPath = path.join(episodeDir, "TASK.md");

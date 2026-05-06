@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep01 资产表覆盖了代收点冲突、通知书、裂屏手机、撕账本和林刚屋内离村场景，未发现阻断生产的 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "对照 asset_bible.md，林刚、赵大强、代收点白天尘土状态、碎碗、裂屏录像手机、快递纸箱、账本和代收点对峙构图均被复用，未重复写成新基础资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "村委会通知书盖章、账本撕碎、林刚屋内白天窗光均是本集相对基础资产或新基础场景的状态变化，已按状态建模；短暂表情没有拆成状态。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "石桌、院门、垃圾桶、床柜衣物、村民群众和短暂表演均被列为不建议入库，避免把普通陈设或临时动作过度资产化。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_ZHAODAQIANG_BASE、SCENE_LINGANG_DEPOT_BASE、PROP_BROKEN_BOWL_BASE、PROP_EXPRESS_BOX_BASE、PROP_CRACKED_PHONE_BASE 和 PROP_LEDGER_BASE 直接沿用 bible 已有资产，needs_generation 均为 no。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "通知书盖章、账页撕碎和屋内白天窗光是可复用或生产需要的状态；皱眉、冷笑、看向对方等表演没有被过度拆分。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产仅包含 bible 未覆盖的村委会通知书、旧帆布包和林刚屋内，没有覆盖或改写已有角色、代收点场景、碎碗、手机、账本等设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词仅使用 final.txt 和 asset_bible.md 中出现的通知书、红章、账本撕碎、屋内床柜衣物、墙上证件等事实，并明确限制可读正文、logo、二维码和字幕。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep01 final.txt 的组号范围，例如代收点为第1组-第6组，林刚屋内为第7组，未把资产归入未出现镜头。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中文和英文提示词在通知书、撕碎账本、屋内空镜三个状态上主体、材质、光线和负面约束一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "SCENE_LINGANG_ROOM_BASE 和 STATE_SCENE_LINGANG_ROOM_DAY_V1 的提示词均明确为空镜、无人、无人脸，没有把林刚写入场景资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表和规定表头完整，单元格内未使用原始竖线分隔，枚举字段使用 yes、no、candidate、episode_range 等合法值。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

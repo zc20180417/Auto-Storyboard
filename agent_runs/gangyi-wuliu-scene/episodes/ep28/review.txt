@@ -1,0 +1,76 @@
+{
+  "pass": true,
+  "summary": "整集组装稿经节奏修复后完成码头抢装、吊机停摆、反派揭露和混混围堵，审核未发现硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "evidence": "组标题13秒等于0-2、2-7、7-10、10-13四个时间段相加，镜头数4个与实际时间段一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "吊机静止、主管夹公文包走来、停工检修、王百川提到双倍加急费、主管要求明天再来均与原剧本一致。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组0-5秒承载赵大强与林刚连续短句，5-9秒承载王强指刀疤威胁台词，后接2秒无台词反应，单个台词镜头未超过7秒且未拖慢凑时长。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "组首明确混混分散在四周集装箱通道、车辆缝隙和吊机立柱旁，仍属于同一片码头装卸空间，未跨越到新物理场景。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "抢时间的信息通过货轮泊位、车队进入、王百川擦汗台词和林刚下车命令呈现，画面可见可听。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "王强、赵大强和刀疤在组首位于集装箱堆垛阴影后方，9-11秒走出后才由王强喊话，人物来源清楚。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组林刚转身面对三人，第4组延续同一站位；码头主管仍退在右后方并夹着公文包，道具状态连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "刀疤吹口哨、几十个持铁钩砍刀混混涌出、秦爷交代台词、王百川绝望台词和林刚脱外套台词均保留。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

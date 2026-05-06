@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep04 资产表覆盖雨夜山道危机、林刚受伤状态、受损货车与别墅门口新增资产，未发现阻断生产的 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "对照 asset_bible.md，林刚沿用 CHAR_LINGANG_BASE 与 STATE_LINGANG_TOWNSHIP_V1，山道沿用 SCENE_MOUNTAIN_ROAD_BASE，货车沿用 VEHICLE_HEAVY_TRUCK_BASE，手机沿用 PROP_CRACKED_PHONE_BASE 的基础手机能力，没有重复创建已有基础资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "林刚额头流血和湿透工装、盘山公路雨夜湿滑、货车刮擦断镜、别墅门口雨夜光线都作为状态处理；保安、管家、豪华别墅门口因 bible 未覆盖且具备复用价值，才进入新增基础资产。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "方向盘、踏板、手刹、车速表、护坡大树、后车厢门、手表和握伞动作均被明确排除，避免把驾驶动作和场景局部拆成低价值道具资产。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "已有角色林刚、盘山公路、重卡、手机都通过 asset_bible 资产或基底复用；新增项只补状态或 bible 未覆盖的别墅门口相关基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "雨夜、受伤、车辆刮擦、场景光线变化均建模为 STATE_* 或 STATE_SCENE_*，没有把这些变化误写成新基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产仅包含 asset_bible.md 尚无的别墅保安、别墅管家、豪华别墅门口；未覆盖或改写林刚、既有乡镇和物流场景、既有重卡等全局资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词只使用 final.txt 中的雨夜山道、货车刮擦、额头流血、别墅门灯、黑伞等事实，并遵守 bible 禁止新增品牌、车牌、可读文字和真实商标的要求。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep04 final.txt 的第1组至第4组及对应秒段，没有把未出现资产的时间段强行归并。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词在人物状态、场景空镜、车辆损伤、负面约束上事实一致，英文未新增中文没有的品牌、文字或剧情。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表齐全，表头符合 episode schema，单元格未使用额外竖线，提示词为单行文本，适合转换 Excel。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

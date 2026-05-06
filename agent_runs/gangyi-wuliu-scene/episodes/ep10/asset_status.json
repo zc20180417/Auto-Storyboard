@@ -1,0 +1,19 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "STATE_SCENE_MOUNTAIN_BROKEN_BRIDGE_TREE_V1",
+    "PROP_TOW_CABLE_BASE",
+    "STATE_PROP_TOW_CABLE_TENSIONED_V1",
+    "PROP_SILVER_CASH_CASE_BASE",
+    "STATE_PROP_CASH_CASE_HANDOFF_V1",
+    "PROP_LINGANG_WRISTWATCH_BASE",
+    "SCENE_FRESH_WAREHOUSE_SNOW_BASE",
+    "COSTUME_WANGBAICHUAN_MILITARY_COAT_V1",
+    "STATE_WANGBAICHUAN_MILITARY_COAT_SNOW_V1"
+  ]
+}

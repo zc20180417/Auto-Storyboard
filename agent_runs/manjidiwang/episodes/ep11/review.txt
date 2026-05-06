@@ -1,0 +1,70 @@
+{
+  "pass": true,
+  "summary": "EP11 assembled final.txt 复审通过：10组完整覆盖追车、撞击、悬崖脱险、坠落遗言和崖底救援搜捕，原剧本忠实度、对话指向、时长数学、空间锁定和格式均无硬错误。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "小郑“姐姐，后面有车追我们！”约10字用2秒，苏清寒“抓紧扶手！”短台词用2秒；4-6秒和6-8秒无台词反应均为2秒，旧硬伤已清除。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组仅含盘山公路悬崖边车外事故空间，渣土车、越野车、断裂护栏和悬崖深渊均在同一物理空间中呈现，无跨场景硬切。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "第8组保留朱文浩脱下外套垫住、喊“担架！马上送市院特护！”，触碰苏清寒紧攥的手、掰开后带血U盘滑落，以及“你拿命赌的底牌，我收下了。”"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_direction",
+      "evidence": "第10组低声台词明确对昏迷的苏清寒，OS标注对苏清寒/内心，最终命令明确对王队长喊“通知内卫部，全城搜捕黑皮！”。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "第4组组首写明苏清寒位于驾驶座、安全带已解开，小郑位于副驾驶座抱双肩包；U盘从小郑包中取出，苏清寒抢过后塞入内衣，道具流转清楚。",
+      "fix_instruction": "通过，无需修改。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组以苏清寒坠落后眼皮垂下、画外音结束收尾，第7组切入崖底暴雨救援现场，时间线从坠车到救援自然推进，不要求同一物理空间连续。",
+      "fix_instruction": "通过，无需修改。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "第8组用抱出、触碰紧攥的手、掰开手指、U盘滑落、血迹在泥水中晕开、弯腰捡起并攥紧等可拍动作呈现关键道具与情绪。",
+      "fix_instruction": "通过，无需修改。"
+    },
+    {
+      "group": "第10组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第10组完整保留朱文浩低声台词、前世OS以及“通知内卫部，全城搜捕黑皮！”命令，台词顺序和说话对象与原剧本一致。",
+      "fix_instruction": "通过，无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

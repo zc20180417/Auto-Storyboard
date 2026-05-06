@@ -1,0 +1,107 @@
+{
+  "pass": true,
+  "summary": "EP18九组已按原剧本完成转账冻结、证据对峙、政策反转、警车揭线索和朱文浩心声，未发现硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留财务总监两句资金与复核台词，并保留苏长明推眼镜后说“我有董事长授权，直接打。”，原剧本动作和台词顺序一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "第2组主体空间是集团财务中心，转账进程和“权限冻结”都标为屏幕画面，属于允许的屏幕信息展示，不构成物理空间混乱。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组“盛大建工，红星工厂，两亿黑洞。”约12个有效字用2秒，“私刻公章，伪造债权，哪一条不够你死？”约15个有效字用3秒，时长数学通过。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "第6组保留苏长明疯魔反应、朱文浩两句政策公告台词、大屏幕显示城南地块国家级特区和苏长明“不可能！这绝不可能！”。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "evidence": "第8组警车前三句揭底台词分别由3秒、3秒、4秒承载，最长一句约23个有效字 / 4秒 / 5.8字秒比，符合情绪对白范围。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首空间锁定明确苏长明在大屏幕前、朱文浩在门口、朱天和在朱文浩身后，三人有位置、朝向和视线关系，后续入场与对话可生成。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾朱文浩举着防火袋看向苏长明，第4组首朱文浩仍持防火袋并拿出账本，苏长明仍在操作台前，证据道具状态连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "城南地块成为国家级特区通过大屏幕政策公告和地图标注呈现，朱文浩的资产反转用台词解释，关键不可视信息已转成可见可听内容。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第7组仍在集团财务中心，窗外警笛以声音和窗边光影呈现，特勤人员从财务中心门口进入视线边缘，没有在同组切到室外警车空间。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第8组尾苏长明被推向警车，第9组首警车车门已经合上并可见苏长明侧脸，随后警车驶离，押送状态连续。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第3组",
+      "rule": "dialogue_pacing",
+      "problem": "苏长明质问朱天和的情绪台词节奏偏快但未超过硬性上限。",
+      "evidence": "“朱天和，你敢锁我的离岸账户！”约12个有效字 / 2秒 / 6.0字秒比。",
+      "fix": "可保留短剧快节奏；若后续统一放慢，可拆为苏长明质问和朱天和反应两镜。"
+    },
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "苏长明债务雷反击两句节奏较快但仍可接受。",
+      "evidence": "“你们以为赢了？那五亿债务雷已经爆了！”约18个有效字 / 3秒 / 6.0字秒比；“集团资金链断裂，大家一起死！”约14个有效字 / 2秒 / 7.0字秒比。",
+      "fix": "可保留；不作为硬性问题。"
+    },
+    {
+      "severity": "soft",
+      "group": "第8组",
+      "rule": "dialogue_pacing",
+      "problem": "苏长明揭底龙爷养成线索的情绪句节奏偏快但符合可接受范围。",
+      "evidence": "“他养我二十年，就是为了让我试探你！”约18个有效字 / 3秒 / 6.0字秒比。",
+      "fix": "可保留警车前的紧迫节奏。"
+    }
+  ]
+}

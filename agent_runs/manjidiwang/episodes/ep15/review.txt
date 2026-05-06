@@ -1,0 +1,97 @@
+{
+  "pass": true,
+  "summary": "EP15 全集七组已按 storyboard-reviewer 对照剧本和最终分镜审核，未发现硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组完整保留废弃红星工厂、强光手电查看锈迹账本箱、车灯包围、雷军台词和打手逼近，没有删掉开场动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组0-5秒为连续短句交锋，约29个有效字配5秒并含换人节拍；5-8秒、8-10秒拆开围攻动作，避免5秒无台词全景拖时。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "第4组保留雷军供出苏总裁兜底、朱文浩擦血并按下口袋录音笔、两句反击台词和警笛撕裂夜空。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组特勤队从厂门方向进入同一厂区空地，雷军和打手仍在包围圈内，未跨到第二个主要物理空间。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "evidence": "第7组朱文浩对雷震问道、雷震对朱文浩说道、朱文浩继续对雷震说道，三句台词对象明确。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩、雷军、打手在组首均有位置、朝向和可见状态；雷军开口前已在车辆阴影旁，打手在车灯后方。",
+      "fix_instruction": "无需修复；保持开口和行动人物在组首或动作前可见。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾打手木棍逼近朱文浩，第3组首朱文浩仍在账本箱前方且打手已抬棍，随后躲两棍并故意吃背后一棍，动作连续。",
+      "fix_instruction": "无需修复；若调整第2组围攻落点，需同步第3组躲棍起点。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "录音笔开关通过朱文浩伸进口袋按下按钮呈现，警笛通过声音、红蓝警灯和众人转头呈现，均为可拍信息。",
+      "fix_instruction": "无需修复；不可见信息已转换为动作、声光和人物反应。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "雷震在第6组组首位于特殊牌照越野车旁，车门刚打开；3-5秒怒吼前已经从车旁冲下，来源明确。",
+      "fix_instruction": "无需修复；若改雷震登场，应保留车辆或入口来源。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组尾录音笔停在雷震皮鞋前，第7组组首继续写录音笔停在雷震脚前，雷震重新看向朱文浩，道具状态连续。",
+      "fix_instruction": "无需修复；录音笔位置和雷震反应保持一致。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "朱文浩“雷总监，你想包庇重犯？”、雷震“朱文浩，你做事别太绝！”、朱文浩“动我的人，杀无赦！”均未删改。",
+      "fix_instruction": "无需修复；最终对峙台词已完整保留。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "summary": "ep12 五组已逐项对照原剧本和生成规则复审，盘山夜路截车突围与仓库办公室问责均保留关键台词、动作、道具和空间例外标识，无硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "evidence": "第1组时间段为0-2、2-5、5-7、7-10、10-12秒，镜头时长合计12秒，与标题总时长和镜头数5个一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组依次保留钢管砸挡风玻璃、林刚“让我下车？”，混混甲“不下来连车一起烧！”，林刚拉响气动高音喇叭，混混甲“聋了！”。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组林刚“撞死活该。”在8-10秒2秒内完成，有效字数4，短台词未拉长；其余0-8秒和10-15秒中远景为原剧本连续车辆动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组主要物理空间为仓库办公室，8-11秒明确写成电脑屏幕画面播放重卡被砸和突围全过程，符合屏幕画面例外。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "evidence": "第5组林刚对王百川说道“看第一辆车副驾。”，王百川对王强怒吼“畜生！给我跪下！”，王强对王百川说道“叔！我错了！”，对话对象清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林刚组首在驾驶室内，混混甲和另外两个混混在7-10秒从面包车冲下并在10-12秒开口前已入场。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾混混甲逼近车头，第2组首继续写混混甲站在冷藏车车头前方，林刚仍握方向盘，前后面包车仍堵路。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "倒挡、油门、撞击凹陷、车身横滑、火星和记录仪红灯均为可生成的动作或道具细节，没有用抽象判断承载关键剧情。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "林刚踹门拍内存卡、拉椅子说“自己看”，王百川插卡看片后拍桌说“敢动我的货！反了！”均按原顺序呈现。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "王强在组首已位于背景门边阴影处，2-5秒屏幕画面显示副驾上的王强，5-12秒现实空间内被王百川怒斥并跪地认错，来源和位置明确。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

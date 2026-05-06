@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "summary": "ep17整集分镜经节奏修复后保留原剧本全部台词、动作和冲突升级，4组均通过时长、空间锁定、对话指向和格式审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "evidence": "组标题总时长12秒，镜头为0-2、2-5、5-8、8-10、10-12秒，实际相加12秒，镜头数5个与标题一致；三句台词分别为15字/3秒、15字/3秒、12字/2秒，字秒比均未超过7且不拖慢。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "evidence": "经理对孙彪、孙彪对经理、林刚对孙彪、孙彪对林刚均写明说话对象，视线也明确指向对方眼睛或销售台关键动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "孙彪“王强是我兄弟。他进去了，你别想买走一个轮子！”有效字数19字/4秒，约4.8字/秒，带威胁手指动作；林刚“我今天非要开走呢？”8字/2秒，短台词2秒豁免；无台词打手入场2秒，未超过3秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "保留打手甲抡棍喊“乡巴佬！赶紧跪下认错！”，经理劝林刚去别家，林刚脱外套坚持要车，孙彪扔雪茄命令打断腿，打手冲向林刚，林刚扭脖子说“一起上吧”。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林刚、经理在组首已列出位置和朝向；孙彪先以手臂按箱和走近动作入场，随后才对林刚说“慢着”。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第2组只发生在重卡经销店销售大厅，销售台、黑皮箱、雪茄和三人位置均在组首锁定，没有跨到门外或其他空间。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组组尾孙彪逼近销售台，林刚握皮箱提手；第3组组首继续写林刚手握皮箱提手、孙彪靠近销售台，空间和道具归属连续。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "第4组组首列出打手甲位于画面中央偏后并手持棒球棍，其他打手在门口，随后打手甲开口、打手们冲向林刚，人物可用性成立。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "围攻升级通过打手举棍、经理后退冒汗、林刚脱外套和扭脖子等可见动作呈现，没有把抽象压迫感作为主要画面信息。",
+      "fix_instruction": "无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

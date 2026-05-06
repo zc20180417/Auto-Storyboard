@@ -1,0 +1,192 @@
+{
+  "project": "EP-14",
+  "episode_id": "EP14",
+  "cuts": [
+    {
+      "cut_id": "EP14-G01",
+      "group_index": 1,
+      "title": "新债提案压上会议桌（，总时长：13秒，镜头数：3个）",
+      "scene": "集团最高常委会会议室",
+      "characters": [
+        "田立民",
+        "苏长明",
+        "朱天和",
+        "高管们"
+      ],
+      "props": [
+        "椭圆会议桌",
+        "茶杯",
+        "新债文件"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP14-G02",
+      "group_index": 2,
+      "title": "朱天和拍桌反对（，总时长：11秒，镜头数：4个）",
+      "scene": "集团最高常委会会议室",
+      "characters": [
+        "田立民",
+        "苏长明",
+        "朱天和",
+        "高管们"
+      ],
+      "props": [
+        "椭圆会议桌",
+        "茶杯",
+        "新债文件"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 13,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP14-G03",
+      "group_index": 3,
+      "title": "多数举手通过新债（，总时长：10秒，镜头数：4个）",
+      "scene": "集团最高常委会会议室",
+      "characters": [
+        "田立民",
+        "苏长明",
+        "朱天和",
+        "高管们"
+      ],
+      "props": [
+        "椭圆会议桌",
+        "会议锤",
+        "纪要文件",
+        "签字笔"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 24,
+      "group_end_sec": 34,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP14-G04",
+      "group_index": 4,
+      "title": "黑锅与反钩（，总时长：10秒，镜头数：5个）",
+      "scene": "集团最高常委会会议室",
+      "characters": [
+        "田立民",
+        "苏长明",
+        "朱天和",
+        "高管们"
+      ],
+      "props": [
+        "椭圆会议桌",
+        "纪要文件",
+        "签字笔"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 34,
+      "group_end_sec": 44,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP14-G05",
+      "group_index": 5,
+      "title": "残缺数据露出转账痕迹（，总时长：10秒，镜头数：4个）",
+      "scene": "朱家别墅书房",
+      "characters": [
+        "朱文浩",
+        "电脑屏幕"
+      ],
+      "props": [
+        "电脑",
+        "耳机",
+        "U盘",
+        "键盘",
+        "转账记录截图"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 44,
+      "group_end_sec": 54,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP14-G06",
+      "group_index": 6,
+      "title": "红星账户与龙字浮现（，总时长：12秒，镜头数：5个）",
+      "scene": "朱家别墅书房",
+      "characters": [
+        "朱文浩",
+        "电脑屏幕"
+      ],
+      "props": [
+        "电脑",
+        "键盘",
+        "U盘",
+        "转账记录截图"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 54,
+      "group_end_sec": 66,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP14-G07",
+      "group_index": 7,
+      "title": "鼎丰资本浮出水面（，总时长：15秒，镜头数：5个）",
+      "scene": "朱家别墅书房",
+      "characters": [
+        "朱文浩",
+        "电脑屏幕"
+      ],
+      "props": [
+        "电脑",
+        "键盘",
+        "鼠标",
+        "搜索结果页面",
+        "股权网络图"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 66,
+      "group_end_sec": 81,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP14-G08",
+      "group_index": 8,
+      "title": "十二暗股指向幕后人（，总时长：11秒，镜头数：4个）",
+      "scene": "朱家别墅书房",
+      "characters": [
+        "朱文浩",
+        "电脑屏幕"
+      ],
+      "props": [
+        "电脑",
+        "鼠标",
+        "股权网络图"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 81,
+      "group_end_sec": 92,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP14-G09",
+      "group_index": 9,
+      "title": "实地调查前带上防身物（，总时长：11秒，镜头数：5个）",
+      "scene": "朱家别墅书房",
+      "characters": [
+        "朱文浩"
+      ],
+      "props": [
+        "电脑",
+        "抽屉",
+        "钥匙",
+        "车钥匙",
+        "手枪"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 92,
+      "group_end_sec": 103,
+      "source_group_label": "第9组"
+    }
+  ]
+}

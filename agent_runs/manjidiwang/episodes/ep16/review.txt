@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "summary": "EP16整集9组已按storyboard-reviewer逐组审核，审讯室、病房、总裁办、董事长办公室四个物理空间分组清楚，原剧本关键台词和动作均保留，无硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组逐句保留朱文浩扔照片、雷军涉黑袭警、雷震替人办事、朱文浩拉椅坐下追问、雷震说安保部兜底、朱文浩指出安保部由父亲分管。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组7-15秒连续对话节拍承载朱文浩交易条件和雷震两句供述，约45个有效字，8秒字秒比约5.6，属于可接受短剧节奏；录音3秒承载约18字，字秒比约6.0。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组全程在市医院特护病房，朱文浩在画面左侧拿水杯，苏清寒在画面右侧病床上，水杯和床头设备均在组首锁定。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "第6组5-8秒苏长明下令转账约18字，3秒字秒比约6.0；0-3秒李长庚发颤短句约11字，短句随反应动作完成，不构成过慢硬伤。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "第9组保留龙建秋称田立民是狗、田立民恭敬回应、挂断后砸手机、喊出总有一天让所有人知道和执鞭的人两句爆发台词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩和雷震在组首分别位于画面左侧和右侧，身体朝向、审讯桌、照片和录音播放器均明确，二人台词前可生成。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾朱文浩坐桌前冷看雷震，第2组首延续同一审讯桌、照片和录音播放器状态，朱文浩手靠近播放器后按下播放。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "苏长明、李长庚、黑皮在第5组组首都已在总裁办内获得位置和身体朝向，黑皮在苏长明发令前位于右侧背景角落。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第8组锁定董事长办公室，龙建秋只通过海外手机画外音出现，未把电话另一端作为现实画面切入。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "田立民被称为狗后的隐忍和爆发通过青筋暴起、砸手机、攥拳、对空办公室嘶吼等可见动作表现，抽象野心落到可拍细节。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

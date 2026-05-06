@@ -1,0 +1,69 @@
+{
+  "pass": true,
+  "summary": "整集分镜已真实对照原剧本审核，医院接收区冲突、全部台词、黑卡和药品失效警报均保留，未发现硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "evidence": "王百川对林刚问“林兄弟！没出岔子吧？”，林刚对王百川说“完美恒温。可以验货了。”，李主任对林刚说“你就是王总找的新车队？全搬下来吧。”，每句均有明确对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组保留陈天霸车队刹车擦地带火花、陈家车厢警报提示药品已失效、陈天霸要求先入库、林刚指出药碎、陈天霸递黑卡的全部剧情。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组0-4秒李主任约19字/4秒，4-7秒王百川约15字/3秒，7-14秒连续短句交锋约41字/7秒，均在可接受短剧节奏内且无1秒镜头。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首明确省医院接收区月台、冷链货车、车厢大门、林刚、王百川和李主任的位置及朝向，第一组只使用这一处物理空间。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "陈天霸的车队在组首已位于背景入口道路且可见，5-7秒跳下车后才向李主任说话；林刚和李主任在组首也有明确位置。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾陈天霸递出黑卡、李主任低头看黑卡；第3组首黑卡仍停在李主任面前，0-4秒接续为李主任把黑卡揣入口袋，动作连续。"
+      ,"fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“缺乏资质”“不合格”“销毁”等判断均由李主任台词承载，陈天霸嘲讽和林刚质问用可见表情、攥拳和视线呈现，没有把抽象心理当画面主体。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

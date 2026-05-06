@@ -1,0 +1,16 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "CHAR_VILLAGER_DEBTORS_BASE",
+    "SCENE_ZHAODAQIANG_HOME_BASE",
+    "SCENE_EXECUTIVE_OFFICE_BASE",
+    "COSTUME_LINGANG_BUSINESS_SUIT_V1",
+    "STATE_LINGANG_BUSINESS_SUIT_EP13",
+    "PROP_BROKEN_KITCHEN_KNIFE_BASE"
+  ]
+}

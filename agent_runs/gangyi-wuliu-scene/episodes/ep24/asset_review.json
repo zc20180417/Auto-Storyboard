@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep24资产表覆盖医院接收区执法到场、卫生局长、执法人员、黑卡证据、红章手机和车钥匙，硬问题已清零。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、陈天霸、医药冷链箱和林刚手机基础资产复用asset_bible，李主任白大褂和医院接收区沿用ep23同名候选。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "手机红章单据、黑卡落地举证、卫生监督公务车到场和车钥匙移交均作为道具或场景状态处理。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "耳光、摔倒、求饶、保安回头和推搡动作均被排除，避免把短暂表演拆成资产。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "已有bible资产继续复用；新资产集中在ep24首次出现的卫生局长、执法人员、公务车、橡胶棍和车钥匙。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "红章手机、黑卡证据、执法车辆到场和车钥匙被夺均为状态变化或证据状态，没有误建为重复基础道具。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "duplicate_base_asset",
+      "result": "pass",
+      "evidence": "卫生局长、卫生监督执法人员、医院保安、卫生监督公务车、橡胶棍和车钥匙在当前asset_bible中未有稳定定义；橡胶棍和保安明确为one_episode。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "林刚、陈天霸、李主任的基础脸型和主身份未被改写；新增官方车辆和证据道具不冲突已有警车、合同或手机设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词限制红章文件正文、卫生监督车身文字、卡号、车牌和机构名称不可读，未新增final.txt外的品牌或剧情。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "各资产episode_usage均来自ep24 final.txt对应组和秒段，未把黑卡、车钥匙或公务车归入未出现段落。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词在主体、场景、状态、文字不可读限制和负面词上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五张标准表完整，表头、枚举值和非空字段满足转换与validate-assets脚本要求，未使用原始竖线分隔符。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep27资产表覆盖收费站拦车、特别通行证、路政角色车辆和王百川办公室夜景，未发现硬问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、秦爷、王百川、收费站、重卡和既有执法车辆参考均复用asset_bible，没有重复生成已有角色或场景。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "收费站拦截是SCENE_HIGHWAY_TOLL_BASE的场景状态，特别通行证展示是PROP_SPECIAL_PASS_BASE的道具状态，王百川办公室夜景是办公室基础场景的光线状态。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "栏杆、车道线、大喇叭、雪茄、封条、办公桌茶杯电话等普通或一次性元素均被排除或归入场景，没有过度入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "已有核心人物和收费站场景优先复用asset_bible，新增仅限路政角色、路政车、特别通行证、豪华轿车和办公室。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "收费站堵车和办公室夜景作为场景状态处理，证件展示作为道具状态处理，未重复创建多个收费站基础场景。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "路政队长和路政人员没有套用警察或特警设定，路政车与已有警车参考区分，未更改秦爷、林刚和王百川基础设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词没有添加品牌logo、可读车牌、额外标语或真实证件编号；特别通行证仅保留final.txt明确的信息。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "各资产episode_usage均对应ep27第1至第7组实际出现范围，王强和赵大强仅口头提及未被入库。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "路政人物、路政车、豪华轿车、特别通行证和办公室的中英文提示词在身份、材质、限制和场景信息上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集关键道具与场景状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表齐全，枚举字段有效，表格没有竖线字符导致错列，适合转换Excel。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

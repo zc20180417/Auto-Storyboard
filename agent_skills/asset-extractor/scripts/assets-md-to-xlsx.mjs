@@ -28,13 +28,15 @@ const SCHEMAS = {
       "三、本集新增基础资产": "新增基础资产",
       "四、本集关键道具与场景状态": "关键道具与场景状态",
       "五、本集不建议入库元素": "不建议入库元素",
+      "六、本集分镜资产绑定索引": "分镜资产绑定索引",
     },
     requiredColumns: {
-      "复用资产索引": ["使用ID", "asset_id", "state_id", "asset_type", "source", "episode_usage", "本集用途", "needs_generation", "generation_note"],
-      "新增资产状态": ["state_id", "asset_id", "parent_state_id", "asset_type", "status_type", "state_summary", "changed_fields", "reuse_policy", "first_seen_episode", "episode_usage", "needs_generation", "generation_note", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
+      "复用资产索引": ["使用ID", "episode_id", "cut_ids", "asset_id", "state_id", "asset_type", "source", "episode_usage", "本集用途", "needs_generation", "generation_note"],
+      "新增资产状态": ["state_id", "episode_id", "cut_ids", "asset_id", "parent_state_id", "asset_type", "status_type", "state_summary", "changed_fields", "reuse_policy", "first_seen_episode", "episode_usage", "needs_generation", "generation_note", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
       "新增基础资产": ["asset_id", "asset_type", "asset_name", "description", "reuse_policy", "first_seen_episode", "sync_to_bible", "静态生图提示词(中文)", "负面提示词(中文)", "静态生图提示词(英文)", "负面提示词(英文)"],
-      "关键道具与场景状态": ["state_id", "asset_id", "asset_type", "state_summary", "episode_usage", "needs_generation", "generation_note", "入库建议"],
+      "关键道具与场景状态": ["state_id", "episode_id", "cut_ids", "asset_id", "asset_type", "state_summary", "episode_usage", "needs_generation", "generation_note", "入库建议"],
       "不建议入库元素": ["元素", "出现位置", "不入库原因"],
+      "分镜资产绑定索引": ["binding_id", "episode_id", "cut_id", "asset_id", "state_id", "asset_type", "binding_role", "reference_priority", "use_for_video", "required_for_generation", "source", "note"],
     },
   },
   registry: {

@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "summary": "ep02组装稿已按storyboard-reviewer逐组对照原剧本和生成规则审完，未发现硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "2-14秒集中承载赵大强、林刚、村民甲、村民乙的6轮短句交锋，约63个有效字/12秒/字秒比约5.3，并含换人间隙，未超过7字/秒，也未拖慢短句凑时长。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组保留林刚扔机器说“全给我滚开”、上车打火、赵大强摩托车横挡、赵大强喊“压死我你也别想走！”、林刚心声“惯得你。”以及面包车撞上摩托车。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组从0-12秒始终锁定夜晚阴天停车场和面包车油箱，赵大强倒白糖后逃走，没有混入赵大强家门外电话场景。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "evidence": "第6组赵大强对手机里的债主说道借款台词，债主以手机画外音对赵大强威胁，赵大强心声标注对自己，三处声音来源和对象均明确。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林刚、赵大强、村民甲、村民乙在组首空间锁定中均有明确画面位置和身体朝向，后续说话人物没有凭空出现。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾林刚仍在车旁看向赵大强和铁链，第2组首延续同一院门外空间，面包车仍被铁链锁住，小混混在前景右侧靠近林刚，冲突自然接续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "原剧本“臭气熏天”被转成黑泥、水珠、臭水沟、湿衣反光等可见细节，没有把气味作为主要画面信息。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第6组主要物理空间为赵大强家门外，债主只通过赵大强手中手机的画外音出现，符合声音来源例外。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

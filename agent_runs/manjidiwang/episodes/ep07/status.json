@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep07",
+  "status": "done",
+  "output_name": "EP-07-ep07-agent-cli-storyboard.txt",
+  "summary": "EP07完成11组分镜，覆盖会议室权力博弈、董事长办公室谈判威胁、书房父子密谋三个场景，台词完整，空间锁定清晰，无硬错误",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第1组苏长明两句台词偏快（6.0-6.5字/秒）",
+    "第8组朱天和'成交'台词偏快（6.33字/秒）",
+    "第10组朱天和台词略慢含动作、朱文浩台词偏快"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

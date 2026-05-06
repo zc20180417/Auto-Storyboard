@@ -12,7 +12,9 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 每次审核必须读取：
 
 - 同一 episode 的 `final.txt`
+- 同一 episode 的 `storyboard_index.json`
 - 当前 `assets.md`
+- 当前 `asset_bindings.json`
 - run 级 `asset_bible.md`，多集项目必须存在；单集项目可以没有
 - `agent_skills/asset-extractor/SKILL.md`
 - `agent_skills/optimize-image-prompts/SKILL.md`
@@ -33,7 +35,10 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - `prompt_fidelity`：提示词是否新增分镜或 bible 没有的品牌、文字、徽章、标语、外观设定或剧情。
 - `bilingual_consistency`：中文提示词和英文提示词事实是否一致。
 - `time_range_accuracy`：适用时间段是否来自 `final.txt`，是否把资产没出现的时间段强行归并。
-- `xlsx_readiness`：五个标准表是否存在，表头是否可转换 Excel，单元格内是否误用竖线 `|` 导致错列。
+- `cut_binding_accuracy`：`episode_id`、`cut_ids`、第六表 `cut_id` 和 `asset_bindings.json` 是否都存在于 `storyboard_index.json`，且与人读字段 `episode_usage` 不矛盾。
+- `binding_completeness`：每个分镜 cut 是否至少有主场景绑定，关键角色、关键道具和关键服装状态是否绑定到实际出现的 cut；不要求普通背景小物全量绑定。
+- `video_reference_readiness`：`use_for_video=yes` 的绑定是否指向适合生成或复用参考图的资产/状态，而不是纯文字说明或不建议入库元素。
+- `xlsx_readiness`：六个标准表是否存在，表头是否可转换 Excel，单元格内是否误用竖线 `|` 导致错列。
 
 ## 稳定 taxonomy
 
@@ -59,6 +64,13 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - `scene_state_conflict`：场景状态和场景基础资产互相矛盾，或场景状态含人物/人脸。
 - `prop_state_conflict`：道具状态和道具基础资产互相矛盾，或添加了原文没有的文字。
 - `unnecessary_regeneration`：已有资产或状态可复用，却要求重新生成。
+- `cut_id_missing`：资产表需要机器绑定的位置缺少 `episode_id`、`cut_ids` 或第六表 `cut_id`。
+- `cut_id_not_found`：资产表或 `asset_bindings.json` 使用了 `storyboard_index.json` 中不存在的 `cut_id`。
+- `episode_usage_cut_id_mismatch`：人读 `episode_usage` 与机器 `cut_ids` 覆盖范围明显矛盾。
+- `missing_primary_scene_binding`：某个 cut 缺少主场景绑定。
+- `missing_key_character_binding`：关键人物没有绑定到出现的 cut。
+- `missing_key_prop_binding`：关键道具没有绑定到出现的 cut。
+- `unnecessary_video_reference`：不适合视频参考图的资产被标为 `use_for_video=yes`。
 
 ## 判断口径
 
@@ -66,7 +78,7 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - 只存在不阻断生产的提醒时，`pass=true`，提醒放入 `warnings`。
 - `issues` 最多 8 条，优先列最影响生产的代表性问题；同类重复问题合并。
 - 即使 `pass=true`，也必须给出具体 `spot_checks` 和 `semantic_checks` 证据，不能只写“已检查，符合规则”。
-- `semantic_checks` 至少 5 条。`pass=true` 时也必须覆盖：重复归并/不必要再生成、状态建模、bible 一致性、提示词忠实度、时间段准确性或 xlsx readiness。
+- `semantic_checks` 至少 5 条。`pass=true` 时也必须覆盖：重复归并/不必要再生成、状态建模、bible 一致性、提示词忠实度、时间段准确性或 xlsx readiness，并补充 cut 绑定准确性和视频参考图可用性检查。
 - 不允许把 Excel 转换成功当作语义审核通过。转换只证明表格客观可读，不证明资产选择正确。
 
 ## 输出要求
@@ -78,7 +90,7 @@ JSON 结构如下：
 {
   "pass": true,
   "summary": "一句话总结审核结果",
-  "checked_tables": ["本集复用资产索引", "本集新增资产状态", "本集新增基础资产", "本集关键道具与场景状态", "本集不建议入库元素"],
+  "checked_tables": ["本集复用资产索引", "本集新增资产状态", "本集新增基础资产", "本集关键道具与场景状态", "本集不建议入库元素", "本集分镜资产绑定索引"],
   "audit_coverage": {
     "asset_coverage": "checked",
     "asset_selection": "checked",
@@ -90,6 +102,9 @@ JSON 结构如下：
     "prompt_fidelity": "checked",
     "bilingual_consistency": "checked",
     "time_range_accuracy": "checked",
+    "cut_binding_accuracy": "checked",
+    "binding_completeness": "checked",
+    "video_reference_readiness": "checked",
     "xlsx_readiness": "checked"
   },
   "spot_checks": [

@@ -1,0 +1,85 @@
+{
+  "pass": true,
+  "summary": "EP13整集分镜按办公室、天香楼包厢、天香楼门口三处空间顺序展开，完整保留原剧本动作与台词，组时长、对话指向和空间锁定均通过。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留苏长明扫落紫砂茶具、李长庚报告乔安被纪检组带走、苏长明骂行车记录仪和朱家难缠，台词顺序未改。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组0-3秒约17字/3秒、3-5秒约12字/2秒、5-7秒约12字/2秒、7-9秒约10字/2秒，均在情绪交锋可接受范围内。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "第6组只发生在天香楼门口车旁，朱天和通过电话音出现，组首明确朱文浩、手机、轿车和车门位置，没有把电话另一端当成现场空间。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "第5组保留朱文浩提女儿抢救、质问U盘、苏长明“成大事者，至亲亦可杀”、朱文浩站起、苏长明摔杯与高管会威胁。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "苏长明和李长庚在组首已有左右站位、身体朝向和视线关系，后续扫茶具、报告和对话均由在场人物完成。",
+      "fix_instruction": "无需修复；若新增现场人物，应在组首或行动前补充位置与来源。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第3组组首锁定天香楼顶级包厢，圆桌、酒具、门口保镖和信号探测器均在同一物理空间内，未跨场景。",
+      "fix_instruction": "无需修复；如果出现室内外切换，应另起分镜组。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组结尾苏长明靠椅背提出U盘要求，第4组组首延续其靠在椅背、朱文浩端坐隔桌的状态，桌面酒具和门口保镖连续。",
+      "fix_instruction": "无需修复；如人物离席或道具易手，应在组尾或组首补过渡动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩在天香楼门口车旁有明确位置，朱天和所有台词均标注为电话音且对朱文浩说，声音来源清楚。",
+      "fix_instruction": "无需修复；电话音人物继续标明声音来源和对话对象即可。"
+    },
+    {
+      "group": "第7组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "朱文浩的布局判断由“垂死挣扎，正中下怀”“明天常委会，让他发债”等台词，以及扶车门、看车窗倒影等可见动作承载。",
+      "fix_instruction": "无需修复；战略含义应继续通过台词、表情、道具状态和动作呈现。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

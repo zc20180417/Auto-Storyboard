@@ -1,0 +1,180 @@
+{
+  "project": "EP-11",
+  "episode_id": "EP11",
+  "cuts": [
+    {
+      "cut_id": "EP11-G01",
+      "group_index": 1,
+      "title": "车内警报（，总时长：10秒，镜头数：5个）",
+      "scene": "黑色越野车内部",
+      "characters": [
+        "苏清寒",
+        "小郑"
+      ],
+      "props": [
+        "双肩包",
+        "方向盘"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 0,
+      "group_end_sec": 10,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP11-G02",
+      "group_index": 2,
+      "title": "致命追击（，总时长：10秒，镜头数：4个）",
+      "scene": "盘山公路暴雨夜（车外）",
+      "characters": [
+        "黑皮"
+      ],
+      "props": [
+        "对讲机",
+        "渣土车"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 10,
+      "group_end_sec": 20,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP11-G03",
+      "group_index": 3,
+      "title": "失控甩尾（，总时长：10秒，镜头数：4个）",
+      "scene": "黑色越野车内部",
+      "characters": [
+        "苏清寒",
+        "小郑"
+      ],
+      "props": [
+        "方向盘",
+        "双肩包"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 20,
+      "group_end_sec": 30,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP11-G04",
+      "group_index": 4,
+      "title": "悬崖绝境（，总时长：14秒，镜头数：6个）",
+      "scene": "黑色越野车内部（悬崖边）",
+      "characters": [
+        "苏清寒",
+        "小郑"
+      ],
+      "props": [
+        "双肩包",
+        "U盘",
+        "安全带"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 30,
+      "group_end_sec": 44,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP11-G05",
+      "group_index": 5,
+      "title": "致命撞击（，总时长：10秒，镜头数：4个）",
+      "scene": "盘山公路悬崖边（车外）",
+      "characters": [
+        "黑皮（隐于车内）"
+      ],
+      "props": [
+        "渣土车"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 44,
+      "group_end_sec": 54,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP11-G06",
+      "group_index": 6,
+      "title": "坠落与遗言（，总时长：10秒，镜头数：4个）",
+      "scene": "黑色越野车内部（坠落中）",
+      "characters": [
+        "苏清寒"
+      ],
+      "props": [
+        "方向盘"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 54,
+      "group_end_sec": 64,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP11-G07",
+      "group_index": 7,
+      "title": "崖底救援（，总时长：12秒，镜头数：5个）",
+      "scene": "山崖底部（暴雨夜）",
+      "characters": [
+        "朱文浩",
+        "王队长",
+        "救援队",
+        "苏清寒"
+      ],
+      "props": [
+        "手电筒",
+        "越野车残骸"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 64,
+      "group_end_sec": 76,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP11-G08",
+      "group_index": 8,
+      "title": "底牌与誓言（，总时长：14秒，镜头数：5个）",
+      "scene": "山崖底部（暴雨夜）",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "U盘",
+        "外套"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 76,
+      "group_end_sec": 90,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP11-G09",
+      "group_index": 9,
+      "title": "梦呓与托付（，总时长：10秒，镜头数：4个）",
+      "scene": "山崖底部（暴雨夜）",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "王队长"
+      ],
+      "props": [],
+      "duration_sec": 10,
+      "group_start_sec": 90,
+      "group_end_sec": 100,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP11-G10",
+      "group_index": 10,
+      "title": "修罗令（，总时长：11秒，镜头数：4个）",
+      "scene": "山崖底部（暴雨夜）",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "王队长"
+      ],
+      "props": [],
+      "duration_sec": 11,
+      "group_start_sec": 100,
+      "group_end_sec": 111,
+      "source_group_label": "第10组"
+    }
+  ]
+}

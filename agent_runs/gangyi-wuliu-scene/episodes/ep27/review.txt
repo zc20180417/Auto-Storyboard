@@ -1,0 +1,90 @@
+{
+  "pass": true,
+  "summary": "已对组装后的第27集 final.txt 逐组对照原剧本与分镜规则复审，未发现 hard issues。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "evidence": "第1组时间段为0-3、3-5、5-7、7-10秒，相加10秒，标题总时长10秒、镜头数4个一致；组内只发生高速收费站拦车和队长宣布开箱查。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "林刚阻止贴封条、掏红色特别通行证拍在队长脸上、要求看清字，以及队长念出省重点扶持出口免检车队和双重特批，均与剧本27-2一致。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "evidence": "秦爷对路政队长怒吼，路政队长对周围路政人员下令抓秦爷，林刚回头对秦爷说“老东西，局子里慢慢享受。”，三处对话对象均明确。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "第6组王百川长句拆为3-8秒约25字和8-10秒约14字画外音，林刚10-13秒约17字，均未超过7字/秒，也没有拖慢短句凑时长。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "evidence": "第7组锁定夜间王百川办公室，王百川在办公桌旁、林刚在沙发前、外套和办公室门都在组首明确，林刚离开办公室发生在7-10秒镜头内。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "秦爷、林刚、路政队长、路政人员在组首均有明确位置和朝向；秦爷的车窗、雪茄、路政人员手中封条都在行动前建立。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组队长看完通行证后手指僵住，第4组组首承接为林刚拿着证件站在队长面前、队长身边有封条，随后封条掉地和栏杆抬起，前后动作连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "秦爷暴怒用探身、雪茄指向队长、脸色涨红表现；队长变脸用转身、指向车门、下令抓人表现；车队离开用汽笛和车辆冲过栏杆表现，均可拍。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "办公室场景保留王百川挂断电话后告知王强和赵大强取保候审期间又作恶，林刚放下茶杯回应让他们再进去一次，人物关系未错置。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组林刚放下茶杯抬眼看王百川，第7组组首承接为林刚位于沙发前、茶杯已在桌面，随后起身拿外套离开办公室，状态连贯。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

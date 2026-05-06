@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep26资产表覆盖王氏中转站断油、移动油罐和流水线加油的关键生产资产，结构与asset_bible一致。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、王百川、秦爷、王氏中转站、重卡和手机均引用asset_bible已有资产，未重复建基础项。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "中转站外场燃油作业作为SCENE_WANG_TRANSFER_BASE状态，移动油罐车厢固定和油枪作业作为道具状态，建模边界清楚。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "油表红灯、手表、汗水表情、防水布和灰尘均被排除或并入状态，没有过度拆成独立资产。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "已有人物、场景和车辆均沿用asset_bible，新增仅限final.txt中首次出现的移动油罐和油枪管线。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "防水布掀开后的移动油罐作为PROP_MOBILE_FUEL_TANK_BASE的mounted状态，未误建第二个基础油罐。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "asset_bible没有军绿移动油罐和工业油枪油管，新增基础资产没有覆盖现有合同、账本或重卡设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词未新增品牌、可读车牌、爆炸火焰或额外文字，移动油罐军绿色、固定架和阀门均来自final.txt。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage按ep26第1组至第5组实际出现范围填写，没有把油罐写入未出现的第1组和第2组。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "军绿移动油罐和油枪油管的中文英文提示词在主体、材质、限制和使用场景上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集关键道具与场景状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表完整，枚举值和表头符合转换脚本要求，单元格内未使用竖线字符。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

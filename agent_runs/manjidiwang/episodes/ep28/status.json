@@ -1,0 +1,18 @@
+{
+  "episode_id": "ep28",
+  "status": "done",
+  "output_name": "EP-28-ep28-agent-cli-storyboard.txt",
+  "summary": "朱文浩以定位引来特勤，龙建秋反扑失败被制服，苏清寒带来账户冻结和鼎丰破产清算书完成反转。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "summary": "朱文浩最终台词4-6秒约14字/2秒，接近偏快上限但未超过硬错误阈值。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

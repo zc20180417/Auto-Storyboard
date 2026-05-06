@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "summary": "已对照第1集完整剧本与组装后的final.txt逐组审核，台词、关键动作、空间锁定、时长数学和自然格式均通过，无硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "2-12秒为赵大强、村民甲、林刚、赵大强、村民乙五轮围堵对话，保留“赔十万”“黑心肝”“九块九包邮”“不赔钱砸店”“报警抓他”等原台词；有效字数约60字，10秒承载多人快速冲突和戳碗动作，字秒比约6.0，符合情绪对白节奏。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "evidence": "本组时间段为0-2、2-7、7-10、10-15秒，相加15秒，与标题总时长15秒一致；2-7秒林刚宣读关闭通知有效字数约26字，5秒字秒比约5.2，未拖慢。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "屋内段完整保留墙上“物流从业资格证”和“零事故记录”、裂屏手机录像、主管消息“干线司机急招，日结五百，敢来？”、林刚“五百一天？”和“是该走了。”，未新增离村前的额外剧情。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "第6组始终围绕林刚代收点院门前和门板进行，林刚撕账本、扔垃圾桶、进屋关门、赵大强踹门都发生在同一院门口可见空间内，没有硬切到新物理空间。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首已列明林刚位于画面右侧且口袋里有手机，赵大强位于画面左侧并拿着碎碗，村民甲在赵大强后方；后续林刚录像、赵大强挡脸打手机、村民甲提醒均有可生成位置。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组结尾手机落地且赵大强堵门；第3组组首明确手机在林刚脚边、赵大强仍在画面左侧，0-3秒林刚先捡起裂屏手机，连续承接前组状态。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首把屋门写成院门内侧敞开、门边可见纸箱，3-6秒林刚从敞开的屋门边抱出纸箱再回石桌，属于同一院门口连续动作线，没有把室内独立场景与室外冲突硬切合并。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“这村子，不值得”以内心OS处理，并配合裂屏手机录像、林刚眉心压低、消息亮屏、拖出帆布包等可见动作承载情绪和决定，不把抽象判断单独当画面。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵大强抢通知书、林刚侧身避开、赵大强质问“你敢罢工？这村子离了你照样转！”、林刚回应“一件二十，爱去不去。”均与原剧本一致，8-10秒只补充村民反应，不改变剧情。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

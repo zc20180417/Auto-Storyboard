@@ -1,0 +1,17 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "STATE_LINGANG_SNOW_WORK_V1",
+    "STATE_PICKUP_ANTISKID_SNOW_V1",
+    "SCENE_OLD_BRIDGE_BASE",
+    "STATE_SCENE_OLD_BRIDGE_SNOW_BLOCKED_V1",
+    "PROP_ANTI_SKID_CHAIN_BASE",
+    "PROP_TOW_CABLE_BASE",
+    "STATE_PROP_TOW_CABLE_SNOWY_V1"
+  ]
+}

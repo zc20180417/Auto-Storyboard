@@ -1,0 +1,18 @@
+﻿{
+  "episode_id": "ep06",
+  "status": "done",
+  "output_name": "EP-06-ep06-agent-cli-storyboard.txt",
+  "summary": "EP-06共9组分镜，涵盖会所醉酒、公寓暗杀、食堂震怒、办公室密谋四场戏，无硬错误。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第1组建筑商问话12字/2秒=6字/秒，偏快但可接受",
+    "第6组小王报信13字/2秒=6.5字/秒，偏快但可接受",
+    "第7组邱瑞命令13字/2秒=6.5字/秒、果断12字/2秒=6字/秒，偏快但可接受",
+    "第8组苏长明讽刺13字/2秒=6.5字/秒、李长庚紧张12字/2秒=6字/秒，偏快但可接受",
+    "第9组苏长明阴毒13字/2秒=6.5字/秒，偏快但可接受"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 5
+}

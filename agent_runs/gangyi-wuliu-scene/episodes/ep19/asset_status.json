@@ -1,0 +1,35 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "STATE_SUNBIAO_FACE_GAUZE_V1",
+      "type": "character_state",
+      "reason": "孙彪脸侧纱布伤势在ep19首次明确出现，并可能延续到ep20。"
+    },
+    {
+      "id": "STATE_SCENE_MOUNTAIN_ROAD_SUNNY_SPIKES_V1",
+      "type": "scene_state",
+      "reason": "盘山公路晴天干燥钉阵状态是本集主要动作场景。"
+    },
+    {
+      "id": "PROP_TRIANGLE_TIRE_SPIKES_BASE",
+      "type": "prop_base",
+      "reason": "三角扎胎钉是本集核心设伏道具。"
+    },
+    {
+      "id": "PROP_HYDRAULIC_SNOWPLOW_BASE",
+      "type": "prop_base",
+      "reason": "皮卡液压推雪铲是林刚破局的关键车辆改装道具。"
+    },
+    {
+      "id": "COMPOSITION_PLOW_SWEEP_SPIKES_V1",
+      "type": "composition",
+      "reason": "推雪铲扫开钉阵的动作构图可作为本集关键画面资产。"
+    }
+  ]
+}

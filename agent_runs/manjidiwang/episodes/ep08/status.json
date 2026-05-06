@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep08",
+  "status": "done",
+  "output_name": "EP-08-ep08-agent-cli-storyboard.txt",
+  "summary": "EP08共9组分镜，覆盖班委竞选、督察长设立、天台密谋与监控反制四场戏，全部忠于原剧本，时长节奏合格，无硬错误。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "第09集整集分镜已按storyboard-reviewer逐项审核，原剧本关键台词、车辆动作、断桥空间和钢缆动作均无硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "evidence": "县城司机对林刚提醒“喂！别往前开了！前面过不去的！”，林刚对县城司机说“把路让开”，县城司机对林刚嘲笑，林刚对县城司机冷声回应，每句真人台词均有明确对象。"
+    },
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "3-6秒两句短对白合并约18有效字/3秒，约6.0字/秒；6-10秒嘲笑台词约25有效字/4秒，约6.3字/秒；10-12秒短台词“废话真多”2秒，符合短句节奏。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组保留林刚挂低速四驱、深踩油门、防滑链咬住冰面、皮卡冲破积雪从货车旁挤过、县城司机傻眼和林刚OS，未删减原剧本动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组单独锁定大雪中的老桥前，断树横堵桥面、右侧深渊、皮卡停在桥前均在同一物理空间，没有和盘山公路陷车段混组。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "evidence": "第4组时间段0-2、2-5、5-8、8-11秒合计11秒，标题总时长和镜头数均一致；无台词动作镜头最长3秒，取钢缆动作由原剧本支撑。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首明确林刚在皮卡驾驶室左侧、县城司机在货车旁右侧，并标明两人侧对镜头和脸部朝向；两人后续台词都有可生成位置。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾皮卡停在货车旁、林刚仍在驾驶位；第2组首保持同一状态，随后林刚才切换低速四驱并冲出雪坑路段，动作承接自然。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "断树堵桥、右侧深渊、手表秒针和雪水表盘都是可视信息；“不到两小时”的压力通过看表和手指收紧表现，没有写成不可见心理结论。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾皮卡继续向山路前方冲去；第3组开头显示皮卡一路狂飙到老桥前并刹车，完成从上坡陷车路段到老桥前的空间过渡。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第4组仅根据剧本表现林刚咬牙台词、开车门、跳进齐膝深雪地、走到后备箱、扯出牵引钢缆，没有新增使用钢缆拖树等后续剧情。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第4组仍在大雪中的老桥前，组首锁定皮卡、断树、后备箱和林刚位置；林刚从驾驶室到雪地再到后备箱的移动在组内按顺序呈现。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep28 资产表覆盖了码头抢时抵达、吊机停摆、王强赵大强现身、刀疤和混混围堵等关键资产，未发现阻断生产的 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "对照 asset_bible.md，林刚、王百川、王强、赵大强、刚毅司机群像、国际码头、重卡和码头车队列阵构图均沿用已有资产或状态，未重复写成新基础资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "吊机停摆和林刚脱外套均是已有码头场景或林刚车队阶段的状态变化，已建模为状态而非新基础资产；擦汗、摊手、吹口哨等短暂动作未拆状态。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "远洋货轮、普通货物、车厢挡板局部、光影和台词中的十万块信息均被排除，避免把场景陈设或叙事信息过度资产化。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_WANGBAICHUAN_BASE、CHAR_WANGQIANG_BASE、CHAR_ZHAODAQIANG_BASE、SCENE_PORT_BASE、VEHICLE_HEAVY_TRUCK_BASE 和 COMPOSITION_PORT_CONVOY_V1 均从 asset_bible 复用，needs_generation 设置合理。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "STATE_SCENE_PORT_CRANE_STOPPED_V1 承接 SCENE_PORT_BASE 的停摆变化，STATE_LINGANG_PORT_JACKET_OFF_V1 承接林刚既有状态的服装变化，分类符合状态建模规则。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产只包含 bible 未覆盖的码头主管、刀疤、码头混混群像、铁钩砍刀和主管公文包，没有改写已有人物脸型、服装主色、港口场景或重卡设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词均来自 final.txt 与 asset_bible.md 中出现的码头、停摆龙门吊、林刚脱外套、铁钩、砍刀、公文包等事实，并明确限制真实品牌、车牌、字幕和水印。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep28 final.txt 的组号范围，例如码头和重卡覆盖第1组到第5组，王强和赵大强从第3组开始出现，未归入未出现镜头。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "码头主管、刀疤、混混群像、铁钩砍刀和公文包的中英文提示词在主体、材质、场景、光影和负面约束上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "STATE_SCENE_PORT_CRANE_STOPPED_V1 明确为空镜、无人、无人脸，未把林刚、司机或混混写入场景状态提示词。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表存在且表头完整，枚举值使用 asset_bible、episode_range、candidate、yes、no 等合法值，单元格内未使用原始竖线。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

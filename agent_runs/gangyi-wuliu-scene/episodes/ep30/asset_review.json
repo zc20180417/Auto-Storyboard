@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep30 资产表覆盖了油箱威胁、执法控制、吊机恢复、股份文件、商务直升机、神秘外宾、村路照片和刚毅车标等终段关键资产，未发现阻断生产的 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "对照 asset_bible.md，林刚、赵大强、王强、王百川、警察、刚毅司机、老村长、港口、村路、重卡、警车、打火机、手铐、合同和手机均复用已有资产，没有重复写成新基础资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "重卡副油箱威胁、港口装船恢复、股份文件递交、村路路碑、手机照片来电和刚毅车标均是已有资产的状态变化；情绪、台词和片尾字幕未拆成资产状态。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "普通码头工人、司机甲、基金概念、螺旋桨风、视频 UI 个人信息、片尾字幕和全剧终均被明确排除，避免把后期文字或临时群演误入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_ZHAODAQIANG_BASE、CHAR_WANGQIANG_BASE、CHAR_WANGBAICHUAN_BASE、CHAR_POLICE_BASE、CHAR_LAOCUNZHANG_BASE、SCENE_PORT_BASE、SCENE_VILLAGE_ROAD_BASE、VEHICLE_HEAVY_TRUCK_BASE、VEHICLE_POLICE_CAR_BASE、PROP_LIGHTER_BASE、PROP_HANDCUFFS_BASE、PROP_CONTRACT_BASE 和 PROP_CRACKED_PHONE_BASE 均按 bible 复用。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "油箱威胁和刚毅车标归入重卡状态，股份文件归入合同状态，村路路碑归入乡村道路状态，手机照片来电归入手机状态，港口装船恢复归入码头场景状态，状态边界清楚。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产仅包含 bible 未覆盖的神秘外宾、黑色商务直升机和商务名片，没有改写已有角色、重卡、港口、合同、手机或村路设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词仅使用 final.txt 明确出现的副油箱、打火机、装船恢复、股份文件、黑色商务直升机、名片、村路照片、过客留路碑、手机视频来电和刚毅车标；同时限制真实品牌、可读个人信息、二维码和后期字幕。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep30 final.txt，赵大强只覆盖第1组到第3组，老村长只通过第11组到第12组手机画面出现，商务直升机和神秘外宾只覆盖第5组到第7组。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "油箱威胁、装船恢复、股份文件、村路路碑、手机来电和刚毅车标的中英文提示词在主体、状态、光线和负面限制上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "STATE_SCENE_PORT_OPERATION_RESTORED_V1 和 STATE_SCENE_VILLAGE_ROAD_PAVED_STELE_V1 均明确为空镜、无人、无人脸，没有把林刚、码头工人或老村长写入场景资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表齐全，必填列完整，枚举值合法，提示词未使用原始竖线，适合转换为 episode 模式 Excel。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,23 @@
+{
+  "episode_id": "ep18",
+  "status": "done",
+  "output_name": "刚毅物流-ep18-agent-cli-storyboard.txt",
+  "summary": "林刚在重卡经销店反击孙彪和打手，王百川带保镖赶到撑腰，停掉孙彪城南业务并要求经理立刻给林刚落户五台车。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第4组",
+      "rule": "dialogue_pacing",
+      "problem": "林刚解释句13字/2秒，字秒比约6.5，偏快但不阻断。"
+    },
+    {
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "经理答应句13字/2秒，字秒比约6.5，偏快但不阻断。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

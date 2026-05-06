@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "summary": "ep24 assembled final已按storyboard-reviewer逐项复审，六组均通过格式、时长、空间锁定、台词指向、忠实度和语义连续性检查。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "5-7秒陈天霸对保安和李主任说你敢在医院打人！马上报警抓他！，有效字数约13字/2秒，字秒比约6.5，符合报警急声的短剧节奏；7-11秒李主任对林刚说翻了天了！今天你的货必须按医疗废弃物处理！，有效字数约21字/4秒，字秒比约5.3，节奏合理。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "6-9秒局长厉声问谁在阻拦救命药入库！，有效字数约10字/3秒，属于短促质问；12-15秒局长怒斥混账东西！这是国家红头文件特批的疫苗！，有效字数约19字/3秒，字秒比约6.3，情绪对白节奏合格。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组场景栏只列省医院接收区外，黑卡掉落、局长捡卡、执法人员扣住李主任和陈天霸都发生在同一接收区外，没有跨越其他物理空间。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "第6组完整保留握手致谢、林刚冷淡回应、赌约生效索钥匙、陈天霸哀嚎求活路、林刚夺钥匙并宣布天霸物流归我的剧情顺序，没有删改关键台词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首锁定已列林刚、李主任、医院保安、陈天霸的位置和朝向；第1组内发话和行动的人都在首帧空间内可用。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首写明卫生监督公务车在背景入口车道且车窗内可见执法人员身影，0-3秒车停、3-6秒局长和执法人员走入后才开始问责，人物来源明确。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾李主任被耳光打得身体失衡，第5组首和0-3秒延续为李主任转圈摔倒、黑卡从口袋甩出；第5组尾两人被控制，第6组首继续保持李主任在地面、陈天霸在车头旁被扣住。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "资质红章用手机屏幕和红章单子呈现，李主任的不屑通过移开目光、嘴角下撇、抬下巴和台词呈现，关键判断均转成可见可听信息。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

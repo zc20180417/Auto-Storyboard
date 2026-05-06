@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep11 资产表覆盖老旧冷藏车、制冷机控制面板、断线抢修和阴天货运场状态，未发现阻断生产的 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、王百川、王强和物流停泊场均沿用 asset_bible，新增冷藏车和控制面板作为本集未覆盖的关键资产处理。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "阴天货运场、冷藏车泥污故障、压缩机漏油、控制面板断线、黑胶布抢修和林刚手部黑油均以状态建模，没有当作重复基础人物或场景。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "螺丝刀、黑胶布、普通手机、货箱、车门和短暂表情已明确排除，避免资产表变成小物清单。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "已有角色和 SCENE_LOGISTICS_YARD_BASE 通过复用索引引用，只有 asset_bible 未覆盖的老旧冷藏车与制冷机控制面板进入新增基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "漏油、剪断电源线、黑胶布接线、阴天泥污货场和林刚手部黑油均作为状态或条件变化处理，符合状态建模规则。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增 VEHICLE_OLD_REFRIGERATED_TRUCK_BASE 没有改写 VEHICLE_HEAVY_TRUCK_BASE，新增 PROP_REEFER_CONTROL_PANEL_BASE 也没有与既有道具冲突。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词没有新增品牌、可读公司名、车牌号或分镜外设备；断线、黑油、指示灯和冷风均来自 ep11 final.txt。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 对应第1组至第6组，控制面板断线限定第3组，黑胶布修复限定第4组，未跨越未出现镜头。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "STATE_SCENE_LOGISTICS_YARD_OVERCAST_REEFER_V1 的中英文提示词明确要求无人、无人脸，未把人物或群演写入场景空镜。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词在冷藏车泥污、漏油、断线、黑胶布修复、阴天货运场等事实上一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表和 episode 模式字段完整，枚举值使用 asset_type、status_type、needs_generation、sync_to_bible 允许值，未使用会错列的竖线。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

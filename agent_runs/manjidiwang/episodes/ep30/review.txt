@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "summary": "ep30最终稿六组完整覆盖集团接掌、立规、城南项目任命、窗前OS和夜间本家来电，未发现硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "6-10秒朱文浩对众高管连续说“今天起，我接手集团所有事务”“谁赞成，谁反对”，有效字数18字，4秒约4.5字/秒，未超速。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组保留高管面面相觑、李副总擦汗表态、朱文浩翻文件宣布城南项目并看向苏清寒任命负责，台词无删改。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "evidence": "朱文浩OS“权力不是目的，守护才是……”以窗前城市、玻璃倒影和转身离开承载，抽象含义通过可听画外音和可见动作呈现。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "第6组电话内容来自朱文浩手中的加密卫星电话，画面始终保持集团顶层办公室，没有切换到京城本家空间。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首列明朱文浩位于入口旁，苏清寒和众高管分坐会议桌两侧，朱文浩行走、落座和发言前均有明确位置。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾朱文浩仍坐在主位、手按文件；第3组首继续让朱文浩坐在董事长主位面对众高管，会议室状态连续。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾朱文浩站起宣布散会，众高管准备离席；第4组首承接为众高管从会议桌两侧退场，朱文浩站在主位前。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "夜晚新场景第5组明确集团顶层办公室、落地窗、办公桌、酒杯和电话位置，整组只在该办公室内推进。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "0-5秒两句电话画外音23字，5秒约4.6字/秒；8-10秒朱文浩8字短句为2秒，未出现大于7字/秒或长镜拖慢问题。",
+      "fix_instruction": "无须修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,22 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "CHAR_BUTLER_BASE",
+    "CHAR_SECURITY_GUARD_BASE",
+    "SCENE_LUXURY_VILLA_GATE_BASE",
+    "STATE_SCENE_VILLA_GATE_RAIN_NIGHT_V1",
+    "STATE_VEHICLE_REEFER_BROKEN_SEAFOOD_V1",
+    "PROP_KING_CRAB_FOAM_BOX_BASE",
+    "STATE_PROP_KING_CRAB_BOX_DIRTY_V1",
+    "PROP_INFRARED_THERMOMETER_BASE",
+    "PROP_GOLD_BUSINESS_CARD_BASE",
+    "STATE_SCENE_VILLAGE_CLEARING_SUNNY_V1",
+    "VEHICLE_OLD_TRACTOR_BASE",
+    "PROP_LOUDSPEAKER_BASE"
+  ]
+}

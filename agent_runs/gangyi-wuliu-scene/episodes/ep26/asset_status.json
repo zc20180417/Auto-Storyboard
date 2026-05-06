@@ -1,0 +1,25 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "STATE_SCENE_WANG_TRANSFER_DAY_FUEL_WORK_V1",
+      "type": "scene_state",
+      "reason": "王氏中转站日间重卡与临时加油作业状态贯穿ep26，可复用于燃油危机段落"
+    },
+    {
+      "id": "PROP_MOBILE_FUEL_TANK_BASE",
+      "type": "prop",
+      "reason": "军绿移动油罐是ep26核心剧情道具，后续若继续出现应由bible锁定"
+    },
+    {
+      "id": "STATE_PROP_MOBILE_FUEL_TANK_MOUNTED_V1",
+      "type": "prop_state",
+      "reason": "油罐固定在重卡车厢并掀开防水布的状态适合与基础油罐一起沉淀"
+    }
+  ]
+}

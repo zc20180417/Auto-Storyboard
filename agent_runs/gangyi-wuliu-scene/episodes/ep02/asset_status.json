@@ -1,0 +1,45 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "SCENE_LINGANG_HOME_GATE_BASE",
+      "type": "scene",
+      "reason": "林刚家门外是 ep02 锁车、切链、撞摩托车的主要空间，建议作为乡村家门外空镜合并。"
+    },
+    {
+      "id": "PROP_IRON_CHAIN_LOCK_BASE",
+      "type": "prop",
+      "reason": "粗铁链与大铁锁是锁车冲突关键道具，并有切断状态。"
+    },
+    {
+      "id": "PROP_ANGLE_GRINDER_BASE",
+      "type": "prop",
+      "reason": "角磨机是林刚破局切锁的关键工具。"
+    },
+    {
+      "id": "VEHICLE_MOTORCYCLE_BASE",
+      "type": "prop",
+      "reason": "赵大强摩托车在堵路和入沟冲突中承担关键视觉动作。"
+    },
+    {
+      "id": "SCENE_OPEN_PARKING_LOT_BASE",
+      "type": "scene",
+      "reason": "露天停车场用于 ep02 夜间破坏车辆，并延续到 ep03 白天取证。"
+    },
+    {
+      "id": "STATE_VEHICLE_OLD_VAN_SUGAR_TANK_V1",
+      "type": "prop_state",
+      "reason": "破面包车油箱被倒入白糖是 ep03 黑烟反转的直接证据状态。"
+    },
+    {
+      "id": "STATE_ZHAODAQIANG_MUDDY_V1",
+      "type": "character_state",
+      "reason": "赵大强满身黑泥状态从臭水沟延续到家门外电话戏，建议入库保证连续性。"
+    }
+  ]
+}

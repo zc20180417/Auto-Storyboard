@@ -1,0 +1,50 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "SCENE_HOSPITAL_RECEIVING_BASE",
+      "type": "scene_base",
+      "reason": "ep23和ep24连续使用省医院接收区月台外，建议去重后合并。"
+    },
+    {
+      "id": "STATE_SCENE_HOSPITAL_RECEIVING_ENFORCEMENT_V1",
+      "type": "scene_state",
+      "reason": "ep24执法到场、货车和公务车停放构成新的接收区状态。"
+    },
+    {
+      "id": "CHAR_HEALTH_DIRECTOR_BASE",
+      "type": "character_base",
+      "reason": "卫生局长是ep24关键新角色，可能在后续追责线复用。"
+    },
+    {
+      "id": "CHAR_HEALTH_OFFICER_GROUP_BASE",
+      "type": "character_base",
+      "reason": "卫生监督执法人员群像用于控制和调查场面。"
+    },
+    {
+      "id": "PROP_HEALTH_SUPERVISION_CAR_BASE",
+      "type": "prop_base",
+      "reason": "卫生监督公务车是ep24执法到场关键车辆资产。"
+    },
+    {
+      "id": "STATE_PROP_PHONE_RED_STAMP_DOCUMENT_V1",
+      "type": "prop_state",
+      "reason": "林刚手机展示红章单据，是证明救命药资质的关键证据状态。"
+    },
+    {
+      "id": "STATE_PROP_BLACK_CARD_EVIDENCE_DROPPED_V1",
+      "type": "prop_state",
+      "reason": "黑卡从行贿道具转为立案证据，应与PROP_BLACK_CARD_BASE合并。"
+    },
+    {
+      "id": "PROP_TIANBA_TRUCK_KEYS_BASE",
+      "type": "prop_base",
+      "reason": "车钥匙是赌约兑现和天霸物流归属转移的关键道具。"
+    }
+  ]
+}

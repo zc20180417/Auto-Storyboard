@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep10",
+  "status": "done",
+  "output_name": "EP-10-ep10-agent-cli-storyboard.txt",
+  "summary": "EP10共6组分镜，覆盖会审室对峙、走廊决裂、天台密谋三段剧情，时长与空间锁定均合格，无硬错误。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组画外音15字与转身离去动作共置于5秒镜头中，音频与动作时长匹配偏紧",
+    "第5组组首环境交代镜头2秒可考虑进一步压缩以更快进入对话"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

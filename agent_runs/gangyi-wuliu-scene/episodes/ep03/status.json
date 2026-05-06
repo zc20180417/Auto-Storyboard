@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "刚毅物流-ep03-agent-cli-storyboard.txt",
+  "summary": "停车场内林刚用红外监控反制赵大强毁车，收下五万后转入物流中心办公室争取干线物流机会，主管以送命件试探他。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第7组",
+      "rule": "dialogue_pacing",
+      "problem": "主管最后一句情绪台词节奏偏快但不构成硬错误。",
+      "evidence": "9-11秒“今晚有个送命件，敢接留你。”有效字数约13字，镜头2秒，约6.5字/秒，处于6-7字/秒可接受区间。",
+      "fix": "如后续人工想放缓，可将该句与按住陈旧单子的动作扩为3秒，但需重新压缩同组其他镜头保持总时长。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

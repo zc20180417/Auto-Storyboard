@@ -1,0 +1,55 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "VEHICLE_AIR_SUSPENSION_TRUCK_BASE",
+      "type": "prop_base",
+      "reason": "陈天霸车队高级空气悬挂货车是ep21对赌核心对照资产。"
+    },
+    {
+      "id": "STATE_VEHICLE_AIR_SUSPENSION_TRUCK_SMOOTH_V1",
+      "type": "prop_state",
+      "reason": "空气悬挂货车平稳通过坑洼的状态贯穿ep21前半段。"
+    },
+    {
+      "id": "STATE_VEHICLE_HEAVY_TRUCK_STEEL_SUSPENSION_V1",
+      "type": "prop_state",
+      "reason": "林刚钢板悬挂重卡是本集技术反差的基础状态。"
+    },
+    {
+      "id": "PROP_FOAM_PAD_STRAP_BASE",
+      "type": "prop_base",
+      "reason": "海绵垫与绑带是疫苗药箱防震固定的关键材料。"
+    },
+    {
+      "id": "STATE_PROP_MEDICAL_BOX_PADDED_STRAPPED_V1",
+      "type": "prop_state",
+      "reason": "疫苗药箱被海绵垫和绑带固定，是本集运输方案核心状态。"
+    },
+    {
+      "id": "PROP_TIRE_PRESSURE_CONTROL_VALVE_BASE",
+      "type": "prop_base",
+      "reason": "胎压控制阀用于林刚下达放气减震方案。"
+    },
+    {
+      "id": "SCENE_HEAVY_TRUCK_CAB_BASE",
+      "type": "scene_base",
+      "reason": "重卡驾驶室内连续出现仪表盘、对讲通讯器和胎压控制阀。"
+    },
+    {
+      "id": "SCENE_MUDDY_ROAD_BASE",
+      "type": "scene_base",
+      "reason": "烂泥坑洼路是ep21后半段核心路况场景。"
+    },
+    {
+      "id": "STATE_PROP_TIRE_PRESSURE_REDUCED_V1",
+      "type": "prop_state",
+      "reason": "重卡轮胎放气百分之三十后的形变状态是本集破局关键。"
+    }
+  ]
+}

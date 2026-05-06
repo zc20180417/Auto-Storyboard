@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "ep18 assembled final已完成真实审核，5组均忠于原剧本，台词指向、时长数学、空间锁定、人物可用性和组间衔接通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "evidence": "林刚台词写为“对打手甲冷声说道”，孙彪命令写为“对打手们暴怒喊道”，真人开口均有明确对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "三个打手扑上、林刚踹翻实木架子、架子压住三个打手、经理抱头报警、林刚夺棍问“还有谁想挨揍？”均按原剧本顺序呈现。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "孙彪“全是一群废物！老子自己来！”约12字/2秒，字秒比约6.0；王百川短句“谁敢动我的合伙人！”与入场动作合并在6秒节拍内，未造成台词过快。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "evidence": "第4组0-2、2-5、5-7、7-9、9-11秒连续无断点，相加11秒，标题镜头数5个与实际时间段一致。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组始终在重卡经销店展厅内，弹簧刀、倒塌架子、销售桌、展车和门口保镖均在同一空间内延续，没有跨场景硬切。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "林刚冷眼、躲棍、抓烟灰缸和敲倒打手均为可见动作；没有把“厉害”“压迫感”等抽象判断当作主要画面。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾写其余打手准备扑向林刚，第2组首写三个打手位于画面左侧正面对林刚，随后0-2秒同时扑上，动作衔接成立。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "孙彪、林刚、经理、倒地和被压打手均在组首可用；王百川和八个保镖通过8-14秒从玻璃门进入后才参与台词和行动。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾孙彪握刀愣住，第4组组首仍写孙彪手里握着弹簧刀，5-7秒才掉地；刀具状态前后一致。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "王百川停城南活儿、孙彪下跪求饶、王百川要求五台车立刻落户给林老板、经理答应发财台词均完整保留。",
+      "fix_instruction": "无。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "dialogue_pacing",
+      "problem": "林刚解释句节奏偏快但不超过硬性阈值。",
+      "evidence": "第4组9-11秒，台词“他要打断我的腿，还不让我买车。”有效字数13，镜头2秒，字秒比约6.5。",
+      "fix": "可在人工精修时将该句拆成林刚近景和王百川反应，但当前不阻断通过。"
+    },
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "经理答应句节奏偏快但在可接受范围内。",
+      "evidence": "第5组11-13秒，台词“马上办！绝不耽误林老板发财！”有效字数13，镜头2秒，字秒比约6.5。",
+      "fix": "可在人工精修时增加极短反应节拍并重组第5组，但当前不阻断通过。"
+    }
+  ]
+}

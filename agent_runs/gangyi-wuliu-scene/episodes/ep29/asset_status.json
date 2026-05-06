@@ -1,0 +1,40 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "STATE_GANGYI_DRIVERS_BLACK_VEST_V1",
+      "type": "character_state",
+      "reason": "黑背心退伍兵司机队列是 ep29 压场核心画面，建议作为刚毅司机群像状态入库。"
+    },
+    {
+      "id": "CHAR_DAOBA_BASE",
+      "type": "character",
+      "reason": "刀疤在 ep28-ep29 连续出现并有关键动作戏，建议统一定妆。"
+    },
+    {
+      "id": "PROP_DOCK_WEAPONS_BASE",
+      "type": "prop",
+      "reason": "铁钩和砍刀在港口冲突中反复出现，建议合并为港口混混武器道具。"
+    },
+    {
+      "id": "PROP_CRANE_KEYRING_BASE",
+      "type": "prop",
+      "reason": "吊机钥匙串推动 ep29 夺回控制权和配电室恢复吊机，应作为关键道具入库。"
+    },
+    {
+      "id": "SCENE_PORT_CRANE_CONTROL_BASE",
+      "type": "scene",
+      "reason": "吊机控制区外和配电室方向是 ep29 钥匙线的核心空间，建议作为港口设备区空镜入库。"
+    },
+    {
+      "id": "STATE_SCENE_PORT_CONTROL_DAY_V1",
+      "type": "scene_state",
+      "reason": "吊机控制区白天硬光、外栏和配电室门牌状态用于 ep29 连续镜头，可与基础场景一并合并。"
+    }
+  ]
+}

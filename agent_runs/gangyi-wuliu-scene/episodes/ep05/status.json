@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "刚毅物流-ep05-agent-cli-storyboard.txt",
+  "summary": "林刚在雨夜别墅门口用测温枪揭穿冷链坏货骗局，刘福道歉递名片；赵大强在村头鼓动村民拿钱进城倒腾海鲜。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第3组",
+      "rule": "dialogue_pacing",
+      "problem": "王主管画外音节奏略快但未超过硬错误阈值。",
+      "evidence": "第3组5-7秒“刘管家，是那个司机没开冷机！”约14字/2秒=7字/秒，属于6-7字/秒偏快区间。",
+      "fix": "如后续制作觉得听感紧，可将该句与前后反应微调到3秒，但当前不阻断通过。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

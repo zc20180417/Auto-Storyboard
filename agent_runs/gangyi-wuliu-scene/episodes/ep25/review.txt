@@ -1,0 +1,120 @@
+{
+  "pass": true,
+  "summary": "已按原剧本、生成规则和最终分镜逐组审核，16组均保留关键台词、动作和空间关系；无硬性问题，存在1条退伍兵短促喊话偏快的软提醒。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组",
+    "第13组",
+    "第14组",
+    "第15组",
+    "第16组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "林刚拿合同入园、陈天霸挑衅“林刚！真以为能吞了我的地盘？”和林刚回应“法律认字，不认狗叫。”均按原顺序保留，合同、重卡和秦爷站位已写明。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "3-10秒为连续对话节拍，司机甲、林刚、秦爷三轮台词有效字数约39字，7秒承载，字秒比约5.6，符合争执短句节奏。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "全组保持在天霸物流园广场，林刚、秦爷、陈天霸、退伍车队、众司机和重卡均在组首获得可见位置，重卡打火属于同一广场内连续动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "本组包含村口土路现实空间和三个月前、六个月前的回忆画面，分镜明确标注“回忆闪回”，符合跨时空例外。"
+    },
+    {
+      "group": "第11组",
+      "type": "dialogue_pacing",
+      "evidence": "第11组0-4秒老村长21字约5.3字/秒，4-9秒画外音约24字约4.8字/秒，9-11秒林刚13字约6.5字/秒，均未超硬性速度边界。"
+    },
+    {
+      "group": "第16组",
+      "type": "script_fidelity",
+      "evidence": "村民丙惭愧、村民丁维护林刚、林刚在远处山梁上看村里并升窗离开，以及画外音“路还长，走吧。”均保留，且标注为片尾意象。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "退伍兵甲和退伍汽车兵在组首被写为位于大门外远处通道、被门框和车头遮挡，随后先跑步进场列队，再由退伍兵甲开口汇报。",
+      "fix_instruction": "无须修复；若后续改稿，应继续保证退伍兵在说话前有明确入场动作。"
+    },
+    {
+      "group": "第9组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "老村长在组首位于画面右侧背景树下阴影里，身体朝向林刚，随后从树下走出并咳嗽后才说话，人物可生成来源明确。",
+      "fix_instruction": "无须修复；保持老村长从树下阴影走出的入场顺序即可。"
+    },
+    {
+      "group": "第10组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第9组组尾林刚停在半开的车门旁、老村长站在身后几步外；第10组组首延续林刚在车门旁背对镜头、老村长在右侧拿烟靠近，香烟递入口袋的动作连续。",
+      "fix_instruction": "无须修复；若删改第9组车门状态，需要同步调整第10组组首。"
+    },
+    {
+      "group": "第14组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“嘴硬心软”作为老村长自语台词呈现，皮卡发动、尾灯远去、红布包留在手里和施工队开始卸工具均为可见可听信息。",
+      "fix_instruction": "无须修复；不可将“心软”单独写成抽象画面，应保留自语或可见动作承载。"
+    },
+    {
+      "group": "第15组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "三天后修好路通过柏油路、路碑、村民踩路和李婶擦眼泪呈现，‘过客留’通过村民乙读碑面台词传达，没有依赖不可视判断。",
+      "fix_instruction": "无须修复；路碑文字继续由角色读出，避免直接叠加字幕。"
+    },
+    {
+      "group": "第16组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "村口修好路与远处山梁存在空间拉开，组标题场景和镜头均明确写“片尾意象”，林刚在山梁车内远观村口，未被写成同一近距离现实空间。",
+      "fix_instruction": "无须修复；若去掉片尾意象标识，应拆成独立组。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "dialogue_pacing",
+      "problem": "退伍兵甲汇报台词偏快但未超过硬性阈值。",
+      "evidence": "第4组8-10秒“报告老板！刚毅车队集结完毕！”有效字数约14字，镜头2秒，字秒比约7.0；属于短促军令式大吼，可接受但偏快。",
+      "fix": "如后续需要更稳，可将该喊话与列队站定合并为3秒，并压缩前面跑步进场动作。"
+    }
+  ]
+}

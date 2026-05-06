@@ -1,0 +1,30 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    {
+      "id": "PROP_VILLAGE_NOTICE_BASE",
+      "type": "prop",
+      "reason": "村委会盖章通知书是 ep01 关闭代收点的关键证据文件，可复用于后续村委会或服务站相关镜头。"
+    },
+    {
+      "id": "PROP_CANVAS_BAG_BASE",
+      "type": "prop",
+      "reason": "旧帆布包在林刚离村、求职和现金携带中连续出现，建议统一入库。"
+    },
+    {
+      "id": "SCENE_LINGANG_ROOM_BASE",
+      "type": "scene",
+      "reason": "林刚屋内是人物离村决定的重要室内场景，建议作为空镜基础场景合并。"
+    },
+    {
+      "id": "STATE_SCENE_LINGANG_ROOM_DAY_V1",
+      "type": "scene_state",
+      "reason": "白天窗光下的简陋屋内状态承载床、旧柜、衣物和墙上证件，可与基础场景一并合并。"
+    }
+  ]
+}

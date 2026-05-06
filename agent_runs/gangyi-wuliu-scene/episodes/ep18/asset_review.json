@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep18资产表覆盖展厅打斗破坏、王百川到场、关键武器道具和保镖群像，审核未发现阻断问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、孙彪、王百川、重卡展车和物流工装风格均从asset_bible复用，未重复生成已有基础人物和重卡。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "展厅打斗破坏、实木架倒塌、弹簧刀掉落均作为场景或道具状态处理，没有把破坏状态误写成多个新基础场景。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "林刚擦手背、打手惨叫挣扎、经理抱头点头、王百川甩耳光和孙彪跪地等短暂表演已明确不入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE使用STATE_LINGANG_CONVOY_V1，CHAR_WANGBAICHUAN_BASE使用STATE_WANGBAICHUAN_BOSS_V1，VEHICLE_HEAVY_TRUCK_BASE用于展车，均避免重复创建。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "倒塌实木架和掉落弹簧刀都按prop_condition状态建模，展厅破坏按scene_condition状态建模，符合状态拆分规则。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增展厅、经理、打手群像、保镖群像、烟灰缸、木棍、实木架、弹簧刀和黑轿车均不改写asset_bible已有角色脸型、服装或车辆设定；重复候选沿用同一稳定ID便于主线程去重。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词仅基于final.txt中的展厅、铁烟灰缸、木棍、实木架、弹簧刀、黑色轿车、保镖等元素，没有新增枪械、品牌、车牌、可读标识或额外剧情。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage使用ep18 final.txt中的组号和秒段，如第1组0-8秒铁烟灰缸、第2组2-7秒实木架倒塌、第3组4-6秒弹簧刀、第5组8-11秒五台车落户。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "展厅破坏、实木架倒塌和弹簧刀掉落的中英文提示词事实一致，负面词一致限制人物污染、品牌、文字、血腥和非写实风格。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准章节、必需列和枚举值完整，表格单元格未使用原始竖线字符，可转换Excel。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

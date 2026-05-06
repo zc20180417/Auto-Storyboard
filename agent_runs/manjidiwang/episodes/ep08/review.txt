@@ -1,0 +1,58 @@
+{
+  "pass": true,
+  "summary": "EP08 assembled final.txt 共9组，全部保持单一物理空间，台词与关键动作忠于原剧本，时长计算与节奏合格，组间连续性无跳变，无硬错误。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "班主任'今天竞选班委，刘宇竞选班长'11字/2秒=5.5字/秒；雷军与刘宇连续对话节拍21字/4秒=5.25字/秒，含换人间隙，整体估算合理。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第4组组尾朱文浩逼近姿态未收，第5组组首朱文浩保持逼近姿态，刘宇仍在右侧前排，班主任仍在讲台正中，文件仍在朱文浩面前桌上，连续性完全一致。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "原剧本8-4中刘宇手下威胁'离朱文浩远点'、苏清寒OS、苏清寒'为什么不用你那些特殊手段'、朱文浩'我要赢，也要赢得体面''你也是'全部保留；'以督察长身份调取监控，公开通报刘宇违纪'已通过记录仪操作与展示画面呈现。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第8组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩未在第8组组首空间锁定中，但在6-8秒以'从画面深处快步走来'的明确入场动作出现，之后才操作记录仪并公开通报，符合人物可用性规则。",
+      "fix_instruction": "当前已通过，无需修改"
+    },
+    {
+      "group": "第1组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾刘宇说完台词看向雷军，第2组组首班主任在讲台、朱文浩在左侧后排、刘宇在右侧前排、雷军在左侧中排，人物位置未发生跳变；刘宇从第1组到第2组均位于右侧前排，空间连续。",
+      "fix_instruction": "当前已通过，无需修改"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "原剧本'班主任被其气场震慑，不敢反驳'已转译为'双手下意识攥紧讲台边缘，不敢反驳，视线在朱文浩和刘宇之间游移'；'刘宇如鲠在喉，瞬间沦为被监视的傀儡'已转译为'喉结上下滚动，如鲠在喉，脸色铁青，拳头在桌下攥紧'，全部通过可见动作与表情呈现。",
+      "fix_instruction": "当前已通过，无需修改"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

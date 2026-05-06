@@ -1,0 +1,17 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "STATE_LINGANG_RAIN_BLOOD_V1",
+    "STATE_SCENE_MOUNTAIN_ROAD_RAIN_NIGHT_V1",
+    "STATE_VEHICLE_SEAFOOD_TRUCK_RAIN_DAMAGED_V1",
+    "CHAR_SECURITY_GUARD_BASE",
+    "CHAR_BUTLER_BASE",
+    "SCENE_LUXURY_VILLA_GATE_BASE",
+    "STATE_SCENE_VILLA_GATE_RAIN_NIGHT_V1"
+  ]
+}

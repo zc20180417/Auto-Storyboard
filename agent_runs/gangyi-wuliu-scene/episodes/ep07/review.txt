@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "summary": "ep07 整集最终稿经节奏修复后完整覆盖原剧本三处物理空间和所有台词动作，组时长、对话指向、空间锁定与格式均通过审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "2-10秒连续冲突节拍包含村民甲索赔、村民乙拽领子追责、赵大强推开并甩锅林刚，校验口径约45个有效字/8秒，字秒比约5.63，符合争吵节奏；组总时长10秒等于2+8。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "村民甲“车是你买的”、赵大强指车说防冻液兑水、村民甲揭穿其图便宜换假防冻液三段因果和台词顺序均保留。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "林刚长台词拆为4-8秒和8-12秒两段，第一段约23字/4秒约5.75字秒比，第二段约25字/4秒约6.25字秒比，未出现单镜超长或拖慢。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "evidence": "第7组只发生在林刚家门外，林刚在大铁门内侧端高压洗车水枪，赵大强、村民甲、村民乙和人群均在门外，空间关系清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "故障和焦糊味被转译为黑烟、焦黑痕迹、仪表盘熄灭、发动机咔嚓卡死声，均为可见可听信息。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "赵大强、村民甲、村民乙、十几个村民在组首均有明确位置与朝向，后续煽动和集体狂奔前所有人物已可生成。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "林刚车内段单独成组，组内只使用皮卡车内、前挡风玻璃、对讲机和四驱挡杆，没有把外部道路或林家门外混入同一组。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组组尾的门外人群继续拍门、门板向内晃动，能自然接到第7组组首门闩松开、村民乙仍举石头、林刚在门内准备开门。",
+      "fix_instruction": "无。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "林刚“找死？”安排在5-7秒，短台词≤10字且2秒内完成，并同步端枪瞄准动作；7-10秒为人群被水枪压住的无台词反应，单段3秒不超限。",
+      "fix_instruction": "无。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "已对照第13集原剧本、storyboard-generator规则和 assembled final.txt 逐组审查，四组均通过真实 reviewer 审核，无硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组0-3秒为原剧本挨打动作，3-8秒为三人快速问答，约25个有效字、5秒、字秒比约5.0；8-10秒单独承接手机突然震动，未把短句拉长凑时长。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "第2组所有画面均在赵大强家内，王强只以电话画外音对赵大强说话，符合电话角色来源规则，没有跨到王强所在空间。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组按顺序保留赵大强问怎么搞、王强约晚上进城、村民甲抢手机、赵大强推开村民甲抓破菜刀乱挥和喊“滚开！老子马上就有大钱了！”"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "王百川对林刚问买车和首付，林刚对王百川回答未买、准备提五台重卡并说下午去银行提现，每句真人台词都写明说话对象。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "evidence": "第4组时间段0-3、3-6、6-8、8-10、10-13秒连续无断点，总计13秒，与标题总时长和镜头数5个一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "赵大强、村民甲、村民乙在组首均有明确位置、身体朝向和可见状态，扫帚由村民甲持有，手机在赵大强兜里露出一角。",
+      "fix_instruction": "无需修复；关键人物和道具均已可生成。"
+    },
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "王强没有实体入场，被写为只通过电话声音出现；赵大强先摸出手机并接听，之后才出现王强电话画外音。",
+      "fix_instruction": "无需修复；继续保持电话画外音来源。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组结尾赵大强趴地握手机，第3组组首延续为赵大强位于地面且右手攥着接通的手机，村民甲和村民乙仍在同一屋内围堵。",
+      "fix_instruction": "无需修复；组尾与组首人物和手机状态连续。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "赵大强“红眼”和“乱挥破菜刀”被转译为可拍的眼部状态、站不稳、刀尖逼退两名村民，没有使用抽象心理判断作为主要画面。",
+      "fix_instruction": "无需修复；关键情绪已由可见动作和原台词承载。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "办公室戏另起第4组，组首锁定总裁办公室、落地窗、真皮沙发、茶几和合同，与前三组赵大强家内空间分离。",
+      "fix_instruction": "无需修复；不同物理空间已分组处理。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "合同递交、王百川收合同、林刚喝茶、王百川挑眉、林刚起身及“钱不是问题。下午去银行提现。”均按原剧本顺序保留。",
+      "fix_instruction": "无需修复；未发现删改或新增关键剧情。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

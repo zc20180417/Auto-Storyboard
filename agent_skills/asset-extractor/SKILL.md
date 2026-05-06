@@ -73,10 +73,11 @@ node .\agent_skills\asset-extractor\scripts\extract-flat-storyboard-assets.mjs <
 
 本 skill 的输出格式改为“资产增量与使用索引”，而不是逐集完整资产表。中英文提示词、真实感/透视/比例/负面词要求尽量与项目根目录的 `中英双语资产prompt0427.txt` 保持一致；固定差异是本 skill 改为 Markdown + Excel，而不是 HTML 表格。资产取舍以本 skill 的“合并与取舍”和各资产类型规则为准，尤其是道具资产不要按物品清单全量提取。
 
-默认输出四份文件：
+默认输出五份文件：
 
 - `assets.md`：Markdown 资产表，方便审阅和版本管理。不要输出 HTML；这是与 `中英双语资产prompt0427.txt` 的唯一格式差异。
 - `assets.xlsx`：Excel 工作簿，方便筛选、复制单元格和交给生产流程使用。
+- `asset_bindings.json`：机器可读的分镜资产绑定表，供 Web 工程按 `cut_id` 直接写入视频片段生产配置。
 - `asset_review.json`：按 `agent_skills/asset-reviewer/SKILL.md` 真实审核后的 JSON，不得用脚本校验或空 issues 伪造。
 - `asset_status.json`：资产任务状态，记录 reviewer 来源、pass、issues/warnings 数量和是否可收集。
 
@@ -88,15 +89,24 @@ Markdown 正文不输出 JSON，不输出代码块。
 
 `《剧名 epXX》资产增量与使用索引`
 
-必须包含五个部分，标题必须严格一致：
+必须包含六个部分，标题必须严格一致：
 
 1. `一、本集复用资产索引`
 2. `二、本集新增资产状态`
 3. `三、本集新增基础资产`
 4. `四、本集关键道具与场景状态`
 5. `五、本集不建议入库元素`
+6. `六、本集分镜资产绑定索引`
 
-优先使用 Markdown 表格。Markdown 表格单元格中禁止使用竖线字符 `|`；如需分隔短语，使用中文顿号、分号或逗号。提示词内部不要换行；如需换行，使用 `<br>`。五个表标题必须严格使用规定标题，不能改写。
+优先使用 Markdown 表格。Markdown 表格单元格中禁止使用竖线字符 `|`；如需分隔短语，使用中文顿号、分号或逗号。提示词内部不要换行；如需换行，使用 `<br>`。六个表标题必须严格使用规定标题，不能改写。
+
+分镜绑定合同：
+
+- 资产表必须读取同集 `storyboard_index.json`。
+- Web 机器绑定优先使用 `episode_id` + `cut_id` / `cut_ids`，不要让 Web 解析中文 `episode_usage`。
+- `episode_usage` 必须保留，作为人工审查字段。
+- `cut_ids` 多值用英文逗号分隔，例如 `EP30-G01,EP30-G02`。
+- `asset_bindings.json` 必须与第六表使用相同的 `binding_id`，并且所有 `cut_id` 必须存在于 `storyboard_index.json`。
 
 所有入库资产都必须有稳定 `asset_id` 或 `state_id`。命名建议：
 
@@ -142,6 +152,8 @@ Markdown 正文不输出 JSON，不输出代码块。
 字段：
 
 - 使用ID
+- episode_id
+- cut_ids
 - asset_id
 - state_id
 - asset_type
@@ -158,6 +170,8 @@ Markdown 正文不输出 JSON，不输出代码块。
 - 如果基础资产已存在但本集状态尚未入库，`needs_generation` 写 `conditional`，`generation_note` 写 `if state not generated`，并且必须在“二、本集新增资产状态”中补充状态。
 - `state_id` 不得留空；基础资产无状态时写 `BASE`。
 - `episode_usage` 必须来自分镜原文，例如 `ep02 第1组-第3组` 或 `第1组 0-8秒`。
+- `episode_id` 必须使用 `storyboard_index.json` 中的机器集号，例如 `EP02`。
+- `cut_ids` 必须列出该资产本集实际出现或需要作为视频参考图的分镜组，例如 `EP02-G01,EP02-G02`。
 - `使用ID` 建议格式：`EP02_USE_CHAR_001`、`EP02_USE_SCENE_001`、`EP02_USE_PROP_001`。
 
 ### 二、本集新增资产状态
@@ -165,6 +179,8 @@ Markdown 正文不输出 JSON，不输出代码块。
 字段：
 
 - state_id
+- episode_id
+- cut_ids
 - asset_id
 - parent_state_id
 - asset_type
@@ -192,6 +208,7 @@ Markdown 正文不输出 JSON，不输出代码块。
 - 场景状态提示词必须为空镜、无人、无人脸；同一场景的白天、夜雨、断电、爆炸后、整洁后应拆成状态。
 - 道具完整、破损、写字据后、盖章后、沾血后可以拆成状态；不得给道具添加原文没有的文字。
 - `changed_fields` 要明确写出变化项，例如 `服装污渍、湿冷光线、疲惫汗水`。
+- `episode_id` 和 `cut_ids` 必须对应 `storyboard_index.json`，用于 Web 直接绑定本状态适用的分镜组。
 - `reuse_policy=shot_only` 的状态一般不入库，除非是特殊构图资产。
 
 ### 三、本集新增基础资产
@@ -224,6 +241,8 @@ Markdown 正文不输出 JSON，不输出代码块。
 字段：
 
 - state_id
+- episode_id
+- cut_ids
 - asset_id
 - asset_type
 - state_summary
@@ -238,6 +257,7 @@ Markdown 正文不输出 JSON，不输出代码块。
 - 如果状态已在 `asset_bible.md` 中存在，`needs_generation=no`，`入库建议=复用已有状态`。
 - 如果本集第一次出现状态，`needs_generation=yes`，`入库建议=建议同步到asset_bible` 或 `仅本集使用`。
 - 本表不替代“二、本集新增资产状态”；凡是 `needs_generation=yes` 且建议入库的状态，必须同时出现在第二部分。
+- `episode_id` 和 `cut_ids` 必须对应 `storyboard_index.json`，用于 Web 直接绑定调度摘要。
 
 ### 五、本集不建议入库元素
 
@@ -252,6 +272,63 @@ Markdown 正文不输出 JSON，不输出代码块。
 - 明确列出容易被误提取但不应入库的普通元素，例如普通桌椅、门窗、背景灯具、一次性纸张、短暂表情、普通手势、临时群众轻动作。
 - 不入库原因必须具体，例如 `已由场景基础资产承载`、`属于分镜表演，不是资产状态`、`一次性背景杂物，无需稳定生成`。
 - 本表可以为空，但如果本集有明显普通物件或短暂表演，建议写出代表性条目，防止后续 worker 误提取。
+
+### 六、本集分镜资产绑定索引
+
+字段：
+
+- binding_id
+- episode_id
+- cut_id
+- asset_id
+- state_id
+- asset_type
+- binding_role
+- reference_priority
+- use_for_video
+- required_for_generation
+- source
+- note
+
+枚举：
+
+- `asset_type`：`character`、`costume`、`scene`、`prop`、`composition`
+- `binding_role`：`scene_reference`、`character_reference`、`costume_reference`、`prop_reference`、`composition_reference`
+- `reference_priority`：`primary`、`supporting`、`background`
+- `use_for_video`：`yes`、`no`、`conditional`
+- `required_for_generation`：`yes`、`no`、`conditional`
+- `source`：`asset_table`、`asset_bible`、`manual_candidate`
+
+规则：
+
+- 每行表示一个 `cut_id` 与一个资产或状态的机器绑定。
+- 每个 `cut_id` 至少应有一个 `scene_reference` 且 `reference_priority=primary` 的主场景绑定。
+- 关键人物、关键道具、关键服装状态应绑定到实际出现的 `cut_id`；普通背景杂物不需要绑定。
+- 如果基础资产无状态，`state_id` 写 `BASE`。
+- `use_for_video=yes` 的绑定必须指向可作为参考图或参考状态生成的资产，不要绑定“不建议入库元素”或纯文字说明。
+- 同步写出 `asset_bindings.json`，结构如下：
+
+```json
+{
+  "project": "项目名",
+  "episode_id": "EP30",
+  "bindings": [
+    {
+      "binding_id": "EP30_BIND_001",
+      "cut_id": "EP30-G01",
+      "asset_id": "SCENE_PORT_BASE",
+      "state_id": "STATE_SCENE_PORT_CRANE_STOPPED_V1",
+      "asset_type": "scene",
+      "binding_role": "scene_reference",
+      "reference_priority": "primary",
+      "use_for_video": "yes",
+      "required_for_generation": "yes",
+      "source": "asset_table",
+      "note": "第1组港口主场景"
+    }
+  ]
+}
+```
 
 ## 合并与取舍
 

@@ -1,0 +1,91 @@
+{
+  "pass": true,
+  "summary": "EP02共10组，忠于原剧本三场戏全部内容，空间锁定完整，对话指向清晰，时长均落在10-15秒区间，景别切换合规，无硬性错误。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "2-6秒画外音22字/4秒=5.5字/秒，符合5.2字/秒基准向上取整；6-10秒情绪台词22字/4秒=5.5字/秒，符合6.0字/秒情绪基准向上取整。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组组首空间锁定明确朱文浩挡门框中央面向镜头、王涛站台阶下面朝画左，单组物理空间为别墅门口，无跨场景硬切。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "朱天和醉意台词'文浩，你在哪呢？'、朱文浩下楼台词'爸，我在书房查集团账目'、高明检查回报'没少东西，在看战投部简报'均完整保留，人物动作与台词顺序忠于原剧本。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_pacing",
+      "evidence": "0-2秒决断台词9字/2秒=4.5字/秒，短台词豁免适用；2-4秒阻拦台词11字/2秒=5.5字/秒，符合6.0字/秒情绪基准向上取整。"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "evidence": "'震惊''微缩''冷笑'均转译为瞳孔放大、肩膀后缩、嘴角一侧上扬等可见面部与肢体细节，'烂账底牌'通过纸张道具与台词共同承载，无可视化缺失。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩与王涛均在组首空间锁定中获得明确画面位置与身体朝向，王涛双手提黑塑料袋、身体前倾状态清晰，无'尚未进入'等不可生成描述。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组组尾为王涛后退半步、脸色发白、紧抱塑料袋；第5组组首为王涛位于门外台阶下方、背对镜头、双手紧抱黑塑料袋，道具与人物状态连续，逃跑动作在组内自然发生。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组组尾为朱天和挥手让高明退下；第7组组首为高明已退下、房门已关闭，朱天和坐沙发、朱文浩站沙发旁，房门状态与人物位置连续。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组组尾为朱天和坐直身体、眼神锐利；第8组组首为朱天和仍坐沙发中央、朱文浩站沙发旁，人物姿态与空间关系连续。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "原剧本中'城投三亿亏空''掀翻他总裁位置的杀招'等抽象信息均通过朱文浩递纸动作、纸张道具及台词共同呈现，未以不可视判断直接输出。",
+      "fix_instruction": "无需修改"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "dialogue_pacing",
+      "problem": "10-13秒高明11字台词/3秒≈3.7字/秒，系5.2字/秒向上取整自然结果，节奏略偏慢。",
+      "evidence": "11字按5.2字/秒计算为2.12秒，向上取整为3秒，字秒比3.7。",
+      "fix": "当前不阻断产出，后续迭代可考虑合并上楼检查与返回台词为更长对话块以提升节奏密度。"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep23资产表覆盖医院接收区、李主任白大褂、冷链验货、震动仪和黑卡证据，资产选择与bible一致。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、王百川、陈天霸和医药冷链箱均复用asset_bible；医院接收区、黑卡、震动仪属于bible未覆盖的新关键资产。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "李主任白大褂、冷链货车打开状态、陈家货车警报状态均作为已有人物或车辆的新状态处理。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "平板、接收门、月台边线和短暂跑动表演被排除，避免把普通陈设或动作入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "已有角色和医药冷链箱均以asset_bible来源复用，新增项仅限本集首次出现的关键生产资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "白大褂、冷链车打开、绿色震动仪、黑卡递出和陈家车警报均是服装、车辆或道具状态，没有误建为重复角色。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "duplicate_base_asset",
+      "result": "pass",
+      "evidence": "新增基础资产为医院接收区、白大褂服装、震动仪和黑卡，asset_bible中没有同类稳定定义。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "CHAR_LIZHUREN_BASE的基础脸型和身份未被改写，仅补充final.txt明确出现的白大褂医院状态；车辆和医药箱也未改变bible基础设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词没有新增品牌、医院真实名称、车牌或可读屏幕文字；震动仪和黑卡均明确限制不可读信息。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage按ep23 final.txt组号和秒段记录，没有将黑卡、震动仪或陈家警报归入未出现镜头。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词的主体、地点、状态和负面约束一致，未出现语义漂移。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五张标准表完整，枚举值和表头符合episode转换脚本要求，单元格内未含原始竖线。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "EP22整集分镜按剧本顺序完成田立民定罪施压、保镖围住朱文浩、苏清寒携文件入场反转、督导组封锁会场并控制孙耀、田立民断臂求生和朱文浩冷笑，未发现硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "田立民阴沉定罪、孙耀狂喜附和并命令保安按住朱文浩、孙耀威胁朱文浩均按原剧本顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "2-5秒朱文浩约12字/3秒，5-8秒田立民约10字/3秒，8-10秒田立民约11字/2秒，均未超过7字/秒；0-2秒和10-12秒为2秒动作镜头，没有过长静默。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "evidence": "苏清寒与随行保镖在组首位于宴会厅大门外侧阴影后方，0-5秒被推入会场后才对黑衣保镖开口，入场来源明确。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "最高公证处加急文件、星辰公司股权变更绝对合法、孙耀夺过翻看、苏清寒拿命换底牌、田立民称与集团为敌均完整呈现。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "督导组人员从同一宴会厅大门进入，封锁、亮证、孙耀迎上和被推开都发生在宴会厅通道内，没有跨物理空间。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "3-5秒孙耀约12字/2秒，5-7秒田立民约13字/2秒，均未超过7字/秒，符合情绪对白节奏且没有拖慢。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "田立民对督导组长说严查绝不护短，朱文浩看着田立民断臂求生并嘴角勾起冷笑，结尾剧情信息完整保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾部保镖开始收紧包围，第2组组首保镖已在朱文浩左右两侧并握住甩棍，朱文浩仍在宴会厅通道中央。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组结尾朱文浩仍被围住，第3组组首继续保持朱文浩被黑衣保镖围住；苏清寒从宴会厅大门外侧阴影入场，空间承接明确。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "股权变更和底牌通过可见文件、翻看纸页、人物台词和反应表现；没有把合法性只写成抽象说明。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "督导组长和督导组人员在组首位于宴会厅大门外侧通道，0-3秒进入后才亮证和说话，督导行动来源明确。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "两名特派员反剪孙耀双手、孙耀向田立民喊救命并说按你吩咐、田立民呵斥住口并称孙耀瞒着乱来，均与原剧本一致。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "田立民断臂求生被转译为切断视线、转向督导组长、痛心台词和端坐表情；朱文浩通过视线和冷笑呈现判断。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

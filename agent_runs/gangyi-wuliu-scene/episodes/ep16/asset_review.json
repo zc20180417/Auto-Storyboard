@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep16资产表覆盖回收站门口对峙、报废重卡、证据手机、警车控制等关键生产资产，未发现阻断问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、王强、赵大强、警察、手机录音状态、手铐和警车均沿用asset_bible已有资产，needs_generation为no，避免重复生成。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "报废冒烟重卡被建模为VEHICLE_HEAVY_TRUCK_BASE的新状态，手机证据展示也作为已有手机状态的局部变体，没有重复创建基础手机或基础重卡。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "王强冷笑、赵大强拍手腿软、警察按肩膀等短暂表演被列入不入库元素，未拆成资产状态。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_WANGQIANG_BASE、CHAR_ZHAODAQIANG_BASE、CHAR_POLICE_BASE、PROP_HANDCUFFS_BASE、VEHICLE_POLICE_CAR_BASE等已有资产被直接复用。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "重卡破损冒烟和手机证据展示是现有道具状态变化，均放在新增资产状态表；回收站夜间烟雾是新场景基础上的场景状态。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增回收站门口、回收站老板、黑轿车、手电筒、大铁锤均未在asset_bible中出现，且没有改写已有角色脸型、服装或核心道具设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词仅使用final.txt中出现的废车回收站、破重卡、黑轿车、手电筒、大铁锤和老板，不新增品牌、车牌、可读文字或额外剧情。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage均来自ep16 final.txt的组号和秒段，如第4组0-3秒手机证据、第5组3-5秒手铐、第1组0-2秒破重卡冒烟。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中文和英文提示词在回收站夜景、报废冒烟重卡、手机证据展示等事实上保持一致，负面词也对应限制品牌、车牌、字幕和非写实风格。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准章节和列名完整，表格单元格未使用原始竖线字符，枚举字段使用允许值。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

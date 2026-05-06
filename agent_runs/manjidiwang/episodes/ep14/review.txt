@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "EP14全片9组已对照原剧本完成真实审核，董事会新债表决与书房破解调查均保留关键台词、动作和道具，无硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "2-10秒连续短句交锋承载苏长明、田立民四句约42字对白并同步端茶、递文件，8秒内完成，未拖慢短句。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "保留苏长明心声黑锅、会后启动红星工厂拆迁、朱天和心声老狐狸上钩三项剧本信息，未改变人物算计关系。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "evidence": "搜索结果、关联企业和股权网络图均作为电脑屏幕画面出现在朱家别墅书房内，没有现实空间跨切。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "保留鼎丰资本持有临江集团12%暗股、三层离岸公司代持、朱文浩判断苏长明背后还有人和也是棋子。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_pacing",
+      "evidence": "3-5秒和7-9秒分别承载朱文浩两句短台词，并配合握钥匙、低握手枪动作，短句未被拉成过长镜头。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾文件落在会议桌中央且朱天和压住桌沿，第2组组首明确新债文件已在朱天和面前，拍桌反对动作连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "田立民、苏长明、朱天和和高管们均在组首空间锁定中有位置、朝向和道具关系，举手、敲锤、签字均可生成。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "数据损坏、冰山一角通过代码、残缺数据块、心声和模糊转账截图表现，抽象信息转化为可见屏幕与可听心声。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "收款方、红星机械厂账户和LC附言都在同一书房电脑屏幕上呈现，朱文浩始终坐在书桌前操作。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留朱文浩起身、从抽屉取钥匙和车钥匙、说去实地走一趟、拔枪并说带防身东西，未新增离开书房后的剧情。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

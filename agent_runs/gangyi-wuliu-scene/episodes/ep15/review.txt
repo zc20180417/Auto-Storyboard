@@ -1,0 +1,70 @@
+{
+  "pass": true,
+  "summary": "ep15整集分镜完成真实审核，原剧本关键台词、动作、空间锁定、时间格式和组间衔接均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "第1组标题标注总时长14秒、镜头数6个，时间段为0-2、2-5、5-8、8-10、10-12、12-14，结束秒数与标题一致，且包含人物、场景、道具、组首空间锁定、组尾衔接、画面风格和负面提示词。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组完整覆盖倒沙、盖油箱盖、车灯亮起、赵大强说“坏了！他来了！快躲车底！”以及两人钻进底盘，未删改关键道具和动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "evidence": "第5组保安甲对林刚说“林……林老板，我听到消息了！”和“王强和你们村那个赵大强，今晚要来这里往你新车上倒工业沙！”，林刚对保安甲说“说。”，所有真人台词均明确对象。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "evidence": "第7组只使用物流停泊场旧重卡旁作为主要物理空间，老张以电话对象出现，旧重卡、手机、车门均在组首或行动前获得可生成位置。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "第3组组首列明林刚在皮卡驾驶位门边，赵大强和王强在底盘阴影内；林刚走向重卡、王强捂嘴低声说话、两人观察车轮均有可用位置。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组结尾重卡缓缓开动，赵大强和王强趴在底盘旁抬头看车；第4组开头重卡驶向大门，两人仍在底盘旁，之后再爬起说台词，位置变化有动作承接。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "第5组组首只有林刚在轮胎边，保安甲在2-5秒从画面右后方通道跑入后才开口报信，符合行动前入场要求。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "林刚反制计划通过拿出手机、拨通电话、看向旧重卡、拍车门和画外音呈现，避免用不可见心理结论直接替代画面。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

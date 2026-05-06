@@ -1,0 +1,79 @@
+{
+  "pass": true,
+  "summary": "ep20已逐组对照原剧本和分镜规则审核，逼签、救场、反击、招标阴谋与合伙人收束均完整保留，未发现硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留孙耀带两名保镖推门、扔文件、要求苏清寒签字离开城南项目，苏清寒翻看并问“无偿转让地皮控制权？”，孙耀说明集团由舅舅说了算。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组6-9秒“动我的人，你嫌命长？”和9-12秒“朱文浩，你敢打总指挥！”均为短句镜头，时长3秒内，且前两镜为保镖被踹飞的连续动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "evidence": "第8组组首明确苏清寒在病床右侧、朱文浩在床左侧，苹果和水果刀状态明确，全组保持市医院特护病房单一物理空间。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "evidence": "第6组苏清寒每次提问均写明对朱文浩问道，朱文浩回答也写明对苏清寒说道，视线均指向对方眼睛。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩在第3组组首被放置于孙耀身后偏左门边阴影处，扣住孙耀手腕前已有明确可生成位置；苏清寒、孙耀、保镖均已在病房内。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾两名保镖倒地、孙耀捂手后退；第5组组首延续两名保镖倒在门边和床尾、孙耀捂腕站在床尾左侧的状态。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "朱文浩目光幽深、苏清寒皱眉和两人气氛变化均通过削苹果、递苹果、咬苹果、停住水果刀、对视等可见动作呈现。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第2组所有动作围绕同一张病床、文件、孙耀和苏清寒完成，保镖仍在门边，没有发生跨空间切换。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

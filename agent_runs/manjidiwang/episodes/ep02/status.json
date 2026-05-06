@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "EP-02-ep02-agent-cli-storyboard.txt",
+  "summary": "EP02完成10组分镜，覆盖书房查账、门口对峙、客厅父子交锋三场戏，忠于原剧本，时长合规，审核通过。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第6组10-13秒高明11字台词/3秒≈3.7字/秒，系5.2字/秒向上取整自然结果，节奏略偏慢。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

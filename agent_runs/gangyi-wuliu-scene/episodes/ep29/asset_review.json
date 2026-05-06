@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep29 资产表覆盖了退伍兵黑背心队列、刀疤弹簧刀、混混弃械、吊机钥匙串和控制区配电室线索，未发现阻断生产的 hard issue。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "对照 asset_bible.md，林刚、王强、退伍兵司机群像、国际码头、重卡和码头车队构图均复用已有资产，黑背心变化另列为状态而未改写基础人物。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "黑背心队列、武器落地、弹簧刀落地、钥匙串掉落和吊机控制区白天状态均是可见连续性变化，已按状态建模；手抖、瘫坐、逃跑等短暂表演未拆为状态。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "退伍兵甲个人脸、小石子、鞋底震动、王强弯腰动作和配电室具体门牌文字均被排除，避免无生产价值元素入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_POLICE_BASE、CHAR_WANGQIANG_BASE、SCENE_PORT_BASE、VEHICLE_HEAVY_TRUCK_BASE 和 COMPOSITION_PORT_CONVOY_V1 已按 asset_bible 复用，needs_generation 均为 no。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "STATE_GANGYI_DRIVERS_BLACK_VEST_V1 是司机群像服装变化，STATE_PROP_CRANE_KEYS_DROPPED_V1 和 STATE_PROP_SPRING_KNIFE_DROPPED_V1 是道具状态变化，未误建为基础人物或基础场景。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产仅补充 bible 未覆盖的刀疤、码头主管、混混群像、铁钩砍刀、弹簧刀、吊机钥匙串和吊机控制区，没有覆盖已有角色、港口场景或重卡设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词只使用 final.txt 中明确出现的黑背心、铁钩、砍刀、弹簧刀、钥匙串、吊机控制区、配电室门牌等事实，并限制品牌、可读标签、字幕和血腥内容。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 均来自 ep29 final.txt，林刚覆盖第1组到第7组，王强从第5组开始，吊机控制区状态只覆盖第5组到第7组，没有强行归并未出现时间段。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "黑背心队列、掉落武器、弹簧刀、钥匙串和控制区空镜的中英文提示词在主体、材质、光线、场景和负面限制上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "empty_scene_contamination",
+      "result": "pass",
+      "evidence": "STATE_SCENE_PORT_CONTROL_DAY_V1 和 SCENE_PORT_CRANE_CONTROL_BASE 均明确为空镜、无人、无人脸，未把林刚、王强或主管写入场景资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表完整，字段顺序与资产抽取 skill 一致，枚举字段合法，提示词单元格内未使用原始竖线。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

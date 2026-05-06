@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep21资产表覆盖了装货区防震固定、空气悬挂货车、钢板悬挂重卡、驾驶室、烂泥路和胎压减震状态，未发现硬问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、陈天霸、司机群像、医药冷链箱和既有重卡均通过已有或前序候选状态引用，未重建基础人物。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "药箱海绵绑带固定、重卡钢板悬挂、空气悬挂货车、驾驶室颠簸和轮胎放气均按状态处理，烂泥路作为新场景基础加状态。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "嘲讽笑意、装货动作、警报灯闪烁节奏、无线电杂音和泥水瞬间飞溅被排除，避免过度资产化。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_CHENTIANBA_BASE、STATE_GANGYI_DRIVERS_V1、PROP_MEDICAL_COLD_BOX_BASE和VEHICLE_HEAVY_TRUCK_BASE均优先复用。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "钢板悬挂、空气悬挂、药箱固定、轮胎放气和驾驶室颠簸都属于状态变化，未误建成新人物或无关基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增基础资产只补充空气悬挂货车、防震材料、胎压控制阀、重卡驾驶室和烂泥路，不覆盖asset_bible已有医药仓库、重卡或人物设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词仅使用final.txt出现的装货区、疫苗药箱、海绵垫、绑带、空气悬挂、烂泥路、对讲通讯器和胎压控制阀，并规避可读文字和品牌。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage均来自ep21 final.txt的组号和秒段，没有把烂泥路、驾驶室或装货区资产扩展到未出现段落。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词对车辆结构、道路状态、药箱固定、驾驶室道具和负面约束保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表齐全，字段完整，枚举合法，Markdown单元格没有原始竖线字符，适合转换Excel。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

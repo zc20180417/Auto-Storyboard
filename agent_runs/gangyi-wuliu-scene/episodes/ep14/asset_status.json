@@ -1,0 +1,16 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "SCENE_BANK_ENTRANCE_BASE",
+    "STATE_SCENE_BANK_ENTRANCE_DAY_EP14",
+    "CHAR_VILLAGER_DEBTORS_BASE",
+    "PROP_BLACK_CASH_SUITCASES_BASE",
+    "CHAR_BANK_SECURITY_BASE",
+    "STATE_PROP_LEDGER_TORN_EP14"
+  ]
+}

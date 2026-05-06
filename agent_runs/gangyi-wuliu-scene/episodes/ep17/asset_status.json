@@ -1,0 +1,19 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "SCENE_TRUCK_DEALER_HALL_BASE",
+    "STATE_SCENE_TRUCK_DEALER_HALL_DAY_V1",
+    "CHAR_TRUCK_DEALER_MANAGER_BASE",
+    "CHAR_SUNBIAO_THUGS_BASE",
+    "PROP_BLACK_CASE_CASH_BASE",
+    "STATE_PROP_BLACK_CASE_CASH_OPEN_V1",
+    "PROP_CIGAR_BASE",
+    "PROP_BASEBALL_BAT_BASE",
+    "STATE_LINGANG_JACKET_OFF_FIGHT_READY_V1"
+  ]
+}

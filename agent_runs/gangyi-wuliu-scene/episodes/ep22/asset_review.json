@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep22资产表覆盖泥路追车、林刚与陈天霸、重卡轮胎和气囊破损等关键资产，未发现阻断生产的硬问题。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "CHAR_LINGANG_BASE、CHAR_CHENTIANBA_BASE、VEHICLE_HEAVY_TRUCK_BASE、SCENE_MOUNTAIN_ROAD_BASE均沿用asset_bible，只对泥路和车辆损坏新增状态。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "放气轮胎、气囊减震破裂和阴天烂泥路均建模为已有重卡或山路的状态，没有重复写成新基础资产。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "方向盘、中控台、后视镜、泥水飞溅和短暂怒吼表情被明确排除，避免把驾驶室普通陈设和表演动作入库。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "林刚、陈天霸、重卡、山路和底盘构图均引用已有bible资产，needs_generation设置合理。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "车辆轮胎放气、气囊减震破裂、烂泥路况都是状态变化，均未作为新基础车辆或新基础场景重复入库。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "duplicate_base_asset",
+      "result": "pass",
+      "evidence": "仅新增陈家司机这一未在asset_bible出现的匿名司机角色，且reuse_policy为one_episode，未重复已有主角或车辆。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增泥路、放气轮胎和气囊破裂状态均建立在SCENE_MOUNTAIN_ROAD_BASE与VEHICLE_HEAVY_TRUCK_BASE之上，没有改写bible中的人物脸型、服装主色或基础车辆设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词只包含final.txt和asset_bible中出现的重卡、泥坑、尖石、放气轮胎、红色警报灯等视觉事实，未新增品牌、车牌或额外剧情。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage均来自ep22 final.txt的组号和秒段，没有把未出现资产跨段归并。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "新增状态的中英文提示词在主体、路况、车辆状态、负面限制上保持一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表均存在，表头匹配转换脚本，单元格未使用原始竖线字符。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

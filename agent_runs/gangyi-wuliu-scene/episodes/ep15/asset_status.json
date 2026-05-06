@@ -1,0 +1,13 @@
+{
+  "status": "done",
+  "reviewer_source": "asset-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0,
+  "hard_issues_remaining": [],
+  "bible_update_candidates": [
+    "CHAR_SECURITY_INFORMANT_BASE",
+    "COSTUME_SECURITY_UNIFORM_V1",
+    "STATE_VEHICLE_OLD_TRUCK_DECOY_EP15"
+  ]
+}

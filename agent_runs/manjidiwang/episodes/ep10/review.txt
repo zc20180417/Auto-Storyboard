@@ -1,0 +1,75 @@
+{
+  "pass": true,
+  "summary": "EP10整集6组分镜忠于原剧本，对话指向明确，时长计算准确，空间锁定完整，组间衔接合理，无硬性错误。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "修订后第1组总时长10秒，推文件动作独立为3秒无台词镜头，刘海平12字台词置于2秒镜头中字秒比6.0；邱瑞12字2秒镜头字秒比6.0；朱天和14字3秒镜头字秒比4.7，均满足最低阈值。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "组首空间锁定明确列出走廊内刘海平与苏长明位置与朝向，单组仅涉及走廊一个物理空间；与前组会审室为明确场景切换，符合空间规则。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "原剧本天台段落中'郑建国在老家有个私生子'、'你怀疑核心黑账本在他那'、'曾寄过一个加急件'、'苏长明的人估计已经动身了'均完整保留，未删减台词或新增剧情动作。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首空间锁定已明确列出刘海平、朱天和、田立民、邱瑞四人的画面位置与身体朝向，所有说话人物均在组首拥有可生成位置。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组组尾为苏长明侧身站立斜睨刘海平；第4组组首两人仍在同一走廊，刘海平面向镜头、苏长明侧对镜头脸朝画左，位置与状态自然衔接。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第6组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "'凝重'已转译为眉头微蹙与视线凝重；'坚定'转译为眼神坚定；'冷笑'转译为冷笑一声与视线迎上。情绪均通过可见表情、动作和台词呈现。",
+      "fix_instruction": "无需修复"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "画外音时长",
+      "problem": "苏长明画外音15字按6.0字/秒取整3秒，与转身离去动作共置于3秒镜头中，音频与动作时长匹配偏紧。",
+      "evidence": "5-8秒：中景，苏长明转身大步离去，背影挺直，侧脸眼神阴毒。苏长明画外音（对自己）响起：'朱家借题发挥，我的底盘必须加固。'",
+      "fix": "可将画外音适当前置或后置0.5秒，以留出更自然的转身动作空间。"
+    },
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "无台词镜头",
+      "problem": "组首环境交代镜头2秒虽在允许范围内，但递卷宗动作可与首句台词进一步压缩衔接，以更快进入信息密度。",
+      "evidence": "0-2秒：中景，集团天台，风卷苏清寒风衣下摆。苏清寒将一份卷宗递给朱文浩，朱文浩伸手接过。",
+      "fix": "保持现状即可，当前2秒不阻断产出。"
+    }
+  ]
+}

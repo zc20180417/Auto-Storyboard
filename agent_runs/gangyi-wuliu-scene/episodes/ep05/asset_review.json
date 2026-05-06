@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep05 资产表覆盖冷机故障证据链、雨夜别墅门口冲突和村头招揽场景，新增基础资产与全局 bible 未冲突。",
+  "checked_tables": [
+    "本集复用资产索引",
+    "本集新增资产状态",
+    "本集新增基础资产",
+    "本集关键道具与场景状态",
+    "本集不建议入库元素"
+  ],
+  "audit_coverage": {
+    "asset_coverage": "checked",
+    "asset_selection": "checked",
+    "bible_consistency": "checked",
+    "registry_structure": "checked",
+    "duplicate_control": "checked",
+    "state_modeling": "checked",
+    "category_boundary": "checked",
+    "prompt_fidelity": "checked",
+    "bilingual_consistency": "checked",
+    "time_range_accuracy": "checked",
+    "xlsx_readiness": "checked"
+  },
+  "spot_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "evidence": "林刚、赵大强、村头道路、手机和重卡均优先复用 asset_bible.md 中已有基础资产或状态；冷机故障与晴天村头空地只作为新增状态补充。"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "evidence": "雨夜别墅门口、冷机故障货车、帝王蟹泡沫箱沾污水、晴天村头空地均按场景或道具状态建模，没有把光线、污水或冷机异常误写成新基础资产。"
+    },
+    {
+      "table": "本集不建议入库元素",
+      "type": "over_extraction",
+      "evidence": "捏鼻子、皱眉、冷笑、推搡、拨号界面、钱袋布包、拍胸口等短暂表演和低价值小物均被排除，资产表没有变成物品清单。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "table": "本集复用资产索引",
+      "type": "unnecessary_regeneration",
+      "result": "pass",
+      "evidence": "已有 CHAR_LINGANG_BASE、CHAR_ZHAODAQIANG_BASE、SCENE_VILLAGE_ROAD_BASE、PROP_CRACKED_PHONE_BASE、VEHICLE_HEAVY_TRUCK_BASE 被复用；只对新状态写 conditional 或 yes。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "state_should_be_variant",
+      "result": "pass",
+      "evidence": "冷机未开、泡沫箱污水、别墅雨夜光线和村头晴天光线均作为状态，不重复创建重卡或村口道路基础资产。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bible_conflict",
+      "result": "pass",
+      "evidence": "新增刘福管家、别墅保安、豪华别墅门口、帝王蟹泡沫箱、工业测温枪、金色名片、旧拖拉机和大喇叭均不在当前 asset_bible.md 中，未改写既有角色或场景设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增资产状态",
+      "type": "prompt_hallucination",
+      "result": "pass",
+      "evidence": "提示词仅使用 final.txt 中的货车冷机、帝王蟹泡沫箱、测温枪、手机免提、金色名片、拖拉机和大喇叭事实，并明确禁止可读品牌、车牌、二维码和字幕。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集复用资产索引",
+      "type": "time_range_error",
+      "result": "pass",
+      "evidence": "episode_usage 对应 ep05 final.txt 第1组至第5组，未把别墅门口资产延伸到第5组，也未把村头资产混入前四组。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "bilingual_mismatch",
+      "result": "pass",
+      "evidence": "中英文提示词对刘福、保安、别墅门口、测温枪、金名片、拖拉机和大喇叭的事实一致，英文没有新增中文没有的外观设定。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集新增基础资产",
+      "type": "xlsx_readiness",
+      "result": "pass",
+      "evidence": "五个标准表齐全，列名符合 episode schema，单元格中未使用额外竖线，长提示词保持单行，适合 Excel 转换。",
+      "fix_instruction": "无"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}
