@@ -23,7 +23,8 @@ dispatcher 必须创建 subagents/workers 并发分发，每个 worker 默认处
 2. `README_AGENT_WORKFLOW.md`
 3. `agent_skills/storyboard-generator/SKILL.md`
 4. `agent_skills/storyboard-reviewer/SKILL.md`
-5. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`
+5. `agent_skills/seedance-prompt-profile/SKILL.md`（Seedance 官方模板风格摘要，只做参考层，不得复制模板正文）
+6. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`
 
 ## 两种生产模式
 
@@ -200,6 +201,7 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 - 最新已验证 `scene` 工作区：`agent_runs/youyuanzhai6-scene`
 - 最新已验证 `single` 工作区：`agent_runs/youyuanzhai-single`
 - 当前主生成规则：`agent_skills/storyboard-generator/SKILL.md`
+- Seedance 风格参考层：`agent_skills/seedance-prompt-profile/SKILL.md`，只用于选择性参考官方模板结构，不得替代主生成规则。
 - 不再默认使用 `6688竖屏古装分镜prompt.txt` 覆盖生成 skill；只有用户明确要求临时替换生成规则时，才可使用 prompt override。
 
 旧 GUI/API 文件已归档到 `legacy/`。除非用户明确要求恢复旧流程，否则不要使用归档文件。

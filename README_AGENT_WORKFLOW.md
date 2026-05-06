@@ -16,6 +16,7 @@
 - `split_scripts/`：拆好的一集一集剧本文本。
 - `agent_skills/storyboard-generator/SKILL.md`：生成 skill。
 - `agent_skills/storyboard-reviewer/SKILL.md`：审核 skill。
+- `agent_skills/seedance-prompt-profile/SKILL.md`：Seedance 2.0 官方模板风格摘要，只作为生成前参考层，不复制模板正文。
 - `agent_skills/asset-extractor/SKILL.md`：分镜完成后的生图资产表抽取 skill。
 - `agent_runs/`：每次 agent 运行的工作区。
 - `outputs_agent_*`：收集后的最终分镜输出目录。

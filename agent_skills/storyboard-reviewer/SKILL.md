@@ -70,6 +70,7 @@ description: Review vertical storyboard drafts against the source script, natura
 - 景别重复不要机械判错；A/B 正反打同景别不判错。同一角色相邻镜头连续作为主要主体且没有景别、构图或机位差异时，按景别切换问题处理。
 - 最终稿出现自检注释、解释说明、规则复述或非分镜正文，属于格式问题。
 - 最终分镜正文中出现“Seedance 可”“由 Seedance”“Seedance 自动”“Seedance自动”“自动正反打”“自动分镜”等模型说明词，属于格式/提示词污染 hard issue；应改成自然画面描述。
+- 最终分镜正文中出现模板编号、官方模板标题、“参考官方模板”、`@图片/@视频/@音频` 占位符、广告 slogan、角标、小字、产品卖点字幕、MV 卡点说明、萌宠/变装模板语气，属于 prompt_pollution issue；如果这些内容导致原剧本台词、动作或剧情节拍被改写，应判 hard issue。
 - 对同类重复问题要合并，不要把整集几十个近似问题逐条展开；优先返回最能代表问题的 5 条。
 
 语义审稿必查项：
@@ -104,7 +105,7 @@ reviewer 必须逐组检查以下语义问题，并在 spot_checks、semantic_ch
 
 最终稿必须是自然画面描述。内部工作流词、模型说明词、规则说明词不得进入正文。
 
-如果出现“Seedance 可”“由模型自动”“自动正反打”“自动分镜”“模型会处理”“本段用于”“规则要求”等说明，应判 prompt_pollution 或 format issue。
+如果出现“Seedance 可”“由模型自动”“自动正反打”“自动分镜”“模型会处理”“本段用于”“规则要求”“参考官方模板”“模板 7 / 模板 8”等说明，或出现 `@图片/@视频/@音频` 占位符、广告 slogan、角标、小字、产品卖点字幕、MV 卡点说明、萌宠/变装模板语气，应判 prompt_pollution 或 format issue。
 
 ### 5. 单组物理空间检查
 
@@ -115,7 +116,7 @@ reviewer 必须逐组检查以下语义问题，并在 spot_checks、semantic_ch
 - character_availability：本组关键人物没有在组首或行动前获得可生成位置/来源。
 - handoff_continuity：相邻同空间组的组尾与下一组组首不兼容。
 - filmability：不可视信息未转译成可见/可听信息。
-- prompt_pollution：模型说明词、内部工作流词或规则说明词进入最终正文。
+- prompt_pollution：模型说明词、内部工作流词、规则说明词、官方模板编号/说明、`@图片/@视频/@音频` 占位符、广告字幕或非短剧模板语气进入最终正文。
 - space_locking：单组物理空间混乱、跨场景硬切、组首空间锁定不足。
 - generation_density：同一Seedance片段强节拍过载，台词/画外音、外部事件、中等/长动作、道具操作或情绪大转折被压进同一组，导致动作仓促或口型错配风险。
 - dialogue_pacing：台词节奏过慢、过快、短句凑时长或长台词未拆。
