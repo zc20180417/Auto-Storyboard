@@ -40,6 +40,7 @@ from batch_generate_storyboards import (
 DEFAULT_AGENT_RUNS_DIR = "agent_runs"
 DEFAULT_AGENT_OUTPUT_DIR = "outputs_agent"
 PROJECT_AGENT_SKILLS_DIR = "agent_skills"
+SEEDANCE_PROMPT_PROFILE_PATH = "agent_skills/seedance-prompt-profile/SKILL.md"
 AGENT_WORKSPACE_VERSION = 1
 
 
@@ -198,6 +199,7 @@ def make_agent_context(
     episodes_count: int,
     generator_skill_path: Path,
     reviewer_skill_path: Path,
+    seedance_profile_path: Path,
     mode: str,
 ) -> str:
     return textwrap.dedent(
@@ -213,11 +215,13 @@ def make_agent_context(
         - Generation mode: `{mode}`
         - Generation Skill: `{generator_skill_path}`
         - Review Skill: `{reviewer_skill_path}`
+        - Seedance Prompt Profile: `{seedance_profile_path}`
 
         ## Core Rules
         - dispatcher 不生成、不审核、不修稿；dispatcher 只创建 subagents/workers 并分发 episode prompt。
         - episode worker 是竖屏短剧分镜生产 agent，只处理自己被分配的单个 episode。
-        - 生成和审核规则全部以两个标准 `SKILL.md` 为准，不要在任务文件里重新解释规则。
+        - 生成和审核规则全部以两个标准 `SKILL.md` 为准；Seedance Prompt Profile 只作为短剧风格参考层，不要在任务文件里重新解释规则。
+        - profile 不得替代主生成规则，不得把模板编号、官方模板说明、`@图片/@视频/@音频` 占位符、广告/产品/视频延长/轨道补全/一镜到底等非短剧模板语气写入 `final.txt`。
         - episode worker 可以生成和初审，但 `review.txt` 必须按 `storyboard-reviewer/SKILL.md` 逐项审稿，不能写空泛通过。
         - 若用户要求强审核模式，reviewer-only worker 必须独立复审 `final.txt`。
         - `single` 模式：整集一次生成，再整集审核一次。
@@ -240,6 +244,7 @@ def make_episode_task(
     output_name: str,
     generator_skill_path: Path,
     reviewer_skill_path: Path,
+    seedance_profile_path: Path,
     mode: str,
 ) -> str:
     rel_root = episode_dir.relative_to(run_dir)
@@ -259,7 +264,7 @@ def make_episode_task(
         ).strip()
         workflow = textwrap.dedent(
             """
-            1. Read `../../context.md`, both standard `SKILL.md` files, `script.txt`, and each segment script.
+            1. Read `../../context.md`, both standard `SKILL.md` files, the Seedance prompt profile, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
             3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, but the group total must be an integer 10-15 seconds.
             4. Review the assembled `final.txt` once using `storyboard-reviewer`; write the raw reviewer JSON to `review.txt`.
@@ -281,7 +286,7 @@ def make_episode_task(
         ).strip()
         workflow = textwrap.dedent(
             """
-            1. Read `../../context.md`, both standard `SKILL.md` files, and `script.txt`.
+            1. Read `../../context.md`, both standard `SKILL.md` files, the Seedance prompt profile, and `script.txt`.
             2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, but the group total must be an integer 10-15 seconds.
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
@@ -298,6 +303,7 @@ Mode: `{mode}`
 - Run context: `../../context.md`
 - Generation skill: `{generator_skill_path}`
 - Review skill: `{reviewer_skill_path}`
+- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`
 - Full episode script: `script.txt`
 {inputs}
 
@@ -342,7 +348,7 @@ Reviewer JSON must include at least 3 `semantic_checks` items with `group`, `typ
 - Do not put asset IDs in `final.txt`; asset binding belongs to the asset extraction stage.
 
 ## Important Constraints
-- Rules live in the two `SKILL.md` files. Do not duplicate or reinterpret them here.
+- Rules live in the two standard `SKILL.md` files; Seedance Prompt Profile is only a reference layer. Do not duplicate or reinterpret them here.
 - Work only inside `{rel_root}`. Treat project-level skill files and `../../context.md` as read-only.
 - Do not call external LLM APIs or launch other CLIs.
 """.strip()
@@ -1491,6 +1497,10 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         prompt_path=prompt_path,
         review_skill_path=args.review_skill,
     )
+    seedance_profile_path = (project_root / SEEDANCE_PROMPT_PROFILE_PATH).resolve()
+    if not seedance_profile_path.is_file():
+        print(f"[error] Seedance prompt profile not found: {seedance_profile_path}", file=sys.stderr)
+        return 1
 
     write_utf8(run_dir / "context.md", make_agent_context(
         project_root=project_root,
@@ -1500,6 +1510,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         episodes_count=len(episodes),
         generator_skill_path=generator_skill_path,
         reviewer_skill_path=reviewer_skill_path,
+        seedance_profile_path=seedance_profile_path,
         mode=args.mode,
     ))
     manifest: dict = {
@@ -1513,6 +1524,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         "reviewer_rules_source": str(reviewer_rules_source),
         "generator_skill_path": str(generator_skill_path),
         "reviewer_skill_path": str(reviewer_skill_path),
+        "seedance_profile_path": str(seedance_profile_path),
         "out_dir": str(out_dir),
         "agent": args.agent,
         "mode": args.mode,
@@ -1563,6 +1575,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             output_name=output_path.name,
             generator_skill_path=generator_skill_path,
             reviewer_skill_path=reviewer_skill_path,
+            seedance_profile_path=seedance_profile_path,
             mode=args.mode,
         )
         write_utf8(episode_dir / "TASK.md", task_text)

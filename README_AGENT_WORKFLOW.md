@@ -170,7 +170,7 @@ if ($failed.Count -gt 0) { throw "Validation failed: $($failed -join ', ')" }
 
 ### 7. 可选：生成生图资产表
 
-当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，读取 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，从单集 `final.txt` 生成 `assets.md`、`assets.xlsx`、`asset_review.json` 和 `asset_status.json`。
+当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，读取 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，从单集 `final.txt` 和 `storyboard_index.json` 生成 `assets.md`、`assets.xlsx`、`asset_bindings.json`、`asset_review.json` 和 `asset_status.json`。
 
 多集项目不要让每集各自临场编人物设定。必须先创建 run 级别全局资产设定：
 
@@ -188,21 +188,23 @@ agent_runs\<run-name>\asset_bible.md
 
 分集资产 worker 必须读取 `asset_bible.md` 后再生成每集 `assets.md`。分集默认不重复输出 `asset_bible.md` 已有基础资产的完整提示词；如果发现本集新增基础资产或新增状态，只在 `assets.md`、`asset_status.json` 的 `bible_update_candidates` 或交付说明中标记，不要多个 worker 并发改写全局设定。
 
-资产表固定包含五部分：
+资产表固定包含六部分：
 
 - 本集复用资产索引
 - 本集新增资产状态
 - 本集新增基础资产
 - 本集关键道具与场景状态
 - 本集不建议入库元素
+- 本集分镜资产绑定索引
 
-资产表继续输出 Markdown + Excel，不输出 HTML。新增基础资产和新增状态必须有稳定 `asset_id` 或 `state_id`。需要生成新图的条目，提示词列拆成 `静态生图提示词(中文)`、`负面提示词(中文)`、`静态生图提示词(英文)`、`负面提示词(英文)`，用于同时交付中文生产和英文生图模型。
+资产表继续输出 Markdown + Excel，不输出 HTML。episode 模式转换 `assets.xlsx` 时必须同步导出 `asset_bindings.json`，让 Web 工程按 `cut_id -> asset_id/state_id` 自动绑定参考图。新增基础资产和新增状态必须有稳定 `asset_id` 或 `state_id`。需要生成新图的条目，提示词列拆成 `静态生图提示词(中文)`、`负面提示词(中文)`、`静态生图提示词(英文)`、`负面提示词(英文)`，用于同时交付中文生产和英文生图模型。
 
 要求：
 
 - 基础人物资产只记录身份、脸、体态、发型、气质；服装细节由服装资产或人物状态引用，不要每集重写完整人物定妆。
 - 场景基础资产和场景状态必须明确“空镜、无人、无人脸”，不得包含人物；场景状态用于记录白天、夜雨、断电、爆炸后、整洁后、破损后等变化。
 - 道具基础资产和道具状态只提取需要稳定生成的关键物件；普通桌椅、门窗、背景灯具、一次性纸张、短暂表情、普通手势写入“不建议入库元素”。
+- `cut_ids` 和第六表 `cut_id` 必须来自 `storyboard_index.json`，不得杜撰。
 - 适用时间段必须来自分镜。
 - 不得杜撰分镜中不存在的地点、角色、道具。
 - `assets.md` 方便审稿和版本管理；`assets.xlsx` 方便筛选、复制单元格和生产使用；`asset_review.json` 和 `asset_status.json` 是收集门禁。
@@ -211,7 +213,7 @@ agent_runs\<run-name>\asset_bible.md
 
 - `asset_review.json` 必须来自 `asset-reviewer` 对照 `final.txt`、`assets.md`、`asset_bible.md` 和两份资产 skill 的真实审核。
 - 如果 reviewer 返回 hard issues，必须局部修复后复审，不能只跑 Excel 转换。
-- 转换 Excel 后必须运行 `node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir>` 做机械门禁校验。
+- 转换 Excel 后必须运行 `node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir> --storyboard-index <episode-dir>\storyboard_index.json` 做机械门禁校验。
 - 只有 `asset_status.json` 中 `status=done`、`reviewer_source=asset-reviewer`、`reviewer_pass=true`、`reviewer_issues_count=0` 的 episode 可以进入正式资产收集。
 
 资产阶段调度建议：
@@ -226,10 +228,10 @@ agent_runs\<run-name>\asset_bible.md
 
 - 忠于原剧本：不删关键台词，不乱改人物关系，不额外添加剧情。
 - 对话指向：真人对话必须写清“谁对谁说”。
-- 台词速度：有效字数 / 秒 > 7 才是硬问题；6-7 是 warning，不阻断。
+- 台词速度：普通对白目标约 4.5 字/秒，情绪对白目标约 5.2 字/秒；有效字数 / 秒 > 6.5 是 hard issue，5.8-6.5 是 warning。
 - 镜头过长也要审：不能靠新增停顿、长凝视、慢动作凑时长。
 - 无台词镜头通常 2-3 秒，不能用 4-5 秒凑组时长。
-- 组总时长 10-15 秒，标题总时长要等于镜头时长相加。
+- 组内时间段允许 0.5 秒粒度；组总时长必须是整数 10-15 秒，标题总时长要等于镜头时长相加。
 - 景别重复不要机械判错，正反打同景别可接受。
 - 最终稿禁止 JSON、调试标记或其他非分镜正文内容，必须是自然分镜文本。
 
