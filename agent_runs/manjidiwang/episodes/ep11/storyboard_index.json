@@ -5,7 +5,7 @@
     {
       "cut_id": "EP11-G01",
       "group_index": 1,
-      "title": "车内警报（，总时长：10秒，镜头数：5个）",
+      "title": "车内警报",
       "scene": "黑色越野车内部",
       "characters": [
         "苏清寒",
@@ -23,7 +23,7 @@
     {
       "cut_id": "EP11-G02",
       "group_index": 2,
-      "title": "致命追击（，总时长：10秒，镜头数：4个）",
+      "title": "致命追击",
       "scene": "盘山公路暴雨夜（车外）",
       "characters": [
         "黑皮"
@@ -40,7 +40,7 @@
     {
       "cut_id": "EP11-G03",
       "group_index": 3,
-      "title": "失控甩尾（，总时长：10秒，镜头数：4个）",
+      "title": "失控甩尾",
       "scene": "黑色越野车内部",
       "characters": [
         "苏清寒",
@@ -58,7 +58,7 @@
     {
       "cut_id": "EP11-G04",
       "group_index": 4,
-      "title": "悬崖绝境（，总时长：14秒，镜头数：6个）",
+      "title": "悬崖绝境",
       "scene": "黑色越野车内部（悬崖边）",
       "characters": [
         "苏清寒",
@@ -77,7 +77,7 @@
     {
       "cut_id": "EP11-G05",
       "group_index": 5,
-      "title": "致命撞击（，总时长：10秒，镜头数：4个）",
+      "title": "致命撞击",
       "scene": "盘山公路悬崖边（车外）",
       "characters": [
         "黑皮（隐于车内）"
@@ -93,7 +93,7 @@
     {
       "cut_id": "EP11-G06",
       "group_index": 6,
-      "title": "坠落与遗言（，总时长：10秒，镜头数：4个）",
+      "title": "坠落与遗言",
       "scene": "黑色越野车内部（坠落中）",
       "characters": [
         "苏清寒"
@@ -109,7 +109,7 @@
     {
       "cut_id": "EP11-G07",
       "group_index": 7,
-      "title": "崖底救援（，总时长：12秒，镜头数：5个）",
+      "title": "崖底救援",
       "scene": "山崖底部（暴雨夜）",
       "characters": [
         "朱文浩",
@@ -129,7 +129,7 @@
     {
       "cut_id": "EP11-G08",
       "group_index": 8,
-      "title": "底牌与誓言（，总时长：14秒，镜头数：5个）",
+      "title": "底牌与誓言",
       "scene": "山崖底部（暴雨夜）",
       "characters": [
         "朱文浩",
@@ -147,7 +147,7 @@
     {
       "cut_id": "EP11-G09",
       "group_index": 9,
-      "title": "梦呓与托付（，总时长：10秒，镜头数：4个）",
+      "title": "梦呓与托付",
       "scene": "山崖底部（暴雨夜）",
       "characters": [
         "朱文浩",
@@ -163,7 +163,7 @@
     {
       "cut_id": "EP11-G10",
       "group_index": 10,
-      "title": "修罗令（，总时长：11秒，镜头数：4个）",
+      "title": "修罗令",
       "scene": "山崖底部（暴雨夜）",
       "characters": [
         "朱文浩",

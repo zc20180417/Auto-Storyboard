@@ -5,7 +5,7 @@
     {
       "cut_id": "EP04-G01",
       "group_index": 1,
-      "title": "考场答题 （，总时长：12秒，镜头数：3个）",
+      "title": "考场答题",
       "scene": "集团特招考场（阶梯教室）",
       "characters": [
         "朱文浩",
@@ -24,7 +24,7 @@
     {
       "cut_id": "EP04-G02",
       "group_index": 2,
-      "title": "考官发难 （，总时长：10秒，镜头数：5个）",
+      "title": "考官发难",
       "scene": "集团特招考场（阶梯教室）",
       "characters": [
         "朱文浩",
@@ -44,7 +44,7 @@
     {
       "cut_id": "EP04-G03",
       "group_index": 3,
-      "title": "压分离场 （，总时长：11秒，镜头数：4个）",
+      "title": "压分离场",
       "scene": "集团特招考场（阶梯教室）",
       "characters": [
         "朱文浩",
@@ -63,7 +63,7 @@
     {
       "cut_id": "EP04-G04",
       "group_index": 4,
-      "title": "走廊嘲讽 （，总时长：11秒，镜头数：5个）",
+      "title": "走廊嘲讽",
       "scene": "考场外走廊",
       "characters": [
         "朱文浩",
@@ -80,7 +80,7 @@
     {
       "cut_id": "EP04-G05",
       "group_index": 5,
-      "title": "嚣张反讽与离去 （，总时长：11秒，镜头数：5个）",
+      "title": "嚣张反讽与离去",
       "scene": "考场外走廊",
       "characters": [
         "朱文浩",
@@ -95,7 +95,7 @@
     {
       "cut_id": "EP04-G06",
       "group_index": 6,
-      "title": "书房震怒 （，总时长：13秒，镜头数：5个）",
+      "title": "书房震怒",
       "scene": "朱家别墅书房",
       "characters": [
         "朱文浩",
@@ -114,7 +114,7 @@
     {
       "cut_id": "EP04-G07",
       "group_index": 7,
-      "title": "甜枣补偿 （，总时长：10秒，镜头数：4个）",
+      "title": "甜枣补偿",
       "scene": "朱家别墅书房",
       "characters": [
         "朱文浩",
@@ -132,7 +132,7 @@
     {
       "cut_id": "EP04-G08",
       "group_index": 8,
-      "title": "灯下黑 （，总时长：10秒，镜头数：4个）",
+      "title": "灯下黑",
       "scene": "朱家别墅书房",
       "characters": [
         "朱文浩",
@@ -150,7 +150,7 @@
     {
       "cut_id": "EP04-G09",
       "group_index": 9,
-      "title": "证据属实与门铃 （，总时长：10秒，镜头数：4个）",
+      "title": "证据属实与门铃",
       "scene": "苏清寒公寓",
       "characters": [
         "苏清寒",
@@ -170,7 +170,7 @@
     {
       "cut_id": "EP04-G10",
       "group_index": 10,
-      "title": "妹妹跪诉 （，总时长：12秒，镜头数：4个）",
+      "title": "妹妹跪诉",
       "scene": "苏清寒公寓门口",
       "characters": [
         "苏清寒",
@@ -187,7 +187,7 @@
     {
       "cut_id": "EP04-G11",
       "group_index": 11,
-      "title": "三条条件（上） （，总时长：10秒，镜头数：3个）",
+      "title": "三条条件（上）",
       "scene": "苏清寒公寓内",
       "characters": [
         "苏清寒",
@@ -204,7 +204,7 @@
     {
       "cut_id": "EP04-G12",
       "group_index": 12,
-      "title": "第三条与成交 （，总时长：12秒，镜头数：3个）",
+      "title": "第三条与成交",
       "scene": "苏清寒公寓内",
       "characters": [
         "苏清寒",
@@ -221,7 +221,7 @@
     {
       "cut_id": "EP04-G13",
       "group_index": 13,
-      "title": "窗外心声 （，总时长：11秒，镜头数：4个）",
+      "title": "窗外心声",
       "scene": "苏清寒公寓窗边",
       "characters": [
         "苏清寒"

@@ -159,6 +159,20 @@ JSON 结构如下：
       "result": "pass",
       "evidence": "具体说明 episode_usage 均来自 final.txt，未把资产未出现的时间段强行归并。",
       "fix_instruction": "无"
+    },
+    {
+      "table": "本集分镜资产绑定索引",
+      "type": "cut_id_not_found",
+      "result": "pass",
+      "evidence": "所有 binding.cut_id 均存在于 storyboard_index.json 的 cuts[]，且 episode_id 一致。",
+      "fix_instruction": "无"
+    },
+    {
+      "table": "本集分镜资产绑定索引",
+      "type": "unnecessary_video_reference",
+      "result": "pass",
+      "evidence": "use_for_video=yes 的绑定均指向角色、主场景或关键道具状态，没有把不建议入库元素标为视频参考图。",
+      "fix_instruction": "无"
     }
   ],
   "issues": [

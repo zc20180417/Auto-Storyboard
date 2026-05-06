@@ -1181,10 +1181,11 @@ def _extract_bold_meta(block: str, label: str) -> list[str] | str:
 
 def _extract_group_title(heading_rest: str) -> str:
     rest = re.sub(r"===\s*$", "", heading_rest).strip()
-    rest = CUT_ID_RE.sub("", rest)
-    rest = re.sub(r"[，,]?\s*\[cut_id\s*[:：]\s*[A-Z0-9_-]+\]\s*", "", rest)
     rest = re.sub(r"^[：:]\s*", "", rest).strip()
     rest = re.split(r"[（(]\s*(?:cut_id|总时长|镜头数)", rest, maxsplit=1)[0].strip()
+    rest = re.sub(r"[，,]?\s*\[cut_id\s*[:：]\s*[A-Z0-9_-]+\]\s*", "", rest)
+    rest = CUT_ID_RE.sub("", rest)
+    rest = re.sub(r"[（(]\s*[，,]\s*$", "", rest).strip()
     return rest or "未命名分镜组"
 
 

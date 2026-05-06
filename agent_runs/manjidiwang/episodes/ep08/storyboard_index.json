@@ -5,7 +5,7 @@
     {
       "cut_id": "EP08-G01",
       "group_index": 1,
-      "title": "班委竞选（，总时长：10秒，镜头数：4个）",
+      "title": "班委竞选",
       "scene": "培训中心阶梯教室",
       "characters": [
         "班主任",
@@ -22,7 +22,7 @@
     {
       "cut_id": "EP08-G02",
       "group_index": 2,
-      "title": "生活委员之辱（，总时长：10秒，镜头数：4个）",
+      "title": "生活委员之辱",
       "scene": "培训中心阶梯教室",
       "characters": [
         "班主任",
@@ -39,7 +39,7 @@
     {
       "cut_id": "EP08-G03",
       "group_index": 3,
-      "title": "督察长之议（，总时长：10秒，镜头数：5个）",
+      "title": "督察长之议",
       "scene": "培训中心阶梯教室",
       "characters": [
         "朱文浩",
@@ -57,7 +57,7 @@
     {
       "cut_id": "EP08-G04",
       "group_index": 4,
-      "title": "权力倾斜（，总时长：10秒，镜头数：4个）",
+      "title": "权力倾斜",
       "scene": "培训中心阶梯教室",
       "characters": [
         "朱文浩",
@@ -75,7 +75,7 @@
     {
       "cut_id": "EP08-G05",
       "group_index": 5,
-      "title": "名正言顺（，总时长：12秒，镜头数：5个）",
+      "title": "名正言顺",
       "scene": "培训中心阶梯教室",
       "characters": [
         "朱文浩",
@@ -93,7 +93,7 @@
     {
       "cut_id": "EP08-G06",
       "group_index": 6,
-      "title": "天台密谋（，总时长：10秒，镜头数：5个）",
+      "title": "天台密谋",
       "scene": "培训中心天台",
       "characters": [
         "刘晓蕾",
@@ -109,7 +109,7 @@
     {
       "cut_id": "EP08-G07",
       "group_index": 7,
-      "title": "偷题计划（，总时长：10秒，镜头数：5个）",
+      "title": "偷题计划",
       "scene": "培训中心天台",
       "characters": [
         "刘晓蕾",
@@ -125,7 +125,7 @@
     {
       "cut_id": "EP08-G08",
       "group_index": 8,
-      "title": "监控反制（，总时长：14秒，镜头数：6个）",
+      "title": "监控反制",
       "scene": "培训中心外",
       "characters": [
         "刘宇手下",
@@ -143,7 +143,7 @@
     {
       "cut_id": "EP08-G09",
       "group_index": 9,
-      "title": "赢得体面（，总时长：11秒，镜头数：4个）",
+      "title": "赢得体面",
       "scene": "培训中心外",
       "characters": [
         "苏清寒",
