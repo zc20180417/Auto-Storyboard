@@ -197,6 +197,40 @@ function validateTables(tables) {
   return standardTables;
 }
 
+function rowsBySheet(sheetName) {
+  const table = standardTables.find((candidate) => candidate.sheetName === sheetName);
+  if (!table) return [];
+  const [header, ...dataRows] = table.rows;
+  if (!header) return [];
+  return dataRows.map((row) => Object.fromEntries(header.map((column, index) => [column, row[index] || ""])));
+}
+
+function buildAssetBindingsPayload() {
+  const rows = rowsBySheet("分镜资产绑定索引");
+  const episodeId = options.episode || rows.find((row) => row.episode_id)?.episode_id || "";
+  const project =
+    options.project ||
+    path.basename(path.dirname(path.resolve(outputPath))) ||
+    path.basename(path.dirname(path.resolve(inputPath)));
+  return {
+    project,
+    episode_id: episodeId,
+    bindings: rows.map((row) => ({
+      binding_id: row.binding_id || "",
+      cut_id: row.cut_id || "",
+      asset_id: row.asset_id || "",
+      state_id: row.state_id || "",
+      asset_type: row.asset_type || "",
+      binding_role: row.binding_role || "",
+      reference_priority: row.reference_priority || "",
+      use_for_video: row.use_for_video || "",
+      required_for_generation: row.required_for_generation || "",
+      source: row.source || "",
+      note: row.note || "",
+    })),
+  };
+}
+
 function columnName(colCount) {
   let n = colCount;
   let name = "";
@@ -267,6 +301,14 @@ standardTables.forEach((table, index) => {
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
 const output = await SpreadsheetFile.exportXlsx(workbook);
 await output.save(outputPath);
+
+if (mode === "episode") {
+  const bindingsPath = options["asset-bindings"]
+    ? path.resolve(options["asset-bindings"])
+    : path.join(path.dirname(path.resolve(outputPath)), "asset_bindings.json");
+  await fs.writeFile(bindingsPath, `${JSON.stringify(buildAssetBindingsPayload(), null, 2)}\n`, "utf8");
+  console.log(`saved ${bindingsPath}`);
+}
 
 const inspect = await workbook.inspect({
   kind: "sheet",

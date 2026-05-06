@@ -370,13 +370,15 @@ Markdown 正文不输出 JSON，不输出代码块。
 
 ## Excel 转换
 
-Excel 工作簿应包含 5 个 sheet：`复用资产索引`、`新增资产状态`、`新增基础资产`、`关键道具与场景状态`、`不建议入库元素`。转换脚本只负责格式转换和客观表头校验，不负责抽取、归并或改写资产内容。
+Excel 工作簿应包含 6 个 sheet：`复用资产索引`、`新增资产状态`、`新增基础资产`、`关键道具与场景状态`、`不建议入库元素`、`分镜资产绑定索引`。转换脚本只负责格式转换、`asset_bindings.json` 同步导出和客观表头校验，不负责抽取、归并或改写资产内容。
 
 分集资产表使用 episode 模式转换：
 
 ```powershell
 node .\agent_skills\asset-extractor\scripts\assets-md-to-xlsx.mjs <assets.md> <assets.xlsx> --mode=episode
 ```
+
+episode 模式会从第六张表同步导出同目录 `asset_bindings.json`；如需指定路径，可追加 `--asset-bindings=<asset_bindings.json>`。
 
 全局资产库使用 registry 模式转换：
 
@@ -387,7 +389,7 @@ node .\agent_skills\asset-extractor\scripts\assets-md-to-xlsx.mjs <global_asset_
 转换后必须运行机械门禁校验：
 
 ```powershell
-node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir>
+node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir> --storyboard-index=<episode-dir>\storyboard_index.json
 ```
 
 ## 资产状态文件

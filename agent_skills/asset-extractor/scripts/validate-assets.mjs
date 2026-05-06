@@ -21,6 +21,9 @@ const requiredFiles = {
   assets: path.join(episodeDir, "assets.md"),
   workbook: path.join(episodeDir, "assets.xlsx"),
   bindings: path.join(episodeDir, "asset_bindings.json"),
+  storyboardIndex: options["storyboard-index"]
+    ? path.resolve(options["storyboard-index"])
+    : path.join(episodeDir, "storyboard_index.json"),
   review: path.join(episodeDir, "asset_review.json"),
   status: path.join(episodeDir, "asset_status.json"),
 };
@@ -383,9 +386,24 @@ function validateAssetBindingsJson(bindingsPayload) {
   });
 
   const bindingTableIds = new Set(tableRowsBySheet("分镜资产绑定索引").map((row) => row.binding_id));
+  const bindingTableRows = new Map(tableRowsBySheet("分镜资产绑定索引").map((row) => [row.binding_id, row]));
+  const jsonBindingIds = new Set(bindingsPayload.bindings.map((binding) => binding.binding_id).filter(Boolean));
   for (const binding of bindingsPayload.bindings) {
     if (binding.binding_id && bindingTableIds.size > 0 && !bindingTableIds.has(binding.binding_id)) {
       errors.push(`asset_bindings.json binding_id not found in assets.md binding table: ${binding.binding_id}`);
+    }
+    const tableRow = bindingTableRows.get(binding.binding_id);
+    if (tableRow) {
+      for (const field of ["cut_id", "asset_id", "state_id", "asset_type", "binding_role", "reference_priority", "use_for_video", "required_for_generation", "source"]) {
+        if ((binding[field] || "") !== (tableRow[field] || "")) {
+          errors.push(`asset_bindings.json ${binding.binding_id}.${field} does not match assets.md binding table`);
+        }
+      }
+    }
+  }
+  for (const bindingId of bindingTableIds) {
+    if (bindingId && !jsonBindingIds.has(bindingId)) {
+      errors.push(`assets.md binding table binding_id not found in asset_bindings.json: ${bindingId}`);
     }
   }
 }
@@ -472,15 +490,10 @@ let review = null;
 let status = null;
 let bindings = null;
 
-if (options["storyboard-index"]) {
-  const storyboardIndexPath = path.resolve(options["storyboard-index"]);
-  if (!(await exists(storyboardIndexPath))) {
-    errors.push(`storyboard_index not found: ${storyboardIndexPath}`);
-  } else {
-    storyboardIndex = await readJson(storyboardIndexPath, "storyboard_index.json");
-    if (storyboardIndex && (!storyboardIndex.episode_id || !Array.isArray(storyboardIndex.cuts))) {
-      errors.push("storyboard_index.json must include episode_id and cuts[]");
-    }
+if (await exists(requiredFiles.storyboardIndex)) {
+  storyboardIndex = await readJson(requiredFiles.storyboardIndex, "storyboard_index.json");
+  if (storyboardIndex && (!storyboardIndex.episode_id || !Array.isArray(storyboardIndex.cuts))) {
+    errors.push("storyboard_index.json must include episode_id and cuts[]");
   }
 }
 

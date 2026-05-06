@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 import re
 import shutil
 import sys
@@ -78,15 +77,23 @@ def _desired_cut_id(episode_id: str, group_index: int) -> str:
     return f"{episode_id}-G{group_index:02d}"
 
 
-def _ensure_heading_cut_id(heading: str, desired_cut_id: str) -> str:
-    if CUT_ID_RE.search(heading):
-        return CUT_ID_RE.sub(f"cut_id：{desired_cut_id}", heading, count=1)
+def _strip_heading_cut_id(heading: str) -> str:
+    heading = re.sub(r"\s*\[cut_id\s*[:：]\s*[A-Z0-9_-]+\]\s*", " ", heading, count=1)
+    heading = re.sub(r"\s*[（(]\s*cut_id\s*[:：]\s*[A-Z0-9_-]+\s*[）)]", "", heading)
+    heading = re.sub(r"([（(])\s*cut_id\s*[:：]\s*[A-Z0-9_-]+\s*[，,]\s*", r"\1", heading)
+    heading = re.sub(r"\s*[，,]\s*cut_id\s*[:：]\s*[A-Z0-9_-]+", "", heading)
+    heading = re.sub(r"\s{2,}", " ", heading)
+    return heading
 
-    if "（" in heading:
-        return heading.replace("（", f"（cut_id：{desired_cut_id}，", 1)
-    if "(" in heading:
-        return heading.replace("(", f"(cut_id: {desired_cut_id}, ", 1)
-    return re.sub(r"\s*===\s*$", f"（cut_id：{desired_cut_id}） ===", heading, count=1)
+
+def _ensure_heading_cut_id(heading: str, desired_cut_id: str) -> str:
+    clean_heading = _strip_heading_cut_id(heading)
+    return re.sub(
+        r"^(\ufeff?\s*===\s*)",
+        rf"\1[cut_id: {desired_cut_id}] ",
+        clean_heading,
+        count=1,
+    )
 
 
 def ensure_storyboard_cut_ids(content: str, episode_id: str) -> tuple[str, list[str]]:
@@ -117,12 +124,14 @@ def validate_storyboard_cut_ids(content: str, episode_id: str) -> list[str]:
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
     for index, group_match in enumerate(group_matches, start=1):
         heading = group_match.group(0)
-        cut_match = CUT_ID_RE.search(heading)
+        cut_matches = list(CUT_ID_RE.finditer(heading))
         desired = _desired_cut_id(episode_id, index)
-        if not cut_match:
+        if not cut_matches:
             issues.append(f"第{index}组缺少 cut_id；应为 {desired}。")
             continue
-        cut_id = cut_match.group("cut_id")
+        if len(cut_matches) > 1:
+            issues.append(f"第{index}组包含多个 cut_id；只允许一个，应为 {desired}。")
+        cut_id = cut_matches[0].group("cut_id")
         if cut_id != desired:
             issues.append(f"第{index}组 cut_id={cut_id}，应为 {desired}。")
         if cut_id in seen:
@@ -252,7 +261,7 @@ def make_episode_task(
             """
             1. Read `../../context.md`, both standard `SKILL.md` files, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
-            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== 第1组：标题（cut_id：EP02-G01，总时长：12秒，镜头数：4个） ===`.
+            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, but the group total must be an integer 10-15 seconds.
             4. Review the assembled `final.txt` once using `storyboard-reviewer`; write the raw reviewer JSON to `review.txt`.
             5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `storyboard-reviewer` after repairs.
             6. Write `status.json` with reviewer metadata, then run validation. Validation exports `storyboard_index.json` and `storyboard_index.xlsx` from `final.txt`.
@@ -273,7 +282,7 @@ def make_episode_task(
         workflow = textwrap.dedent(
             """
             1. Read `../../context.md`, both standard `SKILL.md` files, and `script.txt`.
-            2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== 第1组：标题（cut_id：EP02-G01，总时长：12秒，镜头数：4个） ===`.
+            2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, but the group total must be an integer 10-15 seconds.
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
             5. Re-run `storyboard-reviewer` after repairs and update `review.txt`.
@@ -329,6 +338,7 @@ Reviewer JSON must include at least 3 `semantic_checks` items with `group`, `typ
 
 - Every group heading must include exactly one `cut_id`.
 - Use the current episode id and group number: `EP01-G01`, `EP01-G02`, ... for ep01; `EP30-G01`, ... for ep30.
+- Preferred heading format: `=== [cut_id: EPxx-GNN] 第N组：标题（总时长：XX秒，镜头数：X个） ===`.
 - Do not put asset IDs in `final.txt`; asset binding belongs to the asset extraction stage.
 
 ## Important Constraints
@@ -639,13 +649,13 @@ CLEAN_GROUP_RE = re.compile(
 CUT_ID_RE = re.compile(r"cut_id\s*[:：]\s*(?P<cut_id>[A-Z0-9_-]+)")
 CLEAN_LEGACY_SHOT_RE = re.compile(r"(?m)^\s*(?P<group>\d{1,3})-(?P<shot>\d{1,2})(?:\s|\[|$)")
 CLEAN_SHOT_TIME_RANGE_RE = re.compile(
-    r"(?:时间段[：:]\s*)?(?P<start>\d{1,3})\s*[-－—–到至]\s*(?P<end>\d{1,3})\s*秒"
+    r"(?:时间段[：:]\s*)?(?P<start>\d{1,3}(?:\.\d+)?)\s*[-－—–到至]\s*(?P<end>\d{1,3}(?:\.\d+)?)\s*秒"
 )
 CLEAN_SHOT_TIME_RANGE_LINE_RE = re.compile(
-    r"(?m)^\s*(?:时间段[：:]\s*)?(?P<start>\d{1,3})\s*[-－—–到至]\s*(?P<end>\d{1,3})\s*秒[：:]?\s*$"
+    r"(?m)^\s*(?:时间段[：:]\s*)?(?P<start>\d{1,3}(?:\.\d+)?)\s*[-－—–到至]\s*(?P<end>\d{1,3}(?:\.\d+)?)\s*秒[：:]?\s*$"
 )
-CLEAN_SHOT_SECONDS_RE = re.compile(r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3})\s*秒")
-CLEAN_GROUP_TOTAL_RE = re.compile(r"总时长[：:]\s*(?P<seconds>\d{1,3})\s*秒")
+CLEAN_SHOT_SECONDS_RE = re.compile(r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒")
+CLEAN_GROUP_TOTAL_RE = re.compile(r"总时长[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒")
 CLEAN_GROUP_SHOTS_RE = re.compile(r"镜头数[：:]\s*(?P<shots>\d{1,3})\s*个")
 MACHINE_TAG_RE = re.compile(r"(?m)^\ufeff?\s*<<<(?:GROUP|GROUP_END|SHOT|SHOT_END)\b.*?>>>\s*$")
 REQUIRED_AUDIT_COVERAGE_KEYS = (
@@ -669,13 +679,13 @@ LOW_QUALITY_TEMPLATE_PATTERNS = (
 )
 SCENE_ESTABLISHING_RE = re.compile(
     # Alt 1: natural format "0-3秒：\n镜头描述：全景..." (time-before-description)
-    r"(?m)^\s*(?P<start2>\d{1,3})\s*[-－—–到至]\s*(?P<end2>\d{1,3})\s*秒\s*[：:]?\s*\n"
+    r"(?m)^\s*(?P<start2>\d{1,3}(?:\.\d+)?)\s*[-－—–到至]\s*(?P<end2>\d{1,3}(?:\.\d+)?)\s*秒\s*[：:]?\s*\n"
     r"\s*镜头描述[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)"
     r"|"
     # Alt 2: original format (description-then-time)
     r"镜头描述[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)[\s\S]{0,160}?"
-    r"(?:(?:时间段[：:]\s*)?(?P<start>\d{1,3})\s*[-－—–到至]\s*(?P<end>\d{1,3})\s*秒|"
-    r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3})\s*秒)"
+    r"(?:(?:时间段[：:]\s*)?(?P<start>\d{1,3}(?:\.\d+)?)\s*[-－—–到至]\s*(?P<end>\d{1,3}(?:\.\d+)?)\s*秒|"
+    r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒)"
 )
 DIALOGUE_QUOTE_RE = re.compile(r"[“\"]([^”\"]+)[”\"]")
 DIALOGUE_PUNCT_RE = re.compile(r"[，。！？、；：,.!?;:\s“”\"'（）()《》【】\[\]—…]")
@@ -770,7 +780,7 @@ def normalize_clean_storyboard_numbering(content: str) -> tuple[str, list[str]]:
         block = content[block_start:block_end]
 
         block, heading_count = re.subn(
-            r"(?m)^(\s*===\s*)第[0-9一二三四五六七八九十百千万零〇两]+组",
+            r"(?m)^(\s*===\s*(?:\[cut_id\s*[:：]\s*[A-Z0-9_-]+\]\s*)?)第[0-9一二三四五六七八九十百千万零〇两]+组",
             rf"\1第{index}组",
             block,
             count=1,
@@ -810,30 +820,57 @@ def _group_number(value: str) -> int | None:
     return chinese_numeral_to_int(value)
 
 
-def _extract_time_range_durations(time_matches: list[re.Match]) -> tuple[list[int], list[str]]:
-    durations: list[int] = []
+def _parse_seconds(value: str) -> float:
+    return float(value)
+
+
+def _format_seconds(value: float) -> str:
+    if abs(value - round(value)) < 1e-6:
+        return str(int(round(value)))
+    return f"{value:g}"
+
+
+def _is_half_second(value: float) -> bool:
+    return abs(value * 2 - round(value * 2)) < 1e-6
+
+
+def _is_integer_second(value: float) -> bool:
+    return abs(value - round(value)) < 1e-6
+
+
+def _json_seconds(value: float) -> int | float:
+    return int(round(value)) if _is_integer_second(value) else round(value, 1)
+
+
+def _extract_time_range_durations(time_matches: list[re.Match]) -> tuple[list[float], list[str]]:
+    durations: list[float] = []
     issues: list[str] = []
-    previous_end: int | None = None
+    previous_end: float | None = None
 
     for index, match in enumerate(time_matches):
-        start = int(match.group("start"))
-        end = int(match.group("end"))
+        start = _parse_seconds(match.group("start"))
+        end = _parse_seconds(match.group("end"))
         duration = end - start
-        label = f"{start}-{end}秒"
+        label = f"{_format_seconds(start)}-{_format_seconds(end)}秒"
         durations.append(duration)
+        if not _is_half_second(start) or not _is_half_second(end):
+            issues.append(f"{label} 时间点必须使用 0.5 秒粒度。")
         if duration <= 0:
             issues.append(f"{label} 时间段结束秒数必须大于开始秒数。")
-        if index == 0 and start != 0:
+        if index == 0 and abs(start) > 1e-6:
             issues.append(f"{label} 时间段应从 0 秒开始。")
-        if previous_end is not None and start != previous_end:
-            issues.append(f"{label} 时间段起点={start}秒，但上一镜结束={previous_end}秒。")
+        if previous_end is not None and abs(start - previous_end) > 1e-6:
+            issues.append(
+                f"{label} 时间段起点={_format_seconds(start)}秒，"
+                f"但上一镜结束={_format_seconds(previous_end)}秒。"
+            )
         previous_end = end
 
     return durations, issues
 
 
-def _extract_legacy_shot_durations(block: str, shot_matches: list[re.Match]) -> tuple[list[int], list[str]]:
-    durations: list[int] = []
+def _extract_legacy_shot_durations(block: str, shot_matches: list[re.Match]) -> tuple[list[float], list[str]]:
+    durations: list[float] = []
     issues: list[str] = []
 
     for index, shot_match in enumerate(shot_matches):
@@ -844,7 +881,10 @@ def _extract_legacy_shot_durations(block: str, shot_matches: list[re.Match]) -> 
 
         seconds_match = CLEAN_SHOT_SECONDS_RE.search(shot_block)
         if seconds_match:
-            durations.append(int(seconds_match.group("seconds")))
+            seconds = _parse_seconds(seconds_match.group("seconds"))
+            durations.append(seconds)
+            if not _is_half_second(seconds):
+                issues.append(f"{shot_label} 本镜估算时长必须使用 0.5 秒粒度。")
         else:
             issues.append(f"{shot_label} 缺少时间段，例如：0-4秒：。")
 
@@ -860,8 +900,8 @@ def _has_any_marker(text: str, markers: tuple[str, ...]) -> bool:
     return any(marker in text for marker in markers)
 
 
-def _iter_storyboard_shots(content: str) -> list[tuple[int | None, str, int, str]]:
-    shots: list[tuple[int | None, str, int, str]] = []
+def _iter_storyboard_shots(content: str) -> list[tuple[int | None, str, float, str]]:
+    shots: list[tuple[int | None, str, float, str]] = []
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
     for index, group_match in enumerate(group_matches):
         group_number = _group_number(group_match.group("num"))
@@ -872,11 +912,11 @@ def _iter_storyboard_shots(content: str) -> list[tuple[int | None, str, int, str
         time_matches = list(CLEAN_SHOT_TIME_RANGE_LINE_RE.finditer(block))
         if time_matches:
             for shot_index, time_match in enumerate(time_matches):
-                start = int(time_match.group("start"))
-                end = int(time_match.group("end"))
+                start = _parse_seconds(time_match.group("start"))
+                end = _parse_seconds(time_match.group("end"))
                 shot_start = time_match.end()
                 shot_end = time_matches[shot_index + 1].start() if shot_index + 1 < len(time_matches) else len(block)
-                label = f"第{group_number or '?'}组 {start}-{end}秒"
+                label = f"第{group_number or '?'}组 {_format_seconds(start)}-{_format_seconds(end)}秒"
                 shots.append((group_number, label, end - start, block[shot_start:shot_end]))
             continue
 
@@ -888,7 +928,7 @@ def _iter_storyboard_shots(content: str) -> list[tuple[int | None, str, int, str
             shot_block = block[shot_start:shot_end]
             seconds_match = CLEAN_SHOT_SECONDS_RE.search(shot_block)
             if seconds_match:
-                shots.append((group_number, shot_label, int(seconds_match.group("seconds")), shot_block))
+                shots.append((group_number, shot_label, _parse_seconds(seconds_match.group("seconds")), shot_block))
 
     return shots
 
@@ -904,45 +944,12 @@ def validate_dialogue_pacing_floor(content: str) -> list[str]:
             continue
 
         cps = chars / seconds
-        is_emotional = _has_any_marker(shot_text, EMOTIONAL_DIALOGUE_MARKERS)
         is_slow = _has_any_marker(shot_text, SLOW_DIALOGUE_MARKERS)
-        has_necessary_action = _has_any_marker(shot_text, NECESSARY_LONG_ACTION_MARKERS)
-        is_auto_multishot = _has_any_marker(shot_text, AUTO_MULTISHOT_MARKERS)
-        target_speed = 3.8 if is_slow else (5.2 if is_emotional else 4.5)
-        target_seconds = math.ceil(chars / target_speed)
 
-        if is_auto_multishot:
-            dialogue_turns = len(DIALOGUE_QUOTE_RE.findall(shot_text))
-            speaker_switches = max(0, dialogue_turns - 1)
-            switch_gap = 0.3 if is_emotional else 0.4
-            action_extra = 1 if has_necessary_action else 0
-            block_target_seconds = math.ceil(chars / target_speed + speaker_switches * switch_gap + action_extra)
-            if seconds > block_target_seconds + 1 and not is_slow:
-                issues.append(
-                    f"{shot_label} 连续对话节拍时长偏长；有效字数 {chars}，"
-                    f"台词轮次 {dialogue_turns}，镜头 {seconds} 秒，字秒比 {cps:.1f}。"
-                    f"请按整块台词量、换人间隙和必要动作压到约 {block_target_seconds} 秒，"
-                    "或合并相邻同场景冲突内容，不要拉慢短句凑时长。"
-                )
-            continue
-
-        if seconds >= 9 and not (is_slow or has_necessary_action):
+        if chars >= 12 and cps > 6.5 and not is_slow:
             issues.append(
-                f"{shot_label} 有台词镜头 {seconds} 秒过长；有效字数 {chars}，字秒比 {cps:.1f}。"
-                "除非原剧本明确慢语或必要长动作，否则 ≥9 秒台词镜头应拆成正反打、反应镜头或画外音反打。"
-            )
-            continue
-
-        # Tiny acknowledgements like “好” or “知道了” often ride on the action beat.
-        # Keep the deterministic slow-dialogue gate focused on substantive dialogue.
-        if chars < 12:
-            continue
-
-        min_cps = 4.5 if is_emotional else 3.8
-        if cps < min_cps and not is_slow and not (has_necessary_action and not is_emotional):
-            issues.append(
-                f"{shot_label} 台词节奏偏慢；有效字数 {chars}，镜头 {seconds} 秒，字秒比 {cps:.1f}，"
-                f"低于 {min_cps:.1f} 字/秒。请缩短到约 {target_seconds} 秒，或拆成正反打/反应镜头承载。"
+                f"{shot_label} 台词节奏过快；有效字数 {chars}，镜头 {_format_seconds(seconds)} 秒，"
+                f"字秒比 {cps:.1f}，超过 6.5 字/秒硬上限。"
             )
 
     return issues
@@ -955,7 +962,7 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
 
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
     if not group_matches:
-        return issues + ["缺少自然分镜组标题，例如：=== 第1组：...（总时长：XX秒，镜头数：X个） ==="]
+        return issues + ["缺少自然分镜组标题，例如：=== [cut_id: EP01-G01] 第1组：...（总时长：XX秒，镜头数：X个） ==="]
 
     expected_group = 1
     for index, group_match in enumerate(group_matches):
@@ -998,18 +1005,28 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
             issues.append(
                 f"第{group_number}组镜头数量与时间段数量不一致：镜头{shot_count}个，时长{len(seconds)}个。"
             )
-        if any(value <= 1 for value in seconds):
-            issues.append(f"第{group_number}组出现 1 秒或更短镜头。")
-
         total_match = CLEAN_GROUP_TOTAL_RE.search(group_match.group("rest"))
         shots_match = CLEAN_GROUP_SHOTS_RE.search(group_match.group("rest"))
         seconds_sum = sum(seconds)
         if total_match and seconds:
-            declared_total = int(total_match.group("seconds"))
-            if declared_total != seconds_sum:
-                issues.append(f"第{group_number}组标题总时长={declared_total}秒，但镜头时长相加={seconds_sum}秒。")
+            declared_total = _parse_seconds(total_match.group("seconds"))
+            final_end = None
+            if time_matches:
+                final_end = _parse_seconds(time_matches[-1].group("end"))
+            if not _is_integer_second(declared_total):
+                issues.append(f"第{group_number}组标题总时长必须是整数秒。")
+            if abs(declared_total - seconds_sum) > 1e-6:
+                issues.append(
+                    f"第{group_number}组标题总时长={_format_seconds(declared_total)}秒，"
+                    f"但镜头时长相加={_format_seconds(seconds_sum)}秒。"
+                )
+            if final_end is not None and abs(final_end - declared_total) > 1e-6:
+                issues.append(
+                    f"第{group_number}组最后时间段结束于{_format_seconds(final_end)}秒，"
+                    f"应等于标题总时长{_format_seconds(declared_total)}秒。"
+                )
         if seconds and not (10 <= seconds_sum <= 15):
-            issues.append(f"第{group_number}组镜头时长相加={seconds_sum}秒，不在10-15秒范围内。")
+            issues.append(f"第{group_number}组镜头时长相加={_format_seconds(seconds_sum)}秒，不在10-15秒范围内。")
         if shots_match:
             declared_shots = int(shots_match.group("shots"))
             if declared_shots != shot_count:
@@ -1033,14 +1050,14 @@ def validate_storyboard_quality_floor(content: str) -> list[str]:
             )
     for match in SCENE_ESTABLISHING_RE.finditer(content):
         if match.group("start2") is not None:
-            seconds = int(match.group("end2")) - int(match.group("start2"))
+            seconds = _parse_seconds(match.group("end2")) - _parse_seconds(match.group("start2"))
         elif match.group("seconds"):
-            seconds = int(match.group("seconds"))
+            seconds = _parse_seconds(match.group("seconds"))
         else:
-            seconds = int(match.group("end")) - int(match.group("start"))
+            seconds = _parse_seconds(match.group("end")) - _parse_seconds(match.group("start"))
         if seconds > 3:
             issues.append(
-                f"普通空间/环境交代镜头标为{seconds}秒；生产规则要求通常2秒，"
+                f"普通空间/环境交代镜头标为{_format_seconds(seconds)}秒；生产规则要求通常2秒，"
                 "只有原剧本明确连续动作时才可到3秒。"
             )
     issues.extend(validate_dialogue_pacing_floor(content))
@@ -1186,7 +1203,7 @@ def build_storyboard_index_payload(
 
     cuts: list[dict] = []
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
-    running_start = 0
+    running_start = 0.0
     for index, group_match in enumerate(group_matches, start=1):
         block_start = group_match.end()
         block_end = group_matches[index].start() if index < len(group_matches) else len(content)
@@ -1201,7 +1218,7 @@ def build_storyboard_index_payload(
             duration_sec = sum(value for value in durations if value > 0)
         else:
             duration_match = CLEAN_GROUP_TOTAL_RE.search(group_match.group("rest"))
-            duration_sec = int(duration_match.group("seconds")) if duration_match else 0
+            duration_sec = _parse_seconds(duration_match.group("seconds")) if duration_match else 0.0
 
         cuts.append(
             {
@@ -1211,9 +1228,9 @@ def build_storyboard_index_payload(
                 "scene": _extract_bold_meta(block, "场景"),
                 "characters": _extract_bold_meta(block, "人物"),
                 "props": _extract_bold_meta(block, "道具"),
-                "duration_sec": duration_sec,
-                "group_start_sec": running_start,
-                "group_end_sec": running_start + duration_sec,
+                "duration_sec": _json_seconds(duration_sec),
+                "group_start_sec": _json_seconds(running_start),
+                "group_end_sec": _json_seconds(running_start + duration_sec),
                 "source_group_label": f"第{index}组",
             }
         )
