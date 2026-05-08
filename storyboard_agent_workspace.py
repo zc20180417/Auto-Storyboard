@@ -398,7 +398,9 @@ Use `status: "needs_review"` only if hard issues remain after two focused repair
 `review.txt` and `segments/segXX/review.md` must contain real raw JSON returned by `storyboard-reviewer`; clean-format validation is not a substitute for reviewer审稿 and placeholder review JSON will fail validation.
 Reviewer JSON must include non-empty `checked_groups` and full `audit_coverage` fields as required by `storyboard-reviewer/SKILL.md`.
 Reviewer JSON must also include at least 3 `spot_checks` items with `group`, `type`, and `evidence`.
-Reviewer JSON must include at least 3 `semantic_checks` items with `group`, `type`, `result`, `evidence`, and `fix_instruction`; this is the reviewer semantic audit record, not a substitute for fixing hard issues.
+Reviewer JSON must include at least 3 `semantic_checks` items with `group`, `type`, `result`, `evidence`, and `fix_instruction`; `result` must be `pass`, `warning`, or `issue`.
+If `pass=true`, `issues` must be empty and no `semantic_checks` item may use `result=issue`; if `pass=false`, `issues` must contain the blocking hard issue.
+Template/model-term pollution must use `prompt_pollution` as the issue/warning `rule` or semantic check `type`.
 `status.json` reviewer fields must stay consistent with `review.txt`.
 `final.txt` cut_id contract:
 
@@ -835,6 +837,30 @@ MODEL_META_PROMPT_PATTERNS = (
     "自动正反打",
     "自动分镜",
 )
+REVIEWER_ALLOWED_SEMANTIC_RESULTS = {"pass", "warning", "issue"}
+REVIEWER_PROMPT_POLLUTION_MARKERS = LOW_QUALITY_TEMPLATE_PATTERNS + MODEL_META_PROMPT_PATTERNS + (
+    "由模型自动",
+    "模型会处理",
+    "本段用于",
+    "规则要求",
+    "参考图",
+    "参考官方模板",
+    "参考模板",
+    "模板编号",
+    "官方模板编号",
+    "官方模板标题",
+    "@图片",
+    "@视频",
+    "@音频",
+    "首帧参考",
+    "尾帧参考",
+    "视频延长",
+    "轨道补全",
+    "一镜到底",
+    "MV 卡点",
+    "萌宠",
+    "变装模板",
+)
 
 
 def strip_machine_tags(content: str) -> str:
@@ -1022,13 +1048,82 @@ def validate_dialogue_pacing_floor(content: str) -> list[str]:
             continue
 
         cps = chars / seconds
-        is_slow = _has_any_marker(shot_text, SLOW_DIALOGUE_MARKERS)
-
-        if chars >= 12 and cps > 6.5 and not is_slow:
+        if cps > 6.5:
             issues.append(
                 f"{shot_label} 台词节奏过快；有效字数 {chars}，镜头 {_format_seconds(seconds)} 秒，"
                 f"字秒比 {cps:.1f}，超过 6.5 字/秒硬上限。"
             )
+
+    return issues
+
+
+HAPPYHORSE_AUDIO_SEGMENT_RE = re.compile(
+    r"(第[一二三四五六七八九十0-9]+段)\s*[：:]"
+)
+
+
+def _extract_happyhorse_audio_segments(audio_text: str) -> list[tuple[str, str]]:
+    matches = list(HAPPYHORSE_AUDIO_SEGMENT_RE.finditer(audio_text))
+    if not matches:
+        return []
+
+    segments: list[tuple[str, str]] = []
+    for index, match in enumerate(matches):
+        start = match.end()
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(audio_text)
+        segments.append((match.group(1), audio_text[start:end]))
+    return segments
+
+
+def validate_happyhorse_audio_dialogue_pacing(content: str) -> list[str]:
+    issues: list[str] = []
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    for index, group_match in enumerate(group_matches):
+        group_number = _group_number(group_match.group("num")) or (index + 1)
+        block_start = group_match.end()
+        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
+        block = content[block_start:block_end]
+
+        if "【音频】" not in block or "【运动】" not in block:
+            continue
+
+        time_matches = list(CLEAN_SHOT_TIME_RANGE_LINE_RE.finditer(block))
+        if not time_matches:
+            continue
+        durations = [
+            _parse_seconds(time_match.group("end")) - _parse_seconds(time_match.group("start"))
+            for time_match in time_matches
+        ]
+
+        audio_match = re.search(
+            r"【音频】(?P<audio>.*?)(?:\n\s*组尾衔接[：:]|\n\s*【画面风格】|$)",
+            block,
+            flags=re.S,
+        )
+        if not audio_match:
+            continue
+
+        audio_segments = _extract_happyhorse_audio_segments(audio_match.group("audio"))
+        if not audio_segments:
+            continue
+
+        for segment_index, (segment_label, segment_text) in enumerate(audio_segments):
+            if segment_index >= len(durations):
+                break
+            seconds = durations[segment_index]
+            if seconds <= 0:
+                continue
+
+            chars = _effective_dialogue_chars(segment_text)
+            if chars == 0:
+                continue
+
+            cps = chars / seconds
+            if cps > 6.5:
+                issues.append(
+                    f"第{group_number}组 {segment_label} 音频台词节奏过快；有效字数 {chars}，"
+                    f"对应运动段 {_format_seconds(seconds)} 秒，字秒比 {cps:.1f}，超过 6.5 字/秒硬上限。"
+                )
 
     return issues
 
@@ -1197,6 +1292,7 @@ def validate_storyboard_quality_floor(content: str) -> list[str]:
                 "只有原剧本明确连续动作时才可到3秒。"
             )
     issues.extend(validate_dialogue_pacing_floor(content))
+    issues.extend(validate_happyhorse_audio_dialogue_pacing(content))
     return issues
 
 
@@ -1243,6 +1339,10 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
     )
     if any(marker.lower() in summary.lower() for marker in placeholder_markers):
         return None, f"{path.name} looks like a placeholder review, not storyboard-reviewer output"
+    if payload["pass"] is True and payload["issues"]:
+        return None, f"{path.name} has pass=true but issues is not empty"
+    if payload["pass"] is False and not payload["issues"]:
+        return None, f"{path.name} has pass=false but issues is empty"
 
     checked_groups = payload["checked_groups"]
     if not checked_groups or not all(isinstance(item, str) and item.strip() for item in checked_groups):
@@ -1271,6 +1371,41 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
         for key in ("group", "type", "result", "evidence", "fix_instruction"):
             if not item.get(key):
                 return None, f"{path.name} semantic_checks[{index}] missing {key}"
+        if item["result"] not in REVIEWER_ALLOWED_SEMANTIC_RESULTS:
+            return None, (
+                f"{path.name} semantic_checks[{index}] result must be one of "
+                f"{', '.join(sorted(REVIEWER_ALLOWED_SEMANTIC_RESULTS))}"
+            )
+        if payload["pass"] is True and item["result"] == "issue":
+            return None, f"{path.name} has pass=true but semantic_checks[{index}] result=issue"
+        semantic_text = "\n".join(
+            str(item.get(key, ""))
+            for key in ("type", "evidence", "fix_instruction")
+        )
+        if (
+            item.get("result") in {"warning", "issue"}
+            and item.get("type") != "prompt_pollution"
+            and any(marker in semantic_text for marker in REVIEWER_PROMPT_POLLUTION_MARKERS)
+        ):
+            return None, (
+                f"{path.name} semantic_checks[{index}] describes prompt pollution "
+                "but type is not `prompt_pollution`"
+            )
+
+    for collection_name in ("issues", "warnings"):
+        for index, item in enumerate(payload[collection_name], start=1):
+            if not isinstance(item, dict):
+                return None, f"{path.name} {collection_name}[{index}] must be an object"
+            rule = item.get("rule")
+            review_text = "\n".join(
+                str(item.get(key, ""))
+                for key in ("rule", "problem", "evidence", "fix")
+            )
+            if any(marker in review_text for marker in REVIEWER_PROMPT_POLLUTION_MARKERS) and rule != "prompt_pollution":
+                return None, (
+                    f"{path.name} {collection_name}[{index}] describes prompt pollution "
+                    "but rule is not `prompt_pollution`"
+                )
 
     return payload, None
 
