@@ -15,6 +15,8 @@ param(
     [string]$Agent = "codex",
     [int]$Parallelism = 5,
     [string]$OutputModelSuffix = "agent-cli",
+    [ValidateSet("seedance", "happyhorse")]
+    [string]$TargetVideoModel = "seedance",
     [switch]$Force
 )
 
@@ -46,6 +48,7 @@ $cmdArgs = @(
     "--agent", $Agent,
     "--parallelism", "$Parallelism",
     "--output-model-suffix", $OutputModelSuffix,
+    "--target-video-model", $TargetVideoModel,
     "--mode", $Mode
 )
 
@@ -62,6 +65,7 @@ if ($Force) {
 }
 
 Write-Host "[prepare-agent] mode=$Mode"
+Write-Host "[prepare-agent] target video model=$TargetVideoModel"
 Write-Host "[prepare-agent] source=$Source"
 if ($Prompt -and $AllowPromptOverride) {
     Write-Host "[prepare-agent] prompt override=$Prompt"

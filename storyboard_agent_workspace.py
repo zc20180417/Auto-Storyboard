@@ -41,6 +41,8 @@ DEFAULT_AGENT_RUNS_DIR = "agent_runs"
 DEFAULT_AGENT_OUTPUT_DIR = "outputs_agent"
 PROJECT_AGENT_SKILLS_DIR = "agent_skills"
 SEEDANCE_PROMPT_PROFILE_PATH = "agent_skills/seedance-prompt-profile/SKILL.md"
+HAPPYHORSE_PROMPT_PROFILE_PATH = "agent_skills/happyhorse-prompt-profile/SKILL.md"
+AI_VIDEO_PROMPT_SKILL_PATH = "agent_skills/ai-video-prompt/SKILL.md"
 AGENT_WORKSPACE_VERSION = 1
 
 
@@ -200,8 +202,30 @@ def make_agent_context(
     generator_skill_path: Path,
     reviewer_skill_path: Path,
     seedance_profile_path: Path,
+    happyhorse_profile_path: Path | None,
+    ai_video_prompt_skill_path: Path | None,
+    target_video_model: str,
     mode: str,
 ) -> str:
+    if target_video_model == "happyhorse":
+        model_profile_lines = textwrap.dedent(
+            f"""
+            - Target video model: `happyhorse`
+            - HappyHorse Prompt Profile: `{happyhorse_profile_path}`
+            - AI Video Prompt Skill: `{ai_video_prompt_skill_path}`
+            - Seedance Prompt Profile: `{seedance_profile_path}`
+            """
+        ).strip()
+        profile_rule = "HappyHorse / Seedance Prompt Profile 与 AI Video Prompt Skill 只作为 HappyHorse 目标模型下的短剧风格参考层"
+    else:
+        model_profile_lines = textwrap.dedent(
+            f"""
+            - Target video model: `seedance`
+            - Seedance Prompt Profile: `{seedance_profile_path}`
+            """
+        ).strip()
+        profile_rule = "Seedance Prompt Profile 只作为短剧风格参考层"
+
     return textwrap.dedent(
         f"""
         # Storyboard Agent Context
@@ -215,12 +239,12 @@ def make_agent_context(
         - Generation mode: `{mode}`
         - Generation Skill: `{generator_skill_path}`
         - Review Skill: `{reviewer_skill_path}`
-        - Seedance Prompt Profile: `{seedance_profile_path}`
+        {model_profile_lines}
 
         ## Core Rules
         - dispatcher 不生成、不审核、不修稿；dispatcher 只创建 subagents/workers 并分发 episode prompt。
         - episode worker 是竖屏短剧分镜生产 agent，只处理自己被分配的单个 episode。
-        - 生成和审核规则全部以两个标准 `SKILL.md` 为准；Seedance Prompt Profile 只作为短剧风格参考层，不要在任务文件里重新解释规则。
+        - 生成和审核规则全部以两个标准 `SKILL.md` 为准；{profile_rule}，不要在任务文件里重新解释规则。
         - profile 不得替代主生成规则，不得把模板编号、官方模板说明、`@图片/@视频/@音频` 占位符、广告/产品/视频延长/轨道补全/一镜到底等非短剧模板语气写入 `final.txt`。
         - episode worker 可以生成和初审，但 `review.txt` 必须按 `storyboard-reviewer/SKILL.md` 逐项审稿，不能写空泛通过。
         - 若用户要求强审核模式，reviewer-only worker 必须独立复审 `final.txt`。
@@ -245,9 +269,42 @@ def make_episode_task(
     generator_skill_path: Path,
     reviewer_skill_path: Path,
     seedance_profile_path: Path,
+    happyhorse_profile_path: Path | None,
+    ai_video_prompt_skill_path: Path | None,
+    target_video_model: str,
     mode: str,
 ) -> str:
     rel_root = episode_dir.relative_to(run_dir)
+    if target_video_model == "happyhorse":
+        profile_read_phrase = "the HappyHorse / Seedance prompt profiles, and the AI video prompt skill"
+        profile_input_line = f"- HappyHorse prompt profile: `{happyhorse_profile_path}`，只作为 HappyHorse 1.0 视频提示词参考层，不得复制官方 case、控制台占位符或非短剧模板语气到 `final.txt`\n- AI video prompt skill: `{ai_video_prompt_skill_path}`，只在 HappyHorse 目标模型下作为提示词优化参考；不得复制 `@图`、`Image`、参考图/首帧槽位、独立音频时间轴、BGM 或视频编辑模板语气到 `final.txt`\n- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
+        profile_constraint = "HappyHorse / Seedance Prompt Profiles and AI Video Prompt Skill are only reference layers for the HappyHorse target"
+        happyhorse_prompt_boundary = textwrap.dedent(
+            """
+            ## HappyHorse Output Contract
+            - For HappyHorse, every group must use this visible wrapper: `【场景】`, `【主体】`, `【运动】`, `【音频】`, `组尾衔接`, `【画面风格】`.
+            - Do not use the default Seedance-looking wrapper in `final.txt`: no `**人物**`, `**场景**`, `**道具**`, `组首空间锁定`, `画面风格：`, or standalone `--neg` lines.
+            - Use HappyHorse Prompt Tuner as a minimal repair / structure cleanup layer, not an aggressive rewrite layer. Preserve key shots, action stages, character relations, key props, original dialogue, and sound design.
+            - Before writing each group, internally check five anchors: subject, scene, motion, camera, and sound. Fill only missing anchors; do not add brands, props, subtitles, BGM, or interface settings that are not in the script.
+            - Put scene/time/light/environment into `【场景】`. Put visible characters, key props, positions, body orientation, gaze, dialogue targets, and prop ownership into `【主体】`.
+            - Put all time-coded shot ranges only under `【运动】`. Each time range must be a standalone Chinese `秒` line, for example `0-4.5秒：`, followed by `镜头描述：` and `光影设计：`.
+            - `【运动】` is for visible action, camera movement, mouth movement, body reaction, prop operation, and light changes. Do not repeat full dialogue there; full script dialogue belongs in `【音频】`.
+            - Use `【音频】` for sounds and dialogue, but do not repeat timecodes there. Use `第一段/第二段/第三段` to align with the movement segments.
+            - Keep `【画面风格】` short: visual style, no subtitles/no music, and a compact `负向：...` list of at most 8 items.
+            - Do not put production-side interface parameters in `final.txt`: no aspect ratio such as `16:9` / `9:16`, no repeated group duration such as `11秒` / `11s`, and no resolution labels such as `4K` / `1080p`.
+            - Use `ai-video-prompt` only to improve HappyHorse-friendly wording: concrete visual compensation, stable camera movement, and clear dialogue/audio ownership.
+            - Keep the Auto-Storyboard contract unchanged: natural Chinese storyboard text, `cut_id`, group headings, Chinese `秒` time ranges, group tail continuity, reviewer pass, and validate gate.
+            - Do not write production-side image bindings such as `@图`, `Image 1`, `参考图`, `首帧`, `尾帧`, or reference-image instructions. Reference images are bound later by the video production workflow.
+            - Do not add BGM, subtitles, interface parameters, bracketed `[0-3s]` timelines, `s` time units, or a separate audio timeline.
+            - Dialogue and dubbing hints from `ai-video-prompt` must be converted into natural `【音频】` prose. Do not copy raw `[]` / `<>` acoustic-control markup into `final.txt` unless the original script explicitly contains that audible content.
+            """
+        ).strip()
+    else:
+        profile_read_phrase = "the Seedance prompt profile"
+        profile_input_line = f"- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
+        profile_constraint = "Seedance Prompt Profile is only a reference layer"
+        happyhorse_prompt_boundary = ""
+
     if mode == "scene":
         inputs = "- Segment scripts: `segments/seg*/script.txt`"
         outputs = textwrap.dedent(
@@ -263,8 +320,8 @@ def make_episode_task(
             """
         ).strip()
         workflow = textwrap.dedent(
-            """
-            1. Read `../../context.md`, both standard `SKILL.md` files, the Seedance prompt profile, `script.txt`, and each segment script.
+            f"""
+            1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
             3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, but the group total must be an integer 10-15 seconds.
             4. Review the assembled `final.txt` once using `storyboard-reviewer`; write the raw reviewer JSON to `review.txt`.
@@ -285,8 +342,8 @@ def make_episode_task(
             """
         ).strip()
         workflow = textwrap.dedent(
-            """
-            1. Read `../../context.md`, both standard `SKILL.md` files, the Seedance prompt profile, and `script.txt`.
+            f"""
+            1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, and `script.txt`.
             2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, but the group total must be an integer 10-15 seconds.
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
@@ -303,7 +360,8 @@ Mode: `{mode}`
 - Run context: `../../context.md`
 - Generation skill: `{generator_skill_path}`
 - Review skill: `{reviewer_skill_path}`
-- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`
+- Target video model: `{target_video_model}`
+{profile_input_line}
 - Full episode script: `script.txt`
 {inputs}
 
@@ -312,6 +370,8 @@ Mode: `{mode}`
 
 ## Workflow
 {workflow}
+
+{happyhorse_prompt_boundary}
 
 Validation command:
 
@@ -348,7 +408,7 @@ Reviewer JSON must include at least 3 `semantic_checks` items with `group`, `typ
 - Do not put asset IDs in `final.txt`; asset binding belongs to the asset extraction stage.
 
 ## Important Constraints
-- Rules live in the two standard `SKILL.md` files; Seedance Prompt Profile is only a reference layer. Do not duplicate or reinterpret them here.
+- Rules live in the two standard `SKILL.md` files; {profile_constraint}. Do not duplicate or reinterpret them here.
 - Work only inside `{rel_root}`. Treat project-level skill files and `../../context.md` as read-only.
 - Do not call external LLM APIs or launch other CLIs.
 """.strip()
@@ -664,6 +724,14 @@ CLEAN_SHOT_SECONDS_RE = re.compile(r"本镜估算时长[：:]\s*(?P<seconds>\d{1
 CLEAN_GROUP_TOTAL_RE = re.compile(r"总时长[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒")
 CLEAN_GROUP_SHOTS_RE = re.compile(r"镜头数[：:]\s*(?P<shots>\d{1,3})\s*个")
 MACHINE_TAG_RE = re.compile(r"(?m)^\ufeff?\s*<<<(?:GROUP|GROUP_END|SHOT|SHOT_END)\b.*?>>>\s*$")
+HAPPYHORSE_REQUIRED_SECTIONS = ("【场景】", "【主体】", "【运动】", "【音频】", "【画面风格】")
+HAPPYHORSE_SEEDANCE_STYLE_MARKERS = ("**人物**", "**场景**", "**道具**", "组首空间锁定", "画面风格：", "【技术参数】")
+HAPPYHORSE_INTERFACE_PARAM_RE = re.compile(
+    r"(?i)(?:\b\d+\s*[:：]\s*\d+\b|\b\d{1,3}(?:\.\d+)?\s*s\b|\b(?:4k|8k|1080p|720p)\b|(?:^|[|，,、；;])\s*\d{1,3}(?:\.\d+)?\s*秒(?:\s*(?:[|，,、；;]|$)))"
+)
+HAPPYHORSE_NEGATIVE_MAX_ITEMS = 8
+HAPPYHORSE_STYLE_MAX_CHARS = 180
+HAPPYHORSE_DIALOGUE_IN_MOTION_RE = re.compile(r"[“\"]([^”\"]{2,})[”\"]")
 REQUIRED_AUDIT_COVERAGE_KEYS = (
     "script_fidelity",
     "dialogue_direction",
@@ -760,6 +828,10 @@ MODEL_META_PROMPT_PATTERNS = (
     "由 Seedance",
     "Seedance 自动",
     "Seedance自动",
+    "HappyHorse 可",
+    "由 HappyHorse",
+    "HappyHorse 自动",
+    "HappyHorse自动",
     "自动正反打",
     "自动分镜",
 )
@@ -1043,6 +1115,64 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
     return issues
 
 
+def is_happyhorse_episode_dir(episode_dir: Path) -> bool:
+    task_path = episode_dir / "TASK.md"
+    if not task_path.is_file():
+        return False
+    task_text = task_path.read_text(encoding="utf-8", errors="replace")
+    return "Target video model: `happyhorse`" in task_text
+
+
+def validate_happyhorse_prompt_contract(content: str) -> list[str]:
+    issues: list[str] = []
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    for index, group_match in enumerate(group_matches):
+        group_number = _group_number(group_match.group("num")) or (index + 1)
+        block_start = group_match.end()
+        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
+        block = content[block_start:block_end]
+
+        for section in HAPPYHORSE_REQUIRED_SECTIONS:
+            if section not in block:
+                issues.append(f"第{group_number}组缺少 HappyHorse 专属段落 `{section}`。")
+
+        for marker in HAPPYHORSE_SEEDANCE_STYLE_MARKERS:
+            if marker in block:
+                issues.append(f"第{group_number}组仍包含 Seedance 默认外观 `{marker}`；HappyHorse 目标下应改写进 `【场景】/【主体】/【画面风格】`。")
+
+        if re.search(r"(?m)^\s*--neg\b", block):
+            issues.append(f"第{group_number}组仍使用独立 `--neg` 行；HappyHorse 目标下负向词应写入 `【画面风格】` 的 `负向：`。")
+
+        motion_match = re.search(r"【运动】(?P<motion>.*?)(?:\n\s*【音频】|\n\s*组尾衔接[：:]|\n\s*【画面风格】|$)", block, flags=re.S)
+        if motion_match and HAPPYHORSE_DIALOGUE_IN_MOTION_RE.search(motion_match.group("motion")):
+            issues.append(f"第{group_number}组 `【运动】` 中出现完整引号台词；HappyHorse 目标下完整台词只放在 `【音频】`，运动段只写开口、口型、视线和身体反应。")
+
+        audio_match = re.search(r"【音频】(?P<audio>.*?)(?:\n\s*组尾衔接[：:]|\n\s*【画面风格】|\n\s*【技术参数】|$)", block, flags=re.S)
+        if audio_match and CLEAN_SHOT_TIME_RANGE_RE.search(audio_match.group("audio")):
+            issues.append(f"第{group_number}组 `【音频】` 中重复写了时间码；HappyHorse 目标下只允许 `【运动】` 出现时间段。")
+
+        style_match = re.search(r"【画面风格】(?P<style>.*?)(?:\n\s*===\s*第|\Z)", block, flags=re.S)
+        if style_match:
+            style_text = style_match.group("style").strip()
+            if "负向" not in style_text:
+                issues.append(f"第{group_number}组 `【画面风格】` 缺少 `负向：`。")
+            if len(style_text) > HAPPYHORSE_STYLE_MAX_CHARS:
+                issues.append(f"第{group_number}组 `【画面风格】` 过长；HappyHorse 目标下风格和负向词应短写，避免每组重复长串通用负向词。")
+            negative_match = re.search(r"负向[：:](?P<negative>.*)", style_text, flags=re.S)
+            if negative_match:
+                negative_items = [
+                    item.strip()
+                    for item in re.split(r"[，,、；;]", negative_match.group("negative"))
+                    if item.strip()
+                ]
+                if len(negative_items) > HAPPYHORSE_NEGATIVE_MAX_ITEMS:
+                    issues.append(f"第{group_number}组 `【画面风格】` 负向词超过 {HAPPYHORSE_NEGATIVE_MAX_ITEMS} 项；请压缩为 HappyHorse 需要的短负向列表。")
+            if HAPPYHORSE_INTERFACE_PARAM_RE.search(style_text):
+                issues.append(f"第{group_number}组 `【画面风格】` 包含比例、时长或分辨率等生产界面参数；这些参数不要写进分镜提示词正文。")
+
+    return issues
+
+
 def validate_storyboard_quality_floor(content: str) -> list[str]:
     issues: list[str] = []
     for pattern in LOW_QUALITY_TEMPLATE_PATTERNS:
@@ -1052,7 +1182,7 @@ def validate_storyboard_quality_floor(content: str) -> list[str]:
         if pattern in content:
             issues.append(
                 f"最终分镜正文包含模型说明词 `{pattern}`，应改成自然画面描述，"
-                "不要在 prompt 中指挥 Seedance 自动分镜。"
+                "不要在 prompt 中指挥视频模型自动分镜。"
             )
     for match in SCENE_ESTABLISHING_RE.finditer(content):
         if match.group("start2") is not None:
@@ -1178,6 +1308,17 @@ def _extract_bold_meta(block: str, label: str) -> list[str] | str:
     pattern = re.compile(rf"(?m)^\s*\*\*{re.escape(label)}\*\*\s*[：:]\s*(?P<value>.+?)\s*$")
     match = pattern.search(block)
     if not match:
+        if label == "场景":
+            scene_match = re.search(r"(?m)^\s*【场景】\s*(?P<value>.+?)\s*$", block)
+            return scene_match.group("value").strip() if scene_match else ""
+        if label in {"人物", "道具"}:
+            subject_match = re.search(r"(?m)^\s*【主体】\s*(?P<value>.+?)\s*$", block)
+            if subject_match:
+                subject_value = subject_match.group("value")
+                field_name = "人物" if label == "人物" else "关键道具"
+                field_match = re.search(rf"{field_name}\s*[：:]\s*(?P<value>.*?)(?:[；;。]|$)", subject_value)
+                if field_match:
+                    return _split_list_field(field_match.group("value"))
         return [] if label in {"人物", "道具"} else ""
     value = match.group("value").strip()
     if label in {"人物", "道具"}:
@@ -1501,6 +1642,18 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     if not seedance_profile_path.is_file():
         print(f"[error] Seedance prompt profile not found: {seedance_profile_path}", file=sys.stderr)
         return 1
+    target_video_model = args.target_video_model
+    happyhorse_profile_path: Path | None = None
+    ai_video_prompt_skill_path: Path | None = None
+    if target_video_model == "happyhorse":
+        happyhorse_profile_path = (project_root / HAPPYHORSE_PROMPT_PROFILE_PATH).resolve()
+        if not happyhorse_profile_path.is_file():
+            print(f"[error] HappyHorse prompt profile not found: {happyhorse_profile_path}", file=sys.stderr)
+            return 1
+        ai_video_prompt_skill_path = (project_root / AI_VIDEO_PROMPT_SKILL_PATH).resolve()
+        if not ai_video_prompt_skill_path.is_file():
+            print(f"[error] AI video prompt skill not found: {ai_video_prompt_skill_path}", file=sys.stderr)
+            return 1
 
     write_utf8(run_dir / "context.md", make_agent_context(
         project_root=project_root,
@@ -1511,6 +1664,9 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         generator_skill_path=generator_skill_path,
         reviewer_skill_path=reviewer_skill_path,
         seedance_profile_path=seedance_profile_path,
+        happyhorse_profile_path=happyhorse_profile_path,
+        ai_video_prompt_skill_path=ai_video_prompt_skill_path,
+        target_video_model=target_video_model,
         mode=args.mode,
     ))
     manifest: dict = {
@@ -1525,6 +1681,9 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         "generator_skill_path": str(generator_skill_path),
         "reviewer_skill_path": str(reviewer_skill_path),
         "seedance_profile_path": str(seedance_profile_path),
+        "target_video_model": target_video_model,
+        "happyhorse_profile_path": str(happyhorse_profile_path) if happyhorse_profile_path else None,
+        "ai_video_prompt_skill_path": str(ai_video_prompt_skill_path) if ai_video_prompt_skill_path else None,
         "out_dir": str(out_dir),
         "agent": args.agent,
         "mode": args.mode,
@@ -1576,6 +1735,9 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             generator_skill_path=generator_skill_path,
             reviewer_skill_path=reviewer_skill_path,
             seedance_profile_path=seedance_profile_path,
+            happyhorse_profile_path=happyhorse_profile_path,
+            ai_video_prompt_skill_path=ai_video_prompt_skill_path,
+            target_video_model=target_video_model,
             mode=args.mode,
         )
         write_utf8(episode_dir / "TASK.md", task_text)
@@ -1664,12 +1826,13 @@ def validate_episode(args: argparse.Namespace) -> int:
     clean_issues = validate_clean_storyboard_format(content)
     cut_id_issues = validate_storyboard_cut_ids(content, episode_id)
     quality_issues = validate_storyboard_quality_floor(content)
+    happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
     review_issues = validate_review_artifacts(episode_dir)
     review_payload, review_error = _read_review_json(episode_dir / "review.txt")
     review_pass_issues: list[str] = []
     if review_error is None and not _storyboard_review_passed(review_payload):
         review_pass_issues.append("storyboard_reviewer: reviewer_not_passed")
-    issues = clean_issues + cut_id_issues + quality_issues + review_issues + review_pass_issues
+    issues = clean_issues + cut_id_issues + quality_issues + happyhorse_issues + review_issues + review_pass_issues
     report_lines = ["# Episode Validation", ""]
     if issues:
         report_lines.append("status: failed")
@@ -1685,6 +1848,10 @@ def validate_episode(args: argparse.Namespace) -> int:
         if quality_issues:
             report_lines.append("## Quality Floor")
             report_lines.extend(f"- {issue}" for issue in quality_issues)
+            report_lines.append("")
+        if happyhorse_issues:
+            report_lines.append("## HappyHorse Prompt Contract")
+            report_lines.extend(f"- {issue}" for issue in happyhorse_issues)
             report_lines.append("")
         if review_issues:
             report_lines.append("## Storyboard Reviewer Evidence")
@@ -1704,6 +1871,8 @@ def validate_episode(args: argparse.Namespace) -> int:
     report_lines.append("- clean_format: passed")
     report_lines.append("- cut_id_contract: passed")
     report_lines.append("- quality_floor: passed")
+    if is_happyhorse_episode_dir(episode_dir):
+        report_lines.append("- happyhorse_prompt_contract: passed")
     report_lines.append("- review_evidence: passed")
     report_lines.append("- storyboard_reviewer: passed")
     write_storyboard_index_files(episode_dir, content)
@@ -1743,8 +1912,9 @@ def collect_run(args: argparse.Namespace) -> int:
         clean_issues = validate_clean_storyboard_format(content)
         cut_id_issues = validate_storyboard_cut_ids(content, episode_contract_id)
         quality_issues = validate_storyboard_quality_floor(content)
+        happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
         review_issues = validate_review_artifacts(episode_dir)
-        issues = clean_issues + cut_id_issues + quality_issues + review_issues
+        issues = clean_issues + cut_id_issues + quality_issues + happyhorse_issues + review_issues
         review_payload, review_error = _read_review_json(episode_dir / "review.txt")
         review_passed = review_error is None and _storyboard_review_passed(review_payload)
         status = "unknown"
@@ -1759,6 +1929,7 @@ def collect_run(args: argparse.Namespace) -> int:
             summary_lines.extend(f"- clean_format: {issue}" for issue in clean_issues[:8])
             summary_lines.extend(f"- cut_id_contract: {issue}" for issue in cut_id_issues[:8])
             summary_lines.extend(f"- quality_floor: {issue}" for issue in quality_issues[:8])
+            summary_lines.extend(f"- happyhorse_prompt_contract: {issue}" for issue in happyhorse_issues[:8])
             summary_lines.extend(f"- storyboard_reviewer: {issue}" for issue in review_issues[:8])
             summary_lines.append("- copied: skipped because validation failed")
             summary_lines.append("- existing_output: not modified")
@@ -1784,9 +1955,10 @@ def collect_run(args: argparse.Namespace) -> int:
         shutil.copy2(index_json_path, index_output_json)
         shutil.copy2(index_xlsx_path, index_output_xlsx)
         copied += 1
+        happyhorse_summary = ", happyhorse_prompt_contract_passed" if is_happyhorse_episode_dir(episode_dir) else ""
         summary_lines.append(
             f"- status: {status}, clean_format_passed, quality_floor_passed, "
-            f"review_evidence_passed, storyboard_reviewer_passed"
+            f"review_evidence_passed, storyboard_reviewer_passed{happyhorse_summary}"
         )
         if changes:
             summary_lines.append(f"- clean_numbering_fixed: {'; '.join(changes[:8])}")
@@ -1874,6 +2046,12 @@ def parse_args() -> argparse.Namespace:
     prepare.add_argument("--agent", choices=["codex", "qwen", "kimi"], default="codex")
     prepare.add_argument("--model", default=None, help="Optional CLI model override.")
     prepare.add_argument("--output-model-suffix", default="agent-cli")
+    prepare.add_argument(
+        "--target-video-model",
+        choices=["seedance", "happyhorse"],
+        default="seedance",
+        help="Video prompt profile to expose to episode workers. Default keeps the existing Seedance storyboard workflow.",
+    )
     prepare.add_argument("--parallelism", type=int, default=3)
     prepare.add_argument(
         "--mode",

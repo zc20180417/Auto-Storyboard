@@ -16,6 +16,8 @@
 - `split_scripts/`：拆好的一集一集剧本文本。
 - `agent_skills/storyboard-generator/SKILL.md`：生成 skill。
 - `agent_skills/storyboard-reviewer/SKILL.md`：审核 skill。
+- `agent_skills/happyhorse-prompt-profile/SKILL.md`：HappyHorse 1.0 视频提示词风格摘要；只有准备工作区时显式指定 `--target-video-model happyhorse` / `-TargetVideoModel happyhorse` 才启用，默认仍使用原来的 Seedance 分镜口径。
+- `agent_skills/ai-video-prompt/SKILL.md`：HappyHorse 目标模型下的补充提示词优化参考；只有 `happyhorse-prompt-profile` 启用时才读取，默认 Seedance 工作流不得套用。HappyHorse 调优默认只做最小修补和结构清理，保留关键镜头、动作、台词和声音，按主体/场景/运动/镜头/声音补齐锚点。
 - `agent_skills/seedance-prompt-profile/SKILL.md`：Seedance 2.0 官方模板风格摘要，只作为生成前参考层，不复制模板正文。
 - `agent_skills/asset-extractor/SKILL.md`：分镜完成后的生图资产表抽取 skill。
 - `agent_runs/`：每次 agent 运行的工作区。
