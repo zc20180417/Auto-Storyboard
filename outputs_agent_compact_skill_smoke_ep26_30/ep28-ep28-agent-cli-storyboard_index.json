@@ -1,0 +1,164 @@
+{
+  "project": "ep28",
+  "episode_id": "EP28",
+  "cuts": [
+    {
+      "cut_id": "EP28-G01",
+      "group_index": 1,
+      "title": "病房砸果泄怒",
+      "scene": "日间，医院VIP病房内，病床旁摆着小桌，输液架和白色床帘在后方。",
+      "characters": [
+        "李少爷",
+        "保镖"
+      ],
+      "props": [
+        "厚石膏",
+        "水果盘",
+        "散落水果"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP28-G02",
+      "group_index": 2,
+      "title": "封锁货运专线",
+      "scene": "日间，医院VIP病房内，病床、床头小桌和门口检查车保持在同一空间。",
+      "characters": [
+        "李少爷",
+        "保镖",
+        "医生"
+      ],
+      "props": [
+        "厚石膏",
+        "手机",
+        "检查片"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 12,
+      "group_end_sec": 25,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP28-G03",
+      "group_index": 3,
+      "title": "踹倒医生发狠",
+      "scene": "日间，医院VIP病房内，病床床尾和门口之间的狭窄空地。",
+      "characters": [
+        "李少爷",
+        "医生",
+        "保镖"
+      ],
+      "props": [
+        "厚石膏",
+        "检查片",
+        "病床边凳"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 25,
+      "group_end_sec": 35,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP28-G04",
+      "group_index": 4,
+      "title": "退货单压到办公室",
+      "scene": "阴天日间，罐头厂办公室内，办公桌靠窗，文件柜和样品罐头在墙边。",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "物流经理"
+      ],
+      "props": [
+        "退货单",
+        "办公桌",
+        "样品罐头"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 35,
+      "group_end_sec": 50,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP28-G05",
+      "group_index": 5,
+      "title": "账本U盘反击",
+      "scene": "阴天日间，罐头厂办公室内，办公桌前后位置不变。",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "物流经理"
+      ],
+      "props": [
+        "退货单",
+        "U盘",
+        "办公桌"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 50,
+      "group_end_sec": 65,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP28-G06",
+      "group_index": 6,
+      "title": "红酒里等破产消息",
+      "scene": "日间，医院VIP病房内，病床右侧靠近床头小桌，门口在画面左侧。",
+      "characters": [
+        "李少爷",
+        "保镖"
+      ],
+      "props": [
+        "红酒杯",
+        "厚石膏",
+        "手机"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 65,
+      "group_end_sec": 77,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP28-G07",
+      "group_index": 7,
+      "title": "干警进门带走",
+      "scene": "日间，医院VIP病房内，病床、床头小桌和门口处于同一空间。",
+      "characters": [
+        "李少爷",
+        "保镖",
+        "京城干警"
+      ],
+      "props": [
+        "红酒杯",
+        "厚石膏",
+        "证件",
+        "手铐"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 77,
+      "group_end_sec": 92,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP28-G08",
+      "group_index": 8,
+      "title": "走廊对峙收束",
+      "scene": "日间，医院VIP病房外走廊，病房门开着，白色墙面和长椅在走廊一侧。",
+      "characters": [
+        "李少爷",
+        "京城干警",
+        "赵朵朵"
+      ],
+      "props": [
+        "手铐",
+        "厚石膏"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 92,
+      "group_end_sec": 102,
+      "source_group_label": "第8组"
+    }
+  ]
+}

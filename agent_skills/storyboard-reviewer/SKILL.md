@@ -13,7 +13,30 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - 每个问题都必须给出组别、证据和可执行修改建议。
 - 没有 hard issue 时必须返回 `pass=true`、`issues=[]`；软问题只能放入 `warnings`。
 - 同类问题要合并，优先返回最能代表问题的 5 条。
-- 不要机械套规则。真正审核对象是：原剧本是否被保住、声音和口型是否正确、默认 10-15 秒片段是否可表演、6-9 秒短组是否确属必要例外、15 秒内是否过载、空间和状态是否连续、最终正文是否干净。
+- 不要机械套规则。真正审核对象是：原剧本是否被保住、声音和口型是否正确、10-15 秒片段是否可表演、15 秒内是否过载、空间和状态是否连续、最终正文是否干净。
+
+## 生成合同优先级
+
+审核时以 `storyboard-generator/SKILL.md` 的当前活跃合同为准。
+`storyboard-generator/REFERENCE.md` 只是复杂情况参考，不自动升级为 hard issue 来源。
+
+不得因为以下原因单独判 hard issue：
+
+- 文案不够电影感；
+- 光影描述不够丰富但仍能看清人物；
+- 表情细节不够文学化但剧情可理解；
+- 连续短句没有逐句拆成独立物理镜头；
+- 正反打使用相同景别但主体、对象和反应清楚；
+- 没有逐条展示 REFERENCE.md 中的全部细节。
+
+只有当问题影响以下任一项时，才进入 hard issue：
+
+1. 原剧本忠实度；
+2. 时间/语速/镜头数机械合同；
+3. 人物、道具、空间可生成性；
+4. 声音与口型；
+5. 组内/组间连续性；
+6. 最终正文污染。
 
 ## P0 Hard Issues
 
@@ -23,8 +46,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 
 - 组标题缺少稳定 `cut_id`，或格式不是 `EPxx-GNN`。
 - 时间段不从 0 秒开始、不连续、不是 0.5 秒粒度、最后一段不结束于组标题总时长。
-- 组标题总时长不是整数秒，或超出视频模型硬范围 6-15 秒。
-- 6-9 秒短组不属于短承接、单句反应、道具插入、短动作余波、片尾意象或不可硬凑的极短戏剧节拍，且可以自然并入相邻组或扩展到 10 秒以上。
+- 组标题总时长不是整数秒，或不在 10-15 秒内。
 - 把自然需要 16 秒以上的戏剧节拍硬压进 15 秒，导致台词偏快、动作过载、情绪转折仓促或关键道具操作不可表演。
 - 镜头数与实际时间段数不一致。
 - 缺少 generator 当前要求的组结构字段：`人物`、`场景`、`道具`、`组首空间锁定`、`镜头描述`、`光影设计`、`组尾衔接`、`画面风格`、`--neg` 或组结束标记。
@@ -98,7 +120,6 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 以下问题通常放入 `warnings`，不单独使 `pass=false`：
 
 - 5.8-6.5 字/秒的偏快台词（注意：超过 6.5 字/秒必须判 hard issue，不能放入 warnings）。
-- 6-9 秒短组理由成立，但需要在交付说明里提示它是短承接、单句反应、道具插入、短动作余波或片尾意象。
 - 5 个时间段但仍基本清楚；6 个以上时间段存在过碎风险但不影响理解。
 - 静态外观展示占用 1-2 秒但未明显挤压剧情。
 - 轻微组间状态交代不足，但不造成不可生成或前后矛盾。
@@ -106,6 +127,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - 光影描述过泛、重复，或可能导致黑脸但不影响剧情。
 - 情绪只写抽象词，缺少动作表现，但关键剧情仍可理解。
 - 环境/全景镜头 3 秒但无原剧本明确连续动作支撑。
+- 同空间合并后没有漏剧情、时间也合格，但把关系落点、情绪收束或片尾意象压得过薄；可用 `generation_density` 或 `filmability` 给 warning，建议拆出余韵组或独立收束段。
 
 ## 审核证据要求
 
@@ -150,7 +172,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 
 **输出前强制交叉检查**：写完 `semantic_checks` 后，逐条检查 `result` 字段。只要有任何一条 `result=issue`，就必须设置 `pass=false` 并将该问题写入 `issues`。不得在 `semantic_checks` 中标记为 `issue` 却在整体结果中设 `pass=true`。
 
-JSON 结构如下：
+JSON 结构示例，最终输出时不要包含代码块标记：
 
 {
   "pass": true,

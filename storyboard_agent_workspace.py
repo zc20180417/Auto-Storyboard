@@ -116,6 +116,25 @@ def episode_id_for_cut_contract(episode_dir: Path) -> str:
     return re.sub(r"[^A-Za-z0-9_-]+", "_", raw).strip("_").upper()
 
 
+def storyboard_aspect_for_episode(episode_dir: Path) -> str:
+    meta_path = episode_dir / "episode.json"
+    if meta_path.is_file():
+        try:
+            meta = read_json(meta_path)
+            aspect = str(meta.get("storyboard_aspect") or "").strip()
+            if aspect in STORYBOARD_ASPECT_CONFIG:
+                return aspect
+        except Exception:
+            pass
+    return "vertical"
+
+
+def group_seconds_contract_for_aspect(aspect: str) -> tuple[int, int]:
+    if aspect == "horizontal":
+        return (6, 15)
+    return (10, 15)
+
+
 def _desired_cut_id(episode_id: str, group_index: int) -> str:
     return f"{episode_id}-G{group_index:02d}"
 
@@ -1188,7 +1207,12 @@ def validate_happyhorse_audio_dialogue_pacing(content: str) -> list[str]:
     return issues
 
 
-def validate_clean_storyboard_format(content: str) -> list[str]:
+def validate_clean_storyboard_format(
+    content: str,
+    *,
+    min_group_seconds: int = 10,
+    max_group_seconds: int = 15,
+) -> list[str]:
     issues: list[str] = []
     if MACHINE_TAG_RE.search(content):
         issues.append("最终分镜中仍包含三尖括号机器标签，请删除这些标签。")
@@ -1258,8 +1282,11 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
                     f"第{group_number}组最后时间段结束于{_format_seconds(final_end)}秒，"
                     f"应等于标题总时长{_format_seconds(declared_total)}秒。"
                 )
-        if seconds and not (6 <= seconds_sum <= 15):
-            issues.append(f"第{group_number}组镜头时长相加={_format_seconds(seconds_sum)}秒，不在视频模型支持的6-15秒范围内。")
+        if seconds and not (min_group_seconds <= seconds_sum <= max_group_seconds):
+            issues.append(
+                f"第{group_number}组镜头时长相加={_format_seconds(seconds_sum)}秒，"
+                f"不在{min_group_seconds}-{max_group_seconds}秒范围内。"
+            )
         if shots_match:
             declared_shots = int(shots_match.group("shots"))
             if declared_shots != shot_count:
@@ -1500,7 +1527,7 @@ def _split_list_field(value: str) -> list[str]:
 
 
 def _extract_bold_meta(block: str, label: str) -> list[str] | str:
-    pattern = re.compile(rf"(?m)^\s*\*\*{re.escape(label)}\*\*\s*[：:]\s*(?P<value>.+?)\s*$")
+    pattern = re.compile(rf"(?m)^\s*(?:\*\*)?{re.escape(label)}(?:\*\*)?\s*[：:]\s*(?P<value>.+?)\s*$")
     match = pattern.search(block)
     if not match:
         if label == "场景":
@@ -1821,6 +1848,15 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     project_root = Path.cwd().resolve()
     source = args.source.resolve()
     prompt_path = find_prompt_file(project_root, args.prompt).resolve() if args.prompt else None
+    aspect = args.aspect
+    target_video_model = args.target_video_model
+    if aspect == "horizontal" and target_video_model == "happyhorse":
+        print(
+            "[error] Aspect=horizontal and target_video_model=happyhorse is not supported yet; "
+            "HappyHorse and horizontal contracts currently conflict.",
+            file=sys.stderr,
+        )
+        return 2
     episodes = resolve_source_episodes(source)
     if not episodes:
         print("[error] no episodes found", file=sys.stderr)
@@ -1842,7 +1878,6 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     run_dir.mkdir(parents=True, exist_ok=True)
     (run_dir / "episodes").mkdir(exist_ok=True)
     out_dir.mkdir(parents=True, exist_ok=True)
-    aspect = args.aspect
     aspect_cfg = storyboard_aspect_config(aspect)
     generator_skill_path, reviewer_skill_path, generation_rules_source, reviewer_rules_source = ensure_project_agent_skills(
         project_root=project_root,
@@ -1854,7 +1889,6 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     if not seedance_profile_path.is_file():
         print(f"[error] Seedance prompt profile not found: {seedance_profile_path}", file=sys.stderr)
         return 1
-    target_video_model = args.target_video_model
     happyhorse_profile_path: Path | None = None
     ai_video_prompt_skill_path: Path | None = None
     if target_video_model == "happyhorse":
@@ -2051,7 +2085,13 @@ def validate_episode(args: argparse.Namespace) -> int:
             write_utf8(final_path, content)
             print("[fixed] " + " | ".join(fix_messages))
 
-    clean_issues = validate_clean_storyboard_format(content)
+    aspect = storyboard_aspect_for_episode(episode_dir)
+    min_group_seconds, max_group_seconds = group_seconds_contract_for_aspect(aspect)
+    clean_issues = validate_clean_storyboard_format(
+        content,
+        min_group_seconds=min_group_seconds,
+        max_group_seconds=max_group_seconds,
+    )
     cut_id_issues = validate_storyboard_cut_ids(content, episode_id)
     quality_issues = validate_storyboard_quality_floor(content)
     happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
@@ -2145,7 +2185,13 @@ def collect_run(args: argparse.Namespace) -> int:
         episode_contract_id = episode_id_for_cut_contract(episode_dir)
         content, cut_id_changes = ensure_storyboard_cut_ids(content, episode_contract_id)
         changes.extend(cut_id_changes)
-        clean_issues = validate_clean_storyboard_format(content)
+        aspect = str(item.get("storyboard_aspect") or storyboard_aspect_for_episode(episode_dir))
+        min_group_seconds, max_group_seconds = group_seconds_contract_for_aspect(aspect)
+        clean_issues = validate_clean_storyboard_format(
+            content,
+            min_group_seconds=min_group_seconds,
+            max_group_seconds=max_group_seconds,
+        )
         cut_id_issues = validate_storyboard_cut_ids(content, episode_contract_id)
         quality_issues = validate_storyboard_quality_floor(content)
         happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
