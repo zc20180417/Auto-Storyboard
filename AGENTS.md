@@ -21,10 +21,11 @@ dispatcher 必须创建 subagents/workers 并发分发，每个 worker 默认处
 
 1. `README.md`
 2. `README_AGENT_WORKFLOW.md`
-3. `agent_skills/storyboard-generator/SKILL.md`
-4. `agent_skills/storyboard-reviewer/SKILL.md`
-5. `agent_skills/seedance-prompt-profile/SKILL.md`（Seedance 官方模板风格摘要，只做参考层，不得复制模板正文）
-6. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`
+3. 默认竖屏：`agent_skills/storyboard-generator/SKILL.md`
+4. 默认竖屏：`agent_skills/storyboard-reviewer/SKILL.md`
+5. 如果当前 run 的 `TASK.md` / `context.md` 标记 `Aspect: horizontal` 或 `storyboard_aspect=horizontal`，改读 `agent_skills/storyboard-horizontal-generator/SKILL.md` 和 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`，不要把横屏任务交给竖屏 skill。
+6. `agent_skills/seedance-prompt-profile/SKILL.md`（Seedance 官方模板风格摘要，只做参考层，不得复制模板正文）
+7. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`
 
 ## 两种生产模式
 
@@ -76,10 +77,10 @@ worker 处理的每个 episode 都必须：
 
 1. 读取自己的 `TASK.md`、`agent_prompt.md`、`script.txt`、两份标准 skill。
 2. 按 `TASK.md` 的 `Mode` 执行，不要自行改模式。
-3. 使用 `storyboard-generator` 生成分镜草稿。
-4. 使用 `storyboard-reviewer` 做真实审核，审核必须对照原剧本和当前分镜逐项检查。
+3. 使用 `TASK.md` 指定的 generator skill 生成分镜草稿；竖屏默认 `storyboard-generator`，横屏使用 `storyboard-horizontal-generator`。
+4. 使用 `TASK.md` 指定的 reviewer skill 做真实审核；竖屏默认 `storyboard-reviewer`，横屏使用 `storyboard-horizontal-reviewer`，审核必须对照原剧本和当前分镜逐项检查。
 5. 只修 reviewer 指出的 hard issues，不做无关重写。
-6. 修复后必须再次使用 `storyboard-reviewer` 复审，不能只跑格式校验。
+6. 修复后必须再次使用当前 run 指定 reviewer 复审，不能只跑格式校验。
 7. 写出该模式要求的全部文件。
 8. 运行 `TASK.md` 中的 `validate-episode` 命令直到通过，或在确实无法修复时标记 `needs_review`。
 
@@ -104,7 +105,7 @@ worker 处理的每个 episode 都必须：
 
 真实审核必须满足以下证据要求：
 
-- reviewer 必须读取并对照同一 episode 的 `script.txt`、当前 `final.txt`，以及两份标准 skill。
+- reviewer 必须读取并对照同一 episode 的 `script.txt`、当前 `final.txt`，以及当前 run 指定的两份标准 skill。
 - `scene` 模式下，每个 `segments/segXX/review.md` 必须是该 segment 草稿的真实 reviewer JSON；整集 `review.txt` 必须是组装后 `final.txt` 的真实 reviewer JSON。
 - reviewer 至少检查：原剧本台词是否漏删改、人物关系是否错置、对话对象是否明确、组首空间锁定是否完整、组尾衔接是否自然、组时长和镜头时长是否符合规则、是否新增剧情或模板化描述。
 - 如果 reviewer 没有逐项审查，不允许写 `pass: true`；应写 `status: "needs_review"`，并在 `hard_issues_remaining` 中说明“reviewer 未完成”。
@@ -148,8 +149,8 @@ worker 处理的每个 episode 都必须：
 
 收集前必须先确认每集已完成真实 reviewer：
 
-- 查看每集 `review.txt`，确认它是按 `storyboard-reviewer` 对照原剧本和 `final.txt` 生成的审核 JSON。
-- 查看 `status.json`，确认 `reviewer_source` 为 `storyboard-reviewer`，且 `reviewer_pass`、`reviewer_issues_count`、`reviewer_warnings_count` 与 `review.txt` 一致。
+- 查看每集 `review.txt`，确认它是按当前 run 指定 reviewer 对照原剧本和 `final.txt` 生成的审核 JSON。
+- 查看 `status.json`，确认 `reviewer_source` 为当前 run 指定 reviewer（竖屏默认 `storyboard-reviewer`，横屏为 `storyboard-horizontal-reviewer`），且 `reviewer_pass`、`reviewer_issues_count`、`reviewer_warnings_count` 与 `review.txt` 一致。
 - 如果发现 `review.txt` 是占位、空 issues 伪通过、只来自脚本校验、或没有真实审稿过程，必须停止收集，重新审核该 episode。
 - 只有真实 reviewer 通过或明确标记 `needs_review` 的 episode，才能进入收集；不能把未审核 episode 包装成 `done`。
 
@@ -200,7 +201,8 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 
 - 最新已验证 `scene` 工作区：`agent_runs/youyuanzhai6-scene`
 - 最新已验证 `single` 工作区：`agent_runs/youyuanzhai-single`
-- 当前主生成规则：`agent_skills/storyboard-generator/SKILL.md`
+- 当前竖屏主生成规则：`agent_skills/storyboard-generator/SKILL.md`
+- 当前横屏主生成规则：`agent_skills/storyboard-horizontal-generator/SKILL.md`，审核规则为 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`，只在横屏 run 中使用。
 - Seedance 风格参考层：`agent_skills/seedance-prompt-profile/SKILL.md`，只用于选择性参考官方模板结构，不得替代主生成规则。
 - 不再默认使用 `6688竖屏古装分镜prompt.txt` 覆盖生成 skill；只有用户明确要求临时替换生成规则时，才可使用 prompt override。
 

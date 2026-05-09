@@ -45,6 +45,46 @@ HAPPYHORSE_PROMPT_PROFILE_PATH = "agent_skills/happyhorse-prompt-profile/SKILL.m
 AI_VIDEO_PROMPT_SKILL_PATH = "agent_skills/ai-video-prompt/SKILL.md"
 AGENT_WORKSPACE_VERSION = 1
 
+STORYBOARD_ASPECT_CONFIG = {
+    "vertical": {
+        "label": "竖屏",
+        "generator_dir": "storyboard-generator",
+        "reviewer_dir": "storyboard-reviewer",
+        "generator_name": "storyboard-generator",
+        "reviewer_name": "storyboard-reviewer",
+        "generator_description": (
+            "Generate vertical Chinese costume-drama storyboard prompts from episode scripts. "
+            "Use when converting short-drama scripts into natural grouped storyboard output."
+        ),
+        "reviewer_description": (
+            "Review vertical storyboard drafts against the source script, natural format, timing, "
+            "space locking, and dialogue-direction rules. Use after storyboard generation."
+        ),
+    },
+    "horizontal": {
+        "label": "横屏",
+        "generator_dir": "storyboard-horizontal-generator",
+        "reviewer_dir": "storyboard-horizontal-reviewer",
+        "generator_name": "storyboard-horizontal-generator",
+        "reviewer_name": "storyboard-horizontal-reviewer",
+        "generator_description": (
+            "Generate 16:9 horizontal Chinese short-drama storyboard prompts from episode scripts. "
+            "Use when converting short-drama scripts into spatially blocked horizontal storyboard output."
+        ),
+        "reviewer_description": (
+            "Review 16:9 horizontal storyboard drafts against the source script, natural format, timing, "
+            "screen direction, spatial blocking, and dialogue-direction rules. Use after horizontal storyboard generation."
+        ),
+    },
+}
+
+
+def storyboard_aspect_config(aspect: str) -> dict[str, str]:
+    try:
+        return STORYBOARD_ASPECT_CONFIG[aspect]
+    except KeyError as exc:
+        raise ValueError(f"unsupported storyboard aspect: {aspect}") from exc
+
 
 def write_utf8(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -205,8 +245,12 @@ def make_agent_context(
     happyhorse_profile_path: Path | None,
     ai_video_prompt_skill_path: Path | None,
     target_video_model: str,
+    aspect: str,
     mode: str,
 ) -> str:
+    aspect_cfg = storyboard_aspect_config(aspect)
+    aspect_label = aspect_cfg["label"]
+    reviewer_skill_name = aspect_cfg["reviewer_name"]
     if target_video_model == "happyhorse":
         model_profile_lines = textwrap.dedent(
             f"""
@@ -237,16 +281,17 @@ def make_agent_context(
         - Final output directory: `{out_dir}`
         - Episodes in this run: `{episodes_count}`
         - Generation mode: `{mode}`
+        - Storyboard aspect: `{aspect}` ({aspect_label})
         - Generation Skill: `{generator_skill_path}`
         - Review Skill: `{reviewer_skill_path}`
         {model_profile_lines}
 
         ## Core Rules
         - dispatcher 不生成、不审核、不修稿；dispatcher 只创建 subagents/workers 并分发 episode prompt。
-        - episode worker 是竖屏短剧分镜生产 agent，只处理自己被分配的单个 episode。
+        - episode worker 是{aspect_label}短剧分镜生产 agent，只处理自己被分配的单个 episode。
         - 生成和审核规则全部以两个标准 `SKILL.md` 为准；{profile_rule}，不要在任务文件里重新解释规则。
         - profile 不得替代主生成规则，不得把模板编号、官方模板说明、`@图片/@视频/@音频` 占位符、广告/产品/视频延长/轨道补全/一镜到底等非短剧模板语气写入 `final.txt`。
-        - episode worker 可以生成和初审，但 `review.txt` 必须按 `storyboard-reviewer/SKILL.md` 逐项审稿，不能写空泛通过。
+        - episode worker 可以生成和初审，但 `review.txt` 必须按 `{reviewer_skill_name}/SKILL.md` 逐项审稿，不能写空泛通过。
         - 若用户要求强审核模式，reviewer-only worker 必须独立复审 `final.txt`。
         - `single` 模式：整集一次生成，再整集审核一次。
         - `scene` 模式：按场景标题拆段生成，再组装整集并审核。
@@ -272,9 +317,13 @@ def make_episode_task(
     happyhorse_profile_path: Path | None,
     ai_video_prompt_skill_path: Path | None,
     target_video_model: str,
+    aspect: str,
     mode: str,
 ) -> str:
     rel_root = episode_dir.relative_to(run_dir)
+    aspect_cfg = storyboard_aspect_config(aspect)
+    aspect_label = aspect_cfg["label"]
+    reviewer_skill_name = aspect_cfg["reviewer_name"]
     if target_video_model == "happyhorse":
         profile_read_phrase = "the HappyHorse / Seedance prompt profiles, and the AI video prompt skill"
         profile_input_line = f"- HappyHorse prompt profile: `{happyhorse_profile_path}`，只作为 HappyHorse 1.0 视频提示词参考层，不得复制官方 case、控制台占位符或非短剧模板语气到 `final.txt`\n- AI video prompt skill: `{ai_video_prompt_skill_path}`，只在 HappyHorse 目标模型下作为提示词优化参考；不得复制 `@图`、`Image`、参考图/首帧槽位、独立音频时间轴、BGM 或视频编辑模板语气到 `final.txt`\n- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
@@ -323,9 +372,9 @@ def make_episode_task(
             f"""
             1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
-            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, but the group total must be an integer 10-15 seconds.
-            4. Review the assembled `final.txt` once using `storyboard-reviewer`; write the raw reviewer JSON to `review.txt`.
-            5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `storyboard-reviewer` after repairs.
+            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds.
+            4. Review the assembled `final.txt` once using `{reviewer_skill_name}`; write the raw reviewer JSON to `review.txt`.
+            5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `{reviewer_skill_name}` after repairs.
             6. Write `status.json` with reviewer metadata, then run validation. Validation exports `storyboard_index.json` and `storyboard_index.xlsx` from `final.txt`.
             7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
@@ -344,10 +393,10 @@ def make_episode_task(
         workflow = textwrap.dedent(
             f"""
             1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, and `script.txt`.
-            2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, but the group total must be an integer 10-15 seconds.
+            2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds.
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
-            5. Re-run `storyboard-reviewer` after repairs and update `review.txt`.
+            5. Re-run `{reviewer_skill_name}` after repairs and update `review.txt`.
             6. Write `status.json` with reviewer metadata, then run validation. Validation exports `storyboard_index.json` and `storyboard_index.xlsx` from `final.txt`.
             7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
@@ -355,6 +404,7 @@ def make_episode_task(
     return f"""# Task: {episode.display_name}
 
 Mode: `{mode}`
+Aspect: `{aspect}` ({aspect_label})
 
 ## Required Inputs
 - Run context: `../../context.md`
@@ -373,7 +423,19 @@ Mode: `{mode}`
 
 {happyhorse_prompt_boundary}
 
-Validation command:
+Pre-check command (run before calling {reviewer_skill_name} to catch mechanical issues early):
+
+```powershell
+python "{Path(__file__).resolve()}" validate-episode --episode-dir "{episode_dir}" --pre-check
+```
+
+For segment-level pre-check (scene mode, validate a segment draft before review):
+
+```powershell
+python "{Path(__file__).resolve()}" validate-episode --episode-dir "{episode_dir}" --pre-check --content-file "{episode_dir}/segments/segXX/draft.txt"
+```
+
+Full validation command (run after review.txt and status.json are written):
 
 ```powershell
 python "{Path(__file__).resolve()}" validate-episode --episode-dir "{episode_dir}"
@@ -387,7 +449,7 @@ python "{Path(__file__).resolve()}" validate-episode --episode-dir "{episode_dir
 - `summary`: short Chinese summary
 - `hard_issues_remaining`: copy unresolved hard issues from the real reviewer result
 - `warnings`: copy or summarize warnings from the real reviewer result
-- `reviewer_source`: must be `storyboard-reviewer`
+- `reviewer_source`: must be `{reviewer_skill_name}`
 - `reviewer_pass`: copy the boolean `pass` from `review.txt` after `review.txt` exists
 - `reviewer_issues_count`: copy `len(review.txt.issues)` after `review.txt` exists
 - `reviewer_warnings_count`: copy `len(review.txt.warnings)` after `review.txt` exists
@@ -395,8 +457,8 @@ python "{Path(__file__).resolve()}" validate-episode --episode-dir "{episode_dir
 Do not prefill `reviewer_pass=true` or issue/warning counts before writing the real `review.txt`.
 
 Use `status: "needs_review"` only if hard issues remain after two focused repair attempts.
-`review.txt` and `segments/segXX/review.md` must contain real raw JSON returned by `storyboard-reviewer`; clean-format validation is not a substitute for reviewer审稿 and placeholder review JSON will fail validation.
-Reviewer JSON must include non-empty `checked_groups` and full `audit_coverage` fields as required by `storyboard-reviewer/SKILL.md`.
+`review.txt` and `segments/segXX/review.md` must contain real raw JSON returned by `{reviewer_skill_name}`; clean-format validation is not a substitute for reviewer审稿 and placeholder review JSON will fail validation.
+Reviewer JSON must include non-empty `checked_groups` and full `audit_coverage` fields as required by `{reviewer_skill_name}/SKILL.md`.
 Reviewer JSON must also include at least 3 `spot_checks` items with `group`, `type`, and `evidence`.
 Reviewer JSON must include at least 3 `semantic_checks` items with `group`, `type`, `result`, `evidence`, and `fix_instruction`; `result` must be `pass`, `warning`, or `issue`.
 If `pass=true`, `issues` must be empty and no `semantic_checks` item may use `result=issue`; if `pass=false`, `issues` must contain the blocking hard issue.
@@ -448,10 +510,12 @@ def ensure_project_agent_skills(
     project_root: Path,
     prompt_path: Path | None,
     review_skill_path: Path | None,
+    aspect: str,
 ) -> tuple[Path, Path, Path, Path]:
+    aspect_cfg = storyboard_aspect_config(aspect)
     skills_root = project_root / PROJECT_AGENT_SKILLS_DIR
-    generator_skill_dir = skills_root / "storyboard-generator"
-    reviewer_skill_dir = skills_root / "storyboard-reviewer"
+    generator_skill_dir = skills_root / aspect_cfg["generator_dir"]
+    reviewer_skill_dir = skills_root / aspect_cfg["reviewer_dir"]
     generator_skill_dir.mkdir(parents=True, exist_ok=True)
     reviewer_skill_dir.mkdir(parents=True, exist_ok=True)
 
@@ -462,11 +526,8 @@ def ensure_project_agent_skills(
         write_utf8(
             generator_skill_path,
             make_standard_skill_md(
-                name="storyboard-generator",
-                description=(
-                    "Generate vertical Chinese costume-drama storyboard prompts from episode scripts. "
-                    "Use when converting short-drama scripts into natural grouped storyboard output."
-                ),
+                name=aspect_cfg["generator_name"],
+                description=aspect_cfg["generator_description"],
                 title="Storyboard Generator",
                 body=prompt_text,
             ),
@@ -477,7 +538,7 @@ def ensure_project_agent_skills(
     else:
         raise FileNotFoundError(
             f"Generation skill not found: {generator_skill_path}. "
-            "Create agent_skills/storyboard-generator/SKILL.md or pass --prompt explicitly."
+            f"Create agent_skills/{aspect_cfg['generator_dir']}/SKILL.md or pass --prompt explicitly."
         )
 
     if review_skill_path is not None:
@@ -485,11 +546,8 @@ def ensure_project_agent_skills(
         write_utf8(
             reviewer_skill_path,
             make_standard_skill_md(
-                name="storyboard-reviewer",
-                description=(
-                    "Review vertical storyboard drafts against the source script, natural format, timing, "
-                    "space locking, and dialogue-direction rules. Use after storyboard generation."
-                ),
+                name=aspect_cfg["reviewer_name"],
+                description=aspect_cfg["reviewer_description"],
                 title="Storyboard Reviewer",
                 body=review_skill_text,
             ),
@@ -498,15 +556,17 @@ def ensure_project_agent_skills(
     elif reviewer_skill_path.is_file():
         reviewer_rules_source = reviewer_skill_path.resolve()
     else:
+        if aspect != "vertical":
+            raise FileNotFoundError(
+                f"Review skill not found: {reviewer_skill_path}. "
+                f"Create agent_skills/{aspect_cfg['reviewer_dir']}/SKILL.md or pass --review-skill explicitly."
+            )
         review_skill_text = load_review_skill_text(None)
         write_utf8(
             reviewer_skill_path,
             make_standard_skill_md(
-                name="storyboard-reviewer",
-                description=(
-                    "Review vertical storyboard drafts against the source script, natural format, timing, "
-                    "space locking, and dialogue-direction rules. Use after storyboard generation."
-                ),
+                name=aspect_cfg["reviewer_name"],
+                description=aspect_cfg["reviewer_description"],
                 title="Storyboard Reviewer",
                 body=review_skill_text,
             ),
@@ -1198,8 +1258,8 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
                     f"第{group_number}组最后时间段结束于{_format_seconds(final_end)}秒，"
                     f"应等于标题总时长{_format_seconds(declared_total)}秒。"
                 )
-        if seconds and not (10 <= seconds_sum <= 15):
-            issues.append(f"第{group_number}组镜头时长相加={_format_seconds(seconds_sum)}秒，不在10-15秒范围内。")
+        if seconds and not (6 <= seconds_sum <= 15):
+            issues.append(f"第{group_number}组镜头时长相加={_format_seconds(seconds_sum)}秒，不在视频模型支持的6-15秒范围内。")
         if shots_match:
             declared_shots = int(shots_match.group("shots"))
             if declared_shots != shot_count:
@@ -1307,7 +1367,7 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
     try:
         payload = json.loads(raw)
     except json.JSONDecodeError as exc:
-        return None, f"{path.name} must contain raw storyboard-reviewer JSON: {exc}"
+        return None, f"{path.name} must contain raw storyboard reviewer JSON: {exc}"
 
     if not isinstance(payload, dict):
         return None, f"{path.name} must contain a JSON object"
@@ -1338,7 +1398,7 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
         "clean format",
     )
     if any(marker.lower() in summary.lower() for marker in placeholder_markers):
-        return None, f"{path.name} looks like a placeholder review, not storyboard-reviewer output"
+        return None, f"{path.name} looks like a placeholder review, not storyboard reviewer output"
     if payload["pass"] is True and payload["issues"]:
         return None, f"{path.name} has pass=true but issues is not empty"
     if payload["pass"] is False and not payload["issues"]:
@@ -1666,9 +1726,23 @@ def _status_reviewer_metadata(status_payload: dict) -> dict | None:
     return None
 
 
+def _expected_reviewer_source(episode_dir: Path) -> str:
+    meta_path = episode_dir / "episode.json"
+    if meta_path.is_file():
+        try:
+            meta = read_json(meta_path)
+        except Exception:
+            meta = {}
+        reviewer_source = meta.get("reviewer_source") or meta.get("reviewer_skill_name")
+        if isinstance(reviewer_source, str) and reviewer_source.strip():
+            return reviewer_source.strip()
+    return "storyboard-reviewer"
+
+
 def validate_review_artifacts(episode_dir: Path) -> list[str]:
-    """Require evidence that storyboard-reviewer ran; clean format is not review."""
+    """Require evidence that the configured storyboard reviewer ran; clean format is not review."""
     issues: list[str] = []
+    expected_reviewer_source = _expected_reviewer_source(episode_dir)
 
     review_payload, review_error = _read_review_json(episode_dir / "review.txt")
     if review_error:
@@ -1697,8 +1771,8 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
                 "reviewer_pass, reviewer_issues_count, and reviewer_warnings_count"
             )
         else:
-            if metadata.get("source") != "storyboard-reviewer":
-                issues.append("status.json reviewer_source must be `storyboard-reviewer`")
+            if metadata.get("source") != expected_reviewer_source:
+                issues.append(f"status.json reviewer_source must be `{expected_reviewer_source}`")
             if not isinstance(metadata.get("pass"), bool):
                 issues.append("status.json reviewer_pass must be a boolean")
             if not isinstance(metadata.get("issues_count"), int):
@@ -1719,7 +1793,7 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
 
                 status = status_payload.get("status")
                 if status == "done" and (not review_pass or review_issues_count):
-                    issues.append("status.json cannot be `done` when storyboard-reviewer reports hard issues")
+                    issues.append(f"status.json cannot be `done` when {expected_reviewer_source} reports hard issues")
                 if status == "done" and status_payload.get("hard_issues_remaining"):
                     issues.append("status.json cannot be `done` with hard_issues_remaining")
 
@@ -1768,10 +1842,13 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     run_dir.mkdir(parents=True, exist_ok=True)
     (run_dir / "episodes").mkdir(exist_ok=True)
     out_dir.mkdir(parents=True, exist_ok=True)
+    aspect = args.aspect
+    aspect_cfg = storyboard_aspect_config(aspect)
     generator_skill_path, reviewer_skill_path, generation_rules_source, reviewer_rules_source = ensure_project_agent_skills(
         project_root=project_root,
         prompt_path=prompt_path,
         review_skill_path=args.review_skill,
+        aspect=aspect,
     )
     seedance_profile_path = (project_root / SEEDANCE_PROMPT_PROFILE_PATH).resolve()
     if not seedance_profile_path.is_file():
@@ -1802,6 +1879,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         happyhorse_profile_path=happyhorse_profile_path,
         ai_video_prompt_skill_path=ai_video_prompt_skill_path,
         target_video_model=target_video_model,
+        aspect=aspect,
         mode=args.mode,
     ))
     manifest: dict = {
@@ -1816,6 +1894,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         "generator_skill_path": str(generator_skill_path),
         "reviewer_skill_path": str(reviewer_skill_path),
         "seedance_profile_path": str(seedance_profile_path),
+        "storyboard_aspect": aspect,
         "target_video_model": target_video_model,
         "happyhorse_profile_path": str(happyhorse_profile_path) if happyhorse_profile_path else None,
         "ai_video_prompt_skill_path": str(ai_video_prompt_skill_path) if ai_video_prompt_skill_path else None,
@@ -1840,6 +1919,10 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             "series_title": episode.series_title,
             "source_path": str(episode.source_path),
             "output_path": str(output_path),
+            "storyboard_aspect": aspect,
+            "generator_skill_name": aspect_cfg["generator_name"],
+            "reviewer_skill_name": aspect_cfg["reviewer_name"],
+            "reviewer_source": aspect_cfg["reviewer_name"],
         }
         write_json(episode_dir / "episode.json", episode_meta)
 
@@ -1873,6 +1956,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             happyhorse_profile_path=happyhorse_profile_path,
             ai_video_prompt_skill_path=ai_video_prompt_skill_path,
             target_video_model=target_video_model,
+            aspect=aspect,
             mode=args.mode,
         )
         write_utf8(episode_dir / "TASK.md", task_text)
@@ -1936,12 +2020,21 @@ def prepare_workspace(args: argparse.Namespace) -> int:
 def validate_episode(args: argparse.Namespace) -> int:
     episode_dir = args.episode_dir.resolve()
     episode_id = episode_id_for_cut_contract(episode_dir)
-    final_path = episode_dir / "final.txt"
-    if not final_path.is_file():
-        print(f"[error] final.txt not found: {final_path}", file=sys.stderr)
-        return 1
+    pre_check = getattr(args, "pre_check", False)
+    content_file = getattr(args, "content_file", None)
 
-    content = final_path.read_text(encoding="utf-8", errors="replace")
+    if content_file is not None:
+        target_path = content_file.resolve()
+        if not target_path.is_file():
+            print(f"[error] content file not found: {target_path}", file=sys.stderr)
+            return 1
+    else:
+        target_path = episode_dir / "final.txt"
+        if not target_path.is_file():
+            print(f"[error] final.txt not found: {target_path}", file=sys.stderr)
+            return 1
+
+    content = target_path.read_text(encoding="utf-8", errors="replace")
     if args.fix_metadata:
         fix_messages: list[str] = []
         cleaned = strip_machine_tags(content)
@@ -1962,11 +2055,15 @@ def validate_episode(args: argparse.Namespace) -> int:
     cut_id_issues = validate_storyboard_cut_ids(content, episode_id)
     quality_issues = validate_storyboard_quality_floor(content)
     happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
-    review_issues = validate_review_artifacts(episode_dir)
-    review_payload, review_error = _read_review_json(episode_dir / "review.txt")
-    review_pass_issues: list[str] = []
-    if review_error is None and not _storyboard_review_passed(review_payload):
-        review_pass_issues.append("storyboard_reviewer: reviewer_not_passed")
+    if pre_check:
+        review_issues: list[str] = []
+        review_pass_issues: list[str] = []
+    else:
+        review_issues = validate_review_artifacts(episode_dir)
+        review_payload, review_error = _read_review_json(episode_dir / "review.txt")
+        review_pass_issues = []
+        if review_error is None and not _storyboard_review_passed(review_payload):
+            review_pass_issues.append("storyboard_reviewer: reviewer_not_passed")
     issues = clean_issues + cut_id_issues + quality_issues + happyhorse_issues + review_issues + review_pass_issues
     report_lines = ["# Episode Validation", ""]
     if issues:
@@ -2008,11 +2105,15 @@ def validate_episode(args: argparse.Namespace) -> int:
     report_lines.append("- quality_floor: passed")
     if is_happyhorse_episode_dir(episode_dir):
         report_lines.append("- happyhorse_prompt_contract: passed")
-    report_lines.append("- review_evidence: passed")
-    report_lines.append("- storyboard_reviewer: passed")
-    write_storyboard_index_files(episode_dir, content)
+    if not pre_check:
+        report_lines.append("- review_evidence: passed")
+        report_lines.append("- storyboard_reviewer: passed")
+        write_storyboard_index_files(episode_dir, content)
+    else:
+        report_lines.append("- review_evidence: skipped (pre-check)")
+        report_lines.append("- storyboard_reviewer: skipped (pre-check)")
     write_utf8(episode_dir / "protocol_report.md", "\n".join(report_lines))
-    print("[passed] episode validation")
+    print("[passed] pre-check" if pre_check else "[passed] episode validation")
     return 0
 
 
@@ -2187,6 +2288,12 @@ def parse_args() -> argparse.Namespace:
         default="seedance",
         help="Video prompt profile to expose to episode workers. Default keeps the existing Seedance storyboard workflow.",
     )
+    prepare.add_argument(
+        "--aspect",
+        choices=["vertical", "horizontal"],
+        default="vertical",
+        help="Storyboard aspect workflow. Use horizontal for the separate 16:9 horizontal generator/reviewer skills.",
+    )
     prepare.add_argument("--parallelism", type=int, default=3)
     prepare.add_argument(
         "--mode",
@@ -2200,6 +2307,8 @@ def parse_args() -> argparse.Namespace:
     validate = subparsers.add_parser("validate-episode", help="Validate one episode final.txt.")
     validate.add_argument("--episode-dir", type=Path, required=True)
     validate.add_argument("--fix-metadata", action="store_true")
+    validate.add_argument("--pre-check", action="store_true", help="Only run format/timing/quality checks; skip review artifact validation. Use to catch mechanical issues before calling the LLM reviewer.")
+    validate.add_argument("--content-file", type=Path, default=None, help="Validate this file instead of final.txt (use with --pre-check to validate a draft).")
     validate.set_defaults(func=validate_episode)
 
     collect = subparsers.add_parser("collect", help="Collect final files from an agent run.")
