@@ -147,7 +147,7 @@ JSON 结构示例（失败案例；若 `pass=true`，`issues` 必须为 `[]`，`
 {
   "pass": false,
   "summary": "存在 hard issue，需修复后复审。",
-  "checked_groups": ["第1组", "第2组"],
+  "checked_groups": ["第1组", "第2组", "第3组"],
   "audit_coverage": {
     "script_fidelity": "checked",
     "dialogue_direction": "checked",
