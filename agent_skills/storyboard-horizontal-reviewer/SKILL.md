@@ -138,15 +138,15 @@ description: Review 16:9 horizontal Chinese short-drama storyboard drafts agains
 - 横屏审核必须额外包含：`horizontal_composition`、`screen_direction`、`blocking_continuity`、`audio_mouth_sync`、`generation_density`、`prompt_pollution`。
 - `spot_checks` 至少 3 条，优先覆盖台词节奏、横屏构图/轴线、空间/道具连续性、原剧本忠实度。
 - `semantic_checks` 记录最关键语义审稿点；`result` 使用 `pass`、`warning` 或 `issue`。
+- `semantic_checks` 每条都必须包含 `group`、`type`、`result`、`evidence`、`fix_instruction`；即使 `result=pass`，也要写如果不通过应如何修复。
 - `pass=true` 时，`issues` 必须为空，且 `semantic_checks` 中不得出现 `result=issue`。
 - `pass=false` 时，`issues` 必须包含阻断交付的 hard issue。
 
-JSON 结构：
+JSON 结构示例（失败案例；若 `pass=true`，`issues` 必须为 `[]`，`semantic_checks` 不得有 `result=issue`），最终输出时不要包含代码块标记：
 
-```json
 {
-  "pass": true,
-  "summary": "一句话总结",
+  "pass": false,
+  "summary": "存在 hard issue，需修复后复审。",
   "checked_groups": ["第1组", "第2组"],
   "audit_coverage": {
     "script_fidelity": "checked",
@@ -185,10 +185,10 @@ JSON 结构：
   "semantic_checks": [
     {
       "group": "第1组",
-      "type": "screen_direction",
-      "result": "pass",
-      "evidence": "说明左右站位和视线方向如何连续。",
-      "fix_instruction": "若不通过，说明应在哪个组尾或组首补充走位、换边过渡或中性镜头。"
+      "type": "horizontal_composition",
+      "result": "issue",
+      "evidence": "具体说明 16:9 画面中左右关系、前后景、视线轴线或关键主体位置为什么不可生成或误导。",
+      "fix_instruction": "补清左右站位、前后景层次、视线方向和关键道具位置，必要时拆组或增加中性过渡镜头。"
     },
     {
       "group": "第2组",
@@ -226,6 +226,5 @@ JSON 结构：
     }
   ]
 }
-```
 
 输出前强制交叉检查：只要 `semantic_checks` 中有任何 `result=issue`，就必须设置 `pass=false`，并把该问题写入 `issues`。不得在语义检查中标为 issue 却整体通过。

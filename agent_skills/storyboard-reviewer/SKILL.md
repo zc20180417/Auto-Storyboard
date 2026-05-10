@@ -93,7 +93,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 
 - 同一组跨越两个主要物理空间，且未明确标注蒙太奇、回忆、片尾意象、屏幕画面或主观想象。
 - 组首空间锁定缺少本组第一帧已在场的关键人物、位置、身体朝向、关键道具或布局。
-- 组首空间锁定像独立镜头，例如写“镜头展示”“画面出现”“人物正在进入”等动作推进。
+- 组首空间锁定像独立镜头或包含动作推进，例如写“镜头展示”“画面出现”“人物正在进入”“从远处走来”“走到”“站到”“转身”等过程。
 - 人物未在组首可见，也没有在行动/说话前入场、揭示、电话、画外音或屏幕来源，却直接参与关键动作或台词。
 
 ### 7. 组内/组间连续性错误
@@ -112,6 +112,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 
 - 不可视信息承载关键剧情，却没有转译成可见动作、表情、道具、光影、声音或台词。
 - 为展示人物长相、基础服装、场景布局、普通道具外观单独占用时间段，并挤压剧情动作或口型。
+- 剧本明确夜/晴、夜景、傍晚或暗室，但组首或光影写成日光、天光、阳光照入等白天光源，造成昼夜错误或主要光源不成立。
 - 最终正文出现模型说明词或工程词：`Seedance 可`、`由 Seedance`、`Seedance 自动`、`Seedance自动`、`HappyHorse 可`、`由 HappyHorse`、`HappyHorse 自动`、`HappyHorse自动`、`自动正反打`、`自动分镜`、`由模型自动`、`模型会处理`、`本段用于`、`规则要求`、`参考图`、`参考官方模板`、`参考模板`、`模板编号`、`官方模板编号`、`官方模板标题`、`@图片/@视频/@音频`、广告 slogan、角标、小字、产品卖点字幕、首帧/尾帧参考、视频延长、轨道补全、一镜到底、MV 卡点、萌宠/变装模板语气等。
 - 使用模板化批量描述，无具体画面信息的泛化表达：`空间先被交代出来`、`镜头从场景布局转向在场人物`、`视线关系落在当前冲突中心`、`人物面部肌肉随局势绷紧`、`眉头和嘴角随情绪细微变化`、`现场冲突继续推进`。
 - 普通空间/环境交代镜头超过 3 秒；或超过 2 秒且明显用于凑时长、挤压剧情动作或口型（原剧本明确存在连续动作时可到 3 秒）。
@@ -126,6 +127,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - 轻微组间状态交代不足，但不造成不可生成或前后矛盾。
 - 关键道具位置或归属略含糊，但仍能推断动作如何发生；应建议补一句放下、递出、推近、拿起、收回等过渡。
 - 光影描述过泛、重复，或可能导致黑脸但不影响剧情。
+- 夜景光源写得笼统但仍能判断为夜景，例如只写“微光”而未说明月光、星光、路灯、院灯或屏幕光。
 - 情绪只写抽象词，缺少动作表现，但关键剧情仍可理解。
 - 环境/全景镜头 3 秒但无原剧本明确连续动作支撑。
 - 同空间合并后没有漏剧情、时间也合格，但把关系落点、情绪收束或片尾意象压得过薄；可用 `generation_density` 或 `filmability` 给 warning，建议拆出余韵组或独立收束段。
@@ -168,16 +170,17 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - `audit_coverage` 可以额外包含 `audio_mouth_sync`、`generation_density`、`prompt_pollution`，但不能缺少上一条的必需字段。
 - `spot_checks` 至少 3 条，优先覆盖台词节奏、空间/连续性、原剧本忠实度；若正文存在关键道具归属变化、片段密度、模板化描述或模型词风险，必须至少抽查其中一类。
 - `semantic_checks` 记录最关键语义审稿点；`result` 使用 `pass`、`warning` 或 `issue`。
+- `semantic_checks` 每条都必须包含 `group`、`type`、`result`、`evidence`、`fix_instruction`；即使 `result=pass`，也要写如果不通过应如何修复。
 - `pass=true` 时，`issues` 必须为空，且 `semantic_checks` 中不得出现 `result=issue`；`pass=false` 时，`issues` 必须包含阻断交付的 hard issue。
 - 模板化描述、模型说明词、参考图/模板/首尾帧等污染项必须使用 `prompt_pollution` 作为 `issues/warnings.rule` 或 `semantic_checks.type`。
 
 **输出前强制交叉检查**：写完 `semantic_checks` 后，逐条检查 `result` 字段。只要有任何一条 `result=issue`，就必须设置 `pass=false` 并将该问题写入 `issues`。不得在 `semantic_checks` 中标记为 `issue` 却在整体结果中设 `pass=true`。
 
-JSON 结构示例，最终输出时不要包含代码块标记：
+JSON 结构示例（失败案例；若 `pass=true`，`issues` 必须为 `[]`，`semantic_checks` 不得有 `result=issue`），最终输出时不要包含代码块标记：
 
 {
-  "pass": true,
-  "summary": "一句话总结",
+  "pass": false,
+  "summary": "存在 hard issue，需修复后复审。",
   "checked_groups": ["第1组", "第2组"],
   "audit_coverage": {
     "script_fidelity": "checked",
@@ -212,11 +215,11 @@ JSON 结构示例，最终输出时不要包含代码块标记：
   ],
   "semantic_checks": [
     {
-      "group": "第1组",
-      "type": "audio_mouth_sync",
-      "result": "pass",
-      "evidence": "说明心声、画外音或现场对白如何正确承载。",
-      "fix_instruction": "若不通过，说明应改成现场开口、心声闭口、门外音或电话音。"
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "result": "issue",
+      "evidence": "具体说明有效字数、秒数、字秒比为什么超过 6.5 字/秒硬上限。",
+      "fix_instruction": "拆分台词、延长承载时间段或拆组。"
     },
     {
       "group": "第2组",

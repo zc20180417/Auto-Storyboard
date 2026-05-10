@@ -309,3 +309,105 @@
 - `pass=true`
 - 0-4.5秒是完整复合动作链，不应按普通无台词拖时长误杀
 - 门外音有来源，林母不做口型，声音/口型分离正确
+
+## Case 12: 组首空间锁定不得写动作推进
+
+片段：
+
+```text
+=== [cut_id: EP30-G03] 第3组：村口感恩（总时长：12秒，镜头数：3个） ===
+人物：赵朵朵、赵大雷、村长
+场景：远县村口大桥
+道具：水泥大桥、石碑
+组首空间锁定（仅作空间连续性约束，不作为独立镜头生成）：远县村口大桥，村长站在桥头左侧，赵朵朵和赵大雷从桥面远处走来，站到桥头右侧，石碑立在画面右侧。
+0-4秒：
+镜头描述：中景，村长热泪盈眶，双手握住赵朵朵的手，对赵朵朵说道：“赵老板，您是活菩萨啊！”
+光影设计：日光照亮桥面和人物面部。
+4-8秒：
+镜头描述：中景，村民在村长身后鼓掌。
+光影设计：日光延续。
+8-12秒：
+镜头描述：近景，赵朵朵淡笑着点头。
+光影设计：日光照亮赵朵朵侧脸。
+组尾衔接：赵朵朵和赵大雷站在桥头，村长仍握着赵朵朵的手。
+画面风格：浅景深，电影质感，真人实拍风格，细节丰富，无字幕，无配乐
+--neg 模糊，低分辨率，字幕，水印
+=== 第3组结束 ===
+```
+
+期望：
+
+- `pass=false`
+- `issues.rule=space_locking`
+- 组首空间锁定中的“从桥面远处走来”“站到桥头右侧”属于动作推进，必须移到时间段镜头描述，组首只能写第一帧已成立状态
+
+## Case 13: 夜景不得写白天光源
+
+片段：
+
+```text
+=== [cut_id: EP30-G05] 第5组：繁星团圆（总时长：13秒，镜头数：3个） ===
+人物：赵朵朵、赵大雷、桂姨
+场景：夜晚县城四合院院子
+道具：餐桌、玻璃杯、葡萄架
+组首空间锁定（仅作空间连续性约束，不作为独立镜头生成）：夜晚县城四合院院子，葡萄架搭在院子上方，桌上摆满饭菜，赵朵朵坐在桌旁，葡萄架缝隙透出天光。
+0-4秒：
+镜头描述：中景，赵大雷举杯，对赵朵朵说道：“来！咱一家人碰一个！”
+光影设计：天光从葡萄架缝隙照下，人物面部清楚。
+4-9秒：
+镜头描述：特写，玻璃杯碰在一起。
+光影设计：天光照亮杯口。
+9-13秒：
+镜头描述：近景，赵朵朵抬头看向满天繁星。
+光影设计：天光照亮赵朵朵面部。
+组尾衔接：赵朵朵抬头看向繁星，家人坐在桌旁。
+画面风格：浅景深，电影质感，真人实拍风格，细节丰富，无字幕，无配乐
+--neg 模糊，低分辨率，字幕，水印
+=== 第5组结束 ===
+```
+
+期望：
+
+- `pass=false`
+- `issues.rule=filmability`
+- 夜景、繁星、夜晚院子不能用“天光”作为主要光源，应改成星光、夜空微光、院灯、室内暖光、路灯或月光
+
+## Case 14: semantic_checks 必须包含 fix_instruction
+
+片段：
+
+```json
+{
+  "pass": true,
+  "summary": "审核通过",
+  "checked_groups": ["第1组", "第2组", "第3组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {"group": "第1组", "type": "dialogue_pacing", "evidence": "台词速度合格"},
+    {"group": "第2组", "type": "space_locking", "evidence": "组首状态清楚"},
+    {"group": "第3组", "type": "script_fidelity", "evidence": "台词保留"}
+  ],
+  "semantic_checks": [
+    {"group": "第1组", "type": "generation_density", "result": "pass", "evidence": "节拍不过载"},
+    {"group": "第2组", "type": "handoff_continuity", "result": "pass", "evidence": "衔接清楚"},
+    {"group": "第3组", "type": "prop_continuity", "result": "pass", "evidence": "道具无跳变"}
+  ],
+  "issues": [],
+  "warnings": []
+}
+```
+
+期望：
+
+- `validate-episode` reviewer 证据校验失败
+- 每条 `semantic_checks` 都必须有 `fix_instruction`，即使 `result=pass`
