@@ -1,9 +1,7 @@
----
-name: storyboard-generator
-description: Generate vertical Chinese short-drama storyboard prompts from episode scripts. Use when converting modern, costume, urban, suspense, or emotional short-drama scripts into natural grouped storyboard output.
----
+# Storyboard Generator Reference
 
-# Storyboard Generator
+> 这是旧版长规则参考层，只用于复杂场景查阅。
+> 活跃生成合同以 `SKILL.md` 为准。
 
 # 角色与目标
 

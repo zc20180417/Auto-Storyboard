@@ -135,6 +135,18 @@ def group_seconds_contract_for_aspect(aspect: str) -> tuple[int, int]:
     return (10, 15)
 
 
+def group_duration_contract_line_for_aspect(aspect: str) -> str:
+    if aspect == "horizontal":
+        return (
+            "Horizontal groups may be 6-15 seconds; use 6-9 seconds only for justified short beats, "
+            "single reactions, prop inserts, short action aftershocks, or closing images; never exceed 15 seconds."
+        )
+    return (
+        "Vertical groups must be 10-15 seconds. Do not create 6-9 second vertical groups; "
+        "if a beat is too short, merge with adjacent same-space/same-conflict light dialogue or reaction without padding."
+    )
+
+
 def _desired_cut_id(episode_id: str, group_index: int) -> str:
     return f"{episode_id}-G{group_index:02d}"
 
@@ -343,6 +355,7 @@ def make_episode_task(
     aspect_cfg = storyboard_aspect_config(aspect)
     aspect_label = aspect_cfg["label"]
     reviewer_skill_name = aspect_cfg["reviewer_name"]
+    duration_contract_line = group_duration_contract_line_for_aspect(aspect)
     if target_video_model == "happyhorse":
         profile_read_phrase = "the HappyHorse / Seedance prompt profiles, and the AI video prompt skill"
         profile_input_line = f"- HappyHorse prompt profile: `{happyhorse_profile_path}`，只作为 HappyHorse 1.0 视频提示词参考层，不得复制官方 case、控制台占位符或非短剧模板语气到 `final.txt`\n- AI video prompt skill: `{ai_video_prompt_skill_path}`，只在 HappyHorse 目标模型下作为提示词优化参考；不得复制 `@图`、`Image`、参考图/首帧槽位、独立音频时间轴、BGM 或视频编辑模板语气到 `final.txt`\n- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
@@ -391,7 +404,7 @@ def make_episode_task(
             f"""
             1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
-            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds.
+            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. {duration_contract_line}
             4. Review the assembled `final.txt` once using `{reviewer_skill_name}`; write the raw reviewer JSON to `review.txt`.
             5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `{reviewer_skill_name}` after repairs.
             6. Write `status.json` with reviewer metadata, then run validation. Validation exports `storyboard_index.json` and `storyboard_index.xlsx` from `final.txt`.
@@ -412,7 +425,7 @@ def make_episode_task(
         workflow = textwrap.dedent(
             f"""
             1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, and `script.txt`.
-            2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds.
+            2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. {duration_contract_line}
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
             5. Re-run `{reviewer_skill_name}` after repairs and update `review.txt`.
