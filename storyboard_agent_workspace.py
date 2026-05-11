@@ -324,6 +324,14 @@ def make_episode_task(
     aspect_cfg = storyboard_aspect_config(aspect)
     aspect_label = aspect_cfg["label"]
     reviewer_skill_name = aspect_cfg["reviewer_name"]
+    if aspect == "horizontal":
+        aspect_contract_line = "Horizontal outputs must be generated as polished, Seedance-ready deliverables on the first pass, not rough drafts waiting for a separate rewrite. Use the current horizontal Seedance wrapper: `**人物**`, `**场景**`, `**道具/关键视觉资产**`, `**组间承接**`, `**横屏构图/调度**`, bare `N-M` shot-number lines, then each shot with `**镜头描述**`, `**光影设计**`, `**本镜估算时长**`, followed by `**组尾衔接**`, `**画面风格**`, `**运镜强化词**`, `**Seedance执行提示补充**`, and `**--neg**`. Do not write `**镜头号**：N-M`; do not use the old horizontal `组首空间锁定` or per-shot `运镜设计` fields. Keep assets under 9 per group; if the script requires more, split the group instead of deleting key story elements."
+        group_timing_line = "Horizontal groups use bare `N-M` shot numbers and `**本镜估算时长**：X秒` per shot; each group's estimated shot durations must sum to the integer group total. Prefer integer shot durations; use 0.5 seconds only for short reactions, prop inserts, or action aftershocks. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds. Do not compress key dialogue meaning just to fit the 15-second cap; split shots or groups instead."
+        asset_id_contract_line = "- Horizontal final.txt may preserve user-provided asset IDs in `**人物**`, `**场景**`, and `**道具/关键视觉资产**`, such as `天天图8`; do not invent asset IDs, and do not write `参考图`, `首帧参考`, `尾帧参考`, `@图片`, `@视频`, or upload/call instructions."
+    else:
+        aspect_contract_line = "Vertical outputs follow the vertical generator skill contract; do not apply horizontal camera-motion fields unless the run aspect is horizontal."
+        group_timing_line = "Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds."
+        asset_id_contract_line = "- Do not put asset IDs in `final.txt`; asset binding belongs to the asset extraction stage."
     if target_video_model == "happyhorse":
         profile_read_phrase = "the HappyHorse / Seedance prompt profiles, and the AI video prompt skill"
         profile_input_line = f"- HappyHorse prompt profile: `{happyhorse_profile_path}`，只作为 HappyHorse 1.0 视频提示词参考层，不得复制官方 case、控制台占位符或非短剧模板语气到 `final.txt`\n- AI video prompt skill: `{ai_video_prompt_skill_path}`，只在 HappyHorse 目标模型下作为提示词优化参考；不得复制 `@图`、`Image`、参考图/首帧槽位、独立音频时间轴、BGM 或视频编辑模板语气到 `final.txt`\n- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
@@ -372,7 +380,7 @@ def make_episode_task(
             f"""
             1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
-            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组; each group keeps its own time ranges from 0 seconds. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds.
+            3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. {group_timing_line}
             4. Review the assembled `final.txt` once using `{reviewer_skill_name}`; write the raw reviewer JSON to `review.txt`.
             5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `{reviewer_skill_name}` after repairs.
             6. Write `status.json` with reviewer metadata, then run validation. Validation exports `storyboard_index.json` and `storyboard_index.xlsx` from `final.txt`.
@@ -393,7 +401,7 @@ def make_episode_task(
         workflow = textwrap.dedent(
             f"""
             1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, and `script.txt`.
-            2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds.
+            2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. {group_timing_line}
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
             5. Re-run `{reviewer_skill_name}` after repairs and update `review.txt`.
@@ -469,10 +477,11 @@ Template/model-term pollution must use `prompt_pollution` as the issue/warning `
 - Every group heading must include exactly one `cut_id`.
 - Use the current episode id and group number: `EP01-G01`, `EP01-G02`, ... for ep01; `EP30-G01`, ... for ep30.
 - Preferred heading format: `=== [cut_id: EPxx-GNN] 第N组：标题（总时长：XX秒，镜头数：X个） ===`.
-- Do not put asset IDs in `final.txt`; asset binding belongs to the asset extraction stage.
+{asset_id_contract_line}
 
 ## Important Constraints
 - Rules live in the two standard `SKILL.md` files; {profile_constraint}. Do not duplicate or reinterpret them here.
+- {aspect_contract_line}
 - Work only inside `{rel_root}`. Treat project-level skill files and `../../context.md` as read-only.
 - Do not call external LLM APIs or launch other CLIs.
 """.strip()
@@ -775,14 +784,14 @@ CLEAN_GROUP_RE = re.compile(
     r"第(?P<num>[0-9一二三四五六七八九十百千万零〇两]+)组(?!结束)(?P<rest>.*?)$"
 )
 CUT_ID_RE = re.compile(r"cut_id\s*[:：]\s*(?P<cut_id>[A-Z0-9_-]+)")
-CLEAN_LEGACY_SHOT_RE = re.compile(r"(?m)^\s*(?P<group>\d{1,3})-(?P<shot>\d{1,2})(?:\s|\[|$)")
+CLEAN_LEGACY_SHOT_RE = re.compile(r"(?m)^\s*(?:\*\*)?(?P<group>\d{1,3})-(?P<shot>\d{1,2})(?:\*\*)?(?:\s|\[|$)")
 CLEAN_SHOT_TIME_RANGE_RE = re.compile(
     r"(?:时间段[：:]\s*)?(?P<start>\d{1,3}(?:\.\d+)?)\s*[-－—–到至]\s*(?P<end>\d{1,3}(?:\.\d+)?)\s*秒"
 )
 CLEAN_SHOT_TIME_RANGE_LINE_RE = re.compile(
     r"(?m)^\s*(?:时间段[：:]\s*)?(?P<start>\d{1,3}(?:\.\d+)?)\s*[-－—–到至]\s*(?P<end>\d{1,3}(?:\.\d+)?)\s*秒[：:]?\s*$"
 )
-CLEAN_SHOT_SECONDS_RE = re.compile(r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒")
+CLEAN_SHOT_SECONDS_RE = re.compile(r"(?:\*\*)?本镜估算时长(?:\*\*)?[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒")
 CLEAN_GROUP_TOTAL_RE = re.compile(r"总时长[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒")
 CLEAN_GROUP_SHOTS_RE = re.compile(r"镜头数[：:]\s*(?P<shots>\d{1,3})\s*个")
 MACHINE_TAG_RE = re.compile(r"(?m)^\ufeff?\s*<<<(?:GROUP|GROUP_END|SHOT|SHOT_END)\b.*?>>>\s*$")
@@ -805,6 +814,65 @@ REQUIRED_AUDIT_COVERAGE_KEYS = (
     "handoff_continuity",
     "filmability",
 )
+HORIZONTAL_AUDIT_COVERAGE_KEYS = (
+    "horizontal_composition",
+    "screen_direction",
+    "blocking_continuity",
+    "camera_motion",
+    "audio_mouth_sync",
+    "generation_density",
+    "narrative_progression",
+    "asset_scope",
+    "prop_continuity",
+    "physical_continuity",
+    "special_effects",
+    "genre_style",
+    "prompt_pollution",
+)
+HORIZONTAL_CAMERA_MOTION_VAGUE_PATTERNS = (
+    "镜头缓慢移动增强氛围",
+    "镜头横移展示空间",
+    "镜头推进制造电影感",
+    "横移展示空间",
+    "展示空间",
+    "推进制造电影感",
+    "增强电影感",
+    "增强氛围",
+    "更有动感",
+)
+HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS = (
+    "推近",
+    "推进",
+    "后拉",
+    "拉开",
+    "横向跟拍",
+    "跟拍",
+    "平移",
+    "横移",
+    "摇向",
+    "掠过",
+    "手持",
+    "移动",
+)
+HORIZONTAL_CAMERA_MOTION_STABLE_PATTERNS = (
+    "固定机位",
+    "固定双人",
+    "固定中景",
+    "固定过肩",
+    "稳定过肩",
+    "稳定双人",
+    "稳定中景",
+    "承载台词",
+    "承载口型",
+    "固定",
+)
+HORIZONTAL_SPACE_LOCK_PROCESS_PATTERNS = (
+    re.compile(r"(正在|正从|正向)"),
+    re.compile(r"(从[^，。；;\n]{0,24}(?:走来|走向|跑来|跑向|冲来|冲向|挤入|爬向|逼近))"),
+    re.compile(r"(走来|走向|走到|站到|跑来|跑向|冲来|冲向|冲进|冲入|挤入|爬行|爬向|逼近)"),
+    re.compile(r"(进入画面|进入场景|推门进入|从门口进入)"),
+    re.compile(r"(拿起|放下|递给|接过|抢过|按下|打开|关上|推开|拉开|转身|回头)"),
+)
 LOW_QUALITY_TEMPLATE_PATTERNS = (
     "空间先被交代出来",
     "镜头从场景布局转向在场人物",
@@ -816,12 +884,12 @@ LOW_QUALITY_TEMPLATE_PATTERNS = (
 SCENE_ESTABLISHING_RE = re.compile(
     # Alt 1: natural format "0-3秒：\n镜头描述：全景..." (time-before-description)
     r"(?m)^\s*(?P<start2>\d{1,3}(?:\.\d+)?)\s*[-－—–到至]\s*(?P<end2>\d{1,3}(?:\.\d+)?)\s*秒\s*[：:]?\s*\n"
-    r"\s*镜头描述[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)"
+    r"\s*(?:\*\*)?镜头描述(?:\*\*)?[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)"
     r"|"
     # Alt 2: original format (description-then-time)
-    r"镜头描述[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)[\s\S]{0,160}?"
+    r"(?:\*\*)?镜头描述(?:\*\*)?[：:][^\n]*(?:空间先被交代出来|场景布局|环境|全景|旧工业环境)[\s\S]{0,160}?"
     r"(?:(?:时间段[：:]\s*)?(?P<start>\d{1,3}(?:\.\d+)?)\s*[-－—–到至]\s*(?P<end>\d{1,3}(?:\.\d+)?)\s*秒|"
-    r"本镜估算时长[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒)"
+    r"(?:\*\*)?本镜估算时长(?:\*\*)?[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒)"
 )
 DIALOGUE_QUOTE_RE = re.compile(r"[“\"]([^”\"]+)[”\"]")
 DIALOGUE_PUNCT_RE = re.compile(r"[，。！？、；：,.!?;:\s“”\"'（）()《》【】\[\]—…]")
@@ -896,6 +964,20 @@ MODEL_META_PROMPT_PATTERNS = (
     "HappyHorse自动",
     "自动正反打",
     "自动分镜",
+    "人物图",
+    "场景图",
+    "环境图",
+    "资产核对",
+    "资产数量说明",
+    "上传说明",
+)
+HORIZONTAL_OUTPUT_FIELD_PATTERNS = (
+    "道具/关键视觉资产",
+    "组间承接",
+    "运镜强化词",
+    "Seedance执行提示补充",
+    "Seedance 执行提示补充",
+    "本镜估算时长",
 )
 REVIEWER_ALLOWED_SEMANTIC_RESULTS = {"pass", "warning", "issue"}
 REVIEWER_PROMPT_POLLUTION_MARKERS = LOW_QUALITY_TEMPLATE_PATTERNS + MODEL_META_PROMPT_PATTERNS + (
@@ -904,6 +986,12 @@ REVIEWER_PROMPT_POLLUTION_MARKERS = LOW_QUALITY_TEMPLATE_PATTERNS + MODEL_META_P
     "本段用于",
     "规则要求",
     "参考图",
+    "人物图",
+    "场景图",
+    "环境图",
+    "资产核对",
+    "资产数量说明",
+    "上传说明",
     "参考官方模板",
     "参考模板",
     "模板编号",
@@ -1188,6 +1276,188 @@ def validate_happyhorse_audio_dialogue_pacing(content: str) -> list[str]:
     return issues
 
 
+def is_horizontal_episode_dir(episode_dir: Path) -> bool:
+    meta_path = episode_dir / "episode.json"
+    if meta_path.is_file():
+        try:
+            meta = read_json(meta_path)
+        except Exception:
+            meta = {}
+        aspect = meta.get("storyboard_aspect")
+        if isinstance(aspect, str):
+            return aspect.strip().lower() == "horizontal"
+
+    task_path = episode_dir / "TASK.md"
+    if task_path.is_file():
+        task_text = task_path.read_text(encoding="utf-8", errors="replace")
+        return "Aspect: `horizontal`" in task_text or "storyboard_aspect=horizontal" in task_text
+
+    return False
+
+
+def _horizontal_field_value(block: str, label: str) -> str | None:
+    if label == "--neg":
+        pattern = re.compile(r"(?m)^\s*(?:\*\*)?--neg(?:\*\*)?(?:\s*[：:])?\s*(?P<value>.*?)\s*$")
+    else:
+        pattern = re.compile(rf"(?m)^\s*(?:\*\*)?{re.escape(label)}(?:\*\*)?\s*[：:]\s*(?P<value>.*?)\s*$")
+    match = pattern.search(block)
+    return match.group("value").strip() if match else None
+
+
+def _horizontal_shot_block_has_field(shot_block: str, label: str) -> bool:
+    return re.search(rf"(?m)^\s*(?:\*\*)?{re.escape(label)}(?:\*\*)?\s*[：:]", shot_block) is not None
+
+
+def _collect_horizontal_handoff_process_markers(text: str) -> list[str]:
+    matches: list[str] = []
+    for pattern in HORIZONTAL_SPACE_LOCK_PROCESS_PATTERNS:
+        for hit in pattern.findall(text):
+            value = hit if isinstance(hit, str) else "".join(hit)
+            if value and value not in matches:
+                matches.append(value)
+            if len(matches) >= 3:
+                return matches
+    return matches
+
+
+def validate_horizontal_output_structure_contract(content: str) -> list[str]:
+    issues: list[str] = []
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    required_fields = (
+        "人物",
+        "场景",
+        "道具/关键视觉资产",
+        "组间承接",
+        "横屏构图/调度",
+        "组尾衔接",
+        "画面风格",
+        "运镜强化词",
+        "Seedance执行提示补充",
+        "--neg",
+    )
+
+    for index, group_match in enumerate(group_matches):
+        raw_group = group_match.group("num")
+        group_number = _group_number(raw_group) or index + 1
+        block_start = group_match.end()
+        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
+        block = content[block_start:block_end]
+
+        for field in required_fields:
+            value = _horizontal_field_value(block, field)
+            if value is None:
+                issues.append(f"第{group_number}组缺少横屏新结构字段 `{field}`。")
+            elif not value:
+                issues.append(f"第{group_number}组横屏新结构字段 `{field}` 为空。")
+
+        if re.search(r"(?m)^\s*(?:\*\*)?组首空间锁定", block):
+            issues.append(f"第{group_number}组仍使用旧字段 `组首空间锁定`；横屏新结构应改用 `组间承接`。")
+        if re.search(r"(?m)^\s*(?:\*\*)?运镜设计(?:\*\*)?\s*[：:]", block):
+            issues.append(f"第{group_number}组仍使用旧字段 `运镜设计`；横屏新结构应使用组级 `运镜强化词`。")
+        if _horizontal_field_value(block, "道具") is not None and _horizontal_field_value(block, "道具/关键视觉资产") is None:
+            issues.append(f"第{group_number}组仍使用旧字段 `道具`；横屏新结构应写 `道具/关键视觉资产`。")
+
+        people = _horizontal_field_value(block, "人物") or ""
+        scene = _horizontal_field_value(block, "场景") or ""
+        props = _horizontal_field_value(block, "道具/关键视觉资产") or ""
+        asset_count = len(_split_list_field(people)) + (1 if scene and scene not in {"无", "无明确"} else 0) + len(_split_list_field(props))
+        if asset_count > 9:
+            issues.append(f"第{group_number}组人物、场景、道具/关键视觉资产合计约 {asset_count} 项，超过横屏资产上限 9 项。")
+
+        handoff = _horizontal_field_value(block, "组间承接") or ""
+        if handoff in {"延续上一组", "承接上一组", "同上"}:
+            issues.append(f"第{group_number}组 `组间承接` 过于空泛；需写清人物视线、方向、关键道具或轴线。")
+        process_markers = _collect_horizontal_handoff_process_markers(handoff)
+        if process_markers:
+            issues.append(
+                f"第{group_number}组 `组间承接` 包含过程动作 `{ ' / '.join(process_markers) }`；"
+                "承接应优先写静态结果状态，动作推进放入后续 `镜头描述`。"
+            )
+
+        if re.search(r"(?m)^\s*(?:\*\*)?镜头号(?:\*\*)?\s*[：:]", block):
+            issues.append(
+                f"第{group_number}组使用了 `镜头号：` 字段；横屏镜头号必须单独占一行，"
+                f"例如 `{group_number}-1`。"
+            )
+
+        shot_matches = list(CLEAN_LEGACY_SHOT_RE.finditer(block))
+        if not shot_matches:
+            issues.append(f"第{group_number}组缺少横屏镜头号，例如 `{group_number}-1`。")
+            continue
+
+        for shot_index, shot_match in enumerate(shot_matches):
+            shot_label = f"{shot_match.group('group')}-{shot_match.group('shot')}"
+            shot_start = shot_match.end()
+            shot_end = shot_matches[shot_index + 1].start() if shot_index + 1 < len(shot_matches) else len(block)
+            shot_block = block[shot_start:shot_end]
+            for field in ("镜头描述", "光影设计", "本镜估算时长"):
+                if not _horizontal_shot_block_has_field(shot_block, field):
+                    issues.append(f"第{group_number}组 {shot_label} 缺少横屏镜头字段 `{field}`。")
+
+    return issues
+
+
+def validate_horizontal_camera_motion_contract(content: str) -> list[str]:
+    issues: list[str] = []
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    for index, group_match in enumerate(group_matches):
+        raw_group = group_match.group("num")
+        group_number = _group_number(raw_group) or index + 1
+        block_start = group_match.end()
+        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
+        block = content[block_start:block_end]
+
+        motion_text = _horizontal_field_value(block, "运镜强化词")
+        if motion_text is None:
+            issues.append(f"第{group_number}组缺少横屏必填字段 `运镜强化词`。")
+            continue
+        if not motion_text:
+            issues.append(f"第{group_number}组 `运镜强化词` 为空；需概括本组镜头运动策略和服务目的。")
+            continue
+        if any(pattern in motion_text for pattern in HORIZONTAL_CAMERA_MOTION_VAGUE_PATTERNS):
+            issues.append(
+                f"第{group_number}组 `运镜强化词` 过于空泛：`{motion_text}`；"
+                "需写清视线带入、动作驱动、前景遮挡、推近对象、摇向终点或急停落点。"
+            )
+
+        shots = [
+            (shot_label, seconds, shot_text)
+            for current_group, shot_label, seconds, shot_text in _iter_storyboard_shots(content)
+            if current_group == _group_number(raw_group)
+        ]
+        if len(shots) < 3:
+            continue
+
+        active_count = sum(
+            any(pattern in shot_text for pattern in HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS)
+            for _shot_label, _seconds, shot_text in shots
+        )
+        stable_count = sum(
+            any(pattern in shot_text or pattern in motion_text for pattern in HORIZONTAL_CAMERA_MOTION_STABLE_PATTERNS)
+            for _shot_label, _seconds, shot_text in shots
+        )
+        has_dialogue = any(DIALOGUE_QUOTE_RE.search(shot_text) for _shot_label, _seconds, shot_text in shots)
+        if has_dialogue and active_count >= 3 and stable_count == 0:
+            examples = "；".join(shot_label for shot_label, _seconds, _shot_text in shots[:3])
+            issues.append(
+                f"第{group_number}组有 {len(shots)} 个镜头，其中 {active_count} 个呈现明显运动且没有稳定镜头；"
+                f"对白组需要至少一个固定中景、稳定过肩或可承载口型的近中景。示例镜头：{examples}"
+            )
+
+        first_shot_label, first_seconds, first_shot_text = shots[0]
+        if (
+            first_seconds >= 3
+            and re.search(r"(全景|环境|空镜|建立|村口|河床|道路|院子|大厅|广场)", first_shot_text)
+            and not any(pattern in first_shot_text or pattern in motion_text for pattern in HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS)
+        ):
+            issues.append(
+                f"第{group_number}组 {first_shot_label} 是 {_format_seconds(first_seconds)} 秒横屏建立镜头，"
+                "但缺少高位掠过、横向平移、摇向、轻推或人物动作驱动等信息动机，容易变成静止空镜。"
+            )
+
+    return issues
+
+
 def validate_clean_storyboard_format(content: str) -> list[str]:
     issues: list[str] = []
     if MACHINE_TAG_RE.search(content):
@@ -1328,12 +1598,15 @@ def validate_happyhorse_prompt_contract(content: str) -> list[str]:
     return issues
 
 
-def validate_storyboard_quality_floor(content: str) -> list[str]:
+def validate_storyboard_quality_floor(content: str, *, allow_horizontal_output_fields: bool = False) -> list[str]:
     issues: list[str] = []
     for pattern in LOW_QUALITY_TEMPLATE_PATTERNS:
         if pattern in content:
             issues.append(f"最终分镜包含模板化镜头描述：`{pattern}`，请改为贴合剧本现场的具体动作、道具和人物站位。")
-    for pattern in MODEL_META_PROMPT_PATTERNS:
+    pollution_patterns = MODEL_META_PROMPT_PATTERNS
+    if not allow_horizontal_output_fields:
+        pollution_patterns = pollution_patterns + HORIZONTAL_OUTPUT_FIELD_PATTERNS
+    for pattern in pollution_patterns:
         if pattern in content:
             issues.append(
                 f"最终分镜正文包含模型说明词 `{pattern}`，应改成自然画面描述，"
@@ -1356,7 +1629,47 @@ def validate_storyboard_quality_floor(content: str) -> list[str]:
     return issues
 
 
-def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
+def validate_physical_plausibility_floor(content: str) -> list[str]:
+    issues: list[str] = []
+    lines = content.splitlines()
+    leak_or_pour_terms = ("流出", "洒出", "倒出", "外溢", "倾泻", "泼出", "倒掉", "流到")
+    safe_container_terms = ("高于水面", "斜立", "竖立", "扶住", "扶稳", "托住", "留在壶底", "留在杯底", "盖子拧紧")
+    for index in range(len(lines)):
+        window = "\n".join(lines[index : index + 3])
+        if not any(term in window for term in ("水壶", "水杯", "杯子", "瓶子", "药瓶", "油桶", "水桶", "碗")):
+            continue
+        has_risky_orientation = any(
+            term in window
+            for term in ("平放", "倒置", "倒扣", "壶口朝下", "杯口朝下", "瓶口朝下", "口朝下", "壶口朝向", "杯口朝向", "瓶口朝向")
+        )
+        has_open_or_entry = any(term in window for term in ("壶口", "杯口", "瓶口", "碗口", "开口", "拧开", "爬进", "进入"))
+        has_retained_liquid = any(term in window for term in ("清水", "水仍", "水还", "水留", "水在", "液体", "壶口内有清水", "杯口内有水", "瓶口内有水"))
+        if not (has_risky_orientation and has_open_or_entry and has_retained_liquid):
+            continue
+        if any(term in window for term in leak_or_pour_terms):
+            continue
+        if any(term in window for term in safe_container_terms):
+            continue
+        issues.append(
+            "物理可行性风险：有液体的容器被写成平放/倒置/开口朝向目标，但同段仍暗示液体留在容器内；"
+            "请写清容器竖立或斜立、开口高于液面、有人扶稳，或明确液体正在流出/倒出。"
+        )
+        break
+    return issues
+
+
+def _required_audit_coverage_keys(reviewer_source: str | None = None) -> tuple[str, ...]:
+    if reviewer_source == "storyboard-horizontal-reviewer":
+        base_keys = tuple(key for key in REQUIRED_AUDIT_COVERAGE_KEYS if key != "space_locking")
+        return base_keys + HORIZONTAL_AUDIT_COVERAGE_KEYS
+    return REQUIRED_AUDIT_COVERAGE_KEYS
+
+
+def _read_review_json(
+    path: Path,
+    *,
+    reviewer_source: str | None = None,
+) -> tuple[dict | None, str | None]:
     if not path.is_file():
         return None, f"missing review file: {path.name}"
 
@@ -1409,7 +1722,7 @@ def _read_review_json(path: Path) -> tuple[dict | None, str | None]:
         return None, f"{path.name} missing non-empty checked_groups list"
 
     audit_coverage = payload["audit_coverage"]
-    for key in REQUIRED_AUDIT_COVERAGE_KEYS:
+    for key in _required_audit_coverage_keys(reviewer_source):
         if audit_coverage.get(key) != "checked":
             return None, f"{path.name} audit_coverage missing `{key}`"
 
@@ -1500,7 +1813,12 @@ def _split_list_field(value: str) -> list[str]:
 
 
 def _extract_bold_meta(block: str, label: str) -> list[str] | str:
-    pattern = re.compile(rf"(?m)^\s*\*\*{re.escape(label)}\*\*\s*[：:]\s*(?P<value>.+?)\s*$")
+    field_label = label
+    if label == "道具":
+        field_label = r"(?:道具|道具/关键视觉资产)"
+    else:
+        field_label = re.escape(label)
+    pattern = re.compile(rf"(?m)^\s*\*\*{field_label}\*\*\s*[：:]\s*(?P<value>.+?)\s*$")
     match = pattern.search(block)
     if not match:
         if label == "场景":
@@ -1744,7 +2062,10 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
     issues: list[str] = []
     expected_reviewer_source = _expected_reviewer_source(episode_dir)
 
-    review_payload, review_error = _read_review_json(episode_dir / "review.txt")
+    review_payload, review_error = _read_review_json(
+        episode_dir / "review.txt",
+        reviewer_source=expected_reviewer_source,
+    )
     if review_error:
         issues.append(review_error)
     elif review_payload is not None:
@@ -1802,7 +2123,10 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
         for segment_dir in sorted(path for path in segments_dir.iterdir() if path.is_dir()):
             if not (segment_dir / "script.txt").is_file():
                 continue
-            segment_payload, segment_error = _read_review_json(segment_dir / "review.md")
+            segment_payload, segment_error = _read_review_json(
+                segment_dir / "review.md",
+                reviewer_source=expected_reviewer_source,
+            )
             if segment_error:
                 issues.append(f"{segment_dir.name}: {segment_error}")
             elif segment_payload is not None:
@@ -2053,18 +2377,41 @@ def validate_episode(args: argparse.Namespace) -> int:
 
     clean_issues = validate_clean_storyboard_format(content)
     cut_id_issues = validate_storyboard_cut_ids(content, episode_id)
-    quality_issues = validate_storyboard_quality_floor(content)
+    horizontal_run = is_horizontal_episode_dir(episode_dir)
+    quality_issues = validate_storyboard_quality_floor(content, allow_horizontal_output_fields=horizontal_run)
+    if horizontal_run:
+        horizontal_motion_issues = validate_horizontal_camera_motion_contract(content)
+        horizontal_output_structure_issues = validate_horizontal_output_structure_contract(content)
+        physical_plausibility_issues = validate_physical_plausibility_floor(content)
+    else:
+        horizontal_motion_issues = []
+        horizontal_output_structure_issues = []
+        physical_plausibility_issues = []
     happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
     if pre_check:
         review_issues: list[str] = []
         review_pass_issues: list[str] = []
     else:
         review_issues = validate_review_artifacts(episode_dir)
-        review_payload, review_error = _read_review_json(episode_dir / "review.txt")
+        expected_reviewer_source = _expected_reviewer_source(episode_dir)
+        review_payload, review_error = _read_review_json(
+            episode_dir / "review.txt",
+            reviewer_source=expected_reviewer_source,
+        )
         review_pass_issues = []
         if review_error is None and not _storyboard_review_passed(review_payload):
             review_pass_issues.append("storyboard_reviewer: reviewer_not_passed")
-    issues = clean_issues + cut_id_issues + quality_issues + happyhorse_issues + review_issues + review_pass_issues
+    issues = (
+        clean_issues
+        + cut_id_issues
+        + quality_issues
+        + horizontal_motion_issues
+        + horizontal_output_structure_issues
+        + physical_plausibility_issues
+        + happyhorse_issues
+        + review_issues
+        + review_pass_issues
+    )
     report_lines = ["# Episode Validation", ""]
     if issues:
         report_lines.append("status: failed")
@@ -2080,6 +2427,14 @@ def validate_episode(args: argparse.Namespace) -> int:
         if quality_issues:
             report_lines.append("## Quality Floor")
             report_lines.extend(f"- {issue}" for issue in quality_issues)
+            report_lines.append("")
+        if horizontal_motion_issues:
+            report_lines.append("## Horizontal Camera Motion")
+            report_lines.extend(f"- {issue}" for issue in horizontal_motion_issues)
+            report_lines.append("")
+        if horizontal_output_structure_issues:
+            report_lines.append("## Horizontal Output Structure")
+            report_lines.extend(f"- {issue}" for issue in horizontal_output_structure_issues)
             report_lines.append("")
         if happyhorse_issues:
             report_lines.append("## HappyHorse Prompt Contract")
@@ -2103,6 +2458,10 @@ def validate_episode(args: argparse.Namespace) -> int:
     report_lines.append("- clean_format: passed")
     report_lines.append("- cut_id_contract: passed")
     report_lines.append("- quality_floor: passed")
+    if horizontal_run:
+        report_lines.append("- horizontal_camera_motion: passed")
+        report_lines.append("- horizontal_output_structure: passed")
+        report_lines.append("- physical_plausibility: passed")
     if is_happyhorse_episode_dir(episode_dir):
         report_lines.append("- happyhorse_prompt_contract: passed")
     if not pre_check:
@@ -2147,11 +2506,32 @@ def collect_run(args: argparse.Namespace) -> int:
         changes.extend(cut_id_changes)
         clean_issues = validate_clean_storyboard_format(content)
         cut_id_issues = validate_storyboard_cut_ids(content, episode_contract_id)
-        quality_issues = validate_storyboard_quality_floor(content)
+        horizontal_run = is_horizontal_episode_dir(episode_dir)
+        quality_issues = validate_storyboard_quality_floor(content, allow_horizontal_output_fields=horizontal_run)
+        if horizontal_run:
+            horizontal_motion_issues = validate_horizontal_camera_motion_contract(content)
+            horizontal_output_structure_issues = validate_horizontal_output_structure_contract(content)
+            physical_plausibility_issues = validate_physical_plausibility_floor(content)
+        else:
+            horizontal_motion_issues = []
+            horizontal_output_structure_issues = []
+            physical_plausibility_issues = []
         happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
         review_issues = validate_review_artifacts(episode_dir)
-        issues = clean_issues + cut_id_issues + quality_issues + happyhorse_issues + review_issues
-        review_payload, review_error = _read_review_json(episode_dir / "review.txt")
+        issues = (
+            clean_issues
+            + cut_id_issues
+            + quality_issues
+            + horizontal_motion_issues
+            + horizontal_output_structure_issues
+            + physical_plausibility_issues
+            + happyhorse_issues
+            + review_issues
+        )
+        review_payload, review_error = _read_review_json(
+            episode_dir / "review.txt",
+            reviewer_source=_expected_reviewer_source(episode_dir),
+        )
         review_passed = review_error is None and _storyboard_review_passed(review_payload)
         status = "unknown"
         if status_path.is_file():
@@ -2165,6 +2545,9 @@ def collect_run(args: argparse.Namespace) -> int:
             summary_lines.extend(f"- clean_format: {issue}" for issue in clean_issues[:8])
             summary_lines.extend(f"- cut_id_contract: {issue}" for issue in cut_id_issues[:8])
             summary_lines.extend(f"- quality_floor: {issue}" for issue in quality_issues[:8])
+            summary_lines.extend(f"- horizontal_camera_motion: {issue}" for issue in horizontal_motion_issues[:8])
+            summary_lines.extend(f"- horizontal_output_structure: {issue}" for issue in horizontal_output_structure_issues[:8])
+            summary_lines.extend(f"- physical_plausibility: {issue}" for issue in physical_plausibility_issues[:8])
             summary_lines.extend(f"- happyhorse_prompt_contract: {issue}" for issue in happyhorse_issues[:8])
             summary_lines.extend(f"- storyboard_reviewer: {issue}" for issue in review_issues[:8])
             summary_lines.append("- copied: skipped because validation failed")
