@@ -14,8 +14,12 @@
 
 - `inputs/`：原始剧本文档或文本。
 - `split_scripts/`：拆好的一集一集剧本文本。
-- `agent_skills/storyboard-generator/SKILL.md`：生成 skill。
-- `agent_skills/storyboard-reviewer/SKILL.md`：审核 skill。
+- `agent_skills/storyboard-generator/SKILL.md`：默认竖屏生成 skill。
+- `agent_skills/storyboard-reviewer/SKILL.md`：默认竖屏审核 skill。
+- `agent_skills/storyboard-horizontal-generator/SKILL.md`：横屏 16:9 生成 skill，只在 `--aspect horizontal` / `-Aspect horizontal` 工作区中使用。
+- `agent_skills/storyboard-horizontal-reviewer/SKILL.md`：横屏 16:9 审核 skill，输出 raw JSON 审核结果。
+- `agent_skills/storyboard-horizontal-generator/TOPIC_PACKS.md`：横屏可选题材包；只有任务书、剧本或用户明确指向对应题材时启用。
+- `agent_skills/storyboard-horizontal-generator/project_packs/`：横屏项目专属包；只有任务书、剧本标题、角色设定或用户明确指定对应项目时启用。
 - `agent_skills/happyhorse-prompt-profile/SKILL.md`：HappyHorse 1.0 视频提示词风格摘要；只有准备工作区时显式指定 `--target-video-model happyhorse` / `-TargetVideoModel happyhorse` 才启用，默认仍使用原来的 Seedance 分镜口径。
 - `agent_skills/ai-video-prompt/SKILL.md`：HappyHorse 目标模型下的补充提示词优化参考；只有 `happyhorse-prompt-profile` 启用时才读取，默认 Seedance 工作流不得套用。HappyHorse 调优默认只做最小修补和结构清理，保留关键镜头、动作、台词和声音，按主体/场景/运动/镜头/声音补齐锚点。
 - `agent_skills/seedance-prompt-profile/SKILL.md`：Seedance 2.0 官方模板风格摘要，只作为生成前参考层，不复制模板正文。
@@ -62,6 +66,18 @@
   -OutDir .\outputs_agent_test_single `
   -Force
 ```
+
+如果要生成横屏 16:9 分镜，显式指定 `-Aspect horizontal`：
+
+```powershell
+.\prepare-agent.ps1 scene yulongyin-horizontal `
+  -Source .\split_scripts\yulongyin-duanwu `
+  -OutDir .\outputs_agent_yulongyin_horizontal `
+  -Aspect horizontal `
+  -Force
+```
+
+横屏工作区的 `TASK.md` 会指向 `storyboard-horizontal-generator` 和 `storyboard-horizontal-reviewer`。不要把横屏任务交给默认竖屏 skill，也不要把横屏题材包或项目包迁移到无关剧本。
 
 生成后会得到：
 
@@ -137,6 +153,10 @@ agent_runs\<run-name>\
 如果仍有硬问题但需要保留当前最佳稿，写 `status: "needs_review"`，并把残留问题写清楚。
 
 `review.txt` 和 `segments/segXX/review.md` 必须是 `storyboard-reviewer` 返回的原始 JSON。`validate-episode` 会检查 reviewer 证据；clean-format 校验不能替代审稿，占位 review 会导致校验失败。
+
+横屏 run 中，`reviewer_source` 必须是 `storyboard-horizontal-reviewer`，`review.txt` 和 `segments/segXX/review.md` 必须来自横屏 reviewer 的 raw JSON。横屏最终 `final.txt` 仍是自然分镜正文，不输出 JSON；只有审核文件是 JSON。
+
+完整生产审核必须提供同一 episode 的原剧本、当前分镜和当前 run 指定的 skill。若只提供分镜稿而没有原剧本，横屏 reviewer 只能做 `technical_review_only`，不得声称 `script_fidelity` 已通过，也不能把技术审核包装成生产审核通过。
 
 质量下限也会被校验：禁止“空间先被交代出来”“人物面部肌肉随局势绷紧”等模板化镜头描述；普通空间/环境交代镜头默认应为 2 秒，不能批量用 3 秒凑时长。
 
@@ -228,12 +248,15 @@ agent_runs\<run-name>\asset_bible.md
 
 ## 生产审核口径
 
+竖屏默认以 `storyboard-reviewer` 为审核器；横屏以 `storyboard-horizontal-reviewer` 为审核器。两者都必须对照原剧本和当前分镜做真实审核。
+
 - 忠于原剧本：不删关键台词，不乱改人物关系，不额外添加剧情。
 - 对话指向：真人对话必须写清“谁对谁说”。
 - 台词速度：普通对白目标约 4.5 字/秒，情绪对白目标约 5.2 字/秒；有效字数 / 秒 > 6.5 是 hard issue，5.8-6.5 是 warning。
 - 镜头过长也要审：不能靠新增停顿、长凝视、慢动作凑时长。
 - 无台词镜头通常 2-3 秒，不能用 4-5 秒凑组时长。
-- 组内时间段允许 0.5 秒粒度；组总时长必须是整数 10-15 秒，标题总时长要等于镜头时长相加。
+- 竖屏组内时间段允许 0.5 秒粒度；组总时长必须是整数 10-15 秒，标题总时长要等于镜头时长相加。
+- 横屏使用 `**本镜估算时长**`，组总时长必须是整数 6-15 秒，默认优先 10-15 秒；只有短承接、单句反应、道具插入、短动作余波、片尾意象或不可硬凑的极短戏剧节拍才允许 6-9 秒短组。
 - 景别重复不要机械判错，正反打同景别可接受。
 - 最终稿禁止 JSON、调试标记或其他非分镜正文内容，必须是自然分镜文本。
 
