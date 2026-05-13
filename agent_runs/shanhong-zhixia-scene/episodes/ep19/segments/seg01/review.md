@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "已对照第19集原剧本、竖屏生成规则和当前seg01分镜逐组审核，7组均保留关键台词、动作因果、空间切换和旧泄洪洞悬念，未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "0-4秒承载村民甲、村民乙、周大柱三句短怒斥共约16个有效字，4秒内约4字/秒；7-13秒承载沈砚川、赵有福、周大柱、沈小禾连续短句共约23字，6秒内约3.8字/秒，并包含按住名单和众人停手反应，节奏可表演。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "保留沈砚川关于父亲本子、老石坝满沿、旧口被封的推理，林知夏的“所以水才一直顶着”、赵有福“废口早不能用了”、村民甲“带路去看”和沈砚川“能动的，跟我去后坡”均未删改。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "本组仅在祠堂后坡一个物理空间内推进，组首列明沈砚川、林知夏、周大柱、赵家父子和村民乙的位置、朝向、手电筒及堵塞物，人物在说话或行动前均可用。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "第5组组首承接第4组清理上层堵物的结果，洞口碎石和沙袋已清掉一部分，赵成武手边有烂木头，周大柱持铁锹，绳子盘在洞边；后续出水、继续搬袋和赵有福阻拦均有明确道具状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "第7组保留赵成武被救回后的洞内发现：沈砚川指出里面有挡板，解释洞口只是外堵、真正卡水在里面，并以“得有人爬进去”作为本集悬念收束。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "村民甲、村民乙、周大柱均明确向赵有福发声，沈砚川对众人喝止并对赵有福发问，赵有福对沈砚川回应，周大柱和沈小禾的问话对象也明确。",
+      "fix_instruction": "若不通过，应补足每句现场对白的说话对象，避免只写台词不写承载关系。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组主要负载为旧口信息揭示、林知夏推理反应、沈砚川逼问赵有福、村民要求带路和沈砚川转身下令，4个时间段共15秒，动作轻且同一仓房冲突目标连续。",
+      "fix_instruction": "若不通过，应拆出带路决定或压缩非关键走位，避免信息揭示和外部转场准备同组过载。"
+    },
+    {
+      "group": "第3组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "分镜只写祠堂后坡、碎石沙袋、施工袋子、泥水和人物动作对白，没有模型说明词、工程占位符、字幕或广告化表达。",
+      "fix_instruction": "若不通过，应删除模型说明词、占位符和泛化表述，改为现场可见动作、道具和人物站位。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "本组均为画面内现场对白，水响作为洞内环境声通过沈小禾听见后的反应和沈砚川贴近洞口的动作承载，没有把画外音或心声写成现场口型。",
+      "fix_instruction": "若不通过，应写清声音来源或让画面人物闭口反应，避免口型和声音主体混淆。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾部为洞边露出、赵家父子被迫动手；第5组组首承接为洞口已清掉一部分、赵成武在烂木边、周大柱持铁锹，人物与道具状态连续。",
+      "fix_instruction": "若不通过，应在上一组尾部或本组组首补清理动作后的具体位置和道具归属。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组核心是赵成武滑落、求救、沈砚川抓住、周大柱用绳拖回四个连续动作，12秒内动作链清楚，台词短且与动作同步，没有额外塞入新信息。",
+      "fix_instruction": "若不通过，应延长救援动作或拆分滑落与拖回，不应再加入新的揭示台词。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "0-4秒沈砚川约11字并伴随探照洞内；7-11秒两句解释约21字，4秒约5.25字/秒，属于紧张情境下可承载速度；11-14秒问答约10字，3秒内自然。",
+      "fix_instruction": "若不通过，应拆分沈砚川对挡板和卡水位置的解释，或改用反应镜头承载部分画外音。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

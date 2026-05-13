@@ -1,0 +1,88 @@
+{
+  "pass": true,
+  "summary": "整集四组已对照第10集原剧本和横屏规则审核，破门敲鼓、龙爪停机、云宝变大喷水、水炮掀翻挖掘机的剧情链完整，未发现 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组按原剧本顺序保留铲斗撞碎门梁、爸爸虎口流血、原台词“给我停下！”，以及短促击鼓、青色音波和云宝龙爪虚影。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组司机台词15个有效字用2.5秒，约6.0字/秒；胡永贵台词10个有效字用2秒，约5.0字/秒，符合惊恐和跳脚语气且未超过6.5字/秒。"
+    },
+    {
+      "group": "第3组",
+      "type": "horizontal_composition",
+      "evidence": "第3组将爸爸和大鼓放在中央偏左、天天放在右侧、干井放在左后方，云宝龙影横跨上方，水柱从后景冲上，横屏前后层次明确。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "第4组水柱先冲破左后方屋顶，再斜砸中央铲斗，随后挖掘机翻进废土堆，车钥匙从胡永贵手中掉到右前方湿泥，关键道具和动作有连续过渡。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "爸爸站在中央偏左，朝画面左侧破门外驾驶室方向暴吼“给我停下！”，台词对象明确；天天和云宝没有错误承载这句台词。",
+      "fix_instruction": "若不通过，应明确爸爸喊话对象为门外驾驶室或司机方向。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "外景中祠堂和龙爪保持画面左侧，挖掘机驾驶室和胡永贵保持画面右侧，司机与胡永贵的互喊方向稳定。",
+      "fix_instruction": "若不通过，应增加中性镜头或走位过渡，避免左右轴线跳变。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "天天的“云宝变大了！”由右侧天天开口承载，并写明爸爸嘴唇闭合；云宝龙吟作为龙影声音呈现，不与人物对白混用。",
+      "fix_instruction": "若不通过，应区分现场对白和龙吟，补充嘴唇闭合或声音来源。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组15秒拆成屋顶破水、砸铲斗、掀翻、惊恐喊话、逃跑掉钥匙、水雾消散六段，复杂动作没有挤在一个镜头内。",
+      "fix_instruction": "若不通过，应把掀翻挖掘机和胡永贵逃跑拆成两个组。"
+    },
+    {
+      "group": "第1组-第4组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终稿没有出现模板编号、参考图占位符、视频延长、一镜到底、自动分镜或其他工程说明词；负向词中仅把竖屏构图列为排除项。",
+      "fix_instruction": "若不通过，应删除模板编号、官方占位符或工程词，并保留自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

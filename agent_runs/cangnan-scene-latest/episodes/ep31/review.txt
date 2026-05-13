@@ -1,0 +1,97 @@
+{
+  "pass": true,
+  "summary": "ep31全稿9组逐项对照原剧本和竖屏生成规则审核，关键台词、动作、人物关系、空间锁定、时长和格式均满足交付要求。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "雨夜庄园大门、两辆防弹迈巴赫、十名黑衣保镖、陆凡带着龙天傲上石阶、保镖喊“站住！放开少爷！”、陆凡说“让龙万山滚出来”和踹开铁栅栏门均保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "龙天傲“爸！快救我！嘉禾集团毁了我们的人！”约17字分配3.5秒，字秒比约4.9；龙万山怒斥约15字分配3秒，字秒比约5，均低于6.5硬上限。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "evidence": "第2组尾部龙天傲摔到龙万山脚下，第3组组首明确龙天傲仍低伏在龙万山脚边，陆凡仍在前景面对龙万山，状态连续。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "evidence": "三名保镖同时扑上、陆凡穿插走位、连续三记过肩摔被安排为12秒三段动作链，没有与额外对白或新道具操作挤压。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "加密电话在组首位于龙万山衣袋附近，3.5-6秒明确掏出并拨号，6-12秒贴耳通话，关键道具归属和操作顺序清楚。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_direction",
+      "evidence": "商会总管对龙万山质问，龙万山对商会总管指认陆凡，两句真人现场对白均写清对象。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定为庄园大门外单一物理空间，陆凡、龙天傲、保镖甲和黑衣保镖的位置、朝向、强光手电状态均可生成，未把过程动作写成独立镜头。",
+      "fix_instruction": "若不通过，应把过程动作移入时间段，并补齐人物位置、朝向和道具状态。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保镖甲“躺下吧”、擒拿逼咽喉、陆凡不退反进扣腕、发力一推使保镖甲摔倒，均对应原剧本顺序。",
+      "fix_instruction": "若不通过，应恢复原剧本动作顺序，不新增改变战斗结果的动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "陆凡长句约28字分配5.5秒，字秒比约5.1；龙天傲提醒约25字分配5秒，字秒比约5，均可自然口型承载。",
+      "fix_instruction": "若不通过，应拆成正反打或延长对应台词时间段。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "龙万山通话前明确掏出加密电话并拨号，通话台词为画面人物现场对电话另一端喊出，声音来源和口型载体一致。",
+      "fix_instruction": "若不通过，应写清电话载体或将非现场声音改为有声无口型反应。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第8组10秒承载直升机压场、纠察员入场和龙万山一句狂喜台词，入场全景压缩为3秒，没有环境镜头超时。",
+      "fix_instruction": "若不通过，应继续拆分入场或缩短环境展示。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文无Seedance说明词、参考图占位符、模板编号、广告字卡或禁用批量化描述，尾部负面提示符合生成skill模板。",
+      "fix_instruction": "若不通过，应删除工程词和模板化句子，改为自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

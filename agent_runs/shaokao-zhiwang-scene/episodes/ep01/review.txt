@@ -1,0 +1,102 @@
+{
+  "pass": true,
+  "summary": "对照ep01完整剧本、竖屏生成规则和组装后的final.txt，6组均保留发钱、分账、踢人、电话押金、旧备货本、门口回头等关键剧情，未发现硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "许安4-8.5秒连续三句约25个有效字，4.5秒承载约5.6字/秒；韩彪8.5-12秒两句约16个有效字，3.5秒承载约4.6字/秒，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "护士只以许安手中手机的电话音出现，0-3.5秒明确许安嘴唇闭合听电话；许安3.5-5.5秒才对手机里的护士现场开口，声音和口型区分清楚。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "许安抓起现金、看阿顺和烤炉后离开；韩彪转头招呼阿顺试火；马会把旧备货本塞进围裙内袋；韩彪对许安背影喊“从今天起，这店跟你没关系！”均与原剧本一致。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "本组单一地点为老店门口，韩彪被门框遮挡且只以门内高声出现，许安在门外完成心声、听见门内喊话和回头看招牌，空间关系清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "韩彪甩出一万、许安质疑店里一年两百万和年底分账、韩彪以口头承诺和账本反驳，关键台词顺序和人物关系未改写。",
+      "fix_instruction": "若不通过，应补回缺失台词或恢复韩彪掌控账本、许安追讨分账的原始因果。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "韩彪对许安、许安对韩彪、阿顺对韩彪的现场对白均写明真实说话对象，没有假对象或自语误承载。",
+      "fix_instruction": "若不通过，应把所有真人开口改为“A对B说道/问道/喊道”的明确对象格式。"
+    },
+    {
+      "group": "第3组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第3组标题总时长10秒，时间段0-3、3-5、5-7.5、7.5-10秒连续且末段结束于10秒，镜头数4个与标题一致。",
+      "fix_instruction": "若不通过，应修正时间段连续性、标题总时长或镜头数。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组只承载电话押金、许安回应、韩彪嘲讽、许安压怒和韩彪摊手五个短节拍，总时长15秒，动作和对白没有压缩到不可表演。",
+      "fix_instruction": "若不通过，应拆分电话信息或嘲讽反击，避免把电话音、争执和道具动作挤在同一时间段。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "现金从案板被许安抓起后随许安离开；旧备货本从案板角落被马会抽出并塞入围裙内袋，道具归属变化都有可见动作。",
+      "fix_instruction": "若不通过，应补充现金拿取、备货本抽出和塞入围裙内袋的过渡动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "许安2-4秒内心旁白明确嘴唇闭合不做口型；韩彪4-7.5秒的喊话来源为门内，画面只承载门洞和许安反应。",
+      "fix_instruction": "若不通过，应把心声改为闭口旁白，把门内喊话标明声音来源和许安听见后的反应。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "分镜正文保持自然短剧画面描述，未混入工程说明、模板编号、占位符、广告化话术或横屏字段。",
+      "fix_instruction": "若不通过，应删除污染词并改写成可见动作、声音来源和人物反应。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

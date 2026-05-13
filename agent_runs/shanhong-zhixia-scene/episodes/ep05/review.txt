@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "ep05 组装后的 final.txt 已对照第5集原剧本、竖屏 generator 规则和 reviewer 门禁逐组审核，关键台词、道具、人物关系、空间切换和雨点收尾均保留，未发现 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中沈母说“药先缓缓”、沈砚川回应“不能缓”、沈小禾说“哥，钱不够”，以及门外敲门后赵有福进屋问候的顺序均保留；赵有福在敲门后才入场并开口。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "第2组尾部信封停在药单旁，第3组组首明确信封仍在桌面药单旁；沈砚川随后一把推回信封，完成从桌面到赵有福面前的可见过渡。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "赵有福“行，你硬”“到时候别求我”均明确对沈砚川说；沈母“砚川！”明确喊沈砚川；沈砚川“我有法子”明确对沈母说，没有假对白对象。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组从堂屋切到傍晚沈家院里，作为新物理空间单独起组；组首列明院中木桌、麻绳、油布、铁锹和沈砚川、沈小禾位置，林知夏在3-6秒从院门入场后才递药开口。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "evidence": "雨点落下与沈砚川“开始了”的收尾用自然短剧画面表达，未出现 Seedance、模板编号、参考图、自动分镜、字幕说明等工程或模板污染词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "沈母、沈砚川、沈小禾在组首均有明确位置和身体朝向；赵有福不在第一帧，先通过敲门和推门入场，再在9-13秒开口。",
+      "fix_instruction": "若不通过，应在赵有福说话前补明确入场动作或将他写入门后可被揭示的位置。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵有福放下信封给钱、沈母发愣、沈砚川追问条件、赵有福提出临时让地并补助的剧情因果完整保留。",
+      "fix_instruction": "若不通过，应恢复信封、临时让地和补助三项关键信息，不得改成泛化送钱。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组承载沈小禾急声提醒、沈砚川推回信封、赵有福反压、沈砚川拒绝四个连续冲突点，均在同一桌边空间内完成，动作链清楚，没有额外新增强动作。",
+      "fix_instruction": "若不通过，应拆出信封推回或赵有福反压，避免把更多动作塞入同一组。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部信封在赵有福面前，第4组组首延续该状态；赵有福抓起信封转身离开，随后沈母和沈砚川在堂屋内完成原剧本收束。",
+      "fix_instruction": "若不通过，应补信封归属和赵有福离开的可见动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "院里作为新空间单独起组，组首没有依赖上一场堂屋信息；林知夏在本组前半段由院门入场，符合人物可用性。",
+      "fix_instruction": "若不通过，应拆分室内外空间或提前明确林知夏已在院门处。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "旧草图先在组首压在桌角，林知夏看见后提问，沈砚川接过展开并指出老石坝、旧沟、泄口，道具归属和操作顺序清楚。",
+      "fix_instruction": "若不通过，应补充旧草图从桌角到沈砚川手中的递接或拿取过程。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "旧照片从林知夏衣袋掉出、沈小禾捡起询问、林知夏回答“我爸，我弟”、沈砚川追问“他们呢”、林知夏回答“没等到下山”均按原剧本顺序保留。",
+      "fix_instruction": "若不通过，应恢复旧照片掉落和家庭伤痛问答的原始顺序。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "本组所有台词均为画面人物现场开口，沈小禾对林知夏问“山洪？”，林知夏对沈小禾答“嗯。晚了一步。”，沈砚川和林知夏互相对话，最后沈砚川对两人说“开始了”。",
+      "fix_instruction": "若不通过，应明确现场对白对象，或把非现场声音改成有来源的画外音。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

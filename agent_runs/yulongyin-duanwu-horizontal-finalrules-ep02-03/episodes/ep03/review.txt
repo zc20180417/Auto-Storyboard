@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "summary": "EP03 passed: 9 horizontal groups preserve the script, keep Tiantian male, handle Xiaolong/Yunbao naming correctly, and maintain kettle lid, door latch, handoff, and old-photo continuity.",
+  "source_status": "script_provided",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "prop_continuity": "checked",
+    "physical_continuity": "checked",
+    "special_effects": "checked",
+    "genre_style": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "generation_density",
+      "evidence": "第1组把门闩虚扣、走到书桌、取馒头、开盖、掰碎投喂分配到4个镜头，生活动作链清楚，没有单镜过载。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组命名前用“小龙”，命名台词后才写“刚被命名的云宝”；第4组开始统一使用云宝，命名状态连续。"
+    },
+    {
+      "group": "第6组",
+      "type": "physical_continuity",
+      "evidence": "第6组门闩先因连续推门从半截扣槽滑脱，房门才打开；天天抱壶时水壶保持竖直，壶盖半拧状态延续。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "第7组完整保留爷爷“清水养它，脏水害它”和“端午前，绝不能让它碰外面那些黑水”两句关键警告。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "evidence": "第9组照片背面旧字只作为道具表面纹理，关键信息由爷爷念出“云溪龙舟队，最后一场”，不依赖模型生成准确小字。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "锁门、走位、取馒头、开盖、掰碎、投喂和对白被拆成清楚镜头步骤，单镜没有同时叠满空间动作、道具操作和长台词。",
+      "fix_instruction": "若不通过，应把空间动作、关键道具操作和台词分别拆到相邻镜头承载。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "命名前后称呼正确，人物栏可写“小龙/云宝”，镜头描述在命名台词后才使用云宝。",
+      "fix_instruction": "若不通过，应把命名前称呼改回小龙或壶中小龙，命名后的下一组再统一云宝。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "天天心声出现时，镜头写明他嘴唇闭合不做口型，声音来源与画面表演分离。",
+      "fix_instruction": "若不通过，应把心声改成非现场开口，并写清画面人物闭嘴或没有口型。"
+    },
+    {
+      "group": "第6组",
+      "type": "physical_continuity",
+      "result": "pass",
+      "evidence": "门闩虚扣状态在第1组建立、第5组承接、第6组滑脱，门打开有物理过渡；没有把普通推门写成暴力破门。",
+      "fix_instruction": "若不通过，应补门闩虚扣、滑脱、门缝扩大或改成符合角色体力的进入方式。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "老照片从旧木柜抽屉里被翻出，正面龙舟线索和背面旧字都有动作来源；现实道具与照片内容没有混淆。",
+      "fix_instruction": "若不通过，应补充道具从哪里来、由谁持有、如何翻面或收起。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

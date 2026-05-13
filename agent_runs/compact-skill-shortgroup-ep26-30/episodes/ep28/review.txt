@@ -1,0 +1,126 @@
+{
+  "pass": true,
+  "summary": "EP28 已按 storyboard-reviewer 对照原剧本、generator 规则和整集 final.txt 逐组审核；7组均满足 cut_id、时间轴、竖屏时长、对话对象、空间锁定和组间衔接要求，关键句“你父亲昨晚已经被双规了，带走！”完整保留，无 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中李少爷扫落水果、怒吼“废了我的手！我要她全家死！”，保镖说明顾家倒了，李少爷命令断货运专线均保留，人物关系和报复动机未改。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组3段分别为3.5秒、3.5秒、5秒，承载“封杀她！一瓶果冻也别想运出省！”、医生报伤和“滚！我要让赵朵朵求生不得求死不能！”，有效字数/秒均未超过6.5硬上限。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组固定在罐头厂办公室，组首列明赵朵朵、赵大雷、物流经理、退货单和订单本位置；物流线被掐断的冲突没有跨空间处理。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "U盘在组首放在赵朵朵面前桌角，4-8秒赵朵朵拿起，8-12秒递给赵大雷，组尾赵大雷接住，关键证据道具归属完整连续。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "第6组完整保留干警台词“你父亲昨晚已经被双规了，带走！”，没有删掉“昨晚”“已经”或“带走”，也没有改成摘要句。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "evidence": "第6组尾部两名干警架住李少爷且病房门敞开；第7组首在走廊设置赵朵朵，门内可见李少爷被架住，0-4秒完成押出，状态可接。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "李少爷对保镖怒吼和命令，保镖对李少爷汇报，医生虽在场但未被错误安排发声，对话对象真实在场。",
+      "fix_instruction": "若不通过，应将对白对象补成真实在场人物，避免对空气、对桌面或对道具说话。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组12秒承载封杀命令、医生报伤、踹倒医生和威胁四个强节拍，各有清晰时间段，未靠拖长环境镜头凑时长。",
+      "fix_instruction": "若不通过，应拆分医生报伤或踹倒医生段，不能删改原台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第3组总时长13秒，时间段0-3、3-6、6-9.5、9.5-13连续，镜头数4个与标题一致。",
+      "fix_instruction": "若不通过，应修正标题总时长、镜头数或时间段边界。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵朵朵反击京城关系、拿U盘说明顾家账本、递给赵大雷寄给京城纪委的剧情链完整，未新增改变因果的强动作。",
+      "fix_instruction": "若不通过，应恢复原剧本台词和U盘交接动作，只补必要可见过渡。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首只写病房内李少爷、保镖、红酒杯和关闭的病房门；干警推门进入放在6-9秒动作段，未把过程动作写进组首。",
+      "fix_instruction": "若不通过，应把推门、进入、站位变化等过程移入时间段。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "抓捕段保留“李耀宗，你涉嫌参与跨省洗钱案。”、“你们敢抓我？我爸是……”和“你父亲昨晚已经被双规了，带走！”三句原台词，顺序和说话人正确。",
+      "fix_instruction": "若不通过，应恢复完整原句，尤其不得压缩“你父亲昨晚已经被双规了，带走！”。"
+    },
+    {
+      "group": "第6组-第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组尾部干警已架住李少爷，病房门敞开；第7组首门内可见同一状态，随后押到走廊，人物位置和门状态没有跳变。",
+      "fix_instruction": "若不通过，应在第6组尾或第7组首补具体门、人物和押送状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "“是你！是你交的证据！”安排2秒，约4.5字/秒；“多行不义必自毙。”安排1.5秒，约4.7字/秒，崩溃质问和冷眼回应都未超过硬上限且不拖慢。",
+      "fix_instruction": "若不通过，应调整台词承载秒数或拆分反应段，不能删台词。"
+    },
+    {
+      "group": "第1组-第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集 final 未出现Seedance模板编号、参考图占位、自动分镜、首尾帧、视频延长、字幕指令或“空间先被交代出来”等模板化污染词。",
+      "fix_instruction": "若出现污染词，应删除工程说明并改成自然短剧画面、声音和动作描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

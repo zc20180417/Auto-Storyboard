@@ -1,0 +1,29 @@
+{
+  "episode_id": "ep21",
+  "status": "done",
+  "output_name": "苍南风云-ep21-agent-cli-storyboard.txt",
+  "summary": "宋家在天宫会所被商会证据和警方抓捕击垮，黑风山通车后又引出周长海觊觎金矿并设审计局。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "dialogue_pacing",
+      "problem": "高局长证据宣告台词节奏接近警示区间。",
+      "evidence": "第4组11.5-15秒约22字/3.5秒，约6.3字/秒，低于6.5硬上限但偏快。",
+      "fix": "如后续精修，可从6-9秒抓捕动作中回收0.5秒给11.5-15秒宣告。"
+    },
+    {
+      "severity": "soft",
+      "group": "第10组",
+      "rule": "generation_density",
+      "problem": "第10组为8秒短组。",
+      "evidence": "该组只承载周长海下令和管家领命两个片尾反派钩子，短组理由成立。",
+      "fix": "如需统一到10秒，可轻微延长周长海命令前的按下平板动作，但不要添加新剧情。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

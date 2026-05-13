@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "雨龙吟端午-ep02-agent-cli-storyboard.txt",
+  "summary": "EP02 横屏分镜完成，共10组，保留裂缝失光、取水闪回、清水唤醒、黑水灼尾、入壶封盖、卧室安顿和水雾龙舟线索。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

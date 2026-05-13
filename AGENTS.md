@@ -166,6 +166,8 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 .\collect-agent.ps1 .\agent_runs\<run-name>
 ```
 
+当前默认只收集分镜 `.txt`，不导出、不复制 `storyboard_index.json` / `storyboard_index.xlsx`。只有资产或 Web 链路明确需要索引时，才显式使用 `-ExportIndex` 或 `export-storyboard-index`。
+
 ## 资产表生成
 
 分镜完成后，如用户需要给其他 AI 生图/视频模型提前准备资产，使用 `agent_skills/asset-extractor/SKILL.md` 从单集 `final.txt` 生成资产表，并使用 `agent_skills/asset-reviewer/SKILL.md` 做真实审核。

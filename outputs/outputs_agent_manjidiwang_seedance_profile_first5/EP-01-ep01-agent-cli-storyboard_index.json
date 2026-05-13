@@ -1,0 +1,366 @@
+{
+  "project": "EP-01",
+  "episode_id": "EP01",
+  "cuts": [
+    {
+      "cut_id": "EP01-G01",
+      "group_index": 1,
+      "title": "套房惊醒与门外逼近",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "门外安保人员"
+      ],
+      "props": [
+        "真丝被",
+        "套房房门",
+        "浴袍",
+        "红酒瓶",
+        "酒杯"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 0,
+      "group_end_sec": 14,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP01-G02",
+      "group_index": 2,
+      "title": "药局真相与苏长明名字",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "红酒瓶",
+        "两只酒杯",
+        "真丝被"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 14,
+      "group_end_sec": 29,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP01-G03",
+      "group_index": 3,
+      "title": "苏家书房的龙图腾电话",
+      "scene": "苏家别墅书房",
+      "characters": [
+        "苏长明",
+        "龙先生"
+      ],
+      "props": [
+        "龙图腾字画",
+        "抹布",
+        "手机"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 29,
+      "group_end_sec": 42,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP01-G04",
+      "group_index": 4,
+      "title": "回到套房的动机拆解",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "红酒杯",
+        "真丝被"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 42,
+      "group_end_sec": 56,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP01-G05",
+      "group_index": 5,
+      "title": "门外媒体与牺牲品反抗",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "门外安保人员",
+        "门外媒体人员"
+      ],
+      "props": [
+        "红酒杯",
+        "真丝被",
+        "套房房门"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 56,
+      "group_end_sec": 70,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP01-G06",
+      "group_index": 6,
+      "title": "恶性丑闻改成联姻",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "红酒杯",
+        "真丝被",
+        "套房房门"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 70,
+      "group_end_sec": 84,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP01-G07",
+      "group_index": 7,
+      "title": "破门后的从容举杯",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "王队长",
+        "安保人员"
+      ],
+      "props": [
+        "套房大门",
+        "相机",
+        "红酒杯",
+        "执法记录仪"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 84,
+      "group_end_sec": 98,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP01-G08",
+      "group_index": 8,
+      "title": "匿名举报被反问成私闯",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "王队长",
+        "安保人员"
+      ],
+      "props": [
+        "红酒杯",
+        "相机",
+        "执法记录仪",
+        "套房大门"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 98,
+      "group_end_sec": 113,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP01-G09",
+      "group_index": 9,
+      "title": "总部监控里的制服威胁",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "王队长",
+        "安保人员"
+      ],
+      "props": [
+        "执法记录仪",
+        "相机",
+        "红酒杯"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 113,
+      "group_end_sec": 127,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP01-G10",
+      "group_index": 10,
+      "title": "安保败退出房",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒",
+        "王队长",
+        "安保人员"
+      ],
+      "props": [
+        "相机",
+        "执法记录仪",
+        "红酒杯",
+        "套房大门"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 127,
+      "group_end_sec": 140,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP01-G11",
+      "group_index": 11,
+      "title": "房门关上后的身份搜索",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "手机",
+        "套房房门",
+        "红酒杯"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 140,
+      "group_end_sec": 154,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP01-G12",
+      "group_index": 12,
+      "title": "贪腐证据链亮出",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "朱文浩的手机",
+        "苏清寒的手机",
+        "红酒杯"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 154,
+      "group_end_sec": 169,
+      "source_group_label": "第12组"
+    },
+    {
+      "cut_id": "EP01-G13",
+      "group_index": 13,
+      "title": "刀与弃子的十秒选择",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "朱文浩的手机",
+        "红酒杯"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 169,
+      "group_end_sec": 184,
+      "source_group_label": "第13组"
+    },
+    {
+      "cut_id": "EP01-G14",
+      "group_index": 14,
+      "title": "二十四小时的名片",
+      "scene": "酒店行政套房",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "手机",
+        "名片",
+        "套房房门"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 184,
+      "group_end_sec": 198,
+      "source_group_label": "第14组"
+    },
+    {
+      "cut_id": "EP01-G15",
+      "group_index": 15,
+      "title": "地下车库父亲来电",
+      "scene": "酒店地下车库车内",
+      "characters": [
+        "朱文浩",
+        "朱天和"
+      ],
+      "props": [
+        "轿车",
+        "手机",
+        "车载蓝牙屏幕"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 198,
+      "group_end_sec": 212,
+      "source_group_label": "第15组"
+    },
+    {
+      "cut_id": "EP01-G16",
+      "group_index": 16,
+      "title": "隐婚妻子与利刃布局",
+      "scene": "酒店地下车库车内",
+      "characters": [
+        "朱文浩",
+        "朱天和"
+      ],
+      "props": [
+        "轿车",
+        "手机",
+        "车载蓝牙屏幕",
+        "方向盘"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 212,
+      "group_end_sec": 227,
+      "source_group_label": "第16组"
+    },
+    {
+      "cut_id": "EP01-G17",
+      "group_index": 17,
+      "title": "红灯前的前世闪回",
+      "scene": "车内红灯路口、回忆闪回画面",
+      "characters": [
+        "朱文浩",
+        "前世龙袍背影",
+        "递毒酒之人",
+        "苍老的手"
+      ],
+      "props": [
+        "轿车",
+        "红绿灯",
+        "毒酒杯",
+        "玉玺",
+        "印泥"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 227,
+      "group_end_sec": 242,
+      "source_group_label": "第17组"
+    },
+    {
+      "cut_id": "EP01-G18",
+      "group_index": 18,
+      "title": "绿灯亮起后的执棋誓言",
+      "scene": "车内红灯路口",
+      "characters": [
+        "朱文浩"
+      ],
+      "props": [
+        "轿车",
+        "红绿灯",
+        "方向盘"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 242,
+      "group_end_sec": 254,
+      "source_group_label": "第18组"
+    }
+  ]
+}

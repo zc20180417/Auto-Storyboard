@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "第15集最终稿保留机械被毁、宋子昂逼约、直升机送核心发动机、仓库推土机反击、主干道施工反超和酒店黑客转账阴谋，组格式、台词承载、空间锁定和电话音处理通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中工头汇报“十台挖掘机全拉缸了！引擎废了！”、江若晴强调“今天必须推平主干道”、强酸毁油箱和一个亿违约金均在第1组按原因果保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组3-7秒宋子昂约19字嘲讽台词，4秒约4.8字/秒；9.5-11秒陆凡约6字短句，1.5秒约4字/秒；全组没有超过6.5字/秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组仍锁定黑风山临时车场，组首列明陆凡、宋子昂、江若晴、工头、律师团和集装箱落点；直升机从上空进入，不构成现实空间跳切。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "废弃仓库铁门组首关闭，0-3秒陆凡拉开铁门，3-6秒五台推土机显露，6-10秒陆凡才能走到推土机旁拍履带，道具和可操作状态有可见过渡。"
+    },
+    {
+      "group": "第10组",
+      "type": "audio_mouth_sync",
+      "evidence": "黑客K“宋少，没有我进不去的系统。”写为手机扬声器电话音，宋子昂听电话时嘴唇闭合不做口型，声音来源和画面反应明确。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "宋子昂两句嘲讽均明确对陆凡说，递文件动作和陆凡未接文件的反应清楚，没有假对白对象。",
+      "fix_instruction": "若不通过，应补足每句现场对白的真实对象，并删除假对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组把陆凡反击、宋子昂嘲讽、陆凡看表和直升机声源反应拆成6个短时间段，单段动作清楚，没有把直升机落箱也塞入同组。",
+      "fix_instruction": "若不通过，应继续拆分直升机出现或压缩非关键反应。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "集装箱打开、防爆级核心发动机、陆凡命令三小时内换装、工头保证完成任务都按原剧本保留。",
+      "fix_instruction": "若不通过，应恢复缺失的发动机揭示、抢修时限或工头回应。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾部江若晴看向陆凡，第6组仍在车场集装箱旁开场；第6组尾部陆凡走到废弃仓库铁门前，第7组从铁门关闭状态接上。",
+      "fix_instruction": "若不通过，应在第6组尾部或第7组组首补足陆凡到仓库门口的状态。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "推土机驾驶、推土铲推平土方、五台推土机一字排开都被转译为可见机械动作，没有用抽象判断替代关键画面。",
+      "fix_instruction": "若不通过，应将抽象工程进度改成可见推土、队列和人物反应。"
+    },
+    {
+      "group": "第9组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "陆凡组首在驾驶室内，3.5-8秒下车后才对宋子昂说话；宋子昂、律师团和迈巴赫组首均已在主干道右侧可用。",
+      "fix_instruction": "若不通过，应补充人物出场或移动过渡。"
+    },
+    {
+      "group": "第11组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "黑客K的“小事一桩，十分钟搞定。”写为手机听筒电话音，宋子昂闭口听完后再低声自语威胁陆凡，电话音和现场开口分离清楚。",
+      "fix_instruction": "若不通过，应把电话音改成手机来源，并把宋子昂威胁写成真实自语。"
+    },
+    {
+      "group": "第1组至第11组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现Seedance、模板编号、参考图、自动分镜、首尾帧、字幕贴片或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除工程词和模板词，改成自然分镜画面。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

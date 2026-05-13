@@ -1,0 +1,145 @@
+{
+  "project": "EP-02",
+  "episode_id": "EP02",
+  "cuts": [
+    {
+      "cut_id": "EP02-G01",
+      "group_index": 1,
+      "title": "冷饭与怒火",
+      "scene": "林家小屋内，白天晴光从窗外照进来，桌上饭菜原封不动已经凉透，窗外能看到干涸田垄，屋内气氛压抑。",
+      "characters": [
+        "林建国",
+        "张桂兰"
+      ],
+      "props": [
+        "饭菜",
+        "木桌",
+        "锄头"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP02-G02",
+      "group_index": 2,
+      "title": "儿子拦父",
+      "scene": "林家小屋门口内侧，白天，门外强光照进屋内，冷饭仍在桌上，墙角空出锄头原来的位置，屋内紧张感延续。",
+      "characters": [
+        "林跃",
+        "林建国",
+        "张桂兰"
+      ],
+      "props": [
+        "锄头",
+        "木桌",
+        "冷饭"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 12,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP02-G03",
+      "group_index": 3,
+      "title": "低头进门",
+      "scene": "村委会办公室内，白天晴光从窗户斜照进来，办公桌、茶杯和文件散在桌面，室内比林家小屋更亮却更冷。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强"
+      ],
+      "props": [
+        "茶杯",
+        "办公桌",
+        "椅子"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 24,
+      "group_end_sec": 37,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP02-G04",
+      "group_index": 4,
+      "title": "递出协议",
+      "scene": "村委会办公室办公桌前，白天，桌上茶杯和文件仍在原位，窗光照在桌面，办公室门已在林跃身后合上。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强"
+      ],
+      "props": [
+        "转让协议",
+        "茶杯",
+        "办公桌"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 37,
+      "group_end_sec": 51,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP02-G05",
+      "group_index": 5,
+      "title": "暗写小字",
+      "scene": "村委会办公室办公桌前，白天，转让协议摊在桌面，抽屉半开，红色印泥盒被拿到桌边。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强"
+      ],
+      "props": [
+        "转让协议",
+        "红色印泥盒",
+        "笔",
+        "办公桌"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 51,
+      "group_end_sec": 66,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP02-G06",
+      "group_index": 6,
+      "title": "重按手印",
+      "scene": "村委会办公室办公桌前，白天，协议仍摊在桌面，红色印泥盒打开，林跃站在桌边，赵百川和赵大强盯着落款处。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强"
+      ],
+      "props": [
+        "转让协议",
+        "红色印泥盒",
+        "落款处手印"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 66,
+      "group_end_sec": 78,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP02-G07",
+      "group_index": 7,
+      "title": "冷笑埋伏",
+      "scene": "村委会办公室门内与门外走廊，白天，林跃离开后的相邻空间用蒙太奇转场呈现，办公室窗光照着协议，走廊侧光更暗。",
+      "characters": [
+        "林跃",
+        "赵大强",
+        "赵百川"
+      ],
+      "props": [
+        "转让协议",
+        "红色手印"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 78,
+      "group_end_sec": 89,
+      "source_group_label": "第7组"
+    }
+  ]
+}

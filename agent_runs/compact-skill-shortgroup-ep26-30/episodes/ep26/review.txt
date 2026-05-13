@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "已对照第26集完整原剧本、竖屏生成规则和组装后的final.txt逐组审核；七组均保留顾家阴谋、展销会查封、质检报告反转、录音揭贿和戴手铐收束，未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "顾雪提出下周全省食品展销会、制造严重质量事故、递文件并断言牌子完蛋，顾长海要求办干净并警告滚出顾家，原台词和阴谋因果均保留。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "赵朵朵对副局长质问查封依据，副局长对赵朵朵回应实名举报，顾雪对赵朵朵威胁坐牢，赵朵朵再对顾雪反击，对话对象明确。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "正局长和首富在组首已位于会展中心通道入口内，正局长手持报告；后续走向展位、首富怒喝和报告展示没有凭空入场。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "“局长，事成之后还有十万，把她展位封了。”明确来自赵朵朵手中的录音笔，不由顾雪现场开口承载，且副局长瘫倒反应接在录音之后。"
+    },
+    {
+      "group": "第7组",
+      "type": "format",
+      "evidence": "收束组为10秒、3个镜头，组尾写清顾雪被戴手铐、副局长被拉起、展位重新露出，结束状态具体。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "2-5秒承载顾长海12字左右怒骂，5-11秒承载顾雪解释和顾长海回击约31个有效字，11-15秒承载顾秘书汇报约22个有效字，均低于6.5字/秒。",
+      "fix_instruction": "若字秒比超限，应拆分顾雪解释、顾长海回击或顾秘书汇报，不能删减原台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组15秒内分成冲到展位喝止、顾雪指控、群众惊恐、查封命令四个节拍；每段有清晰主体和动作，没有把多个剧情目标硬压进同一镜头。",
+      "fix_instruction": "若过载，应拆出群众惊恐或查封命令为下一组，保持原指控和命令完整。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "首富怒斥权力乱封、副局长称有人举报、正局长展示省质检总局当天最高检验报告并宣布免检产品，原剧本反转信息完整保留。",
+      "fix_instruction": "若不通过，应补回报告来源、当天时间、完全合格和免检产品等关键信息。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "录音笔在组首由赵朵朵右手贴近展台下沿预置，3-7秒拿起按下播放，7-11.5秒播放顾雪声音，11.5-14秒仍在赵朵朵手中。",
+      "fix_instruction": "若道具归属不清，应补录音笔拿起、按键、播放和手中保留的连续动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "警察没有在组首直接执行动作，而是4.5-8.5秒从画面右侧通道冲入后靠近顾雪和副局长，进入动作在上铐之前完成。",
+      "fix_instruction": "若人物不可用，应在命令后先写警察从通道外入场，再写控制和上铐。"
+    },
+    {
+      "group": "第1组至第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt未出现模板编号、官方占位符、参考图/视频/音频占位、模型自动处理说明或与短剧无关的广告式语气。",
+      "fix_instruction": "若出现污染词，应删除工程说明或模板措辞，改成可见动作、道具、光影与声音来源。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

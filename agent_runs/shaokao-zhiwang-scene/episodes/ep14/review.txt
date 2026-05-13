@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "ep14 整集已对照原剧本、竖屏生成规则和组装后 final.txt 完成真实审核，7个组均保留关键台词、人物关系、空间连续和时间合同，无 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "标题使用EP14-G01稳定cut_id，总时长10秒，3个时间段从0秒连续到10秒，镜头数与时间段数量一致，组结构字段完整。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "evidence": "林小满、韩彪、许安的现场对白都写明说话对象，韩彪“不看她”的剧本状态通过不转头但对林小满说话承载，没有把对白写成无对象台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "许安“谁是真味，嘴里自己知道。”、唐婶“两边买两边吃”、林小满“吃完自己说”完整保留，剧情从韩彪卖惨推进到公开比较。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "新客甲约12个有效字用3秒，约4.0字/秒；新客乙约12个有效字用3秒，约4.0字/秒；林小满短句与韩彪反应共4秒，均未超过6.5字/秒。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "evidence": "本组只有韩彪最终威胁、围观降声反应、许安回应三个清晰节拍，10秒内可表演，未把社区大单信息和前一组解释硬塞在同一段。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定街口空地烧烤摊前，韩彪在摊前通道、许安在烤炉旁、林小满在许安身后、唐婶和路人在背景，第一帧人物可用性充分。",
+      "fix_instruction": "若不通过，应补齐每个首帧人物的画面位置、身体朝向和视线关系。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "本集没有心声、旁白、电话音或门外音；所有声音均为现场人物开口对白，并逐句写明对话对象，口型承载正确。",
+      "fix_instruction": "若出现画外音或心声，应写明声音来源，并在画面人物不承担口型时标注嘴唇闭合、不做口型。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“味道好坏”通过新客咬烤串、放低韩彪摊位烤串、台词评价和韩彪脸色发紧来可视化，没有把气味或抽象判断当作主要画面信息。",
+      "fix_instruction": "若不通过，应把不可视判断改为可见动作、道具反应、人物表情或原台词。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾部林小满追问韩彪，第5组组首延续韩彪在左侧摊位前、许安在右侧摊位旁、新客甲乙在街心持串的状态，空间和人物位置连续。",
+      "fix_instruction": "若不通过，应在第4组尾部或第5组组首补充人物位置和视线状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第6组分为韩彪走出两步、回头放话、林小满追问、唐婶解释社区聚餐四个节拍，总长13秒，动作链和信息量未超过片段容量。",
+      "fix_instruction": "若不通过，应将唐婶解释或韩彪放话拆分到相邻组。"
+    },
+    {
+      "group": "第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集final.txt未写入模型说明词、工程占位、官方模板编号、字幕贴片、广告语或首尾帧参考，最终正文保持自然分镜文本。",
+      "fix_instruction": "若不通过，应删除污染词，改写为自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "ep28已对照完整剧本、生成规则和组装分镜逐组审核，李少报复、赵朵朵反击与走廊收束的剧情因果完整，未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "李少爷两句命令分别放在0-4秒和4-8秒，约18字/4秒、17字/4秒；医生伤情说明放在8-13秒，约17字/5秒，均低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "U盘从赵朵朵抽屉中取出，放到退货单旁，再递到赵大雷手中，完成了证据道具从发现到交付的可见过渡。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "evidence": "干警在0-3秒推门进入并亮证，3秒后才对李少爷宣布跨省洗钱案，李少爷和保镖均在病房组首已锁定，人物可用。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "保留赵朵朵站在走廊看李少被押出、李少爷崩溃指认证据、赵朵朵冷眼回应“多行不义必自毙”的结尾关系和台词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组至第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "医院病房段保留李少爷石膏手、扫落水果、顾家倒台、省城无人、拨打京城电话封锁货运、医生说明手骨碎裂和踹倒医生后的复仇台词。",
+      "fix_instruction": "若不通过，应补回缺失台词或关键动作，并保持人物关系和因果顺序。"
+    },
+    {
+      "group": "第4组至第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "工厂办公室两组都锁定赵朵朵在办公桌内侧、赵大雷在桌旁、物流经理在桌前，退货单和U盘的位置在组内清楚连续。",
+      "fix_instruction": "若不通过，应补充组首人物站位和退货单、U盘的具体位置。"
+    },
+    {
+      "group": "第6组至第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组尾病房门关闭并保留李少爷得意状态，第7组门被推开并完成抓捕，第7组尾手铐打开、干警围到床边，第8组切到走廊押出，衔接自然。",
+      "fix_instruction": "若不通过，应在第7组尾或第8组首补充门、手铐和押送状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "干警、李少爷均为画面内可见人物现场开口，台词对象明确；没有把门外音、电话音或心声误写成画面内口型。",
+      "fix_instruction": "若不通过，应标明声音来源或让说话人物进入画面后再说话。"
+    },
+    {
+      "group": "第1组至第8组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "八组总时长分别为12、13、10、15、15、12、15、10秒，组内时间段均从0秒开始、连续到标题总时长，时间点使用0.5秒粒度。",
+      "fix_instruction": "若不通过，应调整标题总时长、时间段端点或镜头数，使其与组内时间段一致。"
+    },
+    {
+      "group": "第1组至第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模板编号、控制台占位符、广告式卖点、字幕要求或视频工程说明，所有提示均围绕短剧现场动作、道具、光线和人物反应。",
+      "fix_instruction": "若不通过，应删除污染词，改写为具体可拍摄画面。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

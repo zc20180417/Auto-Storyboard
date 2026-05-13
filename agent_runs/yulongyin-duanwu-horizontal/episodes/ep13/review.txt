@@ -1,0 +1,118 @@
+{
+  "pass": true,
+  "summary": "ep13已按横屏审核规则对照原剧本和最终分镜完成审稿，8个组均保留关键动作、台词、道具和左右空间关系，未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "狼狗窜出、包工头带刀手堵路、包工头说“胡总算得真准，你们果然来偷木头。”、爸爸说“滚开！好狗不挡道。”和包工头放狗前的狠话均按原顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "horizontal_composition",
+      "evidence": "爸爸和天天被压在左侧，云宝从左侧水壶跃到中央上方，水柱横跨到狼狗鼻孔，包工头和手下在右侧受惊，16:9左右关系清楚。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "老桐木由爸爸左侧扶住到扛上左肩，砍刀从扑来的手下处被夺过，之后明确使用刀背击退手下，没有道具跳变。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "爸爸台词约13字对应3秒，胡永贵追令约13字对应3秒，包工头解释约18字对应4秒，均低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "evidence": "天天、爸爸、爷爷三句现场对白分别由画面内本人对明确对象说出，云宝只吐水泡不说话，没有把画外声误写成现场口型。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爸爸和天天稳定在画面左侧，包工头与刀手稳定在右侧，狼狗从背景向中央压近，冲突轴线清楚。",
+      "fix_instruction": "无需修复。若后续调整，保持左右阵营和狼狗来势方向一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾部包工头右手松绳，第2组组首牵引绳绷紧并滑出，狼狗扑向父女，动作衔接自然。",
+      "fix_instruction": "无需修复。若删减，应保留松绳到扑出的可见过渡。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "云宝跃出、水柱射鼻孔、鼻端结冰和狼狗摔倒都转译成可见动作、冷暖光和明确空间方向。",
+      "fix_instruction": "无需修复。若弱化特效，应仍保留三道水柱和结冰落点。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "12秒内主要是扛木、夺刀、三次刀背退敌、怒喝和对手退缩，动作链完整且未添加改变剧情的新事件。",
+      "fix_instruction": "无需修复。若增加打斗动作，应拆分新组。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "胡永贵通过越野车急刹入场，下车后开口；爸爸、天天、包工头和手下在组首或镜头中都有明确可见位置。",
+      "fix_instruction": "无需修复。若调整入场，应保留车门下车的承接。"
+    },
+    {
+      "group": "第6组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "爸爸护天天从左前转向左后密林入口，胡永贵和包工头留在右侧车旁，窄林路解释了追不上人的因果。",
+      "fix_instruction": "无需修复。若改变撤离路线，应同步改组首、走位和台词指向。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "祠堂门口在左、香案祖牌在后景中央、爷爷在右、老桐木落在中央，夜间新空间重新锁定完整。",
+      "fix_instruction": "无需修复。若压缩镜头，应保留门口、祖牌和木头位置。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模型说明词、官方占位符、非短剧模板语气或调试标记，负向词只作为画面质量约束出现。",
+      "fix_instruction": "无需修复。若后续添加生产说明，不能写入分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

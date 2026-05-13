@@ -1,0 +1,23 @@
+{
+  "episode_id": "ep07",
+  "status": "done",
+  "output_name": "苍南风云-ep07-agent-cli-storyboard.txt",
+  "summary": "第7集完成竖屏scene分镜：村口报警对峙、直播作证、林夏文件解围、赵大江徐虎密谋、手铐救场和河滩修路决意均已分组呈现。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第11组",
+      "rule": "handoff_continuity",
+      "summary": "原剧本7-4与7-2存在重复救场结构，分镜按新场景独立锁定并保留原剧本。"
+    },
+    {
+      "group": "第15组",
+      "rule": "timing_math",
+      "summary": "8秒短组为片尾意象和短情绪收束，不建议为凑时长新增剧情动作。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "summary": "第11集组装稿已对照完整剧本、竖屏生成规则和 reviewer 规则审完，6组均保留避险分流、仓内分区、粮食统一堆放和柴油缺失追查，无阻断硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "室外晒场“人越聚越多，粮袋和被褥堆成一片”被转译为雨夜晒场涌入人群；村民甲、村民乙、沈砚川、周大柱四句台词按原文和顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "赵有福问“这么多人，你这地方撑得住吗？”约14字/3秒，沈砚川“撑不住也得撑。”约7字/2秒，林知夏和沈小禾的短句分别在4秒内承载，均未超过6.5字/秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组从室外切入仓房内，组首明确油灯、墙面、粮袋、被褥和人物站位；划线分出物资区、休息区、明火区以及睡处安排都在单一仓房空间完成。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "登记木板先承载人数与柴油记录，墙角两个柴油桶空位承载“还差两桶柴油”，随后沈小禾确认、周大柱冲入追问、沈砚川关门查，柴油缺失信息链完整。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "第一帧锁定沈砚川、周大柱、村民甲、村民乙、老人、孩子和村民群体的位置与朝向，村民甲、村民乙、沈砚川和周大柱开口前均已可见。",
+      "fix_instruction": "若不通过，应在组首补齐所有开口人物和被调度人群的位置、身体朝向及关键道具。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "粮袋冲突中，村民丙对沈砚川喊话，沈砚川对村民丙回应，林知夏和沈小禾只做登记与腾位动作，没有把对白写给道具或空气。",
+      "fix_instruction": "若不通过，应将对白改为真实人物之间的A对B说道，并移除假对象。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组包含粮袋是否单放、统一堆放、赵有福请缨、沈砚川压制四个轻中节拍，13秒4镜头内完成，未同时叠加外部事件或复杂道具操作。",
+      "fix_instruction": "若不通过，应拆分赵有福请缨或粮袋统一堆放动作，避免仓内秩序戏过载。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组组尾的物资区、登记木板和赵有福站位延续到第6组组首；周大柱在门外阴影中可用，冲入后发问，最后关上仓门查油，状态连续。",
+      "fix_instruction": "若不通过，应补仓门状态、周大柱入场路径或柴油空位与登记木板之间的可见关系。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未写Seedance、自动分镜、参考模板、占位符、字幕、片名、广告语或内部审稿说明，只有自然分镜文本。",
+      "fix_instruction": "若不通过，应删除工程词和模板词，改成可拍摄的动作、表情、道具和声音来源。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

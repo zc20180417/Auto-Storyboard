@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "已对照第25集完整剧本、竖屏生成规则和组装后的final.txt逐组复审，所有关键台词、说话对象、人物关系、道具状态、cut_id和时间轴均满足交付要求；第11组为片尾意象短组，记录为软提醒。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "整集从EP25-G01开始连续编号到EP25-G11，每个组标题包含唯一cut_id、总时长和镜头数；第1组13秒、4个镜头，时间段0-2、2-6、6-8.5、8.5-13秒连续。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中唐婶喊“这评选要是连许安都不让报，那大家以后也别信什么评选了！”，随后路人甲和路人乙作证；final.txt第5组按原顺序保留这三段关键台词和街坊围拢动作。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_pacing",
+      "evidence": "第9组韩彪两段质疑分别给4秒和4秒，许安“飞不飞我不知道，我只知道味道落地。”给2.5秒，有效字数15字、字秒比6.0，未超过6.5硬上限。"
+    },
+    {
+      "group": "第10组",
+      "type": "handoff_continuity",
+      "evidence": "第10组组尾韩彪离开摊前、许安递出烤串继续做生意；第11组组首直接进入夜里收摊后的街口，属于明确时间推进后的片尾收束，不造成同一时空位置跳变。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "路人甲对韩彪反驳，路人乙对韩彪补充，管理员甲对韩彪公事公办说明，韩彪对管理员甲质疑许安经营记录，每句现场对白均有真实对象。",
+      "fix_instruction": "无需修复；若后续改写，不能把对话对象省略为泛泛人群。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "韩彪、管理员甲、林小满和许安都锁定在公告栏前，同组内低语、观察和压声提醒均在同一物理空间发生，未跨空间硬切。",
+      "fix_instruction": "无需修复；如增加管理站室内动作，应另起新组。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "记录夹和签字笔在组首归管理员甲持有，0-4秒管理员甲翻到空白页记录推荐意见，关键道具归属和使用动作完整。",
+      "fix_instruction": "无需修复；不要让其他人物无过渡地直接书写记录夹。"
+    },
+    {
+      "group": "第8组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "主办方甲、老客甲、唐婶和许安都在摊前组首可见；韩彪先在远处路灯旁，12-14秒走近摊前，为第9组发言建立可见入场。",
+      "fix_instruction": "无需修复；如果删掉韩彪走近镜头，第9组组首需重新锁定他已在摊前。"
+    },
+    {
+      "group": "第10组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第10组15秒包含主办方甲回击、韩彪被噎、韩彪放话、林小满判断、许安递串回应五个清晰节拍；长句分别给4秒和2.5秒，动作不挤压对白。",
+      "fix_instruction": "无需修复；若追加客人反应，应拆组或删去非关键反应。"
+    },
+    {
+      "group": "第11组",
+      "type": "timing_math",
+      "result": "warning",
+      "evidence": "第11组总时长8秒，时间段0-2、2-5、5-8秒连续，符合6-15秒硬范围；它承担夜里收摊和韩彪守公告栏的片尾意象，低于默认10-15秒但有用途。",
+      "fix_instruction": "可保留为片尾意象短组；若要消除软提醒，可扩为10秒并只增加夜风、灯光和人物等待的可见状态，不新增剧情。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt未包含模板编号、参考图占位、Seedance说明词、自动分镜、人物图、场景图、横屏字段或广告模板语气；负向词未改变剧情内容。",
+      "fix_instruction": "无需修复；收集前保持txt-only，不加入索引或资产字段。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第11组",
+      "rule": "timing_math",
+      "problem": "第11组为8秒片尾意象短组，低于默认10-15秒范围但符合片尾意象例外。",
+      "evidence": "第11组只承载夜里收摊、公告栏灯仍亮、韩彪独自等待公示三段收束画面，未硬塞对白或新增剧情。",
+      "fix": "可保留；如需完全贴近默认时长，可扩到10秒并只补充灯光、夜风和等待状态。"
+    }
+  ]
+}

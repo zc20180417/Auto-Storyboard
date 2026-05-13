@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "整集 final.txt 已对照原剧本和竖屏规则完成审核，夜市检查与医院病房两段剧情均忠实保留，无硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留夜市管理甲翻看进货袋和肉串后问“这批肉今天进的？”，许安答“凌晨三点拿的”，夜市管理乙检查冰桶、调料和竹签后说“保鲜没问题，处理也干净”，林小满接“我们天天现穿现烤”。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组管理甲“检查结果我们会登记，但生意上的话，我们管不了”约 23 个有效字，安排 5.5 秒，字秒比约 4.2；林小满和许安台词更短且配有明确反应动作，没有超过 6.5 字/秒。"
+    },
+    {
+      "group": "第5组",
+      "type": "timing_math",
+      "evidence": "第5组标题总时长 8 秒，两个时间段为 0-4秒和 4-8秒，镜头数与时间段数一致；该组为韩彪威胁与许安反击的短句对峙，符合 6-9 秒短承接例外。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "第6组从街口切到医院病房，组首锁定病床、韩秀兰、门和床头柜；许安先有入场并放下保温盒的可见动作，再坐下回应母亲，空间和人物可用性清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "韩彪对许安质疑，唐婶对韩彪回呛，夜市管理甲对许安和林小满说明检查结果，夜市管理乙对路人甲说明只认检查结果，所有现场对白均有真实对象。",
+      "fix_instruction": "若后续修改对白，应继续写明说话对象，不能变成无对象喊话或假对象对白。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾部管理乙拿着检查记录夹站在摊前，第3组组首延续检查记录夹、管理人员和许安林小满的摊前站位，第3组尾部才写管理人员离开和人群散开。",
+      "fix_instruction": "若出现跳变，应补充检查记录夹、管理人员离开或人群散开的可见过渡。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第4组保留管理人员离开后的顾客犹豫、路人乙“查是查过了，可谁知道以后呢”、路人甲“先看看再说吧”、林小满“通过了也没用，他们还是怕”和许安“流言比火快”。",
+      "fix_instruction": "若不通过，应补回被漏掉的路人观望和许安林小满原句。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第7组承载治疗可延后、许安不想拖、韩秀兰劝他先站稳三个情绪节拍，11 秒内没有额外塞入外部事件、关键道具操作或空间变化。",
+      "fix_instruction": "若节拍过载，应拆开治疗延期说明和母亲劝说，避免新增与剧本无关的强动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第8组只有许安和韩秀兰病房现场对白，没有心声、旁白、电话音、门外音或广播音，口型承载关系清楚。",
+      "fix_instruction": "若加入非现场声音，应明确声音来源，并在画面人物不出声时写明嘴唇闭合、不做口型。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt 未出现 Seedance 自动、参考模板、模板编号、@图片、首帧尾帧、视频延长等工程词，也没有出现禁用模板化批量描述。",
+      "fix_instruction": "若发现工程词或模板说明，应改写成具体可见动作、空间状态、声音来源和表情。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

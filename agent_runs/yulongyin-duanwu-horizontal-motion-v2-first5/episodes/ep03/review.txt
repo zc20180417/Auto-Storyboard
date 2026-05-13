@@ -1,0 +1,135 @@
+{
+  "pass": true,
+  "summary": "EP03整集已按横屏reviewer逐组审核，喂食命名、爷爷闯入警告、堂屋照片线索均忠于原剧本，时间轴、16:9空间调度、运镜字段和道具连续性通过。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留反锁房门、掏出半个干瘪白馒头、对水壶轻声说“你饿不饿？我只有这个了，你尝尝。”以及掰碎丢入水壶的动作顺序。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组6.5-10秒承载“慢点吃...”约16个有效字，约4.6字/秒；10-14秒承载命名台词约18个有效字，约4.5字/秒，均在可表演范围内。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "第3组6-11秒明确天天嘴唇闭合不做口型，画外心声与画面人物开口分离，且水雾落在手背和脸颊的结果可见。"
+    },
+    {
+      "group": "第4组",
+      "type": "horizontal_composition",
+      "evidence": "第4组把卧室内天天和水壶放在左侧，房门和走廊压力放在右侧，爷爷由右侧门外音和拐杖影子过渡为可见入门。"
+    },
+    {
+      "group": "第5组",
+      "type": "screen_direction",
+      "evidence": "第5组天天始终在画面左侧抱壶，爷爷始终在画面右侧压迫，水壶位于中央偏左，过肩镜头说明前景肩背属于爷爷。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "第6组0-3秒承载8字警告，6.5-9.5秒承载天天约10字追问，9.5-15秒承载约18字端午前警告，均低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "第8组老照片先在抽屉里露出一角，再由爷爷捧在手中；第9组继续以爷爷手中的照片正反面承载线索，归属连续。"
+    },
+    {
+      "group": "第9组",
+      "type": "camera_motion",
+      "evidence": "第9组固定照片正面、轻推爷爷低语、摇向照片背面字迹，运镜分别服务证据、口型和关键信息揭示。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首空间锁定写的是天天左侧书桌旁、水壶中央、房门右后方门闩已扣紧的第一帧静态状态，没有把反锁和掏馒头等过程写进锁定行。",
+      "fix_instruction": "无需修复；后续改稿仍需把门闩和水壶作为左右空间锚点。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "云宝在水壶底部打滚，水雾由云宝张嘴产生并穿过壶口落到天天手背和脸颊，奇幻效果来源、路径、结果完整。",
+      "fix_instruction": "无需修复；若压缩本组，不能删掉水雾从壶口到天天脸颊的路径。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "爷爷先通过门外拐杖声、走廊侧中景和隔门台词出现，10-13秒再可见入门，不存在无来源关键台词。",
+      "fix_instruction": "无需修复；若调整，应保留门板或拐杖作为门外音载体。"
+    },
+    {
+      "group": "第5组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爷爷在右、天天在左、水壶中央偏左的轴线从第4组组尾延续到第5组组首，没有无过渡换边。",
+      "fix_instruction": "无需修复；后续同场景对话继续保持该左右轴线。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "“清水养它，脏水害它”“爷爷，你认识它对不对？”“记住！端午前...”三句关键台词保留原文和顺序，黑水警告没有被弱化。",
+      "fix_instruction": "无需修复；不得删除端午前和外面黑水两个信息点。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天对爷爷追问，爷爷对天天糊涂回答和反问，前景肩背与背景人物明确，未写成自语或对空气说话。",
+      "fix_instruction": "无需修复；若改为反打，也要写清说话对象。"
+    },
+    {
+      "group": "第8组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "天天退回左侧房间、爷爷留在堂屋右侧旧木柜前，走位有横向跟拍和后拉承接，水壶仍归天天，老照片归爷爷。",
+      "fix_instruction": "无需修复；若拆组，需保留天天带走水壶与爷爷走向旧木柜的可见过渡。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文没有模板编号、官方占位符、自动分镜、首帧尾帧、视频延长或工程说明词；照片背面字迹是剧情道具信息。",
+      "fix_instruction": "无需修复；最终稿继续保持自然分镜正文，不添加模型控制台术语。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

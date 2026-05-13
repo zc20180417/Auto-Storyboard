@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep30",
+  "status": "done",
+  "output_name": "ep30-ep30-agent-cli-storyboard.txt",
+  "summary": "5组竖屏分镜，敲钟上市→慈善宣布→村口感恩→兄妹私语→繁星团圆。组首无动作推进，夜景光源正确，格式通过校验。",
+  "hard_issues_remaining": 0,
+  "warnings": 1,
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

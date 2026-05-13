@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep03",
+  "episode_number": 3,
+  "display_name": "山洪之下第03集",
+  "series_title": "山洪之下",
+  "source_path": "G:\\Auto-Storyboard\\inputs\\山洪之下.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_shanhong_zhixia_scene\\山洪之下-ep03-agent-cli-storyboard.txt",
+  "storyboard_aspect": "vertical",
+  "generator_skill_name": "storyboard-generator",
+  "reviewer_skill_name": "storyboard-reviewer",
+  "reviewer_source": "storyboard-reviewer"
+}

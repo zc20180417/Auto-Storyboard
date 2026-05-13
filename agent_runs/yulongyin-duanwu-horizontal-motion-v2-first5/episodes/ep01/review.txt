@@ -1,0 +1,135 @@
+{
+  "pass": true,
+  "summary": "EP01 横屏整集已对照原剧本、storyboard-horizontal-generator 和当前 final.txt 完成审稿；12组均保留剧本台词与动作顺序，横屏站位、运镜设计、组首静态锁定、黑水与陶笛状态链通过，无 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "村民甲和村民乙关于三个月没下雨、井干和庄稼死绝的台词原文保留，水井黄泥、空桶和干裂河床按剧本先建立缺水背景。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "化肥袋在胡永贵脚边，黑水从袋缝渗出后滴入干渠并腐蚀泥土，后续第5组继续沿干渠流向河床，危险路径连续。"
+    },
+    {
+      "group": "第4组",
+      "type": "horizontal_composition",
+      "evidence": "第4组把天天放在左前景边缘，爷爷在中央偏左，胡永贵在右后方车厢，村民甲左侧中景点名天天，群像前中后层次可调度。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "evidence": "天天对父亲的两句台词分别安排在5.5秒和5秒镜头内，随后2秒准备吹奏、2.5秒吹响陶笛，台词和动作没有过载。"
+    },
+    {
+      "group": "第10组",
+      "type": "audio_mouth_sync",
+      "evidence": "痛苦低鸣明确来自裂缝黑暗深处，天天的问话另有9-13秒口型承载，声音来源和人物开口没有混淆。"
+    },
+    {
+      "group": "第12组",
+      "type": "timing_math",
+      "evidence": "第12组总时长8秒，时间段0-2、2-5、5-8连续；该组只承担水声、小爪出现和抓住陶笛的短动作余波及片尾落点，短组理由成立。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "第2组0-2.5秒固定略仰拍建立右侧车厢高位，2.5-6.5秒固定中近景承载叫卖，6.5-10.5秒轻推化肥袋，10.5-14秒摇向干渠黑水，运镜围绕售卖与污染揭示递进。",
+      "fix_instruction": "无须修复；保留固定对话镜头和黑水道具摇向，不要加入无意义横移。"
+    },
+    {
+      "group": "第3组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爷爷在左侧低位，胡永贵在右侧车厢高位，第3组全程保持左低右高的对峙轴线，过肩镜头也说明前景爷爷肩背和背景胡永贵。",
+      "fix_instruction": "无须修复；若后续追加反应镜头，仍保持两人左右位置或写清过渡。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组组尾留下祖孙在左侧边缘、胡永贵右侧车厢继续做生意、黑水沿干渠向河床延伸的状态；第6组转入河床独处，第9组再接废弃干渠黑水靠近裂缝，跨场景因果清楚。",
+      "fix_instruction": "无须修复；保持黑水路径作为村口与裂缝剧情之间的衔接。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第6组组首只写天天在河床左侧远景、裂纹、旧陶笛贴在衣襟和深裂方向；行走、停在裂缝前、掏出陶笛都放进时间段镜头。",
+      "fix_instruction": "无须修复；组首继续保持静态第一帧，不写走来、拿起、转身等过程动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "旧陶笛从第7组嘴边承接为第8组右手握持，青蓝光在第8组尾部首次亮于裂缝右下深处，第9组组首承接为裂缝左下深处可见光点，目标仍在裂缝深处，没有凭空换道具归属。",
+      "fix_instruction": "无须修复；后续如调整左右表述，应保持天天在裂缝边、青蓝光在下方深处的相对关系。"
+    },
+    {
+      "group": "第9组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "第9组同时锁定天天在裂缝右侧、青蓝光在左下深处、废弃干渠和黑水在右后方，人物、目标和威胁源在16:9画幅中有清晰前后左右层次。",
+      "fix_instruction": "无须修复；保留废弃干渠在右后方作为黑水进入裂缝的来源。"
+    },
+    {
+      "group": "第11组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第11组14秒内依次呈现青蓝光黯淡、天天警告、探身、伸出握陶笛的右手四个节拍，两句短台词分别给4秒和3.5秒，没有同时塞入新外部事件。",
+      "fix_instruction": "无须修复；不要把第12组小爪抓陶笛提前并入第11组。"
+    },
+    {
+      "group": "第12组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "第12组标题含EP01-G12，组总时长8秒在6-15秒范围内，镜头数3个与三个时间段一致，字段、组尾、画面风格和负向词完整。",
+      "fix_instruction": "无须修复；短组保留作为片尾抓握落点。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集未出现模板编号、官方模板说明、参考图占位、首帧尾帧、自动分镜或空间先被交代出来等污染词，最终稿保持自然中文分镜正文。",
+      "fix_instruction": "无须修复；后续不要引入模型说明词或模板化批量描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

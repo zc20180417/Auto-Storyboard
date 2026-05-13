@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "ep05最终稿五组均按横屏规则完成，原剧本台词、泉眼危机、水壶云宝、陶笛水弹和黑液牺牲链条完整，未发现硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留岩洞泉眼渗水、包工头举铁锤、天天喊住手、胡永贵命令包工头扔下山、包工头逼近和水壶发青蓝光，顺序与原剧本5-1一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "horizontal_composition",
+      "evidence": "第2组让天天和水壶在左前方，包工头在中央偏左，水洼和泉眼在右后方，云宝小爪子指向把视线从左前方引到右后方，16:9空间关系明确。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组包工头台词哎哟什么东西打我的脸约11个有效字，放在2.5秒水弹击脸动作中，约4.4字每秒，未超过6.5硬上限。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "黑色废液桶先在胡永贵身后岩壁旁，随后被拎起、提到画面中央、从中右侧倾倒成弧线飞向右后方泉眼，关键道具归属和运动清楚。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第4组尾部黑液飞向右后方泉眼，第5组首部承接胡永贵仍在中右侧倾倒，天天在左前方扑救，云宝从水壶跃向泉眼，组间状态连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天明确对包工头和胡永贵大喊住手，胡永贵明确对包工头说把天天扔下山，现场对白对象和口型承载清楚。",
+      "fix_instruction": "若不通过，应补充每句现场对白的说话对象，不能写成无人承接的喊话。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "第1组尾部天天左前、包工头中央偏左、水壶发光，第2组组首延续这些位置并把水洼固定在右后方，没有无过渡换边。",
+      "fix_instruction": "若不通过，应在组尾或组首补充人物换位动作或保持左右站位。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第3组12秒只包含水洼炸开、水弹击脸、包工头脱手后退、连滚带爬逃出四个连续动作节拍，没有额外剧情或硬凑停顿。",
+      "fix_instruction": "若不通过，应拆分水弹命中与逃跑，或删除非关键停顿。"
+    },
+    {
+      "group": "第4组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "胡永贵从左后方拎桶横穿到中右侧，天天被留在左前方，黑液从中右侧甩向右后方泉眼，人物走位和黑液路径都可见。",
+      "fix_instruction": "若不通过，应补充胡永贵从左后到中右的走位和倾倒方向。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "云宝突然从水壶跃出挡在泉眼前，黑色废液尽数浇在云宝身上，云宝惨叫、摔地并从青蓝变死灰，完整保留原剧本5-3转折。",
+      "fix_instruction": "若不通过，应恢复云宝挡泉眼、被黑液浇中、惨叫摔地和变死灰的连续动作。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

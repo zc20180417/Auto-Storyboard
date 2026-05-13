@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "run_id": "yulongyin-duanwu-horizontal-motion-v4-ep02-full",
+  "created_at": "2026-05-11T10:13:07",
+  "project_root": "G:\\Auto-Storyboard",
+  "source": "G:\\Auto-Storyboard\\agent_runs\\_tmp_yulongyin_duanwu_first5_source\\雨龙吟端午-第02集.txt",
+  "prompt_path": null,
+  "generation_rules_source": "G:\\Auto-Storyboard\\agent_skills\\storyboard-horizontal-generator\\SKILL.md",
+  "reviewer_rules_source": "G:\\Auto-Storyboard\\agent_skills\\storyboard-horizontal-reviewer\\SKILL.md",
+  "generator_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-horizontal-generator\\SKILL.md",
+  "reviewer_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-horizontal-reviewer\\SKILL.md",
+  "seedance_profile_path": "G:\\Auto-Storyboard\\agent_skills\\seedance-prompt-profile\\SKILL.md",
+  "storyboard_aspect": "horizontal",
+  "target_video_model": "seedance",
+  "happyhorse_profile_path": null,
+  "ai_video_prompt_skill_path": null,
+  "out_dir": "G:\\Auto-Storyboard\\outputs_agent_yulongyin_duanwu_horizontal_motion_v4_ep02",
+  "agent": "codex",
+  "mode": "scene",
+  "parallelism": 3,
+  "episodes": [
+    {
+      "episode_id": "ep02",
+      "episode_number": 2,
+      "display_name": "雨龙吟端午第02集",
+      "series_title": "雨龙吟端午",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_yulongyin_duanwu_first5_source\\雨龙吟端午-第02集.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_yulongyin_duanwu_horizontal_motion_v4_ep02\\雨龙吟端午-ep02-agent-cli-storyboard.txt",
+      "storyboard_aspect": "horizontal",
+      "generator_skill_name": "storyboard-horizontal-generator",
+      "reviewer_skill_name": "storyboard-horizontal-reviewer",
+      "reviewer_source": "storyboard-horizontal-reviewer",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第2集 2-2"
+      ]
+    },
+    {
+      "episode_id": "ep02",
+      "episode_number": 2,
+      "display_name": "雨龙吟端午第02集",
+      "series_title": "雨龙吟端午",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_yulongyin_duanwu_first5_source\\雨龙吟端午-第02集.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent_yulongyin_duanwu_horizontal_motion_v4_ep02\\雨龙吟端午-ep02-agent-cli-storyboard.txt",
+      "storyboard_aspect": "horizontal",
+      "generator_skill_name": "storyboard-horizontal-generator",
+      "reviewer_skill_name": "storyboard-horizontal-reviewer",
+      "reviewer_source": "storyboard-horizontal-reviewer",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\yulongyin-duanwu-horizontal-motion-v4-ep02-full\\episodes\\ep02\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第2集 2-3"
+      ]
+    }
+  ]
+}

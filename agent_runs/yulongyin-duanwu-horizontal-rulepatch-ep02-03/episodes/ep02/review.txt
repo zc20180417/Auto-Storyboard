@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "summary": "EP02 横屏分镜共9组，完整保留裂缝失光、取水闪回、清水唤醒、黑水灼伤、入壶封盖、卧室安顿和水雾龙舟线索；无 hard issue。",
+  "source_status": "script_provided",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "prop_continuity": "checked",
+    "physical_continuity": "checked",
+    "special_effects": "checked",
+    "genre_style": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留陶笛冰凉触感、小爪松开、天天道歉、青蓝光消失和救援喊话，且小龙只以局部小爪出现。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "第3组爸爸两句台词只发生在闪回院子中，回到现实堂屋后不再有爸爸声音，声音来源和口型明确。"
+    },
+    {
+      "group": "第6组",
+      "type": "physical_continuity",
+      "evidence": "第6组水壶被写成壶底抵土坎、双手托住、斜立、壶口高于水面，解决有水容器平放仍保水的物理风险。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "第7组先让小龙进入斜立水壶，再扶正水壶，最后从左膝旁拿起壶盖拧紧，组尾封盖状态有明确动作来源。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "evidence": "第9组龙舟信息通过水雾轮廓和天天台词表达，不依赖准确中文小字，也没有生成字幕或额外说明文字。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第2组明确天天没有拿走陶笛，组尾也写陶笛和裂缝留在河床方向，避免陶笛归属跳变。",
+      "fix_instruction": "若不通过，应补充天天是否带走陶笛，并让组尾状态与镜头动作一致。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组从第3组抱壶冲出堂屋转回裂缝，承接的是救小龙目标，不强行承接远距离左右站位。",
+      "fix_instruction": "若不通过，应把远距离空间承接改为剧情线索、目标或道具承接，不写虚假的左右站位。"
+    },
+    {
+      "group": "第6组",
+      "type": "special_effects",
+      "result": "pass",
+      "evidence": "黑水只表现油亮、灰白尾尖和极淡薄雾，没有夸张腐蚀、爆炸毒液、怪物化或恐怖血腥。",
+      "fix_instruction": "若不通过，应删除夸张特效词，改为真实克制的渗染、油亮反光和灰白痕迹。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "天天在第8组使用他或角色名描述，未出现性别代词错误；小龙命名前仍称小龙，没有提前叫云宝。",
+      "fix_instruction": "若不通过，应把错误代词改为他或天天，并在命名前统一称小龙。"
+    },
+    {
+      "group": "第9组",
+      "type": "narrative_progression",
+      "result": "pass",
+      "evidence": "第9组从小龙睁眼回应，到尾尖擦开水雾，再到龙舟轮廓和天天两句疑问，线索递进清楚。",
+      "fix_instruction": "若不通过，应恢复小龙回应、划线、轮廓出现、天天问话的顺序，不要把龙舟信息凭空放到组尾。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

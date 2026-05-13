@@ -1,0 +1,135 @@
+{
+  "project": "EP-03",
+  "episode_id": "EP03",
+  "cuts": [
+    {
+      "cut_id": "EP03-G01",
+      "group_index": 1,
+      "title": "晨起早餐",
+      "scene": "朱家别墅餐厅",
+      "characters": [
+        "朱文浩",
+        "朱天和",
+        "李娟"
+      ],
+      "props": [
+        "红木餐桌",
+        "早点"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 0,
+      "group_end_sec": 10,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP03-G02",
+      "group_index": 2,
+      "title": "提亲消息",
+      "scene": "朱家别墅餐厅",
+      "characters": [
+        "朱文浩",
+        "李娟"
+      ],
+      "props": [
+        "茶杯"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 10,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP03-G03",
+      "group_index": 3,
+      "title": "试装压场",
+      "scene": "高定男装店",
+      "characters": [
+        "朱文浩",
+        "李娟"
+      ],
+      "props": [
+        "深灰色戗驳领西装",
+        "试衣镜",
+        "银行卡"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 24,
+      "group_end_sec": 38,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP03-G04",
+      "group_index": 4,
+      "title": "苏家登门",
+      "scene": "苏家别墅客厅",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "李佳佳",
+        "苏晓晓"
+      ],
+      "props": [
+        "重礼"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 38,
+      "group_end_sec": 50,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP03-G05",
+      "group_index": 5,
+      "title": "关关雎鸠",
+      "scene": "苏家别墅客厅",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "李佳佳",
+        "苏晓晓",
+        "苏清寒"
+      ],
+      "props": [],
+      "duration_sec": 12,
+      "group_start_sec": 50,
+      "group_end_sec": 62,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP03-G06",
+      "group_index": 6,
+      "title": "正式提亲",
+      "scene": "苏家别墅客厅",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "李佳佳",
+        "苏清寒"
+      ],
+      "props": [],
+      "duration_sec": 12,
+      "group_start_sec": 62,
+      "group_end_sec": 74,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP03-G07",
+      "group_index": 7,
+      "title": "离场与余波",
+      "scene": "苏家别墅客厅",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "李佳佳",
+        "苏晓晓",
+        "苏清寒"
+      ],
+      "props": [
+        "重礼"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 74,
+      "group_end_sec": 86,
+      "source_group_label": "第7组"
+    }
+  ]
+}

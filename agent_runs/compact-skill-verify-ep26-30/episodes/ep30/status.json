@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep30",
+  "status": "done",
+  "output_name": "ep30-ep30-agent-cli-storyboard.txt",
+  "summary": "EP30共5组，覆盖敲钟上市、启动捐建、桥头感恩、新路畅行、星光团圆。全部台词保留，空间锁定完整，夜景光源正确，片尾星空意象收束自然。Reviewer通过，无hard issue，2条soft warning（第3组收尾台词偏慢、对话密度偏高）。",
+  "hard_issues_remaining": 0,
+  "warnings": 2,
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

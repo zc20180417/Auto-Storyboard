@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "ep22 assembled final preserves all five source segments, uses 12 vertical groups with valid global cut_id values, clear dialogue targets, continuous meeting-room state, and no hard reviewer issues.",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组保留吴总监递黑色U盘、要求把三千万海外烂账做进陆凡专户、审计员质疑违规、吴总监以周首富施压、审计员插U盘的完整因果。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "打印流水单在第4组0-3秒由吴总监甩到陆凡面前，随后3-10秒围绕该假单据完成指控和林夏反驳，道具位置与动作连续。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "陆凡“项目的真实底层数据，每十分钟会自动备份给商会”约28字用5秒承载并含手机操作准备，吴总监约18字用4秒承载，均低于6.5字/秒。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第7组尾陆凡挡在主机前、两名手下被拦，第8组首复述该状态并让经侦警察从门外冲入，主机封存动作承接清楚。"
+    },
+    {
+      "group": "第12组",
+      "type": "filmability",
+      "evidence": "至尊黑卡和平板电脑为可见道具，加密证据链显示在平板屏幕上，李队长脸色凝重承载判断，抽象证据转译为可拍细节。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首明确乡政府会议室、会议桌、账本、电脑以及吴总监和审计员的位置、朝向和视线关系，未跨物理空间。",
+      "fix_instruction": "若不通过，应补充人物位置、身体朝向、关键道具和布局。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "林夏对吴总监质问、吴总监对林夏回应、陆凡对吴总监提问、吴总监对陆凡指责，现场对白对象明确。",
+      "fix_instruction": "若不通过，应逐句补真实对话对象。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "安保逼近、陆凡质问周长海、吴总监命令带走、陆凡指出植入假账和吴总监反驳分成14秒4段，云备份揭示另拆到第6组，未过载。",
+      "fix_instruction": "若不通过，应继续拆分安保动作和数据库反击台词。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "吴总监、陆凡、两名手下、主机和大屏幕均在组首有明确位置；手下扑向主机前已在空间内可用。",
+      "fix_instruction": "若不通过，应补手下和主机的组首位置。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "镇纸在组首位于吴总监手边，0-3秒吴总监抓起，3-6秒经侦警察夺下，归属变化有可见过渡。",
+      "fix_instruction": "若不通过，应补抓起或夺下动作。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "陆凡2秒短句、吴总监3秒呼叫、李队长4秒实名举报台词均在自然口型范围内，警察入场单独给3秒表演时间。",
+      "fix_instruction": "若不通过，应拆分李队长入场和实名举报台词。"
+    },
+    {
+      "group": "第11组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留吴总监反咬陆凡造假账和打人、李队长要求配合调查、陆凡要求先看证据的关键台词顺序。",
+      "fix_instruction": "若不通过，应恢复原剧本台词或动作顺序。"
+    },
+    {
+      "group": "第12组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全稿没有Seedance说明、自动正反打、参考模板、占位符、字幕、工程字段或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除污染词并改成自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

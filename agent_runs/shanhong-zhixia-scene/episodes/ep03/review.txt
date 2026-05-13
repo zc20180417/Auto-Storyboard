@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "summary": "ep03 整集 final 已按竖屏 scene 规则审核通过，挖沟防堵、导流判断、黄水冒出和先搬粮的剧情因果完整。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "开场保留沈砚川挖主沟、沈小禾拖木桩、铁锹和麻绳在地上的原始动作，并完整保留“手套戴上”“我能搬”“这条是主沟”“那边开横槽”“这坑干啥”“沉砂，防堵”。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "林知夏问导流槽、沈砚川解释水不能压一股、林知夏判断沟线和上游动土、周大柱否认，约 47 字分布在 10 秒有台词时间内并穿插看沟和看上游动作，未超速。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组切换到夜晚果园下坡，排水沟、粮袋、隔壁坡地和所有发声人物都在组首明确位置与朝向；雨水和黄水属于同一坡地空间内的灾变。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第4组尾部周大柱想去看塌墙，第5组开头周大柱仍前倾朝坡墙方向，沈砚川靠近并拽回他，人物动作承接清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "标题含 EP03-G01 cut_id，总时长 14 秒，4 个连续时间段从 0 到 14 秒，字段结构完整。",
+      "fix_instruction": "若不通过，应补 cut_id、修正时间轴并保持镜头数与时间段一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "周大柱、村民甲、沈砚川、赵成武的现场对白均写明对沈砚川或对相关人群说话，没有无对象对白。",
+      "fix_instruction": "若不通过，应为每句现场对白补真实人物对象，不得发明假对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "林知夏走近看沟线、确认导流槽和上游动土风险，沈砚川说明乡里清沟经验，周大柱“你俩别吓人”按原顺序保留。",
+      "fix_instruction": "若不通过，应恢复原剧本台词和林知夏技术判断的因果顺序。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组 11 秒承载急雨、黄水、两句反应、退开和塌墙消息，分成 4 个时间段，没有把搬粮和叫人也塞进同组。",
+      "fix_instruction": "若不通过，应把塌墙消息或退开动作拆出，避免灾变信息过载。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "粮袋从第4组组首到第5组组首始终在棚边，第5组沈砚川指向粮袋后说“先搬粮”，道具使用有可见过渡。",
+      "fix_instruction": "若不通过，应补粮袋位置或人物转向粮袋的动作。"
+    },
+    {
+      "group": "第1组-第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt 没有出现 Seedance 自动、参考模板、@图片、字幕、广告语、首尾帧或模板化批量描述，正文保持自然中文分镜。",
+      "fix_instruction": "若不通过，应删除污染词并改写为可见动作、声音和光影。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

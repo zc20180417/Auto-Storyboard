@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "summary": "ep03整集六组已对照完整剧本和竖屏生成规则审核通过，包间羞辱、许安离席、门口借地转机均保留，未发现硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "唐婶“你这话不对吧”、韩彪“一万”说法、街坊乙“才一万？”、韩彪“看火的”和许安“你再说一遍”均按原剧本顺序保留，未改人物关系。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "evidence": "韩彪对许安说“说十遍也一样。离了我，你能干什么？”，马会对韩彪低声劝，韩彪对马会喝止，林小满对服务员问菜放哪，服务员对林小满回应，所有现场对白都有真实对象。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "evidence": "第4组标题15秒，时间段为0-2、2-6.5、6.5-8.5、8.5-13.5、13.5-15秒，连续且最后结束于15秒；镜头数5个与时间段一致。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组只使用饭馆门口一个主要物理空间，组首写明玻璃门、街边招牌、许安握打火机的位置和林小满在门内背景的位置，后续入场和站位清楚。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "林小满0-7秒承载约41字连续说明，约5.9字/秒；许安7-9秒承载“你倒挺直接”；林小满9-13秒承载约16字，均低于6.5字/秒硬上限。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组-第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "包间内从拉许安入席、韩彪假热情、一万元羞辱、马会劝阻、林小满送菜听见、韩彪挑衅到许安撂话离开，核心台词和动作均未丢失。",
+      "fix_instruction": "若不通过，应回到对应组补回原剧本台词、动作或说话对象，不得新增改变剧情的强动作。"
+    },
+    {
+      "group": "第3组-第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林小满先在第3组门口停下并询问服务员，第4组组首位于门内且手持托盘，随后放菜听见韩彪后半句，角色出现和行动顺序成立。",
+      "fix_instruction": "若不通过，应在开口或行动前补入入场动作或组首可见状态。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组15秒内承载放菜、韩彪长句挑衅、许安短句压火、韩彪长句羞辱、许安站起离席；所有强节拍都围绕同一桌边冲突，未混入新场景或无关道具操作。",
+      "fix_instruction": "若不通过，应拆分离席动作或缩短非关键反应，不能压缩关键台词到不可表演。"
+    },
+    {
+      "group": "第5组-第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "打火机从第5组组首到第6组尾部一直归属许安，第5组写明握紧和松开半分，第6组尾部写明慢慢收进口袋，道具状态连续。",
+      "fix_instruction": "若不通过，应补充打火机在许安手中、松开、收入口袋的可见过渡。"
+    },
+    {
+      "group": "第1组-第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文无Seedance说明词、自动正反打、模板编号、参考图占位、广告字幕、MV卡点或“空间先被交代出来”等低质模板句。",
+      "fix_instruction": "若不通过，应删除污染词并改写为具体可见动作、台词对象、道具位置和光影。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

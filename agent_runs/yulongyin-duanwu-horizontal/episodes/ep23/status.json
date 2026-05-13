@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep23",
+  "status": "done",
+  "output_name": "雨龙吟端午ep23-agent-cli-storyboard.txt",
+  "summary": "天天护住云宝被打手踢倒，云宝以水针反击，爸爸浴血救场后带云宝寻找活水井，却被胡永贵用毒液威胁泉眼。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "dialogue_pacing",
+      "problem": "打手丙怒吼台词节奏偏快但仍在风险区间内。",
+      "evidence": "“邪门怪物！老子一刀把你劈成两半！”约18字用3秒承载，约6字/秒，未超过6.5字/秒。",
+      "fix": "保持急促怒吼表演即可，不需要改写台词。"
+    }
+  ],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

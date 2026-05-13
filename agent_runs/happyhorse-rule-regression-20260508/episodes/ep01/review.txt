@@ -1,0 +1,94 @@
+{
+  "pass": true,
+  "summary": "EP01整集分镜完整覆盖林跃被陷害、重生反证、逼出红泥疑点和赵百川暗中断水的剧情，审核未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "赵百川、赵大强、林建国、张桂兰的指控和求情台词均按原文写入【音频】，林跃被绑木桩、脸上青紫、嘴角血迹、双眼紧闭到睁眼的状态与剧本一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "evidence": "林跃对赵百川问赃物、赵百川对林跃回答剪断电线、林跃对赵百川追问那人呢，均有真实对话对象；林跃重生句被处理为心声且闭口不做口型。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组仍在晒谷场人群边缘，林跃、李二狗、赵大强和众村民的位置、身体朝向、李二狗试图躲向人群的关系均在【主体】中锁定。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "evidence": "全组只使用HappyHorse的【场景】【主体】【运动】【音频】【画面风格】结构，未出现【技术参数】、16:9、4K、参考图、首帧或独立--neg。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第1组时间段为0-2、2-6、6-11、11-14秒，连续且合计14秒，标题镜头数4个与实际时间段一致。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "重生内容为林跃心声，明确嘴唇闭合不做口型；现场问答均以林跃和赵百川彼此开口承载。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "红泥鞋底、林跃指出电线杆下红泥地、质问李二狗、村民怀疑、赵大强色厉内荏和林跃低语警告均按原剧情顺序保留。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组结尾林跃逼近赵大强，第5组开头林跃从赵大强面前转身去扶母亲；同一晒谷场内人物位置和行动转换明确。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第6组独立锁定村头水渠边，王四、水渠总闸、锈铁阀门和林家果园水渠的关系明确，未把晒谷场动作塞入同组。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "【画面风格】短写且负向词为8项，正文无Seedance默认包装、模型说明词、参考图占位、BGM、分辨率或比例参数。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,116 @@
+{
+  "pass": true,
+  "summary": "ep07 assembled final已按原剧本、竖屏生成规则和reviewer规则逐组审核，关键台词、道具、空间锁定、口型承载和cut_id合同均通过，剩余为短组与原剧本重复救场段落的软提醒。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组", "第14组", "第15组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本7-1中三辆警车停村口、老张带警察下车、询问陆凡、牛大春询问原因、老张出示出警单说明徐虎报案；第1组均保留，未新增抓捕或手铐动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "周思思组首手中持有手机，5-11秒举起直播回放给老张，11-15秒把手机递向老张，老张接过看回放后脸色难看，手机归属变化有可见过渡。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "林夏关于县委表扬通报的长台词被拆为3-9秒、9-12秒、12-15秒三段；单段有效字数与时长匹配，未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第9组",
+      "type": "space_locking",
+      "evidence": "第9组从村口切到乡长办公室，组首明确赵大江在办公椅上持亮屏手机、徐虎在沙发上头缠纱布，属于新物理空间独立开组。"
+    },
+    {
+      "group": "第15组",
+      "type": "audio_mouth_sync",
+      "evidence": "陆凡OS写成内心旁白，画面中陆凡嘴唇闭合不做口型，声音来源和口型承载符合规则。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "牛大春对老张喊话，老张对陆凡问话，陆凡对老张解释，所有现场对白均有真实对象，没有对空气或道具说话。",
+      "fix_instruction": "若发现无对象对白，应补成对老张、对陆凡或对在场众人说道。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林夏在组首通过远处黑色奥迪车影可用，10-15秒奥迪急刹、林夏下车走到老张和陆凡面前后才开口喊慢着，入场顺序成立。",
+      "fix_instruction": "若人物未入场即说话，应补车内可见状态或入场动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第7组承载林夏警告徐虎、老张犹豫、传真局长办公室威慑和收队四个节拍，15秒内每段台词和动作分配清楚，未把多个中等动作和长台词挤入同一时间段。",
+      "fix_instruction": "若节拍过载，应拆成威慑和收队两个组，或压缩非关键走位。"
+    },
+    {
+      "group": "第11组",
+      "type": "handoff_continuity",
+      "result": "warning",
+      "evidence": "第11组来自原剧本7-4，晴天村口、陆凡戴手铐、林夏再次怒停抓捕，与7-2已经收队后的剧情存在原始剧本重复救场感；分镜按新场景重新锁定，未在同一空间内造成道具跳变。",
+      "fix_instruction": "若后续统一剧本，应由剧本层决定是否删除7-4重复救场；本集分镜阶段不擅自删改原剧本段落。"
+    },
+    {
+      "group": "第12组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第12组组首陆凡双手仍被手铐铐住，10-13秒老张接过钥匙并打开手铐，13-15秒陆凡手铐已解开，手铐状态连续。",
+      "fix_instruction": "若手铐突然消失，应补钥匙、开锁或取下手铐动作。"
+    },
+    {
+      "group": "第15组",
+      "type": "timing_math",
+      "result": "warning",
+      "evidence": "第15组为8秒短组，只承载陆凡内心旁白和远方盘山公路片尾意象，低于默认10秒但属于片尾意象和短情绪收束。",
+      "fix_instruction": "若需要扩展，只能增加陆凡望路、林夏担忧反应或道路意象，不新增剧情动作。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全片未出现Seedance说明词、自动正反打、参考图、模板编号、官方模板标题、字幕指令或工程占位符；画面风格和负面词为生成规则要求的自然尾部约束。",
+      "fix_instruction": "若出现模型说明词或模板污染，应改成具体可见动作、人物站位、道具和声音来源。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第11组",
+      "rule": "handoff_continuity",
+      "problem": "原剧本7-4与7-2存在重复救场结构。",
+      "evidence": "第8组已经完成老张收队和林夏支持陆凡；第11组按原剧本7-4再次回到晴天村口、陆凡戴手铐、林夏怒停抓捕。",
+      "fix": "分镜已按新场景独立锁定并保留原剧本；是否删并重复段落应由剧本层确认。"
+    },
+    {
+      "severity": "soft",
+      "group": "第15组",
+      "rule": "timing_math",
+      "problem": "8秒短组低于默认10秒。",
+      "evidence": "该组只承载陆凡OS和远方盘山公路意象，属于片尾意象和短情绪收束。",
+      "fix": "保留为短组即可；不建议为凑时长新增剧情动作。"
+    }
+  ]
+}

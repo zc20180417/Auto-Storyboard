@@ -1,0 +1,137 @@
+{
+  "pass": true,
+  "summary": "已对照第4集完整原剧本、横屏生成规则和整集final.txt逐组审查，抢水冲突、云宝结冰、接水离开、车内电话和天天奔向后山的因果链完整，横屏空间、运镜、台词和道具连续性均可交付。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "送水车位于右后景，队列横贯中景，天天在左后景队尾，胡永贵和皮卡在左前景，16:9画面明确呈现缺水队伍与插队威胁。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "村民甲台词安排在6-10秒，胡永贵回怼安排在10-14秒，两段情绪对白均未超过6.5字/秒，且说话对象明确。"
+    },
+    {
+      "group": "第3组",
+      "type": "blocking_continuity",
+      "evidence": "天天由左后景冲向中右水管，被胡永贵推回左前景，组尾水壶仍在天天怀里，动作方向与道具归属连续。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "云宝的奇幻效果从天天怀中水壶内部开始，水雾从壶口溢出并贴地向泥水延伸，来源和路径清楚。"
+    },
+    {
+      "group": "第5组",
+      "type": "camera_motion",
+      "evidence": "第5组低位横向平移负责水雾到薄冰的状态链，固定中景承载胡永贵台词和脚前薄冰，后拉交代水管脱手后的新机会。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "包工头台词明确为手机外放电话声，手机亮屏在右前景，胡永贵在左中景做反应，没有把电话声误写为现场人物口型。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "天天听见倒废液计划后保留原台词“后山有泉眼？不能让他倒毒液！”，并按剧本抱紧水壶朝后山方向狂奔。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首只写送水车、队列、天天、胡永贵、村民甲的静态站位和视线，没有写走来、插队或抢水动作。",
+      "fix_instruction": "如后续调整胡永贵进入队伍，应继续放在时间段镜头描述中，组首只保留第一帧静态布局。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留胡永贵强行拿水管洗皮卡、村民甲质问、胡永贵得意回应的原始剧情和台词顺序。",
+      "fix_instruction": "不得删除村民甲质问或改写胡永贵以付费为由的回怼。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组组尾天天趴在左前景护水壶，胡永贵右侧握水管；第4组组首延续天天左前景低伏、水壶在怀里，衔接一致。",
+      "fix_instruction": "若修改第4组开头，应保持天天已倒地护壶的状态，不要跳成已站起。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "薄冰由水雾进入泥水形成，胡永贵踩中后摔倒，水管从他手里脱离并滑到中景偏左，给第6组天天接水管提供可见过渡。",
+      "fix_instruction": "不得让水管在第6组开头凭空到天天手里；必须保留接住动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天“走！我们回家！”写为对怀里的水壶喊道，水壶同框可见，符合对话对象明确要求。",
+      "fix_instruction": "后续不得改成对空喊话；如对象变化，需要画面内可见承接。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "胡永贵现场对手机开口，包工头为电话声；画面用手机亮屏和固定机位区分现场口型与电话声源。",
+      "fix_instruction": "如调整车内镜头，必须继续保留手机外放或听筒作为包工头声音载体。"
+    },
+    {
+      "group": "第8组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "固定中近景、轻微推近、摇向车窗缝分别服务反应、危险命令和声音外泄提示，没有滥用无目的横移。",
+      "fix_instruction": "对白组应继续保留稳定机位承载口型和手机位置。"
+    },
+    {
+      "group": "第9组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "天天在左前景屋檐阴影，皮卡和胡永贵在右中后景，车窗半开作为声源，后山方向通过摇向承接，横屏空间关系清楚。",
+      "fix_instruction": "若拆改第9组，需保留天天、皮卡、车窗声源、后山方向之间的左右/前后关系。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集分镜未出现模板编号、官方占位符、参考图、视频延长、自动分镜或广告/MV式工程说明词。",
+      "fix_instruction": "后续修改仍应保持自然中文短剧分镜，不加入控制台占位符或模板说明。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

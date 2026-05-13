@@ -1,0 +1,133 @@
+{
+  "project": "ep30",
+  "episode_id": "EP30",
+  "cuts": [
+    {
+      "cut_id": "EP30-G01",
+      "group_index": 1,
+      "title": "上市敲钟",
+      "scene": "日/晴，证券交易所敲钟大厅内",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "桂姨",
+        "全场众人"
+      ],
+      "props": [
+        "红绸鼓槌",
+        "敲钟台",
+        "大屏幕"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP30-G02",
+      "group_index": 2,
+      "title": "新起点落回老家",
+      "scene": "日/晴，证券交易所敲钟大厅内",
+      "characters": [
+        "赵朵朵",
+        "助理",
+        "众人"
+      ],
+      "props": [
+        "大屏幕",
+        "红绸鼓槌",
+        "助理手中的工作平板"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 12,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP30-G03",
+      "group_index": 3,
+      "title": "新桥前的感谢",
+      "scene": "日/晴，远县北沟村村口水泥大桥旁",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "村长",
+        "村民们"
+      ],
+      "props": [
+        "水泥大桥",
+        "村口横幅",
+        "村民手中的果筐"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 24,
+      "group_end_sec": 37,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP30-G04",
+      "group_index": 4,
+      "title": "大路通向家里饭香",
+      "scene": "日/晴，远县北沟村村口大路旁",
+      "characters": [
+        "赵朵朵",
+        "赵大雷"
+      ],
+      "props": [
+        "宽阔水泥路",
+        "朵朵集团重卡",
+        "路边果筐"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 37,
+      "group_end_sec": 47,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP30-G05",
+      "group_index": 5,
+      "title": "葡萄架下碰杯",
+      "scene": "夜/晴，县城四合院葡萄架下",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "桂姨",
+        "大嫂"
+      ],
+      "props": [
+        "餐桌",
+        "红烧肉",
+        "排骨",
+        "玻璃杯",
+        "汽水",
+        "酒杯"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 47,
+      "group_end_sec": 62,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP30-G06",
+      "group_index": 6,
+      "title": "抬头望见繁星",
+      "scene": "夜/晴，县城四合院葡萄架下",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "桂姨",
+        "大嫂"
+      ],
+      "props": [
+        "红烧肉",
+        "餐桌",
+        "玻璃杯",
+        "葡萄架"
+      ],
+      "duration_sec": 6,
+      "group_start_sec": 62,
+      "group_end_sec": 68,
+      "source_group_label": "第6组"
+    }
+  ]
+}

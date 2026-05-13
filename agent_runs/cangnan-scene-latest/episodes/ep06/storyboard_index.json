@@ -1,0 +1,237 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP06",
+  "cuts": [
+    {
+      "cut_id": "EP06-G01",
+      "group_index": 1,
+      "title": "河滩寻策遇主播",
+      "scene": "水头村河滩",
+      "characters": [
+        "陆凡",
+        "周思思"
+      ],
+      "props": [
+        "自拍杆",
+        "手机"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP06-G02",
+      "group_index": 2,
+      "title": "助农直播邀约",
+      "scene": "水头村河滩",
+      "characters": [
+        "陆凡",
+        "周思思"
+      ],
+      "props": [
+        "自拍杆",
+        "手机"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 13,
+      "group_end_sec": 28,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP06-G03",
+      "group_index": 3,
+      "title": "路障直播曝光",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "周思思",
+        "黄毛",
+        "三个混混"
+      ],
+      "props": [
+        "手机",
+        "路障",
+        "扑克",
+        "棒球棍",
+        "铁棍"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 28,
+      "group_end_sec": 41,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP06-G04",
+      "group_index": 4,
+      "title": "挡棍救下直播",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "周思思",
+        "黄毛",
+        "三个混混"
+      ],
+      "props": [
+        "手机",
+        "棒球棍",
+        "铁棍",
+        "路障"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 41,
+      "group_end_sec": 55,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP06-G05",
+      "group_index": 5,
+      "title": "众人举机反制",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "周思思",
+        "黄毛",
+        "三个混混",
+        "几个村民"
+      ],
+      "props": [
+        "手机",
+        "棒球棍",
+        "铁棍",
+        "路障"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 55,
+      "group_end_sec": 68,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP06-G06",
+      "group_index": 6,
+      "title": "直播震慑抓棍",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "周思思",
+        "黄毛",
+        "三个混混",
+        "几个村民"
+      ],
+      "props": [
+        "手机",
+        "棒球棍",
+        "铁棍",
+        "路障"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 68,
+      "group_end_sec": 82,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP06-G07",
+      "group_index": 7,
+      "title": "恶霸撤退留证",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "周思思",
+        "黄毛",
+        "三个混混",
+        "几个村民"
+      ],
+      "props": [
+        "手机",
+        "棒球棍",
+        "铁棍",
+        "路障"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 82,
+      "group_end_sec": 96,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP06-G08",
+      "group_index": 8,
+      "title": "鱼干直播秒空",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "周思思",
+        "牛大春",
+        "村民们"
+      ],
+      "props": [
+        "手机",
+        "鱼干",
+        "纸箱"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 96,
+      "group_end_sec": 111,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP06-G09",
+      "group_index": 9,
+      "title": "欢呼装车存证",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "周思思",
+        "牛大春",
+        "村民们"
+      ],
+      "props": [
+        "手机",
+        "鱼干",
+        "纸箱"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 111,
+      "group_end_sec": 123,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP06-G10",
+      "group_index": 10,
+      "title": "热搜传进办公室",
+      "scene": "乡长办公室",
+      "characters": [
+        "赵大江",
+        "刘波"
+      ],
+      "props": [
+        "文件",
+        "手机",
+        "办公桌",
+        "门"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 123,
+      "group_end_sec": 136,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP06-G11",
+      "group_index": 11,
+      "title": "赵大江下令抓人",
+      "scene": "乡长办公室",
+      "characters": [
+        "赵大江",
+        "刘波"
+      ],
+      "props": [
+        "手机",
+        "办公桌",
+        "文件"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 136,
+      "group_end_sec": 148,
+      "source_group_label": "第11组"
+    }
+  ]
+}

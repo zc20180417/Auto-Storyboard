@@ -1,0 +1,259 @@
+{
+  "project": "EP-04",
+  "episode_id": "EP04",
+  "cuts": [
+    {
+      "cut_id": "EP04-G01",
+      "group_index": 1,
+      "title": "考场连问",
+      "scene": "集团特招考场",
+      "characters": [
+        "朱文浩",
+        "周正明",
+        "考官甲",
+        "三名考官",
+        "邱瑞"
+      ],
+      "props": [
+        "考官席",
+        "中央椅子",
+        "评分纸",
+        "签字笔"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP04-G02",
+      "group_index": 2,
+      "title": "考官压分",
+      "scene": "集团特招考场",
+      "characters": [
+        "朱文浩",
+        "周正明",
+        "考官甲",
+        "三名考官",
+        "邱瑞"
+      ],
+      "props": [
+        "中央椅子",
+        "评分纸",
+        "签字笔"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 12,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP04-G03",
+      "group_index": 3,
+      "title": "废纸包火",
+      "scene": "集团特招考场",
+      "characters": [
+        "朱文浩",
+        "周正明",
+        "考官甲",
+        "三名考官",
+        "邱瑞"
+      ],
+      "props": [
+        "中央椅子",
+        "评分纸",
+        "签字笔"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 24,
+      "group_end_sec": 35,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP04-G04",
+      "group_index": 4,
+      "title": "门口讥讽",
+      "scene": "考场外走廊",
+      "characters": [
+        "朱文浩",
+        "刘晓蕾"
+      ],
+      "props": [
+        "限量版包",
+        "考场门"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 35,
+      "group_end_sec": 47,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP04-G05",
+      "group_index": 5,
+      "title": "硬饭噎人",
+      "scene": "考场外走廊",
+      "characters": [
+        "朱文浩",
+        "刘晓蕾"
+      ],
+      "props": [
+        "限量版包",
+        "考场门"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 47,
+      "group_end_sec": 58,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP04-G06",
+      "group_index": 6,
+      "title": "茶杯震怒",
+      "scene": "朱家别墅书房",
+      "characters": [
+        "朱文浩",
+        "朱天和"
+      ],
+      "props": [
+        "茶杯",
+        "茶壶",
+        "书桌"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 58,
+      "group_end_sec": 69,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP04-G07",
+      "group_index": 7,
+      "title": "甜枣补偿",
+      "scene": "朱家别墅书房",
+      "characters": [
+        "朱文浩",
+        "朱天和"
+      ],
+      "props": [
+        "茶杯",
+        "茶壶",
+        "书桌"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 69,
+      "group_end_sec": 80,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP04-G08",
+      "group_index": 8,
+      "title": "灯下黑",
+      "scene": "朱家别墅书房",
+      "characters": [
+        "朱文浩",
+        "朱天和"
+      ],
+      "props": [
+        "茶杯",
+        "书桌"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 80,
+      "group_end_sec": 92,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP04-G09",
+      "group_index": 9,
+      "title": "证据属实",
+      "scene": "苏清寒公寓客厅",
+      "characters": [
+        "苏清寒",
+        "苏晓晓"
+      ],
+      "props": [
+        "资料文件",
+        "手机",
+        "公寓门",
+        "门铃"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 92,
+      "group_end_sec": 102,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP04-G10",
+      "group_index": 10,
+      "title": "门外下跪",
+      "scene": "苏清寒公寓门口",
+      "characters": [
+        "苏清寒",
+        "苏晓晓"
+      ],
+      "props": [
+        "手机",
+        "公寓门",
+        "门铃"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 102,
+      "group_end_sec": 115,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP04-G11",
+      "group_index": 11,
+      "title": "三条条件",
+      "scene": "苏清寒公寓客厅门口",
+      "characters": [
+        "苏清寒",
+        "苏晓晓",
+        "朱文浩"
+      ],
+      "props": [
+        "手机",
+        "公寓门",
+        "资料文件"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 115,
+      "group_end_sec": 127,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP04-G12",
+      "group_index": 12,
+      "title": "成交眼线",
+      "scene": "苏清寒公寓客厅",
+      "characters": [
+        "苏清寒",
+        "朱文浩"
+      ],
+      "props": [
+        "手机",
+        "资料文件"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 127,
+      "group_end_sec": 139,
+      "source_group_label": "第12组"
+    },
+    {
+      "cut_id": "EP04-G13",
+      "group_index": 13,
+      "title": "窗外复仇",
+      "scene": "苏清寒公寓客厅窗边",
+      "characters": [
+        "苏清寒"
+      ],
+      "props": [
+        "手机",
+        "窗户"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 139,
+      "group_end_sec": 149,
+      "source_group_label": "第13组"
+    }
+  ]
+}

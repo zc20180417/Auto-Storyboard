@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "已对照第16集完整剧本、竖屏生成规则和整集final逐组审核，台词忠实、空间锁定、时长节奏、口型承载和组间连续性均通过。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留许安备炭、肉、签子，林小满低声问“你真备这么足？”，许安回答“不是赌，是防着他翻车”和“那我就当练手”，剧情因果与原剧本一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "evidence": "韩彪对许安挑衅、许安对韩彪回击、林小满对韩彪顶回去、韩彪对林小满嗤笑，所有画面内台词都标明真实对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "timing_math",
+      "evidence": "第3组标题总时长9秒，时间段0-2.5秒、2.5-6秒、6-9秒连续且以0.5秒粒度结尾，镜头数3个与时间段数一致；该组为阿顺料盆和马会提醒的短承接。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "客人甲、客人乙、韩彪、阿顺、主办方甲台词分别落在2.5秒、3.5秒和3秒的可表演段落内，没有有效字数/秒数超过6.5的硬问题。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第4组尾部主办方甲起身质问韩彪，第5组组首延续同一主桌区人物站位，并明确许安和林小满在主桌区边缘，随后许安推动炭炉补位，状态衔接清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定社区广场备餐区的备餐长桌、炭炉、许安、林小满和右后方过道的韩彪，位置、朝向和关键道具完整。",
+      "fix_instruction": "若不通过，应补齐第一帧人物位置、身体朝向、备餐桌和炭炉状态。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组为15秒对峙，主要强节拍是韩彪挑衅、许安平静回击、韩彪压近、林小满顶回去和韩彪离开；5个时间段清楚，未把额外动作或道具揭示硬塞进同组。",
+      "fix_instruction": "若不通过，应拆分挑衅与离开动作，或压缩非关键反应。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "马会在组首位于后厨门边，阿顺在2.5-6秒先从后厨门口入场并抱着料盆出现，随后马会才压声提醒许安；人物参与顺序合理。",
+      "fix_instruction": "若不通过，应在阿顺动作前补明确入场，或在组首写明他的位置。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "主桌区第一轮烤串变味、客人甲说“这肉不对”、客人乙说“还有苦味”、韩彪否认、阿顺说按韩彪要求抢火、主办方质问，均按原剧本顺序保留。",
+      "fix_instruction": "若不通过，应恢复主桌区事故台词和阿顺对韩彪的责任指向。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "炭炉在组首属于许安双手扶着的推架，8-12秒许安把炭炉推向主桌区前方通道，补位动作和道具移动有可见过渡。",
+      "fix_instruction": "若不通过，应补充许安扶住炭炉、推架移动方向和主桌区通道位置。"
+    },
+    {
+      "group": "第1组至第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集final未出现Seedance说明词、模板编号、参考图占位、自动分镜、广告字幕或批量模板化语句；正文保持自然中文分镜文本。",
+      "fix_instruction": "若不通过，应删除模型、模板和工程说明词，并改写为具体可拍动作。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

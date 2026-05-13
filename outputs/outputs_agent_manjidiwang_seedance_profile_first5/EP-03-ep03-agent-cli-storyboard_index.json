@@ -1,0 +1,222 @@
+{
+  "project": "EP-03",
+  "episode_id": "EP03",
+  "cuts": [
+    {
+      "cut_id": "EP03-G01",
+      "group_index": 1,
+      "title": "晨餐前的出门交代",
+      "scene": "朱家别墅餐厅",
+      "characters": [
+        "朱文浩",
+        "朱天和",
+        "李娟"
+      ],
+      "props": [
+        "红木餐桌",
+        "早点",
+        "楼梯",
+        "真丝睡袍"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP03-G02",
+      "group_index": 2,
+      "title": "提亲二字落桌",
+      "scene": "朱家别墅餐厅",
+      "characters": [
+        "朱文浩",
+        "李娟"
+      ],
+      "props": [
+        "红木餐桌",
+        "早点",
+        "水杯",
+        "餐巾"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 13,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP03-G03",
+      "group_index": 3,
+      "title": "李娟答应撑场",
+      "scene": "朱家别墅餐厅",
+      "characters": [
+        "朱文浩",
+        "李娟"
+      ],
+      "props": [
+        "红木餐桌",
+        "早点",
+        "水杯",
+        "餐巾"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 24,
+      "group_end_sec": 34,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP03-G04",
+      "group_index": 4,
+      "title": "高定西装上身",
+      "scene": "高定男装店",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "导购"
+      ],
+      "props": [
+        "深灰色戗驳领西装",
+        "试衣间",
+        "镜子",
+        "银行卡",
+        "衣架"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 34,
+      "group_end_sec": 44,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP03-G05",
+      "group_index": 5,
+      "title": "资本规则宣言",
+      "scene": "高定男装店",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "导购"
+      ],
+      "props": [
+        "深灰色戗驳领西装",
+        "镜子",
+        "银行卡",
+        "衣架"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 44,
+      "group_end_sec": 54,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP03-G06",
+      "group_index": 6,
+      "title": "苏家客厅迎客",
+      "scene": "苏家别墅客厅",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "李佳佳",
+        "苏晓晓"
+      ],
+      "props": [
+        "重礼",
+        "门槛",
+        "客厅沙发",
+        "楼梯"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 54,
+      "group_end_sec": 65,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP03-G07",
+      "group_index": 7,
+      "title": "苏清寒被拉到身侧",
+      "scene": "苏家别墅客厅",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "李佳佳",
+        "苏晓晓",
+        "苏清寒"
+      ],
+      "props": [
+        "重礼",
+        "客厅沙发",
+        "楼梯",
+        "浅色职业装"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 65,
+      "group_end_sec": 75,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP03-G08",
+      "group_index": 8,
+      "title": "三年交往与提亲",
+      "scene": "苏家别墅客厅",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "李佳佳",
+        "苏晓晓",
+        "苏清寒"
+      ],
+      "props": [
+        "重礼",
+        "客厅沙发",
+        "楼梯"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 75,
+      "group_end_sec": 86,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP03-G09",
+      "group_index": 9,
+      "title": "高帽压住苏家",
+      "scene": "苏家别墅客厅",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "李佳佳",
+        "苏晓晓",
+        "苏清寒"
+      ],
+      "props": [
+        "重礼",
+        "客厅沙发",
+        "楼梯"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 86,
+      "group_end_sec": 96,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP03-G10",
+      "group_index": 10,
+      "title": "釜底抽薪离场",
+      "scene": "苏家别墅客厅",
+      "characters": [
+        "朱文浩",
+        "李娟",
+        "李佳佳",
+        "苏晓晓",
+        "苏清寒"
+      ],
+      "props": [
+        "重礼",
+        "门槛",
+        "客厅沙发",
+        "楼梯"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 96,
+      "group_end_sec": 107,
+      "source_group_label": "第10组"
+    }
+  ]
+}

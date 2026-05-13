@@ -1,0 +1,133 @@
+{
+  "pass": true,
+  "summary": "EP01 整集已按 storyboard-reviewer 对照原剧本、生成规则、Seedance profile 与修复后的 final.txt 复审。第1组复合动作链已由 9.5-12秒 调整为 9.5-14秒，第2组倒酒加解释台词已调整为 0-4.5秒 起步节拍；全片未发现 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组",
+    "第13组",
+    "第14组",
+    "第15组",
+    "第16组",
+    "第17组",
+    "第18组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "generation_density": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "generation_density",
+      "evidence": "9.5-14秒为无台词复合动作链/4.5秒，承载朱文浩从床上起身、披上浴袍、扫视房门、转向吧台并迈步到红酒瓶和酒杯前；该动作链符合生成规则中起身+穿披+走到另一位置约4-5秒的要求，未再叠加新台词或关键道具揭示。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "0-4.5秒包含倒满两只酒杯和两句解释台词“汤里放了安眠药和催情剂”“有人拿你的清白做局”，有效台词约22字/4.5秒/约4.9字每秒，并有倒酒动作支撑；后续 4.5-6.5、6.5-8.5、8.5-11、11-15秒连续承接问答、身份揭露、递酒和妹妹果汁反转，最后23字/4秒/约5.75字每秒，未超过硬上限。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "evidence": "第1组组尾朱文浩走到吧台前、门外砸门仍持续；第2组组首锁定朱文浩位于吧台前，手边是红酒瓶和两只酒杯，苏清寒仍在床边抓着真丝被，人物位置和道具状态连续。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "苏家别墅书房以交叉剪辑单独成组，苏长明、龙图腾字画、抹布和手机都在组首空间锁定中明确，未与酒店套房混写在同一现实空间。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "套房门被推开、闪光灯涌入、朱文浩搂着苏清寒在落地窗前举杯、王队长错愕台词均保留原剧本顺序，没有新增安保暴力或改变未婚夫妻伪装关系。"
+    },
+    {
+      "group": "第14组",
+      "type": "dialogue_direction",
+      "evidence": "苏清寒“我要先验证这些证据”明确对朱文浩低声说道，朱文浩递名片并说明“验证完，打这个电话。只等24小时”，现场对白和后续苏清寒心声分开，指向清楚。"
+    },
+    {
+      "group": "第17组",
+      "type": "filmability",
+      "evidence": "前世毒酒、满门抄斩和玉玺印泥均写成车内红灯等待时的快速闪回画面，现实空间仍为车内，抽象复仇信息被转译为可见闪回和朱文浩闭眼反应。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩和苏清寒在组首均有画面位置、身体朝向和脸部朝向；门外安保人员通过房门、门板震动、门把手晃动和画外音获得声音来源。",
+      "fix_instruction": "无需修改；继续保持门外人物不直接参与屋内动作。"
+    },
+    {
+      "group": "第1组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "修复后最后一段 9.5-14秒只处理朱文浩起身披浴袍并走向吧台的连续动作链，总时长 4.5秒；前面的惊醒、心声、苏清寒崩溃和门外喊话分别在独立时间段中完成。",
+      "fix_instruction": "无需修改；不得再把倒酒、解释药局或新台词压回第1组末段。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第2组时间段连续为 0-4.5、4.5-6.5、6.5-8.5、8.5-11、11-15秒，最后一段结束于组标题 15秒；倒酒与两句解释台词获得 4.5秒，苏长明身份揭露和递酒说明各自独立成段。",
+      "fix_instruction": "无需修改；不得删台词或改变朱文浩对苏清寒的说话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "安眠药和催情剂、清白做局、谁敢算计我、集团执行总裁苏长明、逼父亲交出副董实权、虎毒不食子和妹妹递果汁均按原剧本顺序保留。",
+      "fix_instruction": "无需修改；后续只可做节奏微调，不得改写这些信息点。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组苏家书房电话后，第4组明确切回酒店套房，并从城南地皮、丑闻坐实和董事会弹劾继续解释动机，场景切换有组首锁定和剧情承接。",
+      "fix_instruction": "无需修改；不要把书房电话画面混回套房同组。"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "王队长后退、朱文浩指门警告、安保人员收起相机退出房间均为可拍动作；没有把“威压”停留为抽象判断，而是通过站位、后退和退出表现。",
+      "fix_instruction": "无需修改；不得新增殴打、押送或原剧本没有的强动作。"
+    },
+    {
+      "group": "第15组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "酒店地下车库电话段始终以朱文浩车内为现实空间，朱天和只以电话音出现，组首写明朱文浩坐在驾驶座、手机在中控支架，声音来源清楚。",
+      "fix_instruction": "无需修改；若展示朱天和本人，应另起电话另一端画面或新组。"
+    },
+    {
+      "group": "第18组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "红灯变绿、朱文浩眼神恢复清明、“既得重生，便屠尽天下资本，唯我执棋”心声和车辆驶入车流均保留，结尾复仇宣言未被删改。",
+      "fix_instruction": "无需修改；不要删除最终心声。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep26",
+  "status": "done",
+  "output_name": "ep26-ep26-agent-cli-storyboard.txt",
+  "summary": "EP26按scene模式完成：顾家策划展销会质量事故，顾雪带副局长查封展位，被正局长报告与录音笔反转揭穿后戴手铐带走。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

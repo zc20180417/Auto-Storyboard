@@ -1,0 +1,80 @@
+{
+  "pass": true,
+  "summary": "ep29整集按会议部署、街头冷遇、交易所采访拆成6组，原剧本关键台词和人物关系完整保留，时间、空间锁定和声音口型均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "赵朵朵开场台词约16字承载在3.5秒，约4.6字/秒；赵大雷台词约13字承载在2.5秒，约5.2字/秒；高管甲台词约14字承载在3.5秒，约4.0字/秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "李翠花哭喊“朵朵！妈错了！妈快饿死了！”，赵朵朵回应“给救助站打电话，这里有流浪汉”“走，发布会要迟到了”，原剧本冷漠转折未改。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "组首锁定证券交易所大厅、巨大电子屏、赵朵朵中央、桂姨和赵大雷两侧、老首富和记者在前方，整组未跨越主要物理空间。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "evidence": "记者提问均明确对赵朵朵，赵朵朵回答明确对记者们；快门声作为环境声，不承担口型台词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵朵朵指地图提出三年内建十个分厂，高管齐声保证，随后把车队交给赵大雷并要求招退伍兵，赵大雷拍胸脯承诺，顺序和对象均与原剧本一致。",
+      "fix_instruction": "若不通过，应恢复会议后半段的地图部署、车队负责人和招退伍兵三项关键信息。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部两名乞丐从垃圾桶旁向劳斯莱斯和入口挪动，第4组组首承接为两人从左前方爬近、保安在玻璃门旁拦截，人物位置连续。",
+      "fix_instruction": "若不通过，应补清两名乞丐从垃圾桶旁到入口前被拦之间的移动过渡。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "13秒内承载爬近被拦、保安呵斥、李翠花哭喊、赵朵朵吩咐助理、赵朵朵离开五个清晰节拍；最长对白3.5秒约4.6字/秒，未出现过载硬压。",
+      "fix_instruction": "若不通过，应拆分街头冲突或压缩非关键反应，不得删掉李翠花认错和赵朵朵冷处理。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "话筒在第5组尾部向赵朵朵面前靠近，第6组组首承接为记者们举着话筒和相机在前方，最近话筒伸到赵朵朵胸前，道具状态连续。",
+      "fix_instruction": "若不通过，应在第5组尾或第6组组首补充记者递近话筒的可见动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "终稿只写交易所采访、现场快门和人物反应，没有模型说明词、参考图占位符、模板编号、广告字幕或一镜到底等污染表达。",
+      "fix_instruction": "若不通过，应删除所有工程词和模板语气，只保留自然短剧分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

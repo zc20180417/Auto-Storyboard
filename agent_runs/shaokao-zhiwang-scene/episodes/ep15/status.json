@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep15",
+  "status": "done",
+  "output_name": "被发小踢出局，我反手成烧烤之王-ep15-agent-cli-storyboard.txt",
+  "summary": "第15集完成街口备用补位动机、韩彪后厨冻货隐患与马会夜里提醒许安备火的分镜生产。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "timing_math",
+      "problem": "第6组为8秒短组，低于默认10秒。",
+      "evidence": "该组只承载韩彪离开后的后厨余波、阿顺追问和马会头也不回离开，属于短动作余波和短承接。",
+      "fix": "当前可保留；若统一拉长，需避免新增剧情或与夜里摊前跨空间硬合并。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

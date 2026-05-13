@@ -1,0 +1,159 @@
+{
+  "project": "ep26",
+  "episode_id": "EP26",
+  "cuts": [
+    {
+      "cut_id": "EP26-G01",
+      "group_index": 1,
+      "title": "顾家怒摔茶具",
+      "scene": "日间晴天，顾家别墅客厅，深色茶几与沙发位于画面中央",
+      "characters": [
+        "顾长海",
+        "顾雪",
+        "顾秘书"
+      ],
+      "props": [
+        "成套茶具",
+        "碎瓷片",
+        "文件夹"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP26-G02",
+      "group_index": 2,
+      "title": "展销会阴谋落定",
+      "scene": "日间晴天，顾家别墅客厅，茶几前的碎瓷仍散在地毯上",
+      "characters": [
+        "顾长海",
+        "顾雪",
+        "顾秘书"
+      ],
+      "props": [
+        "文件夹",
+        "碎茶具"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 15,
+      "group_end_sec": 30,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP26-G03",
+      "group_index": 3,
+      "title": "展位前突袭查封",
+      "scene": "日间晴天，省城会展中心内的朵朵牌果冻展位前",
+      "characters": [
+        "顾雪",
+        "副局长",
+        "赵朵朵",
+        "执法人员",
+        "围观群众"
+      ],
+      "props": [
+        "果冻试吃杯",
+        "展位台",
+        "执法记录夹",
+        "产品箱"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 30,
+      "group_end_sec": 45,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP26-G04",
+      "group_index": 4,
+      "title": "赵朵朵反问栽赃",
+      "scene": "日间晴天，省城会展中心朵朵牌展位前，产品箱被赵朵朵挡住",
+      "characters": [
+        "赵朵朵",
+        "副局长",
+        "顾雪",
+        "执法人员",
+        "围观群众"
+      ],
+      "props": [
+        "产品箱",
+        "果冻试吃杯",
+        "执法记录夹"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 45,
+      "group_end_sec": 60,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP26-G05",
+      "group_index": 5,
+      "title": "最高检验报告反转",
+      "scene": "日间晴天，省城会展中心朵朵牌展位前通道",
+      "characters": [
+        "赵朵朵",
+        "顾雪",
+        "副局长",
+        "正局长",
+        "首富",
+        "围观群众"
+      ],
+      "props": [
+        "最高检验报告",
+        "产品箱",
+        "执法记录夹"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 60,
+      "group_end_sec": 75,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP26-G06",
+      "group_index": 6,
+      "title": "录音笔揭穿贿赂",
+      "scene": "日间晴天，省城会展中心朵朵牌展位前，最高检验报告仍在正局长手中",
+      "characters": [
+        "赵朵朵",
+        "顾雪",
+        "副局长",
+        "正局长",
+        "首富",
+        "围观群众"
+      ],
+      "props": [
+        "录音笔",
+        "最高检验报告",
+        "执法记录夹"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 75,
+      "group_end_sec": 89,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP26-G07",
+      "group_index": 7,
+      "title": "顾雪和副局长被带走",
+      "scene": "日间晴天，省城会展中心朵朵牌展位前通道",
+      "characters": [
+        "赵朵朵",
+        "顾雪",
+        "副局长",
+        "正局长",
+        "警察",
+        "围观群众"
+      ],
+      "props": [
+        "录音笔",
+        "最高检验报告",
+        "手铐"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 89,
+      "group_end_sec": 99,
+      "source_group_label": "第7组"
+    }
+  ]
+}

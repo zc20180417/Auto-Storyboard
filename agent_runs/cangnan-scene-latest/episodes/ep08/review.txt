@@ -1,0 +1,85 @@
+{
+  "pass": true,
+  "summary": "第08集最终稿已对照原剧本、竖屏生成规则和审核规则逐组检查，十组均保留关键台词动作，格式、口型、空间锁定和连续性通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "evidence": "陆凡没有被写进组首静态状态，而是在4-7秒推门入场，7秒后才对徐虎说“徐老板，胃口不小啊”，人物可用性成立。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "陆凡“不卖是吧？后果自负”约9字用3秒，徐虎“吓唬我？这全县的矿都是我包的！”约16字用4秒，尾句约15字用3秒，均未超过6.5字/秒。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "陈刚的台词由桌面手机扬声器传出，并写明陆凡嘴唇闭合不做口型；陆凡对电话那端陈刚说话时对象明确。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "手机从第7组免提桌面状态到第8组挂断扣回桌面，红酒杯从宋子昂手边到被抓住砸碎，关键道具有可见过渡。"
+    },
+    {
+      "group": "第10组",
+      "type": "script_fidelity",
+      "evidence": "江若晴投资款反驳、王建国账目和实名举报台词、警察带走陆凡、陆凡最后警告王建国均按原剧本保留，没有新增手铐或打斗。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组-第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "徐虎扯纱布、封杀厂子、要求陆凡低头、陆凡上门、天价卖沙、陆凡离开和徐虎吐痰嘲讽的剧情顺序与原剧本一致。",
+      "fix_instruction": "若不通过，应按原剧本顺序恢复遗漏台词或动作，只局部修对应组。"
+    },
+    {
+      "group": "第5组-第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "宋子昂对陆凡、陆凡对宋子昂、江若晴对宋子昂的现场对白均有真实对象，未出现对空气或道具说话。",
+      "fix_instruction": "若不通过，应补成A对B说道/喊道格式。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "电话音有手机屏幕和免提扬声器作为载体，陈刚不被写成现场人物开口，陆凡闭口反应清楚。",
+      "fix_instruction": "若不通过，应把陈刚台词改为电话音，并补手机载体和画面人物闭口反应。"
+    },
+    {
+      "group": "第8组-第10组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第8组碎红酒杯落地后，第9组组首继续写碎杯在桌脚附近；第9组王建国举文件后，第10组组首延续文件在王建国手中、门已打开。",
+      "fix_instruction": "若不通过，应在相邻组首尾补具体道具位置和人物姿态。"
+    },
+    {
+      "group": "第1组-第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模型说明词、官方模板编号、参考图、自动分镜、首尾帧、视频延长、广告或MV语气，尾部风格和负面提示保持分镜正文约束。",
+      "fix_instruction": "若出现污染，应删除工程词并改为自然可拍的画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

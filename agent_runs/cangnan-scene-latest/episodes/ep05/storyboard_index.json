@@ -1,0 +1,223 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP05",
+  "cuts": [
+    {
+      "cut_id": "EP05-G01",
+      "group_index": 1,
+      "title": "雨中初到水头村",
+      "scene": "水头村村口",
+      "characters": [
+        "陆凡",
+        "牛大春"
+      ],
+      "props": [
+        "旱烟杆",
+        "雨伞"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 0,
+      "group_end_sec": 14,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP05-G02",
+      "group_index": 2,
+      "title": "烂路挡住销路",
+      "scene": "水头村村口",
+      "characters": [
+        "陆凡",
+        "牛大春"
+      ],
+      "props": [
+        "旱烟杆"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 14,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP05-G03",
+      "group_index": 3,
+      "title": "仓库里的鱼干危机",
+      "scene": "村委仓库",
+      "characters": [
+        "陆凡",
+        "牛大春"
+      ],
+      "props": [
+        "木门",
+        "鱼干筐",
+        "鱼干"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 26,
+      "group_end_sec": 39,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP05-G04",
+      "group_index": 4,
+      "title": "陆凡接下销路",
+      "scene": "村委仓库",
+      "characters": [
+        "陆凡",
+        "牛大春"
+      ],
+      "props": [
+        "鱼干筐",
+        "鱼干"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 39,
+      "group_end_sec": 54,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP05-G05",
+      "group_index": 5,
+      "title": "拍下鱼干照片",
+      "scene": "村委仓库",
+      "characters": [
+        "陆凡",
+        "牛大春"
+      ],
+      "props": [
+        "鱼干筐",
+        "手机",
+        "鱼干"
+      ],
+      "duration_sec": 6,
+      "group_start_sec": 54,
+      "group_end_sec": 60,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP05-G06",
+      "group_index": 6,
+      "title": "赵大江确认封路",
+      "scene": "乡长办公室",
+      "characters": [
+        "赵大江",
+        "徐虎"
+      ],
+      "props": [
+        "文件",
+        "座机电话"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 60,
+      "group_end_sec": 72,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP05-G07",
+      "group_index": 7,
+      "title": "拖住陆凡一个月",
+      "scene": "乡长办公室",
+      "characters": [
+        "赵大江",
+        "徐虎"
+      ],
+      "props": [
+        "座机电话",
+        "茶杯"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 72,
+      "group_end_sec": 85,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP05-G08",
+      "group_index": 8,
+      "title": "土路被巨石堵死",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "黄毛",
+        "村民们"
+      ],
+      "props": [
+        "农用三轮车",
+        "鱼干包",
+        "巨石",
+        "扑克牌",
+        "香烟"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 85,
+      "group_end_sec": 99,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP05-G09",
+      "group_index": 9,
+      "title": "黄毛亮刀威胁",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "黄毛",
+        "牛大春",
+        "村民们"
+      ],
+      "props": [
+        "农用三轮车",
+        "鱼干包",
+        "巨石",
+        "刀",
+        "手机"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 99,
+      "group_end_sec": 111,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP05-G10",
+      "group_index": 10,
+      "title": "陆凡安排报官",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "黄毛",
+        "牛大春",
+        "村民们"
+      ],
+      "props": [
+        "农用三轮车",
+        "鱼干包",
+        "巨石",
+        "刀",
+        "手机"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 111,
+      "group_end_sec": 122,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP05-G11",
+      "group_index": 11,
+      "title": "录像震住黄毛",
+      "scene": "水头村土路",
+      "characters": [
+        "陆凡",
+        "黄毛",
+        "村民们"
+      ],
+      "props": [
+        "农用三轮车",
+        "鱼干包",
+        "巨石",
+        "刀",
+        "手机"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 122,
+      "group_end_sec": 135,
+      "source_group_label": "第11组"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP20",
+  "cuts": [
+    {
+      "cut_id": "EP20-G01",
+      "group_index": 1,
+      "title": "河床裂缝里的青鳞",
+      "scene": "日/晴，云溪村外湿润河床裂缝处",
+      "characters": [
+        "胡永贵"
+      ],
+      "props": [
+        "半透明青色鳞片",
+        "泥沙",
+        "被雷劈过的裂缝"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP20-G02",
+      "group_index": 2,
+      "title": "黑市地下室验鳞",
+      "scene": "夜/晴，城市黑市地下室",
+      "characters": [
+        "胡永贵",
+        "刀疤男"
+      ],
+      "props": [
+        "青色鳞片",
+        "放大镜",
+        "旧木桌",
+        "昏黄吊灯"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 15,
+      "group_end_sec": 30,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP20-G03",
+      "group_index": 3,
+      "title": "活的龙鳞线索",
+      "scene": "夜/晴，城市黑市地下室",
+      "characters": [
+        "胡永贵",
+        "刀疤男"
+      ],
+      "props": [
+        "青色鳞片",
+        "放大镜",
+        "旧木桌"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 30,
+      "group_end_sec": 42,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP20-G04",
+      "group_index": 4,
+      "title": "祠堂里云宝发作",
+      "scene": "日/晴，云溪村祠堂内",
+      "characters": [
+        "天天",
+        "爸爸",
+        "云宝"
+      ],
+      "props": [
+        "滴管",
+        "井水小碗",
+        "供桌",
+        "蒲团"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 42,
+      "group_end_sec": 54,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP20-G05",
+      "group_index": 5,
+      "title": "爷爷说出水眼活命法",
+      "scene": "日/晴，云溪村祠堂内",
+      "characters": [
+        "天天",
+        "爸爸",
+        "爷爷",
+        "云宝"
+      ],
+      "props": [
+        "滴管",
+        "井水小碗",
+        "供桌",
+        "蒲团"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 54,
+      "group_end_sec": 67,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP20-G06",
+      "group_index": 6,
+      "title": "黑车冲破村口",
+      "scene": "日/晴，云溪村村头土路",
+      "characters": [
+        "刀疤男",
+        "村民甲",
+        "打手群"
+      ],
+      "props": [
+        "五辆全黑防弹越野车",
+        "木制路障",
+        "精钢甩棍"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 67,
+      "group_end_sec": 82,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP20-G07",
+      "group_index": 7,
+      "title": "村民质问被打飞",
+      "scene": "日/晴，云溪村村头土路",
+      "characters": [
+        "刀疤男",
+        "村民甲",
+        "打手群"
+      ],
+      "props": [
+        "碎裂木制路障",
+        "精钢甩棍",
+        "全黑越野车"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 82,
+      "group_end_sec": 93,
+      "source_group_label": "第7组"
+    }
+  ]
+}

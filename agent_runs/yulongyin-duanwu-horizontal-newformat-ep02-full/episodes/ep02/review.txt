@@ -1,0 +1,86 @@
+{
+  "pass": true,
+  "summary": "第2集横屏新结构可交付，9组完整保留误触、取水、父亲闪回、滴水复苏、黑水灼伤、入壶安顿和龙舟线索，格式、台词、组间承接、运镜强化和特殊元素克制度均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "special_effects": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留天天误触陶笛、小爪松开坠回黑暗、天天道歉和“你千万别死！等我回来救你！”两句关键台词，没有提前完整展示小龙。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组 4-2 镜头台词“你还在吗？我带水来了！干净的水！”有效字数约17，镜头3.5秒，字秒比约4.9，承载合理。"
+    },
+    {
+      "group": "第6组",
+      "type": "horizontal_composition",
+      "evidence": "第6组明确天天在画面左侧、水壶在左侧安全出口，小龙在右侧裂缝边，残留黑水滩在更右侧，横屏中危险与安全方向清楚。"
+    },
+    {
+      "group": "第9组",
+      "type": "camera_motion",
+      "evidence": "第9组运镜强化词从壶内尾巴划动到壶壁水雾、龙舟轮廓、天天反应和小龙微光，服务“画线索—识别—追问”的信息递进。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾天天视线移向村子方向，第2组组间承接写明裂缝和陶笛留在左后方、行动方向由左推向右，取水目标连续。",
+      "fix_instruction": "若不通过，应补充上一组尾部视线、关键道具保留位置和本组开头方向，避免只写延续上一组。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "爸爸两句台词均发生在闪回院子中，画面内爸爸对年幼的天天说话，声音来源和口型承载明确。",
+      "fix_instruction": "若不通过，应明确闪回人物是否在画面中开口，或将非现场声音标为旁白并写出口型分离。"
+    },
+    {
+      "group": "第5组",
+      "type": "special_effects",
+      "result": "pass",
+      "evidence": "小龙复苏只用清水凝成、青蓝冷光和透明身体边缘折射表现，没有卡通萌宠、科幻激光或怪物化倾向。",
+      "fix_instruction": "若不通过，应删掉夸张魔法、激光、塑料玩具或怪物化描写，改成真实克制的水光状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "asset_scope",
+      "result": "pass",
+      "evidence": "第7组资产为天天、小龙、河床裂缝处/卧室、水壶、壶盖、清水、书桌，未把窗光、衣襟、日光、阴影等场景细节列成资产。",
+      "fix_instruction": "若不通过，应删去普通环境细节和瞬时表情，只保留人物、主场景和推动剧情的关键视觉资产。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "第9组包含新横屏必需字段，但没有资产核对、上传说明、参考图、首尾帧、自动分镜、JSON或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除工程备注、参考图槽位、自动分镜说明和模板化空话，只保留可生成分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

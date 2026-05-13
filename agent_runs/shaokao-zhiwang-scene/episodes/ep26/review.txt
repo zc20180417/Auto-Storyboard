@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "summary": "已对照第26集完整剧本、竖屏生成规则和整集final.txt审核8组分镜，入选名单、许安守旧炉、街坊支援、韩彪砸排场并偷学流程的剧情链完整，未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "公告栏前管理员贴公示纸、林小满念名单、唐婶和路人道喜、韩彪盯住“许安炭炉”僵住，均与原剧本转场26-1开头一致，未改写入选信息。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组0-5.5秒约25个有效字，字秒比约4.5；5.5-8秒约10个有效字，字秒比约4.0；韩彪甩手离开和街坊道喜分别用4秒、3秒承载，未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "evidence": "第4组15秒只承载旧炉清灰、林小满询问、许安定打法，未把后续老周送货或韩彪搭台硬塞进同组，动作链和对白容量可表演。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "evidence": "第7组组首把第6组尾部的许安摊位忙碌状态复述为旧炉、铁签、案板、旧招牌仍在摊位前，同时引入对街韩彪木架红布，组尾韩彪转身后可自然接第8组低声交代。"
+    },
+    {
+      "group": "第8组",
+      "type": "timing_math",
+      "evidence": "第8组标题总时长8秒，时间段0-2.5秒、2.5-8秒连续且镜头数为2个；它承载韩彪低声交代偷学流程的短尾声，短组理由成立。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "韩彪对管理员甲问“这也能进？”，管理员甲对韩彪解释“推荐票、经营反馈、现场口碑都够”，林小满和唐婶均对韩彪回怼，说话对象清楚。",
+      "fix_instruction": "若不通过，应把每句现场对白改为“A对B说道/问道”的真实对象格式。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "老周组首肩上扛着肉筐，4-9秒把肉筐卸到案板旁，之后围绕好货对许安和林小满说话，肉筐位置与动作连续。",
+      "fix_instruction": "若不通过，应补充肉筐的递放、落点或归属变化。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "街坊甲、街坊乙在组首已经分别位于摊位前并持有木板、砂纸，随后才说出钉案板腿和磨招牌的台词，人物可用性成立。",
+      "fix_instruction": "若不通过，应在组首写明人物所在位置和道具，或在说话前加入可见入场动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第7组以同一白天街口空地为主空间，许安摊位和对街搭架区是同一街口内的左右关系，组首清楚列出韩彪、伙计、许安、林小满等人的位置和朝向。",
+      "fix_instruction": "若不通过，应把不同物理空间拆组，或明确蒙太奇、屏幕画面等例外。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整组只写韩彪、伙计、木架、红布、旧炉等可见内容，没有模板编号、参考图、模型自动处理、横屏字段或非短剧模板语气。",
+      "fix_instruction": "若不通过，应删除污染词并改成自然可拍画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

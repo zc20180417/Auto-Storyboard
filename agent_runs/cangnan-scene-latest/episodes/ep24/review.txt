@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep24最终稿按竖屏scene合同完成12组分镜，保留报警抓捕、拆弹、金融反击、经侦带走和狙击悬念，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "陆凡录像报警台词约34字放在6-13秒，约4.9字/秒，并有举手机稳定对峙动作，符合情绪警告语速。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "起爆器先由民警从周长海手中控制，随后民警用对讲机通知排爆组，远处炸弹红灯熄灭，道具归属和事件因果清楚。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "evidence": "秘书没有画面入场，只以周长海手机里的电话音出现；两段秘书台词均写明周长海嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第12组",
+      "type": "script_fidelity",
+      "evidence": "红色激光点锁定陆凡心脏、陆凡低声说狙击手、侧方翻滚、高速麻醉弹击中原站位地面，片尾悬念完整保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "陆凡对打手们沉声说道，五名打手为现场真实对象，没有心声或假对象。",
+      "fix_instruction": "若不通过，应补明陆凡台词对象或改为可见声音来源。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组15秒包含警笛、血狼撤逃、警车到场、喇叭命令和按倒血狼，同一抓捕动作链内分成5个连续时间段，动作可理解。",
+      "fix_instruction": "若不通过，应把警车到场或按倒血狼另拆一组。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "周长海右手持遥控按钮，民警抓手腕夺下遥控器，结尾遥控器已归民警控制，关键道具没有跳变。",
+      "fix_instruction": "若不通过，应补夺取动作或遥控器落点。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "周长海两句威胁分别安排3-7秒和7-11秒，陆凡回应安排11-15秒，均未超过6.5字/秒，情绪交锋清楚。",
+      "fix_instruction": "若不通过，应拆分威胁台词或延长相应时间段。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组尾部陆凡持加密手机完成命令、周长海跪地看他；第8组首保持陆凡在右、周长海在左，并说明周长海手机在口袋内。",
+      "fix_instruction": "若不通过，应在第8组组首补足人物位置和手机状态。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "秘书电话音通过周长海手机承载，画面主体周长海只做听见后的惊恐反应并明确不做口型。",
+      "fix_instruction": "若不通过，应改为电话音来源并写明画面人物闭口。"
+    },
+    {
+      "group": "第11组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第11组总时长12秒，时间段0-3、3-8、8-12秒连续，镜头数3个与标题一致，经侦车入场全景为3秒。",
+      "fix_instruction": "若不通过，应修正时间轴或标题镜头数。"
+    },
+    {
+      "group": "第12组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终稿未出现模型说明词、模板编号、参考图占位符或自动分镜等工程污染，片尾动作均为可见画面描述。",
+      "fix_instruction": "若不通过，应删除模型词和模板污染，改成自然画面。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

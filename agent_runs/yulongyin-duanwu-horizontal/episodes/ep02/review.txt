@@ -1,0 +1,124 @@
+{
+  "pass": true,
+  "summary": "ep02 整集 9 组已按横屏 reviewer 对照原剧本、最终分镜、时间轴、对白对象、空间调度和道具连续性审查，未发现 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本的冰凉触感、小爪松开跌回黑暗、天天道歉、青蓝光消失和“你千万别死！等我回来救你！”全部保留且顺序一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "evidence": "爸爸两句台词均位于明确标注的闪回画面内，由可见爸爸对天天说出；现实堂屋里天天无新增台词，闪回与现实声音不混用。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "天天“你还在吗？我带水来了！干净的水！”约15个有效字对应3秒，约5.0字/秒；“你……你像水做的一样。太神奇了。”约14个有效字对应3.5秒，约4.0字/秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "水壶在天天画面左侧手中，清水持续滴向小龙；黑水滩固定在画面右后方，小龙误碰后尾尖变灰，危险来源和结果清楚。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "evidence": "第5组结尾小龙前爪扒住壶口，第6组开头承接为小龙拖着灰白尾巴爬进壶底，随后天天拧紧盖子抱走水壶。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "壶壁上船头高昂、船尾下沉的轮廓清晰呈现，天天先问“这是一个……龙舟？”，再问“你到底想要干什么？你想去找一条船？”。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "天天稳定在画面左前方，裂缝和小龙方向稳定在画面中央到右下方，视线和奔跑离场方向没有跳轴。",
+      "fix_instruction": "若不通过，应在组首空间锁定或组尾补清人物、裂缝、陶笛和离场方向。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "堂屋与院子闪回被明确区分，闪回镜头使用【闪回】标识，现实组尾回到堂屋并让天天抱水壶冲出门。",
+      "fix_instruction": "若不通过，应拆分现实与闪回，或补充清晰的闪回开始和结束标识。"
+    },
+    {
+      "group": "第3组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "天天、水壶、裂缝和小龙分别落在画面左侧、左前方、中央斜线和右下方，横屏左右关系及视线轴线清楚。",
+      "fix_instruction": "若不通过，应补明天天和小龙在画面左右位置、水壶壶口朝向和裂缝深度。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "14秒内只处理饮水恢复、误碰黑水、尾尖变灰和天天警告三个强节拍，没有塞入额外剧情或长动作。",
+      "fix_instruction": "若不通过，应拆出黑水伤害或压缩非关键反应镜头。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天明确对裂缝里的小龙喊“快！爬进水壶里！里面安全！”，说话对象在画面右下方可见。",
+      "fix_instruction": "若不通过，应补出小龙位置或把台词对象明确为小龙。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "水壶从第6组天天怀里转到第7组书桌中央偏右，天天放稳后贴近观察，小龙仍在壶底且灰白尾尖可见。",
+      "fix_instruction": "若不通过，应补写水壶放上书桌的动作和小龙在壶底的位置。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "小龙感受到自责被转译为睁眼、抬头和用受伤尾巴划开水雾的可见动作，龙舟图形由壶壁痕迹逐步形成。",
+      "fix_instruction": "若不通过，应把抽象感受改成眼神、尾巴动作、壶壁痕迹等可拍内容。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终分镜没有模板编号、官方占位符、参考图/首帧/尾帧、自动分镜等工程说明词，结尾保持自然短剧分镜正文。",
+      "fix_instruction": "若不通过，应删除工程说明词，并改成贴合剧情的自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

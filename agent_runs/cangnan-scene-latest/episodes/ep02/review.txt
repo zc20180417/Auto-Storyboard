@@ -1,0 +1,127 @@
+{
+  "pass": true,
+  "summary": "ep02已按原剧本、竖屏生成规则和最终分镜逐组审核，15组均保留关键台词、账本道具链、电话/OS音画分离和组间连续性，无硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组",
+    "第13组",
+    "第14组",
+    "第15组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "原剧本老李抢账本、陆凡侧身躲开并冷喝“驻点人员有权查验！你心虚什么？”、老李结巴否认均在第2组按顺序保留。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组11-15秒承载老李“是张强主任指使的！不关我事！”约16字/4秒，约4字/秒，低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "苏有光电话音从手机听筒传出，林夏听电话时写明嘴唇闭合不做口型，随后再对手机里的苏有光下令。"
+    },
+    {
+      "group": "第10组",
+      "type": "prop_continuity",
+      "evidence": "第9组陆凡举着台账逼问张强，第10组张强伸手抢、陆凡后退并把台账收进公文包，关键道具归属有可见过渡。"
+    },
+    {
+      "group": "第12组",
+      "type": "audio_mouth_sync",
+      "evidence": "陆凡OS被处理为内心声音，画面中的陆凡嘴唇闭合不做口型，未把心声误写成现场对白。"
+    },
+    {
+      "group": "第15组",
+      "type": "dialogue_direction",
+      "evidence": "党政办电话音、张强对陆凡嘲讽、陆凡无口型反应三者来源分明，没有假对白对象。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "敬老院门口单一空间，陆凡、老李、账本和发放确认表的位置在组首均明确，第一帧不写过程动作。",
+      "fix_instruction": "若不通过，应补足人物画面位置、身体朝向和道具位置。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "老人甲和老人们在组首已位于背景廊檐和院门旁，7-11秒围拢并喊话前有空间基础。",
+      "fix_instruction": "若不通过，应在喊话前补入老人们位置或入场动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第7组末段调整为11.5-15秒，电话音和林夏命令合计21有效字，约6字/秒，未超过6.5字/秒。",
+      "fix_instruction": "若不通过，应继续拆分电话音和林夏命令。"
+    },
+    {
+      "group": "第9组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第9组以台账对质为同一冲突目标，拿出台账、追问、揭示、指控、否认拆成五个短段，15秒内表演清楚。",
+      "fix_instruction": "若不通过，应将台账揭示或否认拆成相邻组。"
+    },
+    {
+      "group": "第11组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "陆凡提交台账、指明敬老院补助被克扣、要求上报，苏有光以复杂和民政办牵连为由退缩，剧情因果未改。",
+      "fix_instruction": "若不通过，应恢复原剧本台词顺序和上报争执。"
+    },
+    {
+      "group": "第12组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第11组尾台账在苏有光面前，第12组首台账位于桌面中央靠近苏有光一侧，随后苏有光压住台账要求留下。",
+      "fix_instruction": "若不通过，应补出台账停留在桌面和苏有光压住的过渡。"
+    },
+    {
+      "group": "第14组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "党政办调令通过桌上座机听筒传出，陆凡听电话时闭口不做口型，再对电话里的党政办发问。",
+      "fix_instruction": "若不通过，应明确电话载体和陆凡闭口反应。"
+    },
+    {
+      "group": "第15组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模板编号、参考图、模型说明词、自动分镜等工程词，也未使用禁用的模板化镜头描述。",
+      "fix_instruction": "若不通过，应删除工程词和泛化模板句。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

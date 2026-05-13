@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "雨龙吟端午-ep02-agent-cli-storyboard.txt",
+  "summary": "横屏生成即精修版第2集已完成，共6组，保留裂缝求救、取水闪回、清水唤醒、小龙受伤、带回卧室和龙舟线索。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep30",
+  "status": "done",
+  "output_name": "ep30-ep30-agent-cli-storyboard.txt",
+  "summary": "完成第30集竖屏分镜 smoke test：证券交易所敲钟、村口新桥、四合院团圆共5组。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

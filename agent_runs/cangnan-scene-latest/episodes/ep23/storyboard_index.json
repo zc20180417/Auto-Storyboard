@@ -1,0 +1,299 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP23",
+  "cuts": [
+    {
+      "cut_id": "EP23-G01",
+      "group_index": 1,
+      "title": "会议室证据反转",
+      "scene": "乡政府会议室",
+      "characters": [
+        "李队长",
+        "吴总监",
+        "陆凡"
+      ],
+      "props": [
+        "会议桌",
+        "审计材料",
+        "投影屏"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP23-G02",
+      "group_index": 2,
+      "title": "依法逮捕",
+      "scene": "乡政府会议室",
+      "characters": [
+        "李队长",
+        "吴总监",
+        "陆凡",
+        "警员甲",
+        "警员乙"
+      ],
+      "props": [
+        "会议桌",
+        "手铐",
+        "审计材料"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 15,
+      "group_end_sec": 27,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP23-G03",
+      "group_index": 3,
+      "title": "陆凡冷断罪名",
+      "scene": "乡政府会议室",
+      "characters": [
+        "李队长",
+        "吴总监",
+        "陆凡",
+        "警员甲",
+        "警员乙"
+      ],
+      "props": [
+        "会议桌",
+        "手铐",
+        "审计材料"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 27,
+      "group_end_sec": 42,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP23-G04",
+      "group_index": 4,
+      "title": "周长海摔壶失控",
+      "scene": "豪华别墅书房",
+      "characters": [
+        "周长海",
+        "管家"
+      ],
+      "props": [
+        "紫砂壶",
+        "书桌",
+        "电话"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 42,
+      "group_end_sec": 57,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP23-G05",
+      "group_index": 5,
+      "title": "境外安保团命令",
+      "scene": "豪华别墅书房",
+      "characters": [
+        "周长海",
+        "管家"
+      ],
+      "props": [
+        "电话",
+        "紫砂壶碎片",
+        "书桌"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 57,
+      "group_end_sec": 70,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP23-G06",
+      "group_index": 6,
+      "title": "无牌车冲进工地",
+      "scene": "黑风山工地大门",
+      "characters": [
+        "牛大春",
+        "血狼",
+        "佣兵们"
+      ],
+      "props": [
+        "无牌越野车",
+        "工地大门",
+        "铁锹"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 70,
+      "group_end_sec": 83,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP23-G07",
+      "group_index": 7,
+      "title": "牛大春被推倒",
+      "scene": "黑风山工地大门",
+      "characters": [
+        "牛大春",
+        "血狼",
+        "佣兵们"
+      ],
+      "props": [
+        "铁锹",
+        "无牌越野车"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 83,
+      "group_end_sec": 93,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP23-G08",
+      "group_index": 8,
+      "title": "炸药卸车封锁入口",
+      "scene": "黑风山工地大门",
+      "characters": [
+        "牛大春",
+        "血狼",
+        "佣兵们"
+      ],
+      "props": [
+        "工程炸药",
+        "无牌越野车",
+        "铁锹"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 93,
+      "group_end_sec": 105,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP23-G09",
+      "group_index": 9,
+      "title": "半山腰布置炸药",
+      "scene": "黑风山半山腰",
+      "characters": [
+        "周长海",
+        "血狼",
+        "保镖",
+        "黑衣人"
+      ],
+      "props": [
+        "黑色轿车",
+        "工程炸药",
+        "计时器"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 105,
+      "group_end_sec": 120,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP23-G10",
+      "group_index": 10,
+      "title": "工人求救被漠视",
+      "scene": "黑风山半山腰",
+      "characters": [
+        "周长海",
+        "血狼",
+        "工人们",
+        "黑衣人"
+      ],
+      "props": [
+        "计时器",
+        "工程炸药",
+        "黑色轿车"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 120,
+      "group_end_sec": 131,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP23-G11",
+      "group_index": 11,
+      "title": "远光灯冲上山路",
+      "scene": "黑风山半山腰",
+      "characters": [
+        "周长海",
+        "血狼",
+        "工人们",
+        "黑衣人",
+        "陆凡"
+      ],
+      "props": [
+        "黑色越野车",
+        "工程炸药",
+        "计时器"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 131,
+      "group_end_sec": 141,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP23-G12",
+      "group_index": 12,
+      "title": "陆凡急刹现身",
+      "scene": "黑风山半山腰",
+      "characters": [
+        "陆凡",
+        "周长海",
+        "血狼",
+        "黑衣人",
+        "工人们"
+      ],
+      "props": [
+        "黑色越野车",
+        "路障",
+        "计时器",
+        "工程炸药"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 141,
+      "group_end_sec": 154,
+      "source_group_label": "第12组"
+    },
+    {
+      "cut_id": "EP23-G13",
+      "group_index": 13,
+      "title": "倒计时压迫",
+      "scene": "黑风山半山腰",
+      "characters": [
+        "陆凡",
+        "周长海",
+        "血狼",
+        "黑衣人",
+        "工人们"
+      ],
+      "props": [
+        "黑色越野车",
+        "计时器",
+        "工程炸药",
+        "短棍"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 154,
+      "group_end_sec": 169,
+      "source_group_label": "第13组"
+    },
+    {
+      "cut_id": "EP23-G14",
+      "group_index": 14,
+      "title": "半包围逼近",
+      "scene": "黑风山半山腰",
+      "characters": [
+        "陆凡",
+        "周长海",
+        "血狼",
+        "五名精锐"
+      ],
+      "props": [
+        "黑色越野车",
+        "短棍",
+        "计时器",
+        "工程炸药"
+      ],
+      "duration_sec": 8,
+      "group_start_sec": 169,
+      "group_end_sec": 177,
+      "source_group_label": "第14组"
+    }
+  ]
+}

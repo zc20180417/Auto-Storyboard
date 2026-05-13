@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "ep01 assembled final keeps all six source scenes, uses 12 vertical groups with valid timing, real dialogue targets, stable cut_id values, and no hard reviewer issues.",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "办公室开场保留陆凡推门、王建国拉林薇薇手、林薇薇抽回以及陆凡质问、林薇薇解释、陆凡斥责的台词顺序。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "陆凡内心旁白写成嘴唇闭合不做口型，声音来源明确，没有让画面人物现场开口说OS。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "车窗从完整到碎裂由8-11.5秒陆凡砸窗动作完成，安全带在11.5-15秒被陆凡解开后才带林夏离车。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第7组尾林夏手指轻动但尚未醒来，第8组首仍是林夏仰躺、陆凡跪在身旁，随后咳水苏醒，状态连续。"
+    },
+    {
+      "group": "第12组",
+      "type": "dialogue_pacing",
+      "evidence": "第12组0-3秒、3-6秒、6-9秒和9-13秒分别承载短对白和离开动作，字秒比均未超过6.5硬上限。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "王建国劝阻、陆凡回击、重拳、摔倒和林薇薇尖叫分为4段共12秒，决裂台词另拆到第3组，未过载。",
+      "fix_instruction": "若不通过，应继续拆分打斗和后续决裂对白。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "文件在组首由陆凡持有，8-10秒明确砸到办公桌边，关键道具转移有可见动作。",
+      "fix_instruction": "若不通过，应补充文件从陆凡手中到桌边的动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "清河乡泥泞公路组首锁定陆凡、村民、轿车、路基和河水，事故发生在同一连续空间内。",
+      "fix_instruction": "若不通过，应拆分路面和水中空间。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林夏在组首已位于轿车车内驾驶位并昏迷，陆凡在水面朝向沉车，两人行动前均可用。",
+      "fix_instruction": "若不通过，应在组首明确林夏车内位置或安排可见揭示。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "林夏OS写明嘴唇闭合不做口型，陆凡离开动作和林夏内心疑问分离清楚。",
+      "fix_instruction": "若不通过，应把OS改为内心旁白并明确闭口。"
+    },
+    {
+      "group": "第11组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留陆凡高效完成资料录入、张强嘲讽、陆凡回应早就做完、张强震惊和屏幕展示数据的全部关键节点。",
+      "fix_instruction": "若不通过，应恢复被删改的原台词或数据展示动作。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全稿未出现Seedance说明、自动正反打、参考模板、占位符、字幕或工程说明词。",
+      "fix_instruction": "若不通过，应删除工程污染词并改写为自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

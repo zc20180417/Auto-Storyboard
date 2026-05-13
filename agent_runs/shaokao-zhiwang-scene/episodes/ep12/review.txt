@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "整集final.txt已按第12集剧本和竖屏storyboard-reviewer规则审核，5组均完成真实覆盖，客流反转、韩彪威胁和许安炉火收尾可交付。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "evidence": "第1组所有对白均写明真实对象：林小满对排队路人、路人甲对许安、许安对路人甲、唐婶对后来的排队路人、路人乙对同桌街坊。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组保留林小满桌不够、许安让搬隔壁凳子、韩彪催阿顺继续拉客、阿顺说真拉不住了，且没有新增会改变剧情的动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组2-5.5秒街坊对话共22个有效字，3.5秒约6.3字/秒，低于6.5硬上限；8-10秒许安7字配合翻串动作，能自然承载。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "evidence": "第3组尾部许安仍在炉前、林小满在点单桌旁；第4组组首复述这两个状态，并让韩彪从右侧通道口来到炉前，组间无位置跳变。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "evidence": "第5组只有韩彪威胁、许安冷声回应、韩彪离开、新串落炉火起四个连续节拍，总时长11秒，强节拍未超过可表演容量。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "标题含EP12-G01，时间段0-2、2-5、5-9、9-12连续，标题总时长12秒与镜头相加一致，镜头数4个一致。",
+      "fix_instruction": "若改动时间轴，需保持0.5秒粒度、连续时间段和标题总时长一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定同一街口两边摊位，许安、林小满、韩彪、阿顺的位置、身体朝向和关键道具空桌、塑料凳均明确，没有把动作推进写进组首。",
+      "fix_instruction": "若后续改写组首，应继续使用静态状态表达，走动、搬凳、催客等过程动作放入时间段。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "街坊两句评价、林小满听见后压笑、许安不抬头先烤完均与原剧本一致，未改写招牌味道归属的戏剧含义。",
+      "fix_instruction": "若压缩第3组，应保留街坊甲和街坊乙的两句判断以及许安继续烤串的冷静回应。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第4组四个时间段分别承载8字、7字、6字、10字对白，并配合韩彪走近、逼近和林小满挡上去的动作，没有超过6.5字/秒硬上限。",
+      "fix_instruction": "若把第4组对白合并压缩，应重新计算字秒比，并保留林小满挡到两人之间的可见动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "韩彪威胁抢不过客就先毁人、许安你试试、韩彪转身离开、许安把新一把串落上炉并火起均按原剧本顺序呈现。",
+      "fix_instruction": "若修第5组，不能删去韩彪威胁的完整台词，也不能把炉火收尾改成新剧情动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集final.txt未出现Seedance自动、参考图、模板编号、官方模板标题、自动正反打、字幕或工程占位符等污染词。",
+      "fix_instruction": "若添加风格说明，只保留自然画面描述和固定画面风格行，不能写模型或模板说明。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

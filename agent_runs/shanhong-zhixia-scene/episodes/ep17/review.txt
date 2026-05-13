@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "已对照第17集完整剧本、竖屏生成规则和整集final.txt逐组审核，果园砍树、分洪口抢险、老石坝二次险情与转移命令均忠于原剧本且无硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组15秒内承载沈小禾、沈砚川、村民甲、赵有福、周大柱、沈母、林知夏的短句交锋，最长连续台词为沈母“树没了能再种。人没了就没了。”约13字，安排在4秒情绪段内并伴随反应，低于6.5字/秒。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "果树倒下、众人挖沟推土、水漫脚面、周大柱喊深挖、林知夏喊木桩立住、赵成武冲上、赵有福拽回、赵成武甩开并责怪赵有福、沈砚川制止争吵均与原剧本一致。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "木桩在第2组尾由赵成武顶住，第3组组首继续斜立在沟口内侧，0-4秒写赵成武把木桩顶进泥里，随后急水从缺口改道，关键道具状态连续。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "从分洪口工地切到果园高处后另起第4组，组首锁定坡下分洪口远处、山体黑影和众人高处站位，符合单组单主要物理空间规则。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第4组尾部沈砚川转向村里低处，第5组直接承接为仓房人群往晒场东头挪、沈母和孩子先走、沈小禾跑去带人，动作目标和危险压力连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "砍树决定保留了沈母的生死取舍、林知夏催下决定和沈砚川接斧先来的关键因果，没有新增会改变剧情的争执或行动。",
+      "fix_instruction": "若新增推搡、跪求或改写台词，应删除并恢复原剧本短句；当前无需修改。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组15秒包含挖沟推土、木桩指挥、赵成武冲上、父子拉扯和沈砚川制止争吵，已把急水冲开拆到第3组，避免同组强节拍过载。",
+      "fix_instruction": "若把急水改道并入第2组，应拆回第3组或压缩非关键动作；当前无需修改。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "林知夏对沈砚川喊水头过来，沈砚川对众人喝令后撤，周大柱对沈砚川和众人喊开了，现场对白对象均真实明确。",
+      "fix_instruction": "若缺少对象，应改为A对B说道或对众人喊道；当前无需修改。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "裂响和闷响以环境声出现，并配合山体黑影、众人回头、表情变化承载信息；没有让画面人物承担非现场声音口型。",
+      "fix_instruction": "若环境声承载不清，应补山体、雨幕和人物转头反应；当前无需修改。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "沈小禾未在组首出现，但在7-10秒先跑入画面后对沈砚川说“我去带人！”，说话前已有明确入场，沈砚川、林知夏、周大柱和村民均在组首可用。",
+      "fix_instruction": "若沈小禾直接说话，应补入场或组首位置；当前无需修改。"
+    },
+    {
+      "group": "第1组至第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集final.txt未出现参考模板、占位符、模型说明词、自动正反打、工程字段或禁止的模板化批量描述；所有组均为自然中文分镜正文。",
+      "fix_instruction": "若污染项进入正文，应删除或改成具体画面动作；当前无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

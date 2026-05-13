@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "EP-03-ep03-agent-cli-storyboard.txt",
+  "summary": "第3集分镜完成，共7组（10+14+14+12+12+12+12=86秒）。朱家早餐提亲、高定男装店试装、苏家别墅提亲三个场景完整覆盖，全部台词和动作保留，画外音/心声口型隔离正确。G03动作链已修复：3-6秒简化为站起走位+台词，接卡移至6-10秒。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第3组",
+      "rule": "script_fidelity",
+      "problem": "原剧本出场角色包含'导购'，但分镜中导购未出现。原剧本中导购无台词无动作，省略合理。",
+      "evidence": "原剧本seg02：'出场角色：朱文浩，李娟，导购'。第3组组首空间锁定未列出导购。",
+      "fix": "可选：在第3组加入导购作为背景人物，但不影响剧情完整性。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

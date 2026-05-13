@@ -1,0 +1,107 @@
+{
+  "pass": true,
+  "summary": "EP02 横屏分镜共10组，完整保留裂缝失光、取水、父亲闪回、清水唤醒、黑水灼尾、入壶封盖、卧室安顿和水雾龙舟线索；水壶阶段、黑水承接和陶笛生命周期均已检查，无 hard issue。",
+  "source_status": "script_provided",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "prop_continuity": "checked",
+    "physical_continuity": "checked",
+    "special_effects": "checked",
+    "genre_style": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留陶笛冰凉触感、小爪松开、天天道歉、青蓝光消失和救援喊话，并且小龙只以局部小爪出现。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "第3组明确闪回陶笛只是回忆道具，现实天天只抱水壶冲出堂屋，避免现实陶笛无来源跟随。"
+    },
+    {
+      "group": "第5组",
+      "type": "physical_continuity",
+      "evidence": "第5组滴水阶段写明壶嘴略低于壶内水线、只滴几滴、随后控制住壶身，没有出现壶口高于水面但水从壶口滴出的矛盾。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "evidence": "第6组承接的黑水暗痕已在第5组镜头和组尾被建立，不是本组组间承接突然新增的危险物。"
+    },
+    {
+      "group": "第7组",
+      "type": "physical_continuity",
+      "evidence": "第7组按小龙入壶、扶正水壶、拿起左膝旁壶盖、拧紧盖子的顺序完成，水壶携带前为竖直盖紧状态。"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "evidence": "第10组龙舟信息通过水雾轮廓和天天台词表达，不依赖中文小字，也没有字幕或画面外说明文字。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第2组承接中说明陶笛留在河床裂缝边，天天在堂屋尚未持有任何道具；镜头中只拿起水壶。",
+      "fix_instruction": "若不通过，应补清陶笛现实归属，不能让它无来源出现在天天手里。"
+    },
+    {
+      "group": "第5组",
+      "type": "physical_continuity",
+      "result": "pass",
+      "evidence": "滴水阶段使用壶嘴略低于水线的状态，水流路径从壶嘴到裂缝明确，且随后控制住壶身。",
+      "fix_instruction": "若不通过，应把滴水阶段改为壶嘴略低于水线，只滴几滴，并删除口沿高于水面的出水描述。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组的黑水暗痕来源于第5组组尾，承接状态有来源；本组用小龙甩尾触发危险。",
+      "fix_instruction": "若不通过，应在上一组组尾先埋入黑水可见线索，或把本组改成首次揭示。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "壶盖从第4组落在左膝旁，到第7组被天天拿起拧紧，封盖和携带阶段连续。",
+      "fix_instruction": "若不通过，应补充壶盖来源和封盖动作，避免壶盖凭空出现或自动盖回。"
+    },
+    {
+      "group": "第8组",
+      "type": "physical_continuity",
+      "result": "pass",
+      "evidence": "第8组水壶从天天怀里转移到书桌时保持竖直盖紧，小龙和清水仍在壶内，没有平放漏水。",
+      "fix_instruction": "若不通过，应改为竖直携带、端正放桌和壶盖持续拧紧。"
+    },
+    {
+      "group": "第10组",
+      "type": "special_effects",
+      "result": "pass",
+      "evidence": "小龙命名前仍称小龙，水雾龙舟保持克制形状线索，没有云宝提前命名、科幻激光或卡通萌宠风。",
+      "fix_instruction": "若不通过，应恢复命名前称小龙，并删除过度奇幻或卡通化特效。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

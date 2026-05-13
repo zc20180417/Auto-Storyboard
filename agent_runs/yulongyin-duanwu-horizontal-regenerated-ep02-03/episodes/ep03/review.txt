@@ -1,0 +1,132 @@
+{
+  "pass": true,
+  "summary": "EP03已按storyboard-horizontal-reviewer逐组对照原剧本、横屏生成规则和最终分镜完成审核：9组均保留原台词与动作，命名状态、天天性别、水壶和门的物理连续性、照片信息承载、横屏字段和时长均符合交付要求。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "special_effects": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留天天关好房门、拿出半个干硬白馒头、轻声问小龙饿不饿、把馒头碎屑丢进竖立水壶、小龙吞下馒头渣。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组命名前仍称小龙，命名台词“以后就叫你云宝吧”之后才写刚被命名的云宝在壶底打滚，符合命名状态规则。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "第3组把“凉凉的，就像真正的雨一样。如果是大暴雨就好了”处理为内心旁白，并明确天天闭嘴不做口型。"
+    },
+    {
+      "group": "第4组",
+      "type": "physical_continuity",
+      "evidence": "第4组承接第3组水珠和竖立水壶，门外爷爷通过老木门门闩松动的可见过渡入屋，没有让反锁门无因打开。"
+    },
+    {
+      "group": "第5组",
+      "type": "horizontal_composition",
+      "evidence": "第5组写明右侧前景爷爷和拐杖、左侧中景天天与水壶，门口冷光从右向左切入，对峙轴线清楚。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "第6组保留爷爷盯水壶、眼神清明、台词“清水养它，脏水害它”和天天追问“你认识它对不对”。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "evidence": "第9组用照片正面年轻爷爷坐龙舟船头、鼓槌、旧龙舟队队员、爷爷低语和背面褪色字共同传达旧龙舟队线索。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组-第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "卧室喂食、吃饱打嗝、天天承诺明天找吃的、正式命名云宝、水雾落到手背脸颊与内心旁白全部保留，未丢失关键台词。",
+      "fix_instruction": "无需修复；若后续调整，命名台词前仍只能使用小龙或壶中小龙。"
+    },
+    {
+      "group": "第4组-第7组",
+      "type": "physical_continuity",
+      "result": "pass",
+      "evidence": "第4组老木门门闩松动后半开，第5-第7组天天始终双手竖抱水壶且壶口朝上，爷爷拐杖和站位连续，未出现持物或开合矛盾。",
+      "fix_instruction": "无需修复；保持门的半开状态和水壶竖立支撑。"
+    },
+    {
+      "group": "第4组-第7组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "爷爷疑问、质问、清水脏水禁忌和端午前黑水警告均明确对天天说；天天解释和追问均看向爷爷，没有假对象对白。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "第8组保持左侧天天抱壶、右侧爷爷与堂屋暗门口，结尾天天退向左后方卧室，爷爷留在右侧堂屋入口，空间分离清楚。",
+      "fix_instruction": "无需修复；如重剪，避免无过渡换边。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "照片文字不是唯一信息来源：旧龙舟队通过照片正面人物、鼓槌和爷爷低语“三十年了……云中君的影子”同步表达，背面旧字只做补充证据。",
+      "fix_instruction": "无需修复；照片小字可以旧化但不要成为唯一叙事来源。"
+    },
+    {
+      "group": "第1组-第9组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "9组均含EP03-GNN cut_id、人物/场景/道具、组间承接、横屏构图/调度、裸镜头号、本镜估算时长、运镜强化词、Seedance执行提示补充和--neg，未出现旧字段。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第1组-第9组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "各组镜头时长分别合计12、14、12、14、14、15、10、15、14秒，均等于标题总时长且在6-15秒范围内。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第1组-第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终分镜未出现参考图、首尾帧、上传说明、自动分镜、逐镜运镜设计或组首空间锁定等污染项。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

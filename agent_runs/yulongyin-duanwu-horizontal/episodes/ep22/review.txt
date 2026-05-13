@@ -1,0 +1,102 @@
+{
+  "pass": true,
+  "summary": "ep22 assembled final has been reviewed against the full script and horizontal storyboard rules; all ten groups preserve the source plot, dialogue ownership, timing contract, and 16:9 blocking without hard issues.",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "爸爸从画面左侧进入，刀疤男、胡永贵和打手甲在画面右侧形成黑市阵营，泥水涟漪、甩棍和视线都沿左右轴线组织。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "刀疤男下令、打手甲甩棍砸向爸爸面门、爸爸右臂硬挡和甩棍弯折均按原剧本顺序保留，没有新增改变结果的动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "缠铁丝带铁钉的粗木棍从刀疤男后腰抽出，再指向爸爸眉心；第9、10组继续承接同一木棍用于威胁、挥砸、夺取和拧断。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "evidence": "打手乙、天天、打手丙三句台词分配在15秒内的独立镜头中，且有拨草、拦路、扑近动作承接，不存在字秒比过快。"
+    },
+    {
+      "group": "第10组",
+      "type": "blocking_continuity",
+      "evidence": "爸爸从左中冲入右侧近身区，躲开挥棍、夺棍、击倒刀疤男后沿左后方通向后山的小路跑出，路线与下一剧情目标一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "刀疤男对爸爸、爸爸对刀疤男、胡永贵对刀疤男的台词对象都通过同框或过肩关系明确呈现。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组以甩棍弯折和爸爸右臂硬挡收尾，第3组从打手甲惊恐看弯折甩棍和右臂开始，再承接爸爸反手一推。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "十几个打手抽刀、爸爸怒吼和冲入人群分布在11秒3个镜头中，后续劝撤与木棍威胁另起第5、6组，密度可控。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "水壶始终由天天双手护在胸前，云宝在水壶内无反应且青蓝色流失，关键道具没有跳变。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "天天停在画面左中，打手乙和打手丙从右前、右后包夹，人物左右和前后层次稳定，压迫方向清楚。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "刀疤男用天天被抓威胁爸爸，爸爸红眼反击台词和无视木棍冲向刀疤男的情绪转折均保留。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "挥棍、砸坑、夺棍拧断、拳击倒和转身奔后山均为可拍动作，没有抽象描述承担关键剧情。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,128 @@
+{
+  "pass": true,
+  "summary": "已对照第7集原剧本、竖屏生成规则和组装后的final.txt逐组审核，9组均保留救援、搬粮种、撤离号令的剧情因果，无硬性问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本仓房门口进水、周大柱喊“娘！你应一声！”、周母门内喊“门顶住了！”、沈砚川冲上前说“让开！”均按原顺序保留，并把周母处理为门内声音。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "该组始终发生在周大家仓房外，沈小禾举手灯、林知夏提醒后边土在掉、沈砚川喊“一，二，撞！”都在同一门口空间完成。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "第5组总时长15秒，周大柱、沈砚川、周母的对白分散在4个时间段；最长对白块为6.5-10秒内两句短问答加数量说明，约24字/3.5秒，未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "evidence": "第6组包含撤离口令、后墙闷响裂开、林知夏喊快塌、周大柱扛粮跟随四个强节拍，拆成4个时间段，总时长12秒，没有把塌墙和长对白挤在同一时间段。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "evidence": "村民甲对周大柱问“大柱家都塌了？”，沈砚川对众人喊撤往果园，村民乙对沈砚川问鸡鸭，沈砚川对村民乙喝止，周大柱对村民们喊“都听他的！”，对话对象均明确。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "evidence": "第8组尾部周大柱公开支持沈砚川，第9组组首继续在村道高处，周大柱仍扛粮，沈砚川仍背周母，沈小禾仍持手灯，状态连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "周母在仓房门内喊“门顶住了！”，正文写明门板和门闩是声音来源，画面不让门外人物承担她的口型。",
+      "fix_instruction": "若不通过，应把周母台词改为门内喊声，并补门板震动或门缝声源反应。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "沈小禾在组首持有手灯，0-2.5秒举高照门框；门框泡胀状态承接第1组，撞门动作发生在门被打开之前。",
+      "fix_instruction": "若不通过，应在组首补手灯位置或在撞门前补门框目标。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "撞门后水涌出、周母哭喊、周大柱扑向母亲、沈砚川拦住并说“老人我背”“闭嘴，搬粮”均保留，没有新增改变剧情的动作。",
+      "fix_instruction": "若不通过，应恢复原台词顺序并删除改变救援归属的新增动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "沈砚川、周母、沈小禾、林知夏、周大柱都在组首有位置和朝向；麻绳和种子袋也在组首交代，后续递绳和指种子袋可生成。",
+      "fix_instruction": "若不通过，应在组首补全人物位置、朝向和关键道具位置。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第5组各句均为短句或中短句，最长时间段10-15秒含周母11字感谢台词和捆粮动作，口型和动作时间充足，无拖慢普通对白凑时长。",
+      "fix_instruction": "若不通过，应拆分过密对白或缩短无必要停顿。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "后墙裂开作为独立特写，林知夏喊“快塌了！”独立承载，周大柱抢粮和沈砚川喝令跟随在最后4秒完成，动作链清楚。",
+      "fix_instruction": "若不通过，应把扛粮和撤离命令拆到两个更清楚的时间段。"
+    },
+    {
+      "group": "第7组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“真塌了”“差一点就没命了”由远处塌房、泥水木梁落下、周大柱失神和周母哭泣承载，抽象危险被转成可见画面。",
+      "fix_instruction": "若不通过，应增加塌房可见细节或人物具体反应。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组尾部村民围拢看向低处，第8组组首继续同一村道高处和塌房背景，沈砚川仍背周母、周大柱仍扛粮，连续无跳变。",
+      "fix_instruction": "若不通过，应在第7组尾或第8组首复述人物和塌房状态。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "第9组只写自然分镜、人物动作、台词和雨夜光影，没有模板编号、参考图、Seedance自动、字幕或工程说明词。",
+      "fix_instruction": "若不通过，应删除模型说明词和模板污染内容，改为自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

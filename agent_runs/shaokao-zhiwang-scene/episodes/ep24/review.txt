@@ -1,0 +1,104 @@
+{
+  "pass": true,
+  "summary": "ep24整集已对照原剧本、竖屏生成规则和最终分镜逐组审核，关键台词、人物关系、时长、空间锁定和提示词洁净度均满足交付要求。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "投资人甲让阿顺说、韩彪威胁、投资人乙催促、阿顺揭露冻货顶鲜货和压腌料抢火候均完整保留，人物关系与原剧本一致。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "投资人甲问责2.5秒、韩彪硬撑2秒、投资人乙5.5秒长句均符合台词速度；最长台词约23字/5.5秒，约4.2字/秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "围裙、厨师帽和签子的归属变化均有可见动作：老伙计乙解围裙，老伙计甲摘帽，帮工甲放签子，没有道具突变。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "evidence": "韩彪对许安说“你现在满意了？”和“你少装”，许安对韩彪回应，林小满对韩彪反击，所有现场对白对象明确。"
+    },
+    {
+      "group": "第10组",
+      "type": "space_locking",
+      "evidence": "第二天早晨公告栏、许安摊位和对街店门口被统一锁在街口空间内，韩彪在组首已位于对街店门口阴影下，结尾低声台词可用。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "宴席压货被阿顺抬高声揭穿，与原剧本“宴席那天也是！你嫌鲜货贵，非让我们上压货！”一致，没有新增其他罪名或改写因果。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "13秒内分开处理老伙计乙辞职、老伙计甲跟着走、帮工甲劝离、众人摘围裙放签子和韩彪伸手拦人，节奏清晰可演。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾部众人朝门口走，第5组组首写明老伙计在门口附近背对韩彪，韩彪面向门口，承接自然。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "韩彪本组后半段从对街走到摊前后才成为冲突主体，第8组组首再锁定他已站在摊前，人物可用性清楚。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "韩彪威胁和许安反问均为现场开口并明确对话对象，5.5-10秒韩彪不接话转身离开，没有把心声误写成口播。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终组只写公告栏、评选通知和韩彪低声宣战的剧情画面，未混入模板编号、官方占位符、参考素材说明或模型执行语。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

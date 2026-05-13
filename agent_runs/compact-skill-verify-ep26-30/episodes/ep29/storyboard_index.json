@@ -1,0 +1,121 @@
+{
+  "project": "ep29",
+  "episode_id": "EP29",
+  "cuts": [
+    {
+      "cut_id": "EP29-G01",
+      "group_index": 1,
+      "title": "会议室全国战略宣布",
+      "scene": "集团会议室，长桌主位，背后巨幅全国地图",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "高管甲",
+        "高管们"
+      ],
+      "props": [
+        "全国地图",
+        "会议桌"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP29-G02",
+      "group_index": 2,
+      "title": "车队任务分配与承诺",
+      "scene": "集团会议室，赵朵朵站在地图前",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "高管们"
+      ],
+      "props": [
+        "全国地图",
+        "会议桌"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 15,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP29-G03",
+      "group_index": 3,
+      "title": "街头母女重逢",
+      "scene": "省城街头，集团大厦前广场",
+      "characters": [
+        "赵朵朵",
+        "助理",
+        "李翠花",
+        "王大强",
+        "保安"
+      ],
+      "props": [
+        "劳斯莱斯轿车",
+        "垃圾桶"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 26,
+      "group_end_sec": 39,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP29-G04",
+      "group_index": 4,
+      "title": "赵朵朵冷漠转身离去",
+      "scene": "省城街头，集团大厦前广场",
+      "characters": [
+        "赵朵朵",
+        "李翠花",
+        "王大强",
+        "保安"
+      ],
+      "props": [
+        "手机（赵朵朵手持）"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 39,
+      "group_end_sec": 49,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP29-G05",
+      "group_index": 5,
+      "title": "交易所大厅众人迎接",
+      "scene": "证券交易所大厅",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "桂姨",
+        "老首富"
+      ],
+      "props": [
+        "电子大屏幕"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 49,
+      "group_end_sec": 60,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP29-G06",
+      "group_index": 6,
+      "title": "记者采访与女首富宣言",
+      "scene": "证券交易所大厅",
+      "characters": [
+        "赵朵朵",
+        "记者"
+      ],
+      "props": [
+        "话筒"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 60,
+      "group_end_sec": 71,
+      "source_group_label": "第6组"
+    }
+  ]
+}

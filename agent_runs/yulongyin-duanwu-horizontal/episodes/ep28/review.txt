@@ -1,0 +1,91 @@
+﻿{
+  "pass": true,
+  "summary": "ep28整集8组横屏分镜忠实保留云宝告别、赠水印、入井化泉、村庄复苏和父子致谢，格式、时长、口型、空间调度与组间衔接均可交付。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组按原剧本保留云宝拖着消散光尾悬停、天天挣脱爸爸扑向井沿，并原文承载天天“云宝！你别丢下我！”台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "蓝色水珠在第3组从云宝口中吐出，3-6秒从右中部飘向天天，6-9秒没入眉心并化作水滴印记，后续第4组和第8组继续保留印记。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "村民甲台词安排在3-6秒约4字/秒，村民乙台词安排在6-10秒约3.75字/秒，两句激动喊话均有足够口型和反应时间。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "evidence": "爸爸6-9秒现场对井底说道“谢谢你，云溪村永远供奉你。”；9-12秒水泡破裂声明确来自井底，不由人物口型承载。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组至第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾爸爸已追到天天身后，第2组首爸爸从左后方搂住天天，父子位置和古井上方云宝位置连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组至第4组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "云宝始终位于井口右中上方或正上方，父子保持古井左侧；第4组云宝向下扎入井中，没有无过渡换边。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组至第6组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "第5组以井口喷泉为中央动作，第6组将水渠横贯前景、村民甲左侧渠边、村民乙右侧老树旁、爸爸中后景，横屏层次明确。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组至第8组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "第7组末爸爸牵天天站在古井方向，第8组首父子从右后方沿水渠边走到古井前，走位路径可见且承接自然。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "全组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "8组总时长分别为11、12、12、11、11、14、13、12秒，均为10-15秒整数；组内时间段连续并匹配镜头数。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "全组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt没有模板编号、官方占位符、参考图说明、广告语、视频延长或非短剧工程说明，负面词保持交付约束。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}
+

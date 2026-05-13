@@ -1,0 +1,149 @@
+{
+  "project": "EP-01",
+  "episode_id": "EP01",
+  "cuts": [
+    {
+      "cut_id": "EP01-G01",
+      "group_index": 1,
+      "title": "晒谷场当众定罪",
+      "scene": "夏日晴天的村口晒谷场，烈日直照，地面干黄发白，木桩立在场地中央，外围围着几十个村民，远处土墙和树影被强光压出硬边。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "林建国",
+        "张桂兰",
+        "众村民"
+      ],
+      "props": [
+        "木桩",
+        "麻绳",
+        "血迹"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 0,
+      "group_end_sec": 14,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP01-G02",
+      "group_index": 2,
+      "title": "林跃苏醒挣断麻绳",
+      "scene": "同一处夏日晒谷场，木桩仍在画面中央，围观村民形成半圆，烈日下尘土轻浮，赵百川和赵大强站在木桩前方。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "众村民"
+      ],
+      "props": [
+        "麻绳",
+        "木桩",
+        "血迹"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 14,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP01-G03",
+      "group_index": 3,
+      "title": "追问赃物与真凶",
+      "scene": "晒谷场木桩前方，断开的麻绳散落在林跃脚边，赵百川和赵大强站在他对面，村民半圆围观，李二狗站在赵大强身旁稍后的位置。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "李二狗",
+        "众村民"
+      ],
+      "props": [
+        "断麻绳",
+        "剪断的电线线索"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 26,
+      "group_end_sec": 38,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP01-G04",
+      "group_index": 4,
+      "title": "逼问李二狗鞋码",
+      "scene": "晒谷场人群边缘，李二狗站在赵大强身旁，脚下沾着红泥，周围村民自动让出一小块空地，林跃从木桩方向走来。",
+      "characters": [
+        "林跃",
+        "李二狗",
+        "赵大强",
+        "众村民"
+      ],
+      "props": [
+        "李二狗的泥鞋",
+        "红泥鞋底"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 38,
+      "group_end_sec": 51,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP01-G05",
+      "group_index": 5,
+      "title": "红泥证据反击赵大强",
+      "scene": "晒谷场人群让出的空地中央，李二狗的红泥鞋底仍被林跃举在众人眼前，赵大强站在近处，村民围观圈明显骚动。",
+      "characters": [
+        "林跃",
+        "李二狗",
+        "赵大强",
+        "赵百川",
+        "众村民"
+      ],
+      "props": [
+        "红泥鞋底",
+        "断麻绳"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 51,
+      "group_end_sec": 66,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP01-G06",
+      "group_index": 6,
+      "title": "赵百川暗示王四离场",
+      "scene": "晒谷场边缘，同一场冲突后的围观圈还未散开，林建国和张桂兰仍在外围，赵百川站在人群前侧，供水员王四混在村民后排。",
+      "characters": [
+        "林跃",
+        "林建国",
+        "张桂兰",
+        "赵百川",
+        "王四",
+        "众村民"
+      ],
+      "props": [],
+      "duration_sec": 12,
+      "group_start_sec": 66,
+      "group_end_sec": 78,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP01-G07",
+      "group_index": 7,
+      "title": "水渠总闸被关",
+      "scene": "村头水渠边，夏日晴天，窄水渠沿着田埂延伸向林家果园方向，锈迹斑斑的总闸立在渠边，水面反射刺眼阳光，四周杂草被晒得发蔫。",
+      "characters": [
+        "王四"
+      ],
+      "props": [
+        "锈迹铁阀门",
+        "水渠总闸",
+        "水流"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 78,
+      "group_end_sec": 90,
+      "source_group_label": "第7组"
+    }
+  ]
+}

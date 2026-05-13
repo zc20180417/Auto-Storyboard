@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "ep19整集按雨夜追撞、劫持、陆凡牵制、警方到场、交代宋子昂去向和温情收尾的顺序完成，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "红色保时捷雨中疾驰、悍马撞击车尾、江若晴喊“啊！怎么回事！”、保时捷撞护栏熄火按原剧本顺序保留。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "陆凡“你持械行凶，我已经报警了。盘山公路出口有警方设卡。”分配5.5秒，疯狗威胁句分配3.5秒，未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "远处警笛声以警灯扫过弯道和疯狗脸色变化承载，未写成现场人物口型。"
+    },
+    {
+      "group": "第10组",
+      "type": "script_fidelity",
+      "evidence": "陆凡说明绑架未遂、行车记录仪和手机录像，并明确疯狗没有受伤也无吐血，符合原剧本限制。"
+    },
+    {
+      "group": "第13组",
+      "type": "prop_continuity",
+      "evidence": "外套从陆凡身上脱下后披到江若晴肩上，疯狗仍被手铐控制并被押上警车，道具归属清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "疯狗对江若晴说“江总，下车聊聊吧！”，江若晴对疯狗尖叫求救，现场对白对象明确。",
+      "fix_instruction": "若不通过，应逐句补齐A对B说道或喊道。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "陆凡在组首锁定为黑色越野车驾驶位内，远光和急刹先出现，再踹门入场并开口。",
+      "fix_instruction": "若不通过，应在陆凡台词前补车辆到场和下车动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组尾部疯狗转身想跑、陆凡压低重心；第8组组首复述疯狗背向道路出口、陆凡在其身后前倾。",
+      "fix_instruction": "若不通过，应补第8组组首逃跑方向和陆凡身后位置。"
+    },
+    {
+      "group": "第9组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "警车到场、民警口令、按倒上铐三项节拍拆在10秒内，未同时塞入陆凡长证词。",
+      "fix_instruction": "若不通过，应把警车入场或上铐动作与后续证词拆组。"
+    },
+    {
+      "group": "第12组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "陆凡逼问“宋子昂在哪？”，疯狗交代“在……在天宫会所顶楼包厢。”，民警甲记录“口供已录。”均未删改。",
+      "fix_instruction": "若不通过，应恢复原台词、说话对象和地点信息。"
+    },
+    {
+      "group": "第13组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模板编号、参考图、自动分镜、广告字幕或其他模型说明词。",
+      "fix_instruction": "若不通过，应删除工程说明和模板污染词，改成自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

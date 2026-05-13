@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep27",
+  "status": "done",
+  "output_name": "ep27-ep27-agent-cli-storyboard.txt",
+  "summary": "EP27共5组，覆盖书房密谋、威胁电话、闯入大厅、反手折腕、警笛破门5个场景。全部组时长合规（11/11/14/10/15秒），台词节奏均低于6.5字/秒硬上限，夜景光源正确，无模板污染。reviewer审核通过，0条hard issues，2条soft warnings。",
+  "hard_issues_remaining": 0,
+  "warnings": 2,
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

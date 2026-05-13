@@ -1,0 +1,102 @@
+{
+  "pass": true,
+  "summary": "ep19整集按横屏scene模式完成，6组均保留原剧本关键台词、动作和道具因果，横屏左右站位、组间衔接、时长与格式均可交付。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留紫雷劈裂缝、青金光震飞、鳞片坠泥、胡永贵原台词和顶雨爬向鳞片的动作，未新增改变剧情的行为。"
+    },
+    {
+      "group": "第2组",
+      "type": "horizontal_composition",
+      "evidence": "第2组井口在画面中右侧，村民甲左中景、村民乙右中景，背景村民和锄头形成群像层次，横屏关系明确。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "第3组尾水壶留在天天左前景，第4组首水壶在天天手边，水龙虚影收缩并变成失光的云宝，关键道具没有跳位。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "第6组包工头台词约16字/3.5秒，胡永贵台词约11字/3秒，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "screen_direction",
+      "evidence": "第5组胡永贵左前景、化肥堆中部、包工头右后方；第6组延续为胡永贵左前景、包工头右中景、车辆右后景，左右轴线连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "胡永贵独处泥坑，台词明确写作自语并面向鳞片坠落方向，不存在虚构对话对象。",
+      "fix_instruction": "若不通过，应把该句改为自语或补充真实在场听话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "14秒4镜头依次承载落雨、井喷、村民甲欢呼、村民乙与群像迎雨，强节拍数量可控。",
+      "fix_instruction": "若不通过，应拆分人群欢呼或缩短非关键反应。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "大鼓裂开、鼓槌断裂、爸爸倒下、天天惊呼“爸爸！”顺序与原剧本一致。",
+      "fix_instruction": "若不通过，应恢复原剧本动作顺序并删除额外动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组以爸爸倒在鼓前、天天手碰肩、水壶在左前景收尾，第4组同位承接天天抱住爸爸和水壶内水龙收缩。",
+      "fix_instruction": "若不通过，应补足第3组尾与第4组首的人物、道具相对位置。"
+    },
+    {
+      "group": "第6组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "包工头从右中景俯视胡永贵，踢开其手后向右后景车辆离开，胡永贵始终伏在左前景泥水里，走位连续。",
+      "fix_instruction": "若不通过，应补充包工头从右中景到车辆的离场路线或重建中性镜头。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集未出现模板编号、官方占位符、参考图、自动分镜、一镜到底、视频延长等工程词或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除污染词并改写为具体可见动作、站位、道具和光影。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,187 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP03",
+  "cuts": [
+    {
+      "cut_id": "EP03-G01",
+      "group_index": 1,
+      "title": "反锁房门与半块馒头",
+      "scene": "夜晚的天天家卧室",
+      "characters": [
+        "天天"
+      ],
+      "props": [
+        "房门",
+        "半个干瘪发硬的白馒头",
+        "透明水壶",
+        "床头小灯"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 0,
+      "group_end_sec": 10,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP03-G02",
+      "group_index": 2,
+      "title": "馒头渣落入水壶",
+      "scene": "夜晚的天天家卧室小桌旁",
+      "characters": [
+        "天天",
+        "小龙"
+      ],
+      "props": [
+        "透明水壶",
+        "白馒头碎",
+        "床头小灯"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 10,
+      "group_end_sec": 22,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP03-G03",
+      "group_index": 3,
+      "title": "云宝的第一场小雨",
+      "scene": "夜晚的天天家卧室小桌旁",
+      "characters": [
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "透明水壶",
+        "馒头碎",
+        "水雾",
+        "水泡"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 22,
+      "group_end_sec": 36,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP03-G04",
+      "group_index": 4,
+      "title": "门外拐杖声逼近",
+      "scene": "夜晚的天天家卧室门外走廊与卧室门口",
+      "characters": [
+        "天天",
+        "爷爷"
+      ],
+      "props": [
+        "卧室门",
+        "拐杖",
+        "透明水壶"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 36,
+      "group_end_sec": 47,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP03-G05",
+      "group_index": 5,
+      "title": "水壶被死死护住",
+      "scene": "夜晚的天天家卧室",
+      "characters": [
+        "天天",
+        "爷爷",
+        "云宝"
+      ],
+      "props": [
+        "透明水壶",
+        "拐杖",
+        "房门",
+        "床头小灯"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 47,
+      "group_end_sec": 61,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP03-G06",
+      "group_index": 6,
+      "title": "清水养它",
+      "scene": "夜晚的天天家卧室",
+      "characters": [
+        "天天",
+        "爷爷",
+        "云宝"
+      ],
+      "props": [
+        "透明水壶",
+        "拐杖",
+        "水珠",
+        "床头小灯"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 61,
+      "group_end_sec": 74,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP03-G07",
+      "group_index": 7,
+      "title": "端午前不能碰黑水",
+      "scene": "夜晚的天天家卧室",
+      "characters": [
+        "天天",
+        "爷爷",
+        "云宝"
+      ],
+      "props": [
+        "透明水壶",
+        "拐杖",
+        "门口阴影"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 74,
+      "group_end_sec": 85,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP03-G08",
+      "group_index": 8,
+      "title": "清明消散后的追问",
+      "scene": "夜晚的天天家堂屋",
+      "characters": [
+        "天天",
+        "爷爷"
+      ],
+      "props": [
+        "透明水壶",
+        "拐杖",
+        "旧木桌",
+        "堂屋昏灯"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 85,
+      "group_end_sec": 100,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP03-G09",
+      "group_index": 9,
+      "title": "旧照片里的云中君",
+      "scene": "夜晚的天天家堂屋",
+      "characters": [
+        "天天",
+        "爷爷",
+        "年轻的爷爷（照片中）"
+      ],
+      "props": [
+        "透明水壶",
+        "旧木柜",
+        "抽屉",
+        "泛黄老照片",
+        "鼓槌"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 100,
+      "group_end_sec": 115,
+      "source_group_label": "第9组"
+    }
+  ]
+}

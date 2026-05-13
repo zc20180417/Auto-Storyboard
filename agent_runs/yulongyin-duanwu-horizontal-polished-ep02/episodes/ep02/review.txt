@@ -1,0 +1,74 @@
+{
+  "pass": true,
+  "summary": "第2集横屏精修版结构完整，6组均符合6-15秒范围，原剧本关键台词、救援因果、黑水危险、小龙入壶和龙舟线索均已保留。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "special_effects": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留天天惊恐道歉、青蓝光消失、天天说“你千万别死！等我回来救你！”并奔向村子的核心因果，没有删改救援动机。"
+    },
+    {
+      "group": "第4组",
+      "type": "special_effects",
+      "evidence": "第4组黑水只写油亮反光、极淡薄雾和尾尖灰白痕迹，没有写爆炸、腐蚀、怪物毒液或恐怖血腥效果。"
+    },
+    {
+      "group": "第6组",
+      "type": "horizontal_composition",
+      "evidence": "第6组把天天放在画面左侧、水壶放在中央偏右，壶壁水雾和龙舟轮廓作为信息落点，16:9左右关系和前景道具清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第2组爸爸两句台词安排在6秒闪回镜头中，台词字秒比低于6.5，且用稳定双人中景承载，没有压缩原台词含义。",
+      "fix_instruction": "若不通过，应拆分闪回为两个镜头或延长承载时间，不得删掉父亲离家和陶笛约定的信息。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组承接第4组水壶平放、壶口朝向小龙、小龙离开黑水方向的位置，再完成入壶和回卧室转场，动作路径连续。",
+      "fix_instruction": "若不通过，应补充小龙与水壶壶口的相对位置，或把回卧室转场拆成独立组。"
+    },
+    {
+      "group": "第3组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "第3组运镜由天天跟拍回裂缝、水滴特写、焦点转移到青蓝微光和小龙初现构成，运镜服务清水唤醒的因果。",
+      "fix_instruction": "若不通过，应把运镜改为视线带入、水滴路径或焦点转移等明确动机，不要只写增强电影感。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "第6组要求壶壁龙舟轮廓由水雾湿痕形成，并在负向词中禁止发光文字，没有参考图、首尾帧、上传说明或字幕污染。",
+      "fix_instruction": "若不通过，应删除参考图、上传说明、字幕、发光文字或模型说明词，只保留可见水雾痕迹。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

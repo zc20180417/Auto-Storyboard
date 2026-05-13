@@ -168,6 +168,8 @@ agent_runs\<run-name>\
 python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_runs\youyuanzhai6-scene\episodes\ep01
 ```
 
+默认校验只检查并保留分镜 `final.txt`、`review.txt`、`status.json` 等生产必需文件，不再导出 `storyboard_index.json` / `storyboard_index.xlsx`。如果后续资产或 Web 链路需要索引，再显式加 `--export-index`，或单独运行 `export-storyboard-index`。
+
 整轮校验可在 PowerShell 中跑：
 
 ```powershell
@@ -188,11 +190,12 @@ if ($failed.Count -gt 0) { throw "Validation failed: $($failed -join ', ')" }
 收集后检查：
 
 - `outputs_agent_*` 下应有每集一个最终分镜 `.txt`。
+- 默认不会复制 `storyboard_index.json` / `storyboard_index.xlsx`；如需同时收集索引，运行 `.\collect-agent.ps1 .\agent_runs\<run-name> -ExportIndex`。
 - `agent_runs\<run-name>\SUMMARY.md` 应显示全部 `clean_format_passed, quality_floor_passed, storyboard_reviewer_passed`。
 
 ### 7. 可选：生成生图资产表
 
-当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，读取 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，从单集 `final.txt` 和 `storyboard_index.json` 生成 `assets.md`、`assets.xlsx`、`asset_bindings.json`、`asset_review.json` 和 `asset_status.json`。
+当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，先显式导出 `storyboard_index.json` / `storyboard_index.xlsx`，再读取 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，从单集 `final.txt` 和 `storyboard_index.json` 生成 `assets.md`、`assets.xlsx`、`asset_bindings.json`、`asset_review.json` 和 `asset_status.json`。
 
 多集项目不要让每集各自临场编人物设定。必须先创建 run 级别全局资产设定：
 

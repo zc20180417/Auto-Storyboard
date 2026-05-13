@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "ep07 整集 final.txt 已对照原剧本、竖屏生成规则和审核规则逐组复核，半价竞争、老客回流和韩彪另找供货贩子的剧情链完整，未发现 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "林小满“他真下血本了，半价还送酒”和许安“他送他的”合计约15个有效字，用2-6.5秒承载；韩彪18字左右的挑衅台词用9-12秒承载，字秒比约6.0，未超过6.5硬上限。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "本组保留许安回击韩彪、阿顺判断人会爆、路人甲乙在便宜和香味之间犹豫、林小满担心客走和许安“留下来的，才是客”的核心台词，顺序与原剧本一致。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "唐婶、街坊、老客、许安和林小满在组首均有具体位置和朝向，点单、应单、评价味不稳、唐婶反驳都在许安摊前同一物理空间内完成。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "许安在0-4秒将烤串递到唐婶桌前并等接稳，4-8秒老客接过烤串咬一口评价，烤串归属和动作过渡明确。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "evidence": "韩彪和阿顺在组首已经位于对面店门口；供货贩子到6-10秒才从门帘旁靠近并被韩彪带入店内，人物入场早于其行动。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "林小满对许安、许安对林小满、韩彪冲许安的对白对象都明确；许安看火和韩彪隔街喊话的承载方式符合现场开口。",
+      "fix_instruction": "若后续增补对面伙计台词，需写明伙计对路人吆喝，不得只写空泛喊声。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "14秒内分成许安回应、阿顺得意、路人被拉走、林小满与许安短句四个轻中节拍，没有长动作链或关键道具操作挤压台词。",
+      "fix_instruction": "若增加更多拉客动作，应拆出新组或压缩为背景动作，避免本组过载。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "唐婶点三十串、林小满回应、老客说对面味不稳、唐婶说嘴里受罪一晚上均完整保留，未改变人物关系和剧情因果。",
+      "fix_instruction": "不得把唐婶的支持改写成单纯夸奖，也不能删掉老客对对面味不稳的判断。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部许安翻肉、唐婶街坊坐稳、林小满准备记串，第4组首继续在同一客桌与炉边，人物位置、客桌和烤串状态自然承接。",
+      "fix_instruction": "若调整到新地点，必须另起一组并写明空间转换，不能在同组内跳场。"
+    },
+    {
+      "group": "第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文没有模板编号、官方模板、参考图、自动分镜、模型说明、字幕贴片或首尾帧等工程词；韩彪低声交代只用可见动作表达，没有杜撰交代内容。",
+      "fix_instruction": "若后续补写韩彪交代内容，应以原剧本已有信息为准，避免新增改变剧情的台词。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

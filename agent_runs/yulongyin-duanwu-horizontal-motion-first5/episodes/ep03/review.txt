@@ -1,0 +1,125 @@
+{
+  "pass": true,
+  "summary": "EP03 已对照完整剧本、横屏生成规则和整集 final.txt 审核，11 组均保留原剧情与台词，横屏站位、夜间光源、道具连续、运镜设计和审稿证据满足交付。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留天天反锁房门、掏出半个干硬白馒头、对云宝说“你饿不饿？我只有这个了，你尝尝。”、掰碎馒头和云宝吞下馒头渣的顺序。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组两句命名相关台词分别安排3秒和4秒，按约17字/3秒、20字/4秒估算，口型承载和水壶反应时间充足。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "第3组把“凉凉的，就像真正的雨一样。如果是大暴雨就好了。”写为画外心声，并明确天天嘴唇闭合、不做口型。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "evidence": "第4组先用门板震动和门外走廊承载拐杖声，随后显示爷爷停在门口，门外音和人物来源没有悬空。"
+    },
+    {
+      "group": "第5组",
+      "type": "horizontal_composition",
+      "evidence": "第5组爷爷从画面左侧门口闯入，天天在画面右侧护壶，固定双人中景维持左压右的逼问轴线。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "evidence": "第7组天天试探句约10字/4秒，爷爷警告句约19字/6秒，严肃停顿与反应时间合理，没有过快压缩。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "evidence": "第9组组尾天天抱壶退回右后方卧室、爷爷独留堂屋；第10组组首只剩爷爷站在堂屋，人物状态连续。"
+    },
+    {
+      "group": "第11组",
+      "type": "filmability",
+      "evidence": "第11组将“云溪龙舟队，最后一场”作为照片背面手写字呈现，属于可拍道具信息，与原剧本一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "半个白馒头从天天口袋到手中，再被掰碎投入透明水壶，云宝吞下馒头渣，道具动作链完整。",
+      "fix_instruction": "若不通过，应补充馒头从手中到壶口、水面和云宝吞食的可见过渡。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "OS 段明确为画外心声，画面人物闭口感受水雾，没有现场开口和内心旁白混用。",
+      "fix_instruction": "若不通过，应把心声改为画外来源，并写明人物嘴唇闭合。"
+    },
+    {
+      "group": "第4组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "固定机位用于稳定门内天天、水壶和左侧门板，横向跟拍只用于爷爷走到门口，过肩固定承载隔门问话。",
+      "fix_instruction": "若不通过，应为门外声源、爷爷停步和隔门问话分别补足运镜目的。"
+    },
+    {
+      "group": "第5组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爷爷始终在左侧向右逼问，天天始终在右侧向左防守，进门和护壶动作没有造成无过渡换边。",
+      "fix_instruction": "若不通过，应保持左右站位或增加清楚换边走位。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "爷爷盯住透明水壶、眼神短暂清明、说出“清水养它，脏水害它。”以及天天紧张冒汗均保留原剧本。",
+      "fix_instruction": "若不通过，应恢复原台词和爷爷视线落在水壶上的动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天抱壶站在画面右侧对左侧爷爷追问，爷爷对右侧天天回应“龙舟？端午快到了，鼓还没擦干净。”，对象明确。",
+      "fix_instruction": "若不通过，应写明说话人面对的具体人物和左右方向。"
+    },
+    {
+      "group": "第10组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "爷爷从堂屋中央偏左摸索到左后方旧木柜，拉开抽屉取出老照片，走位和道具操作可生成。",
+      "fix_instruction": "若不通过，应补充爷爷从站立位置到柜前的路线和取照片动作。"
+    },
+    {
+      "group": "第11组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文没有模板编号、官方模板语气、自动分镜、视频延长或控制台占位符；照片背字为剧情实物内容。",
+      "fix_instruction": "若不通过，应删除工程词或模板化句子，只保留剧情可见信息。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

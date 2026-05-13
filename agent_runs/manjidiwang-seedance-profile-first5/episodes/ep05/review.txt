@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "summary": "ep05整集分镜完整保留HR报到、战投部质询和东湖湾公寓刀锋对峙三段剧情，组时长、cut_id、空间锁定、对白指向和心声音画隔离均通过审核。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "generation_density": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "evidence": "第2组赵德胜对朱文浩说“总裁特别交代，要重用你”“下周战投部中期风控研判”“这个艰巨任务，交给你了”，朱文浩对赵德胜说“服从安排”，朱文浩心声标注为对自己。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组场景为战投部会议室，组首列出朱文浩、王海涛、老孙、吴德海在会议桌周围的位置和朝向，整组未离开会议室。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组7.5-10秒朱文浩台词“资金暴雷，你拿什么自证清白？”约13个有效字，2.5秒字秒比约5.2，符合情绪质问节奏；同组所有时间段连续且总和为10秒。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "第7组保留苏清寒从手包掏出水果刀抵在朱文浩喉间，并逐句逼问“我查过了，你十八岁就出国，十年没有回国。”“你到底是谁？为什么对集团内部了如指掌？”"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "evidence": "第9组5-7秒使用画外音反打承载“手术费还没凑齐”，画面主体苏清寒嘴唇闭合、不做口型，心神受击的反应可生成。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "第1组组首写明朱文浩在门外左侧持报到证、赵德胜在门内右侧隔着门边玻璃可见；赵德胜开门迎上来前已经有可生成位置。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组结尾赵德胜倒水、朱文浩站在办公桌旁，第2组组首延续为赵德胜端水杯、朱文浩接杯，水杯和站位没有跳变。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第5组保留王海涛端起凉茶猛灌，随后说“郑总监独断专行”“资金流向，我完全插不上手”，朱文浩拿笔说“您慢点说，我们详细记。”",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第7组将掏刀抵喉、两句身份逼问和朱文浩不躲拆为4个时间段，总时长13秒；刀具动作、两句长问和无声反应没有挤在同一时间段。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第10组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第9组结尾水果刀掉在地上，第10组组首明确刀落在画面下方地面，朱文浩再弯身捡起并倒转刀柄递回，关键道具状态连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第12组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "第12组门关上、苏清寒瘫坐沙发、看着水果刀均为可见动作；苏清寒OS写成心声并标注嘴唇闭合、不做口型，没有现场开口冲突。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

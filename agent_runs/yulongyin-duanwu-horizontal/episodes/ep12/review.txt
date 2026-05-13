@@ -1,0 +1,102 @@
+{
+  "pass": true,
+  "summary": "整集从西山密林遇蛇到废弃伐木场夺木撤离，剧情、台词、横屏站位、道具归属和声音来源均已逐组核对，未发现 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "爸爸在画面左前景开路，天天背水壶在右后景跟随，山路从左前斜向中央背景，组首和对白镜头均明确左右与前后层次。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "evidence": "毒蛇从中央草丛向画面右后方的天天面门弹射，爸爸从左侧用开山刀拦截，延续第1组尾部草丛和人物站位。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "爸爸刀落只砍中树干、天天喊“救命！”，云宝在水壶里睁眼并吐水珠，严格承接原剧本12-2开头。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "爸爸“这小东西，到底是什么来头？”用2.5秒，天天“它可是龙！我们快走吧！”用2秒，均低于6.5字/秒且有震惊和骄傲反应承载。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "水壶从天天胸前被松开交到爸爸手边，直接衔接第7组爸爸拔开水壶塞子，水壶归属没有跳变。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "evidence": "爸爸“撤！胡永贵肯定马上会收到消息。”由画面中央偏左的爸爸对左后方天天说；脚步声和狗吠来自右后方林缘，并用草影晃动和父子回头承接。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首写明西山密林、爸爸左前景、天天右后景、水壶位置、开山刀和二人视线方向，可独立生成。",
+      "fix_instruction": "无需修改；后续若调整，保留爸爸左前方开路、天天右后方跟随的基本轴线。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "天天喊救命时位于画面右侧且口型可见，云宝在水壶特写中作为可见救援主体出现，爸爸在左侧回头，关键角色均可见。",
+      "fix_instruction": "无需修改；不要把云宝救援写成无来源画外能力。"
+    },
+    {
+      "group": "第5组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "父子藏在左前景，老桐木在中央，手下甲和手下乙在右侧牌桌，横屏清楚区分侦查方、目标和守卫方。",
+      "fix_instruction": "无需修改；如压缩，仍需保留左侧树丛观察位、中央木材和右侧牌桌三点关系。"
+    },
+    {
+      "group": "第7组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "水流从左侧水壶口贴地潜向右侧牌桌，再缠住两个混混脚踝凝成冰铐，动作路线完整且横向清楚。",
+      "fix_instruction": "无需修改；不要让冰铐直接凭空出现在脚踝。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "15秒分为冲出、手刀、扛木、喊撤、脚步狗吠五个节拍，动作链按原剧本推进，没有额外打斗或逃跑结果。",
+      "fix_instruction": "无需修改；如果后续修订，仅可局部调整节奏，不要新增追兵露面或改变悬念收尾。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

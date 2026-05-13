@@ -1,0 +1,73 @@
+{
+  "pass": true,
+  "summary": "EP28 审核通过。整集 8 组，默认长组承载主要冲突，第7组使用 6 秒必要短组保留父亲双规与带走命令，未出现台词压缩、过度合并或组首过程动作。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "李少爷三段关键台词“给京城打电话！断她所有的货运专线！”“封杀她！一瓶果冻也别想运出省！”“滚！我要让赵朵朵求生不得求死不能！”均保留。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "U盘从赵朵朵口袋取出，举到赵大雷面前，再递到赵大雷手中，组尾明确赵大雷握着U盘，道具归属连续。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "evidence": "第7组为 6 秒短组，0-3秒完整承载“你父亲昨晚已经被双规了，带走！”，约 5.0 字/秒，未超过 6.5 字/秒。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "evidence": "第8组组首写李少爷已在病房门口被两名干警架住，病房门已打开，赵朵朵站在门外右侧；走到走廊中央的过程写在 0-3 秒镜头中。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第7组是独立逮捕/带走命令短节拍，无法自然合并进第6组而不导致涉嫌洗钱、李少反驳、父亲双规和控制动作过载；使用 6 秒短组符合新合同。",
+      "fix_instruction": "若不通过，应保留短组或拆成相邻短组，不能为了 10 秒默认粒度压缩原台词。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "原剧本“你父亲昨晚已经被双规了，带走！”完整保留，未删掉“昨晚”和“带走”。",
+      "fix_instruction": "若不通过，应恢复原台词并调整组长或拆组承载。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "干警对李少爷说道“李耀宗，你涉嫌参与跨省洗钱案。”李少爷对干警惊恐说道“你们敢抓我？我爸是……”，对白对象明确。",
+      "fix_instruction": "若不通过，应补齐说话人和真实对话对象。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组组尾两名干警控制住李少爷，第8组组首李少爷已在病房门口被两名干警架住，随后才走到走廊中央，连续性清楚。",
+      "fix_instruction": "若不通过，应补齐门口位置、控制状态和移动过程。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

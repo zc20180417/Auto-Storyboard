@@ -1,0 +1,231 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP04",
+  "cuts": [
+    {
+      "cut_id": "EP04-G01",
+      "group_index": 1,
+      "title": "送水车前的队伍被打断",
+      "scene": "日/晴，村头广场送水车旁",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "村民甲",
+        "村民们"
+      ],
+      "props": [
+        "送水车",
+        "水管",
+        "皮卡",
+        "水壶"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP04-G02",
+      "group_index": 2,
+      "title": "水被拿去洗车",
+      "scene": "日/晴，村头广场送水车和皮卡之间",
+      "characters": [
+        "胡永贵",
+        "村民甲",
+        "天天",
+        "村民们"
+      ],
+      "props": [
+        "水管",
+        "皮卡",
+        "水桶",
+        "水壶"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 12,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP04-G03",
+      "group_index": 3,
+      "title": "天天冲向水管",
+      "scene": "日/晴，村头广场送水车前",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "村民甲",
+        "村民们"
+      ],
+      "props": [
+        "水管",
+        "水壶",
+        "皮卡"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 26,
+      "group_end_sec": 37,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP04-G04",
+      "group_index": 4,
+      "title": "水壶险些摔碎",
+      "scene": "日/晴，村头广场送水车前地面",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "村民甲",
+        "村民们"
+      ],
+      "props": [
+        "水管",
+        "水壶",
+        "皮卡"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 37,
+      "group_end_sec": 47,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP04-G05",
+      "group_index": 5,
+      "title": "水壶里的云宝苏醒",
+      "scene": "日/晴，村头广场送水车前地面",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "云宝"
+      ],
+      "props": [
+        "水壶",
+        "水管",
+        "皮卡",
+        "泥水"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 47,
+      "group_end_sec": 59,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP04-G06",
+      "group_index": 6,
+      "title": "泥水结冰反噬胡永贵",
+      "scene": "日/晴，村头广场皮卡旁",
+      "characters": [
+        "胡永贵",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "水管",
+        "水壶",
+        "泥水",
+        "薄冰",
+        "皮卡"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 59,
+      "group_end_sec": 71,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP04-G07",
+      "group_index": 7,
+      "title": "天天抢回清水",
+      "scene": "日/晴，村头广场送水车前地面",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "云宝"
+      ],
+      "props": [
+        "水管",
+        "水壶",
+        "薄冰",
+        "皮卡"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 71,
+      "group_end_sec": 82,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP04-G08",
+      "group_index": 8,
+      "title": "胡永贵躲进车里拨电话",
+      "scene": "日/晴，胡永贵皮卡驾驶座内外",
+      "characters": [
+        "胡永贵"
+      ],
+      "props": [
+        "皮卡",
+        "手机",
+        "方向盘",
+        "车门"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 82,
+      "group_end_sec": 93,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP04-G09",
+      "group_index": 9,
+      "title": "老泉眼消息接通",
+      "scene": "日/晴，胡永贵皮卡驾驶座内",
+      "characters": [
+        "胡永贵",
+        "包工头"
+      ],
+      "props": [
+        "手机",
+        "方向盘",
+        "皮卡车窗"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 93,
+      "group_end_sec": 105,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP04-G10",
+      "group_index": 10,
+      "title": "毒液计划被天天听见",
+      "scene": "日/晴，皮卡车内与旁侧屋檐下",
+      "characters": [
+        "胡永贵",
+        "天天",
+        "包工头"
+      ],
+      "props": [
+        "手机",
+        "水壶",
+        "皮卡车窗"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 105,
+      "group_end_sec": 118,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP04-G11",
+      "group_index": 11,
+      "title": "天天奔向后山",
+      "scene": "日/晴，村头广场旁屋檐到后山小路入口",
+      "characters": [
+        "天天"
+      ],
+      "props": [
+        "水壶",
+        "皮卡"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 118,
+      "group_end_sec": 130,
+      "source_group_label": "第11组"
+    }
+  ]
+}

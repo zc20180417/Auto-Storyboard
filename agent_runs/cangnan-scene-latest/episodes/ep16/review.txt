@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "全片九组完整覆盖备用金被转走、公章失窃、银行拒绝、宋子昂挑衅、工地冲突和小李供述收束，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "财务总监冲入办公室并告知十个亿备用金全没、银行称本人签字盖章转海外，原剧本核心台词和因果均保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "保险柜在组首关闭，江若晴转密码后柜门弹开，柜内公章缺失，再接报警台词，道具状态连续且可见。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "evidence": "宋子昂在组首处于门外阴影后，0-2秒开门入场后才说话；江若晴、马行长位置也在组首明确。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "江若晴约22字台词用5秒，约4.4字/秒；工人甲约21字台词用5.5秒并包含举砖动作，未超过6.5字/秒。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "陆凡问马行长是否收好处、小李供述三千万回扣和加急汇款、陆凡交给民警依法处理、民警带走均完整保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "财务总监对江若晴喊话，江若晴对财务总监发问，现场对白对象明确。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "江若晴手中的报警回执被拍在马行长办公桌上，转账资料由马行长按住，关键文件位置清楚。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "宋子昂入场、嘲讽工资、江若晴指认、宋子昂逼近威胁和烂尾台词分为5个时间段，总时长15秒，表演容量足够。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "黑风山工地大门口的工人群、工人甲、江若晴、手下甲和砖块堆位置在组首明确，未跨物理空间。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组尾部手下甲看向砖块堆，第7组组首手下甲靠近砖块堆，后续抓砖砸向江若晴，动作承接自然。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "陆凡、小李均为现场开口对白，没有心声、电话音或画外音误写成口型。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "录音笔从陆凡手边推向小李方向，口供记录在陆凡手中递给民警，证据道具转移有可见过渡。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全片正文未出现模型说明词、模板编号、参考图占位符、字幕工程词或批量模板化描述。",
+      "fix_instruction": "无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

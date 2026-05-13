@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "ep10最终稿16组完整保留爆炸物处置、树林取证、办公室抓捕和徐虎劫持逃离的剧情链，格式、时长、对白指向、空间锁定和提示词清洁度均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组", "第14组", "第15组", "第16组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "陆凡报警台词约30字在5-10.5秒的5.5秒内完成，紧急语速约5.45字/秒，低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "民警乙打开录音笔、黄毛说赵大江让他们炸路基并承诺每人二十万、陆凡要求口供和炸药残片移交刑侦，关键台词和证据链保留。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "evidence": "黄毛供认作为手机扬声器录音出现，画面里的赵大江明确嘴唇闭合不做口型，声音来源清楚。"
+    },
+    {
+      "group": "第11组",
+      "type": "prop_continuity",
+      "evidence": "裁纸刀由赵大江持有刺向陆凡，随后民警扭住手腕夺下并让刀落到远离赵大江的位置，道具归属连续。"
+    },
+    {
+      "group": "第15组",
+      "type": "generation_density",
+      "evidence": "徐虎挟持江若晴、江若晴求救、陆凡喝止、推进车内和车辆起步拆成5段，13秒内节拍明确且没有把逃离结尾硬塞完。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组以炸药包进入防爆罐收尾，第3组组首继续锁定防爆罐、警戒带、排爆队长和陆凡的位置。",
+      "fix_instruction": "若不通过，应补防爆罐位置和陆凡等待排爆结果的状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "陆凡在第7组组首明确位于门外不可见位置，红木门被推开后才站到门口并与赵大江对话。",
+      "fix_instruction": "若不通过，应给陆凡补门外来源或删去突兀入场。"
+    },
+    {
+      "group": "第10组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "裁纸刀在组首位于办公柜边缘，赵大江发狠后视线越过陆凡看向刀，再摸向刀，关键道具有可见过渡。",
+      "fix_instruction": "若不通过，应补裁纸刀初始位置和赵大江摸刀动作。"
+    },
+    {
+      "group": "第12组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "林夏先对赵大江怒斥，再对纪委干部下令，人物关系和说话对象都清楚。",
+      "fix_instruction": "若不通过，应把林夏两句台词分别改成对赵大江和对纪委干部。"
+    },
+    {
+      "group": "第14组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "同一组保持乡政府大院一个主要物理空间，面包车、警车、赵大江、警察、陆凡位置和徐虎车内来源明确。",
+      "fix_instruction": "若不通过，应拆出跨空间内容或补徐虎车内来源。"
+    },
+    {
+      "group": "第16组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终收尾只写面包车逃离、陆凡台词、警察追车和散落文件，没有模型说明词、模板编号、参考图或字幕工程词。",
+      "fix_instruction": "若不通过，应删除模型说明、参考模板、首尾帧或字幕类污染词。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

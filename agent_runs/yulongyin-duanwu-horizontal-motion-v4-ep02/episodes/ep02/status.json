@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "雨龙吟端午-ep02-agent-cli-storyboard.txt",
+  "summary": "天天误触小龙后承诺救援，回家取水救活小龙；黑水灼伤迫使小龙进入水壶，最终在壶壁画出龙舟线索。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "run_id": "compact-skill-shortgroup-ep26-30",
+  "created_at": "2026-05-10T13:43:30",
+  "project_root": "G:\\Auto-Storyboard",
+  "source": "G:\\Auto-Storyboard\\agent_runs\\_tmp_shortgroup_ep26_30_source",
+  "prompt_path": null,
+  "generation_rules_source": "G:\\Auto-Storyboard\\agent_skills\\storyboard-generator\\SKILL.md",
+  "reviewer_rules_source": "G:\\Auto-Storyboard\\agent_skills\\storyboard-reviewer\\SKILL.md",
+  "generator_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-generator\\SKILL.md",
+  "reviewer_skill_path": "G:\\Auto-Storyboard\\agent_skills\\storyboard-reviewer\\SKILL.md",
+  "seedance_profile_path": "G:\\Auto-Storyboard\\agent_skills\\seedance-prompt-profile\\SKILL.md",
+  "storyboard_aspect": "vertical",
+  "target_video_model": "seedance",
+  "happyhorse_profile_path": null,
+  "ai_video_prompt_skill_path": null,
+  "out_dir": "G:\\Auto-Storyboard\\outputs_agent",
+  "agent": "codex",
+  "mode": "scene",
+  "parallelism": 3,
+  "episodes": [
+    {
+      "episode_id": "ep26",
+      "episode_number": 26,
+      "display_name": "ep26",
+      "series_title": "ep26",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_shortgroup_ep26_30_source\\ep26.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent\\ep26-ep26-agent-cli-storyboard.txt",
+      "storyboard_aspect": "vertical",
+      "generator_skill_name": "storyboard-generator",
+      "reviewer_skill_name": "storyboard-reviewer",
+      "reviewer_source": "storyboard-reviewer",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep26",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep26\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep26\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep26\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep26\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第26集 26-1 日/晴 内 顾家别墅客厅 顾长海、顾雪、顾秘书"
+      ]
+    },
+    {
+      "episode_id": "ep27",
+      "episode_number": 27,
+      "display_name": "ep27",
+      "series_title": "ep27",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_shortgroup_ep26_30_source\\ep27.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent\\ep27-ep27-agent-cli-storyboard.txt",
+      "storyboard_aspect": "vertical",
+      "generator_skill_name": "storyboard-generator",
+      "reviewer_skill_name": "storyboard-reviewer",
+      "reviewer_source": "storyboard-reviewer",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep27",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep27\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep27\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep27\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep27\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第27集 27-1 夜/阴 内 顾家别墅书房 顾长海、李少爷、保镖"
+      ]
+    },
+    {
+      "episode_id": "ep28",
+      "episode_number": 28,
+      "display_name": "ep28",
+      "series_title": "ep28",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_shortgroup_ep26_30_source\\ep28.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent\\ep28-ep28-agent-cli-storyboard.txt",
+      "storyboard_aspect": "vertical",
+      "generator_skill_name": "storyboard-generator",
+      "reviewer_skill_name": "storyboard-reviewer",
+      "reviewer_source": "storyboard-reviewer",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep28",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep28\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep28\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep28\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep28\\agent-stdout.log",
+      "segments": 2,
+      "segment_titles": [
+        "第28集 28-1 日/内 医院VIP病房 李少爷、保镖、医生",
+        "28-3 日/外 医院VIP病房 李少爷、京城干警、保镖、赵朵朵"
+      ]
+    },
+    {
+      "episode_id": "ep29",
+      "episode_number": 29,
+      "display_name": "ep29",
+      "series_title": "ep29",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_shortgroup_ep26_30_source\\ep29.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent\\ep29-ep29-agent-cli-storyboard.txt",
+      "storyboard_aspect": "vertical",
+      "generator_skill_name": "storyboard-generator",
+      "reviewer_skill_name": "storyboard-reviewer",
+      "reviewer_source": "storyboard-reviewer",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep29",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep29\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep29\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep29\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep29\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第29集 29-1 日/晴 内 集团会议室 赵朵朵、赵大雷、各部门高管"
+      ]
+    },
+    {
+      "episode_id": "ep30",
+      "episode_number": 30,
+      "display_name": "ep30",
+      "series_title": "ep30",
+      "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_shortgroup_ep26_30_source\\ep30.txt",
+      "output_path": "G:\\Auto-Storyboard\\outputs_agent\\ep30-ep30-agent-cli-storyboard.txt",
+      "storyboard_aspect": "vertical",
+      "generator_skill_name": "storyboard-generator",
+      "reviewer_skill_name": "storyboard-reviewer",
+      "reviewer_source": "storyboard-reviewer",
+      "episode_dir": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep30",
+      "task_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep30\\TASK.md",
+      "prompt_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep30\\agent_prompt.md",
+      "last_message_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep30\\agent-last-message.txt",
+      "agent_log_file": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-shortgroup-ep26-30\\episodes\\ep30\\agent-stdout.log",
+      "segments": 1,
+      "segment_titles": [
+        "第30集 30-1 日/晴 内 证券交易所 赵朵朵、众人"
+      ]
+    }
+  ]
+}

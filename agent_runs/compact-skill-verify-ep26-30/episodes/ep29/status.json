@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep29",
+  "status": "done",
+  "output_name": "ep29-ep29-agent-cli-storyboard.txt",
+  "summary": "6组分镜全部通过审核。原剧本3个场景（会议室战略宣布、街头母女重逢、交易所上市采访）8组台词全部保留，无丢失或改写。台词节奏均在6.5字/秒硬上限内，组时长10-15秒。空间锁定无动作推进，组间衔接连续。1条软警告（记者到位过渡）。",
+  "hard_issues_remaining": 0,
+  "warnings": 1,
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

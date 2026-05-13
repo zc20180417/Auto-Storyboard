@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "EP05 横屏整集分镜保留原剧本台词和因果，6组时间轴、cut_id、组首静态锁定、每段运镜、水壶到泉眼的奇幻灾害状态链均可交付。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组按原剧本保留隐秘岩洞、巴掌大清泉、包工头铁锤准备砸石壁、天天喊“住手！那是村里最后一口活水！”和胡永贵命令“小叫花子又来捣乱，把他给我扔下山去！”。"
+    },
+    {
+      "group": "第2组",
+      "type": "horizontal_composition",
+      "evidence": "第2组天天保持左前景贴岩壁，包工头从右中景压近，胡永贵在右后景，泉眼和水洼在中央，水壶青蓝光在左前景触发，左右轴线稳定。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "evidence": "第3组天天对怀中水壶里的云宝说“云宝，靠你了！”，云宝在壶口内侧可见并回应水洼，现场对白对象明确。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "第4组水弹链条完整：陶笛和水壶青蓝光触发中央水洼，水花炸开形成水弹，水弹从中央射向右侧包工头，组尾留下包工头逃向洞口和铁锤落地。"
+    },
+    {
+      "group": "第5组",
+      "type": "camera_motion",
+      "evidence": "第5组先固定胡永贵右侧发令，再摇向黑色废液桶，随后横向跟拍黑液从右侧泼向中央泉眼，最后轻推天天和水壶，运镜服务新危险来源、路径和反应。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "第6组保留云宝从水壶跃出挡在泉眼前、黑色废液浇在云宝身上、云宝惨叫、摔在地上并由青蓝色变死灰色的关键结局。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "天天 5.5-8.5秒 3 秒承载约 12 个有效字，胡永贵 8.5-12秒 3.5 秒承载约 18 个有效字，字秒比均低于 6.5 硬上限。",
+      "fix_instruction": "若台词节奏超限，应延长时间段或拆反应镜头，不能删改原台词。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首只写天天、包工头、胡永贵、泉眼、水洼和铁锤的静态位置；放下铁锤、逼近、退让和水壶发光都在后续时间段内呈现。",
+      "fix_instruction": "若组首出现过程动作，应改成第一帧静态状态，并把动作移入镜头描述。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "水壶从第2组组尾的青蓝光，承接到第3组云宝在壶口内指向水洼；天天拧开壶盖并掏出陶笛，水壶、陶笛和水洼位置均有可见过渡。",
+      "fix_instruction": "若道具跳变，应补充壶盖、陶笛和水洼的同框转移镜头。"
+    },
+    {
+      "group": "第4组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "5个时间段中既有固定机位稳定陶笛和包工头台词口型，也有低位推近水洼和横向跟拍水弹路径，没有全组滥用运动镜头。",
+      "fix_instruction": "若运镜失焦，应保留固定口型段，并只让运动镜头承担触发或水弹路径。"
+    },
+    {
+      "group": "第5组",
+      "type": "narrative_progression",
+      "result": "pass",
+      "evidence": "第5组从胡永贵暴怒台词推进到黑色废液桶露出，再到黑液泼向泉眼，最后落到天天喊“不要！”和云宝光芒骤亮，新危险和保护起点明确。",
+      "fix_instruction": "若递进不清，应补足黑液来源、泼洒路径和云宝光芒起点。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第6组黑液弧线从右侧悬向中央泉眼，云宝从左前景水壶口跃出护到泉眼前，黑液浇在云宝身上并扩散成水痕，组尾留下灰化身体和污染痕迹。",
+      "fix_instruction": "若灾害链断裂，应按来源、路径、结果补足黑液和云宝的位置变化。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

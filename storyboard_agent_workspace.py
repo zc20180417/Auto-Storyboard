@@ -370,8 +370,6 @@ def make_episode_task(
             - `segments/segXX/review.md`
             - `segments/segXX/final.txt`
             - `final.txt`
-            - `storyboard_index.json`
-            - `storyboard_index.xlsx`
             - `review.txt`
             - `status.json`
             """
@@ -383,7 +381,7 @@ def make_episode_task(
             3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. {group_timing_line}
             4. Review the assembled `final.txt` once using `{reviewer_skill_name}`; write the raw reviewer JSON to `review.txt`.
             5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `{reviewer_skill_name}` after repairs.
-            6. Write `status.json` with reviewer metadata, then run validation. Validation exports `storyboard_index.json` and `storyboard_index.xlsx` from `final.txt`.
+            6. Write `status.json` with reviewer metadata, then run validation. Validation is txt-only by default; storyboard index JSON/XLSX export is opt-in and not part of the current required output.
             7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
         ).strip()
@@ -392,8 +390,6 @@ def make_episode_task(
         outputs = textwrap.dedent(
             """
             - `final.txt`
-            - `storyboard_index.json`
-            - `storyboard_index.xlsx`
             - `review.txt`
             - `status.json`
             """
@@ -405,7 +401,7 @@ def make_episode_task(
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
             5. Re-run `{reviewer_skill_name}` after repairs and update `review.txt`.
-            6. Write `status.json` with reviewer metadata, then run validation. Validation exports `storyboard_index.json` and `storyboard_index.xlsx` from `final.txt`.
+            6. Write `status.json` with reviewer metadata, then run validation. Validation is txt-only by default; storyboard index JSON/XLSX export is opt-in and not part of the current required output.
             7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
         ).strip()
@@ -772,8 +768,21 @@ If any episode is unfinished or validation fails, dispatch only that episode's `
         run_dir / "COLLECT_RESULTS.ps1",
         textwrap.dedent(
             f"""
+            param(
+                [switch]$ExportIndex
+            )
+
             $ErrorActionPreference = 'Stop'
-            python "{Path(__file__).resolve()}" collect --run-dir "{run_dir}"
+            $cmdArgs = @(
+                "{Path(__file__).resolve()}",
+                "collect",
+                "--run-dir",
+                "{run_dir}"
+            )
+            if ($ExportIndex) {{
+                $cmdArgs += "--export-index"
+            }}
+            python @cmdArgs
             """
         ).strip(),
     )
@@ -2012,6 +2021,13 @@ def write_storyboard_index_files(episode_dir: Path, content: str | None = None) 
     return json_path, xlsx_path
 
 
+def remove_storyboard_index_files(episode_dir: Path) -> None:
+    for name in ("storyboard_index.json", "storyboard_index.xlsx"):
+        path = episode_dir / name
+        if path.exists():
+            path.unlink()
+
+
 def _validate_review_checked_groups(payload: dict, content: str, review_name: str) -> list[str]:
     expected = _storyboard_group_labels(content)
     if not expected:
@@ -2467,7 +2483,12 @@ def validate_episode(args: argparse.Namespace) -> int:
     if not pre_check:
         report_lines.append("- review_evidence: passed")
         report_lines.append("- storyboard_reviewer: passed")
-        write_storyboard_index_files(episode_dir, content)
+        if getattr(args, "export_index", False):
+            write_storyboard_index_files(episode_dir, content)
+            report_lines.append("- storyboard_index_export: passed")
+        else:
+            remove_storyboard_index_files(episode_dir)
+            report_lines.append("- storyboard_index_export: skipped (txt-only)")
     else:
         report_lines.append("- review_evidence: skipped (pre-check)")
         report_lines.append("- storyboard_reviewer: skipped (pre-check)")
@@ -2483,6 +2504,7 @@ def collect_run(args: argparse.Namespace) -> int:
     if args.out_dir:
         out_dir = args.out_dir.resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
+    export_index = bool(getattr(args, "export_index", False))
 
     summary_lines = ["# Agent Run Summary", ""]
     copied = 0
@@ -2568,11 +2590,18 @@ def collect_run(args: argparse.Namespace) -> int:
             continue
 
         write_utf8(output_path, content)
-        index_json_path, index_xlsx_path = write_storyboard_index_files(episode_dir, content)
-        index_output_json = out_dir / f"{output_path.stem}_index.json"
-        index_output_xlsx = out_dir / f"{output_path.stem}_index.xlsx"
-        shutil.copy2(index_json_path, index_output_json)
-        shutil.copy2(index_xlsx_path, index_output_xlsx)
+        if export_index:
+            index_json_path, index_xlsx_path = write_storyboard_index_files(episode_dir, content)
+            index_output_json = out_dir / f"{output_path.stem}_index.json"
+            index_output_xlsx = out_dir / f"{output_path.stem}_index.xlsx"
+            shutil.copy2(index_json_path, index_output_json)
+            shutil.copy2(index_xlsx_path, index_output_xlsx)
+        else:
+            remove_storyboard_index_files(episode_dir)
+            for suffix in ("_index.json", "_index.xlsx"):
+                stale_output = out_dir / f"{output_path.stem}{suffix}"
+                if stale_output.exists():
+                    stale_output.unlink()
         copied += 1
         happyhorse_summary = ", happyhorse_prompt_contract_passed" if is_happyhorse_episode_dir(episode_dir) else ""
         summary_lines.append(
@@ -2582,8 +2611,11 @@ def collect_run(args: argparse.Namespace) -> int:
         if changes:
             summary_lines.append(f"- clean_numbering_fixed: {'; '.join(changes[:8])}")
         summary_lines.append(f"- copied: `{output_path}`")
-        summary_lines.append(f"- storyboard_index_json: `{index_output_json}`")
-        summary_lines.append(f"- storyboard_index_xlsx: `{index_output_xlsx}`")
+        if export_index:
+            summary_lines.append(f"- storyboard_index_json: `{index_output_json}`")
+            summary_lines.append(f"- storyboard_index_xlsx: `{index_output_xlsx}`")
+        else:
+            summary_lines.append("- storyboard_index: skipped (txt-only)")
         summary_lines.append("")
 
     summary_lines.append(f"Copied: {copied}")
@@ -2692,11 +2724,13 @@ def parse_args() -> argparse.Namespace:
     validate.add_argument("--fix-metadata", action="store_true")
     validate.add_argument("--pre-check", action="store_true", help="Only run format/timing/quality checks; skip review artifact validation. Use to catch mechanical issues before calling the LLM reviewer.")
     validate.add_argument("--content-file", type=Path, default=None, help="Validate this file instead of final.txt (use with --pre-check to validate a draft).")
+    validate.add_argument("--export-index", action="store_true", help="Also export storyboard_index.json/xlsx after full validation. Default is txt-only.")
     validate.set_defaults(func=validate_episode)
 
     collect = subparsers.add_parser("collect", help="Collect final files from an agent run.")
     collect.add_argument("--run-dir", type=Path, required=True)
     collect.add_argument("--out-dir", type=Path, default=None)
+    collect.add_argument("--export-index", action="store_true", help="Also collect storyboard index JSON/XLSX files. Default is txt-only.")
     collect.set_defaults(func=collect_run)
 
     export_index = subparsers.add_parser("export-storyboard-index", help="Export storyboard_index.json/xlsx for episode cuts.")

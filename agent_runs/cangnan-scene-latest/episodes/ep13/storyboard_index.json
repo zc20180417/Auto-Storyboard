@@ -1,0 +1,215 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP13",
+  "cuts": [
+    {
+      "cut_id": "EP13-G01",
+      "group_index": 1,
+      "title": "车厢密谋卡审批",
+      "scene": "日晴，劳斯莱斯车厢内",
+      "characters": [
+        "宋子昂",
+        "保镖",
+        "张局长"
+      ],
+      "props": [
+        "手机",
+        "真皮座椅",
+        "领带"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP13-G02",
+      "group_index": 2,
+      "title": "借违建名义阻工",
+      "scene": "日晴，劳斯莱斯车厢内",
+      "characters": [
+        "宋子昂",
+        "保镖",
+        "张局长"
+      ],
+      "props": [
+        "手机",
+        "真皮座椅",
+        "领带"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 12,
+      "group_end_sec": 23,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP13-G03",
+      "group_index": 3,
+      "title": "审批局当面推诿",
+      "scene": "日阴，县审批局办公室内",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "张局长"
+      ],
+      "props": [
+        "文件",
+        "办公桌",
+        "印章盒",
+        "靠背椅"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 23,
+      "group_end_sec": 36,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP13-G04",
+      "group_index": 4,
+      "title": "陆凡另寻办法",
+      "scene": "日阴，县审批局办公室内",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "张局长"
+      ],
+      "props": [
+        "文件",
+        "办公桌",
+        "印章盒"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 36,
+      "group_end_sec": 49,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP13-G05",
+      "group_index": 5,
+      "title": "观景台直播造势",
+      "scene": "日晴，黑风山观景台露天直播间",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "周思思"
+      ],
+      "props": [
+        "直播手机",
+        "补光灯",
+        "支架",
+        "大屏幕",
+        "直播后台设备"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 49,
+      "group_end_sec": 63,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP13-G06",
+      "group_index": 6,
+      "title": "官方大号连麦",
+      "scene": "日晴，黑风山观景台露天直播间",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "周思思",
+        "徐厅长"
+      ],
+      "props": [
+        "直播后台设备",
+        "大屏幕",
+        "直播手机",
+        "补光灯"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 63,
+      "group_end_sec": 76,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP13-G07",
+      "group_index": 7,
+      "title": "省厅线上问责",
+      "scene": "日晴，黑风山观景台露天直播间",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "周思思",
+        "徐厅长"
+      ],
+      "props": [
+        "大屏幕",
+        "直播设备",
+        "补光灯"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 76,
+      "group_end_sec": 91,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP13-G08",
+      "group_index": 8,
+      "title": "张局长被停职带走",
+      "scene": "日阴，县审批局办公室内",
+      "characters": [
+        "徐厅长",
+        "张局长",
+        "纪委工作人员"
+      ],
+      "props": [
+        "电脑屏幕",
+        "办公桌",
+        "文件",
+        "办公室门"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 91,
+      "group_end_sec": 104,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP13-G09",
+      "group_index": 9,
+      "title": "会所砸屏泄愤",
+      "scene": "夜晚，皇家会所包厢内",
+      "characters": [
+        "宋子昂",
+        "刀疤"
+      ],
+      "props": [
+        "液晶屏幕",
+        "威士忌酒瓶",
+        "沙发",
+        "铁棍",
+        "茶几"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 104,
+      "group_end_sec": 117,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP13-G10",
+      "group_index": 10,
+      "title": "五百万堵门",
+      "scene": "夜晚，皇家会所包厢内",
+      "characters": [
+        "宋子昂",
+        "刀疤"
+      ],
+      "props": [
+        "现金",
+        "茶几",
+        "铁棍",
+        "破裂液晶屏幕",
+        "沙发"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 117,
+      "group_end_sec": 129,
+      "source_group_label": "第10组"
+    }
+  ]
+}

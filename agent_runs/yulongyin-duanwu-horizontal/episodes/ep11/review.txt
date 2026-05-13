@@ -1,0 +1,105 @@
+{
+  "pass": true,
+  "summary": "整集横屏分镜已按原剧本完成祠堂复苏、村口封路、广场缺水冲突和堂屋修船决定，9组时间轴、cut_id、横屏调度、台词对象和道具连续性均可交付。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本的鼓声停止、青色幻影溃散、云宝跌入破碗并恢复晶莹、爸爸靠龙舟坐下和爷爷“龙回头了”台词均保留。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "胡永贵长台词放在3.5-11秒，约38个有效字用7.5秒承载，约5.1字/秒；包工头台词3.5秒，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "evidence": "村民甲、村民乙和爸爸都在组首空间锁定内可见，爸爸在右后方处理手腕伤口，能承接村民乙指责李燃的视线。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "村民甲“你拿什么解决”与爸爸“三天后井水满溢”台词顺序、说话对象和承诺悬念均与原剧本一致。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "evidence": "水壶固定在右前景，云宝在壶内用小爪子指向右后方小窗外西山方向，爸爸的决定承接该可见动作。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "旧龙舟在左侧、破碗在右前景、天天右侧、爷爷左后方，云宝复苏和爸爸脱力都落在可见的左右关系里。",
+      "fix_instruction": "无需修复；后续只需保持破碗右前景与龙舟左侧的空间锚点。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "村口公路用左侧渣土车队、右侧被堵公路、中后景渣土山建立封路空间，胡永贵和包工头均在组首可见。",
+      "fix_instruction": "无需修复；不要把封路和威胁改成缺少道路遮挡关系的单人近景。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "银行卡由胡永贵右手夹着，最后拍到包工头胸口，收买动作有明确起点和落点。",
+      "fix_instruction": "无需修复；若删减镜头，应保留银行卡从胡永贵手到包工头胸口的可见过渡。"
+    },
+    {
+      "group": "第6组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "爸爸从第5组右后方被指责的位置，在第6组0-4秒走入人群中央，承接自然，没有突然换位。",
+      "fix_instruction": "无需修复；若调整走位，应保留爸爸从右后方到中央的路线。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "爷爷对爸爸和天天说明修船，爸爸对爷爷回应老桐木绝迹，听话对象都在桌边同框可见。",
+      "fix_instruction": "无需修复；不要把堂屋对话改成无对象独白。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终分镜没有模板编号、官方占位符、参考图、模型自动处理、视频延长、一镜到底或其他非短剧模板语气。",
+      "fix_instruction": "无需修复；后续交付中继续避免加入模板编号、@图片/@视频/@音频等控制台占位。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

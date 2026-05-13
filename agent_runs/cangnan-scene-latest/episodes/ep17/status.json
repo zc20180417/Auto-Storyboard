@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep17",
+  "status": "done",
+  "output_name": "苍南风云-ep17-agent-cli-storyboard.txt",
+  "summary": "陆凡在银行用录音逼马行长退回十亿，工地发放双倍工资稳定人心，宋子昂转而勾结王局长以地契查封黑风山。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第9组",
+      "rule": "timing_math",
+      "problem": "第9组为6秒短组，低于默认10秒。",
+      "evidence": "该组只表现宋子昂坐在远处山坡车内盯着工地、咬牙切齿和扣方向盘，属于短动作余波和片尾威胁反应。",
+      "fix": "保持短组即可；若必须统一到10秒以上，应改为第8组结尾片尾意象而不是拖长无台词反应。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

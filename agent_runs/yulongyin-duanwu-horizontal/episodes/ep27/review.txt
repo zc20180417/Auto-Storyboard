@@ -1,0 +1,116 @@
+{
+  "pass": true,
+  "summary": "ep27 assembled final has been reviewed against the clean source script and horizontal rules; all eight groups preserve the episode beats, dialogue ownership, timing contract, and left-right spatial continuity.",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "第1组将水龙和爸爸放在画面左侧，刀疤男和炸药遥控器放在右侧，左右对峙、前后层次和关键道具位置均清楚。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "第2组承接第1组尾部爸爸右拳和刀疤男遥控器，水漩涡从左向右封住遥控器，后续刀疤男疯狂按动但无反应，关键道具连续。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "第4组村民甲对广场众人喊警察来了，刀疤男被按地后朝爸爸方向喊不服，现场台词对象和口型承载明确。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "第6组爷爷说明云宝吞伴生龙鳞约24字用5秒承载，爸爸追问约7字用3秒承载，均符合短剧对话节奏。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "第8组保留云宝蹭天天脸颊、滴落珍珠般眼泪、身体虚无、深深看天天后飞向干枯深井方向，没有新增离别动作或改变因果。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "爸爸跃下龙背、刀疤男以炸药和遥控器威胁、爸爸缓步靠近并说原台词均保留，台词顺序未改。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爸爸始终在左侧攻击轴线，刀疤男始终在右侧，水漩涡从左向右进入遥控器，视线方向稳定。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "11秒内只承载爸爸冷酷宣告、踹倒刀疤男、遥控器滑落和倒地压迫四个动作节拍，可表演且未硬塞外部事件。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "刀疤男从第3组右前景倒地承接到第4组右前景被警察控制，爸爸维持左中景，警车从后方村口进入，调度连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "天天、爸爸、爷爷、云宝均在组首或镜头内有明确位置，云宝从水龙变回掌心小龙的过程可见。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "爷爷对天天和爸爸解释云宝不能留在人间，爸爸对爷爷追问，画面内人物关系和说话对象明确。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "爷爷关于命数、水脉、地脉、水眼、力竭而死和村子再次干涸的说明完整保留，天天哭喊原文保留。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "云宝虚化、金色光点、珍珠泪、转头飞向深井都转化为可见动作和光影，未用抽象说明替代表演。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第1组-第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt未出现模板编号、官方模板占位符、参考图占位、自动分镜说明或其他模型工程词；负向约束仅作为分镜尾部提示使用。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep10",
+  "episode_number": 10,
+  "display_name": "雨龙吟端午-第10集",
+  "series_title": "雨龙吟端午",
+  "source_path": "G:\\Auto-Storyboard\\split_scripts\\yulongyin-duanwu\\雨龙吟端午-第10集.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_yulongyin_duanwu_horizontal\\雨龙吟端午-ep10-agent-cli-storyboard.txt",
+  "storyboard_aspect": "horizontal",
+  "generator_skill_name": "storyboard-horizontal-generator",
+  "reviewer_skill_name": "storyboard-horizontal-reviewer",
+  "reviewer_source": "storyboard-horizontal-reviewer"
+}

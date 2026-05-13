@@ -1,0 +1,125 @@
+{
+  "pass": true,
+  "summary": "EP03 passed: 8 horizontal groups preserve script beats, naming state, kettle/lid/door/photo continuity, and the new output structure.",
+  "source_status": "script_provided",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "prop_continuity": "checked",
+    "physical_continuity": "checked",
+    "special_effects": "checked",
+    "genre_style": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "Group 1 has cut_id, required horizontal fields, bare shot numbers, estimated shot durations and group end marker."
+    },
+    {
+      "group": "第4组",
+      "type": "physical_continuity",
+      "evidence": "Group 4 uses half-engaged latch slipping after repeated pushing, not violent break-in, and keeps kettle upright while held."
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "evidence": "Group 8 has grandfather read the photo-back information aloud, so the story does not rely on tiny generated text."
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "Group 2 uses small dragon before the naming line and Yunbao only after naming."
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "Group 7 keeps the upright kettle, half-screwed lid and Tiantian holding it through the retreat to the bedroom."
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "Group 1 dialogue is split across supported shots and does not exceed the 6.5 chars/sec cap.",
+      "fix_instruction": "If failed, repair only the cited group and keep unrelated groups unchanged."
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "Naming rule is followed: old name before naming, new name after naming.",
+      "fix_instruction": "If failed, repair only the cited group and keep unrelated groups unchanged."
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "The OS line explicitly states closed lips and no mouth movement.",
+      "fix_instruction": "If failed, repair only the cited group and keep unrelated groups unchanged."
+    },
+    {
+      "group": "第4组",
+      "type": "physical_continuity",
+      "result": "pass",
+      "evidence": "Door and latch movement are physically established; no break-in is added.",
+      "fix_instruction": "If failed, repair only the cited group and keep unrelated groups unchanged."
+    },
+    {
+      "group": "第5组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "Grandfather left and Tiantian/kettle right keep a stable 16:9 confrontation axis.",
+      "fix_instruction": "If failed, repair only the cited group and keep unrelated groups unchanged."
+    },
+    {
+      "group": "第6组",
+      "type": "special_effects",
+      "result": "pass",
+      "evidence": "Black water is only mentioned as a warning; no uncontrolled visual effect appears.",
+      "fix_instruction": "If failed, repair only the cited group and keep unrelated groups unchanged."
+    },
+    {
+      "group": "第7组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "Tiantian retreats right-rear into the bedroom while grandfather remains left in the hall; direction is stable.",
+      "fix_instruction": "If failed, repair only the cited group and keep unrelated groups unchanged."
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "The old photo is taken, shown, turned over and held; tail state has an on-screen source.",
+      "fix_instruction": "If failed, repair only the cited group and keep unrelated groups unchanged."
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

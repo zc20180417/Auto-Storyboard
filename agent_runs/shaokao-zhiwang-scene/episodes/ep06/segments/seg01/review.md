@@ -1,0 +1,111 @@
+{
+  "pass": true,
+  "summary": "seg01草稿已对照第6集原剧本完成竖屏审稿，关键台词、街口空间关系、韩彪回店转场和组时长均满足当前规则。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中老客甲试买、老客乙认出许安、许安点头承认的三句台词均保留，顺序为老客甲对许安、老客乙对许安、许安对老客乙，未新增改变剧情的动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组14秒包含许安翻串撒料、老客甲6字台词、老客乙约18字台词、林小满8字台词和唐婶10字喊话；最长台词4秒承载，字秒比约4.5字/秒，连续动作与对白容量合理。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组将许安摊位与对面韩彪店门口锁定为同一街口外景，韩彪和阿顺在组首已有位置与朝向，韩彪命令阿顺前往对面前人物可用性成立。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "阿顺对韩彪、韩彪对阿顺、路人甲对旁边顾客、路人乙对许安、林小满对许安、许安对林小满均有明确对象，没有假对象或心声口型混用。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第4组尾部最后一把烤串被放到托盘上，第5组组首写许安手边只剩空托盘，林小满仍在小桌旁收钱，韩彪仍在对面店门口，状态连续。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "韩彪转身回店后的店内命令完整保留为'明天起，店里半价，酒水白送。我看他拿什么活。'，对象改为对伙计说，符合原剧本'冲伙计'。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "许安、林小满、唐婶、老客甲、老客乙都在组首空间锁定中有画面位置和身体朝向，发声前均已可见。",
+      "fix_instruction": "已通过；若后续加入新顾客台词，应先在组首或入场动作中让该人物可见。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组强节拍为许安稳定烤制、两名老客品尝评价、林小满记单、唐婶喊客，分布在4个时间段内，没有同时叠加外部事件和关键道具转移。",
+      "fix_instruction": "已通过；若要增加更多顾客对白，应另起组或压缩非关键围观动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾部顾客围上摊前，第3组组首继续写顾客围在许安摊前，同时引入对面店门口的韩彪观察，街口外景连续。",
+      "fix_instruction": "已通过；若改成韩彪店内观察，则必须另起室内组。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第4组15秒内台词总量约41字，分散在5个时间段；最长单段3秒承载两句短单，字秒比约4.7字/秒，未超过硬上限。",
+      "fix_instruction": "已通过；若加长路人抢购台词，需重新计算字秒比。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第5组仍为街口外景，韩彪和阿顺在组首位于对面店门口，最后一个时间段写韩彪掀开门帘走进店内，为第6组室内起点提供可见过渡。",
+      "fix_instruction": "已通过；如果把韩彪店内命令放入本组，将造成室外室内混用，应保持第6组单独承载。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第6组关键道具为收银台、酒水箱、菜单牌和店门帘，韩彪在收银台前下令，酒水白送的对象有可见酒水箱支撑，未出现道具归属跳变。",
+      "fix_instruction": "已通过；若后续出现改价牌或酒水发放动作，需要补出拿起、递出或更换菜单牌的可见过程。"
+    },
+    {
+      "group": "全段",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模型说明词、参考图、模板编号、官方模板、自动正反打、字幕贴片或非短剧模板语气，负面提示词保持自然分镜尾部约束。",
+      "fix_instruction": "已通过；后续不得加入工程说明或官方模板占位符。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

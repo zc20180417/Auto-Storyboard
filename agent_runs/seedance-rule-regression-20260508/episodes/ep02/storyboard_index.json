@@ -1,0 +1,149 @@
+{
+  "project": "EP-02",
+  "episode_id": "EP02",
+  "cuts": [
+    {
+      "cut_id": "EP02-G01",
+      "group_index": 1,
+      "title": "林家饭桌怒火",
+      "scene": "林家小屋内",
+      "characters": [
+        "林跃",
+        "林建国",
+        "张桂兰"
+      ],
+      "props": [
+        "饭桌",
+        "凉饭菜",
+        "窗户",
+        "锄头"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP02-G02",
+      "group_index": 2,
+      "title": "林跃拦父",
+      "scene": "林家小屋门边",
+      "characters": [
+        "林跃",
+        "林建国",
+        "张桂兰"
+      ],
+      "props": [
+        "锄头",
+        "饭桌"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 12,
+      "group_end_sec": 25,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP02-G03",
+      "group_index": 3,
+      "title": "村委会低头进门",
+      "scene": "村委会办公室内",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强"
+      ],
+      "props": [
+        "办公桌",
+        "茶杯",
+        "椅子",
+        "办公室门"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 25,
+      "group_end_sec": 38,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP02-G04",
+      "group_index": 4,
+      "title": "转让协议递出",
+      "scene": "村委会办公室内",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强"
+      ],
+      "props": [
+        "办公桌",
+        "协议",
+        "茶杯"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 38,
+      "group_end_sec": 52,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP02-G05",
+      "group_index": 5,
+      "title": "暗写小字",
+      "scene": "村委会办公室内",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强"
+      ],
+      "props": [
+        "办公桌",
+        "协议",
+        "印泥盒",
+        "笔"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 52,
+      "group_end_sec": 65,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP02-G06",
+      "group_index": 6,
+      "title": "手印落下",
+      "scene": "村委会办公室内",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强"
+      ],
+      "props": [
+        "办公桌",
+        "协议",
+        "印泥盒",
+        "办公室门"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 65,
+      "group_end_sec": 77,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP02-G07",
+      "group_index": 7,
+      "title": "门外冷笑",
+      "scene": "村委会办公室门口与门内可见区域",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强"
+      ],
+      "props": [
+        "协议",
+        "办公室门",
+        "窗户"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 77,
+      "group_end_sec": 90,
+      "source_group_label": "第7组"
+    }
+  ]
+}

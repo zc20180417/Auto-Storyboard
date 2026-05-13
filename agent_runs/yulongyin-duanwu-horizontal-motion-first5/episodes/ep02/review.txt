@@ -1,0 +1,165 @@
+{
+  "pass": true,
+  "summary": "EP02整集已对照原剧本和横屏规则复审，11组分镜保留关键台词、动作因果、道具归属与横屏运镜设计，未发现阻断交付的hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "天天缩手、小爪子松开跌回黑暗、天天说“对不起！我不是故意的！”和青蓝光熄灭均按原剧本顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "半壶清水从堂屋桌面被天天抓起，闪回中的陶笛由爸爸递给小天天，现实水壶和记忆陶笛的归属都清楚。"
+    },
+    {
+      "group": "第4组",
+      "type": "camera_motion",
+      "evidence": "横向跟拍交代天天从村路回到裂缝，固定近景锁住开盖，推近水滴路径落入裂缝，每段都有明确服务目的。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "天天“你……你像水做的一样。太神奇了。”放在4秒中近景内，约15个有效字，字秒比约3.8，节奏可表演。"
+    },
+    {
+      "group": "第6组",
+      "type": "horizontal_composition",
+      "evidence": "小龙在右下、黑水滩在右侧外沿、天天在左侧，尾巴扫向黑水的横向危险路径清楚可见。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "evidence": "天天扶住水壶对画面右下小龙喊“快！爬进水壶里！里面安全！”，小龙和壶口都在同框内，对象明确。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "evidence": "河床到卧室被标明为连续动作蒙太奇，壶盖拧紧、抱壶奔回和卧室书桌落点完整，跨空间不会被误读为同一地点。"
+    },
+    {
+      "group": "第11组",
+      "type": "script_fidelity",
+      "evidence": "壶壁出现船头高昂、船尾下沉的龙舟轮廓，并保留天天“这是一个……龙舟？”和“你想去找一条船？”两句原台词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "天天始终位于画面左侧，裂缝、小爪子和陶笛在画面右下，求救视线和说话方向连续。",
+      "fix_instruction": "如后续修改，应保持天天左、裂缝右的轴线，除非补充明确换边动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "固定中景承载口型和裂缝对象，后拉交代村口方向，横向跟拍服务天天离开取水。",
+      "fix_instruction": "如缩短奔跑，应保留裂缝和村口方向同框的路线交代。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "爸爸两句台词均由闪回中画面右侧爸爸现场开口承载，面对画面左侧小天天，口型对象明确。",
+      "fix_instruction": "若调整闪回，应继续写明爸爸和小天天的左右关系以及递陶笛动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "水壶从胸前到开盖再到倾斜滴水，壶盖、壶口和清水落点均有可见过渡。",
+      "fix_instruction": "若合并镜头，不要删除开盖或壶口朝向裂缝的关键状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "小龙从裂缝右下探头后与天天同框，天天的惊喜台词有可见听者和反应对象。",
+      "fix_instruction": "若改为小龙特写，应在台词镜头恢复天天与小龙的同框关系。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "喝水变亮、甩尾接近黑水、尾尖变灰和天天警告被拆成四段，12秒内动作链可表演。",
+      "fix_instruction": "不要把灼伤特写和天天警告压进同一短镜头。"
+    },
+    {
+      "group": "第7组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "第6组尾部天天准备转移水壶，第7组组首接续为水壶横放裂缝边缘，壶口朝向小龙，调度连续。",
+      "fix_instruction": "若调整壶口位置，应同步改组首空间锁定、镜头描述和组尾衔接。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组小龙靠近壶口，第8组小龙进入壶底并由天天拧盖带走，动作承接清楚。",
+      "fix_instruction": "如删减转场，仍需保留入壶、拧盖、抱壶进卧室三个状态点。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天在画面左侧对水壶里的小龙说“别怕，我带你回家了，这里没有黑水。”，小龙在壶底右侧可见。",
+      "fix_instruction": "若改近景，应避免把台词写成对空气说，需保留水壶或小龙作为对象。"
+    },
+    {
+      "group": "第10组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "固定中近景稳定自责台词，壶内推近承接小龙睁眼，固定特写锁住尾巴划雾，摇回天天疑问，运镜服务信息传递。",
+      "fix_instruction": "若增加镜头运动，应避免破坏壶壁划痕和天天视线的空间关系。"
+    },
+    {
+      "group": "第11组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "龙舟信息被转译成壶壁水雾擦出的可见轮廓，天天震惊与追问均有壶壁图案作为视觉依据。",
+      "fix_instruction": "若强化龙舟图案，应继续通过壶壁线条呈现，不加入旁白解释。"
+    },
+    {
+      "group": "第11组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现模板编号、参考图占位、首尾帧、视频延长、一镜到底或官方模板说明，负向词不替代分镜正文。",
+      "fix_instruction": "如继续使用Seedance参考，只吸收时间段和短剧表演结构，不写工程占位词。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

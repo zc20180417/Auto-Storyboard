@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "EP-04-ep04-agent-cli-storyboard.txt",
+  "summary": "EP04分镜完成，共8组覆盖4个场景（考场问答、走廊对峙、书房对弈、公寓谈判），全部通过审核无硬性问题。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

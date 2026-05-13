@@ -1,0 +1,141 @@
+{
+  "pass": true,
+  "summary": "EP02横屏重生成已覆盖裂缝救援、父亲闪回、小龙现身、黑水灼伤、入壶安置和龙舟线索，格式、台词忠实度、物理连续性与横屏调度均可交付。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "special_effects": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留陶笛冰凉触感、小爪子松开、天天道歉和“你千万别死！等我回来救你！”台词，未改变救援动机。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "evidence": "第3组爸爸以男性父亲身份在闪回中出场，背破旧行囊递陶笛，两句原台词均由爸爸对天天说出。"
+    },
+    {
+      "group": "第4组",
+      "type": "physical_continuity",
+      "evidence": "第4组水壶先壶口朝上开盖，再由天天双手倾斜滴水，壶身有支撑，清水落入裂缝的动作可执行。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "第6组黑水灼伤尾尖后，水壶由天天左手托壶底、右手扶壶颈，壶口略高于水面，为小龙爬入提供物理可行路线。"
+    },
+    {
+      "group": "第8组",
+      "type": "narrative_progression",
+      "evidence": "第8组从灰白尾尖证据推进到天天自责、小龙睁眼回应和尾巴划开水雾，新线索由受伤状态自然引出。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "evidence": "第9组龙舟信息由湿痕轮廓和天天台词共同表达，未使用字幕、硬字、参考图、首帧尾帧或模型说明词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "special_effects",
+      "result": "pass",
+      "evidence": "小龙正式现身前仅以小爪子和极弱青蓝光表现，裂缝内效果克制，没有卡通萌宠、怪物化或科幻激光感。",
+      "fix_instruction": "若不通过，应删去完整小龙提前展示和夸张光效，只保留局部小爪子、微光与天天反应。"
+    },
+    {
+      "group": "第2组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "第2组明确河床到村路再到堂屋的左右方向，桌面水壶在画面右侧，天天从左侧推进到右侧桌边，横屏空间清楚。",
+      "fix_instruction": "若不通过，应补足画面左/右、前/后景和水壶位置，避免单人居中跑动。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "爸爸两句台词分别给4秒，字秒比低于硬上限，且使用稳定双人中景和过肩近中景承载口型。",
+      "fix_instruction": "若不通过，应拆分台词镜头或延长承载镜头，不得压缩原台词含义。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天低头对右下裂缝内的小龙喊“你还在吗？我带水来了！干净的水！”，视线和对话对象明确。",
+      "fix_instruction": "若不通过，应写清天天面向裂缝内小龙说话，不能写成无对象喊话。"
+    },
+    {
+      "group": "第5组",
+      "type": "narrative_progression",
+      "result": "pass",
+      "evidence": "第5组按清水落点后小龙探头、天天惊喜、小龙舔水、身体变亮、尾巴靠近黑水推进，恢复与危险链条连续。",
+      "fix_instruction": "若不通过，应补足喝水恢复到黑水危险的过渡，避免只重复神奇反应。"
+    },
+    {
+      "group": "第6组",
+      "type": "physical_continuity",
+      "result": "pass",
+      "evidence": "第6组写明壶口朝向小龙并略高于壶内剩水、壶底由天天托住，规避装水容器平放但不漏的矛盾。",
+      "fix_instruction": "若不通过，应明确容器支撑、水线和壶口高度，或改成正在倒水而非保存水。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "小龙完全进入壶底后，天天把壶身竖正并拧盖，随后抱回卧室并端正放上书桌，水壶状态连续。",
+      "fix_instruction": "若不通过，应补写小龙入壶完成、壶身竖正、盖子状态和书桌支撑。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第8组保留小龙蜷缩壶底、灰白尾巴刺眼、天天“都怪我没早点发现那些黑水有毒”的自责和小龙睁眼回应。",
+      "fix_instruction": "若不通过，应恢复尾巴伤痕、天天自责台词和小龙回应，不得改成额外治愈动作。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "龙舟线索用壶壁水雾被擦出的船头高昂、船尾下沉轮廓表现，再由天天说出台词确认，画面可生成且不依赖小字。",
+      "fix_instruction": "若不通过，应改为可见轮廓加人物台词或反应，不要依赖屏幕文字或说明牌。"
+    },
+    {
+      "group": "第9组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "运镜强化词明确稳定近中景提问、壶壁特写揭示图形、反打和双主体镜头完成理解，没有空泛写增强电影感。",
+      "fix_instruction": "若不通过，应补充每组镜头运动对象、服务目的和落点。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

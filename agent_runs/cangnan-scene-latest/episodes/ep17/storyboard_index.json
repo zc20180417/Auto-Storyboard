@@ -1,0 +1,286 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP17",
+  "cuts": [
+    {
+      "cut_id": "EP17-G01",
+      "group_index": 1,
+      "title": "银行下班前的拦截",
+      "scene": "商业银行大厅",
+      "characters": [
+        "陆凡",
+        "马行长"
+      ],
+      "props": [
+        "公文包",
+        "汇款单资料"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP17-G02",
+      "group_index": 2,
+      "title": "录音震住保安",
+      "scene": "商业银行大厅",
+      "characters": [
+        "陆凡",
+        "马行长",
+        "保安"
+      ],
+      "props": [
+        "公文包",
+        "手机",
+        "警棍"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 13,
+      "group_end_sec": 28,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP17-G03",
+      "group_index": 3,
+      "title": "马行长强撑否认",
+      "scene": "商业银行大厅",
+      "characters": [
+        "陆凡",
+        "马行长",
+        "保安"
+      ],
+      "props": [
+        "手机",
+        "警棍",
+        "公文包"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 28,
+      "group_end_sec": 40,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP17-G04",
+      "group_index": 4,
+      "title": "林夏带人入场",
+      "scene": "商业银行大厅",
+      "characters": [
+        "陆凡",
+        "马行长",
+        "保安",
+        "林夏",
+        "纪委干部"
+      ],
+      "props": [
+        "手机",
+        "警棍",
+        "公文包",
+        "文件夹"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 40,
+      "group_end_sec": 52,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP17-G05",
+      "group_index": 5,
+      "title": "追回十亿专户",
+      "scene": "商业银行大厅",
+      "characters": [
+        "陆凡",
+        "马行长",
+        "林夏",
+        "纪委干部",
+        "保安"
+      ],
+      "props": [
+        "手机",
+        "公文包",
+        "柜台电脑"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 52,
+      "group_end_sec": 66,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP17-G06",
+      "group_index": 6,
+      "title": "运钞车开进工地",
+      "scene": "黑风山工地",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "工人们"
+      ],
+      "props": [
+        "武装运钞车",
+        "成捆现金"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 66,
+      "group_end_sec": 79,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP17-G07",
+      "group_index": 7,
+      "title": "工人领到双倍工资",
+      "scene": "黑风山工地",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "工人们",
+        "工人甲"
+      ],
+      "props": [
+        "成捆现金",
+        "临时发放桌"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 79,
+      "group_end_sec": 92,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP17-G08",
+      "group_index": 8,
+      "title": "嘉禾不欠一分钱",
+      "scene": "黑风山工地",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "工人们"
+      ],
+      "props": [
+        "成捆现金",
+        "临时发放桌"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 92,
+      "group_end_sec": 103,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP17-G09",
+      "group_index": 9,
+      "title": "山坡车内的阴影",
+      "scene": "黑风山远处山坡车内",
+      "characters": [
+        "宋子昂"
+      ],
+      "props": [
+        "轿车",
+        "车窗"
+      ],
+      "duration_sec": 6,
+      "group_start_sec": 103,
+      "group_end_sec": 109,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP17-G10",
+      "group_index": 10,
+      "title": "车厢里的求援电话",
+      "scene": "劳斯莱斯车厢",
+      "characters": [
+        "宋子昂",
+        "王局长"
+      ],
+      "props": [
+        "方向盘",
+        "手机"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 109,
+      "group_end_sec": 123,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP17-G11",
+      "group_index": 11,
+      "title": "伪造祖产的阴招",
+      "scene": "劳斯莱斯车厢",
+      "characters": [
+        "宋子昂",
+        "王局长"
+      ],
+      "props": [
+        "手机",
+        "方向盘"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 123,
+      "group_end_sec": 136,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP17-G12",
+      "group_index": 12,
+      "title": "执法车冲到主干道",
+      "scene": "黑风山主干道",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "王局长",
+        "执法队员",
+        "工人们"
+      ],
+      "props": [
+        "土地局执法车",
+        "警笛",
+        "挖掘机"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 136,
+      "group_end_sec": 148,
+      "source_group_label": "第12组"
+    },
+    {
+      "cut_id": "EP17-G13",
+      "group_index": 13,
+      "title": "百年地契压场",
+      "scene": "黑风山主干道",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "王局长",
+        "执法队员",
+        "工人们"
+      ],
+      "props": [
+        "地契",
+        "执法车",
+        "警戒线卷筒"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 148,
+      "group_end_sec": 162,
+      "source_group_label": "第13组"
+    },
+    {
+      "cut_id": "EP17-G14",
+      "group_index": 14,
+      "title": "封线驱赶工人",
+      "scene": "黑风山主干道",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "王局长",
+        "执法队员",
+        "工人们"
+      ],
+      "props": [
+        "地契",
+        "警戒线",
+        "执法车"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 162,
+      "group_end_sec": 177,
+      "source_group_label": "第14组"
+    }
+  ]
+}

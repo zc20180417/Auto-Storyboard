@@ -1,0 +1,104 @@
+{
+  "pass": true,
+  "summary": "ep18 assembled final preserves all four scenes, uses 9 vertical groups with stable cut_id values, clear dialogue targets, valid timing, continuous certificate ownership, and no hard reviewer issues.",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留宋子昂从迈巴赫旁压场、抽雪茄嘲讽陆凡、陆凡反问地契、王局长举地契呵斥的原剧本顺序。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "evidence": "老馆长在第3组组首已位于桑塔纳车旁并抱着木盒，随后下车、报告和交盒前可见可用。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组2-7.5秒约26字、7.5-13秒约25字，字秒比约4.6-4.8，证据揭示台词节奏合理。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "第5组尾宋子昂和陆凡各握证书一端，第6组组首延续该状态，第6组内证书拉扯没有跳变。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "evidence": "第6组尾江若晴举手机录像且两人仍握证书，第7组首复述手机、执法记录仪和证书状态，再写宋子昂松手。"
+    },
+    {
+      "group": "第9组",
+      "type": "space_locking",
+      "evidence": "第9组单一发生在豪华地下拳馆内，组首锁定八角笼、宋子昂、疯狗、倒地拳手和现金桌面位置。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "宋子昂、陆凡的现场对白均写明对陆凡或宋子昂说道，短句交锋没有假对白对象。",
+      "fix_instruction": "若不通过，应逐句补足真实对话对象。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "土地捐赠证书、五十年前捐给国家、无偿捐赠协议、太爷爷签名手印和宋子昂后退均保留。",
+      "fix_instruction": "若不通过，应补回证书信息和宋子昂反应。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "王局长撤队、宋子昂辱骂、抢证书、陆凡握住另一端拆成4段12秒，动作与对白负载可表演。",
+      "fix_instruction": "若不通过，应拆出抢证书动作或减少同组强节拍。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "证书从两人各握一端进入拉扯，陆凡不推不拉、宋子昂撕不动，道具受力和归属清楚。",
+      "fix_instruction": "若不通过，应补充证书两端归属和拉扯动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "宋子昂看群众和执法记录仪后松手，陆凡将证书交还老馆长，宋子昂威胁并钻进车逃走均按原剧本保留。",
+      "fix_instruction": "若不通过，应补齐松手、交还、威胁和逃走。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组从白天道路事件结束，第8组明确切到夜晚豪华地下拳馆新空间，空间跳转由新场景组首锁定承载。",
+      "fix_instruction": "若不通过，应另起新组并明确夜晚地下拳馆空间。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文无模型说明词、参考图、模板编号、字幕占位或模板化批量描述，暴力威胁来自原剧本台词。",
+      "fix_instruction": "若不通过，应删除工程词和模板化表达。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

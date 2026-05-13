@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "雨龙吟端午-ep04-agent-cli-storyboard.txt",
+  "summary": "村头广场缺水排队被胡永贵霸占水管洗车，天天被推倒后云宝让泥水结冰，天天接满清水；随后胡永贵在车内电话命令炸开后山泉眼并倒废液，天天听见后抱水壶奔向后山阻止。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

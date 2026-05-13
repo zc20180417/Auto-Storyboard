@@ -1,0 +1,90 @@
+{
+  "pass": true,
+  "summary": "ep02 已按 storyboard-reviewer 对照原剧本和最终分镜逐组审核，11组均保留关键台词、动作、空间和道具证据，无硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "generation_density": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "2-6.5秒两句画外音约23个有效字/4.5秒/约5.1字秒比，6.5-8.5秒约11字/2秒/约5.5字秒比，均未超过6.5硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "第5组完整保留朱文浩关于商业受贿坐实、苏长明认账、监察部黑锅的三连质问，以及王涛走错门、抱袋逃跑和朱文浩心声。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "evidence": "第7组主要从客厅开始，高明上楼查文件明确写为蒙太奇转场，组首仍锁定朱天和、高明、朱文浩在客厅的初始位置。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "evidence": "第8组朱天和问朱文浩、朱文浩对朱天和说明王涛栽赃、朱天和对朱文浩怒声判断连环杀招，所有真人对白均写明对象。"
+    },
+    {
+      "group": "第11组",
+      "type": "timing_math",
+      "evidence": "第11组时间段为0-3秒、3-6秒、6-9秒、9-11秒，镜头时长相加11秒，与标题总时长和镜头数4个一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "楼下敲门通过朱文浩停笔、抬眼看向书房门承载，有声事件有可见反应；心声写明嘴唇闭合、不做口型。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩在门框中间、王涛在门外台阶并提两个黑袋子，后续对话、往里挤和阻挡都发生在已锁定位置内。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组是同一门口对峙中的连续逼问和逃离，0-8.5秒承载三句质问，8.5-13秒给王涛后退和逃跑动作，13-15秒收心声，节拍清楚。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "高明上楼检查属于明确蒙太奇转场，未把客厅和二楼书房门口伪装成同一连续物理空间；组尾回到客厅并让高明退出。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组组尾高明关门退出、朱天和坐到沙发上、朱文浩站在茶几旁；第8组组首延续关闭的门、沙发上的朱天和和茶几旁朱文浩。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第11组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第11组保留朱文浩递出城投三亿亏空资料、朱天和询问烂账底牌、朱文浩说明这是掀翻总裁位置的杀招，没有新增额外剧情。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "episode_number": 2,
+  "display_name": "苍南风云-第02集",
+  "series_title": "苍南风云",
+  "source_path": "G:\\Auto-Storyboard\\split_scripts\\cangnan-fengyun\\苍南风云-第02集.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_cangnan_scene_latest\\苍南风云-ep02-agent-cli-storyboard.txt",
+  "storyboard_aspect": "vertical",
+  "generator_skill_name": "storyboard-generator",
+  "reviewer_skill_name": "storyboard-reviewer",
+  "reviewer_source": "storyboard-reviewer"
+}

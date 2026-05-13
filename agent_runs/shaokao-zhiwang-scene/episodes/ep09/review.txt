@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "summary": "ep09 汇总分镜忠实保留断供、稳客和马会送纸条的剧情链路，5个分镜组格式完整，空间、台词承载、道具连续性和节奏均通过审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中许安追问王哥和刘叔、肉贩甲说没了、肉贩乙说不好卖、林小满追问韩彪是否找过他们、肉贩乙低声说还要做生意，均按原顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "0-4秒约20字对白，约5.0字/秒；4-9.5秒约16字对白并含穿串动作，约2.9字/秒但有持续动作支撑；9.5-14秒约17字对白，约3.8字/秒，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "组首写明收摊后的街口空地、许安在烤炉旁、林小满在小桌旁、马会位于背景暗巷阴影里且纸条在他手中，马会入场和递纸条发生在发言前，人物可用性成立。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "纸条从组首马会手中，到2.5-5秒塞进许安手心，再到8-10秒许安捏着纸条、10-15秒低头看纸条并握紧，归属变化有可见过渡。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "许安分别对肉贩甲、肉贩乙发问，肉贩甲和肉贩乙分别对许安回应，林小满对肉贩乙追问，全部现场对白都有真实对象。",
+      "fix_instruction": "若不通过，应补齐每句现场对白的说话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组结束时许安和林小满看向肉贩乙，第2组开头仍在同一通道面对肉贩乙；第2组尾部两人带少量肉料往街口离开，与第3组街口空地开摊形成合理转场。",
+      "fix_instruction": "若不通过，应在组尾或组首补具体人物位置、道具归属和移动动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组承载备货少被发现、对面搞事被提起、许安压住林小满稳客三段连续摊前对话，总时长14秒，动作主要是低头穿串和分到一旁，没有关键道具操作过载。",
+      "fix_instruction": "若不通过，应拆分顾客质问和许安稳客两个节拍。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留许安把仅剩货分着烤、每桌都照顾到、唐婶说硬扛、许安回应只要炉子还点着就不算输的核心动作和台词。",
+      "fix_instruction": "若不通过，应恢复原剧本台词和分烤动作，不添加无关转折。"
+    },
+    {
+      "group": "第5组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "马会和许安的对白均为画面内低声现场开口，林小满只做收桌动作，没有心声、电话音或门外音被错误写成口型。",
+      "fix_instruction": "若不通过，应把非现场声音改为画外音并写明嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集 final 未出现模板编号、官方模板标题、@图片/@视频/@音频、参考模板、自动分镜、自动正反打、Seedance 可等污染词。",
+      "fix_instruction": "若不通过，应移除工程或模板说明，改写为自然分镜画面。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

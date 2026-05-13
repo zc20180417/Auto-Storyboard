@@ -1,0 +1,68 @@
+{
+  "pass": true,
+  "summary": "全集8组分镜通过审核，台词节奏、空间锁定、原剧本忠实度均符合规则要求。无硬错误。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "generation_density": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "0-2秒：'你这是查账，越界了！'9字，情绪对白，9/5.2=1.7秒，2秒合理。2-7秒：'违规特批，总裁兜底吗？''资金暴雷，你拿什么自证清白？'连续对话节拍30字/5秒=6字/秒，低于6.5字/秒硬限制，可接受。7-12秒：'郑总监独断专行。资金流向，我完全插不上手。''您慢点说，我们详细记。'连续对话节拍30字+凉茶动作，5秒内6字/秒，低于6.5硬限制。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "全组保持单一物理空间（东湖湾公寓客厅），0-5秒刀抵喉、5-8秒朱文浩冷静回应、8-12秒手指喉咙讲解，无跨场景硬切。苏清寒手部特写和朱文浩近景均在同一客厅空间内完成。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "原剧本所有关键台词完整保留：'为什么帮我？''不是帮你。是让你欠我。''欠我的债，要用忠诚来还。'心声'他可怕得让人心安。这是什么样的怪物？'正确标注为心声、嘴唇闭合不做口型。门关上、瘫坐沙发、看刀等动作全部保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩和赵德胜均在组首空间锁定中拥有明确位置和朝向：赵德胜坐在办公桌后方（画面深处），朱文浩站在门口（手持报到证）。两人后续对话和动作均在组首已声明的位置范围内发生。",
+      "fix_instruction": "N/A"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组（会议室）到第5组（公寓）是场景切换，不要求连续性。第5组到第6组同在东湖湾公寓客厅：第5组尾部朱文浩合上报表放在茶几上、苏清寒站在身旁；第6组组首朱文浩坐在沙发上、茶几上放着合上的财务报表、苏清寒站在茶几旁，位置和道具状态连续。",
+      "fix_instruction": "N/A"
+    },
+    {
+      "group": "第2组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "第2组心声'想看我出丑？好戏刚开始'已正确标注为心声格式，画面中朱文浩嘴唇闭合、不做口型，视线看向走廊尽头，冷笑表情可见。不可视的内心想法通过嘴角冷笑、锐利眼神等可拍细节转译。",
+      "fix_instruction": "N/A"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "space_locking",
+      "problem": "第2组从办公室切换到走廊，属于同楼层相邻空间的连续动作过渡，可接受。",
+      "evidence": "0-7秒在办公室内（赵德胜办公室），7-12秒朱文浩推开房门走出至走廊。走廊与办公室属同一楼层相邻空间，通过'推门走出'连续动作衔接。",
+      "fix": "无需修改，连续过渡动作已明确。"
+    }
+  ]
+}

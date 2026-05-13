@@ -1,0 +1,252 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP22",
+  "cuts": [
+    {
+      "cut_id": "EP22-G01",
+      "group_index": 1,
+      "title": "账本封存暗示做假",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "审计员"
+      ],
+      "props": [
+        "账本",
+        "会议桌",
+        "黑色U盘",
+        "电脑"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP22-G02",
+      "group_index": 2,
+      "title": "黑色U盘植入烂账",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "审计员"
+      ],
+      "props": [
+        "黑色U盘",
+        "电脑",
+        "会议桌",
+        "账本"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 13,
+      "group_end_sec": 28,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP22-G03",
+      "group_index": 3,
+      "title": "陆凡林夏闯入质问",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "陆凡",
+        "林夏"
+      ],
+      "props": [
+        "会议桌",
+        "账本",
+        "打印流水单",
+        "会议室大门"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 28,
+      "group_end_sec": 42,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP22-G04",
+      "group_index": 4,
+      "title": "假流水指控陆凡",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "陆凡",
+        "林夏"
+      ],
+      "props": [
+        "打印流水单",
+        "会议桌",
+        "账本"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 42,
+      "group_end_sec": 56,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP22-G05",
+      "group_index": 5,
+      "title": "安保逼近陆凡反问",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "陆凡",
+        "两名手下"
+      ],
+      "props": [
+        "会议桌",
+        "打印流水单"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 56,
+      "group_end_sec": 70,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP22-G06",
+      "group_index": 6,
+      "title": "云备份揭开篡改痕迹",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "陆凡"
+      ],
+      "props": [
+        "手机",
+        "大屏幕",
+        "真实账目",
+        "篡改痕迹",
+        "会议桌"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 70,
+      "group_end_sec": 85,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP22-G07",
+      "group_index": 7,
+      "title": "吴总监下令砸主机",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "陆凡",
+        "两名手下"
+      ],
+      "props": [
+        "大屏幕",
+        "主机",
+        "会议桌"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 85,
+      "group_end_sec": 97,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP22-G08",
+      "group_index": 8,
+      "title": "经侦警察封存设备",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "陆凡",
+        "两名手下",
+        "经侦警察"
+      ],
+      "props": [
+        "大屏幕",
+        "主机",
+        "会议桌"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 97,
+      "group_end_sec": 110,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP22-G09",
+      "group_index": 9,
+      "title": "夺下镇纸再加一条",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "陆凡",
+        "林夏",
+        "经侦警察"
+      ],
+      "props": [
+        "镇纸",
+        "会议桌",
+        "大屏幕",
+        "主机"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 110,
+      "group_end_sec": 123,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP22-G10",
+      "group_index": 10,
+      "title": "吴总监急召李队长",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "陆凡",
+        "李队长",
+        "经侦警察"
+      ],
+      "props": [
+        "会议桌",
+        "大屏幕",
+        "主机"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 123,
+      "group_end_sec": 138,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP22-G11",
+      "group_index": 11,
+      "title": "吴总监反咬陆凡",
+      "scene": "乡政府会议室",
+      "characters": [
+        "吴总监",
+        "陆凡",
+        "李队长"
+      ],
+      "props": [
+        "会议桌",
+        "大屏幕"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 138,
+      "group_end_sec": 151,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP22-G12",
+      "group_index": 12,
+      "title": "至尊黑卡与加密证据链",
+      "scene": "乡政府会议室",
+      "characters": [
+        "陆凡",
+        "李队长",
+        "吴总监"
+      ],
+      "props": [
+        "至尊黑卡",
+        "平板电脑",
+        "加密证据链",
+        "大屏幕",
+        "会议桌"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 151,
+      "group_end_sec": 164,
+      "source_group_label": "第12组"
+    }
+  ]
+}

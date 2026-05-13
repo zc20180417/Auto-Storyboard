@@ -1,0 +1,207 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP27",
+  "cuts": [
+    {
+      "cut_id": "EP27-G01",
+      "group_index": 1,
+      "title": "物资抵达工地复工",
+      "scene": "黑风山主干道",
+      "characters": [
+        "陆凡",
+        "工人甲",
+        "工人们"
+      ],
+      "props": [
+        "集装箱",
+        "钢筋",
+        "建材",
+        "挖掘机",
+        "推土机"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP27-G02",
+      "group_index": 2,
+      "title": "江若晴震撼追问陆凡",
+      "scene": "黑风山主干道",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "工人们"
+      ],
+      "props": [
+        "钢筋",
+        "建材",
+        "挖掘机",
+        "推土机"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 13,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP27-G03",
+      "group_index": 3,
+      "title": "商会大厦资金噩耗",
+      "scene": "省城商会大厦大厅",
+      "characters": [
+        "赵家主",
+        "秘书"
+      ],
+      "props": [
+        "功夫茶杯",
+        "大门",
+        "手机"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 26,
+      "group_end_sec": 40,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP27-G04",
+      "group_index": 4,
+      "title": "三大家主同时崩盘",
+      "scene": "省城商会大厦大厅",
+      "characters": [
+        "赵家主",
+        "李家主",
+        "钱家主",
+        "秘书"
+      ],
+      "props": [
+        "手机",
+        "茶桌",
+        "功夫茶杯碎片"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 40,
+      "group_end_sec": 53,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP27-G05",
+      "group_index": 5,
+      "title": "豪门家主冲到工地求饶",
+      "scene": "黑风山工地",
+      "characters": [
+        "陆凡",
+        "赵家主",
+        "李家主",
+        "钱家主"
+      ],
+      "props": [
+        "三辆劳斯莱斯",
+        "泥泞路面",
+        "警车"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 53,
+      "group_end_sec": 66,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP27-G06",
+      "group_index": 6,
+      "title": "陆凡命令三人自首",
+      "scene": "黑风山工地",
+      "characters": [
+        "陆凡",
+        "赵家主",
+        "李家主",
+        "钱家主"
+      ],
+      "props": [
+        "警车",
+        "泥泞路面",
+        "三辆劳斯莱斯"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 66,
+      "group_end_sec": 80,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP27-G07",
+      "group_index": 7,
+      "title": "加密视频来电现身",
+      "scene": "黑风山工地",
+      "characters": [
+        "陆凡",
+        "龙天傲"
+      ],
+      "props": [
+        "手机",
+        "钢筋建材",
+        "施工机械"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 80,
+      "group_end_sec": 93,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP27-G08",
+      "group_index": 8,
+      "title": "龙天傲隔屏威胁陆凡",
+      "scene": "黑风山工地",
+      "characters": [
+        "陆凡",
+        "龙天傲"
+      ],
+      "props": [
+        "手机",
+        "钢筋建材",
+        "施工机械"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 93,
+      "group_end_sec": 107,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP27-G09",
+      "group_index": 9,
+      "title": "龙天傲接鬼王下机",
+      "scene": "省城私人停机坪",
+      "characters": [
+        "龙天傲",
+        "鬼王"
+      ],
+      "props": [
+        "豪华客机",
+        "红地毯",
+        "重装防弹越野车"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 107,
+      "group_end_sec": 121,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP27-G10",
+      "group_index": 10,
+      "title": "鬼王出手车队开往黑风山",
+      "scene": "省城私人停机坪",
+      "characters": [
+        "龙天傲",
+        "鬼王"
+      ],
+      "props": [
+        "红地毯",
+        "重装防弹越野车",
+        "豪华客机"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 121,
+      "group_end_sec": 135,
+      "source_group_label": "第10组"
+    }
+  ]
+}

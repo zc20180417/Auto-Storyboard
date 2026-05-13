@@ -1,0 +1,129 @@
+{
+  "project": "EP-01",
+  "episode_id": "EP01",
+  "cuts": [
+    {
+      "cut_id": "EP01-G01",
+      "group_index": 1,
+      "title": "晒谷场绑缚问罪",
+      "scene": "夏日晴天的晒谷场，烈日直照，地面干硬泛白，木桩立在场地中央，外围围着几十个村民，远处有电线杆和低矮村屋。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "林建国",
+        "张桂兰",
+        "众村民"
+      ],
+      "props": [
+        "木桩",
+        "麻绳",
+        "剪断电线"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP01-G02",
+      "group_index": 2,
+      "title": "挣断麻绳反问赃物",
+      "scene": "同一夏日晴天晒谷场，木桩仍在场地中央，村民围圈未散，地面尘土被脚步踩出浅痕，赵家父子站在林跃正前方。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "众村民"
+      ],
+      "props": [
+        "麻绳",
+        "木桩",
+        "剪断电线"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 13,
+      "group_end_sec": 25,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP01-G03",
+      "group_index": 3,
+      "title": "红泥鞋底露破绽",
+      "scene": "晒谷场同一位置，人群围圈被林跃的目光切开，赵大强身边的李二狗站在人群边缘，远处电线杆下隐约可见一片红泥地。",
+      "characters": [
+        "林跃",
+        "赵大强",
+        "李二狗",
+        "众村民"
+      ],
+      "props": [
+        "李二狗的泥鞋",
+        "红泥"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 25,
+      "group_end_sec": 39,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP01-G04",
+      "group_index": 4,
+      "title": "赵大强色厉内荏",
+      "scene": "晒谷场人群中央，红泥鞋底仍暴露在众人视线里，村民围圈开始松动，赵大强站在赵百川一侧，脸色发紧。",
+      "characters": [
+        "林跃",
+        "赵大强",
+        "李二狗",
+        "众村民"
+      ],
+      "props": [
+        "红泥鞋"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 39,
+      "group_end_sec": 52,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP01-G05",
+      "group_index": 5,
+      "title": "眼色暗令王四退场",
+      "scene": "晒谷场冲突稍缓，人群仍未散开，木桩和断绳留在场地中央，通往村头水渠的小路在背景一侧露出入口。",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "林建国",
+        "张桂兰",
+        "供水员王四",
+        "众村民"
+      ],
+      "props": [
+        "断绳"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 52,
+      "group_end_sec": 62,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP01-G06",
+      "group_index": 6,
+      "title": "水渠暗手断流",
+      "scene": "村头水渠边的夏日晴天，水渠总闸旁长着杂草，锈迹斑斑的铁阀门固定在石砌闸口上，一条水渠通向林家果园方向。",
+      "characters": [
+        "供水员王四",
+        "赵百川"
+      ],
+      "props": [
+        "水渠总闸",
+        "铁阀门",
+        "水渠"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 62,
+      "group_end_sec": 73,
+      "source_group_label": "第6组"
+    }
+  ]
+}

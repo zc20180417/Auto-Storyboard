@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "ep30 分镜保留了证券交易所、村口新桥、四合院团圆三段剧情和全部关键台词，5组均满足10-15秒、空间、口型、连续性和污染门禁。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组台词分散在0-3秒、6-10秒、10-14秒，最长台词约9字/4秒，明显低于6.5字/秒；敲钟声来自可见鼓槌动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组完整保留赵朵朵看大屏幕说“这只是一个新起点”、转身命令助理启动希望小学、助理询问第一站、赵朵朵回答远县北沟村。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组组首锁定远县北沟村村口外、水泥大桥、赵朵朵、赵大雷、村长和村民位置，整组未跨越其他物理空间。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "evidence": "第4组继续发生在村口桥头，组首承接第3组尾部的桥头、重卡和赵朵朵/赵大雷位置，随后自然转入回家吃饭对话。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "evidence": "第5组夜晚四合院团圆戏使用端菜、夹肉、举杯、碰杯、吃红烧肉、抬头看星空等可生成动作承载情绪。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "全场欢呼、赵大雷喊话和赵朵朵开口均是画面内现场对白；铜钟声来源是3-6秒鼓槌落钟。",
+      "fix_instruction": "无；保持声音来源与现场口型区分清楚。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组同一大厅内包含连续短句和助理互动，没有叠加外部事件、长动作或关键道具跳变，15秒内容量可表演。",
+      "fix_instruction": "无；保持连续对话节拍。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "村长对赵朵朵、村民们朝赵朵朵方向、赵大雷和赵朵朵对村民们发言，对象都清楚。",
+      "fix_instruction": "无；保持对白对象明确。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第4组3个时间段为3秒、4秒、6秒，总和13秒，标题镜头数为3个，最后一段结束于13秒。",
+      "fix_instruction": "无；保持时间轴连续。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第5组保留大嫂端菜、桂姨夹肉、赵大雷举杯、赵朵朵举汽水祝福、玻璃杯碰响、咬红烧肉看星空的原剧本顺序。",
+      "fix_instruction": "无；保持家庭团圆动作顺序。"
+    },
+    {
+      "group": "第1组至第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全篇未出现官方模板编号、参考图占位、自动分镜、模型会处理、模板化空话或字幕/BGM工程词。",
+      "fix_instruction": "无；保持最终正文干净。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,85 @@
+{
+  "pass": true,
+  "summary": "ep22 组装稿已按 storyboard-reviewer 完成真实审核，7组均符合竖屏 scene 合同，保留原剧本动作、台词和空间连续性，无 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中沈砚川被急水撞壁、扣住旧石环、说“还没完……”，看见石销和检修槽后说“还有一手。”；第1组按同一顺序保留这些动作和台词，没有新增剧情。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组3-8秒承载三句短台词约19个有效字，5秒约3.8字/秒；8-13秒承载两句追问约10个有效字并包含哭泣和反应，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "evidence": "第4组接第3组洞口外等待判断的状态，林知夏先判断“下口乱石滩！”再喊“闸右有检修槽！”，随后众人冲向坡下，赵有福留在原地，和剧本动作一致。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "第6组始终在旧河道下口乱石滩，组首列明沈砚川、林知夏、沈小禾、周大柱、沈母和村民位置，沈母在背景坡道上远喊，人物可用性清楚。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "evidence": "第7组15秒承载周大柱追问、沈砚川指水线和料场、村民甲确认堵口、沈砚川催众人清理四个连续信息节拍，均围绕同一出口堵塞冲突，没有跨空间或额外强动作。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第2组组首写明断绳垂在石销下方、铁钎位于沈砚川腰侧；0-4秒沈砚川绕绳并抽出铁钎卡缝，7-10秒石销与铁钎受力松动，道具归属和操作连续。",
+      "fix_instruction": "若铁钎凭空出现，应在组首或前一时间段补充归属；当前已交代。"
+    },
+    {
+      "group": "第3组至第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "两组同在旧泄洪洞口外，第3组尾部周大柱急问去哪找沈砚川，第4组组首林知夏在原地判断坡下方向，人物位置与对话逻辑连续。",
+      "fix_instruction": "若第4组直接切到新地点，应补转场或另起空间；当前仍在洞口外。"
+    },
+    {
+      "group": "第5组至第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第5组和第6组均为现场开口对白，沈母“砚川！”写为背景坡道远喊且沈砚川有抬头反应，没有把门外音或心声误写成画面人物口型。",
+      "fix_instruction": "若远喊主体不在画面，应写明声音来源和人物反应；当前已满足。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "第7组每句现场对白均写明对象：周大柱对沈砚川问，沈砚川对周大柱解释，村民甲对身边村民喊，沈砚川对村民甲和众人下令。",
+      "fix_instruction": "若缺少对象，应补成A对B说道/问道/喊道；当前无须修复。"
+    },
+    {
+      "group": "第1组至第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt 未出现Seedance模板编号、参考官方模板、@图片/@视频/@音频、自动正反打、参考图、工程说明或禁止的模板化批量语句。",
+      "fix_instruction": "若发现模板或模型词，应删除并改成自然画面描述；当前无须修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

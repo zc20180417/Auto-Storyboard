@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "summary": "整集 final.txt 已按 storyboard-reviewer 对照第2集剧本、生成规则和 HappyHorse 合同审核，7组均通过，无 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "evidence": "第1组标题总时长12秒，时间段为0-3.5秒、3.5-8秒、8-12秒，连续且末段结束等于标题总时长；镜头数3个与时间段数量一致。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "原剧本要求林跃拿出写好的协议、表示愿意转让果园、请求通水，赵百川接过协议，赵大强凑看后骂怂包；第4组逐项保留这些台词、动作和道具。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "evidence": "林跃在协议末尾加极小字这一隐藏动作通过低角度近景、身体遮挡、笔尖划过纸面来表现，属于可拍细节，未用抽象心理结论替代。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "林跃 OS 被写成内心旁白，画面中林跃嘴唇闭合、不做口型；门内赵大强笑声和纸张声有半开办公室门作为可听来源。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林建国、张桂兰、林跃在【主体】中均有位置、朝向和视线关系；三人说话和动作发生前都已在场。",
+      "fix_instruction": "无需修复；若新增任何动作人物，必须先在【主体】或入场动作中明确可用。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组从村委会办公室内开始，与林家小屋是明确新场景；林跃推门进入后停在办公桌前，组尾状态自然接到第4组递协议。",
+      "fix_instruction": "无需修复；同办公室连续组之间应继续复述人物位置和道具归属。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第4组14秒承载递协议和3句短台词，台词分散在第二、第三、第四段音频中，对应运动段写开口和反应，不存在单段超速硬塞。",
+      "fix_instruction": "无需修复；保持完整台词只在【音频】出现。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组把取印泥盒、犹豫、加小字、催促控制在14秒4段；按手印动作另起第6组，避免关键道具操作和反转动作过载。",
+      "fix_instruction": "无需修复；不要把第6组按手印动作合并进本组。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第6组始终在村委会办公室内，协议、印泥盒、办公室门位置明确；林跃离开只移动到门边，未在同组切到门外走廊。",
+      "fix_instruction": "无需修复；门外冷笑已单独放入第7组。"
+    },
+    {
+      "group": "第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整组使用 HappyHorse 专属段落并将负向词压缩到8项，没有独立 --neg、【技术参数】、参考图、首帧、分辨率或比例信息。",
+      "fix_instruction": "无需修复；保持【画面风格】短写。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

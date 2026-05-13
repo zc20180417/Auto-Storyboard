@@ -1,0 +1,110 @@
+{
+  "pass": true,
+  "summary": "ep17全片七组已对照原剧本和横屏规则审过，祠堂、广场、河床三条空间线清楚，关键台词、道具和危机递进保留，无阻断交付问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "祠堂修鼓段保留牛皮在龙雾中透青光、爸爸上钉、爸爸对云宝原句安抚、云宝虚弱透明和门外村民怒骂，未新增改变剧情的动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组包工头对白有效约17字/4秒，村民甲对白有效约16字/6秒，均低于6.5字/秒；第3组包工头长句约24字/4.5秒也低于硬上限。"
+    },
+    {
+      "group": "第3组",
+      "type": "horizontal_composition",
+      "evidence": "包工头留在右后方台阶，村民乙和村民甲从左侧/中央带人冲向右侧祠堂土路，锄头和扁担在前景形成明确横向冲锋线。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "炸药包从第4组帆布包露出并扯出引线，第5组由胡永贵从右侧扔入左侧裂缝，长引线仍在他手里，防风打火机最后靠近同一引线。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "门外村民怒骂通过门板震动、门缝影子、爷爷顶住门闩承载；云宝痛苦写为无声嘶吼，没有错误口型来源。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定祠堂梁柱、龙舟鼓、水壶、大门和爸爸/天天/爷爷左右前后位置，组尾仍停在同一祠堂空间。",
+      "fix_instruction": "若后续修改，保持鼓在左中景、天天水壶在右前景、爷爷守右后方大门的空间关系。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "包工头在画面右侧台阶俯视左侧村民，第3组继续让他从右后方指向祠堂方向，人群朝右推进，站位没有无过渡跳边。",
+      "fix_instruction": "若压缩广场段，应保留包工头右侧台阶和村民向右冲锋的轴线。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "胡永贵到裂缝边、恶毒嘲讽李燃、打开帆布包露出雷管炸药、说明裂缝下面是水眼，原剧本关键行为和台词顺序完整。",
+      "fix_instruction": "若调整河床段，不得删掉水眼台词或把炸药提前引爆。"
+    },
+    {
+      "group": "第5组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "胡永贵在画面右侧控制引线，炸药包从右侧越过中央落入左侧裂缝，手部特写承接到打火机靠近引线，动作方向清楚。",
+      "fix_instruction": "若加强悬念，只能补充引线和火机的接近关系，不新增爆炸或外部救援。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天明确对爸爸惊呼“爸爸！云宝怎么了！”，爸爸在画面左侧可见并回看她，现场对白对象清楚。",
+      "fix_instruction": "若改镜头，应继续让爸爸处在可见反应范围，不把天天台词写成无人对象。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "14秒内只承载爸爸判断水眼被毁、爷爷指出出不去、门外砸门逼近三类强节拍，未新增开门、逃跑、打斗等剧情动作。",
+      "fix_instruction": "若局部修订，只修门内压力或对白承载，不扩展新冲突。"
+    },
+    {
+      "group": "第1组-第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模板编号、官方占位符、参考图/首尾帧/视频延长等工程词，也未使用被禁止的模板化批量描述。",
+      "fix_instruction": "若后续补写画面风格，继续使用自然短剧画面语言，不加入模型控制台词。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

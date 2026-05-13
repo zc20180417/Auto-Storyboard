@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "EP-04-ep04-agent-cli-storyboard.txt",
+  "summary": "ep04 已按 scene 模式完成13组分镜，覆盖考场压分、走廊冲突、书房布局、公寓合作与复仇动机。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

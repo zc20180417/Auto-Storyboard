@@ -1,0 +1,19 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "苍南风云-ep05-agent-cli-storyboard.txt",
+  "summary": "陆凡到水头村发现烂路和鱼干滞销危机，赵大江暗中封路，陆凡在土路用录像和报官策略稳住黄毛。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "timing_math",
+      "problem": "第5组为6秒道具插入短组，理由成立。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep28",
+  "episode_number": 28,
+  "display_name": "ep28",
+  "series_title": "ep28",
+  "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_shortgroup_ep28_source\\ep28.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent\\ep28-ep28-agent-cli-storyboard.txt",
+  "storyboard_aspect": "vertical",
+  "generator_skill_name": "storyboard-generator",
+  "reviewer_skill_name": "storyboard-reviewer",
+  "reviewer_source": "storyboard-reviewer"
+}

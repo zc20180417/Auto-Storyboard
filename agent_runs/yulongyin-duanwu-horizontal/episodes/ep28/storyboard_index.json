@@ -1,0 +1,168 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP28",
+  "cuts": [
+    {
+      "cut_id": "EP28-G01",
+      "group_index": 1,
+      "title": "古井上方的告别光尾",
+      "scene": "日/晴，村头广场古井旁",
+      "characters": [
+        "天天",
+        "爸爸",
+        "云宝"
+      ],
+      "props": [
+        "干涸古井",
+        "古井石沿",
+        "云宝光尾"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 0,
+      "group_end_sec": 11,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP28-G02",
+      "group_index": 2,
+      "title": "爸爸搂住天天，云宝最后回望",
+      "scene": "日/晴，村头广场古井旁",
+      "characters": [
+        "天天",
+        "爸爸",
+        "云宝"
+      ],
+      "props": [
+        "干涸古井",
+        "古井石沿",
+        "云宝光尾"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 11,
+      "group_end_sec": 23,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP28-G03",
+      "group_index": 3,
+      "title": "蓝色水珠落入眉心",
+      "scene": "日/晴，村头广场古井旁",
+      "characters": [
+        "云宝",
+        "天天",
+        "爸爸"
+      ],
+      "props": [
+        "干涸古井",
+        "蓝色水珠",
+        "水滴印记"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 23,
+      "group_end_sec": 35,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP28-G04",
+      "group_index": 4,
+      "title": "云宝入井，金光填满井口",
+      "scene": "日/晴，村头广场古井旁",
+      "characters": [
+        "云宝",
+        "天天",
+        "爸爸"
+      ],
+      "props": [
+        "干涸古井",
+        "水滴印记",
+        "金色井光"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 35,
+      "group_end_sec": 46,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP28-G05",
+      "group_index": 5,
+      "title": "古井轰鸣，泉水冲天",
+      "scene": "日/晴，村头广场古井旁",
+      "characters": [
+        "爸爸",
+        "村民甲",
+        "村民乙"
+      ],
+      "props": [
+        "古井",
+        "泉水",
+        "水渠",
+        "金色余光"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 46,
+      "group_end_sec": 57,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP28-G06",
+      "group_index": 6,
+      "title": "水渠满流，枯树抽绿",
+      "scene": "日/晴，村头广场古井旁与广场边水渠",
+      "characters": [
+        "村民甲",
+        "村民乙",
+        "爸爸"
+      ],
+      "props": [
+        "泉水",
+        "水渠",
+        "远处河道",
+        "干枯老树",
+        "新绿嫩芽"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 57,
+      "group_end_sec": 71,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP28-G07",
+      "group_index": 7,
+      "title": "爷爷捧泉饮下",
+      "scene": "日/晴，村头广场水渠边",
+      "characters": [
+        "爷爷",
+        "爸爸",
+        "天天"
+      ],
+      "props": [
+        "拐杖",
+        "水渠",
+        "清澈泉水"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 71,
+      "group_end_sec": 84,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP28-G08",
+      "group_index": 8,
+      "title": "父子向井底致谢",
+      "scene": "日/晴，村头广场古井旁",
+      "characters": [
+        "爸爸",
+        "天天"
+      ],
+      "props": [
+        "古井",
+        "流动水渠",
+        "水滴印记"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 84,
+      "group_end_sec": 96,
+      "source_group_label": "第8组"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "summary": "已对照第4集原剧本、竖屏生成规则和当前6组分镜完成审核，关键台词、人物关系、空间切换、时长和提示词洁净度均可交付。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "赵有福在7-13秒连续指控沈砚川并带出周大柱附和，约34个有效字分配6秒，字秒比约5.7，未超过6.5硬上限，且情绪交锋成立。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "广播台词由广播喇叭发出，镜头写明沈砚川和林知夏嘴唇闭合不做口型，声音来源和画面反应明确。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "林知夏替沈砚川解释墙是雨冲塌的、赵有福以外来者身份压她、沈砚川追问补助和规矩，原剧本台词顺序与冲突关系均保留。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "evidence": "第5组尾部写沈砚川准备离开、林知夏看向他背影；第6组组首以沈砚川背对镜头朝泥路深处、林知夏跟在后方开始，动作承接清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "塌墙院外的倒塌土墙、泥水、碎砖、沈砚川、赵有福、周大柱、村民和林知夏在组首均有明确位置、朝向和视线关系。",
+      "fix_instruction": "若不通过，应补齐组首人物位置、身体朝向、道具位置或将尚未入场人物改为后续入场动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组核心负载为沈砚川制止、赵有福抬地指控、村民追问和周大柱附和，均发生在同一院外冲突中，13秒内没有额外关键道具操作或跨空间动作。",
+      "fix_instruction": "若不通过，应拆出赵有福指控或压缩非关键村民反应，不能增加停顿凑时长。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "广播内容保留为未来三天持续降雨并提醒防范，村民乙问三天、周大柱否认天气预报准确性，剧情信息未删改。",
+      "fix_instruction": "若不通过，应恢复广播、村民乙和周大柱的原台词顺序与含义。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈砚川对村民们说清沟，村民甲对沈砚川推脱，林知夏对周大柱和村民们判断天色，周大柱对两人讥讽，现场对白对象均真实明确。",
+      "fix_instruction": "若不通过，应把每句现场对白改成清楚的A对B说道，避免没有对象或假对象。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "本组只保留自然画面、台词、光影、画面风格和负面词，没有模板编号、参考图、模型说明词、自动分镜或视频延长等工程词。",
+      "fix_instruction": "若不通过，应删除模板或模型说明词，改写成自然可见的动作、声音和状态。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,213 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP28",
+  "cuts": [
+    {
+      "cut_id": "EP28-G01",
+      "group_index": 1,
+      "title": "黑色越野车抵达项目部",
+      "scene": "夜雨中的嘉禾项目部大门外",
+      "characters": [
+        "毒刺",
+        "外籍安保精英",
+        "门口保安"
+      ],
+      "props": [
+        "黑色防弹越野车",
+        "战术背心",
+        "门禁岗亭"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP28-G02",
+      "group_index": 2,
+      "title": "麻醉枪压制门岗",
+      "scene": "夜雨中的嘉禾项目部大门外",
+      "characters": [
+        "毒刺",
+        "外籍安保精英",
+        "门口保安"
+      ],
+      "props": [
+        "装有消音器的麻醉枪",
+        "门禁控制箱",
+        "黑色防弹越野车"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 12,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP28-G03",
+      "group_index": 3,
+      "title": "办公室玻璃门被砸碎",
+      "scene": "夜雨中的董事长办公室内",
+      "characters": [
+        "江若晴",
+        "毒刺"
+      ],
+      "props": [
+        "账目文件",
+        "办公桌",
+        "特种玻璃门",
+        "强光手电",
+        "碎玻璃"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 24,
+      "group_end_sec": 36,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP28-G04",
+      "group_index": 4,
+      "title": "毒刺逼近江若晴",
+      "scene": "夜雨中的董事长办公室内",
+      "characters": [
+        "江若晴",
+        "毒刺"
+      ],
+      "props": [
+        "办公桌",
+        "强光手电",
+        "碎玻璃",
+        "破碎落地窗"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 36,
+      "group_end_sec": 49,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP28-G05",
+      "group_index": 5,
+      "title": "陆凡破窗而入",
+      "scene": "夜雨中的董事长办公室内",
+      "characters": [
+        "江若晴",
+        "毒刺",
+        "陆凡"
+      ],
+      "props": [
+        "战术绳索",
+        "破碎落地窗",
+        "办公桌",
+        "碎玻璃"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 49,
+      "group_end_sec": 61,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP28-G06",
+      "group_index": 6,
+      "title": "办公桌前混战爆发",
+      "scene": "夜雨中的董事长办公室内",
+      "characters": [
+        "陆凡",
+        "毒刺",
+        "江若晴",
+        "外籍安保精英"
+      ],
+      "props": [
+        "厚重实木办公桌",
+        "碎玻璃",
+        "战术绳索",
+        "强光手电"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 61,
+      "group_end_sec": 72,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP28-G07",
+      "group_index": 7,
+      "title": "陆凡击倒两名队员",
+      "scene": "夜雨中的董事长办公室内",
+      "characters": [
+        "陆凡",
+        "毒刺",
+        "外籍安保精英"
+      ],
+      "props": [
+        "厚重实木办公桌",
+        "碎玻璃",
+        "办公椅"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 72,
+      "group_end_sec": 85,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP28-G08",
+      "group_index": 8,
+      "title": "毒刺被摔上玻璃茶几",
+      "scene": "夜雨中的董事长办公室内",
+      "characters": [
+        "陆凡",
+        "毒刺",
+        "外籍安保精英"
+      ],
+      "props": [
+        "办公椅",
+        "玻璃茶几",
+        "碎玻璃",
+        "厚重实木办公桌"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 85,
+      "group_end_sec": 99,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP28-G09",
+      "group_index": 9,
+      "title": "矿洞炸药真相暴露",
+      "scene": "夜雨中的董事长办公室内",
+      "characters": [
+        "陆凡",
+        "毒刺",
+        "江若晴"
+      ],
+      "props": [
+        "玻璃茶几",
+        "战术通讯器",
+        "碎玻璃",
+        "办公桌"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 99,
+      "group_end_sec": 113,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP28-G10",
+      "group_index": 10,
+      "title": "陆凡冲向矿洞",
+      "scene": "夜雨中的董事长办公室内",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "毒刺"
+      ],
+      "props": [
+        "战术通讯器",
+        "破碎落地窗",
+        "办公桌",
+        "玻璃茶几"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 113,
+      "group_end_sec": 127,
+      "source_group_label": "第10组"
+    }
+  ]
+}

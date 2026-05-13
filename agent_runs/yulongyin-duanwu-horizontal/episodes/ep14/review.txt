@@ -1,0 +1,97 @@
+{
+  "pass": true,
+  "summary": "ep14整集横屏分镜已逐组对照原剧本审核，台词、空间轴线、道具归属和组间衔接均满足交付要求。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "路障把画面分成左侧挖土村民和右侧伞下胡永贵，冰水杯固定在右侧，横屏左右关系清楚。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "村民乙质问胡永贵、胡永贵把矛头转向李燃并说“去砸了龙舟，路立马通”，原台词和煽动因果完整保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "爷爷约16字台词承载3.5秒，爸爸约14字台词承载3.5秒，均低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "evidence": "爸爸通过右侧祠堂大门猛开入场并站上石阶，持斧状态可见，为第7组开口警告提供明确人物来源。"
+    },
+    {
+      "group": "第8组",
+      "type": "blocking_continuity",
+      "evidence": "第8组延续第7组右高左低对峙，爸爸从右侧台阶走向中央，村民从左侧后退并逃离，走位连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "水壶从第3组工作台右后方延续到第4组，云宝微光在壶中出现；榫卯木件始终在工作台中央。",
+      "fix_instruction": "无需修复；若调整第4组，保持水壶右后方、榫卯木件中央的归属和位置。"
+    },
+    {
+      "group": "第5组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "村民甲、村民乙从画面左侧阴影向右侧祠堂大门靠近，视线和火把方向稳定朝右。",
+      "fix_instruction": "无需修复；后续同场景继续保持村民左、祠堂大门和爸爸右的轴线。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第6组只表现掏打火机、祠堂门猛开和爸爸持斧出现，没有新增火把点燃成功或烧到龙舟的剧情。",
+      "fix_instruction": "无需修复；不要增加点火成功、烧船或打斗动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "爸爸三句现场台词均写明对村民甲、村民乙说，村民甲也明确对右侧爸爸说，没有心声或假对象混用。",
+      "fix_instruction": "无需修复；保持所有现场对白的对象明确。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "下台阶斧刃摩擦、正午求雨命誓、村民丢火把逃走和收束分为4个时间段，13秒内节拍可表演。",
+      "fix_instruction": "无需修复；不要再加入追赶、打斗或额外誓言。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

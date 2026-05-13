@@ -2,7 +2,9 @@ param(
     [Parameter(Position = 0)]
     [string]$RunDir = "",
 
-    [string]$OutDir = ""
+    [string]$OutDir = "",
+
+    [switch]$ExportIndex
 )
 
 $ErrorActionPreference = "Stop"
@@ -26,6 +28,10 @@ $cmdArgs = @(
 
 if ($OutDir) {
     $cmdArgs += @("--out-dir", $OutDir)
+}
+
+if ($ExportIndex) {
+    $cmdArgs += "--export-index"
 }
 
 Write-Host "[collect-agent] run=$RunDir"

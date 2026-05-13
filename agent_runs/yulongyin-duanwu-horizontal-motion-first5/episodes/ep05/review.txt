@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "EP05整集8组已对照原剧本、横屏生成规则和分段成稿逐项审核：后山泉眼空间、铁锤威胁、水壶青蓝光、陶笛触发水弹、黑色废液与云宝牺牲均完整保留，横屏左右轴线和每段运镜设计符合交付要求。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本开场的后山岩洞泉眼、包工头举铁锤、天天喊“住手！那是村里最后一口活水！”和胡永贵下令均在同组按顺序呈现。"
+    },
+    {
+      "group": "第2组",
+      "type": "horizontal_composition",
+      "evidence": "天天沿左侧岩壁后退，包工头从右向左逼近，胡永贵留在右后方，水壶在天天左前侧怀里发青蓝光，横屏威胁关系清楚。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "天天说“云宝，靠你了！”时水壶可见且云宝在壶内，对话对象明确；吹陶笛后的笛声来源也由天天口型和陶笛承载。"
+    },
+    {
+      "group": "第5组",
+      "type": "camera_motion",
+      "evidence": "水洼在中央爆开，水弹从中央射向右侧包工头；固定动作中景和右向退开的跟拍均服务水弹方向、人物站位和铁锤失控。"
+    },
+    {
+      "group": "第7组",
+      "type": "blocking_continuity",
+      "evidence": "云宝从天天胸前水壶飞向左中后方泉眼前，横向路线清楚，胡永贵仍在右侧，废液从右向左飞来。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "黑色废液从第6组右侧泼出，第7组命中云宝，第8组尽数浇落并导致云宝由青蓝变死灰，因果和道具流向连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "天天约14字台词用3.5秒，胡永贵约20字台词用3.5秒，均未超过6.5字/秒硬上限，喊话和命令节奏可表演。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "包工头从画面右侧压向左侧天天，后续水壶近景仍保留右侧逼近阴影，人物没有无过渡换边。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "水壶青蓝光承接上一组，云宝在壶内指向中央水洼，天天打开壶盖并掏出陶笛，道具转移可见。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "水花化作几十颗坚硬水弹射出、包工头惨叫“哎哟！什么东西打我的脸！”并捂脸逃出岩洞，未新增改变剧情的动作。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第6组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "固定双人中景稳定胡永贵右、天天左的口型和对峙；下摇到废液桶明确起点；固定动作中景锁住废液从右向左泼向泉眼。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "云宝惨叫、摔地、青蓝色变死灰色均转译为可见动作、颜色变化、液体流向和左右站位，没有抽象不可生成信息。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "全片",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模板编号、官方模板占位符、参考图占位、模型自动说明或空泛“推进制造电影感”等污染词；仅保留自然分镜字段。",
+      "fix_instruction": "无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

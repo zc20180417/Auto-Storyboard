@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "ep17最终分镜按竖屏规则完成14组，保留银行追回十亿、工地发薪、宋子昂设局和土地局查封的完整剧情链，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组", "第14组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "evidence": "小李供述回扣的录音明确从陆凡手机扬声器传出，马行长和保安只做听见后的反应，没有把录音内容写成画面人物现场口型。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "马行长'完了……全完了'、陆凡催促联系拦截中心、马行长'我退！我马上操作退回专户！'均按原顺序保留，并通过柜台电脑操作承接十亿退回。"
+    },
+    {
+      "group": "第9组",
+      "type": "timing_math",
+      "evidence": "第9组总时长6秒，只有远处山坡车内宋子昂盯着工地和咬牙扣方向盘两个无台词反应镜头，属于短动作余波和片尾式威胁反应。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_pacing",
+      "evidence": "宋子昂约22字电话台词安排4秒，王局长约14字电话音安排3秒，宋子昂约19字命令安排4秒，各段字秒比均未超过6.5。"
+    },
+    {
+      "group": "第14组",
+      "type": "generation_density",
+      "evidence": "第14组15秒内承载王局长查封台词、执法队拉警戒线、江若晴对陆凡提示官司风险三个强节拍，分为5秒、4秒、6秒，动作和口型时间足够。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "马行长明确对陆凡说下班逐客，陆凡明确对马行长要求撤回汇款单，现场对白对象真实且可见。",
+      "fix_instruction": "若不通过，应给每句画面内对白补足真实对话对象。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林夏和纪委干部在组首位于玻璃门外可见，0-3秒推门入场后林夏才开口曝光海外账户，人物可用性成立。",
+      "fix_instruction": "若不通过，应在人物说话前补入场动作或组首可见位置。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "武装运钞车在组首位于入口道路，0-4秒驶入，4-7秒车门打开露出现金，陆凡随后下令发钱，道具状态连续。",
+      "fix_instruction": "若不通过，应补充车辆停稳、车门打开或现金露出的可见过渡。"
+    },
+    {
+      "group": "第9组",
+      "type": "timing_math",
+      "result": "warning",
+      "evidence": "6秒短组不是默认10秒组，但它只承载宋子昂在远处车内的无台词威胁反应，强行延长会变成拖时。",
+      "fix_instruction": "若后续要求全部10秒以上，可考虑将该反应改为第8组结尾的片尾意象，但需避免跨空间误解。"
+    },
+    {
+      "group": "第10组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "王局长两句均写成手机电话音，宋子昂听电话时嘴唇闭合不做口型，声音来源和口型分离清楚。",
+      "fix_instruction": "若不通过，应将电话对方改为手机听筒声音，并写明画面人物闭口反应。"
+    },
+    {
+      "group": "第13组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第12组尾部王局长站在主干道中央命令停工，第13组组首仍在同一主干道并由王局长持有地契，陆凡和江若晴位置连续。",
+      "fix_instruction": "若不通过，应补充王局长拿出地契或人物站位变化的过渡。"
+    },
+    {
+      "group": "第14组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "王局长宣称擅自开发私人领地并查封，执法队驱赶工人拉警戒线，江若晴担心官司拖几年，三处关键剧情均保留。",
+      "fix_instruction": "若不通过，应恢复原剧本关键台词和执法动作，不做无关改写。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全篇未出现Seedance说明词、参考图、模板编号、自动分镜、字幕工程词或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除污染词并改成自然中文画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第9组",
+      "rule": "timing_math",
+      "problem": "第9组为6秒短组，低于默认10秒。",
+      "evidence": "该组只表现宋子昂坐在远处山坡车内盯着工地、咬牙切齿和扣方向盘，属于短动作余波和片尾威胁反应。",
+      "fix": "保持短组即可；若必须统一到10秒以上，应改为第8组结尾片尾意象而不是拖长无台词反应。"
+    }
+  ]
+}

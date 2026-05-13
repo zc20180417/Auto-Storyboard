@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep27整集10组已对照原剧本、竖屏生成规则和最终分镜逐项审核，关键台词、红文件夹归属、麻绳救援、捆绑制止和巡查队接证据链均保留，无阻断问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中赵有福连续指认“是你让我堵洞”“是你让我做假账”，施工方代表反咬“你也拿了钱”，赵有福再说“我认”“但你不能再害人”；分镜第2组按同一顺序保留，且对白对象均为施工方代表。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "红文件夹从施工方代表手中被赵有福扑抢，随后赵成武一手抓腰带、一手抓文件夹边角，施工方代表继续死拽；道具归属和拉扯状态与原剧本动作一致。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "evidence": "巡查队长和队员在组首位于山路背景入口处，先有快步冲上回路口的入场动作，再由巡查队长开口询问“谁报的险？”，人物可用性成立。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_pacing",
+      "evidence": "第10组总时长14秒，含“闭嘴”“谁开的旧泄洪洞？”“我”“详细说”等短句和旧河道视线转移，最长对白段5.5-9秒约3.5秒承载两句问答，字秒比低于硬上限，节奏可表演。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "施工方代表对赵有福喊“赵有福！你说话！”和骂“废物！”，赵有福对施工方代表说“我都认了……”，所有现场对白都有真实对象。",
+      "fix_instruction": "无需修改；若后续改稿增加台词，继续保持A对B说道或喊道的对象格式。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第3组15秒承载赵有福扑抢、施工方代表肘击、赵成武救父和文件夹拉扯四个连续动作节拍，分成4个时间段，动作链完整且未压入额外转场。",
+      "fix_instruction": "无需修改；若需扩展动作，应拆为新组，避免超过15秒或造成强节拍过载。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部为赵成武抓赵有福腰带并抓红文件夹边角、施工方代表死拽；第4组组首复述三人在泥边拉扯，红文件夹夹在双方之间，状态连续。",
+      "fix_instruction": "无需修改；若移动人物位置，应在组尾或下一组开头补可见过渡。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第5组写明沈砚川踹开施工方代表手腕，红文件夹飞起后被沈砚川半空抄住，完成文件夹从争夺状态到沈砚川护在胸前的可见过渡。",
+      "fix_instruction": "无需修改；如改写抢夺结果，必须保留踹开手腕和半空抄住的道具转移。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "原剧本中施工方代表试图逃跑，被沈砚川肩撞掀翻，沈砚川说“你完了”，周大柱喊“绑住他”，村民捆住施工方代表和工人甲；第6组完整保留这些因果和台词。",
+      "fix_instruction": "无需修改；不要新增额外殴打或改变制止方式。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第7组10秒分两段承载赵成武问“爹，你没事吧？”和赵有福答“我活该……”，短句配合喘息、扶持动作，未拖成长时间沉默。",
+      "fix_instruction": "无需修改；若缩短该组需保持父子喘息和两句台词完整。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "沈砚川递红文件夹，巡查队长问“这是？”，沈砚川说明“堵洞的底单”“还有毁证的人”，施工方代表辩解“不是这样！”并被队员按住，证据链和人物关系未改写。",
+      "fix_instruction": "无需修改；不可删掉底单、公章、手印或毁证人指认。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文没有模板编号、官方模板说明、参考图占位、自动分镜说明或广告/MV语气；只保留自然短剧分镜描述和统一负面提示。",
+      "fix_instruction": "无需修改；后续改稿不要加入模型说明词或模板来源文字。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

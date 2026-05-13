@@ -25,6 +25,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - 时间段不从 0 秒开始、不连续、不是 0.5 秒粒度、最后一段不结束于组标题总时长。
 - 组标题总时长不是整数秒，或超出视频模型硬范围 6-15 秒。
 - 6-9 秒短组不属于短承接、单句反应、道具插入、短动作余波、片尾意象或不可硬凑的极短戏剧节拍，且可以自然并入相邻组或扩展到 10 秒以上。
+- 短促交锋、单句反击、两三句短对白本可自然落在 6-9 秒，却被扩成 10 秒以上；扩长依据只是侧脸绷紧、回头凝视、停顿半步、眼神交锋、群众沉默、普通表情反应等非原剧本关键动作。此类属于硬凑 10 秒，按 `generation_density` 或 `dialogue_pacing` 判 hard issue。
 - 把自然需要 16 秒以上的戏剧节拍硬压进 15 秒，导致台词偏快、动作过载、情绪转折仓促或关键道具操作不可表演。
 - 镜头数与实际时间段数不一致。
 - 缺少 generator 当前要求的组结构字段：`人物`、`场景`、`道具`、`组首空间锁定`、`镜头描述`、`光影设计`、`组尾衔接`、`画面风格`、`--neg` 或组结束标记。
@@ -127,7 +128,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - `timing_math`：组总时长、0.5 秒粒度、时间段连续性、镜头数和时长合同。
 - `audio_mouth_sync`：心声/画外音/电话音/广播音与口型、声音来源、可见载体。
 - `dialogue_pacing`：字秒比过快、过慢、慢语误用、长台词未拆。
-- `generation_density`：强节拍过载、复合动作链时间不足、硬凑 10 秒。
+- `generation_density`：强节拍过载、复合动作链时间不足、用普通状态动作硬凑 10 秒。
 - `space_locking`：单组物理空间、组首空间锁定、人物可用性。
 - `character_availability`：人物在组首、入场、揭示、电话、画外音或屏幕来源上的可用性。
 - `handoff_continuity`：相邻同空间组的组尾与组首状态衔接。

@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "summary": "已逐组对照第2集剧本、生成规则和Seedance参考层审稿，7组均保留原台词、关键动作和反转，未发现阻断生产的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "林建国怒吼“赵百川这老王八蛋！这是要逼死我们啊！”约18个有效字，安排在2-5秒并同步砸桌动作，情绪对白约6字/秒，未超过6.5字/秒；张桂兰哭喊约15字用3秒承载，节奏可表演。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "原剧本的林跃按住父亲肩膀、稳稳拿下锄头，以及“爸，冲动解决不了问题”“那片果园是我们的命根子啊”“我去解决”均按顺序保留，未新增改变剧情的强动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "林跃两句求让果园和求通水均明确写为对赵百川恳求/哀求，赵大强“哼，早这样不就完了？真是个怂包！”明确对林跃轻蔑说道，没有假对白对象。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "evidence": "本组承载印泥盒推到面前、林跃看协议、遮挡写小字、赵大强催促四个节拍，总时长12秒；关键道具操作3秒、隐藏写字3秒，动作链没有被压缩到不可表演。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "林跃OS被处理为心声响起，并在3-6秒和6-11秒明确写林跃嘴唇闭合、不做口型；办公室狂笑作为门后声音来源，有门缝和人物反应承载。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "林家小屋内三名人物在组首均有画面位置、身体朝向和视线关系，锄头位于墙角，后续林建国拿锄头具备可用性。",
+      "fix_instruction": "如不通过，应在组首补足人物位置、身体朝向和锄头初始位置。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "赵百川和赵大强第一帧已在办公室内，林跃先以房门外脚步声接近，再在2-5秒推门进入，随后才参与对话。",
+      "fix_instruction": "如不通过，应把林跃入场动作放在其开口之前，或在组首说明他已在门口可被揭示。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部林跃站在办公桌前被两人盯着，第4组组首直接复述林跃低头站在桌前、赵百川和赵大强在桌后的状态，人物位置连续。",
+      "fix_instruction": "如不通过，应在第4组组首复述上一组尾部的人物站位和办公桌关系。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "林跃蘸印泥、按落款、站起离开、赵大强拿协议对窗光欣赏并狂笑均来自原剧本，顺序未变。",
+      "fix_instruction": "如不通过，应恢复手印、离开、赵大强赏协议狂笑的原始顺序。"
+    },
+    {
+      "group": "第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终段只使用自然短剧分镜语言，没有出现模板编号、官方模板说明、@图片/@视频/@音频、广告字幕或HappyHorse外壳。",
+      "fix_instruction": "如不通过，应删除工程占位符、模板说明和非短剧提示词外壳。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

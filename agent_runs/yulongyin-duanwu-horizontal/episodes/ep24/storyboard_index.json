@@ -1,0 +1,239 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP24",
+  "cuts": [
+    {
+      "cut_id": "EP24-G01",
+      "group_index": 1,
+      "title": "泉眼前的逼问",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "爸爸",
+        "胡永贵",
+        "天天"
+      ],
+      "props": [
+        "毒液玻璃瓶"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP24-G02",
+      "group_index": 2,
+      "title": "伤口与威胁",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "爸爸",
+        "胡永贵",
+        "天天"
+      ],
+      "props": [
+        "毒液玻璃瓶"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 12,
+      "group_end_sec": 23,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP24-G03",
+      "group_index": 3,
+      "title": "残缺龙鳞现身",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "爸爸",
+        "胡永贵",
+        "天天"
+      ],
+      "props": [
+        "毒液玻璃瓶",
+        "残缺青色龙鳞"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 23,
+      "group_end_sec": 35,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP24-G04",
+      "group_index": 4,
+      "title": "云宝被龙鳞牵引",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "爸爸",
+        "胡永贵",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "残缺青色龙鳞",
+        "毒液玻璃瓶"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 35,
+      "group_end_sec": 47,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP24-G05",
+      "group_index": 5,
+      "title": "爸爸攥紧云宝",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "爸爸",
+        "胡永贵",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "残缺青色龙鳞",
+        "毒液玻璃瓶"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 47,
+      "group_end_sec": 57,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP24-G06",
+      "group_index": 6,
+      "title": "青芒前扑与毒瓶脱手",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "爸爸",
+        "胡永贵",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "残缺青色龙鳞",
+        "毒液玻璃瓶"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 57,
+      "group_end_sec": 68,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP24-G07",
+      "group_index": 7,
+      "title": "天天扑向毒瓶",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "天天",
+        "爸爸",
+        "胡永贵"
+      ],
+      "props": [
+        "毒液玻璃瓶",
+        "残缺青色龙鳞"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 68,
+      "group_end_sec": 80,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP24-G08",
+      "group_index": 8,
+      "title": "爸爸铁拳砸中胡永贵",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "爸爸",
+        "胡永贵",
+        "天天"
+      ],
+      "props": [
+        "毒液玻璃瓶",
+        "残缺青色龙鳞"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 80,
+      "group_end_sec": 91,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP24-G09",
+      "group_index": 9,
+      "title": "爸爸命令云宝接鳞",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "爸爸",
+        "天天",
+        "胡永贵",
+        "云宝"
+      ],
+      "props": [
+        "残缺青色龙鳞",
+        "毒液玻璃瓶"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 91,
+      "group_end_sec": 101,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP24-G10",
+      "group_index": 10,
+      "title": "云宝吞下龙鳞",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "爸爸",
+        "云宝",
+        "天天",
+        "胡永贵"
+      ],
+      "props": [
+        "残缺青色龙鳞",
+        "毒液玻璃瓶"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 101,
+      "group_end_sec": 113,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP24-G11",
+      "group_index": 11,
+      "title": "水流托举重生云宝",
+      "scene": "日晴，后山深处岩洞泉眼边",
+      "characters": [
+        "云宝",
+        "爸爸",
+        "天天",
+        "胡永贵"
+      ],
+      "props": [
+        "毒液玻璃瓶"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 113,
+      "group_end_sec": 123,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP24-G12",
+      "group_index": 12,
+      "title": "刀疤男堵住洞口",
+      "scene": "日晴，后山深处岩洞泉眼与洞口",
+      "characters": [
+        "刀疤男",
+        "爸爸",
+        "云宝",
+        "天天",
+        "打手"
+      ],
+      "props": [
+        "长柄消防斧",
+        "毒液玻璃瓶"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 123,
+      "group_end_sec": 138,
+      "source_group_label": "第12组"
+    }
+  ]
+}

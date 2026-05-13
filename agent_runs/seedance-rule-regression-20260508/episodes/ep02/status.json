@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "EP-02-ep02-agent-cli-storyboard.txt",
+  "summary": "第2集按 scene 模式完成7组分镜，覆盖林家拦父、村委会低头交协议、暗写小字、手印落下和门外冷笑反转。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

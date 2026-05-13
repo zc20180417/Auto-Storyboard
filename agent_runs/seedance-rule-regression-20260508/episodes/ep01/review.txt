@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "summary": "已按 storyboard-reviewer 对组装后的 ep01 final.txt 逐组核对原剧本、时长、对话对象、空间锁定、音画分离和提示词洁净度，未发现 hard issues。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "赵百川“林跃！你偷割集体电线，证据确凿！”、赵大强“人赃俱获！还想抵赖不成？”、林建国和张桂兰的求情台词均按原文、原顺序、原对象承载。"
+    },
+    {
+      "group": "第3组",
+      "type": "timing_math",
+      "evidence": "第3组时间段为0-4.5、4.5-6.5、6.5-10、10-12.5、12.5-15秒，连续且使用0.5秒粒度，标题总时长15秒、镜头数5个与正文一致。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "林跃抓住李二狗脚踝、展示红泥鞋底，并保留“村里只有电线杆下是红泥地！”和“你今天没下地，鞋底为何全是红泥？”两句关键质问，赵家父子和村民怀疑反应也保留。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "evidence": "赵百川 OS 写为内心旁白，王四嘴唇闭合不做口型；水渠总闸、铁阀门、水流停止均有可见载体。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "林跃“我重生了？回到了被陷害的这一天！”作为内心旁白出现，镜头明确嘴唇闭合不做口型。",
+      "fix_instruction": "无需修复；保持心声不由现场口型承载。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第4组只在晒谷场人群前完成锁定李二狗、李二狗后缩、林跃逼近和鞋码问答，没有跨到水渠或其他空间。",
+      "fix_instruction": "无需修复；如果加入新空间，应另起分镜组。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "林跃两句证据质问分别对围观村民和李二狗发出，对话对象明确，没有对道具或空气说话。",
+      "fix_instruction": "无需修复；后续修改仍需写明真实对话对象。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组尾王四沿晒谷场边小路离开，第8组首王四已到村头水渠总闸旁，组间完成真实空间转换，没有硬塞进同一组。",
+      "fix_instruction": "无需修复；保持晒谷场和水渠边分组。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模板编号、官方模板、@占位符、参考图、首尾帧、视频延长、自动分镜等污染词。",
+      "fix_instruction": "无需修复；不得引入模板说明或模型控制台占位符。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

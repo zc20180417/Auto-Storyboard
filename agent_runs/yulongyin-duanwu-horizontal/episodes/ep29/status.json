@@ -1,0 +1,18 @@
+{
+  "episode_id": "ep29",
+  "status": "done",
+  "output_name": "闆ㄩ緳鍚熺鍗?ep29-agent-cli-storyboard.txt",
+  "summary": "几个月后云溪村水渠、农田、石桥和龙舟焕新；天天在河边吹陶笛呼唤云宝，金色小鲤鱼以水皇冠回应，完成端午前的温暖收束。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第3组",
+      "rule": "dialogue_pacing",
+      "summary": "村民甲赞叹龙头的台词承载略紧，但不构成硬问题。"
+    }
+  ],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "ep33 assembled final keeps the ceremony return, ribbon-cutting, mountaintop call, overseas threat reveal, and Lu Fan's cold response; no hard issues remain.",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "工头验收合格、林夏祝贺、江若晴担心陆凡三段信息均保留，未提前让陆凡出现。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "evidence": "陆凡在组首位于最前方车辆内，0-3.5秒先下车，之后江若晴和工人们才对他产生反应。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "江若晴“你一个人，扳倒了京城顶级财阀？”约16字用3.5秒，约4.6字/秒；同组其他短句均未超过6.5字/秒。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "evidence": "商会总管的长信息通过电话音传来，陆凡听电话时嘴唇闭合不做口型，加密手机始终作为声音载体。"
+    },
+    {
+      "group": "第10组",
+      "type": "prop_continuity",
+      "evidence": "加密手机从贴耳通话到5-8秒放下并捏在掌心，关键道具状态变化有可见过渡。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾部江若晴望向远处公路，第2组组首继续锁定她看向公路入口，车队从远处道路进入会场。",
+      "fix_instruction": "若不通过，应补充江若晴视线或车队入口位置。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "金剪刀先在江若晴手中，7.5-10秒明确递给陆凡，第5组组首陆凡手中持有金剪刀，前后连续。",
+      "fix_instruction": "若不通过，应补充金剪刀递交动作或调整下一组组首道具归属。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第6组为礼炮、彩带、卡车出山三个无对白庆祝节拍，12秒内不压缩口型和强动作。",
+      "fix_instruction": "若不通过，应拆分卡车出山远景或压缩庆祝环境展示。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第7组从仪式现场切到黑风山顶，是新物理空间，组首重新锁定陆凡、山路和加密手机位置。",
+      "fix_instruction": "若不通过，应另起组并明确新空间布局。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "商会总管关于华尔街财团、罗斯柴尔德家族、商业间谍组织和稀土控制权的信息完整保留，顺序未改。",
+      "fix_instruction": "若不通过，应恢复电话信息原顺序和关键名词。"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "海外方向的威胁通过陆凡视线、远处乌云和冷笑转译成可见画面，没有直接输出抽象判断。",
+      "fix_instruction": "若不通过，应改写为可见天气、动作和表情。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全片未出现模板编号、参考图、自动正反打、模型说明词、字幕或工程占位符。",
+      "fix_instruction": "若不通过，应删除工程词和模板污染内容。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

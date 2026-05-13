@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "ep16共5组，保留院内反击、火机威胁、夺回野牛皮、反压黑作坊和烈日赶路，横屏空间、台词对象、道具连续性和时间合同均通过。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留四个保镖从前后左右砸向爸爸、爸爸矮身反进扫倒保镖甲、保镖甲原台词、爸爸夺甩棍砸保镖乙手腕、骨裂脱棍、爸爸原台词和右腕青光。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "防风打火机从桌面到胡永贵右手，再靠近墙上野牛皮，最后被甩棍击腕后落地熄灭；甩棍从爸爸左侧掷向胡永贵右侧手腕，关键道具过渡可见。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "包工头台词约16字用3.5秒，爸爸反压台词约22字用4秒，均在可表演范围内，并有门框遮挡、冷眼扫视和退缩反应支撑。"
+    },
+    {
+      "group": "第5组",
+      "type": "audio_mouth_sync",
+      "evidence": "第5组5-9秒明确爸爸嘴唇闭合不做口型，原剧本OS作为画外心声响起，没有写成现场开口。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组/第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾爸爸持夺来的甩棍立在院中；第2组组首爸爸继续站在院内左侧并握着甩棍，胡永贵在右侧，武器归属与空间位置连续。",
+      "fix_instruction": "若不通过，应在第2组组首补明爸爸仍握甩棍，或调整第1组组尾道具状态。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爸爸稳定在画面左侧，胡永贵、桌子、打火机和牛皮位于画面右侧，甩棍从左向右飞行，视线方向和攻击方向一致。",
+      "fix_instruction": "若不通过，应固定左右站位并补足掷棍方向。"
+    },
+    {
+      "group": "第3组/第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第3组牛皮从墙上被爸爸完整扯下，第4组组首爸爸双手抓着刚扯下的牛皮，随后卷起扛走，牛皮归属和形态变化清楚。",
+      "fix_instruction": "若不通过，应补充牛皮从脱墙到卷起上肩的中间动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "包工头明确朝胡永贵说报警建议，爸爸明确扫过包工头和胡永贵后说黑作坊台词，画面内对白对象清楚。",
+      "fix_instruction": "若不通过，应补明说话对象或增加对方反应镜头。"
+    },
+    {
+      "group": "第5组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "第5组把土路从左前景拉到右后方，爸爸沿斜线奔向村口，太阳在上方偏右，热浪和黄土共同承担正午前压力，非单人居中竖屏逻辑。",
+      "fix_instruction": "若不通过，应补充土路方向、村口方位和爸爸奔跑路线。"
+    },
+    {
+      "group": "第1组-第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终稿未出现模板编号、官方占位符、参考图、首帧尾帧、视频延长、自动分镜、字幕或广告化说明；负向词仅把竖屏构图列为排除项。",
+      "fix_instruction": "若不通过，应删除工程词、模板词或非短剧提示词污染。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

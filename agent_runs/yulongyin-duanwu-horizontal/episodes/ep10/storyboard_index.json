@@ -1,0 +1,97 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP10",
+  "cuts": [
+    {
+      "cut_id": "EP10-G01",
+      "group_index": 1,
+      "title": "鼓声震开龙爪",
+      "scene": "白天晴朗的祠堂内，破碎门梁旁",
+      "characters": [
+        "爸爸",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "木槌",
+        "大鼓",
+        "挖掘机铲斗",
+        "碎石",
+        "青色音波",
+        "龙爪虚影"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP10-G02",
+      "group_index": 2,
+      "title": "龙爪逼停挖掘机",
+      "scene": "白天晴朗的祠堂外，挖掘机和废土堆前",
+      "characters": [
+        "胡永贵",
+        "挖掘机司机"
+      ],
+      "props": [
+        "挖掘机",
+        "钢铁铲斗",
+        "龙爪虚影",
+        "液压杆",
+        "车钥匙",
+        "烟尘"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 13,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP10-G03",
+      "group_index": 3,
+      "title": "血雾中龙影暴涨",
+      "scene": "白天晴朗的祠堂内，大鼓与干井之间",
+      "characters": [
+        "爸爸",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "木槌",
+        "大鼓",
+        "血雾",
+        "青色龙影",
+        "干井",
+        "地下水柱"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 26,
+      "group_end_sec": 40,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP10-G04",
+      "group_index": 4,
+      "title": "水炮掀翻挖掘机",
+      "scene": "白天晴朗的祠堂外，屋顶、挖掘机和废土堆之间",
+      "characters": [
+        "胡永贵",
+        "手下"
+      ],
+      "props": [
+        "地下水柱",
+        "局部阵雨",
+        "挖掘机铲斗",
+        "废土堆",
+        "车钥匙",
+        "泥水",
+        "水雾"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 40,
+      "group_end_sec": 55,
+      "source_group_label": "第4组"
+    }
+  ]
+}

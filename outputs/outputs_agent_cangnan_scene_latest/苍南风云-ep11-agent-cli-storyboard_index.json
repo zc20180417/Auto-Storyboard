@@ -1,0 +1,306 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP11",
+  "cuts": [
+    {
+      "cut_id": "EP11-G01",
+      "group_index": 1,
+      "title": "电话里的木材厂威胁",
+      "scene": "乡政府大院外",
+      "characters": [
+        "陆凡",
+        "徐虎"
+      ],
+      "props": [
+        "手机",
+        "越野车",
+        "合同"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP11-G02",
+      "group_index": 2,
+      "title": "林夏追问与陆凡出发",
+      "scene": "乡政府大院外",
+      "characters": [
+        "陆凡",
+        "林夏"
+      ],
+      "props": [
+        "手机",
+        "越野车",
+        "合同"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 15,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP11-G03",
+      "group_index": 3,
+      "title": "杂草掩护下的潜近",
+      "scene": "废弃木材厂外",
+      "characters": [
+        "陆凡",
+        "守卫甲",
+        "守卫乙"
+      ],
+      "props": [
+        "小石子",
+        "生锈铁桶",
+        "木棍"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 26,
+      "group_end_sec": 38,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP11-G04",
+      "group_index": 4,
+      "title": "无声制服守卫",
+      "scene": "废弃木材厂外",
+      "characters": [
+        "陆凡",
+        "守卫甲",
+        "守卫乙"
+      ],
+      "props": [
+        "木棍",
+        "杂草"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 38,
+      "group_end_sec": 49,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP11-G05",
+      "group_index": 5,
+      "title": "铁柱前的人质与炸弹",
+      "scene": "废弃木材厂厂房车间内",
+      "characters": [
+        "徐虎",
+        "赵大江",
+        "江若晴"
+      ],
+      "props": [
+        "粗麻绳",
+        "承重铁柱",
+        "土制炸弹",
+        "红灯",
+        "合同"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 49,
+      "group_end_sec": 63,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP11-G06",
+      "group_index": 6,
+      "title": "陆凡推开生锈大门",
+      "scene": "废弃木材厂厂房车间内",
+      "characters": [
+        "徐虎",
+        "赵大江",
+        "江若晴",
+        "陆凡"
+      ],
+      "props": [
+        "粗麻绳",
+        "承重铁柱",
+        "土制炸弹",
+        "生锈大门"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 63,
+      "group_end_sec": 76,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP11-G07",
+      "group_index": 7,
+      "title": "合同在手的正面对峙",
+      "scene": "废弃木材厂厂房车间内",
+      "characters": [
+        "陆凡",
+        "徐虎",
+        "赵大江",
+        "江若晴"
+      ],
+      "props": [
+        "合同",
+        "粗麻绳",
+        "承重铁柱",
+        "土制炸弹"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 76,
+      "group_end_sec": 91,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP11-G08",
+      "group_index": 8,
+      "title": "徐虎下令围攻",
+      "scene": "废弃木材厂厂房车间内",
+      "characters": [
+        "陆凡",
+        "徐虎",
+        "赵大江",
+        "江若晴",
+        "打手"
+      ],
+      "props": [
+        "合同",
+        "钢管",
+        "机床",
+        "货架",
+        "土制炸弹"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 91,
+      "group_end_sec": 103,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP11-G09",
+      "group_index": 9,
+      "title": "陆凡以罪名瓦解打手",
+      "scene": "废弃木材厂厂房车间内",
+      "characters": [
+        "陆凡",
+        "徐虎",
+        "打手"
+      ],
+      "props": [
+        "钢管",
+        "机床",
+        "货架",
+        "合同"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 103,
+      "group_end_sec": 117,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP11-G10",
+      "group_index": 10,
+      "title": "警笛逼退打手",
+      "scene": "废弃木材厂厂房车间内",
+      "characters": [
+        "陆凡",
+        "徐虎",
+        "打手",
+        "打手甲"
+      ],
+      "props": [
+        "钢管",
+        "铁管",
+        "机床",
+        "货架"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 117,
+      "group_end_sec": 132,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP11-G11",
+      "group_index": 11,
+      "title": "红色按钮启动倒计时",
+      "scene": "废弃木材厂厂房车间内",
+      "characters": [
+        "陆凡",
+        "徐虎",
+        "江若晴",
+        "打手"
+      ],
+      "props": [
+        "红色按钮",
+        "土制炸弹",
+        "承重铁柱",
+        "铁管",
+        "钢管"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 132,
+      "group_end_sec": 144,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP11-G12",
+      "group_index": 12,
+      "title": "排爆组收到位置",
+      "scene": "废弃木材厂厂房车间内",
+      "characters": [
+        "陆凡",
+        "徐虎",
+        "江若晴",
+        "打手",
+        "警察"
+      ],
+      "props": [
+        "土制炸弹",
+        "承重铁柱",
+        "铁管",
+        "防爆盾"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 144,
+      "group_end_sec": 158,
+      "source_group_label": "第12组"
+    },
+    {
+      "cut_id": "EP11-G13",
+      "group_index": 13,
+      "title": "最后五秒前剪断引线",
+      "scene": "废弃木材厂厂房车间内",
+      "characters": [
+        "江若晴",
+        "排爆手甲",
+        "排爆手乙"
+      ],
+      "props": [
+        "防爆服",
+        "专业工具",
+        "土制炸弹",
+        "承重铁柱",
+        "引线",
+        "倒计时器"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 158,
+      "group_end_sec": 171,
+      "source_group_label": "第13组"
+    },
+    {
+      "cut_id": "EP11-G14",
+      "group_index": 14,
+      "title": "赵大江后门被抓",
+      "scene": "废弃木材厂厂房车间后门口",
+      "characters": [
+        "赵大江",
+        "警察",
+        "陆凡",
+        "江若晴"
+      ],
+      "props": [
+        "后门",
+        "手铐",
+        "粗麻绳"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 171,
+      "group_end_sec": 181,
+      "source_group_label": "第14组"
+    }
+  ]
+}

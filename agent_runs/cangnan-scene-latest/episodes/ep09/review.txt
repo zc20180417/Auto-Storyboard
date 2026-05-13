@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "ep09 assembled final preserves the interrogation reversal, police-hall intervention, Zhao Dajiang escalation, and construction-site explosives cliffhanger with valid timing, space locking, and clean vertical storyboard format.",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "王建国逼签台词24字用4.5秒约5.3字/秒，陆凡账目回应32字用5.5秒约5.8字/秒，均低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "文件袋在律师手中，证明材料被抽出递给值班警员，随后值班警员接住材料并让出通道，银行流向证明的归属转移可见。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "林夏指出资金来源合法合规，王建国辩称财政所账对不上，陆凡揭示真正原版账单已交市纪委，三项核心信息与原剧本一致。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_pacing",
+      "evidence": "赵大江24字炸路命令用4.5秒约5.3字/秒，手下9字重罪提醒用3.5秒并含发抖反应，赵大江15字收尾用4秒并含指门动作，节奏可表演。"
+    },
+    {
+      "group": "第11组",
+      "type": "space_locking",
+      "evidence": "桥洞、炸药、引线、打火机、陆凡、村民和黑影在组首均有明确位置；全组保持水头村修路工地同一物理空间。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "王建国对陆凡威胁，陆凡对王建国质问，王建国对陆凡回应，所有画面内对白均有真实对话对象。",
+      "fix_instruction": "若不通过，应补足每句真人开口台词的真实对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "民警在组首已位于审讯室门内侧阴影处，后续上前拦王建国并汇报林书记电话前具备可见位置。",
+      "fix_instruction": "若不通过，应将民警置于门边可入场位置，或先写入场动作再开口。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "从大厅闯向审讯区后切回审讯室，林夏在门外走廊阴影处持流水单，推门入场动作发生在她暴喝和甩证据之前，空间转换清楚。",
+      "fix_instruction": "若不通过，应在第6组组首或开头补审讯室门外位置和入场动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组15秒承载流水单落桌、林夏定性错案、王建国瘫软辩解、陆凡起身揭示市纪委四个节拍，没有外部事件或额外复杂道具操作叠加。",
+      "fix_instruction": "若不通过，应把陆凡揭示原版账单拆成独立短组。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵大江焦急踱步、手下撞入、王建国被市纪委带走、陆凡带人抢修水头村公路的消息均保留且顺序正确。",
+      "fix_instruction": "若不通过，应恢复被遗漏的市纪委或抢修公路信息。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "工地组只使用自然画面描述和尾部风格约束，没有Seedance自动、参考模板、字幕、首尾帧或工程占位符污染。",
+      "fix_instruction": "若不通过，应删除模型说明词、模板编号或工程占位符。"
+    },
+    {
+      "group": "第11组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "炸药和引线从桥洞旁被黑影塞入桥洞，打火机点燃引线，火星持续缩短，陆凡发现并示警，危险道具状态连续。",
+      "fix_instruction": "若不通过，应补充炸药塞入、引线点燃和火星缩短的可见过渡。"
+    },
+    {
+      "group": "第11组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "陆凡先对暗处喊‘谁在那边’，再面向施工区村民喊‘有炸药！全员卧倒！’，喊话对象明确。",
+      "fix_instruction": "若不通过，应明确陆凡的喊话对象为暗处或村民。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

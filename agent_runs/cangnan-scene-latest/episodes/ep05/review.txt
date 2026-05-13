@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "ep05 assembled final has been reviewed against the full script and vertical storyboard rules; all eleven groups preserve the source dialogue, spaces, timing contract, and reviewer evidence requirements.",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留陆凡雨中进村、牛大春树下抽旱烟、陆凡自我介绍、牛大春质疑和陆凡卖鱼干承诺，未改写关键台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组0-4秒约18字、4-8秒约18字、8-11秒约11字、11-15秒约11字，均低于6.5字/秒硬上限，且站起动作有4秒承载。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "第6组徐虎只以座机听筒里的电话音出现，7.5-12秒明确赵大江听电话时嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "evidence": "第9组组首说明刀藏在黄毛腰侧，3-7秒由黄毛拔出刀，刀的出现和归属有可见过渡。"
+    },
+    {
+      "group": "第11组",
+      "type": "dialogue_pacing",
+      "evidence": "第11组陆凡大声台词约29字分配6秒，黄毛短句4秒，陆凡收尾短句3秒，节奏可表演。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾部牛大春仍蹲在树下审视陆凡，第2组组首复述他蹲在树下，随后才站起指向村落。",
+      "fix_instruction": "若后续让牛大春开场已站立，应在上一组尾部补站起动作或改回蹲姿。"
+    },
+    {
+      "group": "第3组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "仓库腥臭没有直接作为画面信息输出，而转译为两人停住呼吸、鱼干发白发灰和潮湿竹筐。",
+      "fix_instruction": "若出现不可视气味作为主画面，应改为可见反应和道具细节。"
+    },
+    {
+      "group": "第5组",
+      "type": "timing_math",
+      "result": "warning",
+      "evidence": "第5组为6秒短组，但只承载陆凡取出手机拍下鱼干照片，属于道具插入和销路动作铺垫，短组理由成立。",
+      "fix_instruction": "可保留该短组；不要为凑10秒增加无关凝视或仓库展示。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "徐虎台词写为电话音从听筒里传出，赵大江听电话时嘴唇闭合不做口型，电话来源和口型分离清楚。",
+      "fix_instruction": "若改为现场对白，应让徐虎入场；若保持电话音，应保留听筒来源和闭口反应。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第8组只在水头村土路，组首列出三轮车、鱼干包、村民、巨石、黄毛和陆凡的位置与朝向。",
+      "fix_instruction": "若加入村委报官画面，应另起组或明确屏幕/蒙太奇。"
+    },
+    {
+      "group": "第10组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第9组尾部牛大春拉住陆凡，第10组组首延续手搭在陆凡胳膊上的状态，再松手后退。",
+      "fix_instruction": "若牛大春突然离开前景，应补充松手和后退过程。"
+    },
+    {
+      "group": "第11组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第11组保留陆凡声明全程录像和官差二十分钟就到、黄毛心虚质疑、陆凡冷笑回应试试看。",
+      "fix_instruction": "若删掉录像或官差信息，会破坏陆凡反制逻辑，应恢复原台词。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全片正文未出现模型说明词、模板编号、参考图占位、字幕工程词或模板化批量描述。",
+      "fix_instruction": "若出现工程词，应删除并改为自然中文可生成画面。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "timing_math",
+      "problem": "第5组为6秒短组。",
+      "evidence": "该组只承载陆凡取出手机并拍下鱼干高清照片，属于道具插入和销路动作铺垫，短组理由成立。",
+      "fix": "保留短组即可，不建议用无关仓库展示或拖慢动作凑到10秒。"
+    }
+  ]
+}

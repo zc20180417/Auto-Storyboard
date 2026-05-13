@@ -1,0 +1,81 @@
+{
+  "pass": true,
+  "summary": "ep02 seg01 已按原剧本完成七组分镜：林家怒火、林跃示弱递协议、暗写小字、按手印离开和门外心声反转均保留，未发现 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组总时长15秒，4个时间段连续覆盖张桂兰哭喊、林建国激动回应、林跃按肩卸锄头并说三句短对白；8.5-15秒承载约31字现场对白和卸锄头动作，6.5秒内低于6.5字/秒，口型和动作可完成。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组只发生在村委会办公室；组首明确办公桌、赵百川、赵大强、茶杯、椅子和门口空位，林跃在3-6秒先推门进入后才参与对白，人物可用性成立。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "第5组保留赵百川推出红色印泥盒并催促按手印、林跃眼眶泛红手抖、俯身用身体挡住动作并在协议末尾加极小字、赵大强催促快点按的关键动作和台词。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "第7组将林跃(OS)改为内心旁白，镜头明确林跃嘴唇闭合、不做口型；门内赵大强笑声作为环境声处理，不让林跃现场开口说心声。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "冷饭菜、干涸田垄、林建国砸桌怒吼和抓锄头外冲的因果链完整保留，没有新增改变剧情的道具或人物关系。",
+      "fix_instruction": "无需修复。若不通过，应补回桌上饭菜、窗外田垄、砸桌怒吼和抓锄头动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组结尾林跃低头站在办公室门边受嘲讽，第4组组首复述林跃在门边面向办公桌，赵百川和赵大强仍在桌旁，空间和人物状态连续。",
+      "fix_instruction": "无需修复。若不通过，应在第3组尾或第4组首补明林跃、赵百川、赵大强的位置。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组14秒内包含推出印泥、林跃看协议、遮挡加小字、赵大强催促四个清晰节拍；关键道具操作分段呈现，没有把按手印也塞入同组。",
+      "fix_instruction": "无需修复。若不通过，应把加字和按手印拆开或压缩非关键反应。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "林跃内心旁白承载原剧本OS，画面中林跃嘴唇闭合不做口型，声音来源和画面口型关系清楚。",
+      "fix_instruction": "无需修复。若不通过，应改成内心旁白并明确闭口，不能写成林跃现场开口。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

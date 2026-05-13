@@ -1,0 +1,105 @@
+{
+  "pass": true,
+  "summary": "ep06 已对照完整剧本、竖屏生成规则和整集 final.txt 完成真实审核，5个分镜组保留早雨预警、周大柱拒绝、夜雨路塌和赶往仓房的关键台词与动作，无阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留剧本中路边裂缝、泥水下渗、沈砚川蹲下挖土的画面，并按顺序承载沈小禾“哥，真软了。”、沈砚川“上层吃满水了。”、周大柱“你又在吓唬谁？”、沈砚川“让你娘先往高处挪。”，未改说话对象或因果。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组14秒承载“我家仓房结实。”到“老人孩子先走，粮食搬高点。”约39个有效字，平均约2.8字/秒，另有看裂缝、举伞靠近和沈砚川扫视众人的动作，节奏不挤压口型。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "evidence": "第3组中周大柱对沈砚川说“谁爱搬谁搬，我不折腾。”，沈小禾对周大柱说“大柱叔，真危险。”，周大柱对沈小禾说“小丫头别学你哥吓人。”，沈砚川对周大柱说“行，出事别怪我没说。”，对象明确。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组明确从早雨进山土路切到夜雨通村路口，组首写清沈砚川、林知夏、周大柱、村民乙和村民在裂缝近处的位置、朝向与手电筒道具，符合新时间新空间另起组的规则。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "第5组组首延续第4组沈砚川抓住周大柱、林知夏手电照裂缝的状态，随后0-6秒呈现泥块滑落和半边土路陷下去，手电和塌陷路面均有可见过渡。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "沈砚川、沈小禾、周大柱在组首均有明确画面位置和身体朝向，周大柱虽在右后方但已位于同一土路空间，后续赶到裂缝旁再开口，人物可用。",
+      "fix_instruction": "若不通过，应在说话前补充人物已在场位置、身体朝向或入场动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾部沈砚川站在裂缝旁警告周大柱；第2组组首延续裂缝、泥水、沈砚川手上湿土和周大柱站在泥水里的状态，组间连续。",
+      "fix_instruction": "若不通过，应补足第1组组尾或第2组组首中裂缝、人物位置和湿土状态。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第3组12秒只承载周大柱拒绝、沈小禾劝阻、周大柱反讽和沈砚川冷回应四个短节拍，没有长动作链、外部事件或关键道具操作叠加。",
+      "fix_instruction": "若不通过，应拆分拒绝与最后警告，或压缩非关键反应。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第4组全部为现场人物开口对白，林知夏、沈砚川、周大柱、村民乙都在画面中或组首可见；没有把画外音、电话音或心声写成现场口型。",
+      "fix_instruction": "若不通过，应明确非现场声音来源，并写明画面人物嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第4组-第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾部沈砚川拽住周大柱、众人被拦在裂缝外侧，村民乙哭喊路要塌；第5组组首直接复述沈砚川抓住周大柱、林知夏手电照向裂缝和村民朝向塌陷路口的状态。",
+      "fix_instruction": "若不通过，应在第4组组尾或第5组组首补足抓手、裂缝、手电和村民站位。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第5组按剧本呈现一声闷响、半边土路陷下去、周大柱“真塌了……”、林知夏“现在怎么办？”、沈砚川“先回村，叫人转移。”、周大柱“那我娘！”和沈砚川“去你家仓房！”，关键动作与台词未丢失。",
+      "fix_instruction": "若不通过，应恢复塌方事件、人物反应和赶往仓房的台词顺序。"
+    },
+    {
+      "group": "第1组-第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集final.txt未出现模型说明词、官方模板编号、参考图、首尾帧、视频延长、字幕占位、广告语或工程说明；负面提示只用于常规画质与字幕水印约束。",
+      "fix_instruction": "若不通过，应删除污染词并改成自然可拍画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

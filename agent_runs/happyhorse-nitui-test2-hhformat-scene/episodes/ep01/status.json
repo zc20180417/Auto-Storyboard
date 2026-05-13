@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "EP-01-ep01-agent-cli-storyboard.txt",
+  "summary": "完成 ep01 HappyHorse 画面风格格式修复，分镜内容覆盖晒谷场陷害、林跃反击举证和水渠关闸。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,111 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP18",
+  "cuts": [
+    {
+      "cut_id": "EP18-G01",
+      "group_index": 1,
+      "title": "撞门逼命，水壶系上心口",
+      "scene": "日/晴，祠堂大门内外",
+      "characters": [
+        "村民甲",
+        "爸爸",
+        "天天",
+        "村民们"
+      ],
+      "props": [
+        "粗木桩",
+        "锄头",
+        "镰刀",
+        "挂粗绳的水壶"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP18-G02",
+      "group_index": 2,
+      "title": "血落水壶，鼓槌唤雷",
+      "scene": "日/晴，祠堂内",
+      "characters": [
+        "爸爸",
+        "村民甲",
+        "村民们",
+        "云宝（壶中）"
+      ],
+      "props": [
+        "挂在爸爸胸前的水壶",
+        "老木鼓槌",
+        "野牛大鼓",
+        "锄头",
+        "镰刀"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 15,
+      "group_end_sec": 30,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP18-G03",
+      "group_index": 3,
+      "title": "雷声横扫干河裂缝",
+      "scene": "日/晴，干涸河床裂缝处",
+      "characters": [
+        "胡永贵"
+      ],
+      "props": [
+        "引线",
+        "火花",
+        "干裂河床石块"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 30,
+      "group_end_sec": 44,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP18-G04",
+      "group_index": 4,
+      "title": "鼓声压日，狂风入祠堂",
+      "scene": "日/晴转暗，祠堂门槛内外",
+      "characters": [
+        "爸爸",
+        "天天",
+        "村民们"
+      ],
+      "props": [
+        "野牛大鼓",
+        "老木鼓槌",
+        "挂在爸爸胸前的水壶",
+        "锄头",
+        "镰刀"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 44,
+      "group_end_sec": 57,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP18-G05",
+      "group_index": 5,
+      "title": "血色水龙入云，紫雷乍现",
+      "scene": "日/晴转雷云，祠堂门槛内外",
+      "characters": [
+        "爸爸",
+        "天天",
+        "村民们"
+      ],
+      "props": [
+        "炸裂的水壶",
+        "野牛大鼓",
+        "老木鼓槌"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 57,
+      "group_end_sec": 70,
+      "source_group_label": "第5组"
+    }
+  ]
+}

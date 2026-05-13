@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "ep32已按storyboard-reviewer对照原剧本和完整final.txt审核，身份揭示、财团切割、收网、自毁危机、断电失效和回苍南收尾均保留，未发现硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "剧本要求商会总管顺着龙万山手指认出陆凡、跑到陆凡面前九十度鞠躬并参见最高裁决官；第1组0-10秒完整保留该动作和原台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "摩根总裁只以电话音出现，声音来源是龙万山手中的加密电话，龙万山在电话台词期间嘴唇闭合不做口型，符合电话音承载规则。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "龙万山“陆凡！我在地下室存放了核心商业机密的自毁装置！”约25字给5秒，第二句约29字给6秒，情绪对白约4.8-5字/秒，未超过6.5字/秒上限。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "第6组组尾龙万山手掌悬在红色自毁键上方，第7组组首承接大拇指悬在按钮上方，随后硬币击腕使手指偏离按钮，道具归属和动作过渡清楚。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "evidence": "最终收尾只写雨风、外套、车队警灯和街道画面，没有模板编号、参考图、自动分镜、字幕、广告语或工程说明词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组只承载纠察员集体参见、声浪冲击和龙万山震惊质问，13秒内三项强节拍分段清楚。",
+      "fix_instruction": "若不通过，应拆分群体参见和龙万山质问。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "龙万山、陆凡、商会总管均在组首有位置和朝向，摩根总裁明确为电话音，不需要画面人物可见。",
+      "fix_instruction": "若不通过，应补齐可见人物站位或改为明确电话音。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "龙天傲对龙万山喊资产全没，陆凡对联合纠察员下令收网，商会总管对联合纠察员下令带走，所有现场对白均有真实对象。",
+      "fix_instruction": "若不通过，应补足每句现场对白的说话对象。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组结尾商会总管下令、纠察员准备上前；第5组开头纠察员压上控制龙家人，动作承接自然。",
+      "fix_instruction": "若不通过，应在第4组尾部或第5组开头补充纠察员上前过渡。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第6组保持在夜雨中的龙家庄园大院，同一物理空间内明确控制台、红色自毁键、龙万山、陆凡、商会总管和纠察员的位置。",
+      "fix_instruction": "若不通过，应拆出跨空间内容或补足组首空间锁定。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "庄园断电通过灯光熄灭、控制台红光断掉、警灯和雨地反光保持可见性来表现，避免不可生成的抽象说明和黑脸风险。",
+      "fix_instruction": "若不通过，应补充可见光源和人物反应。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "备用探照灯亮起、龙天傲被拖向押解车并求饶、陆凡回答“晚了。带走。”均按原剧本顺序保留。",
+      "fix_instruction": "若不通过，应恢复缺失台词或押解动作。"
+    },
+    {
+      "group": "第10组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第10组总时长14秒，时间段0-5、5-9、9-14连续且最后结束于14秒，镜头数3个与时间段一致。",
+      "fix_instruction": "若不通过，应修正时间段连续性和标题镜头数。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,120 @@
+{
+  "pass": true,
+  "summary": "第7集横屏分镜已对照原剧本和横屏规则完成审核，讨薪、赶路、祠堂被夺和天天护龙舟的剧情链条完整，无阻断交付问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "工地板房内爸爸从画面左侧门口冲向中央桌边，包工头固定在画面右侧桌后，现金和安全帽位于两人之间，横屏左右关系和道具归属清楚。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "爸爸“我干了三个月，你扣什么钱！”约12字安排3秒，包工头“你干什么！打人要坐牢的！”约12字安排3秒，均低于6.5字/秒硬上限且符合争执节奏。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "破旧长途客车抛锚、引擎盖冒黑烟、爸爸抓司机胳膊催修、司机说明水箱漏了今晚走不了，原剧本信息完整保留。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "evidence": "爷爷对胡永贵怒吼，胡永贵对爷爷冷笑回应，村民甲对爷爷劝说，所有现场对白都有画面内说话对象。"
+    },
+    {
+      "group": "第10组",
+      "type": "prop_continuity",
+      "evidence": "天天从船底钻出时一直抱着粗瓷碗，最终站到龙舟前挡住胡永贵，粗瓷碗和残破龙舟两个关键道具位置连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爸爸由画面左侧入门并向右侧包工头施压，包工头守在右侧桌后，后续第2组继续保持左压右的讨薪轴线。",
+      "fix_instruction": "若不通过，应在第1组尾或第2组首补充爸爸与包工头的左右站位承接。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "爸爸咬牙松手、抓起桌上几百块零钱、转身冲出，并保留“这点算路费。剩下的回头算。”，未新增殴打或抢夺之外的剧情。",
+      "fix_instruction": "若不通过，应只保留松手、抓零钱、放话离开，删除任何额外暴力动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾爸爸转向右侧漆黑山路，第5组首爸爸仍在车头旁朝右侧山路，随后看挂坠、抓背包、向右后方奔跑，空间方向连续。",
+      "fix_instruction": "若不通过，应在第4组尾或第5组首补充爸爸转向山路和背包位置。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "胡永贵、爷爷、手下、村民都在组首空间锁定中可见，胡永贵说话时爷爷在同框内，手下堵门阵营明确。",
+      "fix_instruction": "若不通过，应把关键说话人、被说话对象和铁棍手下补入组首空间锁定。"
+    },
+    {
+      "group": "第8组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "两个手下从胡永贵右后方上前，把爷爷从左侧木门前拖向右侧，组尾木门完全暴露，动作结果承接第10组胡永贵进入祠堂。",
+      "fix_instruction": "若不通过，应补足手下上前方向、爷爷被拖离门前和木门暴露的可见过程。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "天天抱着粗瓷碗对云宝说“云宝坚持住，爸爸马上就回来了。”，画面中天天现场开口，云宝只在碗中痛苦翻滚，不存在声音来源混淆。",
+      "fix_instruction": "若不通过，应明确天天开口、云宝不开口，只以动作和状态承载痛苦。"
+    },
+    {
+      "group": "第10组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "14秒内按破门、进入扫视、下令、天天钻出、挡住龙舟五个连续节拍推进，未塞入额外打斗或无意义停顿。",
+      "fix_instruction": "若不通过，应拆分破门进入和天天阻挡，或删去非剧情动作。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终分镜未出现模板编号、官方占位符、参考图/首尾帧、自动分镜等工程词，尾部负向词只作为画面排除项使用。",
+      "fix_instruction": "若不通过，应删除工程说明词和模板化短语，改成现场可见动作与空间描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

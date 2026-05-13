@@ -1,0 +1,110 @@
+{
+  "pass": true,
+  "summary": "ep04已按storyboard-horizontal-reviewer对照原剧本、横屏生成规则和最终final.txt完成整集审稿；9组均保留剧情因果、台词对象、横屏站位、道具连续和电话音来源，无硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "送水车在左侧、皮卡在右侧、队伍斜线排到右后方，天天处在队尾，胡永贵从右侧闯入，横屏空间关系清楚。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "村民甲约15字/3.5秒，胡永贵约17字/4.5秒，字秒比约4.3和3.8，未超过6.5硬上限，并有明确说话对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "天天原句“别浪费水！给我留一点！”、抢水管、被胡永贵推倒、水壶险些摔碎均保留，未新增改变剧情的强动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "泥水从右侧皮卡下方向中央回流并结成薄冰，胡永贵踩上后摔倒，水管从右手甩到中央偏左，动作过渡可见。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "包工头台词明确由手机扬声器传出，胡永贵在该镜头嘴唇闭合听着，电话声未被写成现场真人开口。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "天天原句“后山有泉眼？不能让他倒毒液！”保留，随后抱紧水壶朝后山方向狂奔，符合原剧本转折。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "胡永贵从画面右侧皮卡方向进入，后续第2、3组仍在右前景控制水管，天天由右后方/左前景完成被推倒的连续移动。",
+      "fix_instruction": "若出现无过渡换边，应在组尾或组首补充穿过队伍、绕车或中性镜头。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "村民甲对胡永贵质问，胡永贵对村民甲得意回应，天天作为后景反应人物，不承担无对象对白。",
+      "fix_instruction": "若对象不明，应将台词改成A对B说道/问道。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "云宝醒来、转圈和喷雾均以水壶特写、壶内近景、雾气溢出呈现，可视化明确。",
+      "fix_instruction": "若魔法动作抽象，应补充壶壁波纹、水雾外溢或天天反应承载。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾部水管脱手滑到天天右前方，第6组组首写水管在中央偏左，天天视线锁住喷口并扑过去，衔接连续。",
+      "fix_instruction": "若道具跳变，应补充水管滑落路线和喷口朝向。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "皮卡车内和屋檐为同一停车点内外层次，半开车窗解释声音传到天天所在左后景阴影处，没有无标识跨空间。",
+      "fix_instruction": "若被误解为跨场，应把场景写成皮卡内外同一停车点，并保留车窗作为声音通道。"
+    },
+    {
+      "group": "第9组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "12秒只包含天天惊呼、转身、沿土路奔向后山，强节拍数量合理，没有同时叠加电话新信息或复杂道具操作。",
+      "fix_instruction": "若过载，应删减远景回看或拆分奔跑段。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

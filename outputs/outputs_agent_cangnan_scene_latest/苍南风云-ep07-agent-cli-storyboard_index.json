@@ -1,0 +1,307 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP07",
+  "cuts": [
+    {
+      "cut_id": "EP07-G01",
+      "group_index": 1,
+      "title": "警车压到村口",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "牛大春",
+        "四名警察",
+        "村民"
+      ],
+      "props": [
+        "三辆警车",
+        "出警单"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP07-G02",
+      "group_index": 2,
+      "title": "陆凡说明没主动动手",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "牛大春",
+        "周思思",
+        "两名警察",
+        "村民"
+      ],
+      "props": [
+        "手机",
+        "警车"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 15,
+      "group_end_sec": 28,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP07-G03",
+      "group_index": 3,
+      "title": "周思思举出直播回放",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "周思思",
+        "村民"
+      ],
+      "props": [
+        "手机",
+        "警车"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 28,
+      "group_end_sec": 43,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP07-G04",
+      "group_index": 4,
+      "title": "笔录前奥迪急停",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "周思思",
+        "警察",
+        "林夏"
+      ],
+      "props": [
+        "手机",
+        "警车",
+        "黑色奥迪",
+        "文件"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 43,
+      "group_end_sec": 58,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP07-G05",
+      "group_index": 5,
+      "title": "县委通报亮出",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "林夏",
+        "警察",
+        "周思思"
+      ],
+      "props": [
+        "黑色奥迪",
+        "文件",
+        "警车"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 58,
+      "group_end_sec": 73,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP07-G06",
+      "group_index": 6,
+      "title": "正当防卫压住一面之词",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "林夏",
+        "警察",
+        "周思思"
+      ],
+      "props": [
+        "文件",
+        "警车",
+        "黑色奥迪"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 73,
+      "group_end_sec": 88,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP07-G07",
+      "group_index": 7,
+      "title": "局长办公室的威慑",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "林夏",
+        "警察"
+      ],
+      "props": [
+        "文件",
+        "警车",
+        "黑色奥迪"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 88,
+      "group_end_sec": 103,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP07-G08",
+      "group_index": 8,
+      "title": "收队后县里表态",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "林夏",
+        "警察"
+      ],
+      "props": [
+        "警车",
+        "黑色奥迪",
+        "文件"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 103,
+      "group_end_sec": 116,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP07-G09",
+      "group_index": 9,
+      "title": "办公室里等抓人消息",
+      "scene": "乡长办公室",
+      "characters": [
+        "赵大江",
+        "徐虎"
+      ],
+      "props": [
+        "手机",
+        "沙发",
+        "办公椅",
+        "烟"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 116,
+      "group_end_sec": 129,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP07-G10",
+      "group_index": 10,
+      "title": "伪造轻伤二级",
+      "scene": "乡长办公室",
+      "characters": [
+        "赵大江",
+        "徐虎"
+      ],
+      "props": [
+        "纱布",
+        "烟",
+        "沙发",
+        "办公桌"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 129,
+      "group_end_sec": 142,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP07-G11",
+      "group_index": 11,
+      "title": "林夏怒停抓捕",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "林夏",
+        "警察"
+      ],
+      "props": [
+        "黑色奥迪",
+        "手铐",
+        "文件",
+        "警车"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 142,
+      "group_end_sec": 157,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP07-G12",
+      "group_index": 12,
+      "title": "解开手铐灰溜溜离开",
+      "scene": "水头村村口泥地",
+      "characters": [
+        "老张",
+        "陆凡",
+        "林夏",
+        "警察"
+      ],
+      "props": [
+        "文件",
+        "手铐",
+        "警车",
+        "黑色奥迪"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 157,
+      "group_end_sec": 172,
+      "source_group_label": "第12组"
+    },
+    {
+      "cut_id": "EP07-G13",
+      "group_index": 13,
+      "title": "河滩上谈烂路",
+      "scene": "水头村河滩",
+      "characters": [
+        "陆凡",
+        "林夏"
+      ],
+      "props": [],
+      "duration_sec": 13,
+      "group_start_sec": 172,
+      "group_end_sec": 185,
+      "source_group_label": "第13组"
+    },
+    {
+      "cut_id": "EP07-G14",
+      "group_index": 14,
+      "title": "建材垄断的阻力",
+      "scene": "水头村河滩",
+      "characters": [
+        "陆凡",
+        "林夏"
+      ],
+      "props": [],
+      "duration_sec": 14,
+      "group_start_sec": 185,
+      "group_end_sec": 199,
+      "source_group_label": "第14组"
+    },
+    {
+      "cut_id": "EP07-G15",
+      "group_index": 15,
+      "title": "陆凡心声定下决意",
+      "scene": "水头村河滩",
+      "characters": [
+        "陆凡",
+        "林夏"
+      ],
+      "props": [],
+      "duration_sec": 8,
+      "group_start_sec": 199,
+      "group_end_sec": 207,
+      "source_group_label": "第15组"
+    }
+  ]
+}

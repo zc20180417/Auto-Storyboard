@@ -1,0 +1,17 @@
+{
+  "episode_id": "ep01",
+  "status": "needs_review",
+  "output_name": "EP-01-ep01-agent-cli-storyboard.txt",
+  "summary": "6组分镜完成，第5组配电箱对峙场景台词密度过高（43字/4秒=10.75字/秒），超过6.5字/秒硬上限，需人工判断是否可接受或需删减台词。",
+  "hard_issues_remaining": [
+    "第5组5-9秒连续对话节拍43字÷4秒=10.75字/秒，超过6.5字/秒硬上限",
+    "第5组9-13秒连续对话节拍43字÷4秒=10.75字/秒，超过6.5字/秒硬上限"
+  ],
+  "warnings": [
+    "第2组8-12秒连续对话节拍26字÷4秒=6.5字/秒，偏快但在连续对话节拍合理范围内"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": false,
+  "reviewer_issues_count": 2,
+  "reviewer_warnings_count": 1
+}

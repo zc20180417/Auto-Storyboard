@@ -1,0 +1,104 @@
+{
+  "pass": true,
+  "summary": "ep30整集横屏分镜忠于端午龙舟下水、起鼓竞渡、云宝力量托流和冲线结尾，格式、时长、空间轴线和对话承载均可交付。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "第1组使用左岸村民和彩旗、右岸高台爷爷、前景龙舟的横向关系建立端午河道，关键人物和龙舟位置清楚。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组爸爸问句约8字/3秒，天天答句约12字/3秒，并由侧头、点头和握槌动作承载，未出现硬性过快。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "第6组保留天天关于云宝力量的完整台词、爸爸回应“它一直在守护我们。”、天天欢呼“冲啊！”和爸爸重鼓冲线。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组明确画面上半部是龙舟和人物、下半部是龙舟正下方深水的青金龙影，水上水下空间分层可生成。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "原剧本中的端午当天、彩旗人群、崭新龙舟红绸、爷爷喊“吉时已到！龙舟下水！”和村民欢呼都被保留。",
+      "fix_instruction": "若不通过，应补回漏掉的下水口令、红绸龙舟或村民欢呼。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "清酒碗由爷爷双手捧持、倾倒入河、再收回空碗，清酒祭水动作和道具归属连续。",
+      "fix_instruction": "若不通过，应补充酒碗拿取、倾倒或收回动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爸爸固定在左前鼓架后，天天固定在右前，问答过肩和双人镜头保持同一左右轴线。",
+      "fix_instruction": "若不通过，应增加换边过渡或使用正面中性镜头重建轴线。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "爸爸开口喊“起鼓！”后击鼓，天天敲鼓边时明确嘴唇闭合，鼓声来源来自鼓面和鼓边动作。",
+      "fix_instruction": "若不通过，应标明每句声音来源及对应口型。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "青金双色龙影通过半水下视角、船底上方掠过和水流托举呈现，抽象力量被转成可见画面。",
+      "fix_instruction": "若不通过，应把力量表现改成水流、光线或人物反应等可拍元素。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "15秒内只承载天天长句、爸爸短回应、天天欢呼和重鼓冲线，均在同一龙舟冲刺空间内完成。",
+      "fix_instruction": "若不通过，应拆分长台词和冲线动作，或压缩非关键水花描写。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天先朝爸爸说云宝力量，爸爸回头对天天回应，天天再转向终点线欢呼，对象明确。",
+      "fix_instruction": "若不通过，应补充说话对象和反应镜头。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文没有模板编号、参考图占位、首尾帧说明、视频延长或模型控制台术语；负向词仅作为生成约束出现。",
+      "fix_instruction": "若不通过，应删除工程说明和模板污染词。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

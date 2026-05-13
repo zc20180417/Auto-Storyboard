@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "episode_number": 2,
+  "display_name": "雨龙吟端午-第02集",
+  "series_title": "雨龙吟端午",
+  "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_yulongyin_duanwu_ep02_03_physics_source\\雨龙吟端午-第02集.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_yulongyin_duanwu_horizontal_regenerated_ep02_03\\雨龙吟端午-ep02-agent-cli-storyboard.txt",
+  "storyboard_aspect": "horizontal",
+  "generator_skill_name": "storyboard-horizontal-generator",
+  "reviewer_skill_name": "storyboard-horizontal-reviewer",
+  "reviewer_source": "storyboard-horizontal-reviewer"
+}

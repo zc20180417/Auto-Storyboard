@@ -1,0 +1,109 @@
+{
+  "pass": true,
+  "summary": "ep27 已对照完整剧本、竖屏生成规则和 Seedance 参考层完成审核，书房逼婚威胁、大厅反制、警方控制、U盘账本证据和顾家收束均按原顺序呈现，无硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "李少爷质问、顾长海赔笑、李少爷限时取消合作、顾长海承诺换婚纱分别落在4秒、2.5秒、3.5秒、4秒内，最长一句约21字/3.5秒，未超过6.5字/秒。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "保留大门被踹开、赵朵朵孤身进大厅、李少爷评价、顾长海说算你识相、赵朵朵问我妈呢、顾长海以婚纱和养母安全威胁她的顺序。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "第4组组尾保镖手伸向腰间，第5组0-2.5秒明确保镖拔枪并抬枪口；赵朵朵从扣住李少手腕过渡到把他按在长桌上，长桌和枪口归属清楚。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "警笛作为外部声音在7-12秒进入，并由门窗红蓝光、保镖转头和顾长海反应承载；没有把警笛写成现场人物口型。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "evidence": "第8组组尾特警逼近顾长海，第9组组首接到顾长海扶楼梯扶手、特警已到身前，随后手铐合上并瘫软在地，逮捕动作连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "书房内李少爷和顾长海互相在场，台词均写明李少爷对顾长海、顾长海对李少爷说道，没有假对象。",
+      "fix_instruction": "若不通过，应把每句现场对白改为明确的真人对真人说话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "组首写明保镖站在门内暗处，0-4秒先上前半步再回答桂翠莲已在地下室，手机在组首已说明可由保镖取出拨号。",
+      "fix_instruction": "若不通过，应在组首补齐保镖位置或在发言前增加可见入场。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组承载赵朵朵揭穿顾长海、李少爷上前挑衅、伸手摸脸、赵朵朵反折手腕四个强节拍，14秒内每个节拍有独立表演空间，没有再叠加外部事件。",
+      "fix_instruction": "若不通过，应拆分李少爷挑衅和反折手腕，或删去非原剧本动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "整组仍在顾家别墅大厅内，门窗外警笛和红蓝光作为外部声音与光源进入，不切换到室外物理空间。",
+      "fix_instruction": "若不通过，应把外部警车画面改成门窗反光和室内人物反应。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵朵朵甩开李少后说明顾氏涉黑和偷税漏税，再拿出U盘说明机密账本来自顾秘书，顾长海如遭雷击质问顾秘书出卖他，台词顺序和证据道具未改。",
+      "fix_instruction": "若不通过，应恢复U盘、机密账本、顾秘书交给赵朵朵和顾长海震惊反问的原有因果。"
+    },
+    {
+      "group": "第9组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第9组标题14秒，时间段为0-4秒、4-7秒、7-14秒，连续且相加等于14秒；镜头数3个与时间段数一致。",
+      "fix_instruction": "若不通过，应调整标题总时长或时间段边界，使最后一段结束于标题时长。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文未出现模型说明词、参考图占位、模板编号、广告语或批量模板化镜头描述；尾部只保留项目要求的画面风格和负向提示。",
+      "fix_instruction": "若不通过，应删除模型说明和模板口吻，改成现场可见动作、声音和光影。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "被发小踢出局，我反手成烧烤之王-ep25-agent-cli-storyboard.txt",
+  "summary": "许安报名夜市招牌评选遭韩彪质疑，街坊、老客和主办方先后作证支持，韩彪转而守着明早公示。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第11组",
+      "rule": "timing_math",
+      "problem": "第11组为8秒片尾意象短组，低于默认10-15秒范围但符合片尾意象例外。",
+      "evidence": "第11组只承载夜里收摊、公告栏灯仍亮、韩彪独自等待公示三段收束画面，未硬塞对白或新增剧情。",
+      "fix": "可保留；如需完全贴近默认时长，可扩到10秒并只补充灯光、夜风和等待状态。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

@@ -1,0 +1,219 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP32",
+  "cuts": [
+    {
+      "cut_id": "EP32-G01",
+      "group_index": 1,
+      "title": "总管认出裁决官",
+      "scene": "夜雨中的龙家庄园大院",
+      "characters": [
+        "商会总管",
+        "龙万山",
+        "陆凡",
+        "联合纠察员"
+      ],
+      "props": [
+        "黑伞",
+        "执法证件",
+        "雨水地面"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP32-G02",
+      "group_index": 2,
+      "title": "全场参见裁决官",
+      "scene": "夜雨中的龙家庄园大院",
+      "characters": [
+        "陆凡",
+        "龙万山",
+        "商会总管",
+        "联合纠察员"
+      ],
+      "props": [
+        "黑伞",
+        "执法证件",
+        "警灯"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 12,
+      "group_end_sec": 25,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP32-G03",
+      "group_index": 3,
+      "title": "跨国财团切割龙家",
+      "scene": "夜雨中的龙家庄园大院",
+      "characters": [
+        "龙万山",
+        "陆凡",
+        "商会总管",
+        "摩根总裁（电话音）"
+      ],
+      "props": [
+        "加密电话",
+        "黑伞",
+        "警灯"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 25,
+      "group_end_sec": 38,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP32-G04",
+      "group_index": 4,
+      "title": "收网命令落下",
+      "scene": "夜雨中的龙家庄园大院",
+      "characters": [
+        "龙万山",
+        "龙天傲",
+        "陆凡",
+        "商会总管",
+        "联合纠察员"
+      ],
+      "props": [
+        "加密电话",
+        "黑伞",
+        "警灯"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 38,
+      "group_end_sec": 51,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP32-G05",
+      "group_index": 5,
+      "title": "龙家人被控制",
+      "scene": "夜雨中的龙家庄园大院",
+      "characters": [
+        "龙万山",
+        "陆凡",
+        "商会总管",
+        "联合纠察员",
+        "龙家人"
+      ],
+      "props": [
+        "加密电话",
+        "控制台",
+        "警灯"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 51,
+      "group_end_sec": 64,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP32-G06",
+      "group_index": 6,
+      "title": "自毁装置威胁",
+      "scene": "夜雨中的龙家庄园大院",
+      "characters": [
+        "龙万山",
+        "陆凡",
+        "商会总管",
+        "联合纠察员"
+      ],
+      "props": [
+        "庄园控制台",
+        "红色自毁键",
+        "警灯"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 64,
+      "group_end_sec": 79,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP32-G07",
+      "group_index": 7,
+      "title": "硬币击偏自毁键",
+      "scene": "夜雨中的龙家庄园大院",
+      "characters": [
+        "龙万山",
+        "陆凡",
+        "商会总管",
+        "联合纠察员"
+      ],
+      "props": [
+        "庄园控制台",
+        "红色自毁键",
+        "硬币"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 79,
+      "group_end_sec": 91,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP32-G08",
+      "group_index": 8,
+      "title": "切断电源失效自毁",
+      "scene": "夜雨中的龙家庄园大院",
+      "characters": [
+        "陆凡",
+        "龙万山",
+        "商会总管",
+        "联合纠察员",
+        "技术组（耳麦音）"
+      ],
+      "props": [
+        "耳麦",
+        "庄园控制台",
+        "红色自毁键",
+        "探照灯"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 91,
+      "group_end_sec": 103,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP32-G09",
+      "group_index": 9,
+      "title": "龙天傲被押走",
+      "scene": "夜雨中的龙家庄园大院",
+      "characters": [
+        "陆凡",
+        "龙天傲",
+        "商会总管",
+        "联合纠察员"
+      ],
+      "props": [
+        "备用探照灯",
+        "押解车",
+        "警灯"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 103,
+      "group_end_sec": 116,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP32-G10",
+      "group_index": 10,
+      "title": "回苍南收尾",
+      "scene": "夜雨中的龙家庄园大院外街道",
+      "characters": [
+        "陆凡",
+        "商会总管",
+        "联合纠察员"
+      ],
+      "props": [
+        "商会车队",
+        "红蓝警灯",
+        "黑色外套"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 116,
+      "group_end_sec": 130,
+      "source_group_label": "第10组"
+    }
+  ]
+}

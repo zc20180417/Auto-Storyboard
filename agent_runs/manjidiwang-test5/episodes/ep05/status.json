@@ -1,0 +1,19 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "EP-05-ep05-agent-cli-storyboard.txt",
+  "summary": "第5集分镜完成，共8组。HR报到（2组）、会议室质问（2组）、公寓对峙（4组）。所有台词完整保留，心声正确标注闭口，时长均在10-15秒范围内。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "space_locking",
+      "problem": "第2组从办公室切换到走廊，属于同楼层相邻空间的连续动作过渡，可接受。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

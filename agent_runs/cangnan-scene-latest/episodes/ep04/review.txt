@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "summary": "ep04最终稿完整保留民政办证据封存、云盘反转、张强被带走、赵大江设局下派水头村的剧情链，格式、时长、空间锁定和对白指向通过审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "纪委干部长台词“根据规定，现场所有存储设备都要封存。你不配合，我们可以申请强制措施。”约34字分配8秒，约4.25字/秒，并有出示工作证动作支撑。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "陆凡手机从衣袋内到8-10.5秒掏出点开并递给纪委干部，10.5-15秒承载云盘备份信息，道具转移清楚。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "张强被戴手铐押解、向赵大江求救、赵大江掌掴并怒斥“胡说八道！党纪国法面前，谁也救不了你！”均按原剧本顺序保留。"
+    },
+    {
+      "group": "第11组",
+      "type": "prompt_pollution",
+      "evidence": "最终收尾只写陆凡离开和赵大江低声威胁，没有出现Seedance说明词、参考模板、字幕、广告语或工程占位符。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "民政办大厅三人位置、朝向、视线关系和张强办公桌上的U盘都在组首明确，张强拔U盘动作可生成。",
+      "fix_instruction": "若不通过，应补齐三人位置、身体朝向和U盘所在位置。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "U盘由张强在0-3秒递出，3-8秒纪委干部接过放入证物袋，证物归属变化清楚。",
+      "fix_instruction": "若不通过，应补充递出、接过和装袋动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "13秒内包含键盘核查、密码错误、自毁程序揭示和张强挑衅，四个时间段分工明确，没有把证据反转硬塞进同组。",
+      "fix_instruction": "若不通过，应拆出张强挑衅或压缩非关键反应。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "张强问拍摄时间、陆凡解释敬老院拍照留痕、纪委干部宣布证据链闭合带走，关键台词和因果均保留。",
+      "fix_instruction": "若不通过，应恢复缺失台词和证据链闭合顺序。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组尾张强被打偏脸，第8组首张强捂脸且手铐仍限制，赵大江与陆凡位置关系连续。",
+      "fix_instruction": "若不通过，应在第8组首补张强捂脸和手铐状态。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "赵大江对陆凡布置驻村任务、陆凡对赵大江回应、赵大江继续对陆凡施压，所有现场对白对象明确。",
+      "fix_instruction": "若不通过，应逐句补成A对B说道格式。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

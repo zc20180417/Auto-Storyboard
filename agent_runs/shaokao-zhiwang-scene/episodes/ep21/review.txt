@@ -1,0 +1,81 @@
+{
+  "pass": true,
+  "summary": "整集 final.txt 已按 storyboard-reviewer 对照原剧本、竖屏生成规则和当前分镜逐组审核，6 组均通过，无 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "第1组标题含 cut_id EP21-G01，总时长10秒，3个时间段分别为0-3、3-6、6-10秒，镜头数与时间段数一致，且字段包含人物、场景、道具、组首空间锁定、镜头描述、光影设计、组尾衔接、画面风格和--neg。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中许安切肉、穿签、拌料，唐婶喊“你们不是爱传吗？过来看真章！”，邻居甲和路人甲认可，林小满和许安交谈；第3组按该顺序保留，未新增改变剧情的强动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "第5组0-2.5秒承载邻居甲和路人甲约13个有效字，字秒比约5.2；2.5-5.5秒承载林小满、许安、林小满三句约12个有效字，字秒比约4.0；5.5-9秒许安约14个有效字，字秒比约4.0，均低于6.5硬上限。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "evidence": "马会在第6组组首被锁定在背景人群后方，手持折过单据，0-3秒才挤到前排，3秒后开口，满足说话前可用；许安和林小满在组首均位于摊前可见。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第2组完整保留“这是今天刚到的？”、“凌晨到的，先看纹路。”、“这肉颜色是正。”、“老周肉市，今早进货，三十六斤。”、“连价都写？”、“写。省得有人替我们瞎编。”这些关键台词，并保留肉盆、小黑板和价格信息。",
+      "fix_instruction": "若台词缺失或顺序错置，应按原剧本顺序恢复对应问答和黑板信息。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组在14秒内只承载食客点单、唐婶打趣、林小满记单喊单、许安落第一把串四个连续摊前节拍；烤炉动作独立给5秒，没有把马会入场或后续转折硬塞进同组。",
+      "fix_instruction": "若节拍过载，应把点单、开烤或马会入场拆到独立组。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾部肉串在炉上、食客围满摊前，第5组组首继续锁定傍晚摊前、烤炉、桌椅、邻居甲和路人甲品尝状态，场景和道具连续。",
+      "fix_instruction": "若组间状态断裂，应在第4组组尾或第5组组首补烤炉、食客和肉串状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "折过的单据一直由马会持有，炭夹一直位于许安炉边并在结尾被许安握紧；没有出现单据或炭夹凭空转移。",
+      "fix_instruction": "若道具转移不清，应补充可见递交、拿起、放下或握紧动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "第6组正文没有参考模板、官方编号、自动分镜、参考图、首尾帧、占位符或广告式文字，片尾转折以人物、单据和炭夹动作自然呈现。",
+      "fix_instruction": "若出现模板或模型说明词，应删除并改成具体可见动作、声音来源或人物反应。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

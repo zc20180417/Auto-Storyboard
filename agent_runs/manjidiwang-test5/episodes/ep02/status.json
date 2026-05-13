@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "EP-02-ep02-agent-cli-storyboard.txt",
+  "summary": "EP02全集8组分镜通过审核。G01假对白对象问题已修复，4段OS全部改为心声格式（嘴唇闭合、不做口型），与原剧本OS标记一致。书房审账→门口拦人→客厅深夜交底三场景完整覆盖，台词零删减，空间锁定独立完整。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第7组台词密度较高（54字/13秒），短句连续对白交锋属合理范围。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

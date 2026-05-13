@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "summary": "ep25 整集 final 已按 storyboard-reviewer 对照原剧本、竖屏生成规则和分镜正文逐组审核，证据揭露、装载机抢堵、赵有福供出小货车夹层和追车收束均忠实可生成，未发现硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "村民甲“你们真堵过！”，施工方代表“那是加固！”，沈砚川“图上旧口被抹了。”和“账上人工却还在。”均按原剧本顺序保留，旧施工图与账本的证据关系没有改写。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "第5组对白约20字，分布在0-4秒和8-11秒，4-8秒与11-15秒承载冲坡、抓扶手、撕扯和铲斗逼近，台词字秒比低于6.5，动作链有独立表演时间。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "第5组尾沈砚川伸向车钥匙，第6组3.5-8秒明确拔掉车钥匙并熄火，车头停在坡边半尺，关键道具和车辆状态过渡完整。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "evidence": "第8组组首把赵有福、沈砚川、林知夏、周大柱、施工方代表、工人甲与小货车位置都锁在装载机旁和坡下背景同一连续空间，工人甲在驾驶位暗处，亮灯前人物可用。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "施工方代表、沈砚川、林知夏、周大柱的台词均写明说话对象，没有假对象对白，也没有心声误写成现场开口。",
+      "fix_instruction": "若有无对象对白，应补足真实对话对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "林知夏“一边抹图，一边堵口。”、村民乙“吃人钱！”，赵有福欲言又止和施工方代表“你闭嘴。”均保留了原剧本情绪转折。",
+      "fix_instruction": "若漏掉赵有福露怯或施工方代表压制，应补回对应台词和反应。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "装载机发动声有可见载体，林知夏、村民甲、周大柱和沈砚川均为画面内现场开口对白，未涉及心声或画外音口型混用。",
+      "fix_instruction": "若声音来自画外机械或门外音，应写明可见载体和人物反应。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组包含施工方代表威胁、沈砚川冲下坡抓扶手、工人乙推搡和驾驶位撕扯，15秒内按4个时间段承载，没有把拔钥匙也压进本组。",
+      "fix_instruction": "若同组再加入拔钥匙停车，会造成强节拍过载，应保留在下一组。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组尾装载机停住，第7组组首复述装载机熄火、沈砚川手持车钥匙，施工方代表从装载机旁逃跑，状态接续清楚。",
+      "fix_instruction": "若人物或车辆状态跳变，应补组尾或组首具体状态。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文没有出现模型说明词、模板编号、占位符、参考图或广告式字卡语气，所有内容均为自然中文分镜。",
+      "fix_instruction": "若出现模板或工程说明，应删除并改写为可见动作、声音和场景状态。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "ep01 已对照完整剧本、竖屏生成规则和整集 final.txt 完成真实审核，6 个分镜组均保留原台词、关键动作、场景关系和转场，无阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留夜雨仓房前的拥挤压力，依次呈现村民甲“砚川，开门！”，村民乙“我孩子冻着了！”，周大柱“先让我娘进去！”，赵有福“都别挤！砚川，先开仓！”，以及沈砚川“老人孩子左边。”、“带粮的登记。”，说话对象均明确。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组 0-14 秒承载“还登什么记！”到“别说了，先救命。”7 句短对白，约 44 个有效字，平均约 3.1 字/秒，包含林知夏和沈小禾分流伤者与婆婆的动作，不存在超过 6.5 字/秒的硬性问题。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "第3组组首写明仓门关闭、横木仍卡在门扣上；0-2 秒沈砚川喊开门，2-6 秒横木被抽开、仓门向内打开，赵有福再被按在门槛外，道具状态有可见过渡。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组从第3组尾部的三天前转场后，明确进入白天村委会公示栏前，组首列明沈砚川、赵有福、周大柱、村民与补助名单的位置，未把夜雨仓房和公示栏硬塞进同一现实空间。"
+    },
+    {
+      "group": "第6组",
+      "type": "format",
+      "evidence": "第6组标题含 cut_id EP01-G06，总时长 10 秒，3 个时间段为 0-2、2-6、6-10 秒，镜头数与时间段数一致，组结构字段完整。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "村民、周大柱、赵有福和沈砚川的现场对白均写明对沈砚川、众人或赵有福等真实对象说话，没有假对象或对象缺失。",
+      "fix_instruction": "若不通过，应补足每句真人对白的真实对象，不能用空气、文件或桌面等假对象承接。"
+    },
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林知夏、沈小禾、赵有福、周大柱、村民甲和沈砚川在组首均已位于仓房前并有明确朝向，后续分流、劝阻和对峙均在可见状态下发生。",
+      "fix_instruction": "若不通过，应在组首或说话前加入人物可见位置、身体朝向或入场动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾部沈砚川仍守仓门、赵有福低头忍情绪；第3组组首延续仓门关闭、横木卡住、赵有福在人群前的位置，随后才开门并拦住赵有福，前后连续。",
+      "fix_instruction": "若不通过，应补充仓门、横木、赵有福位置或沈砚川动作的组尾组首状态。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第4组只有现场对白，没有旁白、心声、电话音或门外音；每个开口人物均在画面中并承担自己的口型。",
+      "fix_instruction": "若不通过，应明确非现场声音来源，并写明画面人物嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组集中在同一公示栏空间内的补助换地对峙，主要负载为连续短句交锋和赵有福压近半步，没有叠加外部事件、长动作链或关键道具操作。",
+      "fix_instruction": "若不通过，应拆分交易条件、反问和拒绝，或压缩非关键动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整组正文没有模型说明词、官方模板、参考图、首尾帧、字幕、广告式表达或工程占位符；负面提示只用于常规画质与字幕水印约束。",
+      "fix_instruction": "若不通过，应删除污染词并改成自然可拍画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

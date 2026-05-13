@@ -1,0 +1,102 @@
+{
+  "pass": true,
+  "summary": "ep25 assembled storyboard完整覆盖水幕救人、真水龙击退敌人、岩洞坍塌、胡永贵抢毒液失败和云宝水球护父子的主线，横屏空间与道具连续性可交付。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "刀疤男对爸爸和天天喊“去死吧！”，举斧劈下；云宝俯冲，水幕拔地而起并以“哐当”卡住斧头，原剧本关键顺序完整。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "evidence": "刀疤男在画面左侧明确对身后的打手们喊“怪物！开枪！全给我开枪！”，打手举枪反应和云宝位置同框交代。"
+    },
+    {
+      "group": "第4组",
+      "type": "horizontal_composition",
+      "evidence": "真水龙占据画面中央到右侧，敌群在左侧和后景，龙尾从右向左横扫，16:9宽幅动作线和群像层次明确。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "毒液瓶由天天右手脱手，落地后被胡永贵抢过，随后举向泉眼；第7组继续为胡永贵手中瓶子被砸落摔碎。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "爸爸飞扑护住天天、云宝哀鸣化作水球包裹父子、现场响起“轰隆隆！”岩洞彻底坍塌，结尾事件完整。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "“去死吧！”约3字置于2.5秒攻击段内，并由刀疤男冲刺举斧动作承载，节奏正常。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "“怪物！开枪！全给我开枪！”约13字置于3.5秒惊恐命令段内，配合指向云宝和后退动作，未超过硬性上限。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "14秒分为真水龙显形、龙尾蓄势、横扫、撞岩壁倒地四段，动作连续且没有台词叠加造成过载。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "毒液瓶从天天手中到地面、再到胡永贵手中、再指向泉眼的转移全部有可见动作，没有道具跳变。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组末尾胡永贵举瓶要砸泉眼，第7组组首保持胡永贵左中景举瓶、父子右侧阻止，随后钟乳石砸落导致瓶子摔碎。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "胡永贵持续在左侧碎石里，爸爸和天天在右侧，云宝从上方向右侧父子罩下形成水球，左右关系未跳变。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模板编号、参考图占位、模型说明词、视频延长或一镜到底等非短剧模板语气。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

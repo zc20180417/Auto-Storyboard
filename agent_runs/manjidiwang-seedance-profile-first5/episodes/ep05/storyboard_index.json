@@ -1,0 +1,247 @@
+{
+  "project": "EP-05",
+  "episode_id": "EP05",
+  "cuts": [
+    {
+      "cut_id": "EP05-G01",
+      "group_index": 1,
+      "title": "新人报到",
+      "scene": "集团HR部二处办公室门边",
+      "characters": [
+        "朱文浩",
+        "赵德胜"
+      ],
+      "props": [
+        "报到证",
+        "水杯",
+        "办公桌"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP05-G02",
+      "group_index": 2,
+      "title": "艰巨任务",
+      "scene": "集团HR部二处办公室内",
+      "characters": [
+        "朱文浩",
+        "赵德胜"
+      ],
+      "props": [
+        "水杯",
+        "办公桌",
+        "报到证"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 12,
+      "group_end_sec": 27,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP05-G03",
+      "group_index": 3,
+      "title": "会议质询",
+      "scene": "战投部会议室",
+      "characters": [
+        "朱文浩",
+        "王海涛",
+        "老孙",
+        "吴德海"
+      ],
+      "props": [
+        "会议桌",
+        "文件夹",
+        "笔",
+        "凉茶杯"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 27,
+      "group_end_sec": 38,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP05-G04",
+      "group_index": 4,
+      "title": "越界反击",
+      "scene": "战投部会议室",
+      "characters": [
+        "朱文浩",
+        "王海涛",
+        "老孙",
+        "吴德海"
+      ],
+      "props": [
+        "会议桌",
+        "笔",
+        "文件夹",
+        "凉茶杯"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 38,
+      "group_end_sec": 48,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP05-G05",
+      "group_index": 5,
+      "title": "供出郑总监",
+      "scene": "战投部会议室",
+      "characters": [
+        "朱文浩",
+        "王海涛",
+        "老孙",
+        "吴德海"
+      ],
+      "props": [
+        "凉茶杯",
+        "会议桌",
+        "笔",
+        "文件夹"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 48,
+      "group_end_sec": 58,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP05-G06",
+      "group_index": 6,
+      "title": "资金坐实",
+      "scene": "东湖湾公寓客厅",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "财务报表",
+        "茶几",
+        "沙发"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 58,
+      "group_end_sec": 72,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP05-G07",
+      "group_index": 7,
+      "title": "刀抵喉间",
+      "scene": "东湖湾公寓客厅",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "财务报表",
+        "水果刀",
+        "手包",
+        "茶几",
+        "沙发"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 72,
+      "group_end_sec": 85,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP05-G08",
+      "group_index": 8,
+      "title": "死亡计算",
+      "scene": "东湖湾公寓客厅",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "水果刀",
+        "茶几",
+        "财务报表"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 85,
+      "group_end_sec": 97,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP05-G09",
+      "group_index": 9,
+      "title": "母亲筹码",
+      "scene": "东湖湾公寓客厅",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "水果刀",
+        "茶几",
+        "财务报表"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 97,
+      "group_end_sec": 109,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP05-G10",
+      "group_index": 10,
+      "title": "递回刀柄",
+      "scene": "东湖湾公寓客厅",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "水果刀",
+        "茶几",
+        "财务报表"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 109,
+      "group_end_sec": 119,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP05-G11",
+      "group_index": 11,
+      "title": "预付手术费",
+      "scene": "东湖湾公寓客厅",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "水果刀",
+        "茶几",
+        "财务报表",
+        "门"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 119,
+      "group_end_sec": 129,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP05-G12",
+      "group_index": 12,
+      "title": "忠诚债务",
+      "scene": "东湖湾公寓客厅",
+      "characters": [
+        "朱文浩",
+        "苏清寒"
+      ],
+      "props": [
+        "水果刀",
+        "茶几",
+        "沙发",
+        "门"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 129,
+      "group_end_sec": 141,
+      "source_group_label": "第12组"
+    }
+  ]
+}

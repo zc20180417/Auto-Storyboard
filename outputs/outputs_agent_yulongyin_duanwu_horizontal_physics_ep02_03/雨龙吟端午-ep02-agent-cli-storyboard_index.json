@@ -1,0 +1,193 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP02",
+  "cuts": [
+    {
+      "cut_id": "EP02-G01",
+      "group_index": 1,
+      "title": "冰凉小爪坠回裂缝",
+      "scene": "日/晴 外 干裂河床裂缝处",
+      "characters": [
+        "天天",
+        "小龙"
+      ],
+      "props": [
+        "陶笛",
+        "河床裂缝",
+        "半透明小爪",
+        "青蓝微光"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP02-G02",
+      "group_index": 2,
+      "title": "发疯奔回堂屋取水",
+      "scene": "日/晴 外 河床通往村里的土路 / 内 天天家堂屋",
+      "characters": [
+        "天天"
+      ],
+      "props": [
+        "陶笛",
+        "水壶",
+        "半壶清水",
+        "木桌"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 12,
+      "group_end_sec": 23,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP02-G03",
+      "group_index": 3,
+      "title": "陶笛记忆压住救援承诺",
+      "scene": "日/晴 外 天天家院子闪回 / 内 天天家堂屋现实",
+      "characters": [
+        "天天",
+        "爸爸"
+      ],
+      "props": [
+        "陶笛",
+        "破旧行囊",
+        "水壶",
+        "全家福"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 23,
+      "group_end_sec": 36,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP02-G04",
+      "group_index": 4,
+      "title": "干净井水落进裂缝",
+      "scene": "日/晴 外 干裂河床裂缝处",
+      "characters": [
+        "天天",
+        "小龙"
+      ],
+      "props": [
+        "水壶",
+        "壶盖",
+        "清水",
+        "河床裂缝",
+        "青蓝微光"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 36,
+      "group_end_sec": 48,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP02-G05",
+      "group_index": 5,
+      "title": "小龙由水光中显形",
+      "scene": "日/晴 外 干裂河床裂缝处",
+      "characters": [
+        "天天",
+        "小龙"
+      ],
+      "props": [
+        "水壶",
+        "清水",
+        "河床裂缝",
+        "青蓝微光",
+        "小龙",
+        "残留黑水滩"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 48,
+      "group_end_sec": 60,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP02-G06",
+      "group_index": 6,
+      "title": "黑水灼伤逼出入壶选择",
+      "scene": "日/晴 外 干裂河床裂缝处",
+      "characters": [
+        "天天",
+        "小龙"
+      ],
+      "props": [
+        "水壶",
+        "壶盖",
+        "清水",
+        "残留黑水滩",
+        "河床裂缝",
+        "小龙"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 60,
+      "group_end_sec": 73,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP02-G07",
+      "group_index": 7,
+      "title": "小龙入壶被藏回卧室",
+      "scene": "日/晴 外 河床裂缝处 / 内 天天家卧室",
+      "characters": [
+        "天天",
+        "小龙"
+      ],
+      "props": [
+        "水壶",
+        "壶盖",
+        "清水",
+        "河床裂缝",
+        "书桌",
+        "小龙"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 73,
+      "group_end_sec": 86,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP02-G08",
+      "group_index": 8,
+      "title": "卧室安顿与黑水愧疚",
+      "scene": "日/晴 内 天天家卧室",
+      "characters": [
+        "天天",
+        "小龙"
+      ],
+      "props": [
+        "水壶",
+        "书桌",
+        "水雾",
+        "灰白尾巴"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 86,
+      "group_end_sec": 98,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP02-G09",
+      "group_index": 9,
+      "title": "水雾上浮出龙舟线索",
+      "scene": "日/晴 内 天天家卧室",
+      "characters": [
+        "天天",
+        "小龙"
+      ],
+      "props": [
+        "水壶",
+        "书桌",
+        "水雾",
+        "龙舟轮廓",
+        "灰白尾巴"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 98,
+      "group_end_sec": 113,
+      "source_group_label": "第9组"
+    }
+  ]
+}

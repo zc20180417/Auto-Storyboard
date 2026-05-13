@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "ep20 已对照完整剧本、竖屏生成规则和整集 final.txt 完成真实审核，6 个分镜组保留洞口入洞、洞内撬链、外挡开水和主闸危机等关键剧情，无阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留旧泄洪洞口无人先动、周大柱“我进！”，沈砚川以不认闸槽拦下并说明草图和第二弯卡水位，随后赵有福“谁也不准进！”和村民乙“你还敢拦！”的冲突顺序未改。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组 0-15 秒承载赵成武被点名、沈砚川两句压迫台词、林知夏系绳交代、沈小禾叮嘱和沈砚川回应，约 48 个有效台词字，平均约 3.2 字/秒，并包含系绳和递铁钎动作，不存在超过 6.5 字/秒硬问题。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组明确切到旧泄洪洞内，组首列出膝深浑水、沙袋、木楔、麻绳延伸、沈砚川持铁钎和赵成武位置，未把洞外人物带入洞内现实空间。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "第4组组首延续第3组尾部赵成武抱住横木、沈砚川持铁钎在铁链旁的状态；0-4 秒铁钎插入链扣，7-11 秒链扣松开、横木弹开，关键道具有可见操作过渡。"
+    },
+    {
+      "group": "第6组",
+      "type": "format",
+      "evidence": "第6组标题含 cut_id EP20-G06，总时长 14 秒，4 个时间段为 0-3、3-7、7-11、11-14 秒，镜头数与时间段数一致，组结构字段完整。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "周大柱、沈砚川、赵有福和村民乙的现场对白均写明对沈砚川、周大柱、众人或赵有福等真实对象说话，没有假对象或对象缺失。",
+      "fix_instruction": "若不通过，应补足真人对白的真实对象，不能用洞口、空气或道具承接对白。"
+    },
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "赵成武、赵有福、林知夏、沈小禾、周大柱和沈砚川都在组首旧泄洪洞口外有明确位置和身体朝向，后续点名、系绳、递铁钎和叮嘱均在人物可见状态下发生。",
+      "fix_instruction": "若不通过，应在组首或说话行动前加入人物可见位置、身体朝向或入场动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第3组主要负载为洞内挪动、确认第二弯、赵成武恐惧和顶横木四个连续节拍，总时长 14 秒，没有同时叠加额外外部事件或关键道具揭示导致过载。",
+      "fix_instruction": "若不通过，应拆出靠近横木或顶住横木动作，避免复合动作链和多轮对白挤压。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部赵成武抱住横木、沈砚川握铁钎站在铁链旁；第4组组首复述赵成武肩背抵住横木、沈砚川持铁钎朝向铁链扣，组间状态连续。",
+      "fix_instruction": "若不通过，应在第3组组尾或第4组组首补足横木、铁钎、铁链和两人姿态的具体状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第5组只有现场对白，村民甲、周大柱、林知夏、沈小禾和沈砚川均在画面中或刚从洞口爬出并承担自己的口型，没有旁白、心声或电话音混用。",
+      "fix_instruction": "若不通过，应明确非现场声音来源，并写明画面人物嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "第6组未出现模型说明词、模板编号、参考图占位、字幕字卡或“空间先被交代出来”等模板化批量描述，老石坝闷裂通过可听声响和人物转头变脸呈现。",
+      "fix_instruction": "若不通过，应删除工程词和模板化描述，改成可见动作、声音来源和人物反应。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

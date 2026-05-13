@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "summary": "已对照第24集原剧本、竖屏生成规则和整集final.txt逐组审核，救小禾、推开旧河道、证据揭露、施工方追责与沈砚川反击均忠于原剧本，格式、时长、空间锁定和对白承载通过。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中仓门被横梁卡死、后墙水压变大、沈砚川喊“小禾，贴左墙！”、沈小禾哭“哥，我怕！”和沈砚川“听我话！”均在第1组按顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "10-13秒内沈母“小禾！”与沈小禾“娘，药在这儿！”有效台词约10字/3秒，字秒比约3.3，配合护药包和转头回应动作，未超速。"
+    },
+    {
+      "group": "第5组",
+      "type": "timing_math",
+      "evidence": "第5组标题13秒，时间段0-4、4-6、6-10、10-13秒连续，镜头数4个与标题一致；所有组总时长均为整数且在6-15秒内。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "旧铁箱由水冲到脚边，林知夏捞起，沈砚川接过撬开，林知夏翻看图纸账本，证据道具从发现到使用路径完整。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "evidence": "赵有福对施工方代表甩锅，沈小禾对赵有福反驳，施工方代表对沈砚川追问，周大柱对施工方代表辩护，所有现场对白均有真实对象。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林知夏、周大柱、沈砚川和远处赵有福在组首具备明确位置；赵成武先冲入并抓锄头，再喊“我来砸后墙！”和参与砸墙，行动前有入场。",
+      "fix_instruction": "若赵成武在入场前参与对白或砸墙，应补入场动作或调整组首可用状态。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组只处理下口推钢管前的指令、顶前头、赵有福阻拦和被掀开；泄洪崩开另放第5组，避免对白、阻拦、群体推物和水势爆发挤在同组。",
+      "fix_instruction": "若把旧河道崩开也放入第4组，应拆回第5组或延长到独立组。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "“这里还有箱子”“图纸……账本。”“旧河道回填。”“泄口封堵人工。”“真是他们干的！”“完了……”完整保留，且人物关系和证据指向未被改写。",
+      "fix_instruction": "若遗漏证据台词或把证据改成其他文件，应恢复原剧本图纸、账本和两条记录名。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第7组主要物理空间为果园高处，施工方代表从远处泥路冲上坡后在坡口问责；坡下料场仅作为被指向方向，没有现实空间混杂。",
+      "fix_instruction": "若需要直接展示料场冲毁，应另起下口空间组或明示屏幕/回忆/蒙太奇。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第8组尾部施工方代表盯住沈砚川、周大柱挡在一旁、赵有福坐地指认；第9组组首延续这些人物位置，并保留旧铁箱在沈砚川脚边。",
+      "fix_instruction": "若人物或旧铁箱位置跳变，应在相邻组尾或组首补可见移动与道具归属。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "第10组没有模板编号、参考图、模型自动、字幕、广告语或非短剧模板表达；证据反击通过开箱、举账本图纸和现场对白自然呈现。",
+      "fix_instruction": "若出现模型说明词或模板污染，应改写成具体可见动作、道具和对白。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

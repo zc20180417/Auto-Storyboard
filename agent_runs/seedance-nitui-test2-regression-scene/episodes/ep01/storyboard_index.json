@@ -1,0 +1,162 @@
+{
+  "project": "EP-01",
+  "episode_id": "EP01",
+  "cuts": [
+    {
+      "cut_id": "EP01-G01",
+      "group_index": 1,
+      "title": "晒谷场当众指控",
+      "scene": "夏日晴天的晒谷场",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "林建国",
+        "张桂兰",
+        "李二狗",
+        "众村民"
+      ],
+      "props": [
+        "木桩",
+        "麻绳",
+        "断电线"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 0,
+      "group_end_sec": 14,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP01-G02",
+      "group_index": 2,
+      "title": "林跃苏醒重生",
+      "scene": "夏日晴天的晒谷场",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "林建国",
+        "张桂兰",
+        "李二狗",
+        "众村民"
+      ],
+      "props": [
+        "木桩",
+        "麻绳",
+        "断电线"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 14,
+      "group_end_sec": 25,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP01-G03",
+      "group_index": 3,
+      "title": "挣断麻绳反问赃物",
+      "scene": "夏日晴天的晒谷场",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "林建国",
+        "张桂兰",
+        "李二狗",
+        "众村民"
+      ],
+      "props": [
+        "木桩",
+        "麻绳",
+        "断电线"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 25,
+      "group_end_sec": 39,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP01-G04",
+      "group_index": 4,
+      "title": "锁定李二狗的鞋码",
+      "scene": "夏日晴天的晒谷场",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "李二狗",
+        "众村民"
+      ],
+      "props": [
+        "断麻绳",
+        "李二狗的布鞋"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 39,
+      "group_end_sec": 52,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP01-G05",
+      "group_index": 5,
+      "title": "红泥鞋底反证",
+      "scene": "夏日晴天的晒谷场",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "李二狗",
+        "众村民"
+      ],
+      "props": [
+        "李二狗的布鞋",
+        "红泥"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 52,
+      "group_end_sec": 67,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP01-G06",
+      "group_index": 6,
+      "title": "警告赵大强与暗中递眼色",
+      "scene": "夏日晴天的晒谷场",
+      "characters": [
+        "林跃",
+        "赵百川",
+        "赵大强",
+        "李二狗",
+        "林建国",
+        "张桂兰",
+        "供水员王四",
+        "众村民"
+      ],
+      "props": [
+        "红泥鞋",
+        "断麻绳"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 67,
+      "group_end_sec": 81,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP01-G07",
+      "group_index": 7,
+      "title": "水渠总闸被关闭",
+      "scene": "蒙太奇并行：夏日晴天的晒谷场、水渠总闸旁",
+      "characters": [
+        "赵百川",
+        "供水员王四"
+      ],
+      "props": [
+        "锈迹铁阀门",
+        "水渠总闸"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 81,
+      "group_end_sec": 95,
+      "source_group_label": "第7组"
+    }
+  ]
+}

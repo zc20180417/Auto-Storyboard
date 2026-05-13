@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "summary": "ep11 汇总分镜忠实保留韩彪低价抢客、口味失控、唐婶当众揭短和客人端盘回流许安的剧情链路，5组格式完整，空间、台词承载、道具连续性和节奏均通过审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "开场保留韩彪门口摆满大桌、伙计送酒送菜、许安这边照常起炉，以及林小满、许安、韩彪、阿顺、路人甲的原始台词顺序，没有新增改变剧情的动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "0-3.5秒路人乙约8字台词并含尝串放下动作；3.5-7秒路人丙约8字台词并含吐签动作；7-10.5秒韩彪和阿顺约18字情绪对白，约5.1字/秒；10.5-14秒唐婶约13字台词，均未超过6.5字/秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "组首锁定韩彪店门口烧烤桌区，明确唐婶、韩彪、路人乙、路人丙和几桌路人的位置、朝向、餐盘与烤串状态；组内没有跨越到新物理空间。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "餐盘和烤串从韩彪桌区由路人乙扶住、端起、穿过通道、端到许安小桌边，许安只操作自己摊位的火钳和竹签，关键道具归属没有跳变。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "林小满对许安、许安对林小满、韩彪对众人、阿顺朝路人甲方向、路人甲对同伴的说话对象都明确，未出现假对白对象。",
+      "fix_instruction": "若不通过，应逐句补齐真实说话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "唐婶“划算不划算，先得能吃”、韩彪“唐婶，你还真给他撑场”、唐婶“我给嘴撑场，不给你撑”、林小满和许安的稳场对白均按原剧本保留。",
+      "fix_instruction": "若不通过，应恢复原剧本台词原文和说话对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组承载顾客尝出咸苦、韩彪追问后厨、阿顺解释失控、唐婶指出味不正四个连续同桌区节拍，总时长14秒，动作以尝串、吐签和站起为主，未叠加跨空间转场。",
+      "fix_instruction": "若不通过，应拆分顾客投诉和唐婶站起发声两个节拍。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部唐婶站在桌边说完、韩彪看向她；第4组组首继续在同一桌区，让唐婶和韩彪保持面对状态；第4组尾部路人乙扶餐盘，为第5组端盘起身提供起点。",
+      "fix_instruction": "若不通过，应在第3组尾或第4组组首补充唐婶与韩彪的位置关系。"
+    },
+    {
+      "group": "第5组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "本集所有关键声音均为画面内现场对白或桌椅环境动作，没有心声、电话音、门外音被误写成现场口型。",
+      "fix_instruction": "若不通过，应把非现场声音改为画外音并注明画面主体嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集 final 未出现模板编号、官方模板标题、@图片/@视频/@音频、参考模板、自动分镜、自动正反打、Seedance 可等模型或模板污染词。",
+      "fix_instruction": "若不通过，应移除工程说明和模板语气，改写成可见可听的自然分镜。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

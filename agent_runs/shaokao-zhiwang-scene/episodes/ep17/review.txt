@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "summary": "对照ep17完整剧本、竖屏生成规则和组装后的final.txt，4组均保留主办方求援、许安接手、重新起火、分桌出串、客人认可、韩彪失势和众人改观等关键剧情，未发现硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中主办方甲求许安顶上、韩彪阻止、主办方甲喝住韩彪、林小满发问、许安表明接手理由，final.txt第1组按相同顺序完整承载。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组0-5秒韩彪和许安两句约20个有效字，5秒承载约4.0字/秒；10.5-15秒客人甲和唐婶两句约18个有效字，4.5秒承载约4.0字/秒，未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组切到社区广场临时烤位，组首明确烤炉、调料罐、许安、林小满、唐婶、客人甲、客人乙和韩彪的位置及朝向，没有把主桌区和临时烤位硬塞为同一现实移动过程。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "evidence": "第3组尾部许安在炉前分批翻串、唐婶招呼客人、韩彪在后方；第4组组首继续写许安在炉前、唐婶托盘、韩彪在背景右后方，随后承接主办方脸色缓和和韩彪插不进手。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "主办方甲对许安、韩彪对主办方甲和许安、主办方甲对韩彪、林小满对许安、许安对林小满的对白均写明对象。",
+      "fix_instruction": "若不通过，应逐句补足真实对话对象，避免无对象喊话或假对象承载。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "组首写明许安的炉子、生肉串托盘和炭火位置，5-10.5秒写出推炉、摆肉、拨炭起火，客人随后围观和发问，道具变化可见。",
+      "fix_instruction": "若不通过，应补充炉子、肉串或炭火状态变化的具体可见动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "分桌分批、一把接一把落炉、林小满报桌号、许安先走主桌、客人认可口味、唐婶扬声稳场，均与转场17-2原剧本一致。",
+      "fix_instruction": "若不通过，应恢复缺失的桌号、出餐顺序、客人反馈或唐婶台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组用10秒承载客人点头、主办方放松、韩彪一句挑衅、许安一句回应和最后一桌稳住，没有长台词、关键道具操作或跨空间事件叠加过载。",
+      "fix_instruction": "若不通过，应拆分韩彪挑衅与最后一桌稳住，或减少人群反应占时。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第4组标题总时长10秒，时间段0-2.5、2.5-4、4-5.5、5.5-10秒连续，末段结束于10秒，镜头数4个与标题一致。",
+      "fix_instruction": "若不通过，应修正时间段连续性、标题总时长或镜头数。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集final.txt没有出现模型说明词、模板编号、占位符、参考图、广告式字幕、视频延长或横屏专属字段。",
+      "fix_instruction": "若不通过，应删除污染词并改写为自然中文画面、声音来源和人物反应。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

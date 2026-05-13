@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep29",
+  "episode_number": 29,
+  "display_name": "ep29",
+  "series_title": "ep29",
+  "source_path": "G:\\Auto-Storyboard\\agent_runs\\_tmp_compact_skill_smoke_ep26_30_source\\ep29.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_compact_skill_smoke_ep26_30\\ep29-ep29-agent-cli-storyboard.txt",
+  "storyboard_aspect": "vertical",
+  "generator_skill_name": "storyboard-generator",
+  "reviewer_skill_name": "storyboard-reviewer",
+  "reviewer_source": "storyboard-reviewer"
+}

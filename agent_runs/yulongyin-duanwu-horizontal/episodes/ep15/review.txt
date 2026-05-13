@@ -1,0 +1,147 @@
+{
+  "pass": true,
+  "summary": "ep15全8组已对照原剧本、横屏生成规则和最终分镜完成审核，祠堂补水、野牛皮线索、别墅对峙和保镖压迫均保留，无阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "爸爸看鼓面裂纹、爷爷跌坐说“换皮必须用活水泡软，否则崩不开”、天天看向干涸四周挤不出泪，原剧本信息完整且顺序一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "filmability",
+      "evidence": "云宝燃烧本源被处理为壶内身体飞速变红、壶口喷出冷雾、牛皮出现水珠和天天惊呼，抽象状态转为可见动作与光影。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "爸爸焦急问补鼓约14字/3秒，爷爷“漏一丝气都不响”约13字/3秒，野牛颈皮说明约23字/5秒，均低于6.5字/秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "天天怀中水壶从剧烈晃动到云宝探爪指向祠堂门外，爸爸由右侧鼓前站起，水壶、云宝和门外目标关系清楚。"
+    },
+    {
+      "group": "第5组",
+      "type": "horizontal_composition",
+      "evidence": "胡永贵躺在右侧藤椅，包工头在左侧低位，巨大野牛皮标本挂在背景中央，铁门在左后方，别墅院横屏空间关系明确。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "大铁门巨响由左后方门板猛震、门缝爆光、胡永贵惊坐起和包工头回头共同承载，关键声音有可见来源和反应。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "evidence": "手下甲对爸爸大喝，爸爸对拦路手下甲回应“我只借一样东西”，两句现场对白对象都在画面左右关系中可见。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "evidence": "第8组12秒内按胡永贵下令、保镖抽甩棍、群体涌向爸爸、过肩压迫收尾分段，未把对白和复杂动作塞进同一时间段。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第1组总时长14秒，5个时间段从0秒连续到14秒，标题镜头数与实际时间段一致。",
+      "fix_instruction": "若不通过，应调整时间段或标题镜头数，确保连续且最后一段结束于14秒。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾三人同时看向水壶，第2组首直接承接壶口震动和云宝变红，人物位置、视线和道具归属连续。",
+      "fix_instruction": "若不通过，应在两组之间补充水壶位置和三人视线承接。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定爸爸从左侧冲到右侧鼓前，爷爷左后方、天天左前景、裂缝中央偏右，关键人物与道具均可见。",
+      "fix_instruction": "若不通过，应补齐三人位置、鼓面裂缝和祠堂门口方位。"
+    },
+    {
+      "group": "第4组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "祠堂内爸爸保持右侧鼓前、天天左前景、门在右后方，云宝指向右后方门外，方向和人物转头一致。",
+      "fix_instruction": "若不通过，应保持祠堂门外目标方向一致，或补充明确的换向过渡。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "别墅院、胡永贵藤椅盘核桃、墙上完整野牛皮标本、包工头奉承台词均按原剧本保留。",
+      "fix_instruction": "若不通过，应恢复野牛皮标本和包工头台词，不新增无关动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "第5组尾胡永贵看向左后方铁门，第6组仍保持胡永贵右侧、包工头左侧、铁门左后方，巨响后两人回头，空间衔接成立。",
+      "fix_instruction": "若不通过，应补充胡永贵从藤椅躺姿到惊坐起的过渡和铁门方位。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "大铁门被踹开、爸爸单枪匹马进入、手下甲喝止、爸爸借一样东西并盯住野牛皮、胡永贵惊怒均保留原剧本因果。",
+      "fix_instruction": "若不通过，应恢复闯门、借物和盯野牛皮的顺序，删去改变剧情的额外动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "野牛皮标本从第7组背景中央偏右被爸爸锁定，到第8组仍在右后方墙面并被保镖遮挡，只露一角，位置没有漂移。",
+      "fix_instruction": "若不通过，应固定野牛皮在右后方墙面的空间位置，并说明人群遮挡。"
+    },
+    {
+      "group": "第8组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "爸爸在左侧破门入口，胡永贵和保镖从右侧压向左侧，前景保镖肩背与背景爸爸形成过肩压迫，16:9左右阵营清楚。",
+      "fix_instruction": "若不通过，应明确爸爸左、胡永贵右、保镖由右向左涌动的横向压迫关系。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终稿未出现模板编号、参考图、首帧尾帧、视频延长、自动分镜或官方模板说明，负向词仅作为排除项使用。",
+      "fix_instruction": "若出现工程词，应删除并改写为自然分镜动作、声音、空间或光影。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

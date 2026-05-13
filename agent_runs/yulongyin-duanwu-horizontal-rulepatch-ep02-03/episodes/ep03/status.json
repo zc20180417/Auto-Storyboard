@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "yulongyin-duanwu_ep03-agent-cli-storyboard.txt",
+  "summary": "EP03 horizontal storyboard done: 8 groups, reviewer pass, no hard issues.",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

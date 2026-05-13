@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "summary": "EP01 已按横屏 reviewer 对照整集脚本、组装 final 和横屏 generator 规则审核；11组均保留原剧情台词，运镜设计逐时间段存在且服务空间、口型、道具或威胁揭示。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "村民甲26字约4秒、村民乙27字约4秒，双人中景和空桶动作承载焦躁台词，未出现不可表演的高速口型。"
+    },
+    {
+      "group": "第3组",
+      "type": "screen_direction",
+      "evidence": "爷爷由左侧进入并保持中央偏左仰看，胡永贵保持右侧车厢高位俯视，天天在左后方，连续对峙轴线稳定。"
+    },
+    {
+      "group": "第5组",
+      "type": "camera_motion",
+      "evidence": "9-12秒低位沿干渠从右下黑水起点平移到左上河床方向，明确污染流向，符合新场景与道具流动的运镜要求。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "evidence": "天天对不在场爸爸的两句倾诉被处理为对旧陶笛和裂缝的现场自语，画面内没有发明假对象。"
+    },
+    {
+      "group": "第11组",
+      "type": "prop_continuity",
+      "evidence": "旧陶笛从第6组取出、第7组吹响、第10组被天天伸入裂缝、第11组被小爪子抓住，关键道具归属连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "胡永贵两句促销台词、拍化肥袋、黑水从袋缝渗出并落向干渠均保留原剧本顺序。",
+      "fix_instruction": "若调整此组，只能局部压缩拍袋或道具镜头，不得删除黑水来源。"
+    },
+    {
+      "group": "第4组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "天天从第3组左后方位置挤入，抓爷爷衣角向左拽，爷爷仍朝右侧皮卡挣扎，组间走位连续。",
+      "fix_instruction": "如改动入场，需补充天天从人群左后方到爷爷身边的可见路径。"
+    },
+    {
+      "group": "第6组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "天天从右侧村口方向走向左侧深处地裂，宽画幅保留龟裂河床和目标裂缝，不是单人居中竖屏逻辑。",
+      "fix_instruction": "如缩短建立镜头，仍需保留右侧来向和左侧裂缝目标。"
+    },
+    {
+      "group": "第8组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "3-6秒摇向黄沙来源，11-14秒从裂缝黑暗推到青蓝光并保留天天回头反应，运镜服务声光变化和视线承接。",
+      "fix_instruction": "如减少运动镜头，固定镜头也必须写明稳定目标和人物反应的理由。"
+    },
+    {
+      "group": "第10组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "痛苦低鸣标明来自黑暗裂缝深处，天天两句台词均由画面右侧本人现场开口，对象为裂缝深处青蓝光。",
+      "fix_instruction": "若新增音效，需要标明声源或可见反应。"
+    },
+    {
+      "group": "第11组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "14秒内只承载喊话、伸陶笛、水声、小爪子抓住陶笛四个连续动作，动作链清晰，没有强塞外部事件。",
+      "fix_instruction": "如添加拉出动作，应另起后续组，避免超过15秒压缩。"
+    },
+    {
+      "group": "第1组-第11组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final 未出现模板编号、官方占位符、参考图槽位、自动分镜说明、字幕卡或非短剧模板语气。",
+      "fix_instruction": "后续不得加入模板编号、@图/@视频/@音频占位符或生产界面参数。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

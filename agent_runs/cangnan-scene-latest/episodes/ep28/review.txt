@@ -1,0 +1,85 @@
+{
+  "pass": true,
+  "summary": "ep28分镜完整保留项目部突袭、办公室挟持、陆凡破窗救援、近身格斗、矿洞炸药情报和疏散命令；格式、时长、空间锁定与台词承载通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "毒刺台词“任务目标：带走江若晴，其余阻碍全部清除。”约20字，7-12秒承载5秒，约4字/秒，命令口型自然。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "保留江若晴后退指责龙天傲、毒刺冷酷要求带走、毒刺伸手抓肩和暴雨从破碎落地窗灌入四个关键节点。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "evidence": "陆凡在组首通过窗外战术绳索可用，3-6秒先破窗入场，6-9秒才对毒刺喊话，人物出场顺序成立。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "evidence": "踢椅、欺身、毒刺挥拳、扣腕、过肩摔拆为4段14秒，关键动作链没有与长对白叠加，表演容量合理。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "evidence": "战术通讯器先挂在毒刺胸前背心上，陆凡打晕毒刺后从背心上夺过，关键道具归属转移有可见过渡。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组结尾小队围在毒刺身后看向大门，第2组组首继续锁定车队、毒刺、小队、门岗保安和门禁控制箱。",
+      "fix_instruction": "若不连续，应在第2组组首补全车队和门岗双方的具体位置。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "江若晴明确对毒刺惊呼，毒刺明确对江若晴问好，均为现场开口，未把旁白或心声写成口型。",
+      "fix_instruction": "若对象缺失，应改为“A对B说道/问道/喊道”的格式。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "两名队员冲上前、陆凡翻滚到办公桌后、办公桌边缠斗分为3段11秒，复合动作链有4秒承载。",
+      "fix_instruction": "若翻滚和缠斗过短，应延长动作段或拆分为两个组。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "陆凡近身格斗、两名队员被精准击中要害倒地、毒刺识别顶级CQB战术、陆凡冷声回应均按剧本顺序保留。",
+      "fix_instruction": "若缺失，应补回击倒两名队员和两句对话。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "结尾没有模型说明词、参考图、模板编号、字幕或广告式文字，画面风格和负面提示保持干净。",
+      "fix_instruction": "若出现工程词，应删除并改写为可见动作、声音或光影。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

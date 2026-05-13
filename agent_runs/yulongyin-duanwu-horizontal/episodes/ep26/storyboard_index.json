@@ -1,0 +1,168 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP26",
+  "cuts": [
+    {
+      "cut_id": "EP26-G01",
+      "group_index": 1,
+      "title": "山体破裂水龙现身",
+      "scene": "日晴，后山半山腰裂开的山坡",
+      "characters": [
+        "爸爸",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "崩裂山石",
+        "泥水",
+        "水柱"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP26-G02",
+      "group_index": 2,
+      "title": "龙背父女迎风飞起",
+      "scene": "日晴，后山上空",
+      "characters": [
+        "爸爸",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "水龙龙背",
+        "金色龙鳞"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 12,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP26-G03",
+      "group_index": 3,
+      "title": "村民仰望水龙神迹",
+      "scene": "日晴，云溪村村头广场",
+      "characters": [
+        "村民甲",
+        "村民乙",
+        "众村民",
+        "云宝"
+      ],
+      "props": [
+        "泥水广场",
+        "路障",
+        "远处屋檐"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 24,
+      "group_end_sec": 36,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP26-G04",
+      "group_index": 4,
+      "title": "水龙盘旋后降向广场",
+      "scene": "日晴，云溪村村头广场上空到广场边缘",
+      "characters": [
+        "村民甲",
+        "村民乙",
+        "众村民",
+        "云宝"
+      ],
+      "props": [
+        "泥水",
+        "路障",
+        "屋檐"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 36,
+      "group_end_sec": 47,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP26-G05",
+      "group_index": 5,
+      "title": "废墟电话逼命",
+      "scene": "日晴，后山废墟破损车厢旁",
+      "characters": [
+        "刀疤男",
+        "手下丙（电话声）"
+      ],
+      "props": [
+        "手机",
+        "破损车厢",
+        "碎石",
+        "炸药"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 47,
+      "group_end_sec": 60,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP26-G06",
+      "group_index": 6,
+      "title": "刀疤男拖出炸药",
+      "scene": "日晴，后山废墟破损车厢旁",
+      "characters": [
+        "刀疤男"
+      ],
+      "props": [
+        "炸药",
+        "破损车厢",
+        "手机"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 60,
+      "group_end_sec": 71,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP26-G07",
+      "group_index": 7,
+      "title": "炸弹人闯入村口",
+      "scene": "日晴，村头广场村口路障处",
+      "characters": [
+        "刀疤男",
+        "爸爸",
+        "村民甲",
+        "众村民"
+      ],
+      "props": [
+        "炸药包",
+        "引爆按钮",
+        "村口路障",
+        "泥水"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 71,
+      "group_end_sec": 83,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP26-G08",
+      "group_index": 8,
+      "title": "雷管威胁压住全村",
+      "scene": "日晴，村头广场村口路障处",
+      "characters": [
+        "刀疤男",
+        "爸爸",
+        "村民甲",
+        "众村民"
+      ],
+      "props": [
+        "炸药包",
+        "引爆按钮",
+        "地下雷管"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 83,
+      "group_end_sec": 96,
+      "source_group_label": "第8组"
+    }
+  ]
+}

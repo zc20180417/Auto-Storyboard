@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "summary": "ep21整集分镜已按原剧本、横屏调度、组间衔接、台词节奏和可生成性完成复审，未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "胡永贵两句台词、村民乙维护李燃、村民举锄头反抗和被打倒均按原剧本顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "爸爸首句21字/3.5秒约6.0字秒比，天天拒绝15字/3秒约5.0字秒比，未超过6.5硬上限。"
+    },
+    {
+      "group": "第4组",
+      "type": "horizontal_composition",
+      "evidence": "刀疤男、胡永贵在右侧形成压迫，石头从左向右打断甩棍，爸爸从左侧广场边缘入场，横屏轴线明确。"
+    },
+    {
+      "group": "第5组",
+      "type": "audio_mouth_sync",
+      "evidence": "警察回复明确来自手机听筒，村民乙只做接听反应，电话音没有被写成画面内警察开口。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组-第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "整集保留村头广场压迫、后山小路听见异动、父女分别、石头救场、村民乙报警五个原剧本事件链，未新增改变因果的动作。",
+      "fix_instruction": "已通过；后续只可局部改写不改变事件顺序和台词原文。"
+    },
+    {
+      "group": "第2组-第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾爸爸停在小路左侧、天天抱水壶在右侧，第3组首承接为爸爸从左侧蹲到天天面前，水壶仍在天天怀里。",
+      "fix_instruction": "已通过；若调整小路段落，保持爸爸左侧、天天右侧和水壶归属连续。"
+    },
+    {
+      "group": "第4组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "广场段沿用左侧村民/入口、右侧反派阵线，石头飞行和爸爸入场均从左向右，未发生无过渡换边。",
+      "fix_instruction": "已通过；若增加打斗镜头，必须保留左右轴线或写明换位过渡。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "村民乙对电话里的警察报警，警察声音来自手机听筒，画面内没有虚构警察实体。",
+      "fix_instruction": "已通过；电话音继续标明手机载体即可。"
+    },
+    {
+      "group": "第1组-第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模板编号、参考图占位、首帧尾帧、视频延长、自动分镜等工程词，保持自然中文分镜文本。",
+      "fix_instruction": "已通过；不要加入外部模型模板语。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

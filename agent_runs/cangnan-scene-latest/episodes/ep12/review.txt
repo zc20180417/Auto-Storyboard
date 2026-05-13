@@ -1,0 +1,80 @@
+{
+  "pass": true,
+  "summary": "ep12已按storyboard-reviewer对照原剧本、竖屏生成规则和 assembled final.txt 完成审核，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组", "第14组", "第15组", "第16组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "陆凡冲到江若晴面前、江若晴喊他快跑、陆凡通过对讲机报告承重柱和红蓝黄三线，均与原剧本一致。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "陆凡先从会议室大门入场，手持银行凭证，再把凭证拍到桌面，关键道具归属和位置变化有可见过渡。"
+    },
+    {
+      "group": "第14组",
+      "type": "dialogue_pacing",
+      "evidence": "陆凡两句揭穿台词分别分配4秒和6秒，蓝羽雀热带雨林与苍南高寒针叶林信息表达充足，未超过6.5字/秒。"
+    },
+    {
+      "group": "第15组",
+      "type": "handoff_continuity",
+      "evidence": "第14组尾蓝羽雀资料停在大屏幕，第15组首继续显示资料，假专家仍在桌旁后才露怯拿包逃离。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "对讲机回复明确为画外排爆手声音，陆凡嘴唇闭合，声音来源和口型分离清楚。",
+      "fix_instruction": "如不通过，应把对讲机声音改为画外音并标明画面人物不做口型。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林夏在防暴车入场后从车旁上前，再向陆凡和江若晴问话，人物没有未入场先开口。",
+      "fix_instruction": "如不通过，应补充林夏入场动作或把台词后移。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "会议室、宋子昂、江若晴、资料和关闭的大门均在组首固定，陆凡明确不在本组第一帧内。",
+      "fix_instruction": "如不通过，应补足第一帧人物位置和陆凡未入场状态。"
+    },
+    {
+      "group": "第10组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "13秒内承载宋子昂发难、拉出假专家、专家自称三个强节拍，未把蓝羽雀指控继续硬塞进同组。",
+      "fix_instruction": "如不通过，应拆分专家出场和专家指控。"
+    },
+    {
+      "group": "第16组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文没有Seedance说明、参考图、模板编号、自动分镜或视频延长等工程词，保持自然中文分镜文本。",
+      "fix_instruction": "如不通过，应删除污染词并改写为可见动作、道具和人物反应。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

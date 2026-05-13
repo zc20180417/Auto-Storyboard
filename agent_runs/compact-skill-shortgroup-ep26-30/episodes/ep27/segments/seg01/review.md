@@ -1,0 +1,111 @@
+{
+  "pass": true,
+  "summary": "seg01已对照原剧本、竖屏生成规则和当前分镜逐组审核；书房逼婚、绑养母威胁、大厅反制、警方收网、顾家落幕等关键台词和动作均保留，未发现 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prop_continuity": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "李少爷两段施压台词分别由4秒和3.5秒承载，顾长海保证换婚纱台词由3秒承载，均低于6.5字/秒硬上限，并有打火机、赔笑、咬牙等表演动作承托。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "保留赵朵朵踹开大门、李少爷评价顾家大小姐、顾长海要求换婚纱、赵朵朵追问我妈呢等原剧本关键动作和台词，顺序未改。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "组首写明手枪仍在保镖枪套内，0-2.5秒再拔枪；赵朵朵先扣李少爷手腕，再按到长桌上威胁保镖，道具和人物状态连续。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "赵朵朵甩开李少后先说顾氏集团涉黑和偷税漏税，再从外套口袋拿出U盘说明机密账本由顾秘书交给她，证据揭示完整。"
+    },
+    {
+      "group": "第10组",
+      "type": "handoff_continuity",
+      "evidence": "承接第9组顾长海戴手铐瘫坐在楼梯下的状态，赵朵朵收起U盘走向地下室门，最后两句宣判式台词与救养母行动方向一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组-第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "书房段保留李少爷取消合作威胁、顾长海保证换婚纱、保镖说明桂翠莲在地下室、顾长海命令打电话并威胁收尸的全部关键信息。",
+      "fix_instruction": "若不通过，应恢复遗漏台词和命令因果，不能用概括句替代原剧本威胁内容。"
+    },
+    {
+      "group": "第3组-第5组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "赵朵朵问顾长海我妈呢，顾长海对赵朵朵下婚纱命令，李少爷对赵朵朵调戏，保镖对赵朵朵喊放开李少；所有画面内对白均有真实对象。",
+      "fix_instruction": "若不通过，应补明对白对象，避免对空气、道具或抽象方向说话。"
+    },
+    {
+      "group": "第4组-第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组只承载赵朵朵指控、李少爷靠近、伸手和折腕惨叫；第5组单独承载拔枪、按桌和人质威胁，未把动作反制与持枪控场硬压进同一15秒组。",
+      "fix_instruction": "若不通过，应拆出持枪控场或折腕动作，避免强动作和多段对白过载。"
+    },
+    {
+      "group": "第6组-第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组尾红蓝警灯扫入大厅，第7组组首门外警灯持续并让赵大雷和特警从门外冲入；第8组承接特警控制线，补出压低保镖枪口的可见动作。",
+      "fix_instruction": "若不通过，应在组尾或下一组开头补明警灯、门口、枪口和特警站位的连续状态。"
+    },
+    {
+      "group": "第8组-第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "U盘先在第8组组首位于赵朵朵外套口袋，7-12秒被拿出并举到胸前；第9组组首顾长海盯着赵朵朵手里的U盘，归属和位置连续。",
+      "fix_instruction": "若不通过，应补充U盘从口袋取出、举起或收回的可见过渡。"
+    },
+    {
+      "group": "第1组-第10组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "10组总时长分别为15、13、15、15、10、10、10、12、10、10秒，均在4-15秒机械范围内，且本稿未使用4-9秒短组；时间段连续并以标题总时长结束。",
+      "fix_instruction": "若不通过，应调整组内时间段或拆并组，确保标题时长、最后时间点和镜头数一致。"
+    },
+    {
+      "group": "第1组-第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模型说明词、官方模板编号、参考图占位符、自动分镜说明或模板化空话；尾部只保留短剧可用的画面风格和负向约束。",
+      "fix_instruction": "若不通过，应删除工程说明、模板语和占位符，改为具体人物、动作、道具、声音与光影。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

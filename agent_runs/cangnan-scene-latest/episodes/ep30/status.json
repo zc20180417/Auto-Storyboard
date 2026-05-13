@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep30",
+  "status": "done",
+  "output_name": "苍南风云-ep30-agent-cli-storyboard.txt",
+  "summary": "龙天傲带龙家安保到嘉禾项目部施压，陆凡调来商会调解队与护卫队控场，揭示裁决官身份并接通龙家主电话，宣告对龙家全面封杀。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第8组",
+      "rule": "timing_math",
+      "problem": "第8组为8秒短组，低于默认10秒。",
+      "evidence": "该组只承载龙天傲撤离后的现场秩序、江若晴问“你早就准备了？”和陆凡说明“他带人来的那一刻，我就发了申请。”",
+      "fix": "短承接理由成立；若后续要求统一10秒，可从第7组尾部移入撤离动作，但不要把调解队警告和复盘问答合并过载。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

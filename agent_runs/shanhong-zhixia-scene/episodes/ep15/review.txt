@@ -1,0 +1,109 @@
+{
+  "pass": true,
+  "summary": "第15集整集合稿已对照原剧本和竖屏规则完成真实审核，雨夜排险、堵沟证据、追问赵成武和赵有福被众人压迫的因果完整，格式与证据门禁均满足交付要求。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "evidence": "沈砚川分别对周大柱、小禾、赵有福说话，赵成武对赵有福低声提议，所有现场对白均写明说话对象，没有对空气或道具说话。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "沈砚川关于“不是外人，知道我们挖哪儿的才干得出来”、林知夏问“赵家父子？”、沈砚川答“八成”均保留原文和顺序，未提前揭露超出剧本的信息。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "果树坡道组首写明赵成武在画面中央偏右、沈砚川在左侧下方、周大柱在左后方，随后摔倒、按住、逼问都发生在同一坡道空间。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第7组尾部赵成武被逼到说不出口且村民半圈围拢，第8组赵有福已在坡道口进入父子身旁，承接赵成武看向赵有福后说“我不能说……”。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_pacing",
+      "evidence": "赵有福“他是我儿子！”安排3秒，沈砚川“那大家的命呢？”安排3.5秒，字秒比远低于6.5硬上限，并通过手势、众人停住动作承载情绪。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵成武说漏“不是我一个人”后赵有福脸色难看，这一转折与原剧本一致，未把矛盾转移给其他角色。",
+      "fix_instruction": "无需修复；若调整节奏，不能删掉赵成武说漏嘴和赵有福变脸。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "木板、草捆、麻绳的出现、堵口和被沈砚川发现的过程连贯，麻绳从堵口木板缝里被扯出，符合证据推进。",
+      "fix_instruction": "无需修复；不要把麻绳改成凭空出现或由其他人递出。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组为10秒短动作承接，只有赵成武逃跑、周大柱指认、沈砚川下令追三个强节拍，动作链清楚不过载。",
+      "fix_instruction": "无需修复；若加入追逐细节，应放到第6组坡道动作中。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "赵成武、沈砚川、周大柱的台词均为现场人物开口，并且对象明确；没有心声或画外音被误写成口型。",
+      "fix_instruction": "无需修复；保持现场对白对象清晰。"
+    },
+    {
+      "group": "第8组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "赵有福在组首已位于画面右后方坡道口，随后挤到人群前替赵成武说话，入场和说话顺序具备可见依据。",
+      "fix_instruction": "无需修复；不得让赵有福未入场就直接发声。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“大家的命”带来的压力被转译为众人目光、铁锹柄停住、赵有福嘴唇发白和喉结动作，属于可拍画面细节。",
+      "fix_instruction": "无需修复；避免改成抽象心理结论。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集合稿未出现Seedance说明词、官方模板编号、@图片/@视频/@音频占位符、横屏字段或低质模板化句式。",
+      "fix_instruction": "无需修复；后续不得加入模型说明词或模板化批量描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

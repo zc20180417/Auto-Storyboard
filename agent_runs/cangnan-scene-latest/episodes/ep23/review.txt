@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "ep23 会议室证据反转、书房黑手下令、黑风山炸药危机与陆凡赶到对峙均按剧本保留，格式、时长、口型、空间和连续性通过审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组", "第14组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "李队长引用龙国商会总部数据和海外追赃监控、吴总监否认并指陆凡、李队长反指吴总监伪造账目，台词顺序和对象与原剧本一致。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "陆凡“充当商业间谍，破坏重点生态项目，够你把牢底坐穿。”约24字分配5秒，约4.8字/秒；李队长最后致谢约15字分配3秒，约5字/秒，均符合对白节奏。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "第4组尾周长海盯向电话，第5组首右手靠近电话，第5组7-13秒拿起电话下达炸矿命令，电话道具操作有过渡。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "黑衣人卸下工程炸药，血狼命令“封锁入口，把炸药装在半山腰的岩层上！”，保留了原剧本的炸药和半山腰目标。"
+    },
+    {
+      "group": "第12组",
+      "type": "character_availability",
+      "evidence": "陆凡在第12组组首位于黑色越野车驾驶位，先撞路障、急刹、推门下车，再对血狼开口，人物出场顺序可生成。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "警员甲、警员乙在第2组组首位于背景左侧门边，先被李队长挥手调动，再按倒吴总监，没有凭空参与动作。",
+      "fix_instruction": "若不通过，应在组首补充警员位置，或在他们行动前加入入场动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第6组始终发生在黑风山工地大门，车辆、牛大春、血狼和佣兵的初始位置都在组首锁定中。",
+      "fix_instruction": "若不通过，应把车内血狼、后方佣兵和工地大门位置补全。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "工程炸药在第9组组首堆在岩层前，血狼手中持有计时器，8-12秒按下计时器并确认三分钟后起爆，道具状态明确。",
+      "fix_instruction": "若不通过，应补充计时器与炸药之间的可见关联。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "工人对周长海喊“里面还有人在值班！会出人命的！”，周长海对工人回应“出事我拿钱赔。”，现场对白对象明确。",
+      "fix_instruction": "若不通过，应恢复具体说话对象，不能写成无对象喊话。"
+    },
+    {
+      "group": "第11组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第10组尾周长海站在车灯前、工人被按在泥地上；第11组首复述周长海、血狼、工人、炸药和计时器位置后引入远光灯，状态连续。",
+      "fix_instruction": "若不通过，应在第11组组首具体复述上一组尾部人物和道具状态。"
+    },
+    {
+      "group": "第13组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第13组为四段对峙对白和血狼拔短棍，15秒内未叠加新的车辆动作或炸药操作，强节拍可承载。",
+      "fix_instruction": "若过载，应把血狼拔短棍和逼近动作拆到下一组。"
+    },
+    {
+      "group": "第14组",
+      "type": "generation_density",
+      "result": "warning",
+      "evidence": "第14组总时长8秒，属于血狼带五名精锐形成半包围的短动作余波，无新增台词，短组理由成立。",
+      "fix_instruction": "无需修复；若平台强制偏好10秒，可与下一集开场动作衔接合并。"
+    },
+    {
+      "group": "全片",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现参考图、模板编号、自动正反打、模型说明词、字幕贴片或视频延长等污染项。",
+      "fix_instruction": "若出现污染，应删除工程说明并改成自然可见画面。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第14组",
+      "rule": "generation_density",
+      "problem": "8秒短组属于动作余波，成立但需要在交付说明中标记为短动作收尾。",
+      "evidence": "第14组只表现血狼带五名精锐半包围逼近和陆凡迎战反应，没有新增台词或复杂道具操作。",
+      "fix": "无需修复；若后续需要更长片段，可与下一集动作开场合并。"
+    }
+  ]
+}

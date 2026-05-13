@@ -1,0 +1,233 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP29",
+  "cuts": [
+    {
+      "cut_id": "EP29-G01",
+      "group_index": 1,
+      "title": "矿洞装药倒计时",
+      "scene": "夜晚，黑风山矿洞深处承重柱旁",
+      "characters": [
+        "爆破手甲",
+        "爆破手乙"
+      ],
+      "props": [
+        "炸药包",
+        "定时器",
+        "工具箱",
+        "腕表",
+        "头灯"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP29-G02",
+      "group_index": 2,
+      "title": "广播突响仓皇逃窜",
+      "scene": "夜晚，黑风山矿洞深处承重柱旁到同一隧道深处",
+      "characters": [
+        "爆破手甲",
+        "爆破手乙"
+      ],
+      "props": [
+        "炸药包",
+        "定时器",
+        "工具箱",
+        "应急广播喇叭",
+        "手电"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 12,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP29-G03",
+      "group_index": 3,
+      "title": "警方堵截爆破手",
+      "scene": "夜晚，黑风山矿洞深处交叉巷道",
+      "characters": [
+        "陆凡",
+        "民警甲",
+        "民警乙",
+        "爆破手甲",
+        "爆破手乙"
+      ],
+      "props": [
+        "手电",
+        "警用手铐",
+        "散落工具"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 26,
+      "group_end_sec": 38,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP29-G04",
+      "group_index": 4,
+      "title": "逼问炸药位置",
+      "scene": "夜晚，黑风山矿洞深处交叉巷道",
+      "characters": [
+        "陆凡",
+        "民警甲",
+        "民警乙",
+        "爆破手甲",
+        "爆破手乙"
+      ],
+      "props": [
+        "警用手铐",
+        "手电",
+        "炸药遥控器残件"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 38,
+      "group_end_sec": 50,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP29-G05",
+      "group_index": 5,
+      "title": "排爆手拆除引线",
+      "scene": "夜晚，矿洞核心控制室",
+      "characters": [
+        "排爆手",
+        "陆凡"
+      ],
+      "props": [
+        "防爆服",
+        "专业拆线工具",
+        "定时器",
+        "对讲机",
+        "控制台"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 50,
+      "group_end_sec": 62,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP29-G06",
+      "group_index": 6,
+      "title": "证据固定收队",
+      "scene": "夜晚，矿洞核心控制室",
+      "characters": [
+        "陆凡",
+        "民警",
+        "排爆手"
+      ],
+      "props": [
+        "对讲机",
+        "执法记录仪",
+        "定时器",
+        "证据袋"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 62,
+      "group_end_sec": 72,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP29-G07",
+      "group_index": 7,
+      "title": "矿洞外清点平安",
+      "scene": "夜晚，黑风山矿洞外警戒线旁",
+      "characters": [
+        "陆凡",
+        "林夏",
+        "撤离人员"
+      ],
+      "props": [
+        "警戒线",
+        "矿灯",
+        "救援毯",
+        "对讲机"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 72,
+      "group_end_sec": 82,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP29-G08",
+      "group_index": 8,
+      "title": "判断龙天傲仍在附近",
+      "scene": "夜晚，黑风山矿洞外道路边",
+      "characters": [
+        "陆凡",
+        "林夏"
+      ],
+      "props": [
+        "警戒线",
+        "警车灯",
+        "对讲机"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 82,
+      "group_end_sec": 92,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP29-G09",
+      "group_index": 9,
+      "title": "指挥车内引爆落空",
+      "scene": "夜晚，龙天傲临时指挥车内",
+      "characters": [
+        "龙天傲",
+        "副官"
+      ],
+      "props": [
+        "雷达屏幕",
+        "控制台",
+        "对讲机",
+        "座椅"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 92,
+      "group_end_sec": 104,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP29-G10",
+      "group_index": 10,
+      "title": "陆凡屏幕反击",
+      "scene": "夜晚，龙天傲临时指挥车内",
+      "characters": [
+        "龙天傲",
+        "副官",
+        "陆凡屏幕画面"
+      ],
+      "props": [
+        "大屏幕",
+        "控制台",
+        "对讲机"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 104,
+      "group_end_sec": 116,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP29-G11",
+      "group_index": 11,
+      "title": "调集武装施压",
+      "scene": "夜晚，龙天傲临时指挥车内",
+      "characters": [
+        "龙天傲",
+        "副官"
+      ],
+      "props": [
+        "对讲机",
+        "控制台",
+        "大屏幕"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 116,
+      "group_end_sec": 128,
+      "source_group_label": "第11组"
+    }
+  ]
+}

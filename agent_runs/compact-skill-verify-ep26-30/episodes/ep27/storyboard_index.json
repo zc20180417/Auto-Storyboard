@@ -1,0 +1,99 @@
+{
+  "project": "ep27",
+  "episode_id": "EP27",
+  "cuts": [
+    {
+      "cut_id": "EP27-G01",
+      "group_index": 1,
+      "title": "书房密谋",
+      "scene": "顾家别墅书房，夜，窗帘半掩",
+      "characters": [
+        "顾长海",
+        "李少爷",
+        "保镖"
+      ],
+      "props": [
+        "打火机",
+        "台灯"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 0,
+      "group_end_sec": 11,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP27-G02",
+      "group_index": 2,
+      "title": "威胁电话",
+      "scene": "顾家别墅书房，夜，窗帘半掩",
+      "characters": [
+        "顾长海",
+        "保镖"
+      ],
+      "props": [
+        "手机"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 11,
+      "group_end_sec": 22,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP27-G03",
+      "group_index": 3,
+      "title": "闯入别墅大厅",
+      "scene": "顾家别墅大厅，夜，吊灯亮",
+      "characters": [
+        "赵朵朵",
+        "李少爷",
+        "顾长海",
+        "保镖"
+      ],
+      "props": [
+        "婚纱（被提及）"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 22,
+      "group_end_sec": 36,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP27-G04",
+      "group_index": 4,
+      "title": "反手折腕",
+      "scene": "顾家别墅大厅，夜，吊灯亮",
+      "characters": [
+        "赵朵朵",
+        "李少爷",
+        "保镖"
+      ],
+      "props": [
+        "手枪"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 36,
+      "group_end_sec": 46,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP27-G05",
+      "group_index": 5,
+      "title": "警笛破门",
+      "scene": "顾家别墅大厅，夜，吊灯亮，红蓝爆闪灯从窗外射入",
+      "characters": [
+        "顾长海",
+        "赵朵朵",
+        "赵大雷",
+        "特警队长"
+      ],
+      "props": [
+        "手铐",
+        "U盘"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 46,
+      "group_end_sec": 61,
+      "source_group_label": "第5组"
+    }
+  ]
+}

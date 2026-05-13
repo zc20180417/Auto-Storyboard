@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "EP-01-ep01-agent-cli-storyboard.txt",
+  "summary": "第1集分镜共13组，完整覆盖1-1至1-5全部场景。修复后重新审核通过：G04字秒比问题已拆分时间段解决（原35字/4秒=8.8字/秒，现拆为7-11秒24字=6.0、11-13秒10字=5.0、13-15秒13字=6.5），G01动作链已简化（去除门把晃动等非核心动作），G03画外音已补充嘴唇闭合、不做口型标注。苏清寒台词'我绝不当争权夺利的牺牲品'因时间容量限制转为视觉表演呈现。所有台词、动作、人物关系忠于原剧本，格式规范，空间锁定完整。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组苏清寒台词'我绝不当争权夺利的牺牲品'因时间容量限制转为视觉表演呈现（script_fidelity warning）",
+    "第6组13-14秒王队长台词偏快（9字/1秒=9字/秒）",
+    "第7组朱文浩台词偏快（19字/3秒=6.3字/秒，情绪对白偏快但在5.8-6.5可接受范围）"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

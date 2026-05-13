@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep23",
+  "status": "done",
+  "output_name": "苍南风云-ep23-agent-cli-storyboard.txt",
+  "summary": "第23集完成：吴大有在会议室被证据反转逮捕，周长海转而调动血狼安保团炸黑风山矿洞，陆凡赶到半山腰阻止引爆并与血狼对峙。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第14组",
+      "rule": "generation_density",
+      "problem": "8秒短组属于动作余波，成立但需要在交付说明中标记为短动作收尾。",
+      "evidence": "第14组只表现血狼带五名精锐半包围逼近和陆凡迎战反应，没有新增台词或复杂道具操作。",
+      "fix": "无需修复；若后续需要更长片段，可与下一集动作开场合并。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

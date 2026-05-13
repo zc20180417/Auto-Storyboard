@@ -1,0 +1,198 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP20",
+  "cuts": [
+    {
+      "cut_id": "EP20-G01",
+      "group_index": 1,
+      "title": "包厢狂欢等消息",
+      "scene": "天宫会所顶层包厢",
+      "characters": [
+        "宋子昂",
+        "美女甲",
+        "陪酒女子"
+      ],
+      "props": [
+        "香槟杯",
+        "沙发",
+        "纯铜大门",
+        "音响"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP20-G02",
+      "group_index": 2,
+      "title": "陆凡押人入场",
+      "scene": "天宫会所顶层包厢门口连通走廊",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "疯狗",
+        "警察",
+        "保镖"
+      ],
+      "props": [
+        "纯铜大门",
+        "警用手铐",
+        "警车警灯反光"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 15,
+      "group_end_sec": 30,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP20-G03",
+      "group_index": 3,
+      "title": "宋子昂拔枪威胁",
+      "scene": "天宫会所顶层包厢",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "警察",
+        "疯狗"
+      ],
+      "props": [
+        "黑色手枪",
+        "沙发",
+        "纯铜大门"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 30,
+      "group_end_sec": 43,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP20-G04",
+      "group_index": 4,
+      "title": "夺枪推倒宋子昂",
+      "scene": "天宫会所顶层包厢",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "警察",
+        "疯狗"
+      ],
+      "props": [
+        "黑色手枪",
+        "沙发",
+        "墙面"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 43,
+      "group_end_sec": 53,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP20-G05",
+      "group_index": 5,
+      "title": "陆凡列罪逼问",
+      "scene": "天宫会所顶层包厢",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "警察",
+        "疯狗",
+        "黑衣人"
+      ],
+      "props": [
+        "黑色手枪",
+        "纯铜大门"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 53,
+      "group_end_sec": 66,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP20-G06",
+      "group_index": 6,
+      "title": "宋天明登场录音反制",
+      "scene": "天宫会所顶层包厢",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "宋天明",
+        "黑衣人"
+      ],
+      "props": [
+        "金丝楠木拐杖",
+        "手机",
+        "黑色手枪",
+        "纯铜大门"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 66,
+      "group_end_sec": 81,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP20-G07",
+      "group_index": 7,
+      "title": "录音播放警笛逼近",
+      "scene": "天宫会所顶层包厢",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "宋天明",
+        "黑衣人"
+      ],
+      "props": [
+        "手机",
+        "金丝楠木拐杖",
+        "纯铜大门"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 81,
+      "group_end_sec": 93,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP20-G08",
+      "group_index": 8,
+      "title": "宋天明命黑衣人动手",
+      "scene": "天宫会所顶层包厢",
+      "characters": [
+        "陆凡",
+        "宋天明",
+        "黑衣人",
+        "独眼老者"
+      ],
+      "props": [
+        "金丝楠木拐杖",
+        "武器",
+        "手机"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 93,
+      "group_end_sec": 106,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP20-G09",
+      "group_index": 9,
+      "title": "至尊黑卡震住宋家",
+      "scene": "天宫会所顶层包厢",
+      "characters": [
+        "陆凡",
+        "宋天明",
+        "独眼老者",
+        "黑衣人"
+      ],
+      "props": [
+        "至尊黑卡",
+        "桌子",
+        "武器",
+        "金丝楠木拐杖"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 106,
+      "group_end_sec": 119,
+      "source_group_label": "第9组"
+    }
+  ]
+}

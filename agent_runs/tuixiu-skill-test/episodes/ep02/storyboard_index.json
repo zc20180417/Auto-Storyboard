@@ -1,0 +1,57 @@
+{
+  "project": "EP-02",
+  "episode_id": "EP02",
+  "cuts": [
+    {
+      "cut_id": "EP02-G01",
+      "group_index": 1,
+      "title": "配电箱的发现",
+      "scene": "小区院子",
+      "characters": [
+        "李虎"
+      ],
+      "props": [
+        "配电箱",
+        "手机"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 0,
+      "group_end_sec": 10,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP02-G02",
+      "group_index": 2,
+      "title": "散布谣言",
+      "scene": "王婶家门口",
+      "characters": [
+        "李虎",
+        "王婶"
+      ],
+      "props": [
+        "垃圾袋",
+        "塑料袋（水果）"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 10,
+      "group_end_sec": 25,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP02-G03",
+      "group_index": 3,
+      "title": "微信群搅局",
+      "scene": "手机微信群界面",
+      "characters": [
+        "李虎"
+      ],
+      "props": [
+        "手机"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 25,
+      "group_end_sec": 38,
+      "source_group_label": "第3组"
+    }
+  ]
+}

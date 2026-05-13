@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep28",
+  "status": "done",
+  "output_name": "山洪之下-ep28-agent-cli-storyboard.txt",
+  "summary": "第28集完成证据定性、赵有福赵成武认责、村民主动修复东排果园，沈砚川决定不卖地并与林知夏重新种回果园。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第13组",
+      "rule": "timing_math",
+      "problem": "第13组为8秒短组。",
+      "evidence": "该组只承载两人并肩下沟和第一锹新泥翻起，是第12组宣告后不可硬凑的片尾动作意象，短组理由成立。",
+      "fix": "交付时保留为短收束组，不需要扩写到10秒。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

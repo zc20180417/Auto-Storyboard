@@ -1,0 +1,73 @@
+{
+  "pass": true,
+  "summary": "EP04全8组均通过审核，台词节奏合理，对话指向明确，空间锁定完整，原剧本关键情节全部保留，无硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "generation_density": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "朱文浩连续三句回答'闭嘴旁观不站队/点火烧身转移压力/搁置争议先定纪要'共18字在4秒内完成，4.5字/秒，符合普通对白节奏。周正明问句9字在2秒内完成，4.5字/秒，合理。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "evidence": "第5组包含3个强节拍（朱文浩揭示去向+朱天和震惊、朱文浩冷笑宣言、朱文浩沉声宣言），均属同一冲突目标下的信息递进，未超过复杂度预算。朱天和大惊台词7字2秒=3.5字/秒属于短台词豁免。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "原剧本苏清寒三条件'不动我妹/保住我妈病房/苏长明身败名裂不是死'、朱文浩电话音'成交明天HR部报到做我的眼线'、心声'不是信任他是只有他能帮我复仇'全部保留，未删减或改写。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩、周正明、考官甲、邱瑞均在组首空间锁定中拥有明确位置和朝向：朱文浩位于画面中央面向讲台，周正明坐于讲台左侧，考官甲坐于讲台右侧，邱瑞坐于后排角落。",
+      "fix_instruction": "无需修复，角色位置和朝向完整。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组以邱瑞点头收尾，第2组组首空间锁定保持相同空间布局（阶梯教室）和全部在场人物，朱文浩仍坐于中央椅子上，与第1组结尾状态兼容。第2组以朱文浩走向考场门口收尾，第3组以朱文浩从考场门口走出开始，空间转换自然。",
+      "fix_instruction": "无需修复，空间和人物状态连续。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组以苏清寒走向门口收尾，第7组以苏清寒按下门把手开门开始，动作衔接自然。第7组以苏清寒关门后独自站在昏暗公寓收尾，第8组以苏清寒站在门旁走向茶几开始，空间状态连续。",
+      "fix_instruction": "无需修复，空间和动作衔接自然。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "朱文浩电话音通过手机屏幕亮起作为可见载体，苏清寒心声'不是信任他是只有他能帮我复仇'明确标注嘴唇闭合不做口型，符合音画分离要求。门铃事件通过苏清寒抬头、睁眼、起身反应可视化呈现。",
+      "fix_instruction": "无需修复，音画分离和有声事件可视化正确。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第3组保持单一物理空间（考场外走廊），刘晓蕾位于画面右侧面向考场出口，朱文浩从考场门口走出位于画面左侧，空间关系清晰。第4组切换至夜晚书房新场景，组首空间锁定详细描述布局。",
+      "fix_instruction": "无需修复，空间锁定完整。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

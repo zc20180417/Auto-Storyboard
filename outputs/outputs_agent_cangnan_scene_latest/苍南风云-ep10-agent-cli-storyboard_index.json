@@ -1,0 +1,354 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP10",
+  "cuts": [
+    {
+      "cut_id": "EP10-G01",
+      "group_index": 1,
+      "title": "桥洞炸药与紧急报警",
+      "scene": "夜雨中的施工现场桥洞外",
+      "characters": [
+        "陆凡",
+        "村民"
+      ],
+      "props": [
+        "炸药包",
+        "手机",
+        "安全锥",
+        "警戒带"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP10-G02",
+      "group_index": 2,
+      "title": "围出危险区与排爆转移",
+      "scene": "夜雨中的施工现场危险区外",
+      "characters": [
+        "陆凡",
+        "村民",
+        "排爆手"
+      ],
+      "props": [
+        "安全锥",
+        "警戒带",
+        "排爆车",
+        "防爆罐",
+        "炸药包"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 12,
+      "group_end_sec": 25,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP10-G03",
+      "group_index": 3,
+      "title": "留证与发现黑影",
+      "scene": "夜雨中的施工现场警戒带旁",
+      "characters": [
+        "陆凡",
+        "排爆队长",
+        "民警",
+        "两个黑影"
+      ],
+      "props": [
+        "防爆罐",
+        "手机",
+        "警戒带",
+        "手电筒"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 25,
+      "group_end_sec": 37,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP10-G04",
+      "group_index": 4,
+      "title": "雨林包抄",
+      "scene": "夜雨中的树林深处泥泞灌木丛",
+      "characters": [
+        "陆凡",
+        "黄毛",
+        "打手",
+        "民警甲",
+        "民警乙"
+      ],
+      "props": [
+        "手电筒",
+        "手铐"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 37,
+      "group_end_sec": 50,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP10-G05",
+      "group_index": 5,
+      "title": "拦截打手与逼问黄毛",
+      "scene": "夜雨中的树林深处泥地",
+      "characters": [
+        "陆凡",
+        "黄毛",
+        "打手",
+        "民警甲",
+        "民警乙"
+      ],
+      "props": [
+        "手铐",
+        "手电筒"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 50,
+      "group_end_sec": 62,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP10-G06",
+      "group_index": 6,
+      "title": "录音取证",
+      "scene": "夜雨中的树林深处泥地",
+      "characters": [
+        "陆凡",
+        "黄毛",
+        "打手",
+        "民警甲",
+        "民警乙"
+      ],
+      "props": [
+        "录音笔",
+        "手铐",
+        "手电筒"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 62,
+      "group_end_sec": 75,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP10-G07",
+      "group_index": 7,
+      "title": "办公室内仓皇装钱",
+      "scene": "日阴的乡长办公室",
+      "characters": [
+        "赵大江",
+        "陆凡"
+      ],
+      "props": [
+        "保险柜",
+        "旅行箱",
+        "现金",
+        "红木大门"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 75,
+      "group_end_sec": 87,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP10-G08",
+      "group_index": 8,
+      "title": "陆凡逼问赵大江",
+      "scene": "日阴的乡长办公室",
+      "characters": [
+        "赵大江",
+        "陆凡"
+      ],
+      "props": [
+        "旅行箱",
+        "现金",
+        "保险柜",
+        "红木大门"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 87,
+      "group_end_sec": 97,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP10-G09",
+      "group_index": 9,
+      "title": "录音压垮狡辩",
+      "scene": "日阴的乡长办公室",
+      "characters": [
+        "赵大江",
+        "陆凡",
+        "黄毛"
+      ],
+      "props": [
+        "手机",
+        "旅行箱",
+        "现金",
+        "保险柜"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 97,
+      "group_end_sec": 109,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP10-G10",
+      "group_index": 10,
+      "title": "赵大江跪地求饶",
+      "scene": "日阴的乡长办公室",
+      "characters": [
+        "赵大江",
+        "陆凡"
+      ],
+      "props": [
+        "手机",
+        "旅行箱",
+        "现金",
+        "保险柜",
+        "裁纸刀"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 109,
+      "group_end_sec": 120,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP10-G11",
+      "group_index": 11,
+      "title": "持刀行凶被制住",
+      "scene": "日阴的乡长办公室",
+      "characters": [
+        "赵大江",
+        "陆凡",
+        "民警"
+      ],
+      "props": [
+        "裁纸刀",
+        "手机",
+        "旅行箱",
+        "现金"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 120,
+      "group_end_sec": 132,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP10-G12",
+      "group_index": 12,
+      "title": "林夏带队严查",
+      "scene": "日阴的乡长办公室",
+      "characters": [
+        "赵大江",
+        "陆凡",
+        "林夏",
+        "民警",
+        "纪委干部"
+      ],
+      "props": [
+        "裁纸刀",
+        "手机",
+        "旅行箱",
+        "现金",
+        "手铐"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 132,
+      "group_end_sec": 145,
+      "source_group_label": "第12组"
+    },
+    {
+      "cut_id": "EP10-G13",
+      "group_index": 13,
+      "title": "乡政府大院押解遇袭",
+      "scene": "日阴的乡政府大院",
+      "characters": [
+        "赵大江",
+        "陆凡",
+        "江若晴",
+        "警察"
+      ],
+      "props": [
+        "手铐",
+        "警车",
+        "文件",
+        "无牌破旧面包车",
+        "大门"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 145,
+      "group_end_sec": 156,
+      "source_group_label": "第13组"
+    },
+    {
+      "cut_id": "EP10-G14",
+      "group_index": 14,
+      "title": "徐虎持刀劫走赵大江",
+      "scene": "日阴的乡政府大院",
+      "characters": [
+        "赵大江",
+        "陆凡",
+        "徐虎",
+        "警察",
+        "打手"
+      ],
+      "props": [
+        "无牌破旧面包车",
+        "刀",
+        "手铐",
+        "警车"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 156,
+      "group_end_sec": 168,
+      "source_group_label": "第14组"
+    },
+    {
+      "cut_id": "EP10-G15",
+      "group_index": 15,
+      "title": "江若晴被挟持",
+      "scene": "日阴的乡政府大院",
+      "characters": [
+        "陆凡",
+        "徐虎",
+        "江若晴",
+        "赵大江",
+        "警察",
+        "打手"
+      ],
+      "props": [
+        "无牌破旧面包车",
+        "刀",
+        "文件",
+        "警车"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 168,
+      "group_end_sec": 181,
+      "source_group_label": "第15组"
+    },
+    {
+      "cut_id": "EP10-G16",
+      "group_index": 16,
+      "title": "面包车逃离大院",
+      "scene": "日阴的乡政府大院门口",
+      "characters": [
+        "陆凡",
+        "警察",
+        "徐虎",
+        "江若晴",
+        "赵大江"
+      ],
+      "props": [
+        "无牌破旧面包车",
+        "警车",
+        "散落文件",
+        "破损大门"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 181,
+      "group_end_sec": 191,
+      "source_group_label": "第16组"
+    }
+  ]
+}

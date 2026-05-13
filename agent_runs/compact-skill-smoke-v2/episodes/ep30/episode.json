@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep30",
+  "episode_number": 30,
+  "display_name": "script",
+  "series_title": "script",
+  "source_path": "G:\\Auto-Storyboard\\agent_runs\\compact-skill-smoke-ep30\\episodes\\ep30\\script.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent\\script-ep30-agent-cli-storyboard.txt",
+  "storyboard_aspect": "vertical",
+  "generator_skill_name": "storyboard-generator",
+  "reviewer_skill_name": "storyboard-reviewer",
+  "reviewer_source": "storyboard-reviewer"
+}

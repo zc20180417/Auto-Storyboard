@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "summary": "seg01已对照原剧本完成竖屏分镜审核，6组均保持台词、人物关系、关键动作和空间转换，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中施工方代表连续指出“车道从这过”“停车坪接这里”，赵成武补充“排水口也得落这”，沈砚川回应“说完了？”，分镜第1组按同一顺序保留，并把路线图、卷尺、果园边位置写入画面。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "第2组组尾写明沈砚川已拿到协议，第3组组首继续写沈砚川手中持有协议，0-4秒完成撕掉协议和纸落一地，协议归属和动作过渡连续。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组4-8秒包含“哥，天快黑了”“你看这水”“黄了”共约14个有效字，4秒内约3.5字/秒，并有看天、指水、顺视线看水等同步动作；8-14秒承载“坡里吃满了”“会塌吗？”“再压就难说”共约18个字，6秒内约3字/秒，带有泥水观察和害怕反应，不存在过快口型。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "evidence": "屋内所有现场对白均写明说话对象：沈小禾问沈砚川“还是爹那本？”“你要告诉村里吗？”，沈砚川对沈小禾回答并提醒，未出现心声或假对白对象。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定日间果园边一个主要物理空间，并列明沈砚川、赵有福、施工方代表、赵成武的位置、身体朝向、路线图、卷尺和协议状态。",
+      "fix_instruction": "若不通过，应补齐人物画面位置、身体朝向和关键道具归属，或拆出跨空间内容。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组主要承载赵有福施压、施工方代表赔偿压力、沈砚川拿协议三个强节拍，13秒内分三段完成，没有叠加额外关键动作或跨空间跳转。",
+      "fix_instruction": "若不通过，应拆分赔偿压力和拿协议动作，或压缩非关键反应。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组结尾沈砚川拿到协议，第3组组首从同一果园边空间、同一人物站位和协议在沈砚川手中开始，撕协议后再离开，组间状态连续。",
+      "fix_instruction": "若不通过，应在第2组组尾或第3组组首补充协议从桌面到沈砚川手中的可见过渡。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“坡里吃满了”和“黄了”等不可直接视觉化判断被转译为黄泥、坡脚渗水、指尖泥水和两人视线反应，画面可生成。",
+      "fix_instruction": "若不通过，应把抽象判断改成泥水颜色、坡脚水迹、手指触摸和人物反应等可见细节。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第5组保留沈小禾问“你咋一看就懂？”“你还记着？”“那咋办？”，以及沈砚川关于老石坝、小时候跟着跑、记雨看沟认水路、前年清沟和回去翻本子的全部关键信息。",
+      "fix_instruction": "若不通过，应恢复缺失台词或把被压缩的信息按原顺序补回对应时间段。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "第6组只包含屋内翻记雨本、旧沟线草图和兄妹对话，没有出现Seedance说明词、模板编号、参考图占位符、字幕或广告式表达。",
+      "fix_instruction": "若不通过，应删除工程说明词、模板词和非分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

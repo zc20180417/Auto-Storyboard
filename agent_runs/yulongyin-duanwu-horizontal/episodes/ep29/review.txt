@@ -1,0 +1,111 @@
+{
+  "pass": true,
+  "summary": "ep29整集已对照原剧本、横屏生成规则和最终final.txt审核，8组均保留河道焕新、祠堂龙舟、天天陶笛与云宝回应的剧情，未发现硬交付问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留几个月后宽阔河道、水流湍急清澈、两岸绿树农田，以及村民甲和村民乙对李燃水渠结实和收成翻倍的原台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "horizontal_composition",
+      "evidence": "第3组祠堂龙舟横贯中后景，爸爸在左前景雕龙头，村民甲在右侧门边观望，祠堂梁柱形成横屏纵深。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "第6组天天台词约20字安排在2-6秒，约5字/秒；先放下陶笛再对右侧河道深处说话，现场口型和对象清楚。"
+    },
+    {
+      "group": "第7组",
+      "type": "filmability",
+      "evidence": "第7组把涟漪、金色小鲤鱼跃出、水花凝成透明水皇冠、落在天天头顶并化雾写成连续可视动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第8组承接第7组水雾散开，天天在左前景站起并向右侧河道深处挥手，陶笛仍留在手中。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "村民甲固定在画面左侧，村民乙固定在右侧，二人视线隔河道相接，后续第2组退到左前景水渠旁没有造成轴线混乱。",
+      "fix_instruction": "无需修复；若增加移动，应补充可见走位。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "农用运输车从右后方入村，石桥稳定在背景河面，水桶从第1组村民甲手中延续到第2组左前景。",
+      "fix_instruction": "无需修复；关键道具位置和归属清楚。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "爸爸现场对右侧村民甲说端午台词，之后擦拭旧陶笛没有混入心声或画外音，口型来源明确。",
+      "fix_instruction": "无需修复；声音来源正确。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组只承载天天坐在青石板、掏出陶笛、深吸气和开始吹奏，10秒内动作链完整且不过载。",
+      "fix_instruction": "无需修复；无需拆组。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天明确对画面右侧河道深处呼唤云宝，水面无实体回应但对象来自前文设定和当前视线方向，没有发明假对象。",
+      "fix_instruction": "无需修复；对话对象清楚。"
+    },
+    {
+      "group": "第7组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "天天在左前景，涟漪和小鲤鱼在右中景，水皇冠在中央凝聚后落向左侧天天头顶，横屏运动方向明确。",
+      "fix_instruction": "无需修复；左到右的回应空间有效。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文没有模板编号、占位符、参考图说明、首尾帧术语、自动分镜或视频延长等工程词。",
+      "fix_instruction": "无需修复；保持自然中文分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第3组",
+      "rule": "dialogue_pacing",
+      "problem": "村民甲赞叹龙头的台词承载略紧。",
+      "evidence": "“燃哥，这龙头雕得真霸气，简直要活过来一样！”约24字安排在6.5-10秒，表演上接近快语速。",
+      "fix": "当前不构成硬问题；如后续精修，可把第3组腕部特写缩短0.5秒并把赞叹镜头延长到4秒。"
+    }
+  ]
+}

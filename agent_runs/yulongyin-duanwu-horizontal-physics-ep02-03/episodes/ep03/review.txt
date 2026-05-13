@@ -1,0 +1,138 @@
+{
+  "pass": true,
+  "summary": "EP03 已按 storyboard-horizontal-reviewer 对照原剧本、横屏生成规则和 Seedance 参考层完成真实审核；9组均保留剧情与台词，横屏新结构、组间承接、物理连续性、角色称谓、命名状态、道具文字承载、光源和运镜动机满足交付要求。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "special_effects": "checked",
+    "prompt_pollution": "checked",
+    "physical_continuity": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "第1组标题含 EP03-G01 cut_id，使用人物、场景、道具/关键视觉资产、组间承接、横屏构图/调度和裸行 1-1 至 1-3 镜头号，未使用旧字段。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "第3组命名前称呼壶内角色为小龙，命名台词后才写刚被命名的云宝；画外心声明确写天天嘴唇闭合不做口型，水雾动作、云宝来源和天天心声分离清楚。"
+    },
+    {
+      "group": "第5组",
+      "type": "physical_continuity",
+      "evidence": "第5组天天先右手扶壶底、左手扶壶身，再把壶口朝上抱入怀里；后续解释台词中抱壶姿势不变，清水没有无支撑外溢。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "evidence": "第7组 7-2 用 5 秒承载爷爷约 20 字警告台词，约 4 字/秒，符合严肃警告和口型承载。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "第9组保留天天退回房间、爷爷独自走到旧木柜、翻出老照片、照片上年轻爷爷举鼓槌、低语云中君，并让爷爷念出照片背面旧字信息。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第1组保留反锁房门、掏出半个干瘪发硬白馒头以及天天对壶内对象说“你饿不饿？我只有这个了，你尝尝。”",
+      "fix_instruction": "若不通过，应补回反锁、馒头状态和原台词，不得改成其他食物或删掉低声喂食对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "physical_continuity",
+      "result": "pass",
+      "evidence": "第2组水壶始终竖立，壶口朝上，壶盖在桌面右侧，馒头碎从手到壶口再沉向壶底，清水只起涟漪没有外溢。",
+      "fix_instruction": "若不通过，应明确壶身支撑、壶口方向和碎屑入水路径，避免平放或倒置盛水。"
+    },
+    {
+      "group": "第3组",
+      "type": "special_effects",
+      "result": "pass",
+      "evidence": "第3组在命名前使用小龙，命名台词后才使用云宝；云宝只在壶内清水中活动，水雾从壶口到天天脸颊和手背形成来源、路径、结果，没有科幻激光或卡通萌宠化正向描述。",
+      "fix_instruction": "若不通过，应删掉夸张魔法、激光、怪物化或大范围雾效，改为克制水雾和真实湿润高光。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组从关闭的卧室门外接上室内水声，写清老旧门闩本就没有完全卡牢、被连续推门滑开；组尾明确门向内敞开、爷爷在左侧门口、天天和水壶在右侧小桌前，能自然接第5组护壶。",
+      "fix_instruction": "若不通过，应补清门闩是否扣牢、推门过程、爷爷门内外位置和室内水壶暴露关系。"
+    },
+    {
+      "group": "第5组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "第5组保持爷爷画面左侧、天天画面右侧的对峙轴线，过肩镜头也说明前景爷爷肩背和背景天天，未无过渡换边。",
+      "fix_instruction": "若不通过，应增加中性过渡或明确左右站位、视线方向和过肩归属。"
+    },
+    {
+      "group": "第6组",
+      "type": "narrative_progression",
+      "result": "pass",
+      "evidence": "第6组由爷爷眼神清明，递进到“清水养它，脏水害它”，再落到天天手心出汗和追问爷爷是否认识它，信息链完整。",
+      "fix_instruction": "若不通过，应补回眼神变化、规则台词、道具反应和天天追问，避免只停在情绪氛围。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "第8组天天与爷爷同处堂屋，天天追问和爷爷糊涂反问都用双人中景或过肩关系明确对象，未把心声误写成现场开口。",
+      "fix_instruction": "若不通过，应用双人中景或过肩镜头明确说话人与被问者，并区分心声和现场对白。"
+    },
+    {
+      "group": "第5组-第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "天天作为男孩，抱壶、托壶和后退等动作描述均使用“他”或角色名，没有再写成“她”；爷爷、天天和云宝称谓保持稳定。",
+      "fix_instruction": "若不通过，应把错误代词改回与角色设定一致的称谓，并在不确定时优先使用角色名。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第9组老照片先由爷爷从抽屉中翻出，再正面展示年轻爷爷和鼓槌，最后翻到背面露出褪色旧字；关键信息由爷爷低声念出，不依赖模型生成准确中文小字。",
+      "fix_instruction": "若不通过，应补充照片从抽屉出现、被持有、正反面转换的可见过渡，并让人物台词承载关键文字信息。"
+    },
+    {
+      "group": "第1组-第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集未出现参考图、首帧参考、尾帧参考、@图片、模板编号、自动分镜、视频延长或上传说明；Seedance执行提示补充作为当前横屏合同字段出现，内容为站位和物理易错点。",
+      "fix_instruction": "若不通过，应删除工程调用词、模板编号、上传占位符和非分镜说明，保留当前横屏合同字段。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,113 @@
+{
+  "pass": true,
+  "summary": "EP03 整集已对照原剧本和 storyboard-horizontal-generator 审核，9组均保留剧情与台词，横屏空间、运镜、道具状态链、组尾衔接和 reviewer 证据满足交付要求。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "第1组以左侧房门、右侧小桌和前景水壶建立卧室横向关系，天天从门边到桌前的移动路线清楚。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "第3组画外心声明确写天天嘴唇闭合不做口型，水雾动作和心声分离，声音承载正确。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "第5组水壶从小桌前被天天抱进怀里，后续第6至第7组持续作为天天怀中道具，没有跳变。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "evidence": "第7组3-8秒承载爷爷约20字警告台词，5秒内约4字/秒，符合严肃警告节奏。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "第9组保留天天退回房间、爷爷翻旧照片、年轻爷爷龙舟船头举鼓槌、低语云中君和照片背面文字。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首空间锁定只写门、天天、小桌、水壶和视线关系的静态状态，动作过程放在后续时间段。",
+      "fix_instruction": "若出现走到、拿起、放下等过程动词，应移入镜头描述。"
+    },
+    {
+      "group": "第3组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "10.5-14秒从右侧壶口摇向左侧天天脸颊，清楚交代水雾来源、路径和落点。",
+      "fix_instruction": "若不通过，应补充运镜起点、终点、跟随对象和服务目的。"
+    },
+    {
+      "group": "第4组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "门外走廊、卧室门和门内水壶风险沿左到右推进，组尾门敞开自然承接第5组室内对峙。",
+      "fix_instruction": "若衔接矛盾，应明确门开状态和人物所在门内外位置。"
+    },
+    {
+      "group": "第6组",
+      "type": "narrative_progression",
+      "result": "pass",
+      "evidence": "第6组从爷爷眼神清明，到说出清水脏水规则，再到天天意识到爷爷认识它，信息递进完整。",
+      "fix_instruction": "若递进不足，应补回眼神变化、规则台词和天天追问。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "第8组天天与爷爷同处堂屋，双方对话对象明确，爷爷糊涂反问也有画面内承接对象。",
+      "fix_instruction": "若对象不清，应用双人中景或过肩镜头明确说话人与被问者。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "旧照片从抽屉中出现，到爷爷手中，再到正面和背面特写，线索道具路径完整。",
+      "fix_instruction": "若照片位置跳变，应补充翻找、取出、翻面等可见过渡。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现参考图、模板编号、Seedance执行提示补充、组间承接、本镜估算时长等生产备注字段。",
+      "fix_instruction": "若出现工程备注，应删除并改成自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

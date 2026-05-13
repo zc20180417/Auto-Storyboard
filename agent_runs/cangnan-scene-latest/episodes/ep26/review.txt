@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "已对照ep26全剧本、竖屏生成规则和组装后的final.txt逐组审核，10组均通过，未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组保留陆凡夺甩棍、三秒解决战斗、满地保镖哀嚎、金董“你别过来！我是龙少的代表！”以及陆凡单手提起金董的顺序。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组0-4.5秒金董封杀嘉禾约19字，4.5-8.5秒断供台词约19字，8.5-12秒陆凡回应约16字，均低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "第8组组首手机位于陆凡外套口袋处，8.5-13秒陆凡取出手机拨号并说“地面不通，那就走天上”，道具来源清楚。"
+    },
+    {
+      "group": "第10组",
+      "type": "space_locking",
+      "evidence": "第10组组首固定黑风山工地空地、陆凡、江若晴、工头、直升机和吊挂集装箱，后续空投与工头发言都有明确可用对象。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "12秒内只承载金董下令、保镖逼近、陆凡低扫和保镖甲倒地四个节拍，没有把完整打斗结果压进同组。",
+      "fix_instruction": "如不通过，应拆出低扫或压缩保镖逼近动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾部陆凡提起金董，第3组组首仍是陆凡揪住金董衣领，沙发和甩棍位置清楚，状态能自然承接。",
+      "fix_instruction": "如不通过，应在第2组尾部或第3组组首补充金董位置和衣领状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "第5组组首列明金董、赵家主、李家主、钱家主在会议桌周边的位置，后续所有发言人物均在开口前可见。",
+      "fix_instruction": "如不通过，应补足三大家主位置、身体朝向和与金董的视线关系。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第7组保留工地停摆、工头汇报水泥钢筋全断、江若晴说明供应商毁约和“往死里逼”的情绪转折。",
+      "fix_instruction": "如不通过，应恢复原剧本台词和断供因果，删除新增剧情。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "直升机轰鸣作为天空方向外部声音出现，并配合陆凡和江若晴抬头反应，没有写成画面人物开口。",
+      "fix_instruction": "如不通过，应补充声音来源和人物听见后的可见反应。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模型说明词、参考图、模板编号、自动分镜、视频延长或工程占位符。",
+      "fix_instruction": "如不通过，应删除污染词并改写为自然可见动作。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

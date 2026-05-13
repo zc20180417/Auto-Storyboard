@@ -1,0 +1,129 @@
+{
+  "pass": true,
+  "summary": "第6集横屏分镜完整保留卧室救云宝、祠堂底木续命和工地爸爸听到笛声奔离的剧情，七组均满足横屏构图、台词承载、时长和连续性要求。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中云宝躺在书桌上、天天喊“云宝你醒醒！我用清水给你洗！”、清水无法冲掉黑色毒素、爷爷进门并说“毒气攻心，凡水救不了它了”均按顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "evidence": "第1组尾爷爷停在左后门边，第2组首仍在左后方，天天仍在右前方守着云宝，随后爷爷领路向左侧门外走，人物站位和离场方向连续。"
+    },
+    {
+      "group": "第3组",
+      "type": "horizontal_composition",
+      "evidence": "祠堂段把残破龙舟横放在画面后方，船首靠左，供桌与碗在中央前景，爷爷左侧刮木屑，天天右侧抱云宝，横屏左中右和前后景清晰。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "第3组尾木屑已入碗，第4组首碗仍在供桌中央，天天从右侧把云宝放入木屑水，随后木屑变黑、云宝死灰色稍退，道具和状态变化可见。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "爷爷“只能拖三天。三天内，那个敲鼓的人必须回来。”约20字由2.5-7秒共4.5秒承载，字秒比约4.4，符合严肃说明语速。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "陶笛声作为画外异响穿透机器轰鸣，爸爸嘴唇闭住不做口型，胸口陶土挂坠闪烁和爸爸抬头反应共同承载声音来源。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天明确对桌面中央的云宝喊话，爷爷明确对天天说凡水救不了，现场对白均有对象，未把心声或旁白误写成开口。",
+      "fix_instruction": "若不通过，应补充说话对象，或把非现场声音改为画外音并写明嘴唇闭合。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾天天回头僵住、云宝仍在桌上；第2组首天天仍在右前方守桌，爷爷仍在左后门边，随后天天抱起云宝跟爷爷出门，交接顺畅。",
+      "fix_instruction": "若不通过，应在第2组首补充天天抱起云宝的动作，或修正上一组尾部状态。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定了祠堂、龙舟船首、供桌、碗、爷爷、天天和云宝的位置，单组只在村祠堂内进行，没有跨越现实物理空间。",
+      "fix_instruction": "若不通过，应把祠堂外或卧室内容拆成独立组，或补足所有关键人物和道具位置。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "“吸毒”通过木屑迅速变黑、黑色水纹扩散、云宝死灰色稍退和胸腹起伏变清楚来表现，抽象信息已转为可见画面。",
+      "fix_instruction": "若不通过，应用水色、木屑颜色、云宝体表颜色和呼吸起伏表达状态变化。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组只承担爷爷说明三天期限和天天护碗反应两个核心节拍，10秒内没有叠加额外动作或新增剧情。",
+      "fix_instruction": "若不通过，应删除无关停顿或拆分台词说明与情绪反应。"
+    },
+    {
+      "group": "第6组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "工地段锁定爸爸在左中部搬钢筋、工友在右后方、机械和施工灯横向排开，陶土挂坠在爸爸胸口成为中心道具，非单人居中竖屏逻辑。",
+      "fix_instruction": "若不通过，应补充钢筋堆、工友、机械、通道和爸爸胸口挂坠的左右前后关系。"
+    },
+    {
+      "group": "第7组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "第6组尾爸爸停在左中部钢筋堆旁，第7组首仍停在同处，之后依次扔钢筋、扯下安全帽、向右侧通道狂奔，走位路线清楚。",
+      "fix_instruction": "若不通过，应补充爸爸从钢筋堆转向通道的动作，或明确钢筋和安全帽落点。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "工友台词“燃哥，你发什么呆？”和爸爸台词“是天天的笛声……村里出事了！”均保留，之后爸爸扔下钢筋、扯下安全帽、转身狂奔，未新增改变剧情的动作。",
+      "fix_instruction": "若不通过，应恢复原台词和原动作顺序，删掉剧本没有的打斗、摔人或额外对话。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文未出现模板编号、参考图占位、首帧尾帧、视频延长、自动分镜等工程词，负向词中仅将竖屏构图列为排除项。",
+      "fix_instruction": "若不通过，应删除工程词和模板语气，把内容改成自然可拍的短剧分镜描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

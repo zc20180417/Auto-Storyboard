@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "第10集整集分镜已对照原剧本、storyboard-generator 与 storyboard-reviewer 逐组审核，旧仓房救人、茶坡撤离、果园仓房前夺钥匙与立规矩的台词和关键动作均完整保留，未发现 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组按原剧本保留周大柱砸侧板、哭声变大、沈砚川喊刘婆先推孩子、刘婆腿软、孩子害怕、周大柱提醒后坡掉、沈砚川要求砸大点，台词顺序未改。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组0-4秒承载“我？”和“快！”约3个有效字，配合周大柱迟疑和沈砚川喝令；4-8.5秒给周大柱钻入背出刘婆的复合动作链；8.5-12秒承载“走！快走！”约4字，整体节奏未拖慢也未超速。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "evidence": "第5组15秒内承载贴沟路线判断、刘婆自责与沈砚川安抚、滚石擦脚、周大柱惊呼、沈砚川指挥低头和安抚孩子，均是同一撤离动作链，5个时间段但表演目标清晰。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "仓房钥匙在第6组组首明确位于沈小禾手中，赵有福伸手要拿但被沈小禾挡住，林知夏介入后钥匙仍在沈小禾手里，关键道具归属没有跳变。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "evidence": "沈砚川对赵有福问“我走一会儿，你就急了？”，林知夏对沈砚川说“这边记着呢。”，沈砚川对所有人说最终仓房规矩，现场对白对象明确。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第2组完整保留周大柱砸大裂口、沈砚川拽出孩子、孩子喊奶奶、沈砚川让孩子抱紧脖子、刘婆说自己动不了、沈砚川命令大柱进去背人的连续因果。",
+      "fix_instruction": "若不通过，应补回缺失动作或把台词恢复为原文顺序。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第4组只发生在夜雨中的老茶坡回路，组首列出沈砚川抱孩子、周大柱背刘婆、村民甲拿手电和麻绳，没有把果园仓房或旧仓房硬塞进同组。",
+      "fix_instruction": "若不通过，应拆出跨场景内容或明确合法转场。"
+    },
+    {
+      "group": "第5组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第5组所有台词均为画面内人物现场开口，沈砚川、刘婆、周大柱和孩子都在组首可见且有明确对象；滚石事件只用可见动作与人物反应承载。",
+      "fix_instruction": "若不通过，应补声音来源或让非现场声音变为画外音且闭口不做口型。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "赵有福、沈小禾、林知夏、村民乙和村民均在第6组组首拥有位置和朝向；本组所有说话和夺钥匙动作都由这些已可用人物承担。",
+      "fix_instruction": "若不通过，应在组首补齐人物位置、朝向和道具状态，或在说话前给入场动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组尾部村民乙转头看向雨路，第7组0-2秒承接为村民乙喊“他们回来了！”，随后沈砚川背孩子、周大柱扶刘婆从雨路进入，状态衔接清楚。",
+      "fix_instruction": "若不通过，应在第6组尾部或第7组开头补雨路接近的声音和入场。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整组只包含自然分镜正文、现场对白、光影设计、画面风格和负面提示词，未出现模型说明、模板编号、参考图、首尾帧、自动正反打或广告/MV污染语。",
+      "fix_instruction": "若不通过，应删除工程说明词和模板污染，只保留可生成画面与声音。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

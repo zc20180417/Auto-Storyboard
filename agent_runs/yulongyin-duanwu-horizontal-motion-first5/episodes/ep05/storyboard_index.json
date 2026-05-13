@@ -1,0 +1,175 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP05",
+  "cuts": [
+    {
+      "cut_id": "EP05-G01",
+      "group_index": 1,
+      "title": "泉眼与铁锤对峙",
+      "scene": "日/晴，后山隐秘岩洞的泉眼处",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "包工头"
+      ],
+      "props": [
+        "巴掌大的清泉",
+        "铁锤",
+        "水壶"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP05-G02",
+      "group_index": 2,
+      "title": "包工头逼近与水壶微光",
+      "scene": "日/晴，后山岩洞泉眼前",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "包工头"
+      ],
+      "props": [
+        "铁锤",
+        "水壶",
+        "清泉"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 12,
+      "group_end_sec": 23,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP05-G03",
+      "group_index": 3,
+      "title": "云宝示意水洼",
+      "scene": "日/晴，后山岩洞泉眼前",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "包工头",
+        "云宝"
+      ],
+      "props": [
+        "水壶",
+        "小水洼",
+        "破旧陶笛",
+        "铁锤"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 23,
+      "group_end_sec": 35,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP05-G04",
+      "group_index": 4,
+      "title": "陶笛声唤动水洼",
+      "scene": "日/晴，后山岩洞泉眼前",
+      "characters": [
+        "天天",
+        "云宝",
+        "包工头",
+        "胡永贵"
+      ],
+      "props": [
+        "破旧陶笛",
+        "水壶",
+        "小水洼",
+        "铁锤"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 35,
+      "group_end_sec": 45,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP05-G05",
+      "group_index": 5,
+      "title": "水弹击退包工头",
+      "scene": "日/晴，后山岩洞泉眼前",
+      "characters": [
+        "天天",
+        "包工头",
+        "胡永贵"
+      ],
+      "props": [
+        "小水洼",
+        "水弹",
+        "陶笛",
+        "水壶",
+        "铁锤"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 45,
+      "group_end_sec": 57,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP05-G06",
+      "group_index": 6,
+      "title": "胡永贵提桶泼向泉眼",
+      "scene": "日/晴，后山岩洞泉眼前",
+      "characters": [
+        "胡永贵",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "黑色废液桶",
+        "水壶",
+        "泉眼",
+        "陶笛"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 57,
+      "group_end_sec": 68,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP05-G07",
+      "group_index": 7,
+      "title": "云宝跃出挡在泉前",
+      "scene": "日/晴，后山岩洞泉眼前",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "云宝"
+      ],
+      "props": [
+        "水壶",
+        "黑色废液",
+        "泉眼",
+        "陶笛"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 68,
+      "group_end_sec": 78,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP05-G08",
+      "group_index": 8,
+      "title": "云宝变成死灰色",
+      "scene": "日/晴，后山岩洞泉眼前",
+      "characters": [
+        "天天",
+        "胡永贵",
+        "云宝"
+      ],
+      "props": [
+        "黑色废液",
+        "水壶",
+        "泉眼",
+        "陶笛"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 78,
+      "group_end_sec": 90,
+      "source_group_label": "第8组"
+    }
+  ]
+}

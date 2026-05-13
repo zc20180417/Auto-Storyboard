@@ -1,0 +1,116 @@
+{
+  "pass": true,
+  "summary": "ep15 已对照原剧本、竖屏生成规则和整集 final.txt 完成审核，全部组无 hard issue，可进入校验。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "韩彪晃报名表炫耀“社区聚餐主单，定我了。”、林小满反问、韩彪嘲讽路边小炉子、许安平静说“恭喜。”和韩彪凑近说“你连边都摸不着。”均按原剧本顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "0-5.5秒承载林小满约27个有效字，约4.9字/秒；5.5-9秒承载韩彪约16个有效字，约4.6字/秒；9-12秒承载许安约9个有效字并同步动作一停，未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "evidence": "组首锁定先给出马会和阿顺在后厨案台两侧以及门帘入口，0-2秒韩彪从入口入场后才参与台词和动作，人物可用性成立。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "evidence": "第5组组尾写韩彪离开、门帘半开、冻货袋仍在案台中央；第6组组首复述门帘半开、门外走道空着、冻货袋在案台，连续性成立。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "夜里收摊后马会堵住许安，依次说“宴席那天别走远，韩彪这回八成要出事。”，许安追问“你看见什么了？”，马会回“你先备火，别问太多。”，剧情因果未被改写。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "每句现场对白均明确为韩彪对许安和林小满、林小满对韩彪、许安对韩彪，不存在对空气或道具说话。",
+      "fix_instruction": "若后续改稿新增台词，继续使用“A对B说道/问道”的真实对象格式。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "许安因母亲下阶段用药产生接单动机，林小满把冲突从赌气转为必须赢，许安最终确认“有口子就够了”，情绪转折和台词顺序完整。",
+      "fix_instruction": "若需压缩，只能压缩穿串或抬头等过程动作，不能删改用药和必须赢的动机台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "冻货袋从组首堆在案台中央，到马会拿起封口边缘检查，再放回案台，阿顺围绕分装盆反应，道具位置和操作连续。",
+      "fix_instruction": "若后续重写，应保留冻货袋在案台上的可见位置和马会检查封口的动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组包含韩彪入场、质问马会、阿顺担心、韩彪压下风险并离开，4个强节拍分配在10秒内，台词短且动作链清楚，没有额外关键道具操作。",
+      "fix_instruction": "若增加更多动作，应拆到相邻组，避免在10秒内再加入新的强事件。"
+    },
+    {
+      "group": "第6组",
+      "type": "timing_math",
+      "result": "warning",
+      "evidence": "第6组为8秒短组，内容是韩彪离开后的短动作余波和马会转身出门，短组理由成立，但交付时应知悉它低于默认10秒。",
+      "fix_instruction": "如需消除软提示，可在不跨时空、不新增剧情的前提下合并同后厨相邻余波；当前不构成 hard issue。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定夜里街口空地、熄火烤炉、许安和马会位置，马会从阴影上前挡路后才说警示台词，单一物理空间清楚。",
+      "fix_instruction": "若后续改稿，不要把韩彪后厨画面与夜里摊前现实空间混入同组。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "分镜正文未出现模型说明词、模板编号、参考图占位符、自动分镜语气或批量模板化句式。",
+      "fix_instruction": "后续修稿仍应只保留自然画面描述，不写模型执行说明。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "timing_math",
+      "problem": "第6组为8秒短组，低于默认10秒。",
+      "evidence": "该组只承载韩彪离开后的后厨余波、阿顺追问和马会头也不回离开，属于短动作余波和短承接。",
+      "fix": "当前可保留；若统一拉长，需避免新增剧情或与夜里摊前跨空间硬合并。"
+    }
+  ]
+}

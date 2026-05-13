@@ -1,0 +1,229 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP15",
+  "cuts": [
+    {
+      "cut_id": "EP15-G01",
+      "group_index": 1,
+      "title": "挖掘机全毁",
+      "scene": "日/晴 外 黑风山临时车场",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "工头"
+      ],
+      "props": [
+        "扳手",
+        "挖掘机",
+        "油箱"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP15-G02",
+      "group_index": 2,
+      "title": "宋子昂递出违约文件",
+      "scene": "日/晴 外 黑风山临时车场",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "工头",
+        "宋子昂",
+        "律师团"
+      ],
+      "props": [
+        "迈巴赫",
+        "文件",
+        "挖掘机"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 15,
+      "group_end_sec": 29,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP15-G03",
+      "group_index": 3,
+      "title": "时间差不多了",
+      "scene": "日/晴 外 黑风山临时车场",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "江若晴",
+        "工头",
+        "律师团"
+      ],
+      "props": [
+        "文件",
+        "迈巴赫",
+        "挖掘机"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 29,
+      "group_end_sec": 44,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP15-G04",
+      "group_index": 4,
+      "title": "重型运输机降箱",
+      "scene": "日/晴 外 黑风山临时车场",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "江若晴",
+        "工头",
+        "律师团"
+      ],
+      "props": [
+        "重型运输直升机",
+        "集装箱",
+        "挖掘机"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 44,
+      "group_end_sec": 57,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP15-G05",
+      "group_index": 5,
+      "title": "核心发动机开箱",
+      "scene": "日/晴 外 黑风山临时车场",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "工头",
+        "工人们"
+      ],
+      "props": [
+        "集装箱",
+        "防爆级核心发动机",
+        "扳手"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 57,
+      "group_end_sec": 69,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP15-G06",
+      "group_index": 6,
+      "title": "捕鼠夹",
+      "scene": "日/晴 外 黑风山临时车场",
+      "characters": [
+        "陆凡",
+        "江若晴",
+        "工人们"
+      ],
+      "props": [
+        "集装箱",
+        "核心发动机",
+        "废弃仓库铁门"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 69,
+      "group_end_sec": 81,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP15-G07",
+      "group_index": 7,
+      "title": "老伙计们顶上",
+      "scene": "日/晴 外 黑风山临时车场废弃仓库门口",
+      "characters": [
+        "陆凡",
+        "江若晴"
+      ],
+      "props": [
+        "锈迹斑斑的大铁门",
+        "大型推土机",
+        "履带"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 81,
+      "group_end_sec": 94,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP15-G08",
+      "group_index": 8,
+      "title": "推土机压上主干道",
+      "scene": "日/晴 外 黑风山主干道",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "工人们"
+      ],
+      "props": [
+        "特种推土机",
+        "推土铲",
+        "土方"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 94,
+      "group_end_sec": 104,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP15-G09",
+      "group_index": 9,
+      "title": "闲杂人等让开",
+      "scene": "日/晴 外 黑风山主干道",
+      "characters": [
+        "陆凡",
+        "宋子昂",
+        "律师团"
+      ],
+      "props": [
+        "特种推土机",
+        "迈巴赫"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 104,
+      "group_end_sec": 119,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP15-G10",
+      "group_index": 10,
+      "title": "宋子昂拨通黑客K",
+      "scene": "夜/内 酒店总统套房",
+      "characters": [
+        "宋子昂",
+        "黑客K"
+      ],
+      "props": [
+        "威士忌酒杯",
+        "手机",
+        "桌子"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 119,
+      "group_end_sec": 132,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP15-G11",
+      "group_index": 11,
+      "title": "海外空壳公司",
+      "scene": "夜/内 酒店总统套房",
+      "characters": [
+        "宋子昂",
+        "黑客K"
+      ],
+      "props": [
+        "手机",
+        "桌子",
+        "威士忌酒杯"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 132,
+      "group_end_sec": 147,
+      "source_group_label": "第11组"
+    }
+  ]
+}

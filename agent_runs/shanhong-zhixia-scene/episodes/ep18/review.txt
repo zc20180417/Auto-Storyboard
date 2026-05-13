@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "ep18组装稿共8组，已对照完整剧本、竖屏生成规则和reviewer规则完成整集复审；晒场撤离、边沟救人、仓房协议揭露均忠于原剧本，格式、时长、空间锁定和提示词洁净度通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "evidence": "第1组所有现场对白均有明确对象：村民甲对周围村民喊“水追上来了！”，沈小禾对老人们喊“老人先走这边！”，赵有福对前方村民喊“让开！让我先过去！”，村民乙对赵有福骂“你还有脸抢前头！”，沈砚川对众人喝“都靠右，留出路！”。"
+    },
+    {
+      "group": "第2组",
+      "type": "timing_math",
+      "evidence": "第2组标题总时长13秒，时间段为0-3.5、3.5-7、7-10、10-13秒，连续且使用0.5秒粒度，最后一段结束于13秒；镜头数4个与时间段数一致。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "evidence": "第4组14秒内包含取绳、质疑、回应、合力稳住绳和倒木四个主要节拍，其中9-14秒给救援动作5秒，动作链不仓促；台词短，未与过多外部事件或新道具揭示硬塞。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "防水袋从赵有福怀里被赵成武摸出，赵有福扑抢，周大柱按住，赵成武再递到木桌边给林知夏；道具转移路径完整，没有突然跳到他人手中。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "第8组保留村民乙“你连手印都敢造！”，赵有福“我……我只是想先办成。”，沈砚川“天一亮，这事一件件算。”，并以众人眼神改变收尾，未新增审判、殴打或改口认罪等剧情。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "晒场组首明确人群、沈小禾、周大柱、赵有福、沈砚川的位置和朝向，主要物理空间单一，撤离窄路在组内建立清楚。",
+      "fix_instruction": "若不通过，应补充每个本组发声人物的画面位置、身体朝向和视线关系。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾部木架倒在晒场边角、赵有福后退到边沟附近；第3组组首将赵有福置于边沟口，倒木在画面中央偏右，事故从上一组自然接入。",
+      "fix_instruction": "若不通过，应在第2组尾或第3组组首补赵有福从晒场前沿到边沟口的可见过渡。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第5组12秒，0-5秒为合力抬木和拖出赵有福的完整动作链，5-8.5秒承载赵有福短句“砚川，我错了……”，8.5-12秒承载沈砚川短句“现在知道错，晚了。”，字秒比和动作节奏均在规则范围内。",
+      "fix_instruction": "若不通过，应减少无台词动作拖时或把台词与反应重新分配到0.5秒时间轴内。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "仓房组首把赵有福、沈砚川、林知夏、周大柱、赵成武和村民都放在室内明确位置，赵成武摸袋、赵有福扑抢、周大柱按住、林知夏接袋均发生在人物可用之后。",
+      "fix_instruction": "若不通过，应先安排赵成武或林知夏入场，再让其摸袋或接袋。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第7组没有心声或画外音，所有台词都由画面内人物现场开口，且对象明确为沈砚川、屋内众人或沈小禾和沈砚川；不存在嘴唇闭合要求遗漏。",
+      "fix_instruction": "若不通过，应将非现场声音标明来源，并写明画面人物不做口型。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集终稿未出现Seedance可、自动正反打、模板编号、参考图、@图片、首帧尾帧、广告口号、字幕贴片或其他工程说明；第8组也只保留自然分镜描述和统一负面提示词。",
+      "fix_instruction": "若不通过，应删除模型说明词和模板化语句，改成可见动作、人物表情、声音来源和道具状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "名单、协议、让地协议、沈母手印、沈母否认均按原剧本顺序出现；沈小禾和沈母虽未列在转场出场角色中，但原剧本有台词，因此终稿保留她们并写明其仓房内位置。",
+      "fix_instruction": "若不通过，应以原剧本台词为准保留沈小禾和沈母，并避免删掉手印揭露。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

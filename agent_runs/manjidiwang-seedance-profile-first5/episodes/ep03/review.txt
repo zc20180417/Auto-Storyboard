@@ -1,0 +1,71 @@
+{
+  "pass": true,
+  "summary": "ep03 整集分镜已逐组对照原剧本、生成规则和 Seedance 参考层审查，未发现硬性问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "generation_density": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "朱天和“我去集团，让你母亲陪你去”在2-4.5秒配合大步出门，李娟“太阳打西边出来了？起这么早”在6.5-9.5秒完成，台词节奏未过快，也未用长静默凑时长。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "evidence": "原剧本“气场极具压迫感”转译为朱文浩摩挲虎口、肩背压住画面、李娟闭口心声，不直接输出抽象判断。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "朱文浩“我与清寒私下交往已有三年”“今日请母亲陪同，向苏家提亲”与李佳佳“这……太突然了，老苏不在家”均完整保留，人物关系和信息顺序未改。"
+    },
+    {
+      "group": "第10组",
+      "type": "space_locking",
+      "evidence": "第10组始终在苏家别墅客厅，组首列明朱文浩、李娟、苏清寒、李佳佳、苏晓晓和重礼位置，离场动作发生在同一空间内。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩在组首位于试衣间门内并在0-3秒走出，李娟和导购在男装店内有明确位置；所有发声和递卡动作发生前人物均可用。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "苏清寒在组首已位于背景右侧楼梯上，0-3秒走下楼梯后才被朱文浩迎上并扣住手腕，人物来源明确。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第9组6.5-10秒明确朱文浩松开苏清寒手腕，组尾保留该状态；第10组组首承接为苏清寒手腕已经松开，便于朱文浩和李娟离场。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "苏清寒心声写明嘴唇闭合、不做口型，并以视线从门口落到重礼上承载“釜底抽薪”的判断，画外音来源清楚。",
+      "fix_instruction": "无须修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

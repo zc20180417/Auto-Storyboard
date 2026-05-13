@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "第18集整集终稿已对照原剧本、竖屏生成规则和最终分镜逐组审核，全部关键台词、动作、空间衔接和道具归属通过。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "广场收尾区的感谢、许安回应、投资人甲质问、韩彪硬撑解释全部按原剧本顺序出现；主办方甲、许安、投资人甲、韩彪的说话对象均明确，没有新增剧情。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "马会13字左右用2.5秒、林小满9字左右用2秒、投资人甲10字左右用2.5秒，情绪短句节奏自然；第2组最后5秒只处理韩彪转身离开和许安收炉两个可见动作，没有拖慢对白。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组切入韩彪店后门内侧小屋，组首写明后门、木桌、单子以及韩彪、阿顺、马会的位置和朝向；关门、扫单子、拍桌都在时间段中发生，组首没有把过程动作写成静态锁定。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "手机首次在第4组7-10秒由韩彪从上衣口袋掏出，第5组组首承接为韩彪手中持有手机；道具归属与原剧本“慢慢把手机拿出来”一致。"
+    },
+    {
+      "group": "第5组",
+      "type": "prompt_pollution",
+      "evidence": "整集终稿没有出现Seedance说明、模板编号、参考图、自动分镜、工程字段或自检说明；`--neg`仅作为负面提示词行使用，正文保持自然分镜格式。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "第1组所有真人开口对白均有真实对象，投资人甲的质问明确对韩彪，韩彪的回应明确对投资人甲。",
+      "fix_instruction": "若后续改稿删掉说话对象，应补回“A对B说道/问道”。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组结束时韩彪仍在广场被质问，第2组组首继续同一位置和视线关系；第2组末尾韩彪离开，下一组切换到店后门属于明确新场景。",
+      "fix_instruction": "若连续同场景组之间人物位置变化，应补具体移动或收尾状态。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第3组12秒内包含关门扫单子、韩彪发泄、阿顺解释、韩彪拍桌反问，动作链和三句短对白分段清楚，没有超过15秒硬塞长台词。",
+      "fix_instruction": "若加入新的外部事件或电话操作，应拆到新组。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "马会劝韩彪收手、韩彪质疑马会站队、马会表明立场、韩彪沉脸拿手机的顺序与原剧本一致。",
+      "fix_instruction": "若发生台词顺序错置，应按原剧本顺序局部调整对应时间段。"
+    },
+    {
+      "group": "第5组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第5组没有旁白、心声、电话音或门外音；韩彪和阿顺均为画面内现场开口，手机不承担画外音来源。",
+      "fix_instruction": "若改成电话传播谣言，应写清手机通话或屏幕来源，并区分口型。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "韩彪“泼脏水”的抽象计划通过冷笑、抬手机、看向阿顺和马会、明确台词来可视化，观众能从画面动作和台词理解他的恶意。",
+      "fix_instruction": "若只写抽象心理，应改成表情、道具动作、视线和台词。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "ep09 组装后的 final.txt 已对照第9集原剧本、竖屏 generator 规则和 reviewer 门禁逐组审核，雨夜组织救援、泥坡绕行、旧仓房砸板救人均完整保留，未发现 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中赵有福担心夜里出事、沈砚川回应“我担”、村民乙求救、周大柱怼赵有福、赵有福称为大家好、沈砚川指出“你是怕担责”的因果和台词顺序均保留。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组 14 秒承载三人泥坡挪动与约 49 字现场对白，台词分散在 3-6 秒、6-9.5 秒、9.5-14 秒，并包含行进、停步、听水声和手电指向动作，节奏没有超过 6.5 字/秒硬上限。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "孩子“救命！”和刘婆“外头有人吗！”均从仓房门缝和木板后传出，周大柱“有！别怕！”是画面人物现场开口，沈砚川检查门框后对周大柱说“正门打不开，砸侧板”，声音来源和口型承载清楚。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "第6组尾部周大柱已抓起锄头、沈砚川照住木侧板；第7组组首延续锄头、手电和侧板位置，砸板、裂缝扩大、后坡泥石落下和继续砸的顺序可见。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "evidence": "最终收尾只保留雨夜旧仓房外破板救人的自然短剧画面，没有 Seedance、模板编号、参考图、自动分镜、字幕说明、广告口吻等污染词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首明确夜雨果园仓房前、仓房门、油灯、麻绳，以及沈砚川、赵有福、周大柱、林知夏、村民的位置和朝向；全组只在仓房前展开挑人和拦阻。",
+      "fix_instruction": "若不通过，应补齐人物位置、身体朝向和关键道具位置，或拆出新物理空间。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "赵有福、沈砚川、村民乙、周大柱所有现场对白均写明对话对象，且对象都是真实在场人物，没有假对象或心声误写。",
+      "fix_instruction": "若不通过，应逐句补“A对B说道/问道/喊道”，并避免对道具或空气说话。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾部周大柱抓麻绳、赵有福受压，第3组组首延续麻绳、赵有福门边和村民屋檐下状态；林知夏接管果园后，沈砚川和周大柱系绳离开，为切到老茶坡小路提供明确过渡。",
+      "fix_instruction": "若不通过，应在第2组尾或第3组开头补麻绳归属和离开动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "三人系绳往坡下挪、路平时没人走、正路塌了只能绕、村民甲听见孩子哭、沈砚川停下听水声并解释水急不能下，均与原剧本一致。",
+      "fix_instruction": "若不通过，应恢复绕路、孩子哭声、水声判断和三人系绳泥路行动。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "碎石滚落、村民甲惊叫、沈砚川命令贴坡、周大柱追问是否继续、沈砚川决定继续，均在 12 秒内按同一泥坡空间顺序完成，没有额外加入新地点或无关强动作。",
+      "fix_instruction": "若不通过，应拆出碎石滚落或救援决定，避免动作和对白过载。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "沈砚川和周大柱在组首位于旧仓房外，刘婆和孩子在组首明确位于仓房门内不可见，声音从门缝和木板后传出；门内人物没有被写成画面可见口型。",
+      "fix_instruction": "若不通过，应补门内声音来源，或在人物开口前安排可见入场。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "锄头由周大柱持有并砸侧板，手电由沈砚川持有并从侧板转向后坡再回到裂缝；木侧板裂缝从砸击中形成并扩大，关键道具状态没有跳变。",
+      "fix_instruction": "若不通过，应补锄头归属、侧板裂缝形成过程和手电照向变化。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "孩子“爹！”从木板裂缝里传出，沈砚川隔着木板朝仓房内喊“听着，我们来了！”并写明嘴唇清楚开合，刘婆只以门内喘息回应，声音和口型区分明确。",
+      "fix_instruction": "若不通过，应区分门内声音、画面人物现场开口和不可见人物的口型状态。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

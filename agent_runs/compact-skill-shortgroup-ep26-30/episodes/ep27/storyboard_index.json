@@ -1,0 +1,213 @@
+{
+  "project": "ep27",
+  "episode_id": "EP27",
+  "cuts": [
+    {
+      "cut_id": "EP27-G01",
+      "group_index": 1,
+      "title": "李少逼婚施压",
+      "scene": "顾家别墅书房",
+      "characters": [
+        "顾长海",
+        "李少爷"
+      ],
+      "props": [
+        "打火机",
+        "沙发",
+        "窗帘"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 0,
+      "group_end_sec": 15,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP27-G02",
+      "group_index": 2,
+      "title": "绑养母逼朵朵赴局",
+      "scene": "顾家别墅书房",
+      "characters": [
+        "顾长海",
+        "李少爷",
+        "保镖"
+      ],
+      "props": [
+        "手机",
+        "打火机",
+        "沙发"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 15,
+      "group_end_sec": 28,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP27-G03",
+      "group_index": 3,
+      "title": "朵朵闯入大厅问母亲",
+      "scene": "顾家别墅大厅",
+      "characters": [
+        "顾长海",
+        "李少爷",
+        "赵朵朵"
+      ],
+      "props": [
+        "别墅大门",
+        "楼梯",
+        "婚纱"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 28,
+      "group_end_sec": 43,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP27-G04",
+      "group_index": 4,
+      "title": "李少伸手反被折腕",
+      "scene": "顾家别墅大厅",
+      "characters": [
+        "顾长海",
+        "李少爷",
+        "赵朵朵"
+      ],
+      "props": [
+        "婚纱",
+        "茶几"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 43,
+      "group_end_sec": 58,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP27-G05",
+      "group_index": 5,
+      "title": "以李少做人质控场",
+      "scene": "顾家别墅大厅",
+      "characters": [
+        "赵朵朵",
+        "李少爷",
+        "保镖",
+        "顾长海"
+      ],
+      "props": [
+        "手枪",
+        "长桌"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 58,
+      "group_end_sec": 68,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP27-G06",
+      "group_index": 6,
+      "title": "顾长海威胁杀人反被朵朵反制",
+      "scene": "顾家别墅大厅",
+      "characters": [
+        "顾长海",
+        "赵朵朵",
+        "李少爷",
+        "保镖"
+      ],
+      "props": [
+        "手枪",
+        "长桌"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 68,
+      "group_end_sec": 78,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP27-G07",
+      "group_index": 7,
+      "title": "特警冲入控制大厅",
+      "scene": "顾家别墅大厅",
+      "characters": [
+        "赵大雷",
+        "特警",
+        "顾长海",
+        "赵朵朵",
+        "李少爷",
+        "保镖"
+      ],
+      "props": [
+        "手枪",
+        "防弹盾牌",
+        "长桌"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 78,
+      "group_end_sec": 88,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP27-G08",
+      "group_index": 8,
+      "title": "账本证据亮出",
+      "scene": "顾家别墅大厅",
+      "characters": [
+        "赵朵朵",
+        "李少爷",
+        "顾长海",
+        "赵大雷",
+        "特警",
+        "保镖"
+      ],
+      "props": [
+        "U盘",
+        "长桌",
+        "手枪",
+        "防弹盾牌"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 88,
+      "group_end_sec": 100,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP27-G09",
+      "group_index": 9,
+      "title": "顾长海被捕瘫倒",
+      "scene": "顾家别墅大厅",
+      "characters": [
+        "顾长海",
+        "特警队长",
+        "赵朵朵",
+        "赵大雷",
+        "特警"
+      ],
+      "props": [
+        "U盘",
+        "手铐",
+        "防弹盾牌"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 100,
+      "group_end_sec": 110,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP27-G10",
+      "group_index": 10,
+      "title": "顾家彻底结束",
+      "scene": "顾家别墅大厅",
+      "characters": [
+        "赵朵朵",
+        "顾长海",
+        "特警"
+      ],
+      "props": [
+        "手铐",
+        "地下室门",
+        "U盘"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 110,
+      "group_end_sec": 120,
+      "source_group_label": "第10组"
+    }
+  ]
+}

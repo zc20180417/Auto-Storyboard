@@ -1,0 +1,109 @@
+{
+  "pass": true,
+  "summary": "ep19 整集分镜已对照原剧本、竖屏生成规则和组装后的 final.txt 完成逐组审核，未发现阻断交付的 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked",
+    "prop_continuity": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "开场保留天刚黑、摊前两桌新客、假顾客甲捂肚子闹事、韩彪在对街装路过的关系；“谁是老板？”、“你点单吗？”、“点什么单，我昨晚吃了你家串，闹一宿肚子！”三句台词顺序未变。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组9-15秒同时承载许安拆穿路边桌破绽和假顾客甲硬撑反问，约30个有效台词字/6秒，约5.0字/秒，低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "evidence": "唐婶对假顾客甲说道，假顾客甲对唐婶喊道，林小满对假顾客甲问道，许安对假顾客甲淡声说道；现场对白均有真实人物对象。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组从摊前切到街口拐角巷口，未与摊前空间混在同一现实连续空间；组首列出林小满和假顾客甲在巷口的画面位置、身体朝向与路灯、杂物布局。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "第8组组首已固定案板、肉盘、调料盒和炭火在许安身前；许安说“查吧，肉、料、炭都在这儿。”后才在11-15秒摊开肉盘，食材道具操作可见且连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "标题含EP19-G01 cut_id、总时长15秒、镜头数4个；时间段0-2秒、2-6秒、6-12秒、12-15秒连续，字段齐全。",
+      "fix_instruction": "若不通过，应修正cut_id、标题时长、镜头数或补齐组结构字段。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "林小满询问昨晚几点、假顾客甲答八九点、许安问坐哪桌、假顾客甲答靠路边、许安指出昨晚满桌、假顾客甲反咬，均与原剧本一致。",
+      "fix_instruction": "若不通过，应恢复原剧本台词顺序和许安拆穿破绽的逻辑链。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部是假顾客甲被问住、众人注意力集中；第4组组首仍在摊前，人物位置延续，随后新客退缩、韩彪插话、假顾客甲离开，衔接自然。",
+      "fix_instruction": "若不通过，应在第3组组尾或第4组组首补足人物位置和假顾客甲离开前状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第5组为8秒短组，时间段0-4.5秒、4.5-8秒连续并使用0.5秒粒度；短组只承载林小满追到街口并确认假顾客甲消失的短动作余波。",
+      "fix_instruction": "若不通过，应把短动作余波并入相邻同空间组，或重新拆出满足规则的独立动作片段。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第6组包含林小满返回、三人低声判断和许安预判对方还有后手，14秒内为同一摊前空间的轻对白推进，没有叠加外部事件或关键道具操作造成过载。",
+      "fix_instruction": "若不通过，应拆出许安预判或压缩返回摊前的无台词动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "夜市管理甲、夜市管理乙在组首位于人群入口处并持有证件夹，0-3秒穿过人群停到摊前后才说话，人物出场和可用性完整。",
+      "fix_instruction": "若不通过，应提前锁定管理人员位置或增加入场动作，不能让角色突然参与对白。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整组没有Seedance说明词、模板编号、参考图、自动分镜、字幕贴片或模板化批量描述；最终正文保持自然短剧分镜口径。",
+      "fix_instruction": "若不通过，应删除模型说明词和工程占位符，改为可见动作、声音来源和人物反应。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

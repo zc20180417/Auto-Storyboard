@@ -1,0 +1,139 @@
+{
+  "pass": true,
+  "summary": "EP02整集保留触碰小龙、承诺救援、取水、喂水复苏、黑水危险、小龙入壶和龙舟图形线索，横屏空间锁定、运镜设计、台词承载和道具连续性均通过。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组按原剧本保留天天误触陶笛、半透明小爪坠回黑暗、道歉和“你千万别死！等我回来救你！”承诺，没有改写情绪顺序。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "水壶从堂屋右侧桌面在8-11秒转入天天手中，半壶清水被明确锁定为救援道具，未提前改变归属。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "爸爸两句闪回台词均由画面左侧爸爸现场开口，年幼天天在画面右侧作为可见对象，台词与口型来源明确。"
+    },
+    {
+      "group": "第4组",
+      "type": "camera_motion",
+      "evidence": "第4组每个时间段均有运镜设计：固定水壶状态、稳定过肩呼唤、轻推水线、固定裂缝复光，服务取水救援链。"
+    },
+    {
+      "group": "第6组",
+      "type": "horizontal_composition",
+      "evidence": "第6组把天天置于左侧、水壶和裂缝居中、小龙与黑水滩在右侧，安全出口与危险源在横屏两端清楚分离。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "第9组完整保留小龙用受伤尾巴在水雾壶壁画图、龙舟轮廓出现、天天两句疑问“这是一个……龙舟？”和“你到底想要干什么？你想去找一条船？”"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "narrative_progression",
+      "result": "pass",
+      "evidence": "第1组从冰凉触碰推进到小爪失力、天天道歉、青蓝光熄灭和救援承诺，旧状态落到明确新决定。",
+      "fix_instruction": "无需修复；保持误触到承诺救援的递进链。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "天天从河床左侧朝村路右侧奔跑，堂屋里也从左侧门口推进到右侧桌面水壶，行动方向连续。",
+      "fix_instruction": "无需修复；不要新增无过渡的反向奔跑或水壶位置跳变。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "闪回组首写爸爸左前景、年幼天天右中景、行囊和陶笛位置，属于第一帧静态结果；递陶笛动作放在0-3秒。",
+      "fix_instruction": "无需修复；闪回和现实切回继续保持明确空间标识。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "天天对裂缝内小龙喊“你还在吗？我带水来了！干净的水！”，过肩镜头保留裂缝口作为对象，没有制造假对象。",
+      "fix_instruction": "无需修复；后续台词仍需让对象或声音来源可见。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组12秒只承载青蓝光复亮、小龙显形、天天惊喜和喝水恢复，四个节拍可表演，没有把黑水灼伤也塞入同组。",
+      "fix_instruction": "无需修复；保持小龙复苏和黑水危险分组处理。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "黑水滩、小龙尾巴和水壶壶口在组首与各时间段位置连续，灰白尾尖和安全壶口都留下可承接状态。",
+      "fix_instruction": "无需修复；不要让水壶或黑水滩在相邻镜头中无过渡换位。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组以壶口对准小龙结尾，第7组从同一河床壶口开始，小龙入壶、封盖、抱回卧室和安置书桌都有可见过渡。",
+      "fix_instruction": "无需修复；保留入壶与封盖两个关键状态变化。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "天天两句安慰和自责都对水壶里的小龙现场开口，画面保留小龙伤痕作为台词依据，未混用心声。",
+      "fix_instruction": "无需修复；不要添加未说明口型的旁白。"
+    },
+    {
+      "group": "第9组",
+      "type": "narrative_progression",
+      "result": "pass",
+      "evidence": "第9组从尾巴划开水雾到天天误判吃东西、龙舟轮廓显形、识别龙舟和追问目的，图形线索逐层出现。",
+      "fix_instruction": "无需修复；保持壶壁图形先显形后被天天识别。"
+    },
+    {
+      "group": "第1组至第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现模板编号、占位符、生产备注字段、模型自动处理词或资产图字段；保留的是自然中文分镜正文。",
+      "fix_instruction": "无需修复；不要加入首帧尾帧、视频延长、资产绑定或生产备注类字段。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

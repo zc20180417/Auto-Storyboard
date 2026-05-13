@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "被发小踢出局，我反手成烧烤之王-ep04-agent-cli-storyboard.txt",
+  "summary": "许安接受林小满借地，在母亲提醒下取出旧炭炉，最终把摊位摆到韩彪新店对面并点火。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "generation_density",
+      "problem": "第5组为5个时间段，信息点较多但仍在13秒内清楚可演。",
+      "evidence": "0-3.5秒旧炭炉和韩秀兰问话，3.5-6秒许安回应，6-9秒韩秀兰指出父亲留下，9-11秒许安确认，11-13秒道具特写，时间轴连续且对白字秒比未超限。",
+      "fix": "如需进一步压缩，可将11-13秒道具特写并入9-11秒末尾；当前不阻断交付。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

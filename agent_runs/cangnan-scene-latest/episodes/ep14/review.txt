@@ -1,0 +1,111 @@
+{
+  "pass": true,
+  "summary": "ep14 按源脚本完成10组竖屏分镜，保留拦路、喷淋反制、雨夜破坏机器及源文件重复的水柱段落，无硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "源剧本中的十辆挖掘机抵达、刀疤拦路喊停、司机刹车、江若晴提醒警察半小时、陆凡下车均按顺序呈现。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "老李的“收到！水阀已全部打开！”明确来自陆凡手中对讲机，画面中的陆凡嘴唇闭合不做口型，声音来源和载体清楚。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "evidence": "第4组时间段为0-3、3-5、5-10秒，连续、0.5秒粒度兼容，组标题10秒且镜头数3个与实际一致。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "evidence": "小弟甲约17字用3.5秒，小弟乙约17字用3.5秒，情绪低声对白约4.9字/秒，低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "塑料桶由小弟甲持有，油箱盖由小弟乙拧开，强酸倒入后小弟甲盖紧油箱盖，再共同携桶逃离，道具转移和操作有可见过渡。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "第9组和第10组对应源脚本重复出现的14-3段落，再次保留水柱喷射、混混甲惨叫、刀疤喊顶住和喊撤，没有自行删改重复内容。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "刀疤对挖掘机车队喊话，江若晴对陆凡说警察半小时，陆凡对江若晴说去会会他们，所有现场台词对象明确。",
+      "fix_instruction": "若不通过，应补齐每句真人对白的真实说话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "刀疤“你就是陆凡？今天这路，你过不去！”和陆凡“宋子昂给的安家费，够你们治伤吗？”均保留原文和对话对象。",
+      "fix_instruction": "若不通过，应恢复原剧本台词和陆凡与刀疤的对峙关系。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第3组承载刀疤下令、混混冲锋、陆凡取对讲机、老李回复四个节拍，12秒内没有把外部事件、长动作和长台词硬塞在同一时间段。",
+      "fix_instruction": "若不通过，应拆分冲锋动作和对讲机响应。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "混混甲“哎哟！受不了了！”约8字用2秒，刀疤“顶住！都给我顶住！”约8字用3秒，台词节奏自然。",
+      "fix_instruction": "若不通过，应延长对应喊话时间段或拆出反应镜头。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾部刀疤倒在泥地喊顶住，第6组组首刀疤仍在泥地，陆凡已在越野车顶，水柱持续，状态承接清楚。",
+      "fix_instruction": "若不通过，应在第5组尾部或第6组组首补充刀疤、陆凡和水柱状态。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "强酸的刺鼻效果用油箱口液体、白烟、两人偏头和皱鼻梁表现，关键剧情没有依赖不可视气味。",
+      "fix_instruction": "若不通过，应把抽象气味改为白烟、身体反应和道具变化。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "源脚本在雨夜车场后重复14-3，本稿按源文件再次呈现水柱压制段落，未自行删除重复剧情。",
+      "fix_instruction": "若不通过，应以源脚本为准保留重复段落，或由上游修正源文件后再改。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文未出现Seedance说明、参考模板、首尾帧、自动分镜、占位符、字幕或广告模板语气等污染内容。",
+      "fix_instruction": "若不通过，应删除工程说明和模板词，改为自然可见画面。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

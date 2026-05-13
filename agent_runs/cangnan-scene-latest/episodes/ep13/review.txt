@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "ep13 共10组，完整覆盖宋子昂卡审批、审批局推诿、黑风山直播反制、省厅问责停职、会所雇刀疤堵工地的剧情，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "evidence": "张局长“放心宋少，缺个标点符号我都给他打回去。”写为手机听筒电话音，宋子昂嘴唇闭合不做口型，声音来源和可见反应明确。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "evidence": "张局长对陆凡和江若晴说项目违规，江若晴对张局长说要告渎职，陆凡拉住江若晴并对她说有别的办法，所有现场对白对象明确。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "江若晴“绕开县里直接开全省推介会，行吗？”约15字用3秒，约5字/秒；陆凡“只要把势造大，逼着他们不得不批。”约16字用4秒，约4字/秒，均在可承载范围内。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "evidence": "第8组切到县审批局办公室，组首锁定张局长、电脑屏幕、办公室门和文件；徐厅长只在电脑屏幕内出现，没有把观景台和办公室硬塞成同一现实空间。"
+    },
+    {
+      "group": "第10组",
+      "type": "prop_continuity",
+      "evidence": "现金先在宋子昂手边，随后被砸到茶几上，最后由刀疤收起；铁棍从刀疤手中到腿边斜靠，道具归属变化有可见过渡。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留宋子昂扯松领带、保镖递手机、宋子昂要求卡死黑风山文件、张局长电话保证等原剧本关键内容。",
+      "fix_instruction": "若不通过，应补回遗漏台词或关键动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组尾宋子昂握手机听完张局长保证，第2组首继续在车厢内贴耳通话，人物和手机状态连续。",
+      "fix_instruction": "若不通过，应在第2组组首复述手机归属和通话状态。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "县审批局办公室组首列明张局长、江若晴、陆凡的位置、身体朝向、办公桌、文件和印章盒，组首没有过程动作。",
+      "fix_instruction": "若不通过，应补齐人物位置或把动作移入时间段。"
+    },
+    {
+      "group": "第6组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "官方大号请求连麦通过后台提示、周思思指向设备、陆凡下令切屏、大屏幕闪烁接通来呈现，可视化明确。",
+      "fix_instruction": "若不通过，应把后台请求转译为屏幕提示或设备动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "徐厅长台词来自大屏幕扬声器，现场三人闭口听；陆凡现场对屏幕里的徐厅长回应，声音主体和口型主体清楚。",
+      "fix_instruction": "若不通过，应明确屏幕音源和现场人物闭口反应。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组13秒承载电脑屏幕问责、张局长瘫坐反应、纪委入场架起、张局长哀嚎四个连续节拍，无长台词叠压复合动作。",
+      "fix_instruction": "若不通过，应拆出纪委入场架起动作或缩短非关键反应。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留新闻屏幕、宋子昂抓威士忌酒瓶砸液晶屏、咆哮废物、刀疤擦铁棍并说白道走不通等剧情。",
+      "fix_instruction": "若不通过，应补回新闻刺激、砸屏或刀疤台词。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文没有Seedance自动、参考模板、@图片、字幕、视频延长、首尾帧等工程或模板污染词。",
+      "fix_instruction": "若不通过，应删除污染词并改写为自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

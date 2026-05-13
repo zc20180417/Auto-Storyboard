@@ -1,0 +1,60 @@
+{
+  "project": "EP-03",
+  "episode_id": "EP03",
+  "cuts": [
+    {
+      "cut_id": "EP03-G01",
+      "group_index": 1,
+      "title": "微信群炸锅",
+      "scene": "手机微信群聊界面",
+      "characters": [
+        "李虎",
+        "邻居甲",
+        "邻居乙"
+      ],
+      "props": [
+        "手机"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 0,
+      "group_end_sec": 11,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP03-G02",
+      "group_index": 2,
+      "title": "小雅辩护与李虎反击",
+      "scene": "手机微信群聊界面",
+      "characters": [
+        "小雅",
+        "李虎",
+        "王婶"
+      ],
+      "props": [
+        "手机"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 11,
+      "group_end_sec": 22,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP03-G03",
+      "group_index": 3,
+      "title": "张诚家的沉默",
+      "scene": "张诚家客厅",
+      "characters": [
+        "张诚老伴",
+        "张诚"
+      ],
+      "props": [
+        "手机",
+        "香烟"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 22,
+      "group_end_sec": 34,
+      "source_group_label": "第3组"
+    }
+  ]
+}

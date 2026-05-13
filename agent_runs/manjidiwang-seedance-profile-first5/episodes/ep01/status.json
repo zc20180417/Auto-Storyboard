@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "EP-01-ep01-agent-cli-storyboard.txt",
+  "summary": "EP01 已完成第1组、第2组局部节奏修复并重新执行整集 storyboard-reviewer 复审；朱文浩在酒店套房化解丑闻局，逼退安保后与苏清寒建立临时同盟，并在车内揭示重生复仇线。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

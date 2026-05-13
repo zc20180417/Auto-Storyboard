@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "雨龙吟端午-ep02-agent-cli-storyboard.txt",
+  "summary": "横屏新结构第2集已生成并通过真实 reviewer：9组，保留全剧情与关键台词，采用组间承接、镜头号、本镜估算时长、运镜强化词和Seedance执行提示补充。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,102 @@
+{
+  "pass": true,
+  "summary": "ep24整集12组按原剧本顺序完成胡永贵逼迫、龙鳞牵引、毒瓶救险、云宝重生和刀疤男堵口，横屏空间、道具归属、台词对象与时长合同均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "爸爸与天天在画面左侧，胡永贵在画面右侧泉眼边握毒液瓶，泉眼在中后景中央，逼问关系和危险道具位置可见。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "看到龙鳞后云宝颤抖、哀鸣并向龙鳞方向飘去，天天喊“云宝别过去！那是坏人！”，胡永贵喊“过来吧活宝贝！”，顺序与原剧本一致。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "毒液瓶从第6组胡永贵右手脱落，到第7组急速坠向泉眼，再被天天双手抱住，归属变化由可见动作完成。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "evidence": "胡永贵“我的鼻梁骨！”放在3-5.5秒，约5字/2.5秒，惨叫节奏充足；爸爸出拳和龙鳞脱手分段承载，未挤压台词。"
+    },
+    {
+      "group": "第12组",
+      "type": "dialogue_direction",
+      "evidence": "刀疤男在右侧洞口对左侧爸爸喊话，爸爸反打看向右侧刀疤男和打手回应，双方对象均在同一横屏对峙空间内。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "爸爸问胡永贵、胡永贵威胁爸爸和天天、天天反驳胡永贵，画面内对话对象均可见且对象未改写。",
+      "fix_instruction": "如不通过，应在对应镜头补充被说话对象的位置或反应镜头。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "胡永贵左手从怀里取出残缺青色龙鳞，右手仍握毒液瓶，两个关键道具的手部归属写清楚。",
+      "fix_instruction": "如不通过，应补充龙鳞取出手势和毒液瓶仍在右手的画面证据。"
+    },
+    {
+      "group": "第6组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爸爸从左向右猛扑，胡永贵在右侧失手，毒液瓶从右侧泉眼上方下坠，左右轴线延续前文对峙。",
+      "fix_instruction": "如不通过，应用中性全景重新建立左右关系，或删除没有过渡的换边。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第9组尾部爸爸即将张开手、云宝面对半空龙鳞，第10组开头直接承接爸爸张开手和云宝跃起，组间状态连续。",
+      "fix_instruction": "如不通过，应在第9组尾或第10组首补充云宝所在掌心和龙鳞半空位置。"
+    },
+    {
+      "group": "第10组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "云宝吞龙鳞、金光爆发、岩洞亮如白昼和泉眼水柱冲天均被转换为可见动作、光影和水柱。",
+      "fix_instruction": "如不通过，应把抽象重生改写成具体可生成的动作与光影。"
+    },
+    {
+      "group": "第12组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "刀疤男从右后方洞口带打手压入，消防斧在右侧前景对准左侧爸爸，爸爸护住天天形成新的左右阵营。",
+      "fix_instruction": "如不通过，应补充洞口方向、打手层次或消防斧指向。"
+    },
+    {
+      "group": "全组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt未出现模板编号、官方占位符、参考图占位、视频延长或自检说明；负向词仅作为--neg约束出现。",
+      "fix_instruction": "如不通过，应删除模型工程词和模板说明，只保留自然中文分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

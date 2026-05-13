@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "ep29完整保留矿洞爆破倒计时、警方抓捕、排爆成功、陆凡判断龙天傲位置和龙天傲调集武装施压的剧情链，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "爆破手甲保留“定时器已设定，十分钟后引爆。”，爆破手乙保留“龙少有令，这片稀土矿脉得不到就毁掉。”，炸药和定时器位置与原剧本一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "evidence": "警方包围矿区的警告写成应急广播喇叭传出的画外声，并明确两名爆破手嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "爆破手甲“在……在承重柱上，还有五分钟引爆！”约18字给6秒，结巴和恐惧反应均有足够时长。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第7组尾陆凡看向矿区外道路，第8组首复述他位于道路边、脸朝远处道路，承接自然。"
+    },
+    {
+      "group": "第11组",
+      "type": "script_fidelity",
+      "evidence": "龙天傲摔对讲机并下令“调集所有私人安保武装！包围项目部！给我施压！”，完整保留原剧本升级动作和台词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "14秒拆为广播、爆破手甲反应、爆破手乙反应、逃跑动作四段，强节拍数量与表演时长匹配。",
+      "fix_instruction": "若不通过，应拆出广播或逃跑动作为独立组，避免声音事件和逃跑动作过载。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "陆凡和两名民警在组首支巷入口可见，爆破手甲乙位于画面右侧，所有说话和行动角色均已可用。",
+      "fix_instruction": "若不通过，应在组首锁定陆凡、民警和爆破手的明确位置，或先写入场再说话。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第4组供出炸药在承重柱上，第5组转入核心控制室处理承重柱引线接口，排爆工具、定时器和引线操作可见。",
+      "fix_instruction": "若不通过，应补充定时器和引线接口的可见位置，以及排爆手如何操作工具。"
+    },
+    {
+      "group": "第10组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "陆凡通过屏幕画面和车内扬声器说话，龙天傲在前景嘴唇闭合不做陆凡口型，随后才对屏幕里的陆凡开口。",
+      "fix_instruction": "若不通过，应明确陆凡为屏幕画面和扬声器声音来源，并避免现场人物承载远端口型。"
+    },
+    {
+      "group": "第11组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "龙天傲下令台词约25字给6秒，情绪喊话约4.2字/秒，未超过硬上限6.5字/秒，也没有被压缩到不可表演。",
+      "fix_instruction": "若不通过，应拆分下令台词或延长该时间段，避免口型过快。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全片未出现模型说明词、参考图占位符、模板编号、自动分镜说明或批量模板化句式。",
+      "fix_instruction": "若不通过，应删除工程说明和模板化表述，改为具体画面、动作、声音和道具状态。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

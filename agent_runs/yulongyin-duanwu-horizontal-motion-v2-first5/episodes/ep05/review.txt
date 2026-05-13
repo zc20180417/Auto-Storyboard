@@ -1,0 +1,128 @@
+{
+  "pass": true,
+  "summary": "EP05横屏全集分镜已对照原剧本和横屏规则审核，七组均保留关键台词、动作因果、左右站位、运镜设计和水壶、陶笛、水弹、黑液、泉眼、云宝灰化状态链，未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组按原剧本保留后山岩洞泉眼、包工头举铁锤、天天喊“住手！那是村里最后一口活水！”和胡永贵命令“小叫花子又来捣乱，把他给我扔下山去！”。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "evidence": "第1组尾部包工头、胡永贵在右侧威胁天天；第2组组首延续天天左前景、包工头右中景、胡永贵右后景，铁锤落点和水壶归属明确。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "第3组水壶贴在天天胸前，云宝在壶内指向中央水洼，天天拧开壶盖并抽出陶笛，水壶、陶笛、小水洼三项道具转移和状态清楚。"
+    },
+    {
+      "group": "第4组",
+      "type": "camera_motion",
+      "evidence": "第4组运镜按固定承载台词、轻推连接陶笛和水洼、低位后拉呈现水洼炸开、横向跟拍水弹射向包工头递进，奇幻效果来源、路径和结果完整。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "第5组包工头“哎哟！什么东西打我的脸！”在2秒内以惨叫承载，后续8秒用于水弹余击、失衡滚爬和逃出岩洞，未把过多台词和动作塞入单镜。"
+    },
+    {
+      "group": "第6组",
+      "type": "screen_direction",
+      "evidence": "第6组胡永贵保持右侧主动位，天天在左侧，黑液从右中景桶口飞向右后方泉眼；第7组继续从左侧水壶到右侧泉眼的云宝保护路线，轴线连续。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "第7组保留云宝从水壶跃出、挡在泉眼前、黑色废液尽数浇在它身上、惨叫、摔地、身体变死灰色，未新增改变剧情的反击或救治。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "天天位于左前景，包工头和胡永贵位于右中景、右后景，泉眼和铁锤在中央偏右，横屏左右阵营、前后层次和道具目标可生成。",
+      "fix_instruction": "若修改第1组，需继续保留天天左、包工头右、胡永贵右后、泉眼中央偏右的横向对峙关系。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第2组组首只写天天已在左前景、包工头右中景、胡永贵右后景、水壶贴胸、泉眼位置等静态状态，迈步和水壶发光过程放入时间段。",
+      "fix_instruction": "不得把包工头迈步、天天后退或水壶变化写入组首空间锁定。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第3组从壶内云宝撞击、指向水洼，到天天拧壶盖和抽陶笛，组尾小水洼泛起青蓝亮点，给第4组水弹形成留下状态锚点。",
+      "fix_instruction": "若缩短第3组，也要保留云宝指向水洼和天天取陶笛两个动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组13秒分配为短句、吹笛、水洼爆开、水弹射出四个节拍，台词、道具操作和奇幻效果没有压进一个不可表演镜头。",
+      "fix_instruction": "不得把水洼爆开和水弹击中包工头全部合并成无路径的一句描述。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组组尾明确包工头逃出岩洞、铁锤停在泉眼前方偏右、胡永贵仍在右后景，为第6组包工头缺席和胡永贵单独行动提供衔接。",
+      "fix_instruction": "不要在第6组重新让包工头留在洞内，除非第5组尾部同步改写。"
+    },
+    {
+      "group": "第6组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "第6组固定机位承载胡永贵喊话，轻推废液桶，横向跟随黑液路径，摇向天天和水壶，运镜围绕黑液威胁泉眼的状态链。",
+      "fix_instruction": "不得把黑液飞行路径改成空泛的横移展示，需保持来源和目标可见。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第7组水壶是云宝跃出的起点，泉眼是保护目标，黑液浇在云宝身上，组尾留下灰色云宝、黑液集中位置和泉眼未被直接冲入口的状态。",
+      "fix_instruction": "如修改结尾，必须保留云宝灰化和黑液集中在云宝身上及周围石面的可见结果。"
+    },
+    {
+      "group": "第1组-第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全集未出现模板编号、官方占位符、参考图、首帧尾帧、视频延长、自动分镜或调试标记；正文为自然中文分镜。",
+      "fix_instruction": "继续避免把Seedance profile模板说明或工程占位写入final.txt。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "ep30最终稿按竖屏scene合同完成，12组均保留原剧本关键动作、台词和对峙因果，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "龙天傲对陆凡的产权喊话、律师举文件、江若晴指控寻衅滋事、龙天傲以旁听谈判和省道事故回避责任、正门打开，均按原剧本顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "陆凡三分钟警告约44字给7秒，约6.3字/秒，作为平静但高压的信息输出未超过6.5字/秒硬上限，并有站定表演承载。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "evidence": "调解队条例警告、龙家安保后退、龙天傲咬牙撤离、调解员隔离秩序拆为0-6、6-8、8-11、11-14秒，14秒内节拍清楚。"
+    },
+    {
+      "group": "第8组",
+      "type": "timing_math",
+      "evidence": "第8组为8秒短组，承载撤离后的短动作余波和江若晴、陆凡两句短问答；与第7组合并会把警告、撤离和复盘问答压进同一15秒片段。"
+    },
+    {
+      "group": "第11组",
+      "type": "audio_mouth_sync",
+      "evidence": "龙家主的“不管你是谁，立刻放了我儿子！”明确来自手机听筒电话音，陆凡嘴唇闭合不做口型，随后陆凡才对电话里的龙家主开口回应。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首明确黑色越野车、项目部大门、龙天傲、安保和江若晴的位置与朝向，且整组只发生在嘉禾项目部广场外。",
+      "fix_instruction": "若缺少人物朝向或把车队抵达写成跨空间跳转，应补静态位置和同一广场空间。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "陆凡在3-6秒从衣兜掏出手机并展示申请已批，8-11秒另以腕表承载倒计时，关键道具归属和动作过渡清楚。",
+      "fix_instruction": "若手机或腕表突然出现，应补掏出、看表或持有状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "调解队长对陆凡报到，龙天傲对陆凡震惊发问，均有真实现场对象，未出现对空气或对文件说话。",
+      "fix_instruction": "若对象缺失，应改为调解队长对陆凡说道或龙天傲对陆凡说道。"
+    },
+    {
+      "group": "第8组",
+      "type": "timing_math",
+      "result": "warning",
+      "evidence": "该组总时长8秒，属于龙天傲撤离后的短承接和余波反应，短组理由成立但低于默认10秒。",
+      "fix_instruction": "若要求全部默认10秒以上，可把撤离尾声部分从第7组后半移入第8组，但不能合并过载。"
+    },
+    {
+      "group": "第9组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "防务精锐在组首定位于绳索末端和车辆周边可见位置，随后0-4秒完成降落，4-8秒才执行缴械动作。",
+      "fix_instruction": "若防务精锐未在组首可用也无入场动作，应补绳索降落或遮挡位置。"
+    },
+    {
+      "group": "第10组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "龙天傲得知最高裁决官身份、陆凡宣判商业调查局、龙天傲称京城龙家嫡系和有大人物、防务精锐按倒控制均保留。",
+      "fix_instruction": "若缺失身份揭示或龙天傲崩溃台词，应按原剧本补回。"
+    },
+    {
+      "group": "第12组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "龙家主两段威胁均写为电话音，画面中的陆凡嘴唇闭合不做口型，陆凡结尾才对龙家主说道全面封杀和亲赴京城。",
+      "fix_instruction": "若电话音被误写为画面人物现场开口，应改为手机听筒传出并写闭口反应。"
+    },
+    {
+      "group": "第12组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终稿未出现模型说明词、模板编号、参考图占位符、广告语、字幕指令或自动分镜等污染内容。",
+      "fix_instruction": "若出现模板或模型说明词，应改成自然画面描述或删除。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第8组",
+      "rule": "timing_math",
+      "problem": "第8组为8秒短组，低于默认10秒。",
+      "evidence": "该组只承载龙天傲撤离后的现场秩序、江若晴问“你早就准备了？”和陆凡说明“他带人来的那一刻，我就发了申请。”",
+      "fix": "短承接理由成立；若后续要求统一10秒，可从第7组尾部移入撤离动作，但不要把调解队警告和复盘问答合并过载。"
+    }
+  ]
+}

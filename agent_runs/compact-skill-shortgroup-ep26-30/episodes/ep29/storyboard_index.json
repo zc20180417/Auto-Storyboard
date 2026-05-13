@@ -1,0 +1,131 @@
+{
+  "project": "ep29",
+  "episode_id": "EP29",
+  "cuts": [
+    {
+      "cut_id": "EP29-G01",
+      "group_index": 1,
+      "title": "全国扩张拍板",
+      "scene": "集团会议室",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "高管甲",
+        "各部门高管"
+      ],
+      "props": [
+        "全国地图",
+        "会议桌",
+        "文件夹"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 0,
+      "group_end_sec": 14,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP29-G02",
+      "group_index": 2,
+      "title": "十个分厂与车队任务",
+      "scene": "集团会议室",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "各部门高管"
+      ],
+      "props": [
+        "全国地图",
+        "会议桌",
+        "文件夹"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 14,
+      "group_end_sec": 28,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP29-G03",
+      "group_index": 3,
+      "title": "街头认出赵朵朵",
+      "scene": "省城街头集团大厦门前",
+      "characters": [
+        "赵朵朵",
+        "助理",
+        "李翠花",
+        "王大强"
+      ],
+      "props": [
+        "劳斯莱斯",
+        "垃圾桶"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 28,
+      "group_end_sec": 41,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP29-G04",
+      "group_index": 4,
+      "title": "救助站电话",
+      "scene": "省城街头集团大厦门前",
+      "characters": [
+        "赵朵朵",
+        "助理",
+        "李翠花",
+        "王大强",
+        "保安"
+      ],
+      "props": [
+        "劳斯莱斯",
+        "手机",
+        "大厦入口栏杆"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 41,
+      "group_end_sec": 56,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP29-G05",
+      "group_index": 5,
+      "title": "交易所众人见证",
+      "scene": "证券交易所大厅",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "桂姨",
+        "老首富",
+        "记者"
+      ],
+      "props": [
+        "巨大屏幕",
+        "话筒"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 56,
+      "group_end_sec": 71,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP29-G06",
+      "group_index": 6,
+      "title": "最年轻女首富答记者问",
+      "scene": "证券交易所大厅",
+      "characters": [
+        "赵朵朵",
+        "记者",
+        "赵大雷",
+        "桂姨",
+        "老首富"
+      ],
+      "props": [
+        "话筒",
+        "巨大屏幕"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 71,
+      "group_end_sec": 84,
+      "source_group_label": "第6组"
+    }
+  ]
+}

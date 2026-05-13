@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "第18集整集横屏分镜保留撞门逼命、血醒云宝、鼓声化雷、河床震动、乌云压日、水龙入云和紫雷收尾的完整因果，5组格式、台词承载、横屏轴线和道具连续性均可交付。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本18-1的撞门、村民蜂拥、村民甲“李燃！时辰到了！交出命来！”、爸爸要求天天挂水壶、天天说明云宝危急、血丝染红壶水均按顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "水壶从第1组尾部贴在爸爸心口，到第2组组首继续挂在胸前；鼓槌从被握住到沾血，再由血滴触发壶中云宝睁眼，最后砸向野牛大鼓，道具链完整。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "胡永贵“怎么回事！晴天打雷？”约9个有效字在2秒内惊喊，约4.5字/秒；同组其余为引线燃烧、雷声、地震和裂缝轰鸣，台词与动作不互相挤压。"
+    },
+    {
+      "group": "第4组",
+      "type": "horizontal_composition",
+      "evidence": "祠堂门槛连接室内外，爸爸中央偏右击鼓，天天右前景，村民们左侧和门外后景，狂风从画面左侧卷向右侧，横向阵营和风向明确。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "evidence": "水壶炸裂、水龙虚影冲天、墨色雷云和紫雷均以可见光影、气浪、剪影和天空远景承载，没有用抽象说明替代画面。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "村民甲对爸爸怒吼，爸爸对天天急喊，天天仰头对爸爸回应，所有现场台词都有明确对象和可见口型承载。",
+      "fix_instruction": "若后续补镜，不要把三句台词改成无对象自语或旁白。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "爸爸两句暴喝和狂吼均由爸爸现场开口；“轰隆——！！！”明确来自野牛大鼓被砸响，不和人物口型混淆。",
+      "fix_instruction": "若增加雷鸣声，应继续标明来自鼓声震荡或天空，不要让声音来源悬空。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "干涸河床裂缝从左前景斜贯右后景，胡永贵在右前景，祠堂方向雷声从左后方传来，整组保持单一河床空间。",
+      "fix_instruction": "若展示祠堂画面，应另起组或明确为声音反应，不要在本组混入第二物理空间。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "18-4没有被塞进单组，第4组只处理击鼓、云遮日、狂风和天天台词，水壶炸裂与水龙入云留给第5组，强节拍分配合理。",
+      "fix_instruction": "不要把第4组和第5组合并成一个15秒片段。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾部水壶在爸爸胸前剧烈震颤，第5组首部继续表现同一水壶鼓胀、裂纹蔓延并炸裂，人物位置和道具状态自然衔接。",
+      "fix_instruction": "若改写第5组开头，应保留水壶从震颤到炸裂的过渡。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集未出现模板编号、参考图占位、首帧尾帧、视频延长、自动分镜或规则复述等工程污染，正文保持自然分镜文本。",
+      "fix_instruction": "后续资产或模型参数不要写回 final.txt。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

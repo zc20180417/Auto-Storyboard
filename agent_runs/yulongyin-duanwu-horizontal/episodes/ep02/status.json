@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "雨龙吟端午-ep02-agent-cli-storyboard.txt",
+  "summary": "天天带水救回裂缝中的半透明小龙，发现黑水会伤害小龙，并在卧室里看到小龙在壶壁画出龙舟轮廓。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

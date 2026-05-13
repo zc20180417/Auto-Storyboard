@@ -1,0 +1,116 @@
+{
+  "pass": true,
+  "summary": "ep21已对照原剧本、竖屏生成规则和 assembled final.txt 完成审核；10组均保留关键台词、场景转换和人物关系，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "宋天明质疑最高裁决官、独眼老者确认龙纹印记、黑衣人放低武器三项原剧本信息均保留，未新增会改变剧情的动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组0-4秒宋天明指控约23字，约5.8字/秒；11.5-15秒高局长宣告约22字，约6.3字/秒，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第4组尾部宋天明和黑衣人被控制，第5组组首宋天明双臂被警察控制、陆凡和高局长仍在包厢内，状态连续。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "锦旗、花生、核桃在组首由村民持有，0-3秒送到陆凡面前，3-6秒牛大春手捧锦旗感谢陆凡，道具归属清楚。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "evidence": "宋家覆灭和黑风山通车新闻由平板页面承载，地下金矿利益由管家台词承载，不依赖不可视内心结论。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "陆凡对宋天明追责，宋天明对陆凡提出赔偿和威胁，所有现场对白对象明确。",
+      "fix_instruction": "若不通过，应补足每句真人开口对白的真实说话对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "警笛声明确来自窗外，画面有红蓝警灯扫过包厢玻璃和宋天明转头反应，不由画中人物错误承载。",
+      "fix_instruction": "若不通过，应补声音来源、可见载体和人物听见后的反应。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组按指控、命令、控制、挣扎、证据宣告五段推进，抓捕动作和对白各自有时间段承载，没有把外部事件、长动作和长台词压进同一镜头。",
+      "fix_instruction": "若不通过，应拆出抓捕动作或给高局长证据宣告增加时长。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "宋子昂求救、宋天明崩溃、陆凡宣布黑恶交易和资产冻结、高局长命令带走均按原剧本顺序保留。",
+      "fix_instruction": "若不通过，应恢复原台词顺序和对应说话人。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第7组切换到日外黑风山主干道后，组首明确陆凡、江若晴、施工队的位置、朝向和剪彩道具，未与上一夜内包厢硬连。",
+      "fix_instruction": "若不通过，应拆分不同物理空间或补全新场景组首空间锁定。"
+    },
+    {
+      "group": "第10组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "第10组标题含EP21-G10 cut_id，总时长8秒、2个连续时间段，人物、场景、道具、组首、组尾、画面风格和负面词完整。",
+      "fix_instruction": "若不通过，应按竖屏分镜结构补齐缺失字段或修正时间轴。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全片未出现Seedance自动、参考模板、@图片、首尾帧、视频延长、自动正反打等模型或模板污染词。",
+      "fix_instruction": "若不通过，应删除工程说明词并改为自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "dialogue_pacing",
+      "problem": "高局长证据宣告台词节奏接近警示区间。",
+      "evidence": "第4组11.5-15秒约22字/3.5秒，约6.3字/秒，低于6.5硬上限但偏快。",
+      "fix": "如后续精修，可从6-9秒抓捕动作中回收0.5秒给11.5-15秒宣告。"
+    },
+    {
+      "severity": "soft",
+      "group": "第10组",
+      "rule": "generation_density",
+      "problem": "第10组为8秒短组。",
+      "evidence": "该组只承载周长海下令和管家领命两个片尾反派钩子，短组理由成立。",
+      "fix": "如需统一到10秒，可轻微延长周长海命令前的按下平板动作，但不要添加新剧情。"
+    }
+  ]
+}

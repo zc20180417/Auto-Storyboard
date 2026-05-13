@@ -1,0 +1,29 @@
+{
+  "episode_id": "ep16",
+  "status": "done",
+  "output_name": "山洪之下-ep16-agent-cli-storyboard.txt",
+  "summary": "凌晨雨中，沈砚川压住村民围攻赵成武的冲突，判断后沟存在憋坝风险，并决定砍东排果树开第二道分洪口保命。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第3组",
+      "rule": "timing_math",
+      "problem": "第3组为 9 秒短组。",
+      "evidence": "该组只承载林知夏提示“后沟又响了”、众人回头、远处闷声和水势加急，是坡道转向后沟的外部事件短承接，合并进第2组会使坡道对峙节拍过载。",
+      "fix": "可保留为短承接；收集说明中提示该组属于水势突变的短事件组。"
+    },
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "timing_math",
+      "problem": "第6组为 9 秒短组。",
+      "evidence": "该组只承载赵有福否认、沈砚川回应和远处闷裂导致众人变色，是后沟判断后的短动作余波与转场触发；强行扩到 10 秒以上会增加无剧本依据的拖时动作。",
+      "fix": "可保留为短动作余波；不要用长凝视或额外解释台词凑时长。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

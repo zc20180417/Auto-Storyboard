@@ -1,0 +1,105 @@
+{
+  "pass": true,
+  "summary": "EP02横屏single分镜共9组，完整保留误触小龙、回家取水、父亲闪回、滴水复苏、黑水灼伤、斜立水壶入壶、卧室安顿和龙舟线索；新版横屏字段、时长、台词对象、组间承接、运镜动机、Seedance可执行性和物理连续性均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "special_effects": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留天天触碰陶笛后缩手、小爪松开坠回黑暗、天天喊“对不起！我不是故意的！”和“你千万别死！等我回来救你！”；小龙只露出小爪和青蓝微光，未提前完整现身。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组4-2承载“你还在吗？我带水来了！干净的水！”，镜头3.5秒，有效台词节奏低于6.5字/秒硬上限，且说话对象明确为裂缝里的小龙。"
+    },
+    {
+      "group": "第6组",
+      "type": "physical_continuity",
+      "evidence": "第6组6-4写明天天停止倒水后将水壶扶成斜立，壶底抵在干土上，壶口贴近裂缝但高于壶内水面，剩余清水稳在壶底，避免“平放水壶仍有水”的液体物理问题。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "第7组承接第6组斜立壶口，小龙进入后天天把水壶扶正、拿起左膝旁壶盖并拧紧，再竖直抱回卧室，壶盖、壶身姿态和清水状态连续。"
+    },
+    {
+      "group": "第9组",
+      "type": "camera_motion",
+      "evidence": "第9组运镜强化词从壶内尾巴划动到壶壁水雾、龙舟轮廓、天天反应和小龙微光，服务“画线索-识别-追问”的信息递进。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾写天天视线从裂缝移向村子方向，第2组组间承接写裂缝和陶笛留在左后方、行动方向由左推向右，取水动机和空间方向连续。",
+      "fix_instruction": "若不通过，应补充上一组尾部视线、关键道具保留位置和本组开头方向，避免只写空泛承接。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "爸爸两句台词均发生在闪回院子中，画面内爸爸对年幼的天天说话，声音来源和口型承载明确；现实堂屋没有让爸爸出现或开口。",
+      "fix_instruction": "若不通过，应明确闪回人物是否画面内开口，或将非现场声音标为旁白并写出口型分离。"
+    },
+    {
+      "group": "第5组",
+      "type": "special_effects",
+      "result": "pass",
+      "evidence": "小龙复苏只用清水凝成、青蓝冷光、透明身体边缘折射和喝水后的亮线表现，黑水只保持灰暗黏滞，没有卡通萌宠、科幻激光或怪物化倾向。",
+      "fix_instruction": "若不通过，应删除夸张魔法、激光、塑料玩具或怪物化描写，改成真实克制的水光状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "physical_continuity",
+      "result": "pass",
+      "evidence": "第6组先表现尾尖扫到黑水滩并褪成灰白，再让天天停止倒水、扶成斜立水壶，壶底有干土支撑，壶口高于水面，液体、容器和伤口状态都连续可生成。",
+      "fix_instruction": "若不通过，应明确容器姿态、支撑点、壶口与水面高度、清水是否留存，以及黑水伤痕是否持续。"
+    },
+    {
+      "group": "第7组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "第7组7-1承接小龙从右侧裂缝爬入斜立水壶，7-2扶正封盖，7-3竖直抱回卧室，7-4竖直稳放书桌，人物手部、壶盖和壶底支撑没有跳变。",
+      "fix_instruction": "若不通过，应拆出扶正、封盖、抱持和放置的先后动作，避免一镜内互相冲突。"
+    },
+    {
+      "group": "第8组",
+      "type": "asset_scope",
+      "result": "pass",
+      "evidence": "第8组资产只列天天、小龙、水壶、书桌、水雾和灰白尾巴，没有把窗光、阴影、眼眶发红等普通环境或短暂表情列成资产。",
+      "fix_instruction": "若不通过，应删去普通环境细节和瞬时表情，只保留人物、主场景和推动剧情的关键视觉资产。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "第9组包含新版横屏必填字段，但没有参考图、首尾帧、上传说明、自动分镜、JSON、模板编号或官方占位符；龙舟轮廓由水雾擦痕呈现，不生成字幕文字。",
+      "fix_instruction": "若不通过，应删除工程备注、参考图槽位、模板编号、自动生成说明和非分镜正文内容。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

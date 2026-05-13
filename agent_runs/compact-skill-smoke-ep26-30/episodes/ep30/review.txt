@@ -1,0 +1,79 @@
+{
+  "pass": true,
+  "summary": "第30集完整分镜按证券交易所、北沟村村口、四合院晚餐三处物理空间分组，原剧本关键动作和全部台词均被保留，时间、口型、空间锁定和提示词洁净度通过审核。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组7-10.5秒含“这只是一个新起点。”和“助理，启动希望小学捐建项目。”约20个有效字，3.5秒约5.7字/秒；10.5-15秒约21个有效字，4.5秒约4.7字/秒，台词承载可表演。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "北沟村段保留断桥变水泥大桥、村长感谢、村民鼓掌、赵大雷说运果子不愁、赵朵朵说一起致富、重卡驶过、兄妹问答排骨晚饭，没有新增改变剧情的动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "evidence": "第3组组首明确四合院葡萄架、丰盛晚餐、红烧肉、玻璃杯和汽水位置，组尾仍在同一桌边，以赵朵朵吃肉看星空收束，人物和道具状态连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "“咚”的钟声写明从敲钟台传开；全场欢呼、赵大雷喊话、赵朵朵和助理对话均为画面内真人或群体现场发声，没有心声或画外音误开口。",
+      "fix_instruction": "若声音来源不明，应补出敲钟台、人群、助理或具体说话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第2组只发生在日间远县北沟村村口水泥大桥旁，组首锁定桥、村路、村民、赵朵朵、赵大雷和重卡，所有动作都围绕同一村口空间展开。",
+      "fix_instruction": "若出现跨入室内或车内，应拆成新组或明确为可接受的屏幕/蒙太奇例外。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组15秒4个时间段，村民感谢、道路用途、重卡驶过和回家吃饭问答分开承载；没有同时叠加长动作、长台词和关键道具操作。",
+      "fix_instruction": "若表演时间不足，应优先拆出村口致谢或回家吃饭问答。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "四合院段保留葡萄架晚餐、大嫂端红烧肉、桂姨夹肉、赵大雷举杯、赵朵朵举汽水祝福、玻璃杯碰响、赵朵朵吃红烧肉看繁星的顺序。",
+      "fix_instruction": "若遗漏家庭晚餐动作，应按原剧本补回端菜、夹肉、碰杯、吃肉和看星空。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文没有模板编号、官方模板标题、参考图占位、自动分镜、视频延长、广告口号或工程说明词，负向提示仅保持通用画面限制。",
+      "fix_instruction": "若出现相关污染词，应删除并改为具体现场动作或声音来源。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

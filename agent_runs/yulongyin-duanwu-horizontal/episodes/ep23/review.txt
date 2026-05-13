@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "ep23共8组完整覆盖后山密林跌落、云宝反击、爸爸救场和岩洞泉眼被胡永贵威胁的剧情，横屏左右站位、道具归属和组间衔接可生产。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "天天踩空滚落、痛呼“哎哟”、水壶砸青苔岩石、云宝随水摔落、打手乙发现发光云宝的台词均按原剧本顺序呈现。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "打手乙13字哀嚎用3.5秒并包含跪倒，约3.7字/秒；打手丙18字怒吼用3秒，约6字/秒，未超过6.5字/秒硬阈值。"
+    },
+    {
+      "group": "第6组",
+      "type": "horizontal_composition",
+      "evidence": "爸爸从画面左中冲向中央击倒打手丙，天天锁在右后方，云宝在右前景，父子视线最后同时落向云宝，左右和前后层次明确。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "剧毒废液玻璃瓶由胡永贵从右后方阴影带出，并在9-12秒悬到活水井正上方，威胁泉眼的位置和归属没有跳变。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "打手乙、打手丙保持从画面左侧向右前景云宝逼近，天天从右下爬起护住云宝后被踹向右侧树干，未发生无过渡换边。",
+      "fix_instruction": "若不通过，应在相邻组首尾补充换边动作或保持打手左侧、天天右侧的轴线。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "天天蜷缩在右后方、云宝在右前景、打手乙左中拿网兜、打手丙左后方握刀，四个角色的可见性和不能行动原因清楚。",
+      "fix_instruction": "若不通过，应在组首空间锁定补齐缺席角色或说明其声音/遮挡来源。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "开山刀从第4组打手丙手中劈下，到第5组被石头击腕后脱手坠落至右下泥地，为第6组地面刀具状态衔接。",
+      "fix_instruction": "若不通过，应补充刀从手中掉落到泥地的可见过程。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "爸爸小心捧起云宝、带天天进入隐秘岩洞、古老深井不断冒清澈泉水、爸爸催天天把云宝放进去均保留。",
+      "fix_instruction": "若不通过，应恢复活水井位置和爸爸催促台词。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "15秒内分为手电打断、胡永贵警告、持毒液瓶现身、瓶子悬井、天天反应五个短节拍，每段动作和台词分开承载。",
+      "fix_instruction": "若不通过，应拆出胡永贵现身或压缩非关键反应。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文没有模板编号、官方占位符、参考图/首尾帧/视频延长等工程词，画面风格只保留短剧横屏质感和负向词。",
+      "fix_instruction": "若不通过，应删除模型工程词和模板化描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "dialogue_pacing",
+      "problem": "打手丙怒吼台词节奏偏快但仍在风险区间内。",
+      "evidence": "“邪门怪物！老子一刀把你劈成两半！”约18字用3秒承载，约6字/秒，未超过6.5字/秒。",
+      "fix": "保持急促怒吼表演即可，不需要改写台词。"
+    }
+  ]
+}

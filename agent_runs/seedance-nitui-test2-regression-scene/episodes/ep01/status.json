@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "EP-01-ep01-agent-cli-storyboard.txt",
+  "summary": "林跃在晒谷场从被诬陷中苏醒，反证李二狗红泥鞋底，逼退赵家父子；赵百川暗中指使王四关闭林家果园水渠。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

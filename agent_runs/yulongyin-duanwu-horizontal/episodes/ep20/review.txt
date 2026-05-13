@@ -1,0 +1,110 @@
+{
+  "pass": true,
+  "summary": "ep20整集7组已按横屏规则复审，河床拾鳞、黑市交易、祠堂救云宝和村口围村均忠于原剧本，未发现阻断交付的 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本要求胡永贵在雨后河床跌走、魔怔自语、发现被雷劈裂缝中的半透明青色鳞片并狂喜称宝；分镜按这个顺序保留两句台词和挖出鳞片动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组2.5-7.5秒刀疤男验鳞台词约24个有效字/5秒，7.5-11秒胡永贵问价约19个有效字/3.5秒，11-15秒刀疤男冷笑约18个有效字/4秒，均低于6.5字/秒。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "第2组尾鳞片在刀疤男右手旁，第3组首继续靠近刀疤男右手，随后被夹起逼问来源，未从桌面、手中、地面之间无过渡跳变。"
+    },
+    {
+      "group": "第5组",
+      "type": "horizontal_composition",
+      "evidence": "祠堂内天天在左侧扶云宝，爸爸在右侧半蹲，爷爷在背景中央供桌前解释病因，左中右和前后层次清楚，横屏不是单人居中近景。"
+    },
+    {
+      "group": "第7组",
+      "type": "blocking_continuity",
+      "evidence": "第6组尾村民甲被压在左侧、刀疤男在中央偏右；第7组首延续村民甲左侧质问、刀疤男右侧逼近，反手扇飞方向从右向左可见。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "胡永贵两句台词均作为画面人物自语处理，镜头中写出嘴唇、身体和鳞片动作，没有误写成旁白或画外心声。",
+      "fix_instruction": "无需修复；若后续改成心声，必须注明嘴唇闭合、不做口型。"
+    },
+    {
+      "group": "第2组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "黑市地下室中胡永贵始终在画面左侧，刀疤男在画面右侧，桌面鳞片位于中央偏右，连续对话没有无过渡换边。",
+      "fix_instruction": "无需修复；同场景继续保持胡左刀右。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "天天、云宝在组首可见，爸爸在画面右后方柱旁可见并在8.5-12秒走近，天天喊爸爸时对象可用。",
+      "fix_instruction": "无需修复；不要把爸爸改成无来源画外人物。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "爷爷两句关键信息“借了天威、伤了根本、丢了伴生龙鳞”和“送回后山最深处的水眼才能活命”完整保留，没有改写病因或救法。",
+      "fix_instruction": "无需修复；不要压缩或替换水眼设定。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "15秒内依次呈现车队冲卡、急刹、打手下车、刀疤男命令封村、村民反应，动作链连续且不与长对白冲突。",
+      "fix_instruction": "无需修复；若增加更多村民冲突，应另起新组。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "村民甲质问原台词保留，刀疤男按剧本反手一巴掌将其扇飞并露出残忍笑意，未新增持棍殴打或额外剧情。",
+      "fix_instruction": "无需修复；不要追加原剧本没有的多人围殴。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现模板编号、控制台占位符、参考图指令、视频延长、自动分镜或其他工程说明词。",
+      "fix_instruction": "无需修复；最终稿继续保持自然中文分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "已对照第12集完整剧本、竖屏生成规则和整集final.txt逐组审核，仓房内对质与后沟边抓现行铺垫均无硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "标题包含EP12-G01，组总时长12秒，时间段0-2、2-4、4-8、8-12连续且镜头数4个与时间段一致，字段和组尾均完整。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "沈砚川摊登记本并说“七袋米，十二袋面，两桶柴油，刚才都记过。”，林知夏确认看着记，赵有福反驳“记了不等于没藏。”均与原剧本一致。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组11秒内分4段，最长对白为沈砚川“帮忙还是下手，你心里清楚。”约12字给在7-11秒与赵有福短句同段，整体低于6.5字/秒且情绪节奏清楚。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "从仓房内切到后沟边后另起第4组，组首明确泥地、后沟、拖痕脚印、沈砚川手电、林知夏与周大柱位置，没有在同组内混入仓房内空间。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第5组承接第4组脚印发现，继续在后沟边讨论不要喊破和抓现行；沈砚川手电、脚印、林知夏与周大柱站位均有连续状态。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "赵有福、沈砚川、周大柱、林知夏、沈小禾和村民在组首均有明确位置和身体朝向，后续说话与行动人物可用。",
+      "fix_instruction": "若有人物突然说话，应在组首补位置或在说话前写入场；当前无需修改。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "登记本从组首桌面到沈砚川手指沿账页下指，再承载对账台词，道具归属和位置清楚。",
+      "fix_instruction": "若登记本突然出现，应在前一组尾或本组开头补摊开动作；当前已经具备。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "周大柱对赵有福、村民丙对沈砚川、赵有福对周大柱、沈砚川对赵有福均写明说话对象，没有假对象或自语混用。",
+      "fix_instruction": "若缺对象，应改为A对B说道；当前无需修改。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "拖过东西和鞋底眼熟通过手电照泥地、拖痕、脚印花纹、周大柱蹲低辨认来呈现，画面可生成。",
+      "fix_instruction": "若只保留抽象判断，应补具体泥痕、脚印和人物观察动作；当前无需修改。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组为短句策略讨论和收尾判断，12秒5个短时间段均为轻对话与轻动作，没有中等长动作、外部事件和关键道具操作过载。",
+      "fix_instruction": "若增加抓人动作或回仓房动作，应拆到下一组；当前无需修改。"
+    },
+    {
+      "group": "第1组至第5组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集final.txt未出现参考模板、占位符、模型说明词、自动分镜、工程字段或非短剧模板语气。",
+      "fix_instruction": "若污染项进入正文，应删除或改为自然画面描述；当前无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

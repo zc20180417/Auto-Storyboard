@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "ep09全十组已按横屏审核规则对照原剧本复审，父亲回归、拒绝鼓槌、手伤闪回、挖掘机外部威胁、云宝水珠疗伤和父亲抓住鼓槌的因果链完整，未发现阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组完整保留爸爸向天天道歉、天天请求救云宝、爸爸转头看见奄奄一息的云宝，台词对象和剧情顺序与第9集9-1开头一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "爷爷从左后方门口入场，先从怀里摸出老木鼓槌，再双手递到爸爸胸前；鼓槌到第3组仍在爷爷手中，没有提前转移。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "第4组明确为暴雨闪回蒙太奇，龙舟横贯画面，年轻的爸爸从左侧滑向中央，鼓架从右上方砸落，跨空间转换有回忆标识。"
+    },
+    {
+      "group": "第7组",
+      "type": "horizontal_composition",
+      "evidence": "第7组胡永贵在画面左侧下令，挖掘机居中向右顶墙，村民甲在右前景阻拦失败，祠堂老墙在右后方掉灰，机器压迫方向清楚。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_pacing",
+      "evidence": "爸爸“老天爷不给活路，老子就劈开这条路！”安排在3.5秒怒吼镜头内，约17字/3.5秒，低于6.5字/秒且情绪爆发有身体动作支撑。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组至第3组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爷爷保持画面左侧递鼓槌，爸爸保持中央偏右到右侧退让，第3组继续沿左爷爷、右爸爸的横向对峙轴线推进。",
+      "fix_instruction": "若不通过，应在换边前增加可见走位或用中性镜头重新建立轴线。"
+    },
+    {
+      "group": "第3组至第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "爸爸先拒绝鼓槌并说出誓言，再进入手伤闪回，回到现实后爷爷质问、爸爸承认自己是废人并亮出右手伤疤，未改变原剧本因果。",
+      "fix_instruction": "若不通过，应恢复拒绝、闪回、质问、亮疤的原始顺序。"
+    },
+    {
+      "group": "第6组至第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6至第7组外部挖掘机从左向右顶住老墙并造成掉灰，第8组切回室内后头顶灰尘落下、龙舟震动，外部威胁与室内后果相接。",
+      "fix_instruction": "若不通过，应补清墙体震动如何传入祠堂内部。"
+    },
+    {
+      "group": "第8组至第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "云宝在第8组爬到爸爸脚边，第9组从同一位置吐出纯净水珠，水珠落到爸爸右手伤疤，关键道具路径连续。",
+      "fix_instruction": "若不通过，应补充云宝到爸爸脚边的位置承接或水珠落点。"
+    },
+    {
+      "group": "第9组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "伤疤温热和青光通过水珠接触、手指抽动、青光沿手腕闪过、爸爸低声震惊等可见表演呈现，抽象状态可拍。",
+      "fix_instruction": "若不通过，应把抽象感觉改成可见光效、动作和人物反应。"
+    },
+    {
+      "group": "第10组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第10组只承载外墙破口、爸爸怒吼、转身伸手、攥住爷爷手中鼓槌四个强节拍，12秒内分成4镜，未加入后续敲鼓结果。",
+      "fix_instruction": "若不通过，应拆出后续敲鼓或删除原剧本未发生的结果。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

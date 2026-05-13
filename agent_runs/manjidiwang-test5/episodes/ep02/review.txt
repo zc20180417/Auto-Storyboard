@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "EP02全集审核通过。G01已修复假对白对象问题，4段OS全部使用心声格式（嘴唇闭合、不做口型），与原剧本(OS)标记一致。其余7组未改动，台词、空间锁定、节奏均合规。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "generation_density": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "evidence": "G01四段台词全部使用'朱文浩心声响起（对自己）'格式，每段均标注'嘴唇闭合、不做口型'，与原剧本'朱文浩(OS)'标记一致，无假对白对象。"
+    },
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "G01四段OS有效字数：0-4秒22字、4-7秒14字、7-10秒12字、10-13秒12字，总计60字/13秒=4.6字/秒，在普通对白4.5字/秒目标范围内。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "G03物理空间为朱家别墅门口（门内+门外门槛区域），属于同一连续物理空间。朱文浩在门框内、王涛在门外，空间关系在组首完整描述。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "台词'说吧半夜看报表干什么''战投部王涛提现金栽赃受贿''苏长明的连环杀招''一计不成又生一计''拙劣手段被我点破吓跑''酒店的事你怎么说服她的''利益权衡她不想做弃子'全部保留，台词顺序和说话对象未改动。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "朱文浩台词已拆分：0-4秒10字+4-7秒11字+7-11秒24字，字秒比均在5.2以内。王涛15字/5.2=2.9s+逃跑中等动作2s=4.9s分布在3s时段。总14秒，5个时间段，节奏合理。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "G01四段OS全部写明嘴唇闭合、不做口型，画面人物只表现眼神、眉头、嘴角、手指等可见反应，与声音（心声）正确分离。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩是唯一角色，组首空间锁定明确其坐在红木办公桌后。G01-G02同场景连续，G02组首完整复述G01尾部状态。",
+      "fix_instruction": "无需修复，人物可用性完整。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "G03组尾朱文浩堵门、王涛后退藏袋；G04组首朱文浩仍在门框内、王涛门外脸色发白双手紧攥袋。位置、道具状态连续。",
+      "fix_instruction": "无需修复，组间连续性完整。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "G04组尾朱文浩站在门口目送王涛；G05组首场景切换至客厅，朱文浩从楼梯下方走来，属于新场景新组，不要求与G04位置连续。",
+      "fix_instruction": "无需修复，场景切换已用新组处理。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "敲门声在G02写明'书房门板轻微震动'（可见载体）。OS全部写明嘴唇闭合、不做口型。递纸动作有明确道具操作链（拿纸→递→接→攥紧→放纸→坐直）。",
+      "fix_instruction": "无需修复，不可视信息已转译为可见载体和动作。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第7组",
+      "rule": "dialogue_pacing",
+      "problem": "第7组4个时间段含7句台词（朱天和22字+朱文浩22字+朱天和10字=54字），台词密度较高，但均为短句连续对白交锋，整体4.2字/秒在合理范围。",
+      "evidence": "有效字数54/镜头秒数13/字秒比4.2（含动作间隙）",
+      "fix": "无需修改。"
+    }
+  ]
+}

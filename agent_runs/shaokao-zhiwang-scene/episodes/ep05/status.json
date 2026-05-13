@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "被发小踢出局，我反手成烧烤之王-ep05-agent-cli-storyboard.txt",
+  "summary": "许安和林小满在街口支起旧炉开摊，韩彪当众拆台却被唐婶试吃后的老味道反转吸引围观。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "generation_density",
+      "problem": "第6组有6个时间段，存在轻微过碎风险。",
+      "evidence": "15秒内连续承载试吃、两次短问答、老味道确认和路人回头，但全部围绕同一试吃反转，未造成理解断裂。",
+      "fix": "可选合并唐婶迟疑与许安追问的反应段；当前无需作为 hard issue 修复。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

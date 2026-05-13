@@ -1,0 +1,241 @@
+{
+  "project": "苍南风云",
+  "episode_id": "EP03",
+  "cuts": [
+    {
+      "cut_id": "EP03-G01",
+      "group_index": 1,
+      "title": "民政办当面对峙",
+      "scene": "民政办大厅",
+      "characters": [
+        "陆凡",
+        "张强"
+      ],
+      "props": [
+        "办公桌",
+        "文件夹",
+        "行李箱"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 0,
+      "group_end_sec": 14,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP03-G02",
+      "group_index": 2,
+      "title": "林夏追问去向",
+      "scene": "民政办大厅",
+      "characters": [
+        "张强",
+        "林夏"
+      ],
+      "props": [
+        "办公桌",
+        "门",
+        "文件夹"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 14,
+      "group_end_sec": 27,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP03-G03",
+      "group_index": 3,
+      "title": "林夏质问人事调动",
+      "scene": "乡党委书记办公室",
+      "characters": [
+        "林夏",
+        "周昌平"
+      ],
+      "props": [
+        "办公桌",
+        "红色电话",
+        "文件"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 27,
+      "group_end_sec": 41,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP03-G04",
+      "group_index": 4,
+      "title": "周昌平怒拨电话",
+      "scene": "乡党委书记办公室",
+      "characters": [
+        "林夏",
+        "周昌平"
+      ],
+      "props": [
+        "办公桌",
+        "红色电话",
+        "文件"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 41,
+      "group_end_sec": 56,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP03-G05",
+      "group_index": 5,
+      "title": "电话里揭出赵乡长",
+      "scene": "乡党委书记办公室",
+      "characters": [
+        "周昌平",
+        "刘波"
+      ],
+      "props": [
+        "办公桌",
+        "红色电话",
+        "文件"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 56,
+      "group_end_sec": 70,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP03-G06",
+      "group_index": 6,
+      "title": "陆凡被定为副主任",
+      "scene": "乡党委书记办公室",
+      "characters": [
+        "周昌平",
+        "刘波"
+      ],
+      "props": [
+        "办公桌",
+        "红色电话",
+        "文件"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 70,
+      "group_end_sec": 85,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP03-G07",
+      "group_index": 7,
+      "title": "土路上轿车拦停",
+      "scene": "乡间土路",
+      "characters": [
+        "陆凡",
+        "刘波"
+      ],
+      "props": [
+        "行李箱",
+        "黑色轿车"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 85,
+      "group_end_sec": 95,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP03-G08",
+      "group_index": 8,
+      "title": "刘波追回陆凡",
+      "scene": "乡间土路",
+      "characters": [
+        "陆凡",
+        "刘波"
+      ],
+      "props": [
+        "行李箱",
+        "黑色轿车"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 95,
+      "group_end_sec": 109,
+      "source_group_label": "第8组"
+    },
+    {
+      "cut_id": "EP03-G09",
+      "group_index": 9,
+      "title": "任命在大厅宣读",
+      "scene": "民政办大厅",
+      "characters": [
+        "陆凡",
+        "张强",
+        "刘波"
+      ],
+      "props": [
+        "行李箱",
+        "办公桌",
+        "任命文件"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 109,
+      "group_end_sec": 124,
+      "source_group_label": "第9组"
+    },
+    {
+      "cut_id": "EP03-G10",
+      "group_index": 10,
+      "title": "张强彻底哑火",
+      "scene": "民政办大厅",
+      "characters": [
+        "陆凡",
+        "张强",
+        "刘波"
+      ],
+      "props": [
+        "行李箱",
+        "办公桌",
+        "任命文件"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 124,
+      "group_end_sec": 138,
+      "source_group_label": "第10组"
+    },
+    {
+      "cut_id": "EP03-G11",
+      "group_index": 11,
+      "title": "调查组突然进门",
+      "scene": "民政办大厅",
+      "characters": [
+        "陆凡",
+        "张强",
+        "纪委干部",
+        "苏有光"
+      ],
+      "props": [
+        "办公桌",
+        "门",
+        "文件柜"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 138,
+      "group_end_sec": 151,
+      "source_group_label": "第11组"
+    },
+    {
+      "cut_id": "EP03-G12",
+      "group_index": 12,
+      "title": "封存账目收缴手机",
+      "scene": "民政办大厅",
+      "characters": [
+        "陆凡",
+        "张强",
+        "纪委干部",
+        "苏有光"
+      ],
+      "props": [
+        "办公桌",
+        "文件柜",
+        "封条",
+        "账本",
+        "手机",
+        "抽屉"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 151,
+      "group_end_sec": 165,
+      "source_group_label": "第12组"
+    }
+  ]
+}

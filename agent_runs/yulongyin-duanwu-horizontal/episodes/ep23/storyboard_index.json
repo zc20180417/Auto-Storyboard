@@ -1,0 +1,167 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP23",
+  "cuts": [
+    {
+      "cut_id": "EP23-G01",
+      "group_index": 1,
+      "title": "跌落与水壶摔裂",
+      "scene": "日/晴，后山密林陡坡到坡底",
+      "characters": [
+        "天天",
+        "打手乙",
+        "打手丙",
+        "云宝"
+      ],
+      "props": [
+        "水壶",
+        "青苔岩石"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP23-G02",
+      "group_index": 2,
+      "title": "天天护住云宝被踹飞",
+      "scene": "日/晴，后山密林坡底",
+      "characters": [
+        "天天",
+        "打手乙",
+        "打手丙",
+        "云宝"
+      ],
+      "props": [
+        "摔开的水壶",
+        "青苔岩石"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 12,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP23-G03",
+      "group_index": 3,
+      "title": "黑色网兜逼近云宝",
+      "scene": "日/晴，后山斜坡坡底",
+      "characters": [
+        "天天",
+        "打手乙",
+        "打手丙",
+        "云宝"
+      ],
+      "props": [
+        "黑色金属网兜",
+        "摔开的水壶"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 26,
+      "group_end_sec": 39,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP23-G04",
+      "group_index": 4,
+      "title": "水针冰封与开山刀落下",
+      "scene": "日/晴，后山斜坡坡底",
+      "characters": [
+        "打手乙",
+        "打手丙",
+        "云宝",
+        "天天"
+      ],
+      "props": [
+        "黑色金属网兜",
+        "开山刀",
+        "摔开的水壶"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 39,
+      "group_end_sec": 54,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP23-G05",
+      "group_index": 5,
+      "title": "石头击腕与爸爸跃下",
+      "scene": "日/晴，后山斜坡坡底与坡顶",
+      "characters": [
+        "爸爸",
+        "打手丙",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "尖锐石头",
+        "开山刀"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 54,
+      "group_end_sec": 67,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP23-G06",
+      "group_index": 6,
+      "title": "爸爸击倒打手后查看云宝",
+      "scene": "日/晴，后山斜坡坡底",
+      "characters": [
+        "爸爸",
+        "打手丙",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "开山刀"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 67,
+      "group_end_sec": 82,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP23-G07",
+      "group_index": 7,
+      "title": "隐秘岩洞与活水井",
+      "scene": "日/晴，后山深处岩洞泉眼",
+      "characters": [
+        "爸爸",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "活水井",
+        "云宝"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 82,
+      "group_end_sec": 96,
+      "source_group_label": "第7组"
+    },
+    {
+      "cut_id": "EP23-G08",
+      "group_index": 8,
+      "title": "胡永贵以毒液威胁泉眼",
+      "scene": "日/晴，后山深处岩洞泉眼",
+      "characters": [
+        "胡永贵",
+        "爸爸",
+        "天天",
+        "云宝"
+      ],
+      "props": [
+        "活水井",
+        "手电",
+        "装满剧毒废液的玻璃瓶",
+        "云宝"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 96,
+      "group_end_sec": 111,
+      "source_group_label": "第8组"
+    }
+  ]
+}

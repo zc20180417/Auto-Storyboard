@@ -1,0 +1,19 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "EP-02-ep02-agent-cli-storyboard.txt",
+  "summary": "EP02分镜共3组，李虎发现配电箱焦黑后心生一计→清晨在王婶家门口散布老张谣言→在微信群发消息搅局。台词全部保留原剧本，对话指向清晰，内心独白口型正确，无模板污染。Group 2连续对话节拍节奏偏快（警告级）。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "Group 2 连续对话节拍整体节奏偏快（6.25字/秒），部分时段超过6.5字/秒，但属于同一冲突下的快速交锋且有说话人切换支撑。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

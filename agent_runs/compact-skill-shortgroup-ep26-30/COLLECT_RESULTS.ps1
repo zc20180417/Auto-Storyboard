@@ -1,0 +1,2 @@
+$ErrorActionPreference = 'Stop'
+python "G:\Auto-Storyboard\storyboard_agent_workspace.py" collect --run-dir "G:\Auto-Storyboard\agent_runs\compact-skill-shortgroup-ep26-30"

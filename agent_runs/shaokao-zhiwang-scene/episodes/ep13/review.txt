@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "summary": "已对照第13集原剧本、竖屏生成规则和组装后final.txt逐组审核，5组均保留原台词与剧情节拍，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中路人甲问“你真是从韩彪那儿出来抢生意的？”，路人乙接“街上都在传，说人家把你带出来，你转头就翻脸。”，林小满回“谁传的？张嘴就来？”，许安拦住她说“点串吧，吃完再说别的。”；final.txt按同一顺序、同一说话对象保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "10.5-15秒承载路人乙5字问句和许安13字回应，共18字，4.5秒约4.0字/秒，属于自然普通对白；3-6.5秒唐婶15字撑场台词配合拍桌动作，3.5秒约4.3字/秒，节奏可表演。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "手机在组首位于小聚餐客人桌面，0-3秒客人拿起手机接听，9-14秒攥紧手机说退单理由，道具归属和电话触发退单的因果清楚。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "evidence": "第3组尾部林小满停在桌边两步外、许安仍在烧烤炉后方；第4组组首复述同一位置和姿态，空座位也延续客人离开的结果。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "evidence": "韩彪和两个伙计在组首已位于街对面背景中央，0-4秒再横穿街口到摊前，之后韩彪才开口质问许安，人物入场和台词顺序成立。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "路人甲、路人乙、林小满、许安的现场对白均写明对谁问或对谁说，没有假对象或心声口型混用。",
+      "fix_instruction": "若出现无对象对白，应补成A对B说道或改为明确画外音来源。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组包含路人甲解释、唐婶拍桌撑场、林小满与许安低声判断、路人乙追问和许安回应，均在同一摊位冲突中推进，4个时间段共15秒，未叠加额外转场或关键道具操作。",
+      "fix_instruction": "若节拍过载，应拆出许安回应或压缩非关键反应，不改原台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "电话只作为可见触发事件，未把电话另一端声音写成画中人物开口；小聚餐客人的现场台词均由本人面对林小满说出。",
+      "fix_instruction": "若需要呈现电话内容，应写明手机听筒声或画外电话音，并避免画中人物承担错误口型。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首只写许安在烧烤炉后、林小满在桌边两步外、小聚餐客人桌椅空出座位等静态结果，没有把走动或追客过程写进空间锁定。",
+      "fix_instruction": "若组首出现动作推进词，应移入时间段镜头描述并改写为静态位置。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "原剧本的韩彪带两个伙计横穿过街、当街要求说清楚，以及许安回应“你终于舍得过来了”均完整保留，没有新增打斗或改写冲突结果。",
+      "fix_instruction": "若新增原剧本没有的攻击、递物或离场，应删除并回到韩彪上门对峙。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt未出现模板编号、参考图、自动分镜、Seedance说明词、字幕或广告式模板语气，尾部负面词为稳定生产约束。",
+      "fix_instruction": "若出现模型说明或模板占位符，应改为自然画面描述或删除。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

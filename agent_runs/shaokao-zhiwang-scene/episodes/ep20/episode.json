@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep20",
+  "episode_number": 20,
+  "display_name": "被发小踢出局，我反手成烧烤之王第20集",
+  "series_title": "被发小踢出局，我反手成烧烤之王",
+  "source_path": "G:\\Auto-Storyboard\\inputs\\被发小踢出局，我反手成烧烤之王.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_shaokao_zhiwang_scene\\被发小踢出局，我反手成烧烤之王-ep20-agent-cli-storyboard.txt",
+  "storyboard_aspect": "vertical",
+  "generator_skill_name": "storyboard-generator",
+  "reviewer_skill_name": "storyboard-reviewer",
+  "reviewer_source": "storyboard-reviewer"
+}

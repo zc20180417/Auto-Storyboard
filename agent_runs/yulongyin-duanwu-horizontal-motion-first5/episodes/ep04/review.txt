@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "EP04整集已对照原剧本、横屏generator规则和新运镜要求审核；9组均保留送水车、水管、水壶、皮卡、薄冰和车窗电话的空间归属，每个时间段均有具体运镜设计，无hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组-第3组",
+      "type": "horizontal_composition",
+      "evidence": "广场冲突中送水车保持在左侧、皮卡和胡永贵保持在右侧，天天从右后方队尾进入中央后跌向左前方，水壶始终在她怀里。"
+    },
+    {
+      "group": "第4组-第6组",
+      "type": "prop_continuity",
+      "evidence": "水壶内云宝喷水后，泥水从右侧皮卡下方改向并结冰；胡永贵摔倒后水管从右侧脱手滑到中央偏左，天天据此接水。"
+    },
+    {
+      "group": "第7组-第9组",
+      "type": "audio_mouth_sync",
+      "evidence": "包工头只作为手机电话声出现，胡永贵现场开口时有明确口型，电话声段落写明胡永贵嘴唇闭合听着，声音载体清楚。"
+    },
+    {
+      "group": "第9组",
+      "type": "camera_motion",
+      "evidence": "天天台词用固定中近景稳定口型，奔跑用横向跟拍从左到右，再后拉保留皮卡在左后方和后山在右远方，运动服务行动目标。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留“一辆送水车停在广场，村民们排起长队。天天抱着水壶排在最后”以及胡永贵插队喊话。",
+      "fix_instruction": "如需调整镜头，不得改变天天队尾位置和胡永贵从皮卡方向插队的因果。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "村民甲质问和胡永贵得意反驳分别放在3.5秒、4.5秒时间段内，情绪对白速度可表演。",
+      "fix_instruction": "若压缩时长，应优先保留完整台词，不要牺牲口型。"
+    },
+    {
+      "group": "第3组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "天天从右后方冲到中央抢水管，被胡永贵从右侧推向左前方，水壶始终由天天双臂护住。",
+      "fix_instruction": "若改写动作，不要让水壶或水管无过渡换手。"
+    },
+    {
+      "group": "第5组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "泥水改向、薄冰形成、胡永贵踩冰和水管脱手均有具体运镜目的，没有空泛横移或推进。",
+      "fix_instruction": "若调整镜头，继续说明运动起点、终点和揭示目标。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "包工头电话声由手机扬声器传出，胡永贵闭嘴听着，电话声不被写成现场人物口型。",
+      "fix_instruction": "如需加反应镜头，仍需保留手机作为电话声来源。"
+    },
+    {
+      "group": "第8组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "胡永贵在右侧车内，天天在左侧屋檐阴影，车窗作为声音通道，两人左右关系到第9组保持连续。",
+      "fix_instruction": "若改换角度，应先用中性镜头或明确走位重建轴线。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模板编号、官方占位符、参考图、自动分镜或视频延长等工程词；Seedance只作为结构参考未写入正文。",
+      "fix_instruction": "后续不要加入模板说明或模型控制台占位符。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

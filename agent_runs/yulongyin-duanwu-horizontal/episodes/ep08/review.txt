@@ -1,0 +1,100 @@
+{
+  "pass": true,
+  "summary": "ep08 完整保留护舟受伤、云宝暴露、爸爸赶到反击和父子重逢的剧情，12组横屏分镜格式、节奏、轴线、道具连续与真实审核证据均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "天天护住龙舟并喊“不许你们碰龙舟！滚出去！”，胡永贵嘲讽“又是你这小野种。给我滚开！”后踢开天天，保留原剧本台词和动作因果。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "胡永贵“这是什么怪物？还在冒寒气？”约12字/2.5秒，约4.8字/秒；“泡药酒肯定大补，给我装起来！”约14字/3秒，约4.7字/秒。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "第5组血滴落到鼓面，第6组天天仍伏在左前景鼓架旁，云宝在中央逐渐透明，手下从右后方取大铁锤对准龙舟，关键道具位置连续。"
+    },
+    {
+      "group": "第8组",
+      "type": "horizontal_composition",
+      "evidence": "爸爸在画面右侧门外强逆光，胡永贵和手下在画面左侧室内阴影，破旧背包停在中景地面，左右阵营和入场来源清晰。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_direction",
+      "evidence": "胡永贵面对爸爸说“李、李燃？你不是死在外面了吗！”，爸爸面对胡永贵说“滚！再踏进祠堂一步，我废了你！”，现场对白对象明确。"
+    },
+    {
+      "group": "第12组",
+      "type": "script_fidelity",
+      "evidence": "天天哽咽喊“爸爸！你终于回来了！”，爸爸扔下行李并抱住满脸是血的天天，保留原剧本结尾情绪。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组-第3组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "前3组持续保持天天在画面左侧、胡永贵在右侧、碎碗和云宝在中央的轴线，人物视线均汇向对方或中央道具，没有无过渡换边。",
+      "fix_instruction": "若不通过，应统一天天左侧、胡永贵右侧、云宝中央的连续站位。"
+    },
+    {
+      "group": "第4组-第6组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "天天从左侧扑向右侧手下并被甩到左后方鼓架，第6组仍在左前景受伤，手下从右后方取锤，动作路线连续。",
+      "fix_instruction": "若不通过，应补足天天扑咬、被甩、落到鼓架旁的路线。"
+    },
+    {
+      "group": "第7组-第8组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "爸爸先以门外脚步轮廓出现，第8组组首明确在右侧门外逆光里可见，随后承载暴怒台词，角色入场和口型可用。",
+      "fix_instruction": "若不通过，应在爸爸台词前增加可见入场或声音来源。"
+    },
+    {
+      "group": "第9组-第11组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "爸爸踹飞手下、语言压制、折弯铁棍、胡永贵逃走被拆成三组，每组2到3个强节拍，没有在15秒内过载。",
+      "fix_instruction": "若不通过，应继续拆分动作和台词，避免打斗与长对白堆在同组。"
+    },
+    {
+      "group": "第11组-第12组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第11组胡永贵从右侧门口逃出，第12组门口空下，爸爸转回左前景抱住天天，离场和情绪收束衔接自然。",
+      "fix_instruction": "若不通过，应在第12组组首写明胡永贵已离场和爸爸回到天天身边的路线。"
+    },
+    {
+      "group": "全组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt 未出现模板编号、官方占位符、参考图/首帧/尾帧、视频延长、自检说明或批量模板化句式。",
+      "fix_instruction": "若不通过，应删除工程词和模板化描述，仅保留自然中文分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

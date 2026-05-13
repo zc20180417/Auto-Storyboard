@@ -1,0 +1,127 @@
+{
+  "pass": true,
+  "summary": "EP02整集14组已完成横屏审稿，救援承诺、回家取水、青蓝小龙复苏、黑水伤尾、入壶安置和龙舟图形提示均保留，轴线、运镜、时长和道具状态链可交付。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组", "第14组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "天天触到陶笛后缩手、小爪子松开跌回黑暗、天天说“对不起！我不是故意的！”均按原剧本顺序呈现。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "“你千万别死！等我回来救你！”有效约11字，对应2.5秒，约4.4字/秒，带绝望情绪和后续起身动作，不超6.5字/秒。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "evidence": "第3组现实堂屋取水后以陶笛和水壶触发闪回，第4组继续爸爸台词并回到现实全家福，闪回与现实边界明确。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "水壶由天天抱回裂缝、拧开壶盖、壶口对准裂缝并滴水，壶盖和清水路径都有可见过渡。"
+    },
+    {
+      "group": "第8组",
+      "type": "horizontal_composition",
+      "evidence": "小龙在画面右侧裂缝边，黑水滩位于尾巴下方，天天在左侧持壶喊话，左右关系和危险边界清楚。"
+    },
+    {
+      "group": "第10组",
+      "type": "camera_motion",
+      "evidence": "小龙入壶采用低位横向跟拍，拧盖用推近锁住道具状态，回家过程标为救援转场蒙太奇，没有把跨空间动作误写成同一连续场景。"
+    },
+    {
+      "group": "第14组",
+      "type": "script_fidelity",
+      "evidence": "壶壁出现船头高昂、船尾下沉的龙舟轮廓，天天说“这是一个……龙舟？”并继续问“你到底想要干什么？你想去找一条船？”，原剧本收尾信息完整。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首只锁定天天低伏、裂缝、陶笛、小爪子和青蓝光的位置，缩手和小爪子跌落均放在时间段内。",
+      "fix_instruction": "若组首出现缩手、跌落或其他过程动作，应移入对应时间段。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "爸爸对幼年天天说道“想爸爸的时候就吹，爸爸听得到”，现实中天天看全家福没有新增无对象对白。",
+      "fix_instruction": "若出现旁白或自语，应标明声音来源和口型状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "天天保持在画面左侧，小龙从裂缝右下探头，水壶壶口位于左上，左右轴线延续第5组的滴水路径。",
+      "fix_instruction": "若人物或道具换边，应补可见走位或中性镜头。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "小龙饮水复亮后尾巴逐渐靠近右下黑水滩，第8组尾尖误触黑水有清楚前置状态。",
+      "fix_instruction": "若黑水突然出现，应在前一组尾部补黑水滩和尾巴距离。"
+    },
+    {
+      "group": "第9组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第9组只处理水壶横置、天天急切喊话和小龙靠近壶口三个节拍，12秒内可表演，没有额外塞入入壶和回家动作。",
+      "fix_instruction": "若把入壶和回卧室压入同组，应拆分，避免15秒内过载。"
+    },
+    {
+      "group": "第10组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第9组以小龙贴近壶口收尾，第10组从小龙入壶开始，随后明确用蒙太奇带回卧室，衔接自然。",
+      "fix_instruction": "若省略入壶过程，应补小龙进入水壶底部和壶盖拧紧。"
+    },
+    {
+      "group": "第12组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "第12组固定近景承载自责台词，推近小龙眼睛，摇向尾巴和壶壁，固定特写呈现划线，运镜围绕回应和图形生成。",
+      "fix_instruction": "若运镜失焦，应保留固定台词镜头并把移动镜头限定到小龙回应路径。"
+    },
+    {
+      "group": "第14组",
+      "type": "horizontal_composition",
+      "result": "pass",
+      "evidence": "水壶居中、天天在左、小龙在壶底右侧，龙舟轮廓位于壶壁中央，横屏关系服务读图和追问。",
+      "fix_instruction": "若只给天天单人反应，应补水壶图形和小龙尾巴指向。"
+    },
+    {
+      "group": "第14组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集未出现模板编号、官方占位符、自动分镜、参考图说明或视频延长等污染词，保持自然中文短剧分镜。",
+      "fix_instruction": "若出现工程说明，应删除并改写为画面内动作、道具或声音。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

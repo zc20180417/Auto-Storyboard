@@ -1,0 +1,144 @@
+{
+  "pass": true,
+  "summary": "ep04 已对照完整剧本、分镜生成规则和全片 final.txt 完成审核，13组均无 hard issue，未发现台词删改、空间混乱或 reviewer 证据缺口。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组",
+    "第12组",
+    "第13组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "generation_density": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "2-9秒承载周正明问句和朱文浩三句回答，有效台词约36字，7秒约5.1字/秒，连续问答节拍清楚且未超过6.5字/秒。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "保留周正明怒斥压分、朱文浩起身说规则只是废纸和废纸也能包住火，并以推椅离场收尾，原剧本动作和台词顺序完整。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "evidence": "第5组11秒内依次呈现朱文浩逼近、刘晓蕾反驳、朱文浩警告、越过离去，均为同一走廊冲突下的连续节拍，动作没有被压缩。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "evidence": "第8组拆成6个短时间段，HR部二处、苏长明老巢、灯下黑和借刀开路各有独立口型或反应时间，最长有台词段为2.5秒且未超速。"
+    },
+    {
+      "group": "第12组",
+      "type": "dialogue_direction",
+      "evidence": "第12组0-6秒苏清寒对电话里的朱文浩说第三条条件；6-10.5秒朱文浩电话音对苏清寒成交，苏清寒嘴唇闭合、不做口型。"
+    },
+    {
+      "group": "第13组",
+      "type": "filmability",
+      "evidence": "苏清寒OS被处理为心声，画面用窗外倒影、闭口无口型、手指松开手机和眼神聚焦承载复仇动机，可视化明确。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "朱文浩、周正明、考官甲、三名考官、邱瑞均在组首列出画面位置和身体朝向，邱瑞点头前已在背景角落可用。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "压分通过打叉、评分纸、三名考官同时写最低分和周正明攥桌沿呈现，没有只写抽象判断。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组结尾周正明怒意压住，第3组组首延续他手攥桌沿；朱文浩从坐在中央椅子到起身推椅离场，动作链连续。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第4组全程在考场外走廊，考场门、刘晓蕾挡路和朱文浩出门位置均在组首锁定，没有跨场景硬切。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "朱天和砸茶杯、总部刘家欺人太甚、联手做局压分，以及朱文浩倒茶说苏总裁借刀杀人均完整保留。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组朱文浩倒茶，第7组组首延续茶壶、刚倒好的茶和书桌位置，递茶动作与原剧本一致。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "苏晓晓作为门铃事件来源被锁定在门外走廊靠门处，门板遮住她身体；苏清寒在茶几旁核验资料，二者位置明确。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "苏晓晓4-10.5秒哭诉约28字，6.5秒约4.3字/秒，包含哭泣和跪地状态，未超6.5字/秒且没有拖慢到脱离剧情。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第11组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第10组结尾苏清寒抬起手机录音、苏晓晓仍跪门外；第11组从收起录音、打发苏晓晓离开、拨通朱文浩电话接起。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第12组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "苏清寒第三条条件和朱文浩电话音成交、明天HR部报到、做我的眼线均逐句保留，人物关系和交易条件未改写。",
+      "fix_instruction": "无须修复。"
+    },
+    {
+      "group": "第13组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "不是信任而是复仇的心理判断由心声明确承载，画面同时给出闭口、窗外倒影、手指松开手机等可见反应。",
+      "fix_instruction": "无须修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

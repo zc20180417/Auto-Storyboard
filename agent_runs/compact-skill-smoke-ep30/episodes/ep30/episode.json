@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep30",
+  "episode_number": 30,
+  "display_name": "ep30",
+  "series_title": "ep30",
+  "source_path": "G:\\Auto-Storyboard\\split_scripts\\ceshijuben\\ep30.txt",
+  "output_path": "G:\\Auto-Storyboard\\outputs_agent_compact_skill_smoke_ep30\\ep30-ep30-agent-cli-storyboard.txt",
+  "storyboard_aspect": "vertical",
+  "generator_skill_name": "storyboard-generator",
+  "reviewer_skill_name": "storyboard-reviewer",
+  "reviewer_source": "storyboard-reviewer"
+}

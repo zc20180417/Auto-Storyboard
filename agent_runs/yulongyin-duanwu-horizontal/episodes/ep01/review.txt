@@ -1,0 +1,150 @@
+{
+  "pass": true,
+  "summary": "ep01全11组已对照原剧本、横屏生成规则和最终分镜完成审核，台词、时间、横屏调度、黑水与陶笛道具连续性均通过，无阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组",
+    "第10组",
+    "第11组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "horizontal_composition",
+      "evidence": "云溪村村口、井口、空桶和干裂河床被安排在画面右侧井台、前景空桶和左侧远处河床，村民甲乙左右分置，横屏空间关系明确。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "胡永贵两句推销化肥台词原文保留，皮卡车厢高位、艳丽化肥袋、黑水从袋缝渗出并落向干渠的关键动作未丢失。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "爷爷第一句约15字/3秒，胡永贵嘲笑约20字/4秒，爷爷第二句约22字/5秒，情绪对白字秒比均在可表演范围内。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "黑水从第2组化肥袋渗出，第5组沿皮卡下方干渠由村口流向河床，为第9-10组进入裂缝埋下连续道具路径。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "天天关于爸爸的两句台词写成握着旧陶笛低声自语，并明确嘴唇现场开合；笛声镜头由天天把陶笛放在嘴边吹响承载。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "跑调笛声、热风黄沙、天天说“还是什么都没有发生”、转身离开、裂缝青蓝光亮起和“那是什么东西？”按原剧本顺序出现。"
+    },
+    {
+      "group": "第10组",
+      "type": "generation_density",
+      "evidence": "15秒内承载黑水滴落、青蓝光受伤、低鸣、天天两句反应和探身救援，每个时间段动作单一明确，未把长对白和复杂动作硬塞同段。"
+    },
+    {
+      "group": "第11组",
+      "type": "prop_continuity",
+      "evidence": "旧陶笛从第7组吹奏、第8组垂在手中、第9组在裂缝边、第10组随右手伸下，到第11组被小爪子抓住边缘，道具归属连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第1组总时长13秒，4个连续时间段为0-3、3-5、5-9、9-13秒，镜头数与时间段一致。",
+      "fix_instruction": "若不通过，应调整时间段边界或镜头数，使最后一段结束于标题总时长。"
+    },
+    {
+      "group": "第3组",
+      "type": "screen_direction",
+      "result": "pass",
+      "evidence": "爷爷由左侧/中央偏左仰看右侧高位胡永贵，胡永贵始终在右侧皮卡车厢俯视，争执轴线没有跳边。",
+      "fix_instruction": "若不通过，应补充换边过渡或保持爷爷左、胡永贵右的站位。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "村民甲对天天和周围村民说，天天对爷爷说，爷爷对天天说，三个现场对白对象都明确且可见。",
+      "fix_instruction": "若不通过，应在镜头描述中补充说话人和被说话人的同框或反应镜头。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾天天拉爷爷向左退，第5组首延续两人从中央偏左退出，胡永贵仍在右侧皮卡车厢，人物状态连续。",
+      "fix_instruction": "若不通过，应补足天天拉爷爷离开人群的过渡走位。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "两句对爸爸的倾诉明确为天天握着陶笛低声自语且嘴唇开合，随后吹笛声来自他现场吹陶笛，声音来源清楚。",
+      "fix_instruction": "若不通过，应改为心声并写清嘴唇闭合，或保留现场自语并明确口型和陶笛媒介。"
+    },
+    {
+      "group": "第8组",
+      "type": "blocking_continuity",
+      "result": "pass",
+      "evidence": "天天从第7组裂缝边吹笛，进入第8组仍在右侧裂缝边收陶笛、挡沙、转身，青蓝光从左侧裂缝深处吸引他回头。",
+      "fix_instruction": "若不通过，应补充天天从吹笛姿态到准备离开的可见动作。"
+    },
+    {
+      "group": "第9组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定天天在右侧前景趴伏、青蓝光在左侧裂缝深处、黑水在右后方干渠，三者方位为第10组接触黑水提供清楚路径。",
+      "fix_instruction": "若不通过，应补充天天、青蓝光、黑水来源和裂缝深度的左右前后关系。"
+    },
+    {
+      "group": "第10组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "黑水滴入裂缝、青蓝光瑟缩、痛苦低鸣、天天问伤势、判断黑水有毒并伸手救援，均保留原剧本因果。",
+      "fix_instruction": "若不通过，应恢复原台词和黑水伤害青蓝光后天天救援的顺序。"
+    },
+    {
+      "group": "第11组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "微弱水声、小爪子探出和抓住陶笛都转译为可见动作、道具接触和局部光影，结尾拉扯状态可直接生成。",
+      "fix_instruction": "若不通过，应把抽象感受改成可见动作、声音来源和道具接触。"
+    },
+    {
+      "group": "第11组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终稿未出现模板编号、参考图、首尾帧、视频延长、自动分镜等工程词，负向词中“竖屏构图”仅作为排除项。",
+      "fix_instruction": "若出现工程词，应删除并改写为自然分镜动作、声音或光影描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

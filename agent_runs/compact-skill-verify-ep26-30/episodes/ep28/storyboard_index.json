@@ -1,0 +1,113 @@
+{
+  "project": "ep28",
+  "episode_id": "EP28",
+  "cuts": [
+    {
+      "cut_id": "EP28-G01",
+      "group_index": 1,
+      "title": "李少爷暴怒封杀令",
+      "scene": "医院VIP病房，病床旁床头柜区域",
+      "characters": [
+        "李少爷",
+        "保镖"
+      ],
+      "props": [
+        "石膏手",
+        "桌上水果盘",
+        "散落水果"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 0,
+      "group_end_sec": 14,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP28-G02",
+      "group_index": 2,
+      "title": "医生宣判与踹人",
+      "scene": "医院VIP病房，病床左侧至门口区域",
+      "characters": [
+        "李少爷",
+        "医生"
+      ],
+      "props": [
+        "石膏手",
+        "医疗文件夹"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 14,
+      "group_end_sec": 26,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP28-G03",
+      "group_index": 3,
+      "title": "铁路线全断",
+      "scene": "罐头厂办公室，办公桌区域",
+      "characters": [
+        "物流经理",
+        "赵大雷"
+      ],
+      "props": [
+        "退货单"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 26,
+      "group_end_sec": 38,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP28-G04",
+      "group_index": 4,
+      "title": "赵朵朵反击寄证据",
+      "scene": "罐头厂办公室，办公桌区域",
+      "characters": [
+        "赵朵朵",
+        "赵大雷"
+      ],
+      "props": [
+        "U盘"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 38,
+      "group_end_sec": 50,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP28-G05",
+      "group_index": 5,
+      "title": "干警破门抓人",
+      "scene": "医院VIP病房，病床至门口区域",
+      "characters": [
+        "李少爷",
+        "保镖",
+        "京城干警"
+      ],
+      "props": [
+        "红酒杯",
+        "手铐"
+      ],
+      "duration_sec": 15,
+      "group_start_sec": 50,
+      "group_end_sec": 65,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP28-G06",
+      "group_index": 6,
+      "title": "多行不义必自毙",
+      "scene": "医院走廊",
+      "characters": [
+        "李少爷",
+        "赵朵朵"
+      ],
+      "props": [
+        "手铐"
+      ],
+      "duration_sec": 11,
+      "group_start_sec": 65,
+      "group_end_sec": 76,
+      "source_group_label": "第6组"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "project": "雨龙吟端午",
+  "episode_id": "EP19",
+  "cuts": [
+    {
+      "cut_id": "EP19-G01",
+      "group_index": 1,
+      "title": "雷裂河床，鳞片坠泥",
+      "scene": "日/暴雨，河床裂缝处",
+      "characters": [
+        "胡永贵"
+      ],
+      "props": [
+        "巴掌大的青金鳞片",
+        "泥坑",
+        "水龙残影"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 0,
+      "group_end_sec": 13,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP19-G02",
+      "group_index": 2,
+      "title": "暴雨落村，井水喷涌",
+      "scene": "日/暴雨，村头广场",
+      "characters": [
+        "村民甲",
+        "村民乙",
+        "村民们"
+      ],
+      "props": [
+        "干涸井口",
+        "锄头",
+        "泥水"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 13,
+      "group_end_sec": 27,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP19-G03",
+      "group_index": 3,
+      "title": "大鼓裂开，爸爸倒下",
+      "scene": "日/暴雨，祠堂内",
+      "characters": [
+        "爸爸",
+        "天天",
+        "爷爷"
+      ],
+      "props": [
+        "野牛大鼓",
+        "老木鼓槌",
+        "供桌",
+        "水壶"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 27,
+      "group_end_sec": 39,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP19-G04",
+      "group_index": 4,
+      "title": "水龙收缩，爷爷落泪",
+      "scene": "日/暴雨，祠堂内",
+      "characters": [
+        "爸爸",
+        "天天",
+        "爷爷",
+        "云宝"
+      ],
+      "props": [
+        "水壶",
+        "野牛大鼓",
+        "断裂鼓槌"
+      ],
+      "duration_sec": 14,
+      "group_start_sec": 39,
+      "group_end_sec": 53,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP19-G05",
+      "group_index": 5,
+      "title": "化肥成黑水，胡永贵崩溃",
+      "scene": "日/暴雨，村头广场",
+      "characters": [
+        "胡永贵",
+        "包工头",
+        "包工头手下"
+      ],
+      "props": [
+        "化肥堆",
+        "黑水",
+        "雨伞",
+        "泥水"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 53,
+      "group_end_sec": 65,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP19-G06",
+      "group_index": 6,
+      "title": "包工头讨债离场",
+      "scene": "日/暴雨，村头广场",
+      "characters": [
+        "胡永贵",
+        "包工头",
+        "包工头手下"
+      ],
+      "props": [
+        "雨伞",
+        "黑水",
+        "车辆"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 65,
+      "group_end_sec": 78,
+      "source_group_label": "第6组"
+    }
+  ]
+}

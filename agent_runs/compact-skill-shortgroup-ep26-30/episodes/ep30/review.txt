@@ -1,0 +1,111 @@
+﻿{
+  "pass": true,
+  "summary": "已对照EP30原剧本、storyboard-generator规则和整集final.txt逐组审核；敲钟、捐建、修桥、回家吃饭和星空收束均完整保留，未发现阻断交付的 hard issue。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中赵朵朵举槌说“敲钟”、钟声、大屏股价飙升、全场喊“涨停了！上市即涨停！”、赵大雷抱桂姨喊发财，在第1组内按顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "evidence": "赵朵朵的“这只是一个新起点”面向屏幕；“助理，启动希望小学捐建项目”明确对助理说，助理回问后赵朵朵回答地点，现场开口对象清楚。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "水泥大桥、村口、村长、村民、赵朵朵、赵大雷、果筐在组首均有位置；桥的变化、感谢和共同致富都在同一村口桥头完成。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "evidence": "第3组尾赵大雷看向桥外大路，第4组首二人已站在村口水泥路边，重卡驶过后自然转入家里饭菜对白，没有人物或空间跳变。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "家庭餐桌四句对白分别给3秒、3秒、2.5秒、3秒承载，最高约13字/3秒，低于6.5字/秒，并由端菜、夹肉、举杯和碰杯动作支撑。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "evidence": "第6组为6秒片尾意象短组，只承载赵朵朵吃红烧肉后的情绪释放和抬头看繁星；不与第5组硬合并，避免家庭对白和收束意象过载。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第1组标题12秒、4个镜头；0-2、2-5、5-8、8-12秒连续无空档，最后时间点等于总时长。",
+      "fix_instruction": "若不通过，应修正时间段起止、标题总时长或镜头数，确保连续且相加一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "新起点、希望小学捐建项目、第一站询问和远县北沟村四个剧情信息完整保留，未改动行动目标或地点。",
+      "fix_instruction": "若不通过，应恢复原剧本中的项目名称、询问内容和地点，不得压缩成泛泛公益描述。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "感谢桥段最长对白为赵大雷“乡亲们以后运果子再也不愁了！”约15字/3秒，字秒比约5.0；其他感谢对白均未超过6.5字/秒。",
+      "fix_instruction": "若不通过，应拆分村民感谢或赵大雷对白，或增加合理反应承载时间。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组10秒只承载看平整大路、重卡驶过、兄妹两轮家常对白三个轻节拍，属于同一村口大路空间和同一回家前情绪目标。",
+      "fix_instruction": "若不通过，应把道路成果展示和家常饭菜转折拆开，或减少非关键动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首写明夜晚四合院葡萄架、餐桌、赵朵朵、赵大雷、桂姨、大嫂、红烧肉、汽水和酒杯位置，所有人物行动均从这些状态出发。",
+      "fix_instruction": "若不通过，应补齐本组第一帧的人物站坐、身体朝向和关键餐桌道具位置。"
+    },
+    {
+      "group": "第6组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第6组标题6秒、2个镜头；0-3、3-6秒连续，相加为6秒。竖屏4-9秒短组在此用于片尾意象，未靠padding凑时长。",
+      "fix_instruction": "若不通过，应保留必要短组理由，或在不压缩第5组对白的前提下重新分配结尾节拍。"
+    },
+    {
+      "group": "第1组-第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现模型说明词、官方模板编号、控制台占位符、参考图、视频延长、自动分镜或模板化空话，均为自然中文分镜。",
+      "fix_instruction": "若不通过，应删除工程词和模板话术，改写为可见人物动作、对白对象、道具状态、空间和光源。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

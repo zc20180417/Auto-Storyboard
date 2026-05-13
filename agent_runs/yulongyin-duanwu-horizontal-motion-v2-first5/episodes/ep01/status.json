@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "雨龙吟端午-ep01-agent-cli-storyboard.txt",
+  "summary": "横屏EP01已完成12组分镜：村口缺水与化肥黑水铺垫，天天河床吹陶笛，裂缝青蓝光被黑水伤到并伸出小爪抓住陶笛。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

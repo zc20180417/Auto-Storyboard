@@ -1,0 +1,113 @@
+{
+  "pass": true,
+  "summary": "ep23 整集 final.txt 已按竖屏 scene 模式完成，8组均保留原剧本关键台词、人物关系、清障因果和仓房遇险动作，未发现阻断交付的 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "开场料场封道信息完整：钢管、碎石、油布和木料堵在旧河道下口；周大柱、村民乙、赵有福、沈砚川、林知夏的五句关键台词均按原剧本顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "9.5-14秒承载赵有福“你别去！”和沈砚川“你怕冲走料，还是怕冲出别的东西？”约21字/4.5秒，约4.7字/秒，且包含攥住手臂的中等动作，节奏可表演。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "第2组开始搬钢管，第3组3.5-7秒明确周大柱、村民和赵成武合力抬走两排钢管，随后青石和木桩露出，道具状态转移可见。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "evidence": "组首写明沈母在背景坡上雨披下、沈小禾在背景坡路上；0-3秒沈母咳声和沈小禾冲来均有可见人物来源，沈小禾说话前已入场。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈小禾、沈母、沈砚川均为现场开口并写明对象；林知夏只在门外扶住沈母并看向门缝，没有承担未写来源的画外音。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首列出旧河道下口料场边的堵料、水线和周大柱、村民乙、赵有福、沈砚川、林知夏的位置、朝向与视线，第一帧可生成。",
+      "fix_instruction": "若不通过，应补齐每个在场人物的画面位置、身体朝向、关键道具和视线关系。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "沈砚川下令、周大柱带人搬钢管、赵成武加入、赵有福阻拦和沈砚川质问被拆成4个时间段，14秒内没有同时挤压长台词和复杂动作。",
+      "fix_instruction": "若不通过，应将赵成武加入和赵有福阻拦拆为独立组或压缩非关键走位。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵有福“我怕出人命！”、沈砚川“出人命的，是你。”、底下露出老河床青石和后打木桩、林知夏两句判断均保留，剧情因果未改写。",
+      "fix_instruction": "若不通过，应恢复原台词、青石和木桩揭示，以及林知夏对旧河床边线和后打木桩的判断。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组末尾众人视线集中到旧河床边线，第4组组首继续写青石、歪斜木桩和右侧两层钢管，周大柱、赵有福和沈砚川的位置与冲突连续。",
+      "fix_instruction": "若不通过，应在第3组组尾或第4组组首补齐旧河床、右侧料堆和人物阻拦状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈小禾对沈砚川报急、沈砚川问沈小禾药在哪里、沈小禾回答、林知夏拦沈小禾、沈小禾再对沈砚川解释，每句现场对白对象明确。",
+      "fix_instruction": "若不通过，应逐句补成A对B说道/问道/喊道，不允许省略说话对象。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "沈砚川要去取药，沈小禾以“你伤了，我去更快！”抢先跑走，沈砚川追两步因塌石滑倒并被周大柱扶住，周大柱劝阻和沈砚川喊“小禾！”均保留。",
+      "fix_instruction": "若不通过，应恢复沈小禾抢先、沈砚川滑倒、周大柱扶住和最后呼喊的连续动作链。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "仓房内沈小禾现场开口“找到了！”和“哥！”有口型；门外林知夏“小禾！”通过门缝外身影和门外声音来源承载，未写成沈小禾口型。",
+      "fix_instruction": "若不通过，应把门外音写清声音来源和门内人物反应，或改为可见角色现场开口。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "水灌进仓房、没过脚面、拍门、横梁卡门、后墙裂缝延长、沈砚川贴近门板喊话均为可见可听动作，没有使用不可视抽象判断代替剧情。",
+      "fix_instruction": "若不通过，应将抽象危险改为水位、裂缝、人物动作、门板状态和声音来源等可生成细节。"
+    },
+    {
+      "group": "第1组至第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现Seedance说明词、官方模板编号、参考图占位、自动正反打、字幕贴片、工程说明或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除污染词并改写为自然短剧画面语言。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "第14集 assembled final 已按 storyboard-reviewer 对照原剧本、生成规则和竖屏格式完成复审，6组均通过，无 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "棚口丢孩子的核心信息完整保留：妇人确认儿子刚在棚口、沈小禾说明分水时看见过、周大柱稳住人群、赵有福质疑、妇人崩溃反驳、林知夏发现小脚印通向后坡。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组14秒内约54字情绪对白，包含沈砚川说明后坡连旧鸡棚、沈小禾提醒水深、沈砚川分派周大柱和林知夏、赵有福阻拦、沈砚川反击，估算约3.9字/秒并有转身下令动作支撑，不存在过快或拖慢。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "evidence": "失踪男孩在组首已位于鸡棚门内阴影角落，先以抽泣声和门内可见肢体建立来源，再被沈砚川踹门抱出，没有突然出现。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "evidence": "第4组14秒只承载回程泥坡上的连续危险动作：孩子鞋掉、林知夏提醒水涨、林知夏脚滑、沈砚川拽稳并带走，所有节拍在同一空间和同一救援目标下完成。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "evidence": "整集最终稿未出现模型说明词、参考模板、@图片、字幕贴片、自动分镜或模板化批量描述，负面提示词为固定尾部约束。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定棚口雨夜、棚柱、泥地脚印前的所有在场人物位置和身体朝向，没有把跑动或发现脚印等过程动作写进组首。",
+      "fix_instruction": "若不通过，应把动作推进移入时间段，并在组首只保留静态位置、朝向、道具和视线关系。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈砚川对林知夏和众人、对周大柱、对赵有福的现场对白对象明确；赵有福质疑和沈小禾提醒也都有真实对话对象。",
+      "fix_instruction": "若不通过，应补齐每句真人对白的实际听话人，避免假对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "鸡棚内男孩哭喊有门内抽泣声、破门晃动和阴影角落人物作为声音来源；不存在心声或画外音误写成现场口型。",
+      "fix_instruction": "若不通过，应明确声音来源或人物闭口反应，避免声画混淆。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部沈砚川抱孩子在鸡棚门口，林知夏在旁；第4组首帧维持同一人物状态、同一敞开的破门和泥坡积水，连续自然。",
+      "fix_instruction": "若不通过，应补清上一组组尾或本组组首的人物位置和道具状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "仓房内妇人抱孩子、村民甲松气、赵有福试图算了、周大柱怒斥、沈砚川表态的顺序和台词均与原剧本一致。",
+      "fix_instruction": "若不通过，应恢复原剧本台词和顺序，只压缩非关键动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "油桶从第5组到第6组都位于仓房背景角落，没有被无过渡挪动；赵成武在第5组组首和第6组组首均位于背景右侧人群后方，支持最后父子异样眼神。",
+      "fix_instruction": "若不通过，应补充油桶或赵成武的可见位置与过渡。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第6组15秒内含村民两句短喊、赵有福与沈砚川短句交锋、林知夏约19字急声提醒、沈砚川10字下令和父子反应，语速均低于6.5字/秒硬上限且动作密度可表演。",
+      "fix_instruction": "若不通过，应拆分群众追责和挡水沟指令，或压缩非关键反应。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

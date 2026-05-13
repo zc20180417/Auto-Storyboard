@@ -1,0 +1,147 @@
+{
+  "project": "ep28",
+  "episode_id": "EP28",
+  "cuts": [
+    {
+      "cut_id": "EP28-G01",
+      "group_index": 1,
+      "title": "病房暴怒下令",
+      "scene": "医院VIP病房",
+      "characters": [
+        "李少爷",
+        "保镖",
+        "医生"
+      ],
+      "props": [
+        "厚石膏",
+        "水果盘",
+        "散落水果",
+        "手机"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 0,
+      "group_end_sec": 12,
+      "source_group_label": "第1组"
+    },
+    {
+      "cut_id": "EP28-G02",
+      "group_index": 2,
+      "title": "医生报伤后被踹倒",
+      "scene": "医院VIP病房",
+      "characters": [
+        "李少爷",
+        "保镖",
+        "医生"
+      ],
+      "props": [
+        "厚石膏",
+        "病历夹",
+        "散落水果"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 12,
+      "group_end_sec": 24,
+      "source_group_label": "第2组"
+    },
+    {
+      "cut_id": "EP28-G03",
+      "group_index": 3,
+      "title": "铁路线被掐断",
+      "scene": "罐头厂办公室",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "物流经理"
+      ],
+      "props": [
+        "退货单",
+        "办公桌",
+        "电话"
+      ],
+      "duration_sec": 13,
+      "group_start_sec": 24,
+      "group_end_sec": 37,
+      "source_group_label": "第3组"
+    },
+    {
+      "cut_id": "EP28-G04",
+      "group_index": 4,
+      "title": "U盘寄往京城纪委",
+      "scene": "罐头厂办公室",
+      "characters": [
+        "赵朵朵",
+        "赵大雷",
+        "物流经理"
+      ],
+      "props": [
+        "U盘",
+        "退货单",
+        "办公桌"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 37,
+      "group_end_sec": 49,
+      "source_group_label": "第4组"
+    },
+    {
+      "cut_id": "EP28-G05",
+      "group_index": 5,
+      "title": "得意酒杯被打断",
+      "scene": "医院VIP病房",
+      "characters": [
+        "李少爷",
+        "保镖",
+        "京城干警"
+      ],
+      "props": [
+        "红酒杯",
+        "病房门",
+        "厚石膏"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 49,
+      "group_end_sec": 61,
+      "source_group_label": "第5组"
+    },
+    {
+      "cut_id": "EP28-G06",
+      "group_index": 6,
+      "title": "父亲被双规",
+      "scene": "医院VIP病房",
+      "characters": [
+        "李少爷",
+        "京城干警",
+        "保镖"
+      ],
+      "props": [
+        "红酒杯",
+        "厚石膏",
+        "病房门"
+      ],
+      "duration_sec": 12,
+      "group_start_sec": 61,
+      "group_end_sec": 73,
+      "source_group_label": "第6组"
+    },
+    {
+      "cut_id": "EP28-G07",
+      "group_index": 7,
+      "title": "走廊对峙收束",
+      "scene": "医院VIP病房外走廊",
+      "characters": [
+        "赵朵朵",
+        "李少爷",
+        "京城干警",
+        "保镖"
+      ],
+      "props": [
+        "厚石膏",
+        "病房门"
+      ],
+      "duration_sec": 10,
+      "group_start_sec": 73,
+      "group_end_sec": 83,
+      "source_group_label": "第7组"
+    }
+  ]
+}

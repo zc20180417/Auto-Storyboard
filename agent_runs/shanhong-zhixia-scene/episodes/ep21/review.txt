@@ -1,0 +1,109 @@
+{
+  "pass": true,
+  "summary": "ep21 已对照完整剧本、竖屏生成规则和组装后的 final.txt 完成真实审核，9个分镜组完整覆盖沈砚川再入泄洪洞、赵成武协助撬闸、洞外拉绳救出赵成武、断绳与坍响等关键剧情，无阻断交付的硬问题。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组",
+    "第9组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留原剧本洞口水雾翻涌、沈砚川重新系绳和准备再进的动作，并依次呈现沈小禾“哥，别去了！”，沈母“娘拦不住你。”、“但你得回来。”，沈砚川“我答应你。”，周大柱“我陪你进！”和沈砚川“外头得有人镇着。”，没有删改关键台词。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "第2组14秒承载沈砚川对林知夏交代下口乱石滩、没从洞口出就去那里等、草图上有检修槽、闸右边直通下口，以及林知夏两次追问，约55个有效字，平均约3.9字/秒，处于可表演范围。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "第3组组首写明林知夏手持绳索尾端、加长铁钎靠在洞口石壁旁；随后林知夏扣紧绳索交代“一短一长是回，连续三下是拉人”，沈砚川接过加长铁钎入洞，绳索与铁钎状态连续。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "evidence": "第5组13秒内的强节拍为两人压钎、闸板开缝水压顶入、赵成武惊喊、再推、闸板掀起半尺、洞顶碎石和退离命令，均属于同一主闸段撬闸事故链，未叠加不相关空间、道具或长对白。"
+    },
+    {
+      "group": "第9组",
+      "type": "format",
+      "evidence": "第9组标题包含稳定 cut_id EP21-G09，总时长10秒，时间段0-3、3-5、5-7、7-10秒连续且为0.5秒粒度，镜头数4个与实际时间段一致，组结构字段齐全。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "第2组所有真人对白均写明真实对象：沈砚川对林知夏说“记住下口乱石滩。”、“我若没从洞口出。”、“就去那儿等我。”、“草图上有检修槽。”、“闸右边直通下口。”，林知夏对沈砚川问“什么意思？”、“你留了后路？”。",
+      "fix_instruction": "若不通过，应补足每句真人对白的真实对话对象，不得用空气、绳索或洞口等假对象承载。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "赵成武、赵有福、林知夏、沈砚川、周大柱、沈小禾和沈母均在组首空间锁定中有明确画面位置和身体朝向；赵成武先走出半步再开口，沈砚川和赵成武在组尾才入洞，人物行动顺序清楚。",
+      "fix_instruction": "若不通过，应在组首或开口前补充人物位置、朝向、可见状态或入场动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第4组为洞内现场对白，赵成武和沈砚川均在画面中开口并对真实对方说话；没有心声、旁白、门外音、电话音或广播音被误写成现场口型。",
+      "fix_instruction": "若不通过，应明确声音来源，并为非现场声音写明画面人物嘴唇闭合、不做口型。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾部内景写沈砚川和赵成武准备从主闸段后退；第6组按原剧本转回洞口外，组首写林知夏、周大柱、沈小禾、沈母、赵有福和村民握住从洞内延出的主绳，洞内水声变轰鸣，内外绳索压力衔接清楚。",
+      "fix_instruction": "若不通过，应在洞内组尾或洞外组首补明绳索、退路、洞口众人握绳状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第7组按照原剧本呈现洞口喷出更猛洪水、众人连退、绳子绷直、林知夏喊“拉！”，众人先拖出呛水的赵成武，没有提前救出沈砚川或改变人物生死悬念。",
+      "fix_instruction": "若不通过，应恢复原剧本拖出赵成武在前、沈砚川仍在洞内的剧情顺序。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第8组10秒承载赵成武“砚川还在里头！”，沈小禾“哥！”，周大柱“我进去救他！”和林知夏“别去！”，并含周大柱冲向洞口、林知夏拦住的动作，节拍集中且可表演，没有跨空间或关键道具操作过载。",
+      "fix_instruction": "若不通过，应拆开赵成武汇报和周大柱冲洞口，或减少非关键动作。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集final.txt没有模型说明词、官方模板编号、参考图、首尾帧、工程占位符、字幕广告语或批量模板化描述；断绳、坍响和众人僵住均以可见可听信息表达。",
+      "fix_instruction": "若不通过，应删除污染内容并改成自然短剧分镜画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

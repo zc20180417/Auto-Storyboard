@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep28",
+  "status": "done",
+  "output_name": "ep28-ep28-agent-cli-storyboard.txt",
+  "summary": "EP28 scene模式已完成：医院报复、工厂反制、医院抓捕与走廊收束共7组，关键抓捕台词完整保留。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "ep06已对照完整剧本、竖屏生成规则和最终分镜逐组审查，河滩邀约、路障冲突、直播震慑、鱼干秒空和办公室反制均保留关键台词与动作，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "7.5-15秒承载陆凡转型邀约、周思思质疑和陆凡指路障三句约42字，7.5秒约5.6字/秒，且包含抬手指向村口动作，低于6.5硬上限。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "黄毛挥棍砸手机、周思思尖叫、陆凡右臂格挡、陆凡要求继续直播、黄毛踉跄后退均与6-2剧本顺序一致，没有新增摔倒或受伤。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "铁棍先由混混举起，3-7秒陆凡抓住棍头但没有夺棍，7-12秒继续压住棍头威慑，符合剧本“不让它落下”的道具状态。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "evidence": "一万单秒空、牛大春确认和陆凡安排装车拆为7-11秒、11-13秒、13-15秒三段，各段台词均低于6.5字/秒，未把三人台词挤入同一短镜头。"
+    },
+    {
+      "group": "第10组",
+      "type": "audio_mouth_sync",
+      "evidence": "陆凡直播录像作为手机屏幕画面出现，办公室现场只让赵大江和刘波开口，未把屏幕内容写成陆凡现场对白。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "水头村河滩、陆凡、周思思、自拍杆和手机在组首均有明确位置和朝向，组内没有跨到村口土路。",
+      "fix_instruction": "若不通过，应把村口路障实景另起组，河滩组只保留指向和视线。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "黄毛、三个混混、周思思和陆凡都在组首可见；黄毛冲来前已位于路障旁，陆凡准备拦截前也已在周思思左后侧。",
+      "fix_instruction": "若人物突然参与动作，应在组首或前半段补入场和站位。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组尾部黄毛踉跄后退并重新站住，第5组组首写黄毛刚踉跄后站稳，陆凡仍护在周思思身前，状态连续。",
+      "fix_instruction": "若不连续，应在第4组尾或第5组首补黄毛站稳和陆凡护人位置。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留黄毛看弹幕和村民打电话后脸色发白、低声撤退、无人受伤、周思思兴奋播报、陆凡说明提交官差的全部关键节点。",
+      "fix_instruction": "若缺失，应恢复撤退原因、无人受伤和陆凡提交证据台词。"
+    },
+    {
+      "group": "第9组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组只承载村民搬运、陆凡要求保存录屏、周思思确认铁证三个节拍，12秒内动作和台词容量清楚。",
+      "fix_instruction": "若过载，应拆出搬运场面或把保存录屏移至单独承接组。"
+    },
+    {
+      "group": "第11组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第10组赵大江接过刘波手机，第11组组首手机在赵大江手中，随后砸到地面碎裂，道具归属和状态变化可见。",
+      "fix_instruction": "若道具跳变，应补刘波递手机、赵大江接过或手机落地的可见过渡。"
+    },
+    {
+      "group": "第11组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模型说明词、参考模板、自动分镜、参考图或首尾帧等工程污染内容；屏幕标题属于剧本内手机画面信息。",
+      "fix_instruction": "若出现污染词，应删除并改成现场可见动作、手机画面或人物反应。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

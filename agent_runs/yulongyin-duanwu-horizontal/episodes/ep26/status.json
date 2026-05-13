@@ -1,0 +1,29 @@
+{
+  "episode_id": "ep26",
+  "status": "done",
+  "output_name": "雨龙吟端午ep26-agent-cli-storyboard.txt",
+  "summary": "水龙在后山复苏，爸爸和天天乘龙飞起；村民见神迹跪拜，刀疤男被电话逼迫后拖出炸药并在村口威胁全村。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "电话威胁台词偏快。",
+      "evidence": "约31字/5秒，约6.2字/秒，位于5.8-6.5风险区间，但电话威胁语境急促且未超过硬线。",
+      "fix": "可选做法是从刀疤男反应段压缩0.5秒给电话台词。"
+    },
+    {
+      "severity": "soft",
+      "group": "第8组",
+      "rule": "dialogue_pacing",
+      "problem": "雷管威胁第一句偏快。",
+      "evidence": "约27字/4.5秒，约6.0字/秒，位于5.8-6.5风险区间，但已低于硬线并有按钮推近动作辅助承载。",
+      "fix": "可选做法是再拆出台词或把按钮镜头压缩0.5秒。"
+    }
+  ],
+  "reviewer_source": "storyboard-horizontal-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}
