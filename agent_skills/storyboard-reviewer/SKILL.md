@@ -28,7 +28,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - 短促交锋、单句反击、两三句短对白本可自然落在 6-9 秒，却被扩成 10 秒以上；扩长依据只是侧脸绷紧、回头凝视、停顿半步、眼神交锋、群众沉默、普通表情反应等非原剧本关键动作。此类属于硬凑 10 秒，按 `generation_density` 或 `dialogue_pacing` 判 hard issue。
 - 把自然需要 16 秒以上的戏剧节拍硬压进 15 秒，导致台词偏快、动作过载、情绪转折仓促或关键道具操作不可表演。
 - 镜头数与实际时间段数不一致。
-- 缺少 generator 当前要求的组结构字段：`人物`、`场景`、`道具`、`组首空间锁定`、`镜头描述`、`光影设计`、`组尾衔接`、`画面风格`、`--neg` 或组结束标记。
+- 缺少 generator 当前要求的组结构字段：`人物`、`场景`、`道具`、`组首空间锁定`、`镜头描述`、`光影设计`、`组尾衔接` 或组结束标记。固定“画面风格”和 `--neg` 由 Python 收集阶段统一拼接，不再要求 `final.txt` 逐组包含。
 - 最终稿出现三尖括号标签、非 `cut_id` 用途的方括号镜头标签、JSON、调试标记、自检说明或非分镜正文。
 
 ### 2. 原剧本忠实度错误
@@ -61,6 +61,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 常见 hard issue：
 
 - 一组同时塞入对白/画外音、外部事件、中等/长动作、关键道具操作和情绪大转折。
+- 单个时间段同时塞入多个顺序主动作，导致视频执行会混乱。例如同一镜同时要求“冲进门、撞翻、倒地、挡人、喊话”，或同一人物在几秒内完成移动、攻击、回身保护、说长台词。
 - 复合动作链低于 4 秒且影响表演自然度，尤其还叠加长台词、门外事件或关键道具揭示。
 - 5 个以上时间段里包含多个中等/长动作，画面明显仓促。
 - 为满足 10 秒下限而硬塞强节拍、拖慢台词、增加长凝视或普通沉默。
@@ -71,9 +72,12 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 
 - 同一组跨越两个主要物理空间，且未明确标注蒙太奇、回忆、片尾意象、屏幕画面或主观想象。
 - 组首空间锁定缺少本组第一帧已在场的关键人物、位置、身体朝向、关键道具或布局。
+- 组首空间锁定与第一个时间段的起点矛盾。例如组首写某人已经倒地、道具已经脱手、门已经关闭，但第一个时间段又从倒地前、脱手前、关门前重新开始动作。
 - 组首空间锁定像独立镜头，例如写“镜头展示”“画面出现”“人物正在进入”等动作推进。
 - 组首空间锁定使用过程动作动词描述第一帧状态，例如“走来、走向、爬行、奔跑、快步上前、站到、转身、进入、走出、被架着走、伸手、递出、拿起、放下、打开、按下、播放”。这些应放进后续时间段镜头描述；组首只能写结果状态，如“低伏在地面，身体朝向赵朵朵方向”“已在门内”“手中持有录音笔”。
 - 人物未在组首可见，也没有在行动/说话前入场、揭示、电话、画外音或屏幕来源，却直接参与关键动作或台词。
+- 保护型动作没有写清“挡在谁前面/遮住谁/保护谁”，导致被保护对象和保护者站位关系不可生成，且该保护关系影响剧情理解。
+- 非主动作人物在同一时间段内抢走原剧本主动作，例如旁观者替主角扶人、打手替保护者阻挡、群众替关键人物递物或攻击。
 
 ### 7. 组内/组间连续性错误
 
@@ -105,6 +109,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - 静态外观展示占用 1-2 秒但未明显挤压剧情。
 - 轻微组间状态交代不足，但不造成不可生成或前后矛盾。
 - 关键道具位置或归属略含糊，但仍能推断动作如何发生；应建议补一句放下、递出、推近、拿起、收回等过渡。
+- 复杂动作、保护站位或关键道具组缺少 `视频禁止项：...`，但正文本身仍清楚；应建议补入本组特有风险，例如人物换位、道具消失、非主角抢动作、提前站起。
 - 光影描述过泛、重复，或可能导致黑脸但不影响剧情。
 - 情绪只写抽象词，缺少动作表现，但关键剧情仍可理解。
 - 环境/全景镜头 3 秒但无原剧本明确连续动作支撑。
@@ -134,6 +139,8 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - `handoff_continuity`：相邻同空间组的组尾与组首状态衔接。
 - `prop_continuity`：同组内或相邻组内关键道具的归属、位置、可操作状态和过渡动作。
 - `filmability`：不可视信息未转译，静态外观展示越界。
+- `action_atomicity`：单个时间段是否只承载一个主动作，复杂动作是否拆成可执行段，非主动作人物是否抢戏。
+- `video_negative_constraints`：复杂动作、保护站位、关键道具组是否提供本组特有 `视频禁止项`，以及禁止项是否与剧情一致。
 - `prompt_pollution`：模型说明词、模板化批量描述、模板污染、参考图/首尾帧/视频延长等工程词进入正文、环境交代镜头超时。
 
 ## 输出要求
@@ -144,7 +151,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - `warnings` 最多 5 条，只放软问题。
 - `checked_groups` 必须列出实际审过的全部组别，不能留空，不能只写“全部”。
 - `audit_coverage` 至少必须包含当前 Python 校验所需字段，且全部写成 `"checked"`：`script_fidelity`、`dialogue_direction`、`timing_math`、`dialogue_pacing`、`space_locking`、`format`、`character_availability`、`handoff_continuity`、`filmability`。
-- `audit_coverage` 可以额外包含 `audio_mouth_sync`、`generation_density`、`prompt_pollution`，但不能缺少上一条的必需字段。
+- `audit_coverage` 可以额外包含 `audio_mouth_sync`、`generation_density`、`action_atomicity`、`video_negative_constraints`、`prompt_pollution`，但不能缺少上一条的必需字段。
 - `spot_checks` 至少 3 条，优先覆盖台词节奏、空间/连续性、原剧本忠实度；若正文存在关键道具归属变化、片段密度、模板化描述或模型词风险，必须至少抽查其中一类。
 - `semantic_checks` 记录最关键语义审稿点；`result` 使用 `pass`、`warning` 或 `issue`。
 - `pass=true` 时，`issues` 必须为空，且 `semantic_checks` 中不得出现 `result=issue`；`pass=false` 时，`issues` 必须包含阻断交付的 hard issue。

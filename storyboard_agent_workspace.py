@@ -44,6 +44,9 @@ SEEDANCE_PROMPT_PROFILE_PATH = "agent_skills/seedance-prompt-profile/SKILL.md"
 HAPPYHORSE_PROMPT_PROFILE_PATH = "agent_skills/happyhorse-prompt-profile/SKILL.md"
 AI_VIDEO_PROMPT_SKILL_PATH = "agent_skills/ai-video-prompt/SKILL.md"
 AGENT_WORKSPACE_VERSION = 1
+SIMPLE_BATCH_MAX_SCRIPT_CHARS = 2500
+SIMPLE_BATCH_MAX_SEGMENTS = 1
+MAX_EPISODES_PER_WORKER_BATCH = 2
 
 STORYBOARD_ASPECT_CONFIG = {
     "vertical": {
@@ -586,6 +589,58 @@ def ensure_project_agent_skills(
     )
 
 
+def is_simple_worker_batch_candidate(task: dict) -> bool:
+    if "script_chars" not in task or "segments" not in task:
+        return False
+    try:
+        script_chars = int(task.get("script_chars") or 0)
+        segments = int(task.get("segments") or 0)
+    except (TypeError, ValueError):
+        return False
+    return (
+        script_chars <= SIMPLE_BATCH_MAX_SCRIPT_CHARS
+        and segments <= SIMPLE_BATCH_MAX_SEGMENTS
+    )
+
+
+def build_worker_batches(tasks: list[dict]) -> list[list[dict]]:
+    batches: list[list[dict]] = []
+    index = 0
+    while index < len(tasks):
+        current = tasks[index]
+        next_task = tasks[index + 1] if index + 1 < len(tasks) else None
+        if (
+            next_task is not None
+            and is_simple_worker_batch_candidate(current)
+            and is_simple_worker_batch_candidate(next_task)
+        ):
+            batches.append([current, next_task])
+            index += MAX_EPISODES_PER_WORKER_BATCH
+        else:
+            batches.append([current])
+            index += 1
+    return batches
+
+
+def format_worker_batch_label(batch: list[dict]) -> str:
+    return ", ".join(f"`{task['episode_id']}`" for task in batch)
+
+
+def format_worker_batch_prompts(batch: list[dict]) -> str:
+    return ", ".join(f"`{task['prompt_file']}`" for task in batch)
+
+
+def enrich_tasks_for_worker_batching(tasks: list[dict]) -> None:
+    for task in tasks:
+        if "script_chars" in task:
+            continue
+        script_path = Path(task["episode_dir"]) / "script.txt"
+        if script_path.exists():
+            task["script_chars"] = len(read_utf8_text(script_path))
+        else:
+            task["script_chars"] = SIMPLE_BATCH_MAX_SCRIPT_CHARS + 1
+
+
 def write_runner_scripts(
     *,
     run_dir: Path,
@@ -595,6 +650,8 @@ def write_runner_scripts(
 ) -> None:
     manifest = read_json(run_dir / "manifest.json")
     tasks = manifest["episodes"]
+    enrich_tasks_for_worker_batching(tasks)
+    worker_batches = build_worker_batches(tasks)
 
     for stale in ("run_codex_parallel.ps1", "run_qwen_parallel.ps1"):
         stale_path = run_dir / stale
@@ -604,14 +661,21 @@ def write_runner_scripts(
     task_lines = []
     initial_worker_lines = []
     pending_prompt_lines = []
+    worker_plan_lines = []
     for index, task in enumerate(tasks, start=1):
         task_lines.append(
             f"- `{task['episode_id']}`: dispatch `{task['prompt_file']}` to one worker. "
             f"Worker writes only under `{task['episode_dir']}`."
         )
         pending_prompt_lines.append(f"- `{task['prompt_file']}`")
+    for index, batch in enumerate(worker_batches, start=1):
+        worker_plan_lines.append(
+            f"- batch {index}: {format_worker_batch_label(batch)} -> {format_worker_batch_prompts(batch)}"
+        )
         if index <= parallelism:
-            initial_worker_lines.append(f"- worker {index}: `{task['prompt_file']}`")
+            initial_worker_lines.append(
+                f"- worker {index}: {format_worker_batch_label(batch)} -> {format_worker_batch_prompts(batch)}"
+            )
 
     codex_model_arg = f" -m {model}" if model else ""
     sample_task = tasks[0] if tasks else None
@@ -670,16 +734,21 @@ Give `DISPATCH_PROMPT.md` to the host agent. The host agent is a dispatcher only
 
 Use {worker_capability}.
 Run up to {parallelism} workers in parallel.
-Default to one episode per worker.
-Use two episodes per worker only for short/simple episodes and only after explicit user approval.
+Worker batches are generated dynamically from episode complexity.
+Simple batch threshold: <= {SIMPLE_BATCH_MAX_SCRIPT_CHARS} script chars and <= {SIMPLE_BATCH_MAX_SEGMENTS} segment.
+Batch size limit: {MAX_EPISODES_PER_WORKER_BATCH} episodes per worker.
 When one worker handles two episodes, it must fully finish generation, review, repair, and validation for the first episode before starting the second.
 Never merge reviews or outputs across episodes.
+
+Dynamic worker batches:
+
+{chr(10).join(worker_plan_lines) if worker_plan_lines else "- No episodes found."}
 
 Initial worker wave:
 
 {chr(10).join(initial_worker_lines) if initial_worker_lines else "- No episodes found."}
 
-When any worker finishes, dispatch the next unfinished episode prompt.
+When any worker finishes, dispatch the next unfinished worker batch from the dynamic plan.
 
 ## Episode Tasks
 
@@ -730,9 +799,14 @@ Your only tasks:
 
 Use {worker_capability}.
 Run up to {parallelism} workers in parallel.
-Default to one episode per worker.
-Use two episodes per worker only for short/simple episodes and only after explicit user approval.
+Worker batches are generated dynamically from episode complexity.
+Simple batch threshold: <= {SIMPLE_BATCH_MAX_SCRIPT_CHARS} script chars and <= {SIMPLE_BATCH_MAX_SEGMENTS} segment.
+Batch size limit: {MAX_EPISODES_PER_WORKER_BATCH} episodes per worker.
 When one worker handles two episodes, it must complete the first episode's generation, real review, hard-issue repair, re-review, and validation before starting the second.
+
+Dynamic worker batches:
+
+{chr(10).join(worker_plan_lines) if worker_plan_lines else "- No episodes found."}
 
 Initial worker wave:
 
@@ -804,6 +878,12 @@ CLEAN_SHOT_SECONDS_RE = re.compile(r"(?:\*\*)?本镜估算时长(?:\*\*)?[：:]\
 CLEAN_GROUP_TOTAL_RE = re.compile(r"总时长[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒")
 CLEAN_GROUP_SHOTS_RE = re.compile(r"镜头数[：:]\s*(?P<shots>\d{1,3})\s*个")
 MACHINE_TAG_RE = re.compile(r"(?m)^\ufeff?\s*<<<(?:GROUP|GROUP_END|SHOT|SHOT_END)\b.*?>>>\s*$")
+VERTICAL_SEEDANCE_STYLE_LINE = "画面风格：浅景深，电影质感，4K画质，真人实拍风格，细节丰富，无字幕，无配乐"
+VERTICAL_SEEDANCE_NEGATIVE_LINE = "--neg 模糊，低分辨率，扭曲，变形，卡通，油画，3D渲染，塑料感，西方人面孔，面部融合，过曝，色彩失真，伪影，叠加字幕，硬字幕，烧录字幕，后期添加的文字，水印，logo，标题文字，片名，演职员表，背景音乐，配乐，BGM，叠加文字，画面外文字"
+GROUP_END_MARKER_RE = re.compile(
+    r"(?m)^\s*===\s*第[0-9一二三四五六七八九十百千万零〇两]+组结束\s*===\s*$"
+)
+VIDEO_NEGATIVE_HINT_RE = re.compile(r"(?m)^\s*(?:视频禁止项|剧情负面约束)[：:]\s*(?P<value>.+?)\s*$")
 HAPPYHORSE_REQUIRED_SECTIONS = ("【场景】", "【主体】", "【运动】", "【音频】", "【画面风格】")
 HAPPYHORSE_SEEDANCE_STYLE_MARKERS = ("**人物**", "**场景**", "**道具**", "组首空间锁定", "画面风格：", "【技术参数】")
 HAPPYHORSE_INTERFACE_PARAM_RE = re.compile(
@@ -1547,6 +1627,52 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
         expected_group += 1
 
     return issues
+
+
+def _append_vertical_seedance_tail_to_block(block: str) -> str:
+    negative_hints: list[str] = []
+
+    def remove_negative_hint(match: re.Match[str]) -> str:
+        value = match.group("value").strip().strip("，,、；;")
+        if value and value != "无":
+            negative_hints.append(value)
+        return ""
+
+    block = VIDEO_NEGATIVE_HINT_RE.sub(remove_negative_hint, block)
+    negative_line = VERTICAL_SEEDANCE_NEGATIVE_LINE
+    if negative_hints:
+        negative_line = f"{negative_line}，{'，'.join(negative_hints)}"
+
+    additions = []
+    if VERTICAL_SEEDANCE_STYLE_LINE not in block:
+        additions.append(VERTICAL_SEEDANCE_STYLE_LINE)
+    if VERTICAL_SEEDANCE_NEGATIVE_LINE not in block:
+        additions.append(negative_line)
+    if not additions:
+        return block
+
+    tail = "\n\n".join(additions) + "\n\n"
+    end_match = GROUP_END_MARKER_RE.search(block)
+    if end_match:
+        return block[: end_match.start()] + tail + block[end_match.start():]
+    return block.rstrip() + "\n\n" + tail.rstrip() + "\n"
+
+
+def append_vertical_seedance_tail_to_groups(content: str) -> str:
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    if not group_matches:
+        return content
+
+    parts: list[str] = []
+    cursor = 0
+    for index, group_match in enumerate(group_matches):
+        block_start = group_match.end()
+        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
+        parts.append(content[cursor:block_start])
+        parts.append(_append_vertical_seedance_tail_to_block(content[block_start:block_end]))
+        cursor = block_end
+    parts.append(content[cursor:])
+    return "".join(parts)
 
 
 def is_happyhorse_episode_dir(episode_dir: Path) -> bool:
@@ -2311,6 +2437,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
                 "prompt_file": str(prompt_file),
                 "last_message_file": str(episode_dir / "agent-last-message.txt"),
                 "agent_log_file": str(episode_dir / "agent-stdout.log"),
+                "script_chars": len(episode.script_text),
                 "segments": len(segments),
                 "segment_titles": [segment.title for segment in segments],
             }
@@ -2589,9 +2716,13 @@ def collect_run(args: argparse.Namespace) -> int:
             summary_lines.append("")
             continue
 
-        write_utf8(output_path, content)
+        output_content = content
+        if not horizontal_run and not is_happyhorse_episode_dir(episode_dir):
+            output_content = append_vertical_seedance_tail_to_groups(output_content)
+
+        write_utf8(output_path, output_content)
         if export_index:
-            index_json_path, index_xlsx_path = write_storyboard_index_files(episode_dir, content)
+            index_json_path, index_xlsx_path = write_storyboard_index_files(episode_dir, output_content)
             index_output_json = out_dir / f"{output_path.stem}_index.json"
             index_output_xlsx = out_dir / f"{output_path.stem}_index.xlsx"
             shutil.copy2(index_json_path, index_output_json)
