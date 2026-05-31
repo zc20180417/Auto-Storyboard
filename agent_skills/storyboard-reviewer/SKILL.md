@@ -62,6 +62,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 
 - 一组同时塞入对白/画外音、外部事件、中等/长动作、关键道具操作和情绪大转折。
 - 单个时间段同时塞入多个顺序主动作，导致视频执行会混乱。例如同一镜同时要求“冲进门、撞翻、倒地、挡人、喊话”，或同一人物在几秒内完成移动、攻击、回身保护、说长台词。
+- 外部事件进入被压缩到不可执行，例如车辆抵达、车门打开、人员下车、群众反应、主角对峙都塞入一个 3-5 秒时间段，导致现场状态无法稳定变化。
 - 复合动作链低于 4 秒且影响表演自然度，尤其还叠加长台词、门外事件或关键道具揭示。
 - 5 个以上时间段里包含多个中等/长动作，画面明显仓促。
 - 为满足 10 秒下限而硬塞强节拍、拖慢台词、增加长凝视或普通沉默。
@@ -78,6 +79,8 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - 人物未在组首可见，也没有在行动/说话前入场、揭示、电话、画外音或屏幕来源，却直接参与关键动作或台词。
 - 保护型动作没有写清“挡在谁前面/遮住谁/保护谁”，导致被保护对象和保护者站位关系不可生成，且该保护关系影响剧情理解。
 - 非主动作人物在同一时间段内抢走原剧本主动作，例如旁观者替主角扶人、打手替保护者阻挡、群众替关键人物递物或攻击。
+- `视频禁止项` 与本组剧情矛盾，或要求禁止原剧本必须发生的动作，导致生成约束和正文互相冲突。
+- `视频禁止项` 超过 5 个、使用泛泛词如“画面混乱/人物错误/道具错误”，或每组机械复制同一串通用负面词，导致提示词变重且不聚焦本组风险。
 
 ### 7. 组内/组间连续性错误
 
@@ -109,7 +112,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - 静态外观展示占用 1-2 秒但未明显挤压剧情。
 - 轻微组间状态交代不足，但不造成不可生成或前后矛盾。
 - 关键道具位置或归属略含糊，但仍能推断动作如何发生；应建议补一句放下、递出、推近、拿起、收回等过渡。
-- 复杂动作、保护站位或关键道具组缺少 `视频禁止项：...`，但正文本身仍清楚；应建议补入本组特有风险，例如人物换位、道具消失、非主角抢动作、提前站起。
+- 复杂动作、保护站位或关键道具组缺少 `视频禁止项：...`，但正文本身仍清楚；应建议补入 2-5 个本组特有风险，例如人物换位、道具消失、非主角抢动作、提前站起。
 - 光影描述过泛、重复，或可能导致黑脸但不影响剧情。
 - 情绪只写抽象词，缺少动作表现，但关键剧情仍可理解。
 - 环境/全景镜头 3 秒但无原剧本明确连续动作支撑。
@@ -151,7 +154,7 @@ description: Review vertical Chinese short-drama storyboard drafts against the s
 - `warnings` 最多 5 条，只放软问题。
 - `checked_groups` 必须列出实际审过的全部组别，不能留空，不能只写“全部”。
 - `audit_coverage` 至少必须包含当前 Python 校验所需字段，且全部写成 `"checked"`：`script_fidelity`、`dialogue_direction`、`timing_math`、`dialogue_pacing`、`space_locking`、`format`、`character_availability`、`handoff_continuity`、`filmability`。
-- `audit_coverage` 可以额外包含 `audio_mouth_sync`、`generation_density`、`action_atomicity`、`video_negative_constraints`、`prompt_pollution`，但不能缺少上一条的必需字段。
+- 生产 reviewer 默认也应在 `audit_coverage` 中包含并检查：`audio_mouth_sync`、`generation_density`、`action_atomicity`、`video_negative_constraints`、`prompt_pollution`。这些是视频执行稳定性的核心项；不要只写老的 9 个字段。
 - `spot_checks` 至少 3 条，优先覆盖台词节奏、空间/连续性、原剧本忠实度；若正文存在关键道具归属变化、片段密度、模板化描述或模型词风险，必须至少抽查其中一类。
 - `semantic_checks` 记录最关键语义审稿点；`result` 使用 `pass`、`warning` 或 `issue`。
 - `pass=true` 时，`issues` 必须为空，且 `semantic_checks` 中不得出现 `result=issue`；`pass=false` 时，`issues` 必须包含阻断交付的 hard issue。
@@ -177,6 +180,8 @@ JSON 结构如下：
     "filmability": "checked",
     "audio_mouth_sync": "checked",
     "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
     "prompt_pollution": "checked"
   },
   "spot_checks": [
@@ -224,6 +229,20 @@ JSON 结构如下：
       "result": "pass",
       "evidence": "说明关键道具在本组内从谁手里、桌面、抽屉或地面转移到谁可操作，并有可见过渡。",
       "fix_instruction": "若不通过，说明应补充递出、放下、推近、拿起、抢走、滑落等过渡动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "说明本组每个时间段是否只承载一个主动作，外部事件是否按阶段拆开，非主动作人物是否没有抢戏。",
+      "fix_instruction": "若不通过，说明应拆分哪些时间段或弱化哪些非主动作人物。"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "说明复杂动作、保护站位或关键道具组的 `视频禁止项` 是否为2-5个本组特有剧情错误，且没有模板占位或泛泛词。",
+      "fix_instruction": "若不通过，说明应删除、替换或补充哪些视频禁止项。"
     }
   ],
   "issues": [

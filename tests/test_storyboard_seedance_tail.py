@@ -52,6 +52,34 @@ class SeedanceTailTests(unittest.TestCase):
         self.assertNotIn("视频禁止项：", result)
         self.assertIn(f"{saw.VERTICAL_SEEDANCE_NEGATIVE_LINE}，成绩单消失，人物换位", result)
 
+    def test_clean_validator_accepts_specific_video_negative_hints(self):
+        with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n视频禁止项：成绩单消失，林远提前离场，周桂兰进入屋内",
+        )
+
+        self.assertEqual(saw.validate_clean_storyboard_format(with_hint), [])
+
+    def test_clean_validator_rejects_placeholder_video_negative_hints(self):
+        with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n视频禁止项：本组关键道具消失，人物错误",
+        )
+
+        issues = saw.validate_clean_storyboard_format(with_hint)
+
+        self.assertTrue(any("模板占位或泛泛词" in issue for issue in issues))
+
+    def test_clean_validator_rejects_too_many_video_negative_hints(self):
+        with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n视频禁止项：A消失，B换位，C提前离开，D进入屋内，E抢动作，F场景变形",
+        )
+
+        issues = saw.validate_clean_storyboard_format(with_hint)
+
+        self.assertTrue(any("视频禁止项超过" in issue for issue in issues))
+
 
 if __name__ == "__main__":
     unittest.main()

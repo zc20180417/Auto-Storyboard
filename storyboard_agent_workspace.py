@@ -884,6 +884,17 @@ GROUP_END_MARKER_RE = re.compile(
     r"(?m)^\s*===\s*第[0-9一二三四五六七八九十百千万零〇两]+组结束\s*===\s*$"
 )
 VIDEO_NEGATIVE_HINT_RE = re.compile(r"(?m)^\s*(?:视频禁止项|剧情负面约束)[：:]\s*(?P<value>.+?)\s*$")
+VIDEO_NEGATIVE_HINT_SPLIT_RE = re.compile(r"[，,、；;]")
+VIDEO_NEGATIVE_HINT_MAX_ITEMS = 5
+VIDEO_NEGATIVE_HINT_PLACEHOLDERS = (
+    "本组关键道具消失",
+    "本组人物提前离场",
+    "本组非主动作人物抢动作",
+    "画面混乱",
+    "人物错误",
+    "道具错误",
+    "场景错误",
+)
 HAPPYHORSE_REQUIRED_SECTIONS = ("【场景】", "【主体】", "【运动】", "【音频】", "【画面风格】")
 HAPPYHORSE_SEEDANCE_STYLE_MARKERS = ("**人物**", "**场景**", "**道具**", "组首空间锁定", "画面风格：", "【技术参数】")
 HAPPYHORSE_INTERFACE_PARAM_RE = re.compile(
@@ -1569,6 +1580,31 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
         block_start = group_match.end()
         block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
         block = content[block_start:block_end]
+
+        for hint_match in VIDEO_NEGATIVE_HINT_RE.finditer(block):
+            hint_text = hint_match.group("value").strip().strip("，,、；;")
+            if not hint_text or hint_text == "无":
+                continue
+            hint_items = [
+                item.strip()
+                for item in VIDEO_NEGATIVE_HINT_SPLIT_RE.split(hint_text)
+                if item.strip()
+            ]
+            if len(hint_items) > VIDEO_NEGATIVE_HINT_MAX_ITEMS:
+                issues.append(
+                    f"第{group_number}组视频禁止项超过{VIDEO_NEGATIVE_HINT_MAX_ITEMS}个，"
+                    "请只保留本组最关键的具体剧情错误。"
+                )
+            bad_items = [
+                item
+                for item in hint_items
+                if any(placeholder in item for placeholder in VIDEO_NEGATIVE_HINT_PLACEHOLDERS)
+            ]
+            if bad_items:
+                issues.append(
+                    f"第{group_number}组视频禁止项仍是模板占位或泛泛词：{', '.join(bad_items)}。"
+                    "请改成本组具体人物、道具和动作。"
+                )
 
         time_matches = list(CLEAN_SHOT_TIME_RANGE_LINE_RE.finditer(block))
         legacy_shot_matches = list(CLEAN_LEGACY_SHOT_RE.finditer(block))
