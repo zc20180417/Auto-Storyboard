@@ -7,8 +7,21 @@
       "Bash(python ./storyboard_agent_workspace.py validate-episode --episode-dir \"./agent_runs/nitui-test/episodes/ep02\")",
       "WebSearch",
       "Bash(python *)",
+      "Bash(PYTHONIOENCODING=utf-8 python *)",
       "Bash(chcp 65001)",
-      "Bash(PYTHONIOENCODING=utf-8 python *)"
+      "Write",
+      "Edit",
+      "Skill(update-config)",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -File .claude/hooks/subagent_validate_episode.ps1)",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -File .claude/hooks/stop_check_agent_run.ps1)",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -File tools/check-agent-run.ps1 -Json)",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -Command \".\\\\prepare-agent.ps1 scene wanqing-kabafu9 -Source '.\\\\inputs\\\\《晚晴归处》卡8付9.txt' -OutDir '.\\\\outputs_agent_wanqing_kabafu9' -Force\")",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -Command \".\\\\collect-agent.ps1 .\\\\agent_runs\\\\wanqing-kabafu9\")",
+      "Bash([ -f \"$dir/status.json\" ])",
+      "PowerShell($failed=@\\(\\); Get-ChildItem \"H:\\\\BaiduNetdiskDownload\\\\Auto-Storyboard\\\\agent_runs\\\\shutongzhishu-scene\\\\episodes\" -Directory | Sort-Object Name | ForEach-Object { python \"H:\\\\BaiduNetdiskDownload\\\\Auto-Storyboard\\\\storyboard_agent_workspace.py\" validate-episode --episode-dir $_.FullName 2>&1; if \\($LASTEXITCODE -ne 0\\) { $failed += $_.Name } }; if \\($failed.Count -gt 0\\) { Write-Output \"FAILED: $\\($failed -join ', '\\)\" } else { Write-Output \"ALL 30 EPISODES VALIDATION PASSED\" })",
+      "Bash(powershell -NoProfile -Command '$ErrorActionPreference='\\\\''Stop'\\\\''; $null = [System.Management.Automation.Language.Parser]::ParseFile\\('\\\\''.claude/hooks/subagent_validate_episode.ps1'\\\\'', [ref]$null, [ref]$errs\\); if \\($errs\\) { $errs | ForEach-Object { Write-Output $_.Message }; exit 1 } else { Write-Output '\\\\''PARSE OK'\\\\'' }')",
+      "Bash(powershell -NoProfile -Command '$tokens=$null; $errs=$null; [void][System.Management.Automation.Language.Parser]::ParseFile\\(\\(Resolve-Path '\\\\''.claude/hooks/subagent_validate_episode.ps1'\\\\''\\), [ref]$tokens, [ref]$errs\\); if \\($errs -and $errs.Count -gt 0\\) { $errs | ForEach-Object { Write-Output $_.Message }; exit 1 } else { Write-Output '\\\\''PARSE OK'\\\\'' }')",
+      "Bash(git add *)"
     ]
   }
 }

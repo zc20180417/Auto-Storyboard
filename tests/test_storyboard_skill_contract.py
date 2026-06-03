@@ -1,10 +1,12 @@
 import unittest
+import json
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATOR_SKILL = ROOT / "agent_skills" / "storyboard-generator" / "SKILL.md"
 REVIEWER_SKILL = ROOT / "agent_skills" / "storyboard-reviewer" / "SKILL.md"
+QUALITY_POLICY = ROOT / "agent_skills" / "storyboard-quality-policy.json"
 
 
 class StoryboardSkillContractTests(unittest.TestCase):
@@ -37,6 +39,16 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn("`视频禁止项` 超过 5 个", reviewer_text)
         self.assertIn("泛泛词如“画面混乱/人物错误/道具错误”", reviewer_text)
 
+    def test_video_negative_policy_is_externalized(self):
+        policy = json.loads(QUALITY_POLICY.read_text(encoding="utf-8"))
+
+        self.assertIn("storyboard_rule_version", policy)
+        self.assertEqual(policy["video_negative_constraints"]["max_items"], 5)
+        self.assertIn("人物换位", policy["video_negative_constraints"]["generic_terms"])
+        self.assertIn("本组关键道具消失", policy["video_negative_constraints"]["placeholder_terms"])
+        self.assertIn("context_anchor_stop_terms", policy["video_negative_constraints"])
+        self.assertIn("人物", policy["video_negative_constraints"]["context_anchor_stop_terms"])
+
     def test_external_event_entry_rule_is_reviewed(self):
         generator_text = GENERATOR_SKILL.read_text(encoding="utf-8")
         reviewer_text = REVIEWER_SKILL.read_text(encoding="utf-8")
@@ -44,6 +56,15 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn("外部事件进入规则", generator_text)
         self.assertIn("事件进入 → 关键人物/道具状态变化 → 主角或被影响者反应 → 对峙/台词", generator_text)
         self.assertIn("外部事件进入被压缩到不可执行", reviewer_text)
+
+    def test_high_impact_interrupt_reposition_rule_is_reviewed(self):
+        generator_text = GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer_text = REVIEWER_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("高冲击打断与归位规则", generator_text)
+        self.assertIn("打断/反应", generator_text)
+        self.assertIn("放下道具/跨位移/保护站位/团圆确认", generator_text)
+        self.assertIn("高冲击打断后又压入归位动作", reviewer_text)
 
     def test_reviewer_template_includes_video_execution_coverage(self):
         text = REVIEWER_SKILL.read_text(encoding="utf-8")

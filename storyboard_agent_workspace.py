@@ -43,6 +43,7 @@ PROJECT_AGENT_SKILLS_DIR = "agent_skills"
 SEEDANCE_PROMPT_PROFILE_PATH = "agent_skills/seedance-prompt-profile/SKILL.md"
 HAPPYHORSE_PROMPT_PROFILE_PATH = "agent_skills/happyhorse-prompt-profile/SKILL.md"
 AI_VIDEO_PROMPT_SKILL_PATH = "agent_skills/ai-video-prompt/SKILL.md"
+STORYBOARD_QUALITY_POLICY_PATH = "agent_skills/storyboard-quality-policy.json"
 AGENT_WORKSPACE_VERSION = 1
 SIMPLE_BATCH_MAX_SCRIPT_CHARS = 2500
 SIMPLE_BATCH_MAX_SEGMENTS = 1
@@ -425,6 +426,8 @@ Aspect: `{aspect}` ({aspect_label})
 ## Required Outputs
 {outputs}
 
+{make_production_focus_block(aspect=aspect, target_video_model=target_video_model)}
+
 ## Workflow
 {workflow}
 
@@ -484,6 +487,24 @@ Template/model-term pollution must use `prompt_pollution` as the issue/warning `
 - Work only inside `{rel_root}`. Treat project-level skill files and `../../context.md` as read-only.
 - Do not call external LLM APIs or launch other CLIs.
 """.strip()
+
+
+def make_production_focus_block(*, aspect: str, target_video_model: str) -> str:
+    if aspect != "vertical":
+        return ""
+    policy_version = storyboard_quality_policy_version()
+    return textwrap.dedent(
+        f"""
+        ## Production Focus
+        - 组首空间锁定等于本组第一帧，只写当前可生成状态，不写前情回顾。
+        - 每个时间段默认只承载一个主动作；复杂动作、外部事件进入、保护站位必须拆成可执行段。
+        - 高冲击打断后先稳定打断/反应，放下道具、跨位移、保护站位、团圆确认等归位动作另起时间段或另组。
+        - 不要为凑满 10 秒硬塞动作、对白或停顿；短承接和单句反应允许保留 6-9 秒。
+        - 保护动作写清挡在谁前面，非主动作人物只写站位和轻反应，不抢主动作。
+        - 关键道具写清归属、位置和状态变化，组尾必须能接到下一组。
+        - `视频禁止项` 只写 2-5 个具体剧情错误，必须锚定本组或本集上下文；完整规则仍以 generator/reviewer skill 和 quality policy 为准（policy: `{policy_version}`）。
+        """
+    ).strip()
 
 
 def make_agent_prompt(episode_dir: Path) -> str:
@@ -885,16 +906,17 @@ GROUP_END_MARKER_RE = re.compile(
 )
 VIDEO_NEGATIVE_HINT_RE = re.compile(r"(?m)^\s*(?:视频禁止项|剧情负面约束)[：:]\s*(?P<value>.+?)\s*$")
 VIDEO_NEGATIVE_HINT_SPLIT_RE = re.compile(r"[，,、；;]")
-VIDEO_NEGATIVE_HINT_MAX_ITEMS = 5
-VIDEO_NEGATIVE_HINT_PLACEHOLDERS = (
-    "本组关键道具消失",
-    "本组人物提前离场",
-    "本组非主动作人物抢动作",
-    "画面混乱",
-    "人物错误",
-    "道具错误",
-    "场景错误",
-)
+DEFAULT_STORYBOARD_QUALITY_POLICY = {
+    "storyboard_rule_version": "storyboard-quality-policy-default-v1",
+    "video_negative_constraints": {
+        "max_items": 5,
+        "placeholder_terms": [],
+        "generic_terms": [],
+        "anchor_labels": ["人物", "道具", "场景"],
+        "context_anchor_stop_terms": [],
+    },
+}
+_STORYBOARD_QUALITY_POLICY_CACHE: dict | None = None
 HAPPYHORSE_REQUIRED_SECTIONS = ("【场景】", "【主体】", "【运动】", "【音频】", "【画面风格】")
 HAPPYHORSE_SEEDANCE_STYLE_MARKERS = ("**人物**", "**场景**", "**道具**", "组首空间锁定", "画面风格：", "【技术参数】")
 HAPPYHORSE_INTERFACE_PARAM_RE = re.compile(
@@ -1558,6 +1580,188 @@ def validate_horizontal_camera_motion_contract(content: str) -> list[str]:
     return issues
 
 
+def load_storyboard_quality_policy() -> dict:
+    global _STORYBOARD_QUALITY_POLICY_CACHE
+    if _STORYBOARD_QUALITY_POLICY_CACHE is not None:
+        return _STORYBOARD_QUALITY_POLICY_CACHE
+
+    policy_path = Path(__file__).resolve().parent / STORYBOARD_QUALITY_POLICY_PATH
+    if policy_path.is_file():
+        policy = read_json(policy_path)
+    else:
+        policy = DEFAULT_STORYBOARD_QUALITY_POLICY
+
+    if not isinstance(policy.get("video_negative_constraints"), dict):
+        policy = DEFAULT_STORYBOARD_QUALITY_POLICY
+
+    _STORYBOARD_QUALITY_POLICY_CACHE = policy
+    return policy
+
+
+def storyboard_quality_policy_version() -> str:
+    version = load_storyboard_quality_policy().get("storyboard_rule_version")
+    return str(version).strip() if version else "unknown"
+
+
+def _string_list_from_policy(value: object, fallback: list[str]) -> list[str]:
+    if not isinstance(value, list):
+        return fallback
+    result = [str(item).strip() for item in value if str(item).strip()]
+    return result if result else fallback
+
+
+def _video_negative_policy() -> dict:
+    policy = load_storyboard_quality_policy().get("video_negative_constraints")
+    if isinstance(policy, dict):
+        return policy
+    return DEFAULT_STORYBOARD_QUALITY_POLICY["video_negative_constraints"]
+
+
+def _video_negative_max_items() -> int:
+    max_items = _video_negative_policy().get("max_items")
+    if isinstance(max_items, int) and max_items > 0:
+        return max_items
+    return int(DEFAULT_STORYBOARD_QUALITY_POLICY["video_negative_constraints"]["max_items"])
+
+
+def _video_negative_placeholder_terms() -> list[str]:
+    fallback = DEFAULT_STORYBOARD_QUALITY_POLICY["video_negative_constraints"]["placeholder_terms"]
+    return _string_list_from_policy(_video_negative_policy().get("placeholder_terms"), fallback)
+
+
+def _video_negative_generic_terms() -> list[str]:
+    fallback = DEFAULT_STORYBOARD_QUALITY_POLICY["video_negative_constraints"]["generic_terms"]
+    return _string_list_from_policy(_video_negative_policy().get("generic_terms"), fallback)
+
+
+def _video_negative_context_anchor_stop_terms() -> set[str]:
+    fallback = DEFAULT_STORYBOARD_QUALITY_POLICY["video_negative_constraints"]["context_anchor_stop_terms"]
+    terms = _string_list_from_policy(_video_negative_policy().get("context_anchor_stop_terms"), fallback)
+    return {term for term in terms if len(term) >= 2}
+
+
+def _add_anchor_term(anchors: set[str], value: object) -> None:
+    term = str(value).strip()
+    if not term or term in {"无", "无明确"}:
+        return
+    term = re.sub(r"[（(].*?[）)]", "", term).strip()
+    if len(term) >= 2:
+        anchors.add(term)
+    if "车" in term:
+        anchors.add("车辆")
+
+
+def _scene_anchor_terms(scene: str) -> list[str]:
+    terms: list[str] = []
+    for part in re.split(r"[，,、/；;\s]+", scene):
+        cleaned = re.sub(
+            r"^(?:同一[处条个]?|晴天|日间|白天|夜晚|夜间|雪夜|雪天|阴天|雨天|日景|夜景)+",
+            "",
+            part.strip(),
+        )
+        cleaned = re.sub(r"^(?:内|外)\s*", "", cleaned).strip()
+        if len(cleaned) >= 2:
+            terms.append(cleaned)
+    return terms
+
+
+def _video_negative_anchor_terms(block: str) -> set[str]:
+    anchors: set[str] = set()
+    for label in ("人物", "道具"):
+        values = _extract_bold_meta(block, label)
+        if isinstance(values, list):
+            for value in values:
+                _add_anchor_term(anchors, value)
+    scene = _extract_bold_meta(block, "场景")
+    if isinstance(scene, str):
+        _add_anchor_term(anchors, scene)
+        for term in _scene_anchor_terms(scene):
+            _add_anchor_term(anchors, term)
+    return anchors
+
+
+def _video_negative_context_text(block: str) -> str:
+    without_hints = VIDEO_NEGATIVE_HINT_RE.sub("", block)
+    return re.sub(
+        r"(?m)^\s*\*\*(?:人物|场景|道具|道具/关键视觉资产)\*\*\s*[：:]",
+        "",
+        without_hints,
+    )
+
+
+def _video_negative_item_has_context_anchor(item: str, context: str) -> bool:
+    normalized_item = re.sub(r"\s+", "", item)
+    stop_terms = _video_negative_context_anchor_stop_terms()
+    for length in range(min(8, len(normalized_item)), 1, -1):
+        for start in range(0, len(normalized_item) - length + 1):
+            token = normalized_item[start:start + length]
+            if any(token == term or token in term or term in token for term in stop_terms):
+                continue
+            if token in context:
+                return True
+    return False
+
+
+def _video_negative_item_has_anchor(
+    item: str,
+    anchors: set[str],
+    block: str,
+    episode_context: str,
+) -> bool:
+    return (
+        any(anchor and anchor in item for anchor in anchors)
+        or _video_negative_item_has_context_anchor(item, _video_negative_context_text(block))
+        or bool(episode_context and _video_negative_item_has_context_anchor(item, episode_context))
+    )
+
+
+def _validate_video_negative_hint_items(
+    *,
+    group_number: int,
+    hint_items: list[str],
+    block: str,
+    episode_context: str,
+) -> list[str]:
+    issues: list[str] = []
+    max_items = _video_negative_max_items()
+    if len(hint_items) > max_items:
+        issues.append(
+            f"第{group_number}组视频禁止项超过{max_items}个，"
+            "请只保留本组最关键的具体剧情错误。"
+        )
+
+    anchors = _video_negative_anchor_terms(block)
+    placeholder_terms = _video_negative_placeholder_terms()
+    generic_terms = _video_negative_generic_terms()
+    bad_items = [
+        item
+        for item in hint_items
+        if any(term in item for term in placeholder_terms)
+        or item in generic_terms
+        or (
+            any(term in item for term in generic_terms)
+            and not _video_negative_item_has_anchor(item, anchors, block, episode_context)
+        )
+    ]
+    if bad_items:
+        issues.append(
+            f"第{group_number}组视频禁止项仍是模板占位或泛泛词：{', '.join(bad_items)}。"
+            "请改成本组具体人物、道具和动作。"
+        )
+
+    unanchored_items = [
+        item
+        for item in hint_items
+        if not _video_negative_item_has_anchor(item, anchors, block, episode_context)
+    ]
+    if unanchored_items:
+        issues.append(
+            f"第{group_number}组视频禁止项缺少本组具体人物、道具或场景锚点："
+            f"{', '.join(unanchored_items)}。请使用本组人物名、关键道具名或场景名。"
+        )
+    return issues
+
+
 def validate_clean_storyboard_format(content: str) -> list[str]:
     issues: list[str] = []
     if MACHINE_TAG_RE.search(content):
@@ -1567,6 +1771,7 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
     if not group_matches:
         return issues + ["缺少自然分镜组标题，例如：=== [cut_id: EP01-G01] 第1组：...（总时长：XX秒，镜头数：X个） ==="]
 
+    episode_context = _video_negative_context_text(content)
     expected_group = 1
     for index, group_match in enumerate(group_matches):
         raw_group = group_match.group("num")
@@ -1590,21 +1795,14 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
                 for item in VIDEO_NEGATIVE_HINT_SPLIT_RE.split(hint_text)
                 if item.strip()
             ]
-            if len(hint_items) > VIDEO_NEGATIVE_HINT_MAX_ITEMS:
-                issues.append(
-                    f"第{group_number}组视频禁止项超过{VIDEO_NEGATIVE_HINT_MAX_ITEMS}个，"
-                    "请只保留本组最关键的具体剧情错误。"
+            issues.extend(
+                _validate_video_negative_hint_items(
+                    group_number=group_number,
+                    hint_items=hint_items,
+                    block=block,
+                    episode_context=episode_context,
                 )
-            bad_items = [
-                item
-                for item in hint_items
-                if any(placeholder in item for placeholder in VIDEO_NEGATIVE_HINT_PLACEHOLDERS)
-            ]
-            if bad_items:
-                issues.append(
-                    f"第{group_number}组视频禁止项仍是模板占位或泛泛词：{', '.join(bad_items)}。"
-                    "请改成本组具体人物、道具和动作。"
-                )
+            )
 
         time_matches = list(CLEAN_SHOT_TIME_RANGE_LINE_RE.finditer(block))
         legacy_shot_matches = list(CLEAN_LEGACY_SHOT_RE.finditer(block))
@@ -2386,6 +2584,8 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     ))
     manifest: dict = {
         "version": AGENT_WORKSPACE_VERSION,
+        "storyboard_rule_version": storyboard_quality_policy_version(),
+        "storyboard_quality_policy_path": str((project_root / STORYBOARD_QUALITY_POLICY_PATH).resolve()),
         "run_id": run_id,
         "created_at": datetime.now().isoformat(timespec="seconds"),
         "project_root": str(project_root),
@@ -2416,6 +2616,8 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         write_utf8(episode_dir / "script.txt", episode.script_text)
         episode_meta = {
             "episode_id": episode_id,
+            "storyboard_rule_version": storyboard_quality_policy_version(),
+            "storyboard_quality_policy_path": str((project_root / STORYBOARD_QUALITY_POLICY_PATH).resolve()),
             "episode_number": episode.episode_number,
             "display_name": episode.display_name,
             "series_title": episode.series_title,

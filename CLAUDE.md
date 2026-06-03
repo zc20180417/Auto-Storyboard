@@ -4,6 +4,27 @@
 
 重要规则：不要让 Python 调用 Claude Code、Codex CLI、Qwen CLI、Kimi Code 或其他模型 CLI。请直接在 `prepare-agent.ps1` 创建的文件工作区里完成生成、审核和修复。
 
+## 启动判定与红线（Claude Code 自动加载，必读）
+
+`CLAUDE.md` 会被 Claude Code 自动注入上下文，`AGENTS.md` 不会——只有 agent 主动读取它才生效。因此以下红线即使没读 `AGENTS.md` 也必须遵守。完整规则仍以 `AGENTS.md` 为唯一真源，与当前 run 冲突时以该 run 的 `TASK.md` / `NEXT_STEPS.md` / `DISPATCH_PROMPT.md` 为准。
+
+### 1. dispatcher 判定（对齐 AGENTS.md「启动前硬检查」）
+
+- 任务包含 2 集以上 episode 时，本会话默认是 dispatcher。
+- dispatcher 禁止亲自生产分镜正文，禁止顺序处理多集，禁止写入任何 `episodes/ep*/draft.txt`、`episodes/ep*/final.txt`、`episodes/ep*/review.txt`、`episodes/ep*/segments/**`、`episodes/ep*/status.json`。
+- dispatcher 必须用 Agent 工具并发派发 worker：默认 **1 集 / worker**，未经用户明确批准不超过 **2 集 / worker**，最多同时 **5 个 worker**。（这是全文 worker 调度数量的唯一权威出处。）
+- 如果当前环境不能创建 worker/subagent，或创建 worker 需要用户授权，必须**立即停止并向用户请求分发授权**，或按当前 run 的 `DISPATCH_PROMPT.md` 输出 `NEED_USER_DISPATCH` 和待分发 prompt 路径。**不得因为不能开 worker 就降级为主线程顺序产稿。**
+
+### 2. 竖屏 / 横屏路由（对齐 AGENTS.md「先读这些文件」）
+
+- 默认竖屏：generator 用 `agent_skills/storyboard-generator/SKILL.md`，reviewer 用 `agent_skills/storyboard-reviewer/SKILL.md`，`status.json` 的 `reviewer_source` = `storyboard-reviewer`。
+- 当前 run 的 `TASK.md` / `context.md` 标记 `Aspect: horizontal` 或 `storyboard_aspect=horizontal` 时，改用 `agent_skills/storyboard-horizontal-generator/SKILL.md` 和 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`，`reviewer_source` = `storyboard-horizontal-reviewer`。
+- 不要把横屏任务交给竖屏 skill，反之亦然。一切以 `TASK.md` 指定的 skill 为准。
+
+### 3. 模式默认
+
+- 用户或 `TASK.md` 未指定时，默认 `scene` 模式；只有短集、单场景、格式稳定时才用 `single`。
+
 ## Claude Code 分发模式
 
 本流程兼容 Claude Code 原生 Agent 工具。`prepare-agent.ps1` 创建的工作区与 CLI 无关，以下是用 Claude Code 特性完成分发生产的规则。
@@ -14,17 +35,13 @@
 
 1. 先读 `agent_runs/<run-name>/NEXT_STEPS.md` 获取该 run 的剧集列表和输出目录。
 2. 读 `agent_runs/<run-name>/context.md` 获取生成/审核 skill 路径和模式。
-3. 用 Agent 工具（`run_in_background: true`）派发后台 worker，每个 worker 处理 1-2 集。
+3. 用 Agent 工具（`run_in_background: true`）并发派发后台 worker（每 worker 集数与并发上限见上方「dispatcher 判定」）。
 
 ### 调度规则（沿用 AGENTS.md）
 
-- **质量单位是单集**，不是批次。
-- 默认 **1 集 / worker**。仅当单集很短、场景少、剧情密度低时可 **2 集 / worker**。
-- 未经用户明确批准，不要超过 2 集 / worker。
-- 最多同时运行 **5 个 worker**。
-- 同一个 worker 处理 2 集时，必须完整完成第一集（生成→审核→修复→校验），再处理第二集。不能合并审核、合并输出或互相引用上下文。
-- 完成一个 worker 后再启动新的，滚动推进。
-- 不要一次把全部集数派完；每次派发当前空闲槽位数量的 worker。
+- **质量单位是单集**，不是批次（调度数量见上方「dispatcher 判定」）。
+- 只有单集很短、场景少、剧情密度低时才用 2 集 / worker；此时同一 worker 必须完整完成第一集（生成→审核→修复→校验）再处理第二集，不能合并审核、合并输出或互相引用上下文。
+- 不要一次把全部集数派完；每次只派发空闲槽位数量的 worker，完成一个再补一个，滚动推进。
 
 ### Worker 必须做的事（每个 episode）
 
@@ -32,7 +49,7 @@
 
 1. 读 `TASK.md`（确认 mode 和所需输出文件）。
 2. 读 `script.txt`（和 `segments/segXX/script.txt`，如果有）。
-3. 读 `agent_skills/storyboard-generator/SKILL.md` 和 `agent_skills/storyboard-reviewer/SKILL.md`。
+3. 读 `TASK.md` 指定的 generator 和 reviewer skill（竖屏默认 `agent_skills/storyboard-generator/SKILL.md` 与 `agent_skills/storyboard-reviewer/SKILL.md`；横屏用 `agent_skills/storyboard-horizontal-generator/SKILL.md` 与 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`）。
 4. 使用 generator skill 生成分镜草稿。
 5. 使用 reviewer skill 做真实审核（输出原始 JSON 到 `review.txt` 或 `segments/segXX/review.md`）。
 6. 只修 reviewer 指出的 hard issues，不做无关重写。
@@ -53,9 +70,9 @@
 Episode 目录：{episode_dir}
 
 ## 第一步：读入所有规则和输入
-1. 读 `{episode_dir}/TASK.md` 了解 mode 和所需输出。
-2. 读 `agent_skills/storyboard-generator/SKILL.md`。
-3. 读 `agent_skills/storyboard-reviewer/SKILL.md`。
+1. 读 `{episode_dir}/TASK.md` 了解 mode、aspect 和所需输出。
+2. 读 TASK.md 指定的 generator skill（竖屏默认 `agent_skills/storyboard-generator/SKILL.md`，横屏 `agent_skills/storyboard-horizontal-generator/SKILL.md`）。
+3. 读 TASK.md 指定的 reviewer skill（竖屏默认 `agent_skills/storyboard-reviewer/SKILL.md`，横屏 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`）。
 4. 读 `{episode_dir}/script.txt`（和 segments 下的分段剧本，如有）。
 
 ## 第二步：按 TASK.md 的 Mode 执行

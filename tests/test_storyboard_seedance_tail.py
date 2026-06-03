@@ -54,11 +54,56 @@ class SeedanceTailTests(unittest.TestCase):
 
     def test_clean_validator_accepts_specific_video_negative_hints(self):
         with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+            "**人物**：林远",
+            "**人物**：林远、周桂兰",
+        ).replace(
             "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
             "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n视频禁止项：成绩单消失，林远提前离场，周桂兰进入屋内",
         )
 
         self.assertEqual(saw.validate_clean_storyboard_format(with_hint), [])
+
+    def test_clean_validator_rejects_unanchored_generic_video_negative_hints(self):
+        with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n视频禁止项：人物换位，道具消失，场景变形",
+        )
+
+        issues = saw.validate_clean_storyboard_format(with_hint)
+
+        self.assertTrue(any("缺少本组具体人物、道具或场景锚点" in issue for issue in issues))
+
+    def test_clean_validator_accepts_character_anchored_position_error(self):
+        with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+            "**人物**：林远",
+            "**人物**：林远、周桂兰",
+        ).replace(
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n视频禁止项：林远和周桂兰换位，成绩单消失",
+        )
+
+        self.assertEqual(saw.validate_clean_storyboard_format(with_hint), [])
+
+    def test_clean_validator_rejects_character_not_in_current_group(self):
+        with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n视频禁止项：周桂兰进入屋内",
+        )
+
+        issues = saw.validate_clean_storyboard_format(with_hint)
+
+        self.assertTrue(any("缺少本组具体人物、道具或场景锚点" in issue for issue in issues))
+
+    def test_clean_validator_accepts_episode_anchored_absent_character_hint(self):
+        second_group = MINIMAL_GROUP_WITHOUT_TAIL.replace("EP01-G01", "EP01-G02").replace("第1组", "第2组")
+        second_group = second_group.replace("林远", "周桂兰")
+        second_group = second_group.replace(
+            "组尾衔接：该组以周桂兰握紧成绩单的状态自然收尾。不强制静止。",
+            "组尾衔接：该组以周桂兰站在村口的状态自然收尾。不强制静止。\n\n视频禁止项：林远提前出现",
+        )
+        content = MINIMAL_GROUP_WITHOUT_TAIL + "\n" + second_group
+
+        self.assertEqual(saw.validate_clean_storyboard_format(content), [])
 
     def test_clean_validator_rejects_placeholder_video_negative_hints(self):
         with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
@@ -79,6 +124,33 @@ class SeedanceTailTests(unittest.TestCase):
         issues = saw.validate_clean_storyboard_format(with_hint)
 
         self.assertTrue(any("视频禁止项超过" in issue for issue in issues))
+
+    def test_clean_validator_reads_context_anchor_stop_terms_from_policy(self):
+        original_policy_cache = saw._STORYBOARD_QUALITY_POLICY_CACHE
+        try:
+            saw._STORYBOARD_QUALITY_POLICY_CACHE = {
+                "storyboard_rule_version": "test-policy",
+                "video_negative_constraints": {
+                    "max_items": 5,
+                    "placeholder_terms": [],
+                    "generic_terms": [],
+                    "anchor_labels": ["人物", "道具", "场景"],
+                    "context_anchor_stop_terms": ["红色横幅"],
+                },
+            }
+            with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+                "组首空间锁定（仅作空间连续性约束，不作为独立镜头生成）：槐树村村口，林远位于画面中央，面向镜头，手中持有成绩单。",
+                "组首空间锁定（仅作空间连续性约束，不作为独立镜头生成）：槐树村村口，林远位于画面中央，面向镜头，手中持有成绩单，红色横幅挂在背景墙面。",
+            ).replace(
+                "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
+                "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n视频禁止项：红色横幅消失",
+            )
+
+            issues = saw.validate_clean_storyboard_format(with_hint)
+
+            self.assertTrue(any("缺少本组具体人物、道具或场景锚点" in issue for issue in issues))
+        finally:
+            saw._STORYBOARD_QUALITY_POLICY_CACHE = original_policy_cache
 
 
 if __name__ == "__main__":
