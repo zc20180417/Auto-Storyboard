@@ -58,6 +58,19 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn("外部事件进入规则", generator_text)
         self.assertIn("事件进入 → 关键人物/道具状态变化 → 主角或被影响者反应 → 对峙/台词", generator_text)
         self.assertIn("外部事件进入被压缩到不可执行", reviewer_text)
+        self.assertIn("优先按动作阶段写成同组内多个时间段", generator_text)
+        self.assertIn("不应仅因强节拍数量多而判错", reviewer_text)
+
+    def test_continuous_event_chains_are_not_mechanically_split(self):
+        generator_text = GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer_text = REVIEWER_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("强节拍是容量核算工具，不是自动拆组触发器", generator_text)
+        self.assertIn("连续事件链", generator_text)
+        self.assertIn("不要因为每一步都有状态变化就机械拆成多个 10-15 秒组", generator_text)
+        self.assertIn("强节拍只用于判断容量，不用于机械拆组", generator_text)
+        self.assertIn("不能只按数量判 hard issue", reviewer_text)
+        self.assertNotIn("对白+外部事件+中等/长动作+道具操作 同组？→ 是则拆组", generator_text)
 
     def test_high_impact_interrupt_reposition_rule_is_reviewed(self):
         generator_text = GENERATOR_SKILL.read_text(encoding="utf-8")
