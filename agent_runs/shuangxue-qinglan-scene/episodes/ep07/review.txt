@@ -1,0 +1,134 @@
+{
+  "pass": true,
+  "summary": "ep07 完整保留银行柜台查号码、刘美娟冲入阻拦、沈清要求流水并护住周桂兰的剧情链，台词、道具、空间连续和视频执行均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "沈清询问绑定号码、柜员回答尾号8864和两年前7月15号变更均逐句保留，没有改动银行柜台核对事实。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈清内心旁白“那正好是我第二个月开始打八千块钱的日子！”写明嘴唇闭合不做口型，现场开口只承载她对周桂兰和柜员的台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "evidence": "刘美娟推门、穿过大厅、拉周桂兰手腕、假笑催回家被分成4个时间段，外部事件进入按阶段呈现。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "名牌包从刘美娟肩上到被她捂住，沈清手中的老年机和柜台上的银行卡持续锚定，为8864手机质问服务。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "evidence": "组首明确排队号和银行卡在柜台台面、身份证在窗口内侧、沈清贴近窗口、刘美娟在右侧，第一段抢号动作起点与组首一致。"
+    },
+    {
+      "group": "第9组",
+      "type": "dialogue_pacing",
+      "evidence": "刘美娟约18字台词在0-5秒，约3.6字/秒；沈清约13字台词在5-9秒，约3.25字/秒，短组是结尾两句反击，没有硬凑10秒。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "标题含EP07-G01 cut_id，总时长15秒，4个时间段从0秒连续到15秒，镜头数与时间段数一致。",
+      "fix_instruction": "若不通过，应修正cut_id、组号、时间轴或镜头数。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "内心旁白明确为沈清嘴唇闭合不做口型，其他现场对白均写明真实对象。",
+      "fix_instruction": "若不通过，应把OS改为闭口旁白或改回现场对白对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第3组为柜员单句确认和母女短反应，总时长8秒，属于短信提醒发错后的短承接，没有用普通状态硬凑10秒。",
+      "fix_instruction": "若不通过，应并入同场相邻组或删去无效停顿。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "刘美娟在组首位于银行玻璃大门内侧远处，先入场再拉周桂兰并开口，参与动作前可见。",
+      "fix_instruction": "若不通过，应补刘美娟入场前可见位置或把台词后移。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈清对刘美娟追问，刘美娟对沈清撒谎，所有真人对白均有真实对象，没有对道具或空气说话。",
+      "fix_instruction": "若不通过，应逐句补明确对话对象。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "刘美娟“你胡说什么，我听不懂”、沈清“这卡你到底碰没碰过”和刘美娟保管借口均按原剧本顺序保留。",
+      "fix_instruction": "若不通过，应恢复原台词和追问顺序。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "身份证由沈清递进窗口，排队号和银行卡留在柜台靠沈清一侧，老年机仍由沈清持有，后续抢号动作有清楚目标。",
+      "fix_instruction": "若不通过，应补充身份证、排队号、银行卡或老年机位置。"
+    },
+    {
+      "group": "第8组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "刘美娟扑向排队号、沈清厉喝、推开刘美娟、站到周桂兰身前被分段呈现，保护站位明确为挡在周桂兰和柜台窗口前。",
+      "fix_instruction": "若不通过，应拆分抢号、推开和保护站位动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "禁止项锚定排队号、沈清保护周桂兰、周桂兰位置和身份证窗口状态，共4条本组特有风险，无泛泛词或矛盾项。",
+      "fix_instruction": "若不通过，应删除矛盾项或替换为本组人物、道具、场景锚点。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第8组尾沈清挡在周桂兰前方、刘美娟退回右侧、排队号和银行卡仍在台面；第9组组首完整继承这些状态。",
+      "fix_instruction": "若不通过，应在第8组尾或第9组首补站位和道具状态。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全篇未出现Seedance说明词、参考模板、占位符、固定风格尾巴、JSON或批量模板化描述。",
+      "fix_instruction": "若不通过，应删除所有工程词和非分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

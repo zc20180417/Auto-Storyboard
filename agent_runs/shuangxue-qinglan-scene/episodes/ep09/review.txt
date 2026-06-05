@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "ep09 整集按客厅同一空间完成银行流水对峙、逐笔逼问、母亲崩溃和假账耳语揭示，台词、人物关系、道具连续性、时长和格式均通过审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "赵强坐沙发喝茶、沈清进门、银行流水啪地摔在茶几、沈清怒斥赵强解释、赵强装傻回应均与原剧本9-1顺序一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "银行流水单从第1组摊在茶几中央延续到第2组，沈清指向转账记录，赵强茶杯抖洒茶水后仍在手中，关键道具没有跳变。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清列举月份金额约24字给4秒，约6.0字/秒；随后日期金额分毫不差约14字给3.5秒，约4.0字/秒，均在硬上限内。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "evidence": "周桂兰哭诉、瘫坐捶胸、沈清挡在母亲前方并喊话、四人站位稳定分为四段，保护动作清楚且非主动作人物未抢戏。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "evidence": "赵强低声对刘美娟耳语是假账藏不住，画面明确贴近耳边真实开口，刘美娟听后反应，未写成心声或无来源画外音。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定周家正屋客厅、茶几、沙发、赵强、刘美娟、周桂兰和门口的沈清，第一段从客厅门口入场，不跨物理空间。",
+      "fix_instruction": "若门口状态不清，应补沈清位于客厅门口外侧且面向屋内。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "沈清质问养老钱为什么转进建材店、赵强瞥流水单手抖茶水溅出、赵强以店里流水几十万为借口，全部保留原剧本信息。",
+      "fix_instruction": "若删掉茶杯抖洒或建材店账户，应恢复对应镜头和台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "刘美娟明确对沈清附和，沈清明确对刘美娟反击二十四次都错到你兜里，真人对白对象真实可见。",
+      "fix_instruction": "若对象缺失，应明确刘美娟对沈清说道、沈清对刘美娟说道。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组为两人围绕借用周转的连续同冲突短句攻防，15秒内四个节拍均是对白或轻动作，没有外部事件、跨空间或复杂动作并列过载。",
+      "fix_instruction": "若再加入其他人物强动作，应拆到相邻组或删除非原剧本动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "刘美娟在组首位于赵强身后偏右，随后上前半步尖声护夫；赵强、沈清、周桂兰也均在组首有位置和朝向。",
+      "fix_instruction": "若刘美娟直接说话前不可见，应在组首补其位置或先写入场。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组组尾刘美娟停在赵强旁、沈清在茶几左侧、周桂兰靠木椅；第7组组首复述这些位置并用4-7秒完成周桂兰瘫坐，连续性成立。",
+      "fix_instruction": "若周桂兰从站立跳到瘫坐，应保留瘫坐动作段。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "银行流水单在第7组组尾仍在茶几，第8组组首继续摊在茶几上，刘美娟反应时视线滑向流水单，道具状态连续。",
+      "fix_instruction": "若流水单消失，应在第8组组首和反应镜头补回茶几中央。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第8组视频禁止项锚定赵强、刘美娟、银行流水单、沈清和耳语，4条均是本组特有风险，没有泛泛模板化负面词。",
+      "fix_instruction": "若出现无锚点禁止项，应替换为本组具体人物、道具和耳语误读风险。"
+    },
+    {
+      "group": "第1组-第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现模型说明词、官方模板编号、参考图占位符、广告式表达或空间先被交代出来等模板化批量描述。",
+      "fix_instruction": "若出现模型或模板词，应删除并改成自然分镜画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

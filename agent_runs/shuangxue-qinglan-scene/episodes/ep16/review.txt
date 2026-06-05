@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "ep16 全集分镜忠于原剧本，6个组均在周家正屋客厅内推进，手机证据和录像手机归属连续，未发现 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "action_atomicity",
+      "evidence": "赵强猛扑、沈清侧闪绊脚、赵强惊呼失衡、摔到茶几角分成4段，动作链短且单一，没有把扑抢和倒地压在同一镜。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "周美娟手机在组首位于她右手删除界面，沈清扭腕后掉落，10-13秒滑到周桂兰脚边并保持亮屏转账短信，能接第4组捡起。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "第4组保留尾号6789、2.00元短信、周桂兰“真的是我的卡”“家贼难防”两句台词，以及用手机砸周美娟额头出红印的动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "第5组四句争吵分配为3秒、1.5秒、3秒、3.5秒，各句有效字数均未超过6.5字/秒，周建国拍桌与第二句台词同步不额外挤压；第4组屏幕短信16字给2.5秒。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "evidence": "第6组只写沈清保存录像手机和云端备份台词，没有出现模板编号、参考图、模型说明词、@占位符或自动分镜类污染。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "原剧本中赵强扑抢录像手机、沈清侧闪伸脚绊倒、赵强下巴磕茶几角均完整保留。",
+      "fix_instruction": "若不通过，应恢复扑抢、绊脚、摔倒和茶几角四个关键节点。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "周美娟对赵强喊“老公”，再对沈清威胁删短信，沈清对周美娟喝止，对话对象明确。",
+      "fix_instruction": "若不通过，应逐句补写真实对话对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "周美娟手机从手中删除界面到掉落、滑行、停在周桂兰脚边，转账短信一直保持可见。",
+      "fix_instruction": "若不通过，应补充手机掉落和滑到周桂兰脚边的可见过渡。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "银行卡归属通过尾号6789和2.00元短信屏幕特写呈现，周桂兰的痛哭通过眼泪、攥手机和砸手机动作表现。",
+      "fix_instruction": "若不通过，应把抽象认知改成屏幕特写和可见反应。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第5组只承载同一客厅内的连续口头冲突，周建国拍桌是台词伴随动作，未同时加入新道具操作或空间切换。",
+      "fix_instruction": "若不通过，应拆开拍桌动作或压缩非关键反应。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "第6组按沈清反击、保存视频、展示云备份三段推进，每段只有一个主动作或一句关键台词。",
+      "fix_instruction": "若不通过，应拆分保存视频和转向周建国展示的动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第6组视频禁止项围绕沈清录像手机、周美娟钻石壳手机、云端备份台词和周建国抢夺风险，均锚定本组上下文。",
+      "fix_instruction": "若不通过，应删除泛泛禁项并改成手机证据相关约束。"
+    },
+    {
+      "group": "第1组至第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "赵强倒地、果盘翻倒、周美娟手机亮屏、手机滑到周桂兰脚边、周桂兰砸后持手机、沈清录像手机保存云备份均在组尾和下一组组首连续复述。",
+      "fix_instruction": "若不通过，应在相邻组尾或组首补齐人物位置和手机归属。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

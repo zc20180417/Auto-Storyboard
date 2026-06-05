@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "ep04-ep04-agent-cli-storyboard.txt",
+  "summary": "沈清用37.62元凭条逼问刘美娟，金镯和小雨Party尾款接连暴露赡养费被挪用，沈清以八千元质问压住全场。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "dialogue_pacing",
+      "problem": "沈清最终质问语速偏慢，但符合咬牙切齿的压迫反击和8秒短组余波。",
+      "evidence": "约21字给6秒，约3.5字/秒；该组用于承接小雨说漏嘴后的单句反击，上一组已经15秒无法自然并入。",
+      "fix": "若后续生产觉得拖沓，可把0-2秒余波压到1秒并保持短组结构。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

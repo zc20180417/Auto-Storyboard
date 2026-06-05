@@ -1,0 +1,131 @@
+{
+  "pass": true,
+  "summary": "ep08全集按银行大厅证据链推进，保留原剧本关键台词、流水单/老年机/收款账户道具连续和刘美娟被逼退反应，未发现hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "打印机吐出厚账单、沈清接过并翻到两年前第一笔记录、台词“25号下午两点进账八千”均与原剧本一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清“下午两点零一分起……”约31字/5秒约6.2字秒比，“二十四个月……”约35字/5.5秒约6.4字秒比，接近上限但低于6.5硬线。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "老年机从沈清外套口袋取出后由沈清右手持有，流水账单由沈清左手持有，组尾明确双道具归属。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "刘美娟ATM借口、柜员确认“并不是取现，系统显示全是通过手机银行转账的”和刘美娟否认关系均被保留。"
+    },
+    {
+      "group": "第7组",
+      "type": "timing_math",
+      "evidence": "第7组为8秒短组，承载刘美娟腿软、沈清收单和单句离场指令，属于短动作余波/单句收束；时间段0-2.5、2.5-5、5-8连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "银行大厅柜台前为单一物理空间，沈清、周桂兰、刘美娟、银行柜员的位置和朝向完整。",
+      "fix_instruction": "若不通过，应补齐每个人的画面位置、朝向和柜台/打印机布局。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈清对周桂兰说明进账和分批转出，沈清对刘美娟质问手段，周桂兰对沈清痛哭，现场对白对象明确。",
+      "fix_instruction": "若不通过，应逐句补为A对B说道。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "本集均为现场真人对白，无心声、旁白、电话音或门外音混入口型。",
+      "fix_instruction": "若不通过，应标明声音来源并写闭口。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组只有ATM借口、柜员系统说明、刘美娟被打脸反应和否认四个连续节点，13秒内动作与台词可执行。",
+      "fix_instruction": "若不通过，应压缩反应或拆出刘美娟否认。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "沈清把老年机收回掌心后翻最后一页，再举流水单指向收款方一栏，关键证据道具未跳变。",
+      "fix_instruction": "若不通过，应补写老年机和流水单的归属过渡。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "沈清、刘美娟和银行柜员在组首可见；赵强只作为台词中的建材店老板被提及，没有被错误写入现场。",
+      "fix_instruction": "若不通过，应删除赵强现场出场。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "刘美娟靠住填单台、沈清收单、沈清发出回家对账指令分为三个时间段，单段只有一个主动作。",
+      "fix_instruction": "若不通过，应拆开收单和离开指令。"
+    },
+    {
+      "group": "第1组-第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "流水单持续由沈清持有，刘美娟从柜台背景逐步退到填单台旁，第5组至第7组填单台位置连续。",
+      "fix_instruction": "若不通过，应在相邻组尾或组首补具体人物位置和道具归属。"
+    },
+    {
+      "group": "第1组-第7组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "各组视频禁止项数量为3条，均锚定流水账单、老年机、刘美娟、银行大厅、填单台、赵强等本集上下文元素，未使用占位模板。",
+      "fix_instruction": "若不通过，应删除无锚点泛泛词并改成本组具体风险。"
+    },
+    {
+      "group": "第1组-第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt未出现模板编号、参考图、@占位符、Seedance说明、自动分镜或批量模板化描述。",
+      "fix_instruction": "若不通过，应删除工程说明和模板污染词。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "第2组7-12.5秒的愤怒质问台词接近上限。",
+      "evidence": "“二十四个月！次次都是分批小额转出，完美规避了银行的风控预警！这手段够专业的啊！”约35个有效字给5.5秒，约6.4字/秒。",
+      "fix": "生产时保持短促愤怒质问节奏，不额外加速口型。"
+    }
+  ]
+}

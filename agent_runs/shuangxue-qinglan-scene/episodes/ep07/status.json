@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep07",
+  "status": "done",
+  "output_name": "ep07-ep07-agent-cli-storyboard.txt",
+  "summary": "沈清在银行确认母亲银行卡短信提醒被改绑到尾号8864，刘美娟冲入阻拦并试图抢排队号，沈清要求打印流水并护住周桂兰。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

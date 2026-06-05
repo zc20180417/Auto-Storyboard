@@ -1,0 +1,143 @@
+{
+  "pass": true,
+  "summary": "ep26整集按宴会厅同一空间推进，保留沈清放权清算、周建国求救和拒签、周桂兰控诉、张总依法查封与祖宅强执的关键剧情，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "沈清两句原台词完整保留：先说“他姓周我姓沈，我亲爹早死了。他算哪门子父？”，再端酒杯说“冤有头债有主，你们随意。弄脏了地毯算我的。”剧情因果未改。"
+    },
+    {
+      "group": "第2组",
+      "type": "action_atomicity",
+      "evidence": "张总下令、保镖冲上、保镖按倒、周建国向周桂兰求救分为4个时间段；每段只有一个主动作或一个对白块。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "赵强约17字/3秒约5.7字/秒，刘美娟约16字/3秒约5.3字/秒，张总约31字/5秒约6.2字/秒，均未超过6.5字/秒。"
+    },
+    {
+      "group": "第10组",
+      "type": "prop_continuity",
+      "evidence": "文件和签字笔由沈清挎包取出，落在周建国脸前地毯上；第11组和第12组组首继续锚定离婚协议书和签字笔位置。"
+    },
+    {
+      "group": "第12组",
+      "type": "space_locking",
+      "evidence": "祖宅强制执行只通过沈清和张总台词表达，画面仍固定在龙腾酒店宴会厅，没有切到室外祖宅空间。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈清对白写明对周建国和在场众人、对张总说，现场口型对象明确。",
+      "fix_instruction": "若不通过，应补齐沈清每句台词的真实对话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "15秒清算组是一条连续事件链，张总命令6秒、保镖动作6秒、周建国短求救3秒，未把多个主动作压进同一时间段。",
+      "fix_instruction": "若不通过，应将保镖按倒或周建国求救拆出独立组。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾周建国低伏被保镖控制，第3组首保持同一地面被控状态，周桂兰和沈清站位连续。",
+      "fix_instruction": "若不通过，应在第2组尾或第3组首补周建国被控状态。"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "周建国扭身抱腿、对赵强求救、赵强踹开分为三个时间段，保镖控制作为持续状态存在。",
+      "fix_instruction": "若不通过，应拆开抱腿和踹开动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "赵强西装和左腕手表在组首、张总台词和组尾均被锚定，为第6组查封动作提供可见道具。",
+      "fix_instruction": "若不通过，应补赵强手表仍在左腕的状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "赵强、刘美娟、张总均为现场开口对白，分别写明对保镖、对保镖、对赵强和刘美娟说，没有旁白或心声混用。",
+      "fix_instruction": "若不通过，应改明声音来源或对白对象。"
+    },
+    {
+      "group": "第7组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第7组总时长9秒，属于周建国短哭骂和周桂兰落泪反应的短承接组；时间段0-3、3-7、7-9连续且镜头数为3。",
+      "fix_instruction": "若不通过，应并入相邻控诉组或调整为连续时间段。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "周桂兰关于治关节痛救命钱和杂物间剩饭的两句控诉完整保留，没有新增或删改控诉对象。",
+      "fix_instruction": "若不通过，应恢复原剧本两句台词。"
+    },
+    {
+      "group": "第9组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "沈清在组首位于画面右侧，本组2-6秒靠近周建国后再说台词；周建国和周桂兰也都在组首可见。",
+      "fix_instruction": "若不通过，应在沈清说话前补入场或位置。"
+    },
+    {
+      "group": "第10组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "文件和签字笔从沈清手中转移到周建国脸前地毯上，有可见扔出和落地过程。",
+      "fix_instruction": "若不通过，应补文件和笔落到地毯上的过渡。"
+    },
+    {
+      "group": "第11组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "周建国两句对白分别约16字/4秒和20字/5秒，均在自然争执语速范围内。",
+      "fix_instruction": "若不通过，应缩短无台词反应或重分对白时间。"
+    },
+    {
+      "group": "第12组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "祖宅强执组写有4个本组特有禁止项，锚定周建国、祖宅、法律文书和律师台词，且未禁止原剧本必须发生的动作。",
+      "fix_instruction": "若不通过，应删除矛盾禁止项并换成本组人物道具风险。"
+    },
+    {
+      "group": "第1组-第12组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集未出现模型说明词、模板编号、官方模板语气、参考图占位符、JSON或调试标记。",
+      "fix_instruction": "若不通过，应删除模板和工程词，只保留自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

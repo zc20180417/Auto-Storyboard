@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "ep28 法庭终审从两名被告宣判、互相撕咬、周美娟求饶、母女拒绝到最终回家完整保留，8组格式、时间轴、对话指向和连续性均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "法官宣判赵强罪名和刑期分别给4秒、3秒，关键台词字秒比未超过6.5，之后3秒承载赵强瘫跪。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "周美娟崩溃说三年、不坐牢、指责赵强让她拿老太婆的钱填账，以及赵强反咬买金买车均按原顺序保留。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈清最后一句写为没有发声、只动嘴唇，明确是口型补句，不让画面人物现场开口承载无声内容。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "evidence": "法警掰开手指、拖向大门、带出门外、关门隔断哭喊分成四个时间段，拖离动作可执行。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第7组尾法庭大门关闭、周美娟已在门外；第8组首复述大门关闭且通道里没有周美娟，母女仍在旁听席。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第1组12秒、4个镜头，时间段0-2、2-6、6-9、9-12连续，标题镜头数一致。",
+      "fix_instruction": "若不通过，应修正标题总时长、镜头数或时间段终点。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "周美娟被判盗窃罪、非法侵占他人财产罪、有期徒刑三年、退赔赃款，关键法律结果未删改。",
+      "fix_instruction": "若不通过，应补回缺失宣判信息。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组8秒只承载法警喝止和控制两名被告，属于短动作余波；没有用普通沉默或状态延续硬凑10秒。",
+      "fix_instruction": "若不通过，应保留短组或合并到同场同冲突组，不能硬塞停顿。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首明确周美娟在栏杆外、沈清周桂兰在旁听席内、两名法警控制手臂，抓栏和求饶都发生在同一法庭通道。",
+      "fix_instruction": "若不通过，应补栏杆两侧人物位置、身体朝向和法警控制状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈清和周桂兰的现场对白均明确对周美娟说道，最后一句明确为无声唇形，没有假对白对象。",
+      "fix_instruction": "若不通过，应改为真实对话对象或无声口型描述。"
+    },
+    {
+      "group": "第7组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第7组禁止项锚定周美娟、法警、沈清、周桂兰和法庭大门，防止拖离失败、追出等本组具体错误。",
+      "fix_instruction": "若不通过，应替换为本组具体人物和门状态锚点。"
+    },
+    {
+      "group": "第8组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "沈清转身握手、两句母女对白、扶起离开分段承载，周桂兰回握和离场动作没有与长台词挤在同一瞬间。",
+      "fix_instruction": "若不通过，应拆分握手、对白和离场动作。"
+    },
+    {
+      "group": "第1组-第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文未出现模型说明词、参考图占位、模板编号、广告式文字或禁止的批量模板化表达。",
+      "fix_instruction": "若不通过，应删除污染词并改成自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

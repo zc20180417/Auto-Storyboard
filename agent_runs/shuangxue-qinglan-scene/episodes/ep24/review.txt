@@ -1,0 +1,112 @@
+{
+  "pass": true,
+  "summary": "ep24 终稿按宴会打断、闯入隔离、五百万勒索、法律反击、LED证据和高利贷揭露推进，保留原剧本关键台词与证据道具，未发现 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "周桂兰对沈清说“清清，妈做梦都不敢想有今天。”、沈清回应“妈，好日子长着呢。”，以及保安阻拦和周建国门外骂声均按原顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "第3组0-4.5秒约27字，4.5-9.5秒约27字，9.5-15秒约30字，对应约6.0、5.4、5.45字/秒，均低于6.5硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "LED屏幕从黑屏亮起，到盖章连环转账记录，再切为周美娟抢手机视频，第5组组尾和第6组组首均继承屏幕播放状态。"
+    },
+    {
+      "group": "第2组",
+      "type": "action_atomicity",
+      "evidence": "周建国三人闯入、衣着反差、坐地未遂、律师带安保隔离、律师警告被拆成5段，单段主动作清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "周建国为门外骂声，正文写明声音从门外传来，并用宴会厅大门和门板晃动提供声源；画面内对白都有真实对象。",
+      "fix_instruction": "若不通过，应把周建国改为入场后现场开口，或继续明确门外音来源。"
+    },
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "周建国、周美娟、赵强在门口外侧，律师和安保位于沈清后方偏右，所有行动人物在动作前可用。",
+      "fix_instruction": "若不通过，应在组首补足人物位置、朝向和入场路径。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第3组是同一入口空间、同一冲突目标下的连续三段对白交锋，没有叠加额外中等动作或证据操作。",
+      "fix_instruction": "若过载，应拆出律师定性或压缩非关键反应。"
+    },
+    {
+      "group": "第4组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第4组为9秒短反击组，0-3.5和3.5-9连续，镜头数2个；它承载沈清两句短转折，硬凑到10秒会依赖普通停顿。",
+      "fix_instruction": "若短组不成立，应并入第3组或第5组，但不得用无剧情停顿凑时长。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "LED屏幕、连环转账记录、抢手机视频的状态变化逐段可见，沈清先亮屏再说明证据，周美娟只对屏幕喊关掉。",
+      "fix_instruction": "若不通过，应补屏幕内容从记录到视频的切换过程。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组组尾LED仍播放抢手机视频，第6组组首明确继承该画面；沈清、周建国、周美娟、赵强和律师站位连续。",
+      "fix_instruction": "若不连续，应在第5组组尾或第6组组首补LED和人物站位。"
+    },
+    {
+      "group": "第5组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "复杂证据组的视频禁止项锚定LED屏幕、连环转账记录、周美娟抢手机视频和周建国，数量4条且无泛泛词。",
+      "fix_instruction": "若不通过，应替换为本组具体证据道具和人物风险。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "终稿未出现Seedance说明、参考模板、@图片、自动正反打、JSON或模板化批量描述。",
+      "fix_instruction": "若污染，应删除工程词和模板词，改成自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "timing_math",
+      "problem": "第4组为9秒短组。",
+      "evidence": "本组只承载沈清两句短反击，属于短句转折；扩到10秒以上会依赖普通停顿或低密度状态。",
+      "fix": "保留短组，后续生产时按短反击节拍处理。"
+    }
+  ]
+}

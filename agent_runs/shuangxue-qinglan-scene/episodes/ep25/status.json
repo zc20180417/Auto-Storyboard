@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "ep25-ep25-agent-cli-storyboard.txt",
+  "summary": "沈清在龙腾酒店宴会厅连续揭出赵强洗钱造假和周建国高利贷债务，张总带讨债人员入场逼周建国跪地，周建国又试图把债推给沈清。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "generation_density",
+      "problem": "第1组为8秒短组，需要交付说明中明确其短组性质。",
+      "evidence": "第1组只承载大屏幕证据切换和沈清单句质问，属于证据揭示加单句反击，未硬凑到10秒。",
+      "fix": "可保留；若后续希望更常规长度，可与第2组重新合并，但需避免律师长台词与赵强、周美娟反应过载。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

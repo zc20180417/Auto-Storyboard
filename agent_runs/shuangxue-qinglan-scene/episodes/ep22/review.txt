@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep22 已按原剧本完成清房、挪车、驱离和沈清接母亲离开的连续分镜；台词、空间、道具和组间衔接可交付。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "周美娟“你们不能动我的东西！那是我买的名牌包！”约22字用4秒，约5.5字/秒；法警约18字用4秒，约4.5字/秒，均低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "保留沈清“停在我的私人领地，妨碍施工，马上把车开走，不然叫拖车来。”和赵强“我开！我开还不行吗！”；没有新增拖车已经到场或车辆损坏剧情。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "evidence": "沈清先对周建国说“倒计时五分钟”，再对周建国、周美娟和赵强说清场警告；周美娟对周建国哭诉，所有现场对白对象明确。"
+    },
+    {
+      "group": "第10组",
+      "type": "action_atomicity",
+      "evidence": "豪华轿车驶近、停稳、司机下车、司机开门并称呼沈总分成4个时间段，外部事件进入按阶段拆开。"
+    },
+    {
+      "group": "第12组",
+      "type": "handoff_continuity",
+      "evidence": "第11组尾部沈清、周桂兰和司机都在打开的后排车门旁，第12组组首继承同一车门、司机站位和母女位置。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组为赵强一句咬牙记仇的短反应组，7秒内只有怒视和台词两个轻节拍，属于单句反应短组，不靠停顿凑到10秒。",
+      "fix_instruction": "若不通过，应保持短组或与同空间相邻轻反应合并，不能增加无剧本停顿。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "赵强的新车在第3组被护住，第4组被废旧物品围住，第5组车门旁只剩窄缝，车和杂物状态前后连续。",
+      "fix_instruction": "若不通过，应在组尾或下一组组首补清车身、车门和杂物位置。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "周建国未在组首出现，但0-3秒从屋门方向入场后才发抖并对沈清说话，人物可用性成立。",
+      "fix_instruction": "若不通过，应在周建国说话前补入场动作或把他写进组首静态位置。"
+    },
+    {
+      "group": "第8组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "三人拖化肥袋离开分为拿袋和出门两段，沈清只保留站位，没有抢三人离开的主动作。",
+      "fix_instruction": "若不通过，应拆开拖袋、离门和沈清站位，避免同镜多主动作。"
+    },
+    {
+      "group": "第10组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定豪华轿车、周桂兰、司机白手套、车门和周桂兰上车时机，4条均为本组特有风险。",
+      "fix_instruction": "若不通过，应删除泛泛禁止项，改为本组人物和道具相关错误。"
+    },
+    {
+      "group": "第11组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "周桂兰“沈总？清清，你不是在厂里加夜班吗？”和沈清解释创业公司、A轮融资、CEO身份均保留，人物关系未改写。",
+      "fix_instruction": "若不通过，应恢复缺失台词和身份揭示顺序。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集未出现Seedance说明词、模板编号、参考图、@图片、自动正反打或“空间先被交代出来”等模板化污染表达。",
+      "fix_instruction": "若不通过，应删除模型说明词和模板化描述，改为自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

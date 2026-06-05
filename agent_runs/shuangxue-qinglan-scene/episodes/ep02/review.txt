@@ -1,0 +1,122 @@
+{
+  "pass": true,
+  "summary": "ep02 整集已对照原剧本和竖屏生成规则完成审核，13 组均保持杂物间单一空间、台词顺序、银行卡与蛋糕道具连续，未发现阻断生产的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清解释刘美娟挂视频与变声器的长句放在 5-14 秒，约 48 个有效字 / 9 秒，约 5.3 字/秒；前一句约 27 字 / 5 秒，约 5.4 字/秒。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "银行卡从床板下旧棉衣夹层和手帕中取出，经周桂兰递出，12.5-15 秒转到沈清手中，组尾明确银行卡在沈清手中。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "evidence": "刘美娟未出现在组首，但在 2-5 秒推门端蛋糕入场，8-12 秒才对沈清说话，符合人物可用性。"
+    },
+    {
+      "group": "第10组",
+      "type": "action_atomicity",
+      "evidence": "沈清打手、刘美娟缩手、蛋糕砸地、刘美娟尖叫与沈清短句反击分成 4 个时间段，没有把夺卡、落地和对白塞进同一镜。"
+    },
+    {
+      "group": "第13组",
+      "type": "timing_math",
+      "evidence": "第13组总时长 8 秒，时间段 0-3 秒、3-8 秒连续，镜头数 2 个匹配，属于结尾单句反击短组。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定夜晚杂物间、沈清在画面左侧持手机、周桂兰在床边、破瓷碗在矮凳，没有把后续戴眼镜或刘美娟入场写进第一帧。",
+      "fix_instruction": "若不通过，应删除组首过程动作和未出场人物，只写第一帧可生成状态。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留胶布老花镜、24个月、每月25号、每月八千、总计十九万二的关键证据，未改写金额和备注事实。",
+      "fix_instruction": "若不通过，应恢复原剧本金额、月份和老花镜道具。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈清两段解释均写成对周桂兰说道，属于画面内真人对白且对象明确。",
+      "fix_instruction": "若不通过，应补足沈清对周桂兰的说话对象。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "追问银行卡、掀床板、取塑料袋、拆夹层、递卡、接卡反问分成 6 个时间段，每段只有一个主动作或一句对白。",
+      "fix_instruction": "若不通过，应继续拆分取卡与递卡动作，或延长台词承载时间。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "沈清鞋底质问、刘美娟发现银行卡、急问周桂兰、伸手探卡都属于同一夺卡事件链，且分段清楚，没有让刘美娟提前夺到卡。",
+      "fix_instruction": "若不通过，应把沈清质问与刘美娟伸手夺卡拆成相邻短组。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第8组组尾刘美娟的手停在银行卡前方，第9组组首继承该状态；银行卡始终由沈清持有，蛋糕仍在刘美娟另一只手上。",
+      "fix_instruction": "若不通过，应在第8组组尾或第9组组首补银行卡和蛋糕归属。"
+    },
+    {
+      "group": "第10组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项为银行卡从沈清手中脱落、刘美娟接住掉落蛋糕、周桂兰替沈清打手，均锚定本组人物和道具，数量 3 条。",
+      "fix_instruction": "若不通过，应删除泛泛禁止项并改成本组具体剧情风险。"
+    },
+    {
+      "group": "第12组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第11组组尾沈清举着银行卡、刘美娟站在蛋糕碎瓷片旁、周桂兰在床边发抖；第12组组首完整继承这些位置并增加旧外套在床尾。",
+      "fix_instruction": "若不通过，应补齐蛋糕碎瓷片、银行卡归属和周桂兰位置。"
+    },
+    {
+      "group": "第13组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留刘美娟关于银行早关门的阻拦，以及沈清用自助机二十四小时开着查余额的反击，结尾剧情因果完整。",
+      "fix_instruction": "若不通过，应恢复原剧本两句结尾台词。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现 Seedance 模型说明词、模板编号、参考图、@图片占位符、广告语或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除所有工程词、模板词和非分镜正文内容。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

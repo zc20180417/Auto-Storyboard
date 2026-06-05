@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "ep17 整集审核通过：房产证举证、房屋归属反转、十九万追责、报警威胁、赵强扑抢手机和限时转账均按原剧本保留，未发现硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "第2组保留沈清从包里掏出红色房产证复印件、声明院子由亲生父亲留下、怒斥倒插门，以及周建国“你……你胡说八道！”反驳。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "第5组沈清约22字质问给5.5秒、赵强约18字回应给5秒、沈清约16字大喝给4.5秒，最高约4字/秒，低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第8组",
+      "type": "action_atomicity",
+      "evidence": "第8组为8秒短动作余波，只写赵强绕茶几扑向手机和伸手未抢到，未把报警台词、后退举手机和求饶压进同一组。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "evidence": "第8组组尾沈清右手握着显示110的手机，第9组组首继承手机归属并在0-3秒写沈清后退举高，赵强没有抢到手机。"
+    },
+    {
+      "group": "第10组",
+      "type": "handoff_continuity",
+      "evidence": "第9组组尾沈清举着手机、赵强双手举起、周桂兰在背景左侧，第10组组首直接复述这些位置和道具状态。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "周建国对沈清说道，沈清对周建国说道，现场对白对象明确，没有心声或假对象。",
+      "fix_instruction": "若缺失对象，应补成具体人物对具体人物说道。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组按抽出复印件、举证、怒斥、周建国反驳分段，每段主动作清楚，15秒容量由证据揭示和三句关键对白支撑。",
+      "fix_instruction": "若过载，应拆出周建国反驳或压缩非关键反应。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "周美娟和赵强在组首即位于背景沙发旁，周美娟发问前已可见；周建国也在组首可用并可被呵斥。",
+      "fix_instruction": "若人物未在组首出现，应在说话前补入场或组首位置。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "红色房产证复印件由沈清左手压住，手机由右手取出并按出110，组尾明确两件道具仍归沈清。",
+      "fix_instruction": "若道具跳变，应补取出、按键、归属和组尾状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "周美娟约11字给3.5秒、沈清约19字给6秒、赵强约12字给5.5秒，均低于6.5字/秒，没有慢语硬凑。",
+      "fix_instruction": "若字秒比超限，应延长台词段或拆组。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第8组视频禁止项锚定赵强、沈清、手机、红色房产证复印件和周家正屋客厅，3条均为本组抢手机风险。",
+      "fix_instruction": "若禁止项泛泛，应替换为本组人物和道具相关的具体错误。"
+    },
+    {
+      "group": "第9组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "沈清后退举手机、厉声威胁、赵强僵住、赵强求饶分别在4个时间段中承载，未让赵强同时抢手机和长台词。",
+      "fix_instruction": "若动作混杂，应拆开后退、威胁、僵住和求饶。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集最终稿未出现模板编号、官方模板说明、模型自动处理、参考图、占位符、广告或非短剧模板语气。",
+      "fix_instruction": "若出现工程或模板词，应删除并改为自然分镜描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

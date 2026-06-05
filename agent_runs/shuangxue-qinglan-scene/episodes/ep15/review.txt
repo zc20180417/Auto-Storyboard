@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "ep15最终稿按原剧本完成两元转账钓证、短信暴露、录像逼屏和赵强抢手机升级，全组格式、台词、道具与动作连续性通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "第1组保留沈清转账成功提示、赵强强撑否认和短信从周美娟名牌包内响起的关键证据因果。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组约71个有效对白字在15秒内分7段承载，整体约4.7字/秒，末尾三句分别拆段，单段均未超过6.5字/秒。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "evidence": "赵强冲上、怒吼、伸手抓旧手机、周美娟躲到身后分别分段，非主动作人物只做站位反应。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "周美娟名牌包内亮屏手机在第2组被露出，第3组延续为她手中手机；沈清旧手机从第2组组尾延续为第3组录像镜头。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "短信提示音明确来自周美娟名牌包内手机，现场对白均由画面人物对真实对象说出。",
+      "fix_instruction": "无须修复；保持短信声来源和现场对白对象明确。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组只承载短信回响、周美娟试图关机、沈清冷笑和旧手机录像露出四个连续证据节拍，10秒内可执行。",
+      "fix_instruction": "无须修复；不要额外加入抢夺或肢体冲突。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组组尾沈清举旧手机、周美娟握亮屏手机，第3组组首直接复述同一状态并继续逼她亮屏。",
+      "fix_instruction": "无须修复；保持两部手机归属不跳变。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "周美娟、沈清、周桂兰的所有现场对白均写明对谁说，且保留原剧本台词顺序。",
+      "fix_instruction": "无须修复；不要删改养老钱和解锁短信两句关键质问。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "沈清点明“到账两元的提醒”、周美娟喊“别拍我”、赵强怒吼“你别太过分了”均与原剧本一致。",
+      "fix_instruction": "无须修复；不得让赵强提前动手抢手机。"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第6组视频禁止项锚定赵强、周美娟、沈清旧手机、周桂兰，防止抢错手机和非主动作人物抢戏。",
+      "fix_instruction": "无须修复；保持禁止项为本组特有剧情错误。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终稿没有模板编号、参考图、自动分镜、模型说明词或官方占位符，也未出现泛化模板句。",
+      "fix_instruction": "无须修复；后续修改不得加入工程说明或模板语气。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

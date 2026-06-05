@@ -1,0 +1,127 @@
+{
+  "pass": true,
+  "summary": "ep06整集按客厅质问、杂物间安抚、银行查证三场推进，台词、道具和空间连续性完整，无阻断 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "赵强电话中的账上关键词、沈清厉声追问、赵强挂断并把手机塞进口袋、以建材店进货账搪塞，均与原剧本顺序一致。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "刘美娟约27字给5秒，约5.4字/秒；周建国约18字给4.5秒，约4字/秒；沈清约26字给5.5秒，约4.7字/秒，均未超过6.5字/秒。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "evidence": "周桂兰恐惧台词、沈清握手动作、沈清安抚台词分成三个时间段，每段只承载一个主动作或连续对白节拍。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "evidence": "第6组8秒只承载沈清一句追查承诺和周桂兰含泪点头，是杂物间场景的短承接和情绪确认，不靠普通凝视凑到10秒。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "银行卡在第7组由柜员接入窗口，第8组组首仍在读卡器旁，柜员依据电脑屏幕说明短信提醒号码异常，道具归属连续。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈清现场问句写明对银行柜员问道；末尾心声写明沈清嘴唇闭合不做口型，声音来源不与现场开口混淆。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "沈清、赵强、刘美娟、周建国均在组首空间锁定中有画面位置和身体朝向，赵强手机在组首可用。",
+      "fix_instruction": "若不通过，应在组首补齐所有在场人物的位置、朝向和手机归属。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈清逼问和赵强否认均写明对沈清或赵强说道，台词对象真实且与客厅对峙关系一致。",
+      "fix_instruction": "若不通过，应逐句补真实对话对象，不能写对空气或文件说话。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第3组15秒承载刘美娟插话、周建国站起定性家用、沈清反击三个冲突升级节拍，台词容量充足且未叠加复杂道具操作。",
+      "fix_instruction": "若不通过，应拆分周建国站起和沈清反击，或压缩非关键反应。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第4组切入夜晚周家杂物间，组首只写旧床、周桂兰坐床边、沈清在床侧的第一帧状态，没有把亲戚散去过程写入动作推进。",
+      "fix_instruction": "若不通过，应删去组首中的过程动作并保留静态结果状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "衣角和母女双手的状态从周桂兰绞衣角，过渡到沈清包住双手，组尾转为沈清握着周桂兰双手。",
+      "fix_instruction": "若不通过，应补握手前后的可见过渡。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾部沈清握住周桂兰双手，第6组组首直接复述该状态，周桂兰仍坐在床边，人物姿态连续。",
+      "fix_instruction": "若不通过，应在第5组尾和第6组首统一手部与床边位置。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "扶坐放卡、推卡说查流水、柜员接卡刷卡敲键盘分段清楚，没有把查卡操作和长台词压在同一短时间段。",
+      "fix_instruction": "若不通过，应拆出接卡和刷卡敲键盘。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "柜员询问本人使用、周桂兰确认贴身藏卡、柜员指出短信提醒号码不是本人，三条银行关键信息均保留。",
+      "fix_instruction": "若不通过，应恢复原剧本台词和信息顺序。"
+    },
+    {
+      "group": "第9组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第9组视频禁止项为4条，分别锚定沈清心声、赵强本人、银行卡、周桂兰座椅，均为本组具体生成风险。",
+      "fix_instruction": "若不通过，应删掉泛化禁止项并补足本组人物道具锚点。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt未出现Seedance说明词、模板编号、参考图占位符、广告/MV/视频延长语气或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除工程词、模板词和非短剧模板语气。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

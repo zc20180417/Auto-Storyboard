@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "ep18 整集分镜忠实保留金镯子逼债、电话内容反击、查税洗钱揭露和十九万二转账到账，8 个组均满足竖屏 scene 格式与视频执行要求。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中沈清嘲笑金镯子、抓住手腕并命令“摘下来！抵债！”；分镜第2组按顺序保留嘲笑、抓周美娟右手腕、指向金镯子和命令台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "第4组沈清复述“账上的钱千万别动，明天有一笔要进……”约 18 字用 4 秒约 4.5 字/秒；赵强“你……你怎么听见的！”约 9 字用 2 秒约 4.5 字/秒。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "evidence": "第6组 15 秒包含周建国追问、沈清揭穿洗钱、沈清报警威胁三个信息节拍，没有同时压入起身、转账或其他外部事件，密度可执行。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "evidence": "第7组将赵强求饶、掏手机开银行APP、周美娟阻拦、赵强推开并护手机分为连续时间段，手机始终在赵强手中。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "第8组承接赵强亮屏手机，新增沈清手中手机，最后通过沈清手机叮声和屏幕亮起表现到账；十九万二金额没有变更。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "赵强对沈清、沈清对赵强、周美娟对沈清的现场对白均写明真实对象。",
+      "fix_instruction": "若不通过，应补足每句现场对白的对象，不能用假对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "复杂道具组提供 4 条禁止项，均锚定周美娟金镯子、沈清抓手腕和赵强不抢动作。",
+      "fix_instruction": "若不通过，应删除泛泛项或与剧情矛盾的禁止项。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾沈清扣着周美娟戴金镯子的右手腕，第3组首直接继承这一状态，再写周美娟护手腕和沈清松开转向赵强。",
+      "fix_instruction": "若不通过，应修正第2组组尾或第3组组首的手腕归属。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第5组同在周家正屋客厅，组首写清沈清、赵强、周美娟和周建国的位置、朝向与金镯子状态，周建国可用于第6组追问。",
+      "fix_instruction": "若不通过，应补周建国的可见位置或在本组前半段安排入场。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "第6组保留周建国“什么查税”、沈清“做假账用我妈的卡洗钱”和“报了警，税务局一查”两句关键揭示，未新增报警已经发生。",
+      "fix_instruction": "若不通过，应恢复原剧本台词顺序和洗钱对象。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "赵强的手机从裤袋取出后一直由赵强握持，周美娟阻拦和被推开都没有改变手机归属。",
+      "fix_instruction": "若不通过，应补手机从谁手中到谁手中的可见过渡。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "沈清手机“叮”声被写成可见手机声源，赵强乞求为现场开口对白并写明对沈清。",
+      "fix_instruction": "若不通过，应明确手机提示音来源或补赵强对白对象。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全稿未出现 Seedance 模型说明、参考图、模板编号、@图片/@视频/@音频或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除模型工程词和模板化描述，改成自然画面文本。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

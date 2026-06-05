@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "ep01-ep01-agent-cli-storyboard.txt",
+  "summary": "ep01完成沈清深夜转账回家、发现周家生日消费、在杂物间发现周桂兰受冻吃冷粥，并听见刘美娟到账声。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第9组",
+      "rule": "generation_density",
+      "problem": "第9组为8秒短组。",
+      "evidence": "该组只承载周桂兰确认一分钱未收到和沈清后退撞门框，是单句反应与短动作余波，短组理由成立。",
+      "fix": "无需硬凑10秒；交付说明标注短组理由。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "ep10整集分镜忠于理财谎言被拆穿、沈清逼查凭证和赵强烧旧账单的剧情链，9组均为周家客厅单一空间，台词节奏和道具连续性通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "刘美娟冲到赵强身前并称钱拿去理财，沈清用建材店账户反问，刘美娟继续用骗子骗老太太强辩，剧情因果和台词顺序完整。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清15字要求合同收益单用3秒，刘美娟16字保险柜托词用3.5秒，沈清19字手机银行要求用3.5秒，均低于6.5字/秒。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "evidence": "第5组尾部广告宣传单递到沈清面前，第6组组首悬在沈清面前并由沈清接过，随后举起质问签字和银行公章，传单归属清楚。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第8组尾部沈清扶周桂兰向门口离开，第9组组首继承沈清和周桂兰在门口附近背对镜头，赵强刘美娟仍留在客厅右侧。"
+    },
+    {
+      "group": "第9组",
+      "type": "action_atomicity",
+      "evidence": "刘美娟腿软抓赵强、低声问怎么办、赵强摸手机、赵强要求烧账单分四个时间段，尾钩动作链可执行。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组承载刘美娟解释、赵强附和、沈清追问收益三段同冲突连续对白，末尾只有1.5秒反应，没有外部事件或复杂动作过载。",
+      "fix_instruction": "若不通过，应把赵强附和或沈清追问拆到相邻组。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "刘美娟对沈清、周桂兰对沈清、沈清对周桂兰的对象都明确，现场真人对白没有假对象。",
+      "fix_instruction": "若不通过，应逐句补足真实对话对象。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "翻包、取出传单、递传单并说“保本保息”分段处理，单个时间段只承载一个主动作或一个对白动作节拍。",
+      "fix_instruction": "若不通过，应拆分翻找与递出传单。"
+    },
+    {
+      "group": "第6组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "野鸡理财通过皱巴巴广告宣传单、不知名小公司字样和沈清台词转译为可见信息，没有只写抽象判断。",
+      "fix_instruction": "若不通过，应补充纸面、签字、公章等可拍细节。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵强以公司走账打圆场、沈清指出不在母亲名下、赵强说自家人放谁名下一样，三句关键台词和关系压力均保留。",
+      "fix_instruction": "若不通过，应恢复原台词顺序和公司账因果。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第8组涉及沈清扶周桂兰离开和手机流水、广告传单归属，视频禁止项3条均锚定沈清、周桂兰、赵强、广告宣传单和手机流水记录。",
+      "fix_instruction": "若不通过，应删除泛泛词并换成本组人物道具锚点。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "刘美娟和赵强都是现场低声对白，画面中人物口型可见，没有心声、电话音或画外音混用。",
+      "fix_instruction": "若不通过，应明确声音来源或闭口状态。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现Seedance说明、自动正反打、参考模板、@图片/@视频/@音频、广告字卡或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除模型说明词和模板污染内容。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

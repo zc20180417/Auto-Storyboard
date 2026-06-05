@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep06",
+  "status": "done",
+  "output_name": "ep06-ep06-agent-cli-storyboard.txt",
+  "summary": "沈清在周家客厅抓住赵强账款破绽，夜里安抚母亲并承诺追查，次日在银行查出短信提醒号码异常并锁定赵强新车。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep24",
+  "status": "done",
+  "output_name": "ep24-ep24-agent-cli-storyboard.txt",
+  "summary": "宴会庆贺被周建国一家闯入打断，律师隔离取证，沈清用法律和LED证据揭露养老钱与高利贷旧账。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "timing_math",
+      "problem": "第4组为9秒短组。",
+      "evidence": "本组只承载沈清两句短反击，属于短句转折；扩到10秒以上会依赖普通停顿或低密度状态。",
+      "fix": "保留短组，后续生产时按短反击节拍处理。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

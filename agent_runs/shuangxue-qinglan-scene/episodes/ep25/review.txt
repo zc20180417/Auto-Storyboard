@@ -1,0 +1,124 @@
+{
+  "pass": true,
+  "summary": "ep25 全集8组按原剧本顺序完成证据揭示、经侦移交、高利贷借条、讨债人员入场、周建国跪地和推债给沈清，未发现阻断交付的 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清约29字质问放在5.5秒内，约5.3字/秒；8秒短组由证据切屏和单句反击组成，符合短证据揭示节拍。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "律师约51字执行令说明放在9.5秒内，约5.4字/秒，宾客甲短评2.5秒承载，均低于6.5硬上限。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "evidence": "宴会厅大门打开、张总和讨债人员入场、张总喊话、周建国回应分成4个时间段，外部事件进入按阶段稳定。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "张总连本带利五百万、法院强制执行令、宾客避让和周建国跪地均按原剧本保留，没有提前抓人。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第7组尾部张总抓着周建国衣领、周美娟退到宾客桌旁，第8组组首继续继承这些人物和道具状态。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "沈清为画面内现场开口，明确对赵强说道；没有把台词写成心声或画外音。",
+      "fix_instruction": "若不通过，应补明真实对话对象或改成明确声音来源。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "律师实名移交市经侦大队、赵强质问来真的、周美娟喊爸怎么办均按原剧本顺序保留。",
+      "fix_instruction": "若不通过，应恢复被删改台词和说话对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "大屏幕从强盛建材证据链切换到周建国两百万高利贷借条，借条在第3组尾和第4组首连续存在。",
+      "fix_instruction": "若不通过，应补充屏幕切换和借条停留状态。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组只有宾客甲短评和律师执行令说明两个主对白节拍，讨债团队入场留到第5组处理，没有并列过载。",
+      "fix_instruction": "若不通过，应拆出律师长台词或删除非剧本停顿。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "张总和讨债人员先由宴会厅大门入场并停位，再由张总喊话，人物在说话前已经可见。",
+      "fix_instruction": "若不通过，应在组首预置门后位置或先写入场动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "张总追债长台词、宾客避让、周建国跪地分别承载，周建国跪地没有和张总抓人混在同段。",
+      "fix_instruction": "若不通过，应把宾客避让或跪地动作拆成独立组。"
+    },
+    {
+      "group": "第7组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第7组是复杂抓裙角和揪衣领调度，视频禁止项锚定周建国、沈清、周美娟、张总和金镯子，共4条。",
+      "fix_instruction": "若不通过，应删掉泛泛禁止项并补本组人物道具锚点。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "周建国两句推债均明确对张总说道，张总最后明确对沈清说道，没有对空气或道具说话。",
+      "fix_instruction": "若不通过，应改为周建国对张总、张总对沈清的真实对白。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文未出现模板编号、参考图、@图片、自动正反打、Seedance说明词或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除模型说明词和工程占位符。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "generation_density",
+      "problem": "第1组为8秒短组，需要交付说明中明确其短组性质。",
+      "evidence": "第1组只承载大屏幕证据切换和沈清单句质问，属于证据揭示加单句反击，未硬凑到10秒。",
+      "fix": "可保留；若后续希望更常规长度，可与第2组重新合并，但需避免律师长台词与赵强、周美娟反应过载。"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "pass": true,
+  "summary": "ep05按3个场景组装为9组，完整保留流水席追问、厨房残羹、客厅砸碗质问和赵强电话泄露，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {"group": "第1组", "type": "script_fidelity", "evidence": "第1组保留次日中午周家流水席、两大桌亲戚推杯换盏、鲍鱼海参大鱼大肉、刘美娟敬酒和沈清寻找周桂兰。"},
+    {"group": "第5组", "type": "prop_continuity", "evidence": "第4组尾筷子已被沈清夺下、破碗仍在周桂兰手边；第5组先放筷子到灶台，再由沈清端起缺口碗离开厨房，关键道具有可见转移。"},
+    {"group": "第7组", "type": "dialogue_pacing", "evidence": "沈清质问约30字占6秒约5字/秒，刘美娟反击约25字占5秒约5字/秒，均未超过6.5字/秒硬上限。"},
+    {"group": "第8组", "type": "script_fidelity", "evidence": "第8组保留沈清关于每月八千赡养费的质问、周建国‘反了你了’的暴怒和沈清‘花我妈救命钱’反击，台词顺序未改。"},
+    {"group": "第9组", "type": "audio_mouth_sync", "evidence": "赵强低声电话写为对电话另一端说道，手机亮屏贴在耳边，声音来源和口型载体明确。"}
+  ],
+  "semantic_checks": [
+    {"group": "第1组", "type": "space_locking", "result": "pass", "evidence": "组首限定周家正屋客厅一个物理空间，列出沈清、周建国、刘美娟、亲戚们的位置和身体朝向。", "fix_instruction": "若出现厨房或后厨画面，应拆到第3组。"},
+    {"group": "第2组", "type": "handoff_continuity", "result": "pass", "evidence": "第1组尾沈清在客厅左侧角落面对主桌，第2组首复述同一位置，第2组尾明确沈清离开客厅进入后厨方向。", "fix_instruction": "若后续厨房组缺少沈清门内位置，应补入口状态。"},
+    {"group": "第3组", "type": "filmability", "result": "pass", "evidence": "油烟味被转译为昏暗厨房、灶台油烟、缺口碗、鱼骨菜汤和发黑鱼肉等可见信息。", "fix_instruction": "若只写气味和委屈，应改成可见道具和动作。"},
+    {"group": "第4组", "type": "action_atomicity", "result": "pass", "evidence": "喊停、冲到小板凳前夺筷、周桂兰解释分段清楚；沈清没有同时推倒或拉走周桂兰。", "fix_instruction": "若一个时间段同时喊停、冲刺、夺筷和长对白，应拆开。"},
+    {"group": "第5组", "type": "script_fidelity", "result": "pass", "evidence": "沈清原台词‘外面吃鲍鱼海参……口水菜？’保留，并按原剧本端起残羹冷炙的破碗往外走。", "fix_instruction": "若改成倒掉残羹或带周桂兰一起离开，应恢复原剧本动作。"},
+    {"group": "第6组", "type": "generation_density", "result": "pass", "evidence": "第6组为9秒短组，内容集中在端碗入场、砸碗、汤汁飞溅和全场死寂，属于道具插入和短动作余波，不靠停顿硬凑。", "fix_instruction": "若强行扩成12秒并增加群众沉默，应压回短组。"},
+    {"group": "第7组", "type": "dialogue_direction", "result": "pass", "evidence": "沈清对刘美娟质问，刘美娟对沈清反击，两句现场对白对象明确且未改变说话对象。", "fix_instruction": "若只写台词，应补全A对B说道。"},
+    {"group": "第8组", "type": "prop_continuity", "result": "pass", "evidence": "缺口碗从第6组起持续位于主桌中央；周建国酒杯从手边到第8组末扣住杯身，为第9组举杯做可见过渡。", "fix_instruction": "若第9组直接出现举杯但第8组没有杯子状态，应补手靠近酒杯。"},
+    {"group": "第9组", "type": "character_availability", "result": "pass", "evidence": "赵强在前几组组首作为门外侧阴影人物存在，第9组先走进来再低声打电话，行动和台词前可用。", "fix_instruction": "若赵强突然开口且无入场或电话来源，应补门口位置和入场动作。"},
+    {"group": "第9组", "type": "video_negative_constraints", "result": "pass", "evidence": "第9组视频禁止项4条，分别锚定周建国酒杯、赵强手机、赵强挂断电话和缺口碗，没有泛泛词或矛盾项。", "fix_instruction": "若禁止项超过5条或无人物道具锚点，应删减并替换为本组具体风险。"},
+    {"group": "第1组-第9组", "type": "prompt_pollution", "result": "pass", "evidence": "整集正文未出现Seedance说明词、模板编号、@图片/@视频/@音频、参考图、广告字卡或自动分镜等污染内容。", "fix_instruction": "若出现工程词，应删除并改写为自然分镜正文。"}
+  ],
+  "issues": [],
+  "warnings": [
+    {"severity": "soft", "group": "第6组", "rule": "generation_density", "problem": "第6组为9秒短组。", "evidence": "第6组承担破碗砸上主桌、汤汁溅桌布和全场瞬间死寂，是道具插入与短动作余波，符合短组例外。", "fix": "不需硬凑10秒；交付说明标注该短组理由。"}
+  ]
+}

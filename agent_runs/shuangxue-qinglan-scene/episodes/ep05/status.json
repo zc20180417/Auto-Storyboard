@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "ep05-ep05-agent-cli-storyboard.txt",
+  "summary": "ep05完成周家流水席追问、厨房发现周桂兰吃残羹、沈清端碗回客厅当众质问，并以赵强电话泄露账目收束。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "generation_density",
+      "problem": "第6组为9秒短组。",
+      "evidence": "第6组承担破碗砸上主桌、汤汁溅桌布和全场瞬间死寂，是道具插入与短动作余波，符合短组例外。",
+      "fix": "不需硬凑10秒；交付说明标注该短组理由。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

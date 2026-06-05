@@ -1,0 +1,129 @@
+{
+  "pass": true,
+  "summary": "ep12整集保留伪造授权书揭穿、活命钱争执、美娟赵强入场和银行流水摊牌，10个组均符合竖屏scene格式与审核门槛。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清“两年前我妈重病昏迷……”约28字承载5秒，约5.6字/秒；周建国“我年纪大了……”约17字承载3秒，约5.7字/秒，均未超过6.5字/秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "原剧本周桂兰痛哭质问活命钱、周建国用家用开销狡辩并拍桌，分镜按顺序保留三句台词和拍桌动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "evidence": "周美娟和赵强在组首位于里屋门帘后方，3-6秒入场后，周美娟才在6-10秒对沈清尖叫。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "evidence": "背包在沈清身侧，2-5秒取出二十四个月银行流水，5-10秒铺满大理石茶几，授权委托书保留在茶几一侧。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_direction",
+      "evidence": "沈清两句最终摊牌均明确对周建国、周美娟和赵强说道，对账对象与原剧本“全家对账”一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "标题含EP12-G01，10秒整数总时长，0-2、2-4.5、4.5-7.5、7.5-10时间轴连续，镜头数4个一致。",
+      "fix_instruction": "若不通过，应修正cut_id、总时长、时间轴或镜头数。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "本组均为画面内真人现场开口，沈清对周建国说、周建国对沈清说，无心声或画外音混用。",
+      "fix_instruction": "若不通过，应改明声音来源或补充闭口。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾部委托书在茶几中央、周建国避开目光；第3组组首继续保持委托书和三人站位，周桂兰才开始追问。",
+      "fix_instruction": "若不通过，应补充委托书位置和人物站位。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组承载周桂兰痛哭、周建国恼怒反驳、拍桌补充狡辩三个连续冲突节拍，12秒容量匹配且没有新增停顿撑时长。",
+      "fix_instruction": "若不通过，应拆开拍桌或压缩普通反应。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "第5组两段均以沈清对白为主，侧身护住周桂兰只是同步站位变化，未让非主动作人物抢戏。",
+      "fix_instruction": "若不通过，应把保护站位和对白拆段或弱化非主动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "周建国约19字用4秒，约4.75字/秒；沈清约20字用5秒，约4字/秒，短促交锋没有硬凑到10秒。",
+      "fix_instruction": "若不通过，应调整时长或保留9秒短组。"
+    },
+    {
+      "group": "第7组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第7组仍在周家正屋客厅，里屋门帘作为客厅后方入口区域，周美娟和赵强入场前位置可用。",
+      "fix_instruction": "若不通过，应明确入口空间或拆组。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留周建国指鼻大骂和“钱进了这个家，就是这个家的钱！你报警抓我啊！”台词，没有新增打人或抢文件。",
+      "fix_instruction": "若不通过，应恢复原台词并删除新增强动作。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "银行流水由沈清从背包取出再铺上茶几，授权委托书从茶几中央被推到一侧但仍可见，道具归属和位置连续。",
+      "fix_instruction": "若不通过，应补充取出、铺开或纸张位置过渡。"
+    },
+    {
+      "group": "第10组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第10组视频禁止项锚定银行流水账单、周建国三人和周桂兰，3条具体风险且不禁止原剧本动作。",
+      "fix_instruction": "若不通过，应删除泛泛或冲突的禁止项。"
+    },
+    {
+      "group": "全组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final.txt未出现Seedance说明、模板编号、参考图、@图片、自动正反打、广告或非分镜正文。",
+      "fix_instruction": "若不通过，应删除模型说明词和模板污染。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,46 @@
+{
+  "pass": true,
+  "summary": "ep01按4个场景组装为10组，完整保留沈清深夜转账回家、发现生日消费、找到受冻母亲、确认赡养费被截留并听见刘美娟到账声，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {"group": "第1组", "type": "audio_mouth_sync", "evidence": "沈清电话对白有手机载体；内心旁白段写明嘴唇闭合不做口型，转账成功和备注通过手机屏幕展示。"},
+    {"group": "第2组", "type": "script_fidelity", "evidence": "第2组保留推开虚掩雕花铁门、院内帝王蟹包装盒和三层翻糖蛋糕空盒、沈清疑惑‘帝王蟹？家里办大寿？’。"},
+    {"group": "第6组", "type": "dialogue_pacing", "evidence": "第6组末连续对白约32字占5秒，约6.4字/秒，未超过6.5字/秒硬上限。"},
+    {"group": "第8组", "type": "prop_continuity", "evidence": "旧毛巾位于床头并被周桂兰视线指向，承载她只用热毛巾敷腿的信息；缺口破瓷碗持续位于床沿旁。"},
+    {"group": "第10组", "type": "audio_mouth_sync", "evidence": "刘美娟不在画面内，台词写为餐厅方向画外音；沈清嘴唇闭合不做口型，随后才现场开口回应。"}
+  ],
+  "semantic_checks": [
+    {"group": "第1组", "type": "generation_density", "result": "pass", "evidence": "第1组15秒承载电话请假、内心旁白、手机转账和收起手机后的短句，均为同一院门外连续事件链。", "fix_instruction": "若口型或转账过快，应拆分电话和转账。"},
+    {"group": "第2组", "type": "space_locking", "result": "pass", "evidence": "第2组只发生在周家院子，正屋客厅内容留到第3组，未跨主要物理空间。", "fix_instruction": "若客厅生日墙出现于本组，应拆到客厅组。"},
+    {"group": "第3组", "type": "filmability", "result": "pass", "evidence": "生日布置通过水晶吊灯、彩带、气球、烫金字和名牌童装包装袋呈现，信息可见。", "fix_instruction": "若只写奢华生日氛围，应补具体道具。"},
+    {"group": "第4组", "type": "action_atomicity", "result": "pass", "evidence": "空客厅、后院咳嗽声、沈清转身离开分段明确，行李箱没有跟上符合原剧本。", "fix_instruction": "若带走行李箱，应删除。"},
+    {"group": "第5组", "type": "character_availability", "result": "pass", "evidence": "周桂兰在组首蜷缩床上，沈清在门外阴影处并先推门入场后对话，两人可用。", "fix_instruction": "若沈清直接出现在床边，应补推门进入动作。"},
+    {"group": "第6组", "type": "prop_continuity", "result": "pass", "evidence": "第5组尾破瓷碗被藏进棉被边缘，第6组掀开棉被露出碗和冷粥，状态连续。", "fix_instruction": "若破瓷碗归属跳变，应补掀被或拿出动作。"},
+    {"group": "第7组", "type": "script_fidelity", "result": "pass", "evidence": "保留冻疮裂口、羽绒服未收到、美娟签收并说自己买的关键信息。", "fix_instruction": "若漏掉美娟签收，应补沈清对应台词。"},
+    {"group": "第8组", "type": "script_fidelity", "result": "pass", "evidence": "保留进口药、舍不得买、旧毛巾敷腿、每月八千和周桂兰错愕反应。", "fix_instruction": "若把旧毛巾改成药盒，应恢复旧毛巾。"},
+    {"group": "第9组", "type": "generation_density", "result": "pass", "evidence": "第9组8秒是‘一分钱都没收到’的短反应和沈清后退撞门框，属于短句反应与动作余波。", "fix_instruction": "若硬凑到10秒并增加普通沉默，应压回短组。"},
+    {"group": "第10组", "type": "handoff_continuity", "result": "pass", "evidence": "第9组尾沈清背靠杂物间门框，第10组首复述她背靠门框且木门打开，餐厅亮窗作为新声音来源。", "fix_instruction": "若突然进入餐厅，应补过渡或另起场景。"},
+    {"group": "第1组-第10组", "type": "prompt_pollution", "result": "pass", "evidence": "整集正文无Seedance说明、模板编号、@图片/@视频/@音频、参考图、自动分镜或广告工程词。", "fix_instruction": "若出现污染词，应删除并改写为自然分镜。"},
+    {"group": "第1组-第10组", "type": "video_negative_constraints", "result": "pass", "evidence": "各复杂动作和关键道具组均提供2-4条锚定人物或道具的禁止项，没有泛泛词或与剧情冲突项。", "fix_instruction": "若禁止项超过5条或无锚点，应删减。"}
+  ],
+  "issues": [],
+  "warnings": [
+    {"severity": "soft", "group": "第9组", "rule": "generation_density", "problem": "第9组为8秒短组。", "evidence": "该组只承载周桂兰确认一分钱未收到和沈清后退撞门框，是单句反应与短动作余波，短组理由成立。", "fix": "无需硬凑10秒；交付说明标注短组理由。"}
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "pass": true,
+  "summary": "ep13整集按原剧本完成流水账单、药盒、杂物间照片、赵强借钱和短信证据挑衅的连续对峙，未发现hard issues。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组",
+    "第5组",
+    "第6组",
+    "第7组",
+    "第8组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中沈清指流水账单并要求解释每笔钱，周美娟用住宿和吃喝强辩，沈清追问剩饭和杂物间房租；分镜完整保留且未新增改变剧情的动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "手机从沈清西装口袋取出并点开杂物间照片，5-13秒持续作为照片载体，组尾仍在沈清手中，未把照片误写成现实空间。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "第5组8-13秒两句约20字用5秒，约4字/秒；第8组10.5-13秒约16字用2.5秒，约6.4字/秒，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "evidence": "第6组把沈清伸手要还款记录、赵强结巴、周建国拍桌、周建国发火拆成四个时间段，拍桌未与两句长对白混在同一动作段。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "evidence": "最终正文未出现参考图、模板编号、模型说明词、官方占位符、字幕或广告式语言，保持自然分镜格式。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "所有现场对白均写明沈清对周美娟或周美娟对沈清说道，没有假对象，也没有心声/旁白混用。",
+      "fix_instruction": "若不通过，应把无对象对白改成明确人物对人物说道。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组11秒承载周美娟两句医药费辩解和沈清甩出药盒袋一个复合动作，强节拍集中且同一冲突目标下可执行。",
+      "fix_instruction": "若不通过，应拆出甩药盒袋动作或缩短低密度反应。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "周桂兰、周美娟、沈清均为画面内现场开口，对话对象清楚，不存在门外音、电话音或闭口心声问题。",
+      "fix_instruction": "若不通过，应标明声音来源或改成现场人物开口。"
+    },
+    {
+      "group": "第4组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "杂物间床铺通过手机屏幕照片呈现，黑棉被以屏幕可见轮廓承载，不把抽象指控当画面信息。",
+      "fix_instruction": "若不通过，应把不可视信息转为手机屏幕、人物反应或台词。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾赵强站在桌右侧前方，第6组首继承该位置；第6组尾周建国站到桌右侧压场，可接第7组周建国继续对峙。",
+      "fix_instruction": "若不通过，应在组尾或下一组首补具体人物位置和桌面道具状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "周美娟在第7组组首已位于周建国后方半步，8.5秒从后方露出身位后说台词，出声前可用性成立。",
+      "fix_instruction": "若不通过，应在组首补周美娟位置或在说话前加入明确入画动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第8组视频禁止项锚定周美娟手机、流水账单、周建国和短信台词，数量3条，未使用泛泛词且不禁止原剧情。",
+      "fix_instruction": "若不通过，应删除无锚点条目或改为本组证据状态相关错误。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

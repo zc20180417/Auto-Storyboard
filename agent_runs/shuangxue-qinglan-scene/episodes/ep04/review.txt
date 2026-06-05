@@ -1,0 +1,129 @@
+{
+  "pass": true,
+  "summary": "ep04整集6组保留37.62元凭条、古法金镯、饭药质问、进口洋娃娃、Party尾款和八千元反击，格式、时长、对白指向和道具连续性通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本第一段开头的沈清扶周桂兰进客厅、37.62元凭条拍上茶几、沈清质问和刘美娟用老人花钱没数推脱均按顺序保留。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "evidence": "古法金镯先在刘美娟右手腕后侧隐藏，3-6秒由沈清抓腕扯到灯下暴露，之后刘美娟尖叫和沈清追问时仍在她腕上。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "周建国约24字给4秒，约6.0字/秒；沈清约20字给3秒，约6.3字/秒；刘美娟约9字给3秒，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "evidence": "小雨不在组首静态锁定中，但0-3秒先从卧室门口跑进客厅并抱着进口洋娃娃，之后才对刘美娟说话，出场顺序成立。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "evidence": "沈清询问、小雨说漏嘴、刘美娟扑去捂嘴、刘美娟斥责、沈清观察分成五个时间段，没有把外部入场、捂嘴和长对白塞在同一镜。"
+    },
+    {
+      "group": "第6组",
+      "type": "format",
+      "evidence": "第6组标题含cut_id EP04-G06，组总时长8秒、镜头数2个，时间段0-2秒和2-8秒连续，短组用于单句反击和短动作余波。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定周家正屋客厅一个物理空间，茶几、打印凭条归属和沈清、周桂兰、刘美娟的位置朝向清楚。",
+      "fix_instruction": "若不通过，应补齐每个在场人物的画面位置、身体朝向和凭条归属。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈清对刘美娟问金镯和钱来源，刘美娟对沈清尖叫辩解，所有现场对白均有真实对象。",
+      "fix_instruction": "若不通过，应为每句现场对白补真实对话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定古法金镯、刘美娟手腕、打印凭条和周桂兰，数量4条，没有占位示例或泛泛词。",
+      "fix_instruction": "若不通过，应删除无锚点或泛泛禁止项，改成本组人物道具错误。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾部沈清抓刘美娟戴金镯的手腕，第3组组首复述该状态，并在4-7秒写沈清松开手，手腕状态有可见过渡。",
+      "fix_instruction": "若不通过，应在第3组组首或动作段补明沈清何时松开刘美娟手腕。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "小雨抱巨大进口洋娃娃跑出、炫耀新娃娃、刘美娟让她回屋、小雨提明天大Party，原剧本信息完整且未新增剧情。",
+      "fix_instruction": "若不通过，应恢复小雨原台词和进口洋娃娃道具。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "15秒长组具备小雨关键台词、刘美娟扑身捂嘴的中等动作链、宴席尾款暴露带来的冲突升级三类容量支撑，不是低密度撑时长。",
+      "fix_instruction": "若不通过，应拆出捂嘴动作或压缩观察余波。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "进口洋娃娃在小雨怀里，刘美娟扑身捂嘴后写明娃娃被小雨夹在臂弯里，关键道具没有消失。",
+      "fix_instruction": "若不通过，应补洋娃娃在捂嘴动作后的归属。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "第6组只有沈清现场开口质问刘美娟，0-2秒无对白只写环境声，没有心声、画外音或口型混用。",
+      "fix_instruction": "若不通过，应明确声音来源或删除不必要的画外音。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现Seedance说明词、自动正反打、模板编号、@占位符、参考图、广告语或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除工程说明和模板污染词，仅保留自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "dialogue_pacing",
+      "problem": "沈清最终质问语速偏慢，但符合咬牙切齿的压迫反击和8秒短组余波。",
+      "evidence": "约21字给6秒，约3.5字/秒；该组用于承接小雨说漏嘴后的单句反击，上一组已经15秒无法自然并入。",
+      "fix": "若后续生产觉得拖沓，可把0-2秒余波压到1秒并保持短组结构。"
+    }
+  ]
+}

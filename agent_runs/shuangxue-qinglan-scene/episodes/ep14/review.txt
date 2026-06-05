@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "ep14 全集分镜忠实保留银行记录争辩、旧银行卡核对、周美娟退缩、沈清拦路和两元转账确认，格式、口型、道具连续性和视频执行性通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "周美娟否认银行记录、赵强附和警察也要讲证据、沈清回应“不见棺材不掉泪”均按原剧本顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "旧银行卡从第2组组尾进入沈清手里，第3组组首继承沈清持有旧银行卡和手机，9-13秒核对尾号6789后仍在沈清手里。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈清OS“狐狸尾巴马上就要露出来了”在9-11秒明确为心声，画面写明沈清嘴唇闭合，不做现场口型。"
+    },
+    {
+      "group": "第7组",
+      "type": "timing_math",
+      "evidence": "第7组时间段0-2、2-4.5、4.5-7、7-10、10-13秒连续，总时长13秒，标题镜头数5个与实际一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈清对周桂兰询问银行卡，周桂兰对沈清回答，现场对白对象真实明确。",
+      "fix_instruction": "若调整递卡段，应继续写清沈清和周桂兰之间的对话指向。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组为周美娟退半步、向周建国求助并催促回屋的8秒短承接，剧情天然短促，没有用长停顿硬凑10秒。",
+      "fix_instruction": "若后续扩写，不要加入原剧本没有的争抢手机或离开客厅动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "周美娟转身、沈清跨步拦路、双方短句交锋分段完成，单个时间段没有同时承载推搡、抢包或输入转账等多主动作。",
+      "fix_instruction": "若修稿，应继续避免把拦路写成肢体冲突。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "赵强和沈清的现场对白均有对象，沈清心声单独标明嘴唇闭合，声音来源与口型不冲突。",
+      "fix_instruction": "若压缩本组，应保留OS闭口描述。"
+    },
+    {
+      "group": "第7组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第7组禁止项锚定沈清、周美娟、沈清手机、旧银行卡和两元金额，聚焦本组按键顺序、金额和道具归属风险。",
+      "fix_instruction": "若删改禁止项，应保留转账金额和手机归属约束。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全集未出现模板编号、参考官方模板、自动分镜、@图片/@视频/@音频、广告字卡或其他工程说明词。",
+      "fix_instruction": "若引用Seedance风格，只能改进自然画面表达，不能写入模板说明。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "generation_density",
+      "problem": "第4组为8秒短承接，需要交付时说明其短组理由。",
+      "evidence": "该组只承载周美娟脸色发白、向周建国求助并催促回屋，属于不可硬凑的逃离前短动作节拍。",
+      "fix": "无需强制修复；不要为了达到10秒加入原剧本没有的停顿或动作。"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "ep20整集保留遗嘱揭示、产权归属、保姆费勒索、青花瓷追问、当铺监控和明早八点收房通牒，格式、台词节奏、空间连续与道具连续均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "周建国两句耍赖台词、沈清反问男主人、转向周桂兰询问遗嘱都按原剧本顺序保留，没有新增警察到场或离婚动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "evidence": "第2组组尾沈清持有叠好的油纸包，第3组组首继续持有油纸包，并在0-5.5秒展开、拍到茶几上，组尾明确遗嘱摊在茶几中央。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "第5组四段对白约23字/4秒、18字/3.5秒、17字/3秒、15字/3.5秒，最高约5.75字/秒，低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "evidence": "周建国否认、沈清指出当铺、沈清抬手机、沈清用报警监控施压被拆成四段，每段只承载一个主动作或一句对白。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第7组组尾沈清举亮屏手机，周建国站在茶几右侧；第8组组首继续举手机，周建国在太师椅前双腿发软，并在0-3秒跌坐。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "所有现场对白均明确为周建国对沈清、沈清对周建国、沈清对周桂兰说道，没有假对象或无对象台词。",
+      "fix_instruction": "无。若后续改稿丢失对象，应补回真实对话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首只写沈清、周建国、周桂兰在客厅的静态位置和朝向，周桂兰取油纸包的过程放在3-7秒内。",
+      "fix_instruction": "无。若组首出现取出、递向等过程动词，应移入镜头描述。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "油纸包到泛黄遗嘱的状态变化清楚，遗嘱拍到茶几后在第3、4、5、6、7、8组持续锚定在茶几中央。",
+      "fix_instruction": "无。若遗嘱离开茶几，应补拿起、递出或收回的可见过渡。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "周建国脸色灰败、沈清十八岁产权、住是情分赶走是本分、周建国老太婆没说过均保留原剧本因果和台词。",
+      "fix_instruction": "无。若改成周桂兰产权或新增转让，应恢复原剧本产权关系。"
+    },
+    {
+      "group": "第6组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "明代青花瓷被转译为博古架中层两处空位、沈清手指指向空位和周建国肩膀绷紧，关键信息可见。",
+      "fix_instruction": "无。若只写珍贵古董被偷，应补可见空位和质问台词。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "第7组台词约13字/3秒、22字/3.5秒、22字/4秒，最高约6.3字/秒，未超过6.5字/秒；抬手机另给2.5秒，不挤压口型。",
+      "fix_instruction": "无。若压缩到3秒以下，应延长或拆出手机动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第8组承载跌坐、重罪短句、明早八点通牒、扶母离开四个同一收束链条，14秒内分段清楚，没有新增警察入场或追逐。",
+      "fix_instruction": "无。若加入警察到场或争抢遗嘱，应拆组或删除新增动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "关键道具和收束组的禁止项均为2-3条，锚定沈清、周建国、周桂兰、泛黄遗嘱、手机、博古架、青花瓷等本集上下文，没有占位示例或泛泛词。",
+      "fix_instruction": "无。若出现画面混乱、人物错误等通用词，应替换为本组具体人物道具错误。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集正文未出现Seedance说明词、模板编号、参考模板、@图片/@视频/@音频、广告/MV/一镜到底等非短剧模板语气。",
+      "fix_instruction": "无。若出现工程词，应删除并改为自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

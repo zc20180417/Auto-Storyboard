@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "ep23 完整保留沈清安顿母亲并布置反击、周家出租屋崩溃后决定去龙腾酒店闹场的剧情链，9组均符合竖屏分镜格式、台词承载和连续性要求。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "沈清对李助理保留“明天的答谢宴订在龙腾酒店，把请柬发出去”和“联系私家侦探，把周建国和赵强这几年的老底连同证据，统统给我挖出来”两项关键命令。"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "evidence": "赵强站起吼骂、扇周美娟、周美娟倒地、周建国护短分为0-3、3-5、5-7、7-10秒，单段只承载一个主动作或一句对白。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "摔裂手机由周美娟从衣兜掏出并举起，屏幕显示“周桂兰答谢宴”，组尾仍由周美娟持有，后续组首继续复述该归属。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "evidence": "周美娟约20字用5秒，赵强约21字用5秒，字秒比约4.0-4.2；第8组13秒还包含坐直、搓指节和周建国冷脸反应。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "evidence": "最终正文未出现模型说明词、模板编号、参考图占位符、广告式字幕或“空间先被交代出来”等模板化批量描述。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "周桂兰对沈清、沈清对周桂兰均为现场对白且对象明确，没有心声或画外音误配口型。",
+      "fix_instruction": "若不通过，应补真实说话对象或改为闭口声源。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组15秒承载同一命令链：订答谢宴、助理回应、查周建国和赵强底细，动作轻且空间单一。",
+      "fix_instruction": "若不通过，应将侦探调查命令拆成独立组或压缩非关键反应。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第3组组首明确地下出租屋、破木床、散落账单和三人位置，第一帧从赵强蹲在账单旁开始。",
+      "fix_instruction": "若不通过，应删除组首过程动作并补人物画面位置和朝向。"
+    },
+    {
+      "group": "第4组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第4组含赵强扇周美娟的复杂动作，视频禁止项锚定赵强、周美娟、周建国和散落账单，数量4条且不与剧情冲突。",
+      "fix_instruction": "若不通过，应替换泛泛或无锚点禁止项。"
+    },
+    {
+      "group": "第5组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "朋友圈信息被转译为手机屏幕上的龙腾酒店VIP厅布置图和“周桂兰答谢宴”文字，周美娟的嫉妒通过眼红和喊话呈现。",
+      "fix_instruction": "若不通过，应补可见屏幕内容或人物反应。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾周美娟举手机，赵强和周建国看屏幕；第6组首继续周美娟举手机、二人看屏幕，手机归属连续。",
+      "fix_instruction": "若不通过，应补手机归属、屏幕朝向或三人视线关系。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "周建国站起、提出明天去闹场，并保留“我还是她合法丈夫，她敢不给我钱？”的勒索筹码。",
+      "fix_instruction": "若不通过，应恢复原台词和合法丈夫因果。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "周美娟对周建国和赵强说当着名流闹场，赵强对周美娟和周建国说逼沈清补欠税窟窿，对象明确。",
+      "fix_instruction": "若不通过，应把每句现场对白改成A对B说道。"
+    },
+    {
+      "group": "第9组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "周建国两段阴谋台词、周美娟附和、三人贪婪笑容收束分别独立承载，没有把躺酒店大厅误拍成当前出租屋动作。",
+      "fix_instruction": "若不通过，应删掉当前空间内提前躺倒动作或拆分收束。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

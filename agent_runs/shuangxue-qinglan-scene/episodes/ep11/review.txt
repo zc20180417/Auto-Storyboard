@@ -1,0 +1,122 @@
+{
+  "pass": true,
+  "summary": "ep11最终稿保留银行查无理财、王婶揭露止痛药、授权委托书指向周建国三段反转；全局编号、cut_id、台词指向、口型分离、道具连续和空间锁定均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中沈清递身份证请求查询、柜员核对并确认没有购买记录，最终稿在第1组完整保留，未新增理财购买或其他业务结论。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈清OS“刘美娟，看你这次还怎么编！”写明嘴唇闭合、不做口型；柜员复述为现场开口并对沈清说。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "第4组尾塑料袋停在王婶和周桂兰之间，第5组沈清接过并打开，便宜止痛片空壳和空药盒从袋内露出，归属变化清楚。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "王婶约20字台词给4秒，沈清约21字情绪质问给4.5秒，字秒比约5.0和4.7，未超过6.5字/秒。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "最终稿明确保留授权委托书日期对应周桂兰两年前重症肺炎昏迷住院期间，代办人签名栏写着周建国，未错置为刘美娟。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首只写银行大厅业务窗口的静态状态，沈清、周桂兰、银行柜员的位置和朝向完整，第一时间段从递身份证开始。",
+      "fix_instruction": "若不通过，应去掉组首动作动词，补齐人物位置、身体朝向和身份证/柜台电脑状态。"
+    },
+    {
+      "group": "第2组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "周桂兰询问、柜员确认、沈清拿手机、沈清要求复述被拆成四个连续时间段，每段只有一个主动作或一个对话节拍。",
+      "fix_instruction": "若不通过，应拆开手机操作和对白，避免同一时间段同时拿手机、对准屏幕和说长台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "8秒短组承载录证据和心声余波，属于关键道具插入与短动作余波；未用普通停顿硬凑10秒。",
+      "fix_instruction": "若不通过，应保留短组或与银行同空间轻节拍合并，不得新增无剧情凝视。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "银行场景结束后切到周家院门外，是剧本明确新场景；第4组组首重新锁定院门外三人站位和塑料袋归属。",
+      "fix_instruction": "若不通过，应明确新物理空间，避免把银行大厅和院门外放进同一组。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "沈清问药袋、打开袋子看见便宜止痛片空壳、王婶说明腿疼整宿睡不着的台词均按原剧本保留。",
+      "fix_instruction": "若不通过，应补回药袋、空壳止痛片和王婶原台词。"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定空药盒、沈清和王婶，数量3条，没有使用模板占位或无锚点泛泛词。",
+      "fix_instruction": "若不通过，应替换为本组人物名、空药盒或周家院门外相关的具体错误。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "银行补充材料从包里取出、翻到授权委托书复印件、手指压住标题，关键文件出现和位置变化清楚。",
+      "fix_instruction": "若不通过，应补充文件翻到最上方的可见过渡。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "沈清约24字质问给5秒，字秒比约4.8；前7秒用于签名栏和日期揭示，有足够视觉信息支撑15秒长组。",
+      "fix_instruction": "若不通过，应把日期签名揭示和质问拆成两个更短节拍。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "沈清关于一家子合伙吸血的OS写明嘴唇闭合、不做口型；最后怒斥“好一个家和万事兴...”为现场开口并朝院门方向说。",
+      "fix_instruction": "若不通过，应区分心声闭口和现场开口台词。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文无模板编号、参考图、模型说明词、字幕、工程占位符或非短剧模板语气；固定风格尾部未写入final.txt。",
+      "fix_instruction": "若不通过，应删除污染词并改写为自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

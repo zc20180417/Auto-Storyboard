@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "ep29最终稿忠于周建国雪地落魄、屏幕看见沈清、拦车求原谅、周桂兰递钱切割和车影远去的原剧本，9个组格式、台词、空间和道具连续性均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中周建国穿破旧军大衣、推破三轮车捡纸皮、背驼头白和叹气台词均保留，未新增赎罪动作或旁人帮助。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "主持人提问明确为广场LED大屏幕传出的声音，主持人和沈清处于屏幕采访画面内，和街头现场人物口型分离。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清回答约23字用4秒承载，约5.8字/秒；周建国悔恨台词约37字用8秒承载，约4.6字/秒，均未超过6.5字/秒。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "evidence": "司机下车阻拦、周建国喊车内、司机劝退、周建国哀求分四段推进，每段只承载一个主动作或一段对白。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "百元钞票从周桂兰大衣口袋出现，递给司机后在第9组塞到周建国手里，组尾写明钞票攥在周建国手心。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "路人台词写为路人嫌恶地对周建国说道，现场对白对象明确，没有假对象。",
+      "fix_instruction": "若不通过，应补明路人对周建国说话。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "现实空间是商业街头，采访被明确写成广场大屏幕采访画面，符合屏幕画面跨空间例外。",
+      "fix_instruction": "若不通过，应把屏幕内容标为屏幕画面或拆组处理。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "周建国位于路边，司机和周桂兰位于纯黑色豪华轿车内，周桂兰在后排车窗内可被认出。",
+      "fix_instruction": "若不通过，应在组首补齐车内人物可见位置。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "周建国求原谅和周桂兰“我丈夫早死了”的拒绝台词按原剧本保留，没有改成原谅、争吵或下车相认。",
+      "fix_instruction": "若不通过，应恢复原台词和周桂兰冷漠态度。"
+    },
+    {
+      "group": "第9组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第9组为9秒片尾余波，包含塞钱、车窗升起车辆离开、周建国攥钱流泪三个短动作，短组理由为收尾动作余波。",
+      "fix_instruction": "若不通过，应合并到前组或补足真实动作链，而不是添加普通停顿。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第8组尾部司机手中持有百元钞票、车窗半降；第9组组首继承该状态并完成塞钱、升窗和驶离。",
+      "fix_instruction": "若不通过，应在第8组尾部或第9组组首补明确钞票和车窗状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "复杂拦阻组的禁止项锚定司机、周建国、周桂兰和后排车窗，数量为3条，没有使用占位词。",
+      "fix_instruction": "若不通过，应删除泛泛禁止项并改成本组具体风险。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全片正文没有Seedance说明、参考模板、@图片、字幕角标或“空间先被交代出来”等模板化污染词。",
+      "fix_instruction": "若不通过，应删除模型工程词和模板化描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

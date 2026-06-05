@@ -1,0 +1,18 @@
+{
+  "episode_id": "ep14",
+  "status": "done",
+  "output_name": "ep14-ep14-agent-cli-storyboard.txt",
+  "summary": "ep14 已按 scene 模式完成，重点呈现沈清用旧银行卡和银行APP核对尾号、拦住周美娟并按下两元转账确认。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "group": "第4组",
+      "rule": "generation_density",
+      "summary": "8秒短承接成立，不为凑10秒加入额外动作。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

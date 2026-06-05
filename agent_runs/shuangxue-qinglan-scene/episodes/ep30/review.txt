@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "ep30全稿保留医院复查、露台休养、桂兰安养院计划和母女温情收尾，6组时间轴、对白指向、空间锁定和道具连续性均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中专家医生说明关节恢复、进口药，沈清安排最好康复设备的关键台词均按顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "character_availability",
+      "evidence": "沈清不在第3组第一帧内，但在7-10秒先从露台入口走来并坐下，之后10-15秒才对周桂兰开口。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "女助理汇报计划书约22字用3.5秒、公益养老院约18字用3.5秒、沈清命名约19字用3.5秒，均未超过6.5字/秒。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "第4组尾部沈清持有钢笔和计划书，第5组组首继承为已经签过字的计划书和钢笔，随后女助理双手接回计划书。"
+    },
+    {
+      "group": "第6组",
+      "type": "filmability",
+      "evidence": "幸福收尾转译为母女握手、玉镯反光、依偎、茶杯草莓盘和阳光露台，没有只写抽象情绪。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "全组都是现场真人对白，专家医生对沈清说道、沈清对专家医生说道，声源和口型对象明确。",
+      "fix_instruction": "若不通过，应改成现场开口并补明真实对话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组10秒只承载周桂兰身体好转、沈清陪伴承诺和轻手部安抚，低密度但有完整母女承接，不靠停顿凑时长。",
+      "fix_instruction": "若不通过，应压缩为短组或并入第1组。"
+    },
+    {
+      "group": "第3组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "端草莓、周桂兰回应、沈清入场坐下、母女对白分段清楚，每段只有一个主动作或连续对话节拍。",
+      "fix_instruction": "若不通过，应拆开端盘、入座和对话。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "收购强盛建材对面街道、改建公益养老院、命名桂兰安养院三项剧情信息均忠于原剧本。",
+      "fix_instruction": "若不通过，应恢复原剧本台词和因果顺序。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组计划书签字后仍在沈清手中，第5组开头继续持有，女助理接回后离开，能自然接到第6组助理已退下。",
+      "fix_instruction": "若不通过，应补写女助理离开和计划书归属。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "玉镯在周桂兰手腕，沈清握住戴玉镯的手，组尾继续锚定该手部状态；茶杯和草莓盘也留在小圆桌上。",
+      "fix_instruction": "若不通过，应补足玉镯、茶杯和草莓盘状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全稿没有Seedance说明、模板编号、参考图占位、定格指令、广告字卡或批量化套话。",
+      "fix_instruction": "若不通过，应删除污染词并改写为自然可拍画面。"
+    },
+    {
+      "group": "第4组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "本集无打斗、保护站位或高风险复杂动作；计划书和钢笔已在正文和组尾清楚锚定，普通对话组省略视频禁止项合理。",
+      "fix_instruction": "若不通过，应只为关键道具风险组补2-5个带锚点的视频禁止项。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

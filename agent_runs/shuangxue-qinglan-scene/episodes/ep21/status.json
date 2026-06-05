@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep21",
+  "status": "done",
+  "output_name": "ep21-ep21-agent-cli-storyboard.txt",
+  "summary": "沈清带律师收房遇周美娟、赵强耍赖，随后工程队和法警进场，沈清亮出强制执行文书并在客厅拆窗后冷静反击。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "沈清宣告法院强制腾房文书的长台词略偏紧。",
+      "evidence": "约47字/8秒，约5.9字/秒，低于6.5硬上限但进入偏快提醒区间。",
+      "fix": "如后续视频口型显快，可把2-10秒改为2-10.5秒，并把10-12秒末尾反应压到10.5-12秒。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

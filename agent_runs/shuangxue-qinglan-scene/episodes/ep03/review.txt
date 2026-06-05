@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "summary": "ep03整集按杂物间冲突、自助银行查账、街道撞见新车金镯三段推进，原台词、道具归属、OS闭口和保护站位均已逐项审核通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "沈清说明赡养费不见、周建国以家丑压制、沈清反问家丑的三句关键台词按原剧本顺序保留。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "ATM余额显示后，白色余额小票从出纸口被沈清收进口袋，破旧银行卡从卡口拔回沈清手里，能接到第9组。"
+    },
+    {
+      "group": "第10组",
+      "type": "action_atomicity",
+      "evidence": "白色轿车疾驰、溅水、沈清拉周桂兰到马路内侧、车辆急刹分阶段执行，保护关系明确为沈清挡在周桂兰靠车一侧。"
+    },
+    {
+      "group": "第12组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈清两句OS均写明嘴唇闭合不动，现场画面只呈现盯金镯和刘美娟遮手腕，不会产生错误口型。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首锁定刘美娟堵门、沈清扶周桂兰并持卡，第一帧不写前情回顾或未出现状态。",
+      "fix_instruction": "若不通过，应补齐三人门口站位、朝向和银行卡归属。"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "推开刘美娟、拉周桂兰出门、周建国喊话和沈清背影回怼分成四个可执行时间段。",
+      "fix_instruction": "若不通过，应拆开推人、扶人走位和双方喊话。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "周桂兰“三十七块六毛二”质疑给2.5秒，查询动作与余额显示另分段，字秒比和动作节拍可表演。",
+      "fix_instruction": "若不通过，应增加台词时间或拆分余额显示与反应。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "15秒包含扑靠痛哭、沈清托住、安抚誓言、打印凭条和拔卡，具备情绪转折和关键道具操作，没有低密度撑时长。",
+      "fix_instruction": "若不通过，应拆出凭条操作或压缩非关键反应。"
+    },
+    {
+      "group": "第11组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "刘美娟和小雨在组首位于车内，0-3秒下车后才开始对白，人物可用性成立。",
+      "fix_instruction": "若不通过，应在组首写她们已在车内或把对白放在下车之后。"
+    },
+    {
+      "group": "第12组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "古法金镯从刘美娟右手腕露出、反光到被袖口遮住，未转移到其他人物或消失。",
+      "fix_instruction": "若不通过，应补充金镯位置和遮袖动作。"
+    },
+    {
+      "group": "第13组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定刘美娟、沈清、小雨、古法金镯，限制误承认、动手、代答和道具消失，数量4条且不矛盾。",
+      "fix_instruction": "若不通过，应删除泛泛项，改成本组人物和金镯相关的具体错误。"
+    },
+    {
+      "group": "第1组-第13组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模型说明词、模板编号、官方占位符、参考图、首尾帧或非短剧模板语气。",
+      "fix_instruction": "若不通过，应删除模型/模板说明，改成自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

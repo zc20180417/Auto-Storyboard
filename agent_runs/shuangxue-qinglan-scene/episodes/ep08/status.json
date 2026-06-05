@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep08",
+  "status": "done",
+  "output_name": "ep08-ep08-agent-cli-storyboard.txt",
+  "summary": "沈清在银行流水中查出周桂兰赡养费被长期分批转出，并当众逼出强盛建材经营部账户线索。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "第2组7-12.5秒的愤怒质问台词接近上限。",
+      "evidence": "约35个有效字给5.5秒，约6.4字/秒。",
+      "fix": "生产时保持短促愤怒质问节奏，不额外加速口型。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}
