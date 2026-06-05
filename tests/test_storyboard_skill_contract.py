@@ -6,7 +6,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GENERATOR_SKILL = ROOT / "agent_skills" / "storyboard-generator" / "SKILL.md"
 REVIEWER_SKILL = ROOT / "agent_skills" / "storyboard-reviewer" / "SKILL.md"
+CRAFT_PASS_SKILL = ROOT / "agent_skills" / "storyboard-craft-pass" / "SKILL.md"
 QUALITY_POLICY = ROOT / "agent_skills" / "storyboard-quality-policy.json"
+DIALOGUE_PROMPT = ROOT / "竖屏分镜规则_对话版.txt"
 
 
 class StoryboardSkillContractTests(unittest.TestCase):
@@ -74,6 +76,68 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn('"video_negative_constraints": "checked"', text)
         self.assertIn('"type": "action_atomicity"', text)
         self.assertIn('"type": "video_negative_constraints"', text)
+
+    def test_generator_prevents_low_density_time_padding(self):
+        text = GENERATOR_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("先估每个剧情块的自然时长，再组合成 6-15 秒组", text)
+        self.assertIn("10-15 秒是常规承载区间，不是填满目标", text)
+        self.assertIn("12-15 秒长组准入", text)
+        self.assertIn("至少满足以下两项", text)
+        self.assertIn("连续 3 个及以上 12-15 秒组", text)
+        self.assertIn("明显多数（约三分之二以上）", text)
+        self.assertIn("低密度组必须压缩或合并", text)
+        self.assertIn("看向、低头、停住、等待、仍、继续、状态延续", text)
+        self.assertIn("连续流程动作合并", text)
+        self.assertIn("联系后勤、准备保温箱、递出一箱、登记一行、复核无误", text)
+        self.assertIn("设备到场、接线、压缩机恢复", text)
+
+    def test_reviewer_flags_low_density_padding_and_fragmented_process_groups(self):
+        text = REVIEWER_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("12-15 秒长组未过长组准入", text)
+        self.assertIn("低密度撑时长", text)
+        self.assertIn("相邻同场景同冲突的流程节点", text)
+        self.assertIn("联系、准备、递出、登记、复核", text)
+        self.assertIn("不应各自写成 10-15 秒组", text)
+        self.assertIn("连续 3 个及以上 12-15 秒组", text)
+        self.assertIn("按 `generation_density` 或 `dialogue_pacing` 判 hard issue", text)
+
+    def test_dramatic_pause_is_not_a_padding_exception(self):
+        generator_text = GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer_text = REVIEWER_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("停顿不是质感例外", generator_text)
+        self.assertIn("不再提供有动机戏剧停顿例外", generator_text)
+        self.assertIn("高冲击后的可见反应可以写入已有镜头", generator_text)
+        self.assertIn("不豁免连续无台词铺垫", generator_text)
+        self.assertIn("停顿不是合法 craft 例外", reviewer_text)
+        self.assertIn("不能因为身份揭穿、重大证据落地或关系崩塌就自动放行", reviewer_text)
+        self.assertNotIn("有动机戏剧停顿（极窄例外，默认不用）", generator_text)
+        self.assertNotIn("1.5-2.5 秒", reviewer_text)
+
+    def test_craft_pass_cannot_suggest_extra_time(self):
+        text = CRAFT_PASS_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("只替换，不加秒", text)
+        self.assertIn("不得建议新增时间段、延长组时长", text)
+        self.assertIn("不建议新增停顿或延长总时长", text)
+        self.assertNotIn("1.5-2.5 秒", text)
+
+    def test_dialogue_prompt_matches_rhythm_economy_contract(self):
+        text = DIALOGUE_PROMPT.read_text(encoding="utf-8")
+
+        self.assertIn("先估自然时长", text)
+        self.assertIn("10-15 秒只是常规承载区间，不是填满目标", text)
+        self.assertIn("低密度组必须压缩或合并", text)
+        self.assertIn("12-15 秒长组准入", text)
+        self.assertIn("连续 3 个及以上 12-15 秒组", text)
+        self.assertIn("连续流程动作合并", text)
+        self.assertIn("停顿不是质感例外", text)
+        self.assertNotIn("有动机戏剧停顿（极窄例外，默认不用）", text)
+        self.assertIn("组尾衔接只写连续性锚点", text)
+        self.assertNotIn("默认 10-15 秒", text)
+        self.assertNotIn("自然收尾", text)
 
 
 if __name__ == "__main__":
