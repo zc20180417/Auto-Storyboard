@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "storyboard_rule_version": "storyboard-quality-policy-2026-05-31-v1",
+  "storyboard_quality_policy_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\storyboard-quality-policy.json",
+  "run_id": "wangpai-huwei-ep16-rulefix",
+  "created_at": "2026-06-05T17:07:44",
+  "project_root": "H:\\BaiduNetdiskDownload\\Auto-Storyboard",
+  "source": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\split_scripts\\wangpai-huwei-ep16-rulefix",
+  "prompt_path": null,
+  "generation_rules_source": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\storyboard-generator\\SKILL.md",
+  "reviewer_rules_source": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\storyboard-reviewer\\SKILL.md",
+  "generator_skill_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\storyboard-generator\\SKILL.md",
+  "reviewer_skill_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\storyboard-reviewer\\SKILL.md",
+  "seedance_profile_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\seedance-prompt-profile\\SKILL.md",
+  "storyboard_aspect": "vertical",
+  "target_video_model": "seedance",
+  "happyhorse_profile_path": null,
+  "ai_video_prompt_skill_path": null,
+  "out_dir": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\outputs_agent_wangpai_huwei_ep16_rulefix",
+  "agent": "codex",
+  "mode": "scene",
+  "parallelism": 5,
+  "episodes": [
+    {
+      "episode_id": "ep16",
+      "storyboard_rule_version": "storyboard-quality-policy-2026-05-31-v1",
+      "storyboard_quality_policy_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\storyboard-quality-policy.json",
+      "episode_number": 16,
+      "display_name": "ep16",
+      "series_title": "ep16",
+      "source_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\split_scripts\\wangpai-huwei-ep16-rulefix\\ep16.txt",
+      "output_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\outputs_agent_wangpai_huwei_ep16_rulefix\\ep16-ep16-agent-cli-storyboard.txt",
+      "storyboard_aspect": "vertical",
+      "generator_skill_name": "storyboard-generator",
+      "reviewer_skill_name": "storyboard-reviewer",
+      "reviewer_source": "storyboard-reviewer",
+      "episode_dir": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_runs\\wangpai-huwei-ep16-rulefix\\episodes\\ep16",
+      "task_file": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_runs\\wangpai-huwei-ep16-rulefix\\episodes\\ep16\\TASK.md",
+      "prompt_file": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_runs\\wangpai-huwei-ep16-rulefix\\episodes\\ep16\\agent_prompt.md",
+      "last_message_file": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_runs\\wangpai-huwei-ep16-rulefix\\episodes\\ep16\\agent-last-message.txt",
+      "agent_log_file": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_runs\\wangpai-huwei-ep16-rulefix\\episodes\\ep16\\agent-stdout.log",
+      "script_chars": 1351,
+      "segments": 1,
+      "segment_titles": [
+        "第16集 16-1 盛远集团地下冷库·夜·内"
+      ]
+    }
+  ]
+}

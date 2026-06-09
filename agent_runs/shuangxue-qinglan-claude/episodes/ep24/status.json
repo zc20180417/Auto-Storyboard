@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep24",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep24-agent-cli-storyboard.txt",
+  "summary": "第24集沈清在宴会厅当众揭露证据：LED屏幕显示转账记录和刘美娟抢手机视频，周美娟惊慌喊关掉，沈清逼视周建国后揭露高利贷秘密，周建国面如死灰。共3组，台词全部忠实保留，口型指向正确，空间单一连续，无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第3组8秒主要由沈清4秒台词+周建国4秒反应构成，剧情密度偏低但属转折揭露节拍，不构成硬问题。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep11",
+  "status": "done",
+  "output_name": "ep11-ep11-agent-cli-storyboard.txt",
+  "summary": "第11集7组分镜完成，银行查账揭露空账户、王婶送还空药盒止痛片真相、发现周建国伪造授权委托书，台词忠实原剧本，节奏合理无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组14秒长组承载3个强节拍，捏药盒动作与怒问台词时间分配已确认合理。",
+    "第7组8秒短组为全集情绪收束，短组理由成立。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

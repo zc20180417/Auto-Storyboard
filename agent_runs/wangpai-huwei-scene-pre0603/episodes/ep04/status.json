@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "《王牌护卫》-ep04-agent-cli-storyboard.txt",
+  "summary": "许知夏决定参加慈善晚宴，顾北辰预警后台异常并发现U盘外接信号，许知夏台上遭遇大屏将亮未亮的陷阱。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "dialogue_pacing",
+      "problem": "助理提醒和许知夏OS信息密度略高。",
+      "evidence": "助理提醒约35字/6秒约5.8字每秒；许知夏OS约25字/3秒约6.25字每秒，未超过硬上限但偏快。",
+      "fix": "如后续扩展办公室段，可把许知夏OS单独给到4秒。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

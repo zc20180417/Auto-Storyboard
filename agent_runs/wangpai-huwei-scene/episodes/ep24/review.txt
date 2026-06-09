@@ -1,0 +1,110 @@
+{
+  "pass": true,
+  "summary": "第24集完整覆盖保险室夺证、会客室旧案对峙和楼梯间护送撤离，组间道具与站位连续，未发现硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "evidence": "顾北辰OS写明嘴唇闭合，许知夏“别硬拿，强磁会毁掉声纹！”写为耳机声音且顾北辰嘴唇闭合，现场口型和声音来源分离清楚。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏对沈曼的“你现在怕他……”约29个有效字安排6秒，约4.8字/秒；沈曼短句3秒承载，未过快或过慢。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "保留秦越威胁许氏卷入旧案和许知夏“许氏脏过的地方，我亲手洗……”完整反击，人物关系和因果未改。"
+    },
+    {
+      "group": "第10组",
+      "type": "action_atomicity",
+      "evidence": "顾北辰护着许知夏边打边退被拆为逼近、下方推挡、上方挡冲、下撤四段，许知夏不参与打斗。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "秦越质问沈曼背叛、顾北辰回应绝路选择、墙后暗柜录音笔出现均按原剧本保留。",
+      "fix_instruction": "若不通过，应补回秦越质问、顾北辰回应和录音笔在暗柜中。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "太顺了的OS、金属杆挑笔、强磁倒计时、许知夏耳机警告和秦越质问依次分段，14秒内有足够动作与信息容量。",
+      "fix_instruction": "若不通过，应拆分自毁装置触发和双人对白。"
+    },
+    {
+      "group": "第3组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "顾北辰看反光、砸喷淋、水雾落下、红外线失灵和“我选第三个”分段呈现，没有与拔笔短路混在同组。",
+      "fix_instruction": "若不通过，应把水雾破红外和夺笔动作拆开。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "录音笔从暗柜边缘到顾北辰手中有金属杆拨近和拔下动作；强磁装置从柜底被踢进积水再短路，状态转移清楚。",
+      "fix_instruction": "若不通过，应补充录音笔和强磁装置的可见转移。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "秦越组首位于门外阴影中，0-3秒推门进入后才开口；许知夏和沈曼位置继承第5组会客室状态。",
+      "fix_instruction": "若不通过，应补秦越门外位置或入场动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "顾北辰“笔到手，撤。”写为耳机声音，许知夏嘴唇闭合；秦越“拿到钥匙……”为现场对许知夏说道。",
+      "fix_instruction": "若不通过，应区分耳机声和现场开口。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第9组尾部交代顾北辰挡在许知夏身前、录音笔在顾北辰手中、安全门打开、警报持续，第10组组首完整继承。",
+      "fix_instruction": "若不通过，应补安全门、录音笔和保护站位。"
+    },
+    {
+      "group": "第10组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "楼梯间动作组视频禁止项共5条，锚定许知夏、顾北辰、录音笔、秦越手下和夹击方向，没有泛泛词或剧情矛盾。",
+      "fix_instruction": "若不通过，应删除无锚点禁止项并改成本组具体风险。"
+    },
+    {
+      "group": "第1组-第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "final正文不含Seedance说明词、参考模板、占位符、广告式文本或内部审核标记。",
+      "fix_instruction": "若不通过，应删除污染内容。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

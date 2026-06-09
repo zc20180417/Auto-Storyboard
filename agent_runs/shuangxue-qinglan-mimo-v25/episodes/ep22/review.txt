@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "summary": "全5组审核通过。台词节奏全部合格（字秒比均未超6.5），空间锁定完整，原剧本台词/动作/道具忠实保留，无提示词污染。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "周美娟台词'你们不能动我的东西那是我买的名牌包'16字/3.5秒=4.57字/秒，法警台词14字/2.5秒=5.6字/秒，赵强台词12字/5秒=2.4字/秒，均未超6.5字/秒硬上限。"
+    },
+    {
+      "group": "第2组",
+      "type": "character_availability",
+      "evidence": "沈清已在组首空间锁定中位于画面左侧，全景第一镜（0-2.5秒）也包含'沈清站在画面左侧远处冷眼旁观'，10秒后走来与赵强对话，人物可用性合理。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "evidence": "G02尾部赵强手扶车门、沈清站在对面；G03组首沈清位于画面右侧、周建国从门口方向出来，同一物理空间（周家院落）连续性合理。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "G04第一镜连续对话节拍：周桂兰11字+沈清14字=25字/4秒=6.25字/秒，刚好在6.5上限内。司机台词14字/3秒=4.67字/秒，合格。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "原剧本核心台词完整保留：周桂兰'沈总清清你不是在厂里加夜班吗'、沈清揭示CEO身份和A轮融资、沈清'以前怕您担心没敢说现在终于能接您享福了'。关键动作'扶母亲上车'完整体现。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "三句台词均为画面内真人开口对白，无心声/画外音混用。周美娟对工人喊、法警对周美娟说、赵强对沈清压低声音说，对话指向全部正确。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "3个强节拍（赵强护车叫嚣、杂物围车、沈清逼退对峙），每段一个主动作，15秒容量合理。外部事件进入（杂物围车）按阶段拆开，无过载。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "3个强节拍（周建国出场、沈清警告、三人撤离），15秒容量合理。沈清两句台词拆在两个时间段（5-7秒和7-13秒），无口型过载。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "G03尾部三人已离开院子、沈清独自站立；G04组首院落已清空、周桂兰站在院门外，空间转换自然（院内→院门外），周桂兰作为新出场人物无需前置连续性。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "G04尾部车门已打开、司机躬身等候、沈清和周桂兰站在车前；G05组首车门已打开、司机位于车门旁、沈清和周桂兰位置一致，状态完全连续。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项4条，均锚定本组人物（赵强、沈清、工程队长）和道具（车、杂物），无泛泛词或模板占位。其余4组为普通对话/反应组，省略视频禁止项，合理。",
+      "fix_instruction": "无需修改"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "handoff_continuity",
+      "problem": "G01→G02场景从室内切到室外，沈清的转场过程未明确交代（G01尾部沈清在客厅，G02组首沈清已在院落），但G02组首空间锁定已包含沈清位置，不影响生成。",
+      "evidence": "G01组尾'周美娟手仍攥着名牌包、法警站在沈清左侧、赵强视线锁定沈清、工人继续搬运'；G02组首'沈清位于画面左侧，侧对镜头，脸朝画右'。",
+      "fix": "可选优化：在G01组尾衔接中补一句'沈清朝院落方向走去'或在G02第一镜中加入沈清从屋内走出的动作。"
+    }
+  ]
+}

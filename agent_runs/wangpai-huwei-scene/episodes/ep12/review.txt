@@ -1,0 +1,110 @@
+{
+  "pass": true,
+  "summary": "ep12 已完成地下档案库查证、会议室救人、秦越揭露与安全通道指引的整集审核，原剧本台词、空间切换、关键动作和音画分离均通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "保留许知夏进入盛远地下档案库、查找录音笔线索、找到盛远一期资金流文件夹和启元资本受益方信息。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "evidence": "顾北辰翻桌救人被拆为四个动作段，桌面阻隔黑衣人、夺刀、割开束缚、拉起老人均有独立时间，不存在动作过载。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "evidence": "秦越4秒承载“许振南当年若肯合作...”约20字，许知夏6秒承载约32字质问，秦越5秒承载约20字反击，均低于6.5字/秒。"
+    },
+    {
+      "group": "第11组",
+      "type": "audio_mouth_sync",
+      "evidence": "顾北辰只通过耳机声出现，许知夏嘴唇闭合并看向右后方安全通道，未把耳机声误写成现场开口。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "转让协议从第1组许知夏手中延续到第2组扫描和握持，手机、耳机、档案库门和皮鞋影子状态都清楚。",
+      "fix_instruction": "如不通过，应补协议、手机和门外影子的连续状态。"
+    },
+    {
+      "group": "第3组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "第3组短反转为8秒短组，标题cut_id、总时长、镜头数、0-2.5/2.5-5/5-8时间轴和结束标记完整。",
+      "fix_instruction": "如不通过，应修正标题、时间轴或镜头数。"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每个时间段只承载一个主动作，非主动作黑衣人只作为被桌面逼退和背景阻隔，没有抢走顾北辰救人动作。",
+      "fix_instruction": "如不通过，应拆分翻桌、夺刀、割绳和拉起动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "会议室门口组首明确司机在门外、顾北辰和搭档母亲在门内、周振邦在右侧，救人撤离发生在同一门口空间。",
+      "fix_instruction": "如不通过，应明确门内门外站位，避免突然跨空间。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "秦越先推门入场，两名保镖在他身后进入；许知夏已在组首握着协议并戴耳机，后续隐藏协议和遮耳机可生成。",
+      "fix_instruction": "如不通过，应调整组首或入场顺序。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "许知夏“把人命写进项目”和秦越“三年前旧仓库这件事可不全是我的错”两处关键信息未删改。",
+      "fix_instruction": "如不通过，应补回旧仓库和人命项目相关台词。"
+    },
+    {
+      "group": "第10组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "秦越逼近挑拨、许知夏反驳、秦越进一步指出顾北辰会救她、许知夏遮耳机看向右后方分成四段，强节拍清楚。",
+      "fix_instruction": "如不通过，应拆分逼近挑拨和耳机遮挡反应。"
+    },
+    {
+      "group": "第11组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第10组尾许知夏遮住耳机并扫向右后方，第11组首继承遮耳机状态并揭示右后方安全通道门，衔接自然。",
+      "fix_instruction": "如不通过，应在第10组尾或第11组首补右后方安全通道状态。"
+    },
+    {
+      "group": "第11组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定顾北辰耳机声、许知夏转让协议、秦越和保镖门边位置，没有无锚点泛泛词。",
+      "fix_instruction": "如不通过，应删除泛泛词并保留本组具体剧情错误。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

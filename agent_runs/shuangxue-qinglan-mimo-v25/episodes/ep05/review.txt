@@ -1,0 +1,116 @@
+{
+  "pass": true,
+  "summary": "ep05共6组，台词忠实、空间单一、对话指向清楚、短组用于承载戏剧节拍，无hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清7字除以5秒等于1.4字每秒，周建国18字除以5秒等于3.6字每秒，均在合理范围内。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "全组发生在周家厨房，组首锁定周桂兰在灶台旁弓腰端碗，单一物理空间无跨场景。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "沈清砸碗、质问刘美娟（这就是你说的照顾）、刘美娟怒斥（你发什么疯），关键台词和动作完整保留，说话对象正确。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清25字除以4秒等于6.25字每秒，周建国14字除以4秒等于3.5字每秒，单speaker均在合理范围内。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "沈清（嫌丢人？花我妈救命钱的时候怎么不嫌丢人！）完整保留，周建国举杯砸人动作保留。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "赵强电话音有手机贴在耳边的可见载体和捂嘴动作，正确承载电话音，台词完整保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "沈清对周建国问道（周叔，我妈呢？），周建国对沈清说道（她老了嫌吵），对话指向明确无假对象。",
+      "fix_instruction": "无需修改，对话指向正确。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "缺口的碗从周桂兰手中到沈清端起，筷子从周桂兰手中掉落，道具归属和状态变化清楚且有可见过渡。",
+      "fix_instruction": "无需修改，道具连续性正确。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾沈清端碗朝客厅走去，第3组首沈清端碗站在主桌前，状态自然衔接。第3组尾沈清手指碗张嘴欲言，第4组首沈清声音提高说出赡养费台词，连续无跳变。",
+      "fix_instruction": "无需修改，组间状态连续。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "赡养费揭穿（1个信息强节拍）加周建国暴怒（1个动作强节拍）等于2个强节拍在8秒内，密度合理。",
+      "fix_instruction": "无需修改，强节拍密度合理。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每个时间段只承载一个主动作：沈清冷声反击、周建国举杯要砸。非主动作人物刘美娟和亲戚只有站位和视线。",
+      "fix_instruction": "无需修改，动作原子性正确。"
+    },
+    {
+      "group": "第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全6组无Seedance可、自动正反打、模板编号、占位符、广告slogan等模型说明词或工程词。",
+      "fix_instruction": "无需修改，无污染内容。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "generation_density",
+      "problem": "第5组7秒为短组，承载沈清致命反击和周建国举杯动作，作为短承接和戏剧节拍保留。",
+      "evidence": "沈清11字除以3秒等于3.7字每秒，周建国举杯动作3秒，总7秒，符合6-9秒短组例外。",
+      "fix": "如需可并入第6组，但当前拆分更清晰地分离了反击和赵强入场两个戏剧节拍。"
+    },
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "generation_density",
+      "problem": "第6组7秒为短组，承载赵强入场电话，作为悬念收尾保留。",
+      "evidence": "赵强19字除以4秒等于4.75字每秒，周建国举杯停住3秒，总7秒，符合6-9秒短组例外。",
+      "fix": "如需可并入第5组，但当前拆分更清晰地展示了赵强电话内容。"
+    }
+  ]
+}

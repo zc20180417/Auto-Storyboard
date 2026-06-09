@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "summary": "ep16分镜3组，全部台词忠实、空间单一、口型指向正确、时间轴连续。G01首段字秒比6.3接近硬上限但未超，G02/G03时长和密度合理。",
+  "checked_groups": ["第1组", "第2组", "第3组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "G01首段'我是疯了！我瞎了眼才心疼你们！'14字÷3.5秒≈4.0字/秒，第二段'连你也合伙骗我！'8字÷3.5秒≈2.3字/秒，指向动作附加约1.5秒，合计约7秒，未超6.5字/秒硬上限。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "G02组首写'夜景明亮的周家正屋客厅，桌子位于画面中央偏下'，与G01同物理空间，周桂兰手指仍指向周建国方向、沈清在左侧后方，位置与G01组尾连续。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "沈清台词'养我妈？你有什么脸说这话！'和'这视频我已经云端备份了。'完全保留原剧本，动作'录像手机保存视频，屏幕对准周建国'拆为'拇指点击保存'和'手机举起屏幕翻转'两个可执行阶段，未改剧情。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "周桂兰两句台词均为画面内真人现场开口，对周建国喊道，指向明确，无心声/画外音混用。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "G02有3个强节拍（反驳质问、情绪升级、拍桌），均属同一冲突目标下的连续推进，每个时间段只承载一个主动作，8秒可承载32字台词+拍桌动作。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "G02组尾写'周建国拍桌后手仍压在桌面、身体前倾'，G03组首写'周建国位于画面右侧，手仍压在桌面，身体前倾'，状态连续；沈清手中手机从G03组首已持有，到组尾仍举着，道具连续。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "手机从G03组首沈清手中持有（屏幕朝向自己），到2.5-5.5秒保存视频后屏幕翻转向周建国，到5.5-8秒仍举着，归属和状态变化有可见过渡。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第1组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "G01两个时间段各承载一个主动作：0-3.5秒为情绪爆发喊话，3.5-7秒为指向动作+第二句喊话。指向动作与第二句台词属同一表演目标，不构成多主动作过载。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第3组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "G03视频禁止项为4条本组特有剧情错误：沈清手机消失、周建国站起离开桌面、周桂兰靠近沈清、手机屏幕不亮。每条锚定本组人物和道具，无泛泛词。",
+      "fix_instruction": "无需修复"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "dialogue_pacing",
+      "problem": "G01首段字秒比6.3字/秒接近6.5硬上限，虽未超线但偏快，可关注情绪对白自然度。",
+      "evidence": "'我是疯了！我瞎了眼才心疼你们！'14字÷2.2秒（含指向动作间隙）≈6.3字/秒。",
+      "fix": "若模型生成时口型偏紧，可微调首段至3.8-4秒或拆为两句独立时间段。"
+    }
+  ]
+}

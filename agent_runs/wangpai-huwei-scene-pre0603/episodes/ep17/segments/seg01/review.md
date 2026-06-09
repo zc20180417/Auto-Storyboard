@@ -1,0 +1,112 @@
+{
+  "pass": true,
+  "summary": "ep17 segment已逐组对照原剧本和竖屏生成规则审查，冷库坐标、阀门、侧门逃生、城北线索和录音证词均保留，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "evidence": "许知夏心声明确写为嘴唇闭合不做口型，秦越和周振邦的声音分别来自门外和背景暗处，没有误写成画面主体现场开口。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "evidence": "周振邦关键证词约48个有效字分配8秒，约6.0字/秒，低于6.5字/秒硬上限；该组保留城北旧仓储站、A17、姓林女人等原剧本信息。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "evidence": "逃生动作拆成推许知夏出门缝、拖赵明海、许知夏伸手呼喊、顾北辰冲出并肩伤四段，未把推人拖人冲门压进同一时间段。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "赵明海作证要求、许知夏开启录音、秦越城北仓储站回声、顾北辰和许知夏决定去城北均按原剧本顺序保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首列明冷库内许知夏、顾北辰、周振邦、赵明海位置和朝向，秦越只作为门外声音出现，第一帧与后续动作一致。",
+      "fix_instruction": "若不通过，应补齐人物位置或把秦越改回门外声音来源。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "侧墙弹开、顾北辰两段格斗、许知夏用封存盒击腕分成4个时间段，强节拍可表演且每段主动作明确。",
+      "fix_instruction": "若不通过，应继续拆分格斗或把许知夏反击另起组。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组甩棍落到许知夏脚边，第4组组首复述脚边甩棍，随后许知夏捡起；周振邦由背景门缝处扑向门边，状态连续。",
+      "fix_instruction": "若不通过，应在第3组尾或第4组首补充甩棍和周振邦位置。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "result": "warning",
+      "evidence": "周振邦长证词8秒约6.0字/秒，属于偏快但未超过硬上限，符合紧急求生状态。",
+      "fix_instruction": "可选优化是把周振邦证词拆为两个镜头，但当前不构成 hard issue。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "顾北辰关于姓林的内容明确为心声且嘴唇闭合，秦越砸控制盒和台词来自门外，声音来源清楚。",
+      "fix_instruction": "若不通过，应补嘴唇闭合或门外载体。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "许知夏被推出时手机仍握在手里，第8组组首继续显示手机录音界面，侧墙暗门从下压接到接近关闭。",
+      "fix_instruction": "若不通过，应补充手机未脱手和门板状态。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定许知夏手机录音界面、秦越、赵明海和顾北辰肩伤，均为本组特有剧情错误且数量为4个。",
+      "fix_instruction": "若不通过，应删除泛泛项并改成本组人物或道具锚点。"
+    },
+    {
+      "group": "第1组至第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模型说明词、模板编号、参考图占位、自动分镜说明或模板化批量描述。",
+      "fix_instruction": "若发现污染词，应改成自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "周振邦长证词语速偏快。",
+      "evidence": "第5组5-13秒承载城北旧仓储站、A17、许振南备份、姓林女人等约48个有效字，约6.0字/秒。",
+      "fix": "当前不超过6.5字/秒硬上限；若后续需要更稳，可将证词拆成两段反打。"
+    }
+  ]
+}

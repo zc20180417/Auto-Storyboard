@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "第18集整集分镜已对照原剧本和竖屏规则审核，城北废仓取证、林晚真相、秦越围堵、近身打斗和大门关闭钩子完整，无阻断问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "标题含EP18-G01 cut_id，总时长14秒，4个时间段从0秒连续到14秒，人物、场景、道具字段齐全。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "evidence": "许知夏OS标明嘴唇闭合；林元两段现场对白均对许知夏和顾北辰说，声音来源清楚。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "秦越手下六人现身、秦越索要许振南的存储卡和硬盘、许知夏护住口袋回答做梦均完整保留。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "evidence": "第6组尾秦越已到一层与顾北辰近身交手；第7组首继续该站位，许知夏仍在后侧并护着存储卡。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "林元长台词拆为5秒和4秒两段，前段28个有效字约5.6字/秒，后段短句也低于硬上限，且没有叠加动作。",
+      "fix_instruction": "如不通过，应继续拆分林元说明或压缩非台词动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "许知夏从内袋取钥匙、打开保险柜、拿出存储卡、看到旧照片，关键道具归属清楚。",
+      "fix_instruction": "如不通过，应补充钥匙插入锁孔和存储卡从柜内取出的动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "秦越在组首处于二层栏杆阴影内，9-13秒通过拍手声和栏杆边站位揭示，人物可用。",
+      "fix_instruction": "如不通过，应在组首写明秦越已在二层或把秦越入场另起时间段。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "手下现身和秦越索要证据是围堵建立组，正式打斗放到第6组，强节拍没有过载。",
+      "fix_instruction": "如不通过，应拆分围堵和第一波攻击。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "顾北辰反击、林元踹膝弯、秦越直扑许知夏、顾北辰旧伤变慢分别成段，非主动作人物未抢戏。",
+      "fix_instruction": "如不通过，应把秦越逼近或旧伤反应拆到独立时间段。"
+    },
+    {
+      "group": "第7组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "禁止项锚定许知夏、铁管、秦越、遥控器、仓库大门和存储卡，均是本组复杂动作和道具风险。",
+      "fix_instruction": "如不通过，应删除泛泛词并保留本组具体锚点。"
+    },
+    {
+      "group": "第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文未出现Seedance说明、参考图、模板编号、首尾帧或调试标记。",
+      "fix_instruction": "如出现污染词，应改为自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

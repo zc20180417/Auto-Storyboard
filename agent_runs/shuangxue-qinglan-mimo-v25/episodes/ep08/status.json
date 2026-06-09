@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep08",
+  "status": "done",
+  "output_name": "ep08-ep08-agent-cli-storyboard.txt",
+  "summary": "ep08银行大厅对质戏完成，7组分镜覆盖流水单揭露、老年机反驳、柜员证实、收款方指向赵强全过程，台词节奏和空间连续性均通过审核。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "刘美娟慌张台词字秒比达到6.5上限，处于边界值。",
+      "evidence": "有效字数13，镜头2秒，字秒比6.5。",
+      "fix": "如需更稳妥可延长至2.5秒，但当前不超标。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

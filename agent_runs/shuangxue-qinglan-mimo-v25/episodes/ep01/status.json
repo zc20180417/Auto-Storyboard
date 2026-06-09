@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "ep01-ep01-agent-cli-storyboard.txt",
+  "summary": "沈清夜归发现母亲周桂兰被刘美娟苛待，8组分镜覆盖院门外→客厅→杂物间→门口，台词指向清晰，音画分离正确。",
+  "hard_issues_remaining": [],
+  "warnings": ["G6有一处台词微缩'每个月按时给你打'→'每月给你'，不影响剧情理解"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

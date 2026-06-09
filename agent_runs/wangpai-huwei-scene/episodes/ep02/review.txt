@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "summary": "第02集成片保留追车脱险、刹车被动手脚、许知夏识破专业安保能力、盛远合同签下和楼顶观察者撤离；审核通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏“你到底是什么人？普通司机不该会这个！”约18字给5秒，字秒比约3.6，未超过6.5且符合惊魂质问。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "evidence": "顾北辰OS“油管被剪...”写明嘴唇闭合；其余“现在不是聊这个的时候”“刹车被人动过手脚”均为现场开口并有对象。"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "evidence": "右侧黑车贴近、顾北辰说抓稳、手刹甩尾、右车翻滚停住逐段呈现，动作链完整且可执行。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "第七条改分段结算、盛远代表迟疑、许知夏用渠道换回款保障和对方点头，谈判因果完整。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "刹车踏板失灵后，挡杆从D挡降至2挡，发动机制动成为下一组仍在下坡行驶的合理状态。",
+      "fix_instruction": "若不通过，应补充刹车踏板、挡杆和发动机制动的可见状态。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "一组只处理左侧撞击和卸力，没有同时塞入右侧黑车最终翻滚；右侧威胁留到第4组。",
+      "fix_instruction": "若不通过，应把左右黑车处理拆成相邻两组。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "许知夏长质疑约29字给6秒，字秒比约4.8；追问约19字给4秒，约4.8；顾北辰短回应约8字给2秒，未超过6.5。",
+      "fix_instruction": "若不通过，应延长对应对白或拆成相邻短组。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "盛远会议室为新物理空间，组首写清许知夏位于门口内侧、盛远代表和助理位置、合同和钢笔。",
+      "fix_instruction": "若不通过，应拆分入场和落座，或补齐组首空间锁定。"
+    },
+    {
+      "group": "第9组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "黑衣人在组首藏于对面楼顶墙后，望远镜朝向出口；顾北辰在车边，通过反光发现对方。",
+      "fix_instruction": "若不通过，应在组首说明黑衣人藏身位置或让其先入场。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文没有模型说明词、参考图、模板编号、字幕贴片或工程标签，只保留自然分镜。",
+      "fix_instruction": "若不通过，应删除非分镜正文和模型/模板词。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

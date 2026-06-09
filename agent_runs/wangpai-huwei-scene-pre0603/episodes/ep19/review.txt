@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "第19集已完成真实审核，仓储站逃脱、秦越电话、安全屋证据链和赵明海语音均符合竖屏 scene 分镜合同，未发现阻断交付的 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中林元指向侧墙暗门、顾北辰拉许知夏、林元断后踹开暗门、秦越喊“追！”，第1组按顺序保留这些关键动作和台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "许父只作为电脑音频出现，许知夏嘴唇闭合不做口型；音频中断后只写许知夏指尖发颤和眼眶泛红，声音来源清楚。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "赵明海语音约49字分配8秒，约6.1字/秒，没有超过6.5字/秒硬上限；顾北辰“赵明海不可信”约7字分配2秒并伴随皱眉反应。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "手机、硬盘、存储卡和录音笔在第7组组首和组尾均保持在桌面，承接第5-6组证据链和赵明海语音，不发生道具跳变。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "钻出暗门、林元反手锁门、三人上旧车、顾北辰发动车冲出巷口分成四个阶段，外部空间逃离动作没有过载。",
+      "fix_instruction": "若不通过，应拆开锁门和上车动作，避免同一时间段同时承载钻出、锁门和发动车。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "秦越电话台词明确是对手机那头的周振邦说道，没有写成对暗门或手下说，电话对象与原剧本一致。",
+      "fix_instruction": "若不通过，应恢复秦越对周振邦的电话对象。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第4组固定在城西安全屋，电脑、存储卡、医药箱、许知夏、顾北辰和林元都在组首可用；许父只以音频来源出现，不占现实空间。",
+      "fix_instruction": "若不通过，应删除许父实体入场，并补清电脑音频来源。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "顾北辰关于硬盘、存储卡、林元三者的证据链台词，林元关于原始声纹和秦越清场命令的台词，以及许知夏护身符判断均保留。",
+      "fix_instruction": "若不通过，应恢复证据链三要素和林元声纹说明，不得删改为泛泛推理。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "赵明海的求救台词来自手机语音，许知夏闭口听，顾北辰随后现场开口提醒许知夏，音画分离与现场对白边界清楚。",
+      "fix_instruction": "若不通过，应把赵明海内容改回手机语音，并写明现场人物闭口反应。"
+    },
+    {
+      "group": "第7组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第7组视频禁止项锚定录音笔、手机、林元和顾北辰四个本组风险，没有使用泛泛词，也没有禁止原剧本必须发生的互咬判断。",
+      "fix_instruction": "若不通过，应删除泛泛项，改成本组具体人物和道具风险。"
+    },
+    {
+      "group": "第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集 final.txt 未出现 Seedance 说明、模板编号、参考图、官方占位符、广告语或“空间先被交代出来”等模板污染。",
+      "fix_instruction": "若不通过，应删除工程词和模板化句子，改成自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

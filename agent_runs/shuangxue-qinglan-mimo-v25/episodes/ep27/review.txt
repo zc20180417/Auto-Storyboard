@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "summary": "8组分镜全部通过审核，台词节奏、空间锁定、组间连续性和格式合同均符合生产规则。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "债主张总台词'不签明天你老家的房子就被查封'13字/2.5秒=5.2字/秒，周建国台词'别老家祖宅不能动我签我签'13字/2秒=6.5字/秒，均未超过6.5硬上限。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "组首空间锁定列出全部6名在场人物及其位置和朝向，赵强、周美娟、周建国、沈清、酒店经理、警察均位于龙腾酒店宴会厅同一物理空间内。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "警察台词'周美娟你涉嫌盗窃和非法侵占他人巨额财产一并带走'完整保留，周美娟'警察同志这是家庭纠纷我们是一家人啊'完整保留，警察驳斥'非法侵占高达十九万证据确凿'完整保留，台词顺序和说话对象均忠于原剧本。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "所有对白均为画面人物现场开口，无心声/画外音/电话音混用。债主张总对周建国冷喝、周建国对债主哀求、对沈清嘶吼，说话对象均明确。",
+      "fix_instruction": "若不通过，应检查是否有心声被写成现场开口。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组12秒内有3个强节拍：警察出示证件宣读罪名（4秒）、赵强瘫软反应（3秒）、手铐铐上（4秒）、警察转身（1秒），每个时间段只承载一个主动作，无过载。",
+      "fix_instruction": "若不通过，应拆分时间段或弱化非关键动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组组尾'赵强手腕戴手铐瘫坐在地、警察面向周美娟方向'与第5组组首'周美娟站着面向镜头、赵强瘫坐在地手腕戴手铐、警察位于周美娟前方'状态连续，赵强手铐状态、警察朝向均一致。",
+      "fix_instruction": "若不通过，应在组尾或组首补具体状态。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第5组组尾'周美娟和赵强均戴手铐'，第6组组首'周美娟手腕戴手铐、赵强手腕戴手铐'，手铐归属连续一致。",
+      "fix_instruction": "若不通过，应补充手铐状态过渡。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "第7组3个时间段各承载一个主动作：沈清端酒走到周桂兰身边（1.5秒）、碰杯（1秒）、对话（7.5秒），无多个主动作挤在同一时间段。非主动作人物无抢戏。",
+      "fix_instruction": "若不通过，应拆分时间段或弱化非主动作人物。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第8组为宾客祝酒普通对话组，不涉及复杂动作、保护站位或关键道具操作，无需输出视频禁止项。",
+      "fix_instruction": "若不通过，应补充视频禁止项。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "video_negative_constraints",
+      "problem": "第6组涉及警察带走周美娟和赵强的关键动作，建议补充2-3条视频禁止项，例如'周美娟挣脱手铐''赵强提前站起逃跑'。",
+      "evidence": "第6组包含沈清嘲讽台词、警察架走两人、宾客鼓掌三个强节拍，属于多人物调度组。",
+      "fix": "在第6组组尾衔接后补充：视频禁止项：周美娟挣脱手铐、赵强提前站起、宾客提前鼓掌"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep15",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep15-agent-cli-storyboard.txt",
+  "summary": "沈清用录像手机怼脸质问周美娟到账两元提醒，周美娟崩溃抗拒，赵强暴怒冲上前夺手机。两组分镜忠实覆盖全部对白和动作，台词指向明确，道具录像手机状态连续。",
+  "hard_issues_remaining": [],
+  "warnings": ["6秒短组属短动作余波，承载赵强夺手机完整动作链，已确认属必要例外。"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

@@ -1,0 +1,119 @@
+{
+  "pass": true,
+  "summary": "ep17共5组，全部台词忠实于原剧本，对白指向明确，字秒比均在6.5以内，空间单一且连续，道具归属清楚，无模板污染或模型说明词。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清台词'你不仅鸠占鹊巢，还合伙偷女主人的钱！'17字÷4秒=4.25字/秒，在情绪对白5.2字/秒目标范围内；周建国'你……你胡说八道！'6字÷1.5秒=4字/秒，含结巴停顿属合理语速。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "全组5组均在同一物理空间'周家正屋客厅'，无跨场景。第3组组首列出沈清、周美娟、赵强、周建国四人位置和朝向，周建国从第2组瘫坐状态延续到背景沙发。"
+    },
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "台词'备份就备份！老子不怕！''是吗？那咱们就好好算算账。''这个院子，是我亲生父亲留下的！'均与原剧本17-1完全一致；关键动作'沈清从包里掏出红色房产证复印件'通过特写镜头呈现。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "红色房产证从第1组掏出、第2组手持指控、第3组换至左手、第4组左手持有并拿出手机，状态连续无消失。手机在第4组4.5秒掏出、第5组高举，归属清楚。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "evidence": "第5组12秒4个镜头，强节拍4个（威胁、投降哀求、嘲讽、最后通牒），属同一事件链的连续推进，每时间段一个主动作，无过载。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "所有台词均为画面人物现场开口对白，无心声、画外音或电话音。沈清'冷笑'和周建国'心虚'均为情绪状态标注，台词由画面人物真实开口。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "12秒4个镜头，强节拍3个（否认、追问房产证、致命指控），属同一连续指控事件链。周建国瘫靠沙发为结果状态展示，非新增强节拍。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾'沈清手持房产证、周建国瘫坐、赵强站在身后'→第3组首'沈清右手持房产证、周建国坐在背景沙发表情僵硬'，人物位置和道具状态连续。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每个时间段只承载一个主动作：周美娟耍赖→沈清冷声回应→掏出手机按键→周美娟惊慌→沈清宣读法律→赵强扑抢。赵强扑抢动作独立在最后一个时间段。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第5组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第5组为纯对峙对白组，不涉及复杂动作/保护站位/关键道具操作，按规则省略视频禁止项。手机高举状态在组首空间锁定中已锚定。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "台词'爸！这房子不是你的？''闭嘴！大人的事少插嘴！''原来你们连自己亲爹的话都信？'等均与原剧本17-2完全一致；周美娟和赵强的震惊反应与剧本描述'都愣住了'对应。",
+      "fix_instruction": "无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "generation_density",
+      "problem": "14秒6个时间段承载报警完整流程，强节拍密度偏高但属同一事件链",
+      "evidence": "强节拍6个：周美娟耍赖、沈清冷声回应、掏出手机拨110、周美娟惊慌、沈清宣读法律、赵强扑抢。均为报警事件的连续阶段，每段一个主动作。",
+      "fix": "可考虑将12-14秒赵强扑抢移至第5组开头，但当前安排在剧情节奏上也可接受。"
+    },
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "最后一段5秒包含两句台词加短暂停顿，整体节奏偏慢但服务于最后通牒的压迫感",
+      "evidence": "'不用明天，就今晚。'6字+停顿+'转账一分钟内不到位，警察局见。'13字=19字÷5秒有效=3.8字/秒，低于普通对白4.5目标但有'一字一顿'的强调效果支撑。",
+      "fix": "若需加快节奏可压缩至4秒，但当前5秒为最后通牒留出压迫余量。"
+    },
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "character_availability",
+      "problem": "周桂兰在第5组首次出现，之前未在组首空间锁定中出现",
+      "evidence": "原剧本17-4明确列出周桂兰为在场人物。在短视频场景中，新角色在当前场景内直接出现属常见处理，不影响视频生成。",
+      "fix": "无需修改，剧本本身即如此安排。"
+    }
+  ]
+}

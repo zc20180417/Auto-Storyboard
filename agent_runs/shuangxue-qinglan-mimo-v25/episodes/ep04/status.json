@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "ep04-ep04-agent-cli-storyboard.txt",
+  "summary": "ep04共5组，沈清带凭条质问刘美娟、金镯暴露、周建国拍桌护媳、小雨抱洋娃娃出场泄密、捂嘴与八千块钱揭穿。台词全部保留，格式正确，空间锁定完整。",
+  "hard_issues_remaining": [],
+  "warnings": ["第4组6-9秒小雨台词含英文Party字数偏高但未超6.5硬上限", "第2组8秒短承接组理由成立"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

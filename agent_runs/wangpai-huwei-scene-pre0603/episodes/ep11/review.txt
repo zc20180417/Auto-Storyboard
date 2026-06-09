@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep11 整集已按 storyboard-reviewer 对照原剧本、生成规则和 final.txt 审核，7组均通过，未发现阻断生产的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "保留顾北辰换假盘、说明假盘十分钟、许知夏要进盛远地下查档案并寻找录音笔；未新增改变剧情的动作。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏证据公开长台词安排10秒承载，约64字/10秒=6.4字/秒，符合绝对上限；顾北辰“你身边没人”单独2.5秒承载。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "陌生男声VO低沉带笑响起时，明确许知夏和顾北辰嘴唇闭合；耳机暗号“下雨”和许知夏“你也一样”均由画面人物现场开口。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "组首固定盛远大厅前台区域，顾北辰在柜台外、前台在柜台后、访客卡在前台手边；前台递卡和顾北辰接卡在同一物理空间内连续完成。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "硬盘从黑色硬盘包取出、放上会议桌、推向周振邦一侧、黑衣人拿起插入电脑，进度条亮起到5%，道具归属和状态变化清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "result": "pass",
+      "evidence": "标题含EP11-G01 cut_id，总时长15秒，4个时间段从0-15秒连续，镜头数与时间段数一致，字段完整。",
+      "fix_instruction": "若不通过，应补齐cut_id、总时长、镜头数和缺失字段。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "长台词最长段为5-15秒，字秒比未超过6.5；没有通过普通停顿或长凝视硬凑10秒。",
+      "fix_instruction": "若不通过，应拆长台词或延长承载时间，不能压缩口型。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "秦越陌生男声VO和顾北辰、许知夏现场对白区分明确，VO有门外车灯和局势声承载，画面人物闭口。",
+      "fix_instruction": "若不通过，应补充VO来源和闭口说明。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "安全屋结尾转到盛远大厅入口属于新物理场景；本组尾部顾北辰已经进入大厅，黑色硬盘包仍在手中，可自然接第5组前台区域。",
+      "fix_instruction": "若不通过，应在第4组尾部或第5组首补清人物和硬盘包位置。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "人质露面和双方交锋分为铁门进入、人质状态、周振邦揭身份、顾北辰换人质、周振邦验真五段，15秒内强节拍清楚且未压缩到单镜。",
+      "fix_instruction": "若不通过，应把人质揭示和双方台词拆成更多组或减少非关键反应。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "顾北辰取出硬盘并推过、顾北辰说验盘、黑衣人插电脑、屏幕进度条亮起分段执行；单段没有多个顺序主动作堆叠。",
+      "fix_instruction": "若不通过，应拆开递硬盘、插电脑和进度条亮起。"
+    },
+    {
+      "group": "第1组至第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "未出现模型说明词、参考图、模板编号、自动分镜、JSON或自检说明；视频禁止项均为本组具体错误风险。",
+      "fix_instruction": "若不通过，应删除污染词和非正文内容。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "第26集最终分镜完成会议室善后、纪念墙释怀、许氏门口并肩选择和羁押室反转彩蛋，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "法务VO约29字安排在2-7秒5秒内，约5.8字/秒；电话免提承载声音，会议室人物闭口倾听。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "许知夏保留“许氏需要安全顾问，我身边也需要一个并肩的人。你要是还想逃，我不会拦。”的关系确认，没有改成求婚或拥抱。"
+    },
+    {
+      "group": "第9组",
+      "type": "timing_math",
+      "evidence": "片尾彩蛋总时长8秒，时间段0-2、2-5.5、5.5-8连续且为0.5秒粒度，属于独立短反转节拍。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "法务VO由免提电话传出，许知夏闭口听屏幕结果，电话声音有明确载体。",
+      "fix_instruction": "若不通过，应补写免提电话来源和现场人物闭口。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "董事甲对许知夏认错，许知夏对众董事说明底线，现场对白对象明确。",
+      "fix_instruction": "若不通过，应为每句现场对白补真实对话对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "白花从顾北辰手中放到碑前，被旧军靴压住；组尾继续锚定白花和旧军靴。",
+      "fix_instruction": "若不通过，应补写花束和旧军靴的归属、位置变化。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "组首在旧案纪念墙单一空间内列出顾北辰、林元、许知夏入口位置，以及白花旧军靴状态，许知夏先走近再说话。",
+      "fix_instruction": "若不通过，应补齐许知夏入场位置或拆出跨空间。"
+    },
+    {
+      "group": "第5组-第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾顾北辰仍在驾驶位，第6组尾手离开方向盘，第7组才推门下车，车内到车外转移有可见过渡。",
+      "fix_instruction": "若不通过，应在第7组前补顾北辰下车动作，避免突然站在车外。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "顾北辰OS写为嘴唇闭合、心声响起；许知夏“看表现”是现场开口且对象为顾北辰。",
+      "fix_instruction": "若不通过，应把OS改为闭口心声，并给许知夏台词补对象。"
+    },
+    {
+      "group": "第9组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "8秒彩蛋只承载秦越坐在羁押室、说出反转台词和敲扶手三段，短组理由成立且没有硬凑到10秒。",
+      "fix_instruction": "若不通过，应保留8秒片尾短反转，不并入集团门口空间。"
+    },
+    {
+      "group": "第1组-第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文无模板编号、模型说明、@图片/@视频/@音频、JSON、自检说明或广告式语气。",
+      "fix_instruction": "若不通过，应删除工程词和模板污染内容。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "summary": "EP12 六组全部通过审核，台词节奏、空间锁定、道具连续性、剧本忠实度均无硬伤。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清厉声15字/3秒=5.0字/秒（情绪对白，目标5.2），周建国9字/2秒=4.5字/秒（情绪对白，下限），沈清25字/5秒=5.0字/秒（情绪对白），均在4.5-6.5字/秒安全范围内。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "周桂兰'为什么啊！那是清清给我留的活命钱啊！'完整保留，周建国'哭什么哭！你嫁进周家，吃喝拉撒哪样不花钱！'和'家里开销这么大，用你点钱怎么了！'完整保留，拍桌子动作保留。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清'冷若冰霜'22字/4秒=5.5字/秒（情绪对白），沈清'一字一句'19字/5.5秒=3.45字/秒（明确慢语'一字一顿'，按3.8字/秒目标需5.0秒，实际5.5秒充足，字秒比在3.5-4.0慢语范围内）。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "所有对白均为画面内真人开口，写明了谁对谁说：沈清对周建国厉声、周建国对沈清怒声、沈清对周建国厉声。无心声/画外音/电话音混用。",
+      "fix_instruction": "无需修改，口型和指向均正确。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组4个时间段，2个强节拍（沈清逼问、周桂兰崩溃台词）。第3组3个时间段，2个强节拍（周桂兰痛哭、周建国拍桌）。每时间段只一个主动作或一个连续对话节拍，无过载。",
+      "fix_instruction": "无需修改，强节拍密度合理。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组组尾：委托书摊在茶几上、周建国坐在太师椅上、周桂兰双手握在胸前站立发抖、沈清站在茶几旁。第3组组首：委托书仍在茶几上、周建国坐在太师椅上面色阴沉、周桂兰双手握在胸前站立、沈清站在茶几旁。状态完全连续。",
+      "fix_instruction": "无需修改，组间状态衔接完整。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "委托书从第1组到第4组始终在茶几上，紫砂壶从第1组周建国手中→第1组茶几边→第3组仍在茶几边。周建国在第3组从坐姿站起（拍桌后站到太师椅旁），第4组组首写明'周建国站在太师椅旁'，衔接自然。",
+      "fix_instruction": "无需修改，道具归属连续。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "第5组外部事件入场按阶段拆开：里屋门推开→周美娟赵强冲出（2.5秒）→周美娟尖叫（2.5秒）→周建国指骂（4秒）→沈清冷笑反应（3秒）。每时间段只一个主动作，非主动作人物赵强只写站位和缩脖子反应，没有抢戏。",
+      "fix_instruction": "无需修改，动作拆分清晰。"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第5组视频禁止项3条（周美娟赵强入场方向、周建国指鼻子、沈清提前拿流水），第6组视频禁止项3条（流水数量、委托书消失、语速过快），均锚定本组人物和道具，无泛泛词或模板化条目。",
+      "fix_instruction": "无需修改，视频禁止项具体且锚定上下文。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "generation_density",
+      "problem": "第4组(14秒)、第5组(12秒)、第6组(14秒)连续三组均在12秒以上，且在同一物理空间。但三组各有明确不同的戏剧内容（沈清反击、新角色入场、证据揭示高潮），不属于流程拆碎或低密度长组。",
+      "evidence": "第4组4个台词强节拍（沈清连击+周建国暴怒），第5组外部事件入场+新角色冲突，第6组道具揭示+慢语高潮。每组都有独立的戏剧推进目标。",
+      "fix": "可选优化：如需打破连续长组，可将第5组压缩至10秒（将周美娟尖叫从2.5秒压至2秒，6.0字/秒在警告范围内）。"
+    }
+  ]
+}

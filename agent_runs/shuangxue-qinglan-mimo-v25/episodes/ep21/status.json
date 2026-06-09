@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep21",
+  "status": "done",
+  "output_name": "ep21-ep21-agent-cli-storyboard.txt",
+  "summary": "沈清带律师依法强制清场周美娟一家，工程车进场工人拆旧门窗，寒风灌屋，沈清宣告合法重装。",
+  "hard_issues_remaining": [],
+  "warnings": ["6秒短组承接拆窗动作和尖叫反应，属短动作余波，理由成立。"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

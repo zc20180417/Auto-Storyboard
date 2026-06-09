@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "summary": "第01集成片保留临终托付、会议室危机、出发通话和山路逼车悬念；格式、台词指向、空间锁定和视频执行稳定性通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "许振南“北辰，许氏有危险，知夏身边需要可靠的人”约22字给5秒，字秒比约4.4，符合虚弱对白节奏且低于6.5。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "evidence": "赵明海对手机说“她出发了...”是现场开口；陌生男声来自手机听筒，画面中无错误口型承载。"
+    },
+    {
+      "group": "第9组",
+      "type": "space_locking",
+      "evidence": "商务车内、后视镜和后方黑车均属于同一盘山路行车空间，许知夏在后排、顾北辰在驾驶位，人物可用性明确。"
+    },
+    {
+      "group": "第11组",
+      "type": "prop_continuity",
+      "evidence": "合同文件从第9组许知夏手中延续到第11组压在膝上，未突然消失；黑车从后方跟车过渡到左右后侧压近。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保险柜钥匙、当年的事、心电长音三处关键信息完整保留，顾北辰红眼接钥匙与原剧本一致。",
+      "fix_instruction": "若不通过，应恢复钥匙交接、当年事台词和心电长音。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "顾北辰对会议桌方向询问哪位是许总，董事甲看着顾北辰嘲弄，现场对白对象明确。",
+      "fix_instruction": "若不通过，应把每句现场对白改为A对B说道。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组许知夏拿合同离开会议室后，第6组组首在集团门口手持合同，助理递补充资料，空间切换清楚。",
+      "fix_instruction": "若不通过，应补充离开会议室到门口的承接或拆分空间。"
+    },
+    {
+      "group": "第10组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组仅承载顾北辰观察、许知夏问话、顾北辰敷衍和黑车贴近，四个轻节拍各有时间，未过载。",
+      "fix_instruction": "若不通过，应把黑车撞击移动到下一组或压缩普通反应。"
+    },
+    {
+      "group": "第11组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "黑车加速、车身晃动、许知夏惊问、顾北辰沉声提醒按阶段拆开，每段一个主动作。",
+      "fix_instruction": "若不通过，应拆开逼车、抓扶手、提醒合同等动作。"
+    },
+    {
+      "group": "第12组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终组只写自然分镜、光影和切黑，没有模型说明词、模板编号、参考图或工程占位符。",
+      "fix_instruction": "若不通过，应删除模型说明词和非分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

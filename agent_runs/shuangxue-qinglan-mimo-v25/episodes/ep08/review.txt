@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "summary": "ep08分镜通过审核，7组全部合格，台词节奏、空间锁定、剧本忠实度和连续性均无硬伤。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清愤怒台词'二十四个月！次次都是分批小额转出，完美规避了银行的风控预警！这手段够专业的啊！'共36字，情绪对白÷5.2=6.9秒，实际分配7秒（2-9秒），字秒比5.1，在合理范围内。周桂兰哭喊'造孽啊……这是算计好了吸我的血啊！'共14字，÷5.2=2.7秒，实际分配3秒（9-12秒），字秒比4.7，无超标。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "组首空间锁定明确列出沈清位于画面左侧举着老年机和流水账单，刘美娟位于画面右侧脸色惨白，银行柜员坐在柜台后方。柜员的插话'并不是取现，系统显示全是通过手机银行转账的'通过柜台后方抬头的动作自然进入，空间关系清晰。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "原剧本关键台词'跟你没关系？那这个收款账户是谁的？'和'收款人：强盛建材经营部！'完整保留，沈清把账单举到刘美娟眼前、手指点在收款人栏的关键动作忠实还原，刘美娟瞳孔猛缩的反应与原剧本'倒抽冷气'情绪一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "所有台词均为画面人物现场开口对白，沈清对周桂兰说道、周桂兰对沈清哭喊道，均有明确说话对象和口型。无心声、画外音或电话音混用。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "本组4个时间段、13秒，包含沈清愤怒台词（7秒）、周桂兰哭喊（3秒）、刘美娟后退反应（1秒）。愤怒台词和哭喊是同一冲突链条的连续推进，刘美娟后退是自然反应承接，每段只有一个主动作，未过载。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组尾部交代'沈清手中仍握流水账单；周桂兰双手捂嘴、眼泪未止；刘美娟退后半步，脸色惨白'。第4组组首空间锁定'沈清左手持有流水账单；周桂兰双手捂在嘴边，眼眶红肿；刘美娟脸色惨白，双手垂在身侧'，人物位置、道具状态和情绪状态连续。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "老年机在第4组由沈清从口袋掏出举起，第5组组首空间锁定'沈清右手举着老年机'，第5组内刘美娟结巴狡辩和柜员插话时老年机仍在沈清手中，道具归属连续。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "4个时间段各承载一个主动作：刘美娟吸气反驳（2秒）、沈清冷笑质问（3秒）、刘美娟腿软撑台（3秒）、沈清收单迈步（2秒）。无多个主动作挤在同一时间段，无非主动作人物抢戏。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "本集为对话对峙场景，无复杂动作、保护站位或多人物调度，各组无需强制输出视频禁止项。关键道具流水账单和老年机的状态变化在组间清晰交代。",
+      "fix_instruction": "无需修改"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "dialogue_pacing",
+      "problem": "刘美娟慌张台词'我……我不知道，反正跟我没关系！'字秒比达到6.5上限，处于边界值。",
+      "evidence": "有效字数13，镜头2秒，字秒比6.5，恰好在6.5硬上限处。",
+      "fix": "如需更稳妥可延长至2.5秒，但当前不超标，仅作提示。"
+    }
+  ]
+}

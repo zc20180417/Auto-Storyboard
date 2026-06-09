@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "ep04 整集分镜已对照原剧本完成审核，办公室预警、晚宴试探、后台外接信号和大屏异常均保留，未发现阻断交付的 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "evidence": "许知夏OS写为许知夏嘴唇闭合不做口型，内心声'他三天前才高调发请柬，今晚这场，不像做善事。'未被写成现场对白。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "顾北辰对白'那您记着，台上看我手。我抬手，您立刻停。'安排在5-10.5秒，约22个有效字/5.5秒，字秒比约4.0，节奏可表演。"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "evidence": "工作人员把U盘插入主控台接口，组尾明确U盘仍插在主控台上，顾北辰据此判断外接信号，关键道具归属和位置清楚。"
+    },
+    {
+      "group": "第11组",
+      "type": "script_fidelity",
+      "evidence": "许知夏刚开口、大屏跳闪、全场看向大屏、周振邦含笑、许知夏OS'原来在这儿，等着我。'均按原剧本结尾顺序保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "顾北辰对许知夏提醒别上台，许知夏对顾北辰反问，顾北辰再说明音响公司临时换人，现场对白对象明确。",
+      "fix_instruction": "若不通过，应补明每句现场对白的真实说话对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "顾北辰'顺耳听见的'为现场对白；许知夏后续OS明确为内心声并标明嘴唇闭合不做口型。",
+      "fix_instruction": "若不通过，应区分现场开口和内心声承载。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第6组8秒只承载周振邦压低声音威胁和离开后的许知夏轻反应，是短句威胁与承接反应，不靠无意义停顿硬凑10秒。",
+      "fix_instruction": "若不通过，应与第5组合并或保留明确短反应，不新增低密度停顿。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第8组从主持人VO到许知夏上台，再到顾北辰放下酒杯转向后台，组尾为第9组大屏缓冲和顾北辰介入建立位置连续。",
+      "fix_instruction": "若不通过，应补足许知夏上台位置、大屏状态或顾北辰酒杯处理。"
+    },
+    {
+      "group": "第10组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "顾北辰到入口、黑衣人阻拦、黑衣人喝止、顾北辰松袖口、顾北辰放话分成四个连续时间段，每段单一主动作。",
+      "fix_instruction": "若不通过，应拆开阻拦、喝止、整理袖口和放话动作。"
+    },
+    {
+      "group": "第11组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第11组收窄为慈善晚宴大厅舞台区，只显示许知夏、周振邦、宾客和大屏异常，没有把后台入口或主控台动作塞入同一组。",
+      "fix_instruction": "若不通过，应继续移除后台人物状态或拆回后台单独组。"
+    },
+    {
+      "group": "第1组-第11组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模板编号、参考图、自动分镜、模型说明词、@占位符或模板化批量描述，均为自然分镜文本。",
+      "fix_instruction": "若不通过，应删除工程词和模板化表达，改写为具体动作、声音来源和道具状态。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

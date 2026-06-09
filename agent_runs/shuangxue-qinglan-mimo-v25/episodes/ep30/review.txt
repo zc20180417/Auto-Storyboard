@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "四组均通过审核，无硬问题。台词全部忠实保留，空间锁定清晰，时间节奏合理。",
+  "checked_groups": [
+    "第1组",
+    "第2组",
+    "第3组",
+    "第4组"
+  ],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组1-4秒医生台词13字/3秒=4.33字/秒，4-8秒画外音18字/4秒=4.5字/秒，8-12秒沈清14字/4秒=3.5字/秒，12-15秒周桂兰14字/3秒=4.67字/秒。均在限制内。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "第2组组首锁定公寓露台，只写周桂兰已在藤椅上端茶，沈清和保姆未出现。沈清从画面左侧入场，动作清楚。空间单一无跨场景。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组忠实保留原剧本台词：女助理两句、沈清签字命名桂兰安养院、优先接收孤寡老人的指示、助理回应。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "4-8秒为有声无口型反应镜头，沈清嘴唇闭合不做口型，医生画外音继续。景别差异明确。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组14秒四个时间段，强节拍三拍，无过载。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组组首继承第2组组尾：沈清和周桂兰并肩坐着，文件在膝盖上。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "玉镯在组首空间锁定和0-3秒镜头中均有锚定，与原剧本一致。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第1组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每个时间段只承载一个主动作或连续对话节拍。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第4组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "温情收尾组无复杂动作，省略视频禁止项。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第4组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文无模板术语、无模型标签、无占位符，为自然分镜文本。",
+      "fix_instruction": "无需修复"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

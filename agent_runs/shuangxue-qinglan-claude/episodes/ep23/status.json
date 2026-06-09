@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep23",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep23-agent-cli-storyboard.txt",
+  "summary": "周美娟、赵强、周建国三人在破旧出租屋里密谋明天在酒店当众逼宫，威胁要钱、补税、诬陷虐待，让目标身败名裂。单场景纯对话组，15秒4镜头，台词完整保留。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "dialogue_pacing",
+      "problem": "赵强段3秒承载17字（5.67字/秒），接近偏快区间但未超6.5硬上限。",
+      "evidence": "光要钱不够，必须逼她把欠税的窟窿补上！= 17字 ÷ 3秒 = 5.67字/秒",
+      "fix": "如需更舒适可延长至3.5秒，但当前在可接受范围内。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

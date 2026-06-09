@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep12 整集已按 storyboard-reviewer 对照原剧本、生成规则和 final.txt 审核，10组均通过，未发现阻断生产的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "许知夏刷备用卡进地下档案库、翻旧项目资料、找到“盛远一期资金流”文件夹和许氏核心技术抵押给赵明海且受益方为启元资本的协议，关键线索未丢失。"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "evidence": "顾北辰踢翻桌子、桌面撞偏黑衣人、夺刀、割开老人束缚、拉起老人“跑！”按时间段拆开，视频执行路径清楚。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "秦越“许小姐查得比我想象中快……启元资本执行董事。”约27字安排5秒，字秒比约5.4；许知夏“你是启元资本的人？”3秒承载，节奏合格。"
+    },
+    {
+      "group": "第9组",
+      "type": "space_locking",
+      "evidence": "第9组全程固定在地下档案库，秦越在画面右侧向许知夏逼近一步，保镖仍守门，未跨出到会议室或其他空间。"
+    },
+    {
+      "group": "第10组",
+      "type": "audio_mouth_sync",
+      "evidence": "顾北辰VO从耳机响起时许知夏嘴唇闭合，右后方档案架窄路作为安全通道方向可见，台词没有被秦越或许知夏现场口型承载。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "顾北辰“下雨”是耳机VO，门外秦越声是隔门VO，许知夏现场开口只对耳机低声回应录音笔未找到。",
+      "fix_instruction": "若不通过，应区分耳机VO、门外VO和许知夏现场低声对白。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "电脑和硬盘从ep11验盘状态承接，先显示解密完成，再弹出空白文件“你被耍了”，硬盘仍连接在桌面右侧。",
+      "fix_instruction": "若不通过，应补清硬盘连接状态和屏幕变化顺序。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "救人动作强节拍较多但已拆为5个3秒段，会议桌撞击、夺刀、割绑、扶起老人各自独立，未强塞到15秒单镜。",
+      "fix_instruction": "若不通过，应进一步拆成两组或减少同镜顺序动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "周振邦对讲机喊拦人、顾北辰对司机喊送她走、老人被司机护送离开、周振邦揭示许知夏也在盛远、顾北辰OS意识到真正目标是许知夏均保留。",
+      "fix_instruction": "若不通过，应恢复周振邦揭示许知夏位置和顾北辰的认知反转。"
+    },
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "许知夏0-6秒反击约34字，约5.7字/秒；秦越6-10秒约18字，约4.5字/秒；许知夏10-14秒约19字，约4.8字/秒，均未超过硬上限。",
+      "fix_instruction": "若不通过，应拆长台词或延长承载时间。"
+    },
+    {
+      "group": "第10组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定顾北辰VO、许知夏、转让协议、保镖和右后方安全通道方向，数量4个，没有泛泛占位或与正文矛盾。",
+      "fix_instruction": "若不通过，应替换为本组具体人物、道具、通道方向错误。"
+    },
+    {
+      "group": "第1组至第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文没有Seedance说明、官方模板、参考图、@占位符、自动正反打、调试标记或非分镜正文。",
+      "fix_instruction": "若不通过，应删除所有模型和工程说明词。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

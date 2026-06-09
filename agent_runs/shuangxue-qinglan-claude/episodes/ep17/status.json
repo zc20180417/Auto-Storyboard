@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep17",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep17-agent-cli-storyboard.txt",
+  "summary": "第17集只有一场戏（周家正屋客厅，沈清举手机威胁报警，赵强投降哀求，周桂兰嘲讽），生成1组12秒分镜，台词全部保留，审核通过无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

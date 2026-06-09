@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep16",
+  "status": "done",
+  "output_name": "ep16-ep16-agent-cli-storyboard.txt",
+  "summary": "ep16按scene模式重跑完成，将冷库线索发现、秦越现身、落锁困局、坐标争夺等连续事件链合并为10组127秒，真实reviewer通过且无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

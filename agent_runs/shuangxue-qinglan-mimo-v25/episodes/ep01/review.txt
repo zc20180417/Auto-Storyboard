@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "8组分镜整体通过审核，台词指向清晰，音画分离正确，空间连续性良好。G6有一处台词微缩，不影响剧情理解。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈清OS'连续加了两个月夜班赶核心项目'正确标注为画外音，嘴唇闭合不做口写清楚。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "evidence": "杂物间单一物理空间，组首锁定周桂兰在硬板床上、木门关闭、沈清在门外，与后续推门动作衔接。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "羽绒服、进口药、八千块三条质问线完整保留，周桂兰'一分钱都没收到过'关键台词未删改。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "evidence": "刘美娟VO正确标注为画外音，沈清嘴唇闭合不做口型，咬牙自语'到账真准'为真实开口。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "张姐电话7字/2秒=3.5字/秒，OS18字/4秒=4.5字/秒，均在合理范围。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "环境1.5秒+放置营养品2.5秒+呼喊2秒+空房+cough反应4秒=10秒，强节拍3个（呼喊、cough、转身），未过载。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "G4组尾棉被掀开、破瓷碗暴露，G5组首棉被掀开、破瓷碗在床面上，周桂兰蜷坐、沈清站在床边，状态连续。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "破瓷碗从G4暴露→G5白粥特写→G6组首仍在床面，旧毛巾从G6周桂兰指向→G7组首仍搭在床头，道具状态连续。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每组每个时间段只承载一个主动作或一个连续对话节拍，无多个主动作挤在同一时间段。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "本集为情感对话为主，无复杂动作组或保护站位组，视频禁止项按规则省略。",
+      "fix_instruction": "无需修改"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第6组",
+      "rule": "script_fidelity",
+      "problem": "12.5-15秒时间段将原剧本'我每个月按时给你打八千块'微缩为'我每月给你八千块'，丢失'按时'和'打'字，但核心指控（每月八千块）保留。",
+      "evidence": "原剧本：'我每个月按时给你打八千块，你怎么会没钱！'；分镜：'我每月给你八千块，你怎么会没钱！'",
+      "fix": "如需严格还原，可将该时间段延长至3秒或拆分台词到两个时间段。"
+    }
+  ]
+}

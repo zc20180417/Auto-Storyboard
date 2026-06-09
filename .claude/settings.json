@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  },
+  "hooks": {
+    "SubagentStop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .claude\\hooks\\subagent_validate_episode.ps1",
+            "shell": "powershell",
+            "timeout": 120,
+            "statusMessage": "Validating storyboard episode"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .claude\\hooks\\stop_check_agent_run.ps1",
+            "shell": "powershell",
+            "timeout": 120,
+            "statusMessage": "Validating storyboard run"
+          }
+        ]
+      }
+    ]
+  }
+}

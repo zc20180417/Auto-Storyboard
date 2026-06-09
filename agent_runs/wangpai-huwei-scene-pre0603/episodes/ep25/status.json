@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "《王牌护卫》-ep25-agent-cli-storyboard.txt",
+  "summary": "第25集完成楼梯间撤离反击、火场闪回、天台录音取证、林元举证和秦越放弃挣扎的竖屏 scene 分镜。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "dialogue_pacing",
+      "problem": "许知夏技术汇报接近偏快区间，后续强审可考虑再增加0.5秒。",
+      "evidence": "台词约22字分配3.5秒，约6.3字/秒，紧急低声汇报语境成立，但略高于普通对白舒适区。",
+      "fix": "需要更稳时可继续压缩后段逼近动作，并给该句增加0.5秒。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "ep13 整集分镜保留追逃、耳机通话、档案库对峙、许知夏判断硬盘、纸页突围和旧桌卡门等关键剧情，格式、台词方向、音画分离和动作拆段均可交付。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "标题含 EP13-G01 cut_id，总时长 12 秒，4 个连续时间段为 0-2、2-5、5-8、8-12，镜头数与时间段数一致。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "evidence": "许知夏以耳机声出现，3-6.5 秒明确顾北辰嘴唇闭合听着，顾北辰现场开口均写为对耳机里的许知夏说道。"
+    },
+    {
+      "group": "第4组",
+      "type": "character_availability",
+      "evidence": "组首写顾北辰位于安全通道门后只以门后声音出现，5-8 秒先给门后声音，8-14 秒再推门入场并挡在许知夏前方。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "秦越 17 字/4 秒约 4.25 字秒比，顾北辰 11 字/2 秒约 5.5，许知夏 18 字/3 秒约 6.0，均未超过 6.5 硬上限。"
+    },
+    {
+      "group": "第8组",
+      "type": "action_atomicity",
+      "evidence": "文件扬起、击中第一人、横扫第二人、翻柜拉人、退向安全通道分成五个时间段，复杂动作没有压成一个镜头。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "许知夏退到安全通道、秦越索要东西、电子版和九点十五分自动发出的台词均保留，未新增改变因果的动作。",
+      "fix_instruction": "若不通过，应恢复安全通道、手机扫描件和秦越索要证据的原始因果。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "顾北辰看向秦越说道三年前那笔账，秦越对顾北辰回应许振南硬盘，所有现场对白有真实对象。",
+      "fix_instruction": "若不通过，应将对应台词改为 A 对 B 说道。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "许知夏 OS 被处理为嘴唇闭合、不做口型的心声，画面没有让她现场开口说心声。",
+      "fix_instruction": "若不通过，应明确心声来源并写闭口不做口型。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "秦越威胁、顾北辰六秒追问、顾北辰迈半步和许知夏拉袖提醒分段清楚，15 秒内节拍容量可表演。",
+      "fix_instruction": "若不通过，应拆出迈步或拉袖提醒，避免和长台词同镜。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "档案文件由许知夏持有转为散落纸页，手机始终在许知夏手中，组尾锚定散落纸页和手机倒计时。",
+      "fix_instruction": "若不通过，应补写纸页散落或手机归属。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第8组尾顾北辰拉许知夏退到安全通道门口，第9组首从门口继续，随后关门并用旧桌卡住门缝，状态连续。",
+      "fix_instruction": "若不通过，应在第8组尾或第9组首补足两人位置和门状态。"
+    },
+    {
+      "group": "第9组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "旧桌、门缝、许知夏、手机倒计时和秦越进入安全通道均为本组具体风险，禁止项数量为 4 个且没有泛泛词。",
+      "fix_instruction": "若不通过，应删除泛化禁止项并替换成本组人物道具状态。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

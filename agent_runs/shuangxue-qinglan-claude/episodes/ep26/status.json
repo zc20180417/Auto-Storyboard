@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep26",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep26-agent-cli-storyboard.txt",
+  "summary": "沈清在龙腾酒店宴会厅扔出离婚协议逼周建国签字，周建国拒绝后沈清联合债主张总以祖宅强制执行施压，张总嘲讽确认律师已备好诉状。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第2组未提供视频禁止项，建议补充：张总提前离开画面、沈清失去冷静表情、周建国位置突然变化。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

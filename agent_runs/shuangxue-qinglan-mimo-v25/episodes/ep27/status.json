@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep27",
+  "status": "done",
+  "output_name": "ep27-ep27-agent-cli-storyboard.txt",
+  "summary": "第27集分镜8组完成，覆盖离婚协议签字、警察逮捕、母女碰杯等关键场景，台词节奏和空间锁定均通过审核。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第6组涉及警察带走多人，建议补充视频禁止项如'周美娟挣脱手铐''赵强提前站起'。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

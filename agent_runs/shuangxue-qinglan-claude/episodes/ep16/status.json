@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep16",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep16-agent-cli-storyboard.txt",
+  "summary": "周家客厅夜戏，周桂兰情绪崩溃质问周建国，周建国恼羞拍桌反击，沈清冷静亮出手机视频证据宣布云端备份。3组分镜，台词全保留，空间单一，口型指向正确。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "G01首段字秒比6.3字/秒接近6.5硬上限，偏快但未超线"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

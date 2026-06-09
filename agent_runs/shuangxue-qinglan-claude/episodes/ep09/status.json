@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep09",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep09-agent-cli-storyboard.txt",
+  "summary": "第09集分镜完成，4组共38秒。刘美娟尖声反击、周桂兰崩溃痛哭、沈清护母威胁、赵强暗拉衣角密语假账、刘美娟闻讯惊恐。台词节奏合格，空间锁定完整，组间状态连续。",
+  "hard_issues_remaining": [],
+  "warnings": ["刘美娟第一句对白单独看约4.0字/秒略低于情绪对白4.5目标，但连续对话节拍整体33字÷7秒=4.71字/秒合格。"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

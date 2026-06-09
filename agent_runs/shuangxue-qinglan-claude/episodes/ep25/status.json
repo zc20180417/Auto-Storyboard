@@ -1,0 +1,19 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep25-agent-cli-storyboard.txt",
+  "summary": "第25集分镜2组完成，忠实还原宴会厅债务追讨场景：周建国死抓周美娟裙角、张总揪人质问、周建国把祸水引向沈清、张总转向冷笑。台词全部保留，空间锁定和组间衔接清晰。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "0-3秒段有效台词仅4字（'她有钱！'），含指人动作后整体偏慢，但有中等动作填充，不构成硬错误。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

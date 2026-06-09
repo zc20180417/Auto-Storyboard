@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep05-agent-cli-storyboard.txt",
+  "summary": "第5集分镜共3组38秒，覆盖沈清砸碗揭穿赡养费真相、与刘美娟周建国对峙、赵强电话暗示账目问题三段冲突。全部台词保留，字秒比合规，道具状态连续。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "generation_density",
+      "problem": "第1组14秒含5个时间段，属于长组上限区间，但由碗砸动作和双人对白冲突支撑，容量合理。",
+      "evidence": "5个时间段，14秒总时长，台词容量约8.5秒，动作容量约3.5秒。",
+      "fix": "可接受，无需修改。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

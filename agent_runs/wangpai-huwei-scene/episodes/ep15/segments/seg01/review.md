@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "seg01 已按原剧本完成办公室泄密、安全屋决策和秦越监控收尾，格式、台词、空间和短组理由均可交付。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "赵明海披露A17柜的台词约45字，放在5-14秒的9秒段内，约5.0字/秒；周振邦单字回应另占0-2秒，未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "秦越只以门缝外声音出现，正文写明声音从门缝外传来，画面内周振邦和赵明海只是转头反应，没有让室内人物替秦越开口。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "保留顾北辰“我去”“一起去。但这次，听指挥。”、许知夏“又来？”和“指挥权轮流...”以及顾北辰“成交”，人物关系和共同前往的决定未改写。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "evidence": "第6组尾部许知夏拿耳机、手机在桌面；第7组开头顾北辰拿起手机、许知夏收耳机，随后关灯离开，能接到桌下红灯闪烁。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "周振邦独处时使用“怒声自语”承载原剧本抱怨，没有发明假对白对象。",
+      "fix_instruction": "若需修改，应继续保持单人自语或明确真实对话对象，不能写成对空气或对道具说话。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "赵明海入场时护照和机票在手，后续台词镜头继续写护照机票被攥皱，第3组组首也继承该归属。",
+      "fix_instruction": "若不通过，应在赵明海入场、说话和下一组组首补充护照机票归属。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "8秒短组只承载门外威胁、两人反应和赵明海扶桌三个短节拍，是高冲击威胁后的短反应，不硬凑10秒。",
+      "fix_instruction": "若不通过，应拆掉额外动作或保持短组，不增加无台词凝视凑时长。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "安全屋为单一物理空间，组首写明许知夏、顾北辰、桌子和手机位置，短信亮屏发生在同一桌面上。",
+      "fix_instruction": "若不通过，应补足两人的画面位置、朝向和手机位置。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "穿外套、顾北辰抬手阻拦、许知夏反问、共同确认指挥权分成四个连续时间段，单段主动作清楚。",
+      "fix_instruction": "若不通过，应拆分动作和对白，避免把穿外套、阻拦、长对白压进同一时间段。"
+    },
+    {
+      "group": "第7组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定桌下红灯、许知夏顾北辰和手机，均是本组容易错的具体剧情错误，没有泛泛词。",
+      "fix_instruction": "若不通过，应删除泛泛禁止项，保留本组人物、道具或场景锚点。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "秦越办公室收尾没有模板编号、参考图、模型说明词或工程占位符，只写监控屏冷光和“A17见”的剧情台词。",
+      "fix_instruction": "若不通过，应删除模型说明、模板词或占位符，只保留自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

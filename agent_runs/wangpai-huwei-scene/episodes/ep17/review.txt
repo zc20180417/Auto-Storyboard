@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "第17集整集分镜已对照原剧本和竖屏规则审核，冷库逃生、证据供述、旧案姓林线索和城北转场钩子完整，无阻断问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "标题含EP17-G01 cut_id，总时长11秒，3个时间段从0秒连续到11秒，字段齐全。"
+    },
+    {
+      "group": "第4组",
+      "type": "script_fidelity",
+      "evidence": "侧墙弹开、黑衣人冲入、顾北辰连击、许知夏用封存盒砸腕并让甩棍落地，均对应原剧本动作链。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "顾北辰OS写明嘴唇闭合，随后许知夏和顾北辰现场对白均写明对话对象。"
+    },
+    {
+      "group": "第10组",
+      "type": "handoff_continuity",
+      "evidence": "第9组尾赵明海趴地、顾北辰肩膀撕裂；第10组首继续承接赵明海地面位置和顾北辰肩伤。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "赵明海喊话、许知夏问顾北辰、顾北辰回答许知夏均写清说话对象或声音方向。",
+      "fix_instruction": "如不通过，应补成A对B说道或明确暗处声音来源。"
+    },
+    {
+      "group": "第3组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "撬外罩、寒雾喷出伤手、许知夏提醒、顾北辰继续拧阀门各自独立，复杂动作没有混成一段。",
+      "fix_instruction": "如不通过，应拆开撬开和拧阀门动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "周振邦供出城北旧仓储站、A17底下坐标、许振南转走备份和姓林女人接货，关键信息拆成两个4秒台词段，内容完整。",
+      "fix_instruction": "如不通过，应恢复缺失的A17、许振南备份和姓林女人信息。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "砸控制盒、侧门回落、秦越放狠话为三个清晰强节拍，未与拖人逃生混组过载。",
+      "fix_instruction": "如不通过，应将门回落后的逃生动作另起组。"
+    },
+    {
+      "group": "第9组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "侧门从正在下落到压下前一秒，手机和甩棍在许知夏手中，赵明海从冷库地面被顾北辰拖到通道地面。",
+      "fix_instruction": "如不通过，应补充赵明海被拖出和侧门状态变化。"
+    },
+    {
+      "group": "第4组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第4组禁止项锚定侧墙门缝、顾北辰、封存盒、甩棍，数量4条且聚焦复杂打斗和道具。",
+      "fix_instruction": "如不通过，应改为2-5条本组具体人物道具风险。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文未出现Seedance说明、参考图、模板编号、自动正反打或调试标记。",
+      "fix_instruction": "如出现污染词，应删除并改为自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

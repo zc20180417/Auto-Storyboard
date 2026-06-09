@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep10",
+  "status": "done",
+  "output_name": "ep10-ep10-agent-cli-storyboard.txt",
+  "summary": "第10集分镜完成，6组覆盖刘美娟理财谎言、沈清步步紧逼、野鸡传单暴露、赵强打圆场失败、沈清带母离场、刘美娟赵强惊慌密谋。台词忠实、空间单一、节奏合格。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组涉及关键道具传单的递接和展示过程，但未提供视频禁止项。建议补充传单消失、沈清提前举传单质问等2-3条本组特有风险。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

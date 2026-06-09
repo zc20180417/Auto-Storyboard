@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep24",
+  "storyboard_rule_version": "storyboard-quality-policy-2026-05-31-v1",
+  "storyboard_quality_policy_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\storyboard-quality-policy.json",
+  "episode_number": 24,
+  "display_name": "ep24",
+  "series_title": "ep24",
+  "source_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\split_scripts\\shuangxue-qinglan-30\\ep24.txt",
+  "output_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\outputs_agent_shuangxue_qinglan_mimo_v25\\ep24-ep24-agent-cli-storyboard.txt",
+  "storyboard_aspect": "vertical",
+  "generator_skill_name": "storyboard-generator",
+  "reviewer_skill_name": "storyboard-reviewer",
+  "reviewer_source": "storyboard-reviewer"
+}

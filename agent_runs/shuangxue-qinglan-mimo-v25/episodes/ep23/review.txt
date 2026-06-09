@@ -1,0 +1,84 @@
+{
+  "pass": true,
+  "summary": "11组全部通过审核，台词忠实、口型节奏合格、空间连续、格式正确、无模板污染。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清台词33字（含标点）÷7秒=4.7字/秒，低于6.5硬上限，节奏合格。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "单一物理空间城中村出租屋地下室，周建国从门框旁冲到周美娟身前的挡人动作在组首空间锁定中用状态描述（周美娟倒地、赵强站在身旁、周建国靠在门框旁），无过程动词。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "赵强打周美娟、周美娟倒地、周建国怒喝'你打她干什么！有本事找沈清要去！'均忠实原剧本23-2，未新增改变剧情的动作或台词。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "全部台词为画面内真人对白，无心声/画外音/电话音需要音画分离处理。周桂兰对沈清、沈清对周桂兰的对话指向清楚。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "赵强崩溃怒吼2句（6秒短组）属于短承接节拍，强节拍2个（怒吼+周美娟退步反应），不过载。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组组尾周建国挡在周美娟身前、赵强站在原地、周美娟倒地捂脸；第7组组首周美娟坐在破木床边（从倒地到坐起有时间过渡），赵强和周建国站在原位，状态连续。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第7组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "屏幕摔裂的手机在第7组组首'手中持有'，2-4秒周美娟举起手机展示，6-7秒赵强和周建国凑向手机，道具归属和位置连续。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每时间段只有一个主动作：0-4秒周美娟哭喊，4-7秒赵强打人，7-8秒周美娟倒地。非主动作人物周建国在本组未抢戏。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项3条：赵强打人动作变成拥抱、周建国提前出现在赵强身旁、周美娟没有倒地，均锚定本组人物和具体动作，无泛泛词。",
+      "fix_instruction": "无需修复"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

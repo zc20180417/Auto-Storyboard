@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "summary": "EP28全6组审核通过。法庭宣判场景，台词完整保留，节奏合理，空间连续，口型正确，无硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "法官'被告人赵强，犯偷税漏税罪、职务侵占罪。'16字/3秒=5.3字/秒；'判处有期徒刑五年，并处罚金三百万元！'17字/5秒=3.4字/秒（含赵强瘫跪动作时间），均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "evidence": "法官'被告人周美娟，犯盗窃罪、非法侵占他人财产罪。'18字/3秒=6字/秒；'判处有期徒刑三年，责令退赔所有赃款！'11字/3秒=3.7字/秒，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "周美娟颤声哭喊、怒视赵强指责、赵强反唇相讥、法警喝止并控制——均与原剧本一致。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈清最后一句'至少比你给我妈吃的剩饭强'正确标注为口型无声补充（嘴唇微动、不做口型），符合原剧本。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第4组组尾周美娟抓栏杆、法警准备掰手；第5组组首延续相同状态，法警执行掰手动作，连续无跳变。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "沈清安慰、周桂兰释然、沈清扶起回家——均与原剧本一致，台词完整保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "3个强节拍属同一审判事件链，每个时间段只承载一个主动作，9秒容量充足。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "法官宣读周美娟罪名18字/3秒=6字/秒，宣判11字/3秒=3.7字/秒，均在合理范围内。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "被告席和法警作为关键元素在本组内持续存在，组尾法警控制两人，与第4组组首（法警架拖周美娟）自然衔接。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每个时间段只承载一个主动作或一个连续对话节拍，无动作过载。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每个时间段只承载一个主动作：掰手、拖行惨叫、大门关闭，3个时间段无动作过载。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第6组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "所有描述均为可见可听信息：握手、安慰对话、搀扶起身，无不可视信息承载关键剧情。",
+      "fix_instruction": "无需修复"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

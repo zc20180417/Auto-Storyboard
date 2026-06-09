@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep16",
+  "status": "done",
+  "output_name": "ep16-ep16-agent-cli-storyboard.txt",
+  "summary": "沈清绊倒赵强、夺下周美娟手机、周桂兰发现转账短信后砸手机怒骂、沈清亮出视频备份逼视周建国，全集6组分镜格式正确、台词指向清楚、动作拆段合理、道具状态连续。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组第一段周桂兰台词14字/4秒(3.5字/秒)，略低于情绪对白目标语速，但有弯腰捡手机动作支撑。",
+    "第6组最后一段沈清台词11字/3秒(3.67字/秒)，一字一顿慢语诠释合理。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

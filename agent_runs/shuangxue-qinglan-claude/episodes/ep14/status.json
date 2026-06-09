@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep14",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep14-agent-cli-storyboard.txt",
+  "summary": "沈清在众人围观下按下手机确认转账按钮，只转两元。单组14秒，6个镜头，台词全部保留，空间单一。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "video_negative_constraints",
+      "problem": "最后一组涉及关键道具操作（按确认转账按钮），可选择性补充2-3条视频禁止项增强生成稳定性。",
+      "evidence": "12-14秒沈清按按钮为核心动作，正文描述清楚但无显式禁止项约束。",
+      "fix": "可补：视频禁止项：确认转账按钮文字消失、沈清手指未接触屏幕、众人视线离开手机"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

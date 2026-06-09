@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "summary": "第23集完整保留顶层潜入、秦越诱捕、红外陷阱、顾北辰反制和沈曼接通声纹的剧情链，组间状态连续，未发现硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏耳机声约38个有效字安排在3-9秒，约6.3字/秒；顾北辰“收到”安排2秒，均低于6.5字/秒硬上限。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "保留秦越“顾北辰，技术不错。”“想要？来拿。”和顾北辰“多谢夸奖。”，并保留秦越亮出银色录音笔的动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "许知夏“北辰，是陷阱！”明确来自耳机且顾北辰嘴唇闭合，秦越“晚了”明确为现场对顾北辰说道。"
+    },
+    {
+      "group": "第6组",
+      "type": "space_locking",
+      "evidence": "楼下会客室只作为蒙太奇转场出现，沈曼没有被写到顶层走廊；顶层暗格弹开后回到原空间。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "顾北辰伪装维修人员推工具车、许知夏耳机告知暗格和声纹备份、顾北辰回应收到均完整保留。",
+      "fix_instruction": "若不通过，应补回伪装维修人员、工具车和耳机信息。"
+    },
+    {
+      "group": "第2组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "门禁拆面板、取干扰器、夹线、警报预响和皮鞋声分段呈现，单段没有塞入多个主动作。",
+      "fix_instruction": "若不通过，应拆分门禁操作和警报触发。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "秦越和顾北辰互相面对，现场对白均写为对对方说道，没有发明假对象。",
+      "fix_instruction": "若不通过，应补清每句现场对白对象。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "保险室门开启、空房显露、红外线亮起、耳机警告与秦越后退分段承载，12秒内节拍清楚不过载。",
+      "fix_instruction": "若不通过，应拆出红外线封门和对白反应。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "折叠反光镜从工具车底层抽屉取出，袖口按钮按下后信号发射器亮起，反制道具来路清楚。",
+      "fix_instruction": "若不通过，应补出反光镜取出和袖口按钮启动动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾部信号发射器启动，第6组接沈曼接通声纹和顶层暗格弹开；秦越手中录音笔持续保留到惊惶反应。",
+      "fix_instruction": "若不通过，应补充声纹设备、暗格和录音笔状态连续。"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "复杂跨空间蒙太奇组提供4条具体禁止项，锚定沈曼、墙后暗格、秦越录音笔和顾北辰红外线位置。",
+      "fix_instruction": "若不通过，应替换为本组特有的锚定风险。"
+    },
+    {
+      "group": "第1组-第6组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "整集没有模型说明词、模板编号、参考图占位符、JSON调试标记或模板化批量描述进入final正文。",
+      "fix_instruction": "若不通过，应删除污染词并改为自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "summary": "第01集已完成真实审核，病房托付、会议室危机、集团门口出发和山路逼车均符合竖屏 scene 分镜合同，未发现阻断交付的 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本中许振南向顾北辰说明许氏危险、交出保险柜钥匙、提示当年的事没那么简单，分镜第1组均保留并以心电监护仪长音收束。"
+    },
+    {
+      "group": "第4组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏对顾北辰的命令约31字分配6秒，约5.2字/秒；顾北辰回应约4字分配3秒并伴随点头，未超过6.5字/秒。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "秦越作为陌生男声VO被处理为手机电话音，画面写明赵明海嘴唇闭合，手机听筒传出秦越台词，声音来源和口型分离清楚。"
+    },
+    {
+      "group": "第9组",
+      "type": "generation_density",
+      "evidence": "黑车猛然加速、左右压近和许知夏抓扶手发问分为7-10秒与10-14秒两个阶段，没有把外部事件、车身晃动和对白全部塞进同一镜。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "董事甲对许知夏、许知夏对董事甲、赵明海对许知夏的对白对象清楚，台词顺序和现金流压力与原剧本一致。",
+      "fix_instruction": "若不通过，应逐句补足真实说话对象并恢复原台词顺序。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "顾北辰进会议室时持有半杯豆浆，组尾仍持有；董事长座椅只作为空位视觉线索，没有新增坐上主位剧情。",
+      "fix_instruction": "若不通过，应修正豆浆归属或删除新增的坐主位动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组组尾许知夏拿合同和资料站在车门旁、顾北辰在驾驶位，第6组组首承接为许知夏进入后排、合同和资料在身前，动作过渡可见。",
+      "fix_instruction": "若不通过，应在第5组尾或第6组首补上上车和文件位置。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "盘山路追踪通过车内后视镜和车窗外道路呈现，本组主要空间仍是商务车车内，顾北辰、许知夏、合同和黑车方位可用。",
+      "fix_instruction": "若不通过，应拆分车外道路镜头或重新锁定车内视角。"
+    },
+    {
+      "group": "第10组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "顾北辰提醒、许知夏追问、急弯逼近和坐稳收尾分别占用独立时间段，合同压在膝上、扶手抓紧和方向盘握紧状态连续。",
+      "fix_instruction": "若不通过，应把急弯逼近和台词拆开，避免一个时间段承载多主动作。"
+    },
+    {
+      "group": "第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模型说明词、模板编号、官方占位符或参考图/视频延长等工程词，黑场处理为剧情收尾画面。",
+      "fix_instruction": "若不通过，应删除所有工程说明并改成自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

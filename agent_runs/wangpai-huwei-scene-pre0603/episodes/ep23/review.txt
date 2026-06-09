@@ -1,0 +1,100 @@
+{
+  "pass": true,
+  "summary": "ep23 整集分镜保留顶层入侵、秦越陷阱、红外线空房、顾北辰反制和沈曼接通声纹备份的剧情闭环，审核未发现 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏耳机信息约34字给5.5秒，约6.2字/秒，作为压低的远程任务信息且不做口型，顾北辰只用2秒回应“收到”；时间段总长与动作链连续。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "保险室自动开启、空房红外线亮起、许知夏提醒“北辰，是陷阱！”、秦越说“晚了。”均按原剧本保留，且录音笔仍在秦越手中。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "楼下沈曼接通声纹与顶层暗格弹开用“蒙太奇转场”标明跨空间例外，组首同时列明两处空间和关键人物位置。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "许知夏只作为耳机声出现，顾北辰画面中嘴唇闭合不做口型；顾北辰的“收到”是现场低声回应，声音来源和口型区分清楚。",
+      "fix_instruction": "若不通过，应把许知夏VO改成耳机声并写明顾北辰闭口。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "秦越和顾北辰互相对视说话，每句现场对白都写明对顾北辰或对秦越说道，没有假对象。",
+      "fix_instruction": "若不通过，应补充每句对白的真实对话对象。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "12秒内分为门开启、空房红外线显露、耳机警告、秦越短句四段，外部事件和反应没有压在同一时间段。",
+      "fix_instruction": "若不通过，应把保险室门开启和红外线显露拆成更细时间段或单独短组。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "折叠反光镜从工具车底层取出，袖口按钮由顾北辰按下；秦越的录音笔在组首和组尾均保持在手中，道具归属连续。",
+      "fix_instruction": "若不通过，应补充折叠反光镜来源或录音笔归属状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组袖口信号触发后，第5组沈曼接通声纹设备，随后顶层暗格弹开，因果和空间转场明确；秦越从上一组握录音笔过渡到本组惊惶反应。",
+      "fix_instruction": "若不通过，应在第5组组首补充蒙太奇转场和声纹设备状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第5组视频禁止项为沈曼错位、暗格未弹开、秦越表情错误、录音笔消失四个本组特有风险，没有泛化占位。",
+      "fix_instruction": "若不通过，应删掉泛泛禁止词并补充具体人物和道具锚点。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模型词、模板编号、参考图、首尾帧、自动分镜或规则说明。",
+      "fix_instruction": "若不通过，应删除污染词并改成自然画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "timing_math",
+      "problem": "第5组为9秒短组。",
+      "evidence": "该组承担沈曼接通声纹、暗格弹开和秦越惊惶，是跨空间蒙太奇短承接和反转余波，短组理由成立。",
+      "fix": "可保留；不建议为了10秒下限增加无剧本依据的停顿。"
+    }
+  ]
+}

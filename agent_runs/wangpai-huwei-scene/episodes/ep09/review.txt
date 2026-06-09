@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "summary": "第09集分镜保留安全屋旧案揭示、三年前仓库牺牲闪回、许父视频和盛远线索，格式、台词节奏、空间连续性与视频执行约束通过。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第8组",
+      "type": "dialogue_pacing",
+      "evidence": "许父视频台词由电脑扬声器在4.5-12.5秒承载，有效字数49、时长8秒，字秒比约6.1；许知夏OS缩短为12.5-15秒内心声音，嘴唇闭合，节奏未超过硬上限。"
+    },
+    {
+      "group": "第4组至第6组",
+      "type": "space_locking",
+      "evidence": "三组均明确为回忆闪回中的废弃工业仓库或仓库外缘，未把闪回误写成安全屋同一现实空间；第6组尾部停在顾北辰跪雨中，随后第7组组首明确闪回结束回到安全屋。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "保留许知夏不逼他揭伤疤、顾北辰说明周氏洗项目资金、项目队全军覆没、对外已死，以及许知夏追问车库那些人的关键台词和因果。"
+    },
+    {
+      "group": "第9组至第10组",
+      "type": "dialogue_pacing",
+      "evidence": "盛远解释被拆成两组：第9组10-14秒承载21字，约5.3字/秒；第10组0-5秒承载22字，约4.4字/秒，没有把52字压进4秒。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组至第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "硬盘从顾北辰手中接入离线电脑，隐藏文件夹出现后鼠标被顾北辰按住，组尾持续锚定硬盘、鼠标和文件夹状态。",
+      "fix_instruction": "若不通过，应在组尾或下一组组首补硬盘接入、鼠标归属和文件夹停留状态。"
+    },
+    {
+      "group": "第5组至第6组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "搭档下背、劝阻、顾北辰阻拦、推开、顾北辰摔倒、回头、搭档遗言、顶棚坍塌分段承载，没有把推人、倒地、遗言和坍塌压在同一时间段。",
+      "fix_instruction": "若不通过，应继续拆分推开和坍塌动作，避免同镜多主动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "许父声音明确来自电脑视频窗口，许知夏OS写明嘴唇闭合、内心声音响起，未让画面人物错误开口。",
+      "fix_instruction": "若不通过，应改为电脑扬声器VO或闭口OS，并补可见载体。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定许父、录音笔线索、硬盘线索和许知夏开口风险，数量3条且未使用泛泛模板词。",
+      "fix_instruction": "若不通过，应删除无锚点泛泛词，改成本组人物或道具相关错误。"
+    },
+    {
+      "group": "第9组至第10组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第9组组尾说明顾北辰已说出盛远决策人是多年故友，第10组组首让许知夏等待后半句，硬盘和许父视频窗口位置连续。",
+      "fix_instruction": "若不通过，应在第9组尾或第10组首补顾北辰与许知夏的位置和信息承接。"
+    },
+    {
+      "group": "第1组至第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模板编号、参考图、模型说明、自动分镜、JSON、调试标记或批量模板化描述。",
+      "fix_instruction": "若不通过，应删除工程说明词和模板化描述，只保留自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

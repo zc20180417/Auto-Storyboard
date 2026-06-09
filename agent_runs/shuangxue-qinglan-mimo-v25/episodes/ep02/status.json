@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "ep02-ep02-agent-cli-storyboard.txt",
+  "summary": "ep02 全集10组分镜通过审核，沈清展示转账记录揭露刘美娟侵吞19.2万，周桂兰崩溃，刘美娟对质被驳，沈清带母查账。台词节奏、空间连续性和剧本忠实度均无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": ["G02总时长13秒含5个时间段，密度偏高但可接受"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

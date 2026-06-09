@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep25",
+  "status": "done",
+  "output_name": "ep25-ep25-agent-cli-storyboard.txt",
+  "summary": "沈清在宴会上依次揭露赵强财务造假、周建国高利贷挥霍，律师宣判经侦介入和资产查封，讨债人张总当众闯入逼债，周建国当场吓跪并试图将债务推给沈清，张总转向沈清质问替父还债。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "generation_density",
+      "problem": "第5组总时长9秒，属短组下限，含门推开+张总喊话+周建国反应3个节拍；虽然节奏紧凑但可执行。",
+      "evidence": "全景3秒(门推开)+中景3秒(张总喊话19字=6.33字/秒)+近景3秒(周建国反应10字=5.0字/秒)，总9秒。",
+      "fix": "可选：若觉得9秒偏紧，可将张总喊话和周建国反应合并为一个6秒连续对峙节拍，总时长压缩为9秒或扩展为10秒。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

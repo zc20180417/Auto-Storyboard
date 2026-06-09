@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "第25集已完成真实审核，楼梯间撤离反击、火场闪回、天台录音取证、林元举证和秦越放弃挣扎均符合竖屏 scene 分镜合同，未发现阻断交付的 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "火场搭档VO和顾北辰OS均没有写成现实现场开口；顾北辰OS明确嘴唇闭合不做口型，闪回和楼梯间切回清楚。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "许知夏手机合并完成、录音自动上传、录音VO原文、沈曼直播取证和秦越脸色骤变均被保留，没有新增改变证据链的动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "evidence": "秦越冲向许知夏、顾北辰挡人、两人撞护栏、秦越嘶吼、许知夏回击按顺序拆段，单段主动作清楚。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "evidence": "第7组尾林元举着原始交接记录、警笛逼近；第8组首仍保留文件、民警封锁出口和秦越受阻状态，空间连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "许知夏对顾北辰汇报合并进度，顾北辰对许知夏回应三分钟，对话对象明确，没有假对象。",
+      "fix_instruction": "若不通过，应逐句补足真实说话对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "三段反击和一段收住杀意共12秒，每段只承载一个主动作，旧伤牵动同步于侧踢后反应，没有把全部打斗压成一个镜头。",
+      "fix_instruction": "若不通过，应继续拆分拳、肘、侧踢和收手动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "天台出口、直升机、秦越、顾北辰、许知夏、沈曼的位置在组首可用，手机震动发生在同一物理空间内。",
+      "fix_instruction": "若不通过，应重写组首空间锁定并删除跨空间动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "手机从第4组显示合并完成，进入第5组播放录音并显示上传完成；沈曼直播设备从启动到组尾持续亮着。",
+      "fix_instruction": "若不通过，应补充手机和直播设备的归属与状态。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林元在组首已位于背景阴影处且手中持有文件，之后才走出说话，满足突然现身但空间内可用。",
+      "fix_instruction": "若不通过，应把林元写入组首可见或遮挡位置。"
+    },
+    {
+      "group": "第8组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "最终正文未出现模型说明词、模板编号、官方占位符、参考图或视频延长等工程词，均为自然分镜描述。",
+      "fix_instruction": "若不通过，应删除工程说明并改成可见画面。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "dialogue_pacing",
+      "problem": "许知夏技术汇报接近偏快区间，后续强审可考虑再增加0.5秒。",
+      "evidence": "台词约22字分配3.5秒，约6.3字/秒，紧急低声汇报语境成立，但略高于普通对白舒适区。",
+      "fix": "需要更稳时可继续压缩后段逼近动作，并给该句增加0.5秒。"
+    }
+  ]
+}

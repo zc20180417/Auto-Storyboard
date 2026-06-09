@@ -21,7 +21,14 @@
       "PowerShell($failed=@\\(\\); Get-ChildItem \"H:\\\\BaiduNetdiskDownload\\\\Auto-Storyboard\\\\agent_runs\\\\shutongzhishu-scene\\\\episodes\" -Directory | Sort-Object Name | ForEach-Object { python \"H:\\\\BaiduNetdiskDownload\\\\Auto-Storyboard\\\\storyboard_agent_workspace.py\" validate-episode --episode-dir $_.FullName 2>&1; if \\($LASTEXITCODE -ne 0\\) { $failed += $_.Name } }; if \\($failed.Count -gt 0\\) { Write-Output \"FAILED: $\\($failed -join ', '\\)\" } else { Write-Output \"ALL 30 EPISODES VALIDATION PASSED\" })",
       "Bash(powershell -NoProfile -Command '$ErrorActionPreference='\\\\''Stop'\\\\''; $null = [System.Management.Automation.Language.Parser]::ParseFile\\('\\\\''.claude/hooks/subagent_validate_episode.ps1'\\\\'', [ref]$null, [ref]$errs\\); if \\($errs\\) { $errs | ForEach-Object { Write-Output $_.Message }; exit 1 } else { Write-Output '\\\\''PARSE OK'\\\\'' }')",
       "Bash(powershell -NoProfile -Command '$tokens=$null; $errs=$null; [void][System.Management.Automation.Language.Parser]::ParseFile\\(\\(Resolve-Path '\\\\''.claude/hooks/subagent_validate_episode.ps1'\\\\''\\), [ref]$tokens, [ref]$errs\\); if \\($errs -and $errs.Count -gt 0\\) { $errs | ForEach-Object { Write-Output $_.Message }; exit 1 } else { Write-Output '\\\\''PARSE OK'\\\\'' }')",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git status *)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(python -m pytest tests/test_storyboard_skill_contract.py -q 2>&1 | Select-Object -Last 6)",
+      "Bash(cat .claude/settings.json)",
+      "Bash(cat .claude/settings.local.json)"
     ]
   }
 }

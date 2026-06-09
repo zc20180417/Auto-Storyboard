@@ -1,0 +1,16 @@
+{
+  "episode_id": "ep17",
+  "status": "done",
+  "output_name": "ep17-ep17-agent-cli-storyboard.txt",
+  "summary": "ep17共5组，沈清在周家客厅当面揭穿房产证真相并逼迫赵强还钱。全部台词忠实、空间单一、道具连续、字秒比合格，无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第4组14秒6个时间段承载报警完整流程，强节拍密度偏高但属同一事件链",
+    "第5组最后一段5秒包含两句台词加短暂停顿，整体节奏偏慢但服务于最后通牒的压迫感",
+    "周桂兰在第5组首次出现，之前未在组首空间锁定中出现"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 3
+}

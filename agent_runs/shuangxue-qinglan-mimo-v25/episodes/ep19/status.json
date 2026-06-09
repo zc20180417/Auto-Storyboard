@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep19",
+  "status": "done",
+  "output_name": "ep19-ep19-agent-cli-storyboard.txt",
+  "summary": "第19集6组分镜通过审核。沈清逼赵强夫妇还债、索要利息和精神损失费、夺取金镯子、最终驱逐出屋。台词指向清楚，道具状态连续，无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第3组15秒长组承载5个台词节拍，处于上限边缘但有足够容量支撑",
+    "第4组赵强复合动作链2.5秒偏紧但可执行"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

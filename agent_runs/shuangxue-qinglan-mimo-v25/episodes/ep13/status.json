@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep13",
+  "status": "done",
+  "output_name": "ep13-ep13-agent-cli-storyboard.txt",
+  "summary": "第13集沈清与周美娟一家的养老钱对质，7组全部通过审核，台词忠实、节奏合理、空间单一连续。",
+  "hard_issues_remaining": [],
+  "warnings": ["原剧本seg04中'刘美娟'为'周美娟'笔误，已统一"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

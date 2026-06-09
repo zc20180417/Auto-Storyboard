@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "第25集最终分镜覆盖楼梯间撤离、旧案闪回、天台证据公开、林元举证和秦越被捕，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "秦越台词“三年前你没死，是我唯一失误”和顾北辰台词“失误会长成证据”均保留原意和对象，天台出口与直升机状态对应原剧本。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "录音VO写为手机外放传出秦越年轻时的录音，没有写成秦越现场开口；沈曼直播取证有手机载体。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "林元台词约24字安排在9-14秒5秒内，约4.8字/秒；同组前9秒用于警笛、退路和举证入场，节奏可表演。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "楼梯间组首列出顾北辰、许知夏、沈曼和上下楼梯口秦越手下的位置与朝向，第一时间段从该状态继续撤离。",
+      "fix_instruction": "若不通过，应删除过程动词并补齐人物位置、身体朝向和手机归属。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "搭档VO位于回忆闪回，顾北辰OS写明嘴唇闭合；现场对白和心声没有混用口型。",
+      "fix_instruction": "若不通过，应将OS改成心声闭口，或把现场对白改为明确对象。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "许知夏手机负责合并完成和录音外放，沈曼手机负责直播，两个关键手机在组首、动作和组尾都保持归属清楚。",
+      "fix_instruction": "若不通过，应在组首和组尾补明两部手机分别由谁持有。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "秦越冲刺、顾北辰挡在许知夏前方并撞栏、秦越嘶吼、许知夏回应分段呈现，非主动作人物只承担站位和护住后侧。",
+      "fix_instruction": "若不通过，应拆开冲撞和对白，明确顾北辰挡在许知夏前方。"
+    },
+    {
+      "group": "第6组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "林元在组首已位于后方阴影处并持有原始交接记录，6-9秒走到灯光边缘后才说话，人物可用性成立。",
+      "fix_instruction": "若不通过，应把林元提前放在可揭示位置或补入场动作。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第6组尾秦越被顾北辰挡在直升机路线前、警笛逼近；第7组首继承秦越、顾北辰、林元和民警出口封锁状态。",
+      "fix_instruction": "若不通过，应补齐第6组尾与第7组首的出口封锁、直升机未起飞和文件归属。"
+    },
+    {
+      "group": "第7组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "复杂抓捕收束组提供4条锚定秦越、民警、原始交接记录、顾北辰的具体禁止项，没有泛泛模板词。",
+      "fix_instruction": "若不通过，应将禁止项改成本组具体剧情错误。"
+    },
+    {
+      "group": "第1组-第7组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现Seedance说明词、参考模板、@图片/@视频/@音频、JSON或自检标记，保持自然中文分镜格式。",
+      "fix_instruction": "若不通过，应删除模型说明词、模板说明和工程占位符。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "ep11 已完成从安全屋假盘准备到盛远会议室假盘验真的分镜审核，原剧本关键台词、撤离暗号、人质状态和硬盘道具连续性均保留。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏关于进盛远地下查档案、录音笔和周振邦的对白约27个有效字，安排在10-15秒的5秒内，字秒比约5.4，符合上限。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "保留定时投递对象、九点十五分、保险柜证据、周氏非法收购许氏核心项目证据和周家晚宴证据这些原剧本关键信息。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "许知夏只以耳机声出现，顾北辰内心声明确嘴唇闭合，现场对白仍由顾北辰和前台面对真实对象完成。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "evidence": "硬盘从顾北辰硬盘包取出后被放上会议桌并接入电脑，组尾锚定进度条5%，能接下一集解密完成反转。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "拆硬盘、装空壳芯片、说明十分钟假盘、许知夏整理外套与说明任务分成四段，没有把硬盘操作和长对白压进同一短镜。",
+      "fix_instruction": "如不通过，应把拆装硬盘和任务说明继续拆段。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "顾北辰与许知夏的短句交锋均写明对话对象，保留并肩、不断线、下雨撤离和你也一样的关系转折。",
+      "fix_instruction": "如不通过，应补齐每句现场对白对象。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "秦越的陌生男声处理为画外音，画面人物嘴唇闭合且车灯只作为外部监视信号，不误导为同空间现身。",
+      "fix_instruction": "如不通过，应改成画外音并删除现场开口动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "门口接应短组只在大楼门口和车窗旁发生，司机留在驾驶座，顾北辰走向入口的组尾可接大厅组。",
+      "fix_instruction": "如不通过，应拆开车外和大厅空间。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "会议室组首列明周振邦、顾北辰、两名黑衣人和搭档母亲的位置、朝向和绑缚状态，后续对话与人质压迫都可生成。",
+      "fix_instruction": "如不通过，应在组首补齐老人和黑衣人的站位。"
+    },
+    {
+      "group": "第8组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第7组尾顾北辰仍持黑色硬盘包，第8组首继承同一会议室站位并让硬盘从包中取出，状态连续。",
+      "fix_instruction": "如不通过，应在第7组尾或第8组首补硬盘包和人物位置。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "假盘接入电脑和进度条是关键道具状态变化，视频禁止项锚定硬盘、进度条、搭档母亲和周振邦，数量4条且具体。",
+      "fix_instruction": "如不通过，应删去泛泛词并补本组特有道具风险。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

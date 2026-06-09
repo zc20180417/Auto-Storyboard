@@ -1,0 +1,111 @@
+{
+  "pass": true,
+  "summary": "5组分镜忠实覆盖原剧本4个场景段落，台词指向正确，空间单一，时间轴连续，字秒比均在6.5以内。G2律师台词密度偏高（6.0字/秒），G2→G3周美娟位置过渡略缺交代，均为软问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "周桂兰台词11字/3秒=3.7字/秒，沈清台词10字/2.5秒=4.0字/秒，保安画外音14字/2秒=7.0字/秒（画外音情绪喊话），周建国画外音11字/3秒=3.7字/秒。均在合理范围。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "本组单一物理空间（宴会厅门口内侧），与G1组尾门板震动状态连续。周建国、周美娟、赵强从门外冲入，律师和安保从厅内上前，空间关系清楚。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "周建国'五百万赡养费'台词完整保留（25字），律师'敲诈勒索五百万'警告保留（17字），沈清'五百万？你倒是真敢开这个口'和'自投罗网'两句均保留。原剧本关键台词无遗漏。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "周美娟'关掉！快关掉！'为画面内对白，有明确可见反应（脸色煞白、双手捂嘴、身体后仰）。沈清'你以为这就完了？'为画面内对白，说话对象为周建国。音画关系正确。"
+    },
+    {
+      "group": "第5组",
+      "type": "generation_density",
+      "evidence": "本组3个强节拍（沈清揭露高利贷台词、周建国面色变化特写、周建国踉跄扶椅背），分布在3个时间段内，每个时间段只承载一个主动作，表演时间充足。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "保安和周建国的台词均通过画外音承载，明确写明声音来自门外，门板震动作为可见载体。周桂兰和沈清的反应镜头不做口型。",
+      "fix_instruction": "无需修改，画外音承载方式正确。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "闯入（3s）、蹲下（2s）、律师上前隔离（2s）、律师警告（4s）、周建国反驳（3s）共5个时间段，每个只承载一个主动作，属于同一事件链的连续阶段，总时长14秒合理。",
+      "fix_instruction": "无需修改，同一事件链连续推进，密度合理。"
+    },
+    {
+      "group": "第2组到第3组",
+      "type": "handoff_continuity",
+      "result": "warning",
+      "evidence": "G2组尾周建国蹲在地上、律师俯视、安保分立。G3组首周建国蹲在地上、律师在右后方、沈清在左侧。周建国从蹲到站（G3第一镜）有明确动作过渡。但周美娟和赵强在G2被隔离后，G3中完全未提及，到G4周美娟重新出现在周建国身后，中间缺少位置过渡交代。",
+      "fix_instruction": "建议在G3组首空间锁定中补一句周美娟和赵强被安保隔离在画面外侧，或在G2组尾衔接中交代两人状态。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "LED屏幕在G4从关闭到亮起（沈清打响指触发），显示转账记录后切换到监控视频。G5组首空间锁定延续LED屏幕仍亮着。道具状态连续。",
+      "fix_instruction": "无需修改，道具状态连续。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "G5三个时间段分别承载：沈清揭露高利贷+周建国僵住（台词+即时反应同步）、周建国面色变化特写（纯反应）、周建国踉跄扶椅背（动作）。每个时间段一个主动作，无过载。",
+      "fix_instruction": "无需修改，动作拆分清楚。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "周建国站起来索要五百万赡养费（25字）、律师敲诈勒索警告（17字）、沈清不怒反笑（12字）和自投罗网（16字）四句台词均完整保留，说话对象正确。",
+      "fix_instruction": "无需修改，台词忠实度合格。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "律师台词24字/4秒=6.0字/秒，偏快但在6.5硬上限内；周建国台词18字/3秒=6.0字/秒，情绪喊话可接受但接近上限。",
+      "evidence": "7-11秒：'周先生，您的行为已涉嫌寻衅滋事，我们已经全程录像取证。'24字/4秒。11-14秒：'我找老婆要钱，天经地义！警察来了也是家事！'18字/3秒。",
+      "fix": "如需降低密度，可将G2总时长从14秒延长至15秒，将律师台词和周建国台词各增加0.5秒。"
+    },
+    {
+      "severity": "soft",
+      "group": "第2组到第3组",
+      "rule": "handoff_continuity",
+      "problem": "周美娟和赵强在G2被律师和安保隔离后，G3中完全未出现，到G4周美娟重新出现在周建国身后，中间缺少位置过渡交代。",
+      "evidence": "G2组尾：周建国蹲在地上、律师俯视、安保分立两侧（未提周美娟/赵强位置）。G3组首：仅列出周建国、律师、沈清。G4组首：周美娟出现在周建国左侧后方。",
+      "fix": "建议在G3组首空间锁定中补充周美娟和赵强被安保隔离在画面边缘的状态，保持人物位置连续。"
+    }
+  ]
+}

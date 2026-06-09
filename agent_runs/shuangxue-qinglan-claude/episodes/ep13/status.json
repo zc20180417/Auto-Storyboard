@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep13",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep13-agent-cli-storyboard.txt",
+  "summary": "第13集客厅对峙，沈清质问盗窃、周建国怒吼反击、周美娟抱胸挑衅并反问证据，三组分镜格式正确、台词忠实、空间连续性良好，reviewer pass。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "video_negative_constraints",
+      "problem": "三组均为对话对峙场景，无复杂动作/保护站位/关键道具操作，视频禁止项为可选附加。",
+      "evidence": "三组均无复杂动作/保护站位/关键道具，视频禁止项为可选附加。",
+      "fix": "可选择删除第1组和第2组的视频禁止项行，仅保留第3组。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

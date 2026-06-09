@@ -1,0 +1,84 @@
+{
+  "pass": true,
+  "summary": "两组分镜格式、台词节奏、空间锁定、剧本忠实度和视频可执行性均通过审核，无硬问题。",
+  "checked_groups": ["第1组", "第2组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "周桂兰台词11字÷2.5秒=4.4字/秒，沈清台词13字÷3秒≈4.3字/秒，均在普通对白4.2-4.8字/秒范围内。组总时长8秒，台词+轿车到来的短承接组，合理。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "第2组单一物理空间（周家院门外），与第1组同场景。组首空间锁定与第1组组尾衔接一致：轿车停稳、两人视线转向轿车。无跨场景。"
+    },
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "所有台词原文保留：司机'沈总，高档公寓那边已经打扫干净了'、周桂兰'沈总？清清，你不是在厂里加夜班吗？'、沈清身份揭露台词和扶母亲上车台词均完整。说话对象、剧情因果、人物关系未改动。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "周桂兰和沈清的对白均为画面内现场开口，写明'对沈清叹气问道''对周桂兰轻声说道'，指向清楚。无心声/画外音混用。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "5个强节拍（司机开门说话、周桂兰震惊反应、沈清身份揭露、沈清搀扶母亲、司机点头）属于同一连续事件链（身份揭晓→反应→上车），每个时间段只承载一个主动作，15秒总时长足以承载。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第1组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾：轿车停稳、两人视线转向轿车、院门敞开。第2组组首：轿车停在画面中央、两人视线落在轿车上、司机站在车门旁。状态连续。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "黑色豪华轿车从第1组驶入到第2组停稳，状态连续。白手套从司机出场到开门始终可见。无道具跳变。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每个时间段只承载一个主动作：0-3秒司机开门说话、3-5.5秒周桂兰震惊反应、5.5-11秒沈清微笑揭露身份、11-15秒搀扶母亲上车。司机和沈清的轻反应同步在主时间段内，不构成独立强动作。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第2组为身份揭露+搀扶上车组，属于关键动作组。但本组场景简单（单一空间、3人、1辆车），无复杂站位或道具连续风险，省略视频禁止项合理。",
+      "fix_instruction": "无需修改"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

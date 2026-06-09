@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "ep01-ep01-agent-cli-storyboard.txt",
+  "summary": "按连续事件链合并规则生成的《王牌护卫》ep01 竖屏 scene 分镜，病房托付和山路追车链条未机械拆碎。",
+  "hard_issues_remaining": [],
+  "warnings": [],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 0
+}

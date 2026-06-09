@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "summary": "ep07整集分镜完整保留保险柜证据链、顾北辰旧关系、许父录音警告、远程入侵和黑车尾钩，格式、时长、口型和道具连续性通过审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "顾北辰对白“许总既然看见了，就打开吧。他们今晚来，就是为里面的东西。”有效字数24字，4秒承载，约6.0字/秒，未超过6.5硬上限；许知夏两句短对白没有被硬拉成慢节奏。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "保险柜钥匙从第2组桌面状态延续到第4组，由许知夏拿起、插入锁孔并打开保险柜，旧档案和加密硬盘随后被放到办公桌上，转移过程完整。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "许知夏要求顾北辰以后必须告诉她全部真相，顾北辰回应“有些事，知道得太早，只会更危险。”，许知夏以追车、陷害、撬保险柜反击，原剧本台词顺序和冲突方向保留。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "evidence": "许父录音由电脑播放界面承载，许知夏被写明嘴唇闭合不做口型，屏幕红色“远程入侵中”和顾北辰拔网线是可见信息源。"
+    },
+    {
+      "group": "第11组",
+      "type": "space_locking",
+      "evidence": "黑车尾钩单独设为许氏集团大楼外道路空间，与办公室内戏分离；车内男人身影和陌生男声同在黑车内，可用性明确。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "许知夏和顾北辰所有现场对白都明确写为对对方说，没有假对象或心声误写。",
+      "fix_instruction": "若不通过，应补明确对话对象或改为可见声音来源。"
+    },
+    {
+      "group": "第4组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "开保险柜动作按拿钥匙、插锁、开门、取出档案硬盘、看封面分段执行，单段主动作清楚。",
+      "fix_instruction": "若不通过，应继续拆分开柜、取物和读封面。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "照片从档案末页抽出并留在许知夏手中，后续第7组继续由许知夏持有，第8组压回档案旁，道具归属连续。",
+      "fix_instruction": "若不通过，应补照片从档案到许知夏手中再回桌面的可见过渡。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第8组为同一办公室对峙，四个节拍均为表情和对白推进，没有叠加外部事件或长动作，15秒内负载合理。",
+      "fix_instruction": "若不通过，应拆分许知夏反击或缩短非关键静止。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "许父VO来自电脑录音，许知夏闭口听录音；红色入侵提示和拔网线均有可见载体，音画分离正确。",
+      "fix_instruction": "若不通过，应补嘴唇闭合、电脑播放界面或声音来源。"
+    },
+    {
+      "group": "第10组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第9组组尾网线断开、硬盘仍连着电脑，第10组组首复述同一状态后再承载“他们定位到硬盘了”和许知夏宣告。",
+      "fix_instruction": "若不通过，应补第10组组首的网线和硬盘状态。"
+    },
+    {
+      "group": "第11组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项为黑车开进办公室、秦越全脸提前曝光、许知夏出现在车内、许氏大楼消失，均锚定本组风险且不超过5条。",
+      "fix_instruction": "若不通过，应删除泛泛禁止项并改为本组具体人物、车辆或大楼风险。"
+    },
+    {
+      "group": "第1组-第11组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文没有模型说明词、参考模板、工程占位符、JSON残留或模板化批量句式。",
+      "fix_instruction": "若不通过，应删除污染文本并恢复自然分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

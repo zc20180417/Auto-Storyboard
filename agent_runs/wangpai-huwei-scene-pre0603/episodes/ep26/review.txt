@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "summary": "第26集已完成真实审核，会议室审计落地、旧案纪念墙释怀、许氏门口关系确认、广场收尾和羁押室彩蛋均符合竖屏 scene 分镜合同，未发现阻断交付的 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "盛远项目审计通过、启元资金链冻结、周氏交易移交调查、窗外警车和法务免提电话均保留，未改写结案信息。"
+    },
+    {
+      "group": "第4组",
+      "type": "audio_mouth_sync",
+      "evidence": "顾北辰OS明确嘴唇闭合不做口型，许知夏现场对白对顾北辰说，林元退后给空间的动作清楚。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏长句约35字分配7秒，约5字/秒；顾北辰“不逃了”2秒完成，均在合理口型范围内。"
+    },
+    {
+      "group": "第9组",
+      "type": "space_locking",
+      "evidence": "秦越彩蛋作为单独羁押室短组，8秒片尾彩蛋理由成立，未与许氏集团门口同组跨空间。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "董事甲对许知夏道歉，许知夏对众董事立规矩，对象明确且未发明假对象。",
+      "fix_instruction": "若不通过，应逐句补足真实说话对象并恢复原台词。"
+    },
+    {
+      "group": "第3组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "白花、旧军靴、碑上名字和照片在第3组到第4组持续存在，顾北辰指尖触碑动作有清楚过渡。",
+      "fix_instruction": "若不通过，应补充白花和旧军靴在碑前的持续状态。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组尾顾北辰仍在驾驶位、许知夏在车外；第6组首沿用该状态，后续才推门下车。",
+      "fix_instruction": "若不通过，应修正车内外位置或补上开关车门动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "许知夏走近、说出安全顾问与并肩、顾北辰下车关门、低声回应分段完成，没有多主动作挤在单段内。",
+      "fix_instruction": "若不通过，应拆分说话、下车和关门动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "filmability",
+      "result": "pass",
+      "evidence": "找回自己通过并肩行走、暖日光、玻璃幕墙和顾北辰闭口OS承载，抽象情绪已转译为可见画面。",
+      "fix_instruction": "若不通过，应增加可见动作或删除抽象判断。"
+    },
+    {
+      "group": "第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "羁押室彩蛋未出现模型说明词、模板编号、官方占位符、参考图或字幕工程词，短组为片尾彩蛋节拍。",
+      "fix_instruction": "若不通过，应删除工程词并保持自然短剧画面描述。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

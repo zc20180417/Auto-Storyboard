@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "summary": "7组分镜覆盖3个场景(客厅对质、杂物间母女、银行调查)，台词全部忠实保留，对话指向明确，OS心声正确标注闭口，时长与字秒比全部合格，组间状态连续。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清厉声质问13字/2.5秒=5.2字/秒(情绪对白≥4.5)；赵强装傻13字/3秒=4.33字/秒(普通对白≥3.8)；沈清逼问23字/4.5秒=5.11字/秒(情绪对白)。全部在6.5硬上限内。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "单一物理空间周家杂物间夜景，组首锁定周桂兰坐床边/沈清站立，与第4组组首连续(周桂兰仍有泪痕、沈清位于面前)。"
+    },
+    {
+      "group": "第6组",
+      "type": "script_fidelity",
+      "evidence": "柜员'短信提醒号码不是本人的'和'两年前号码被更改过收不到短信'两句关键揭示台词完整保留；周桂兰'天天贴身藏着'保留。揭示顺序与原剧本一致，未删改剧情因果。"
+    },
+    {
+      "group": "第7组",
+      "type": "audio_mouth_sync",
+      "evidence": "沈清OS'狐狸尾巴终于藏不住了'正确标注为内心旁白，两个时间段均写明嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "evidence": "第4组组尾周桂兰含泪点头、沈清握手；第5组组首跳转至银行大厅新场景，属于场景切换，无需连续性衔接。第5组组尾柜员持有银行卡→第6组组首柜员手中持有银行卡，道具连续。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "14秒组承载刘美娟冲入(2秒)+尖叫对白(4.5秒)+周建国起身+怒喝(3秒)+沈清回击(4.5秒)。四个时间段各一个主动作或对话节拍，属于同一客厅对质冲突事件链。14秒长组具备台词容量(64字约14.2秒朗读)+两人入场动作+冲突升级，满足长组准入。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第4组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第3组组尾周桂兰落泪、沈清站立；第4组组首周桂兰坐在床边有泪痕、沈清位于面前。握手动作自然承接。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "银行卡从沈清手中递出(第5组)→柜员手中持有(第6组组首)→柜员手指指向屏幕数据(第6组)。道具归属和位置连续。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "6秒短组为识破真相的戏剧节拍，承载转头看窗外(3.5秒)+OS旁白(2.5秒)。属于'不可硬凑的极短戏剧节拍'，有明确承接价值(从信息揭示到内心确认)。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第1组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "5个时间段：沈清反应(2秒)、沈清质问(2.5秒)、赵强挂电话(1秒)、赵强装傻(3秒)、沈清逼问(4.5秒)。各承载一个主动作或一个对话节拍，无过载。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第2组(刘美娟周建国打断)和第7组(沈清识破)为普通对话/反应组，不需要视频禁止项。关键道具组(银行卡)在第5-6组归属明确，无需额外禁止项。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "video_negative_constraints",
+      "problem": "刘美娟冲入+周建国起身打断属于多人物调度组，建议补充视频禁止项如'刘美娟提前出现'、'周建国没有站起来'。",
+      "evidence": "第2组缺少视频禁止项行。",
+      "fix": "在组尾衔接后补一行视频禁止项。"
+    }
+  ]
+}

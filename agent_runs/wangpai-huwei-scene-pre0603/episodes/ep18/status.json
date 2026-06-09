@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep18",
+  "status": "done",
+  "output_name": "《王牌护卫》-ep18-agent-cli-storyboard.txt",
+  "summary": "许知夏、顾北辰和林元在城北废仓找到存储卡与旧照片，秦越现身围堵并启动仓库大门关闭。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第7组",
+      "rule": "timing_math",
+      "problem": "第7组为8秒短组。",
+      "evidence": "第7组只承载秦越按遥控器和仓库大门开始关闭的短动作悬念收尾，符合短承接例外。",
+      "fix": "当前可保留；若后续有下一集连续逃脱动作，也可在跨集规划中接续强化门体关闭状态。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

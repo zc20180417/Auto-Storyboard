@@ -1,0 +1,21 @@
+[features]
+hooks = true
+
+[[hooks.SubagentStop]]
+matcher = "*"
+
+[[hooks.SubagentStop.hooks]]
+type = "command"
+command = "powershell -NoProfile -ExecutionPolicy Bypass -File H:\\BaiduNetdiskDownload\\Auto-Storyboard\\.codex\\hooks\\subagent_validate_episode.ps1"
+command_windows = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File H:\\BaiduNetdiskDownload\\Auto-Storyboard\\.codex\\hooks\\subagent_validate_episode.ps1"
+timeout_sec = 120
+status_message = "Validating storyboard episode"
+
+[[hooks.Stop]]
+
+[[hooks.Stop.hooks]]
+type = "command"
+command = "powershell -NoProfile -ExecutionPolicy Bypass -File H:\\BaiduNetdiskDownload\\Auto-Storyboard\\.codex\\hooks\\stop_check_agent_run.ps1"
+command_windows = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File H:\\BaiduNetdiskDownload\\Auto-Storyboard\\.codex\\hooks\\stop_check_agent_run.ps1"
+timeout_sec = 120
+status_message = "Validating storyboard run"

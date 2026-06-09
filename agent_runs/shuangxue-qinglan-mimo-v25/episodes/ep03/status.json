@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep03",
+  "status": "done",
+  "output_name": "ep03-ep03-agent-cli-storyboard.txt",
+  "summary": "ep03共10组，覆盖杂物间对峙、ATM查账、金镯发现、质问对峙四个场景，台词忠实原剧本，口型节奏合规，空间连续性良好，无模板污染。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第9组9-12秒沈清台词15字÷3秒=5.0字/秒，略低于情绪对白目标5.2字/秒，但在4.5字/秒以上，属冷声质问的合理节奏。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

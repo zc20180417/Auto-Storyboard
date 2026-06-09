@@ -1,0 +1,84 @@
+{
+  "pass": true,
+  "summary": "EP14分镜忠实原剧本，4组共41秒覆盖全部剧情，台词指向清楚，空间锁定完整，道具连续，节奏紧凑。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "周美娟2句对白19字÷4秒=4.75字/秒，赵强2句20字÷4秒=5字/秒，沈清1句7字÷2秒=3.5字/秒含转身走位，周桂兰2句14字÷2秒含递卡动作，均在合理范围内。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "单一物理空间周家正屋客厅，组首列出5人位置和道具状态（沈清持有银行卡），与第1组组尾连续。"
+    },
+    {
+      "group": "第3组",
+      "type": "audio_mouth_sync",
+      "evidence": "所有5句对白均为画面内现场开口，每句写明'A对B说道'，无心声/画外音混用。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "5句对白均为画面内现场开口，每句写明'A对B说道'，无心声/画外音混用。",
+      "fix_instruction": "若不通过，应补充说话人和对象指向。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "强节拍3个（周美娟质问、沈清念卡号确认、周美娟慌乱催促离开），属同一验证流程的连续推进，11秒容量充足。",
+      "fix_instruction": "若不通过，应拆分强节拍或延长组时长。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组组尾沈清持手机和银行卡、周美娟拉周建国；第3组组首沈清持手机和银行卡、周美娟身体朝向出口。状态连续。",
+      "fix_instruction": "若不通过，应在组首补充具体人物位置和道具状态。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "手机从第2组打开APP到第3组输入转账信息到第4组按下确认，屏幕状态连续变化。",
+      "fix_instruction": "若不通过，应补充道具状态过渡动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "5个时间段各承载一个主动作，每段只有一个主动作，无过载。",
+      "fix_instruction": "若不通过，应拆分过载时间段。"
+    },
+    {
+      "group": "第4组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "4组均为对话/对峙组，无复杂动作/保护站位/多人物调度，省略视频禁止项合理。",
+      "fix_instruction": "若不通过，应补充2-5个本组特有视频禁止项。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

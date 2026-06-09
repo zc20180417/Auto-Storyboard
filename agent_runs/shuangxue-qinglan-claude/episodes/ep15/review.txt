@@ -1,0 +1,100 @@
+{
+  "pass": true,
+  "summary": "两组分镜忠实还原原剧本全部对白和动作，台词指向明确，时空单一连续，道具录像手机状态清晰，无硬问题。",
+  "checked_groups": ["第1组", "第2组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清14字/3秒=4.67字秒比（情绪对白，低于5.2目标但在4.5以上可接受），周美娟6字/2秒=3.0（极短崩溃喊叫，属单句反应），赵强8字/3秒=2.67（含拍桌起身动作附加）。全部未超6.5硬上限。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "两组均限定在周家正屋客厅单一物理空间。组2组首空间锁定精确复述组1组尾状态：赵强已起身位于画面中央、沈清仍举手机、周美娟双手仍挡在面前。无跨空间跳变。"
+    },
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "原剧本五句对白全部保留原文未改写：'你不敢点，因为那是到账两元的提醒！''你滚开！别拍我！''你别太过分了！''我让你拍！把手机给我砸了！'。说话对象正确（沈清→周美娟、周美娟→沈清、赵强→沈清）。三个△动作全部覆盖。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "全部对白为画面内真人现场开口，每句写明'A对B说道/喊道/怒喝道'。组1第3段周美娟喊叫时提及沈清画外音尾音，属前一镜头台词自然延续，非心声混用。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "组2为6秒短动作余波，承载赵强冲出复合动作链+一句对白+抓手机动作。强节拍2个（动作+对白），每个时间段只承载一个主动作，无过载。10字/2秒=5.0字秒比合格。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第1组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "组1组尾写明赵强从桌边起身、沈清仍举手机、周美娟双手仍挡在面前。组2组首复述赵强已起身在画面中央双拳握紧、沈清举手机、周美娟双手挡面前。人物位置、道具状态、朝向均连续无跳变。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "录像手机从组1沈清右手举起→组2赵强伸手抓沈清手中手机→赵强手指抓住手机和手腕，状态变化有明确可见过渡动作，未消失或跳变。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "组2两个时间段各只有一个主动作：0-3秒赵强冲出+喊话（复合动作链），3-6秒赵强抓手机。周美娟尖叫为画外音不占主动作。非主动作人物沈清只展示手腕被钳住的被动状态。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第2组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "组2提供4条视频禁止项：'录像手机消失、赵强直接挥拳打人而非抓手机、周美娟离开原位、沈清提前放下手机'。全部锚定本组人物名和道具名，无泛泛词，无模板占位。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文无Seedance可、自动正反打、@图片/@视频/@音频、模板编号等模型说明词或工程词，无模板化批量描述。",
+      "fix_instruction": "无需修改"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "generation_density",
+      "problem": "6秒短组属短动作余波，承载赵强冲出+喊话+抓手机完整动作链，已确认属必要例外。",
+      "evidence": "组2总时长6秒，两个时间段各承载一个主动作，属短动作余波（物理夺手机动作高潮）。",
+      "fix": "已确认属于短动作余波，无需修改。"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "ep08整集分镜完整保留办公室撤离复制、楼下黑车监听、地下车库伏击、顾北辰保护打斗、车胎被扎和秦越确认顾北辰的尾钩；格式、时长、口型和道具连续性通过审核。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组", "第11组", "第12组", "第13组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "prop_continuity",
+      "evidence": "加密硬盘从电脑接口拔下后与旧档案一起进入防静电袋，组尾明确防静电袋装好证据、电脑合上，为第2组和第3组桌面防静电袋状态提供连续起点。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏“他们越想抢，说明这东西越有用。我不能把全部筹码押在你一个人身上。”约34字，9-15秒承载，约5.7字/秒，符合情绪对白速度；顾北辰“太冒险。他们可能在拷贝过程中反向定位。”约20字，3.5秒约5.7字/秒，也未超硬上限。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "evidence": "许知夏OS由画外心声承载，画面明确许知夏嘴唇闭合不做口型；警觉来源通过空车库、电流声和后视镜晃动可视化。"
+    },
+    {
+      "group": "第9组",
+      "type": "action_atomicity",
+      "evidence": "黑衣人甲攻击被拆为冲来、挡开、扣腕、击膝、单膝跪地，动作短促但每段只有一个主动作，且顾北辰身体遮住许知夏。"
+    },
+    {
+      "group": "第12组",
+      "type": "audio_mouth_sync",
+      "evidence": "顾北辰OS“这不像是周振邦的手法。”明确为画外心声且嘴唇闭合，之后许知夏和顾北辰的现场低声对白对象明确。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "保留顾北辰合上电脑、拔下硬盘、与旧档案一起塞进防静电袋，并保留公司不能久留的完整警告。",
+      "fix_instruction": "若不通过，应恢复防静电袋装证据和原台词。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "第3组许知夏推近防静电袋，第4组她从袋中取出硬盘递给顾北辰，顾北辰接过后插入电脑，进度条开始推进，硬盘转移有可见过渡。",
+      "fix_instruction": "若不通过，应补许知夏递出硬盘和顾北辰接过插入电脑。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "第5组切到楼下黑车内，组首锁定后排陌生男人、前排手下和车载屏幕，物理空间单一，与办公室复制戏分离。",
+      "fix_instruction": "若不通过，应独立拆出黑车监听组。"
+    },
+    {
+      "group": "第7组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "三名黑衣人在组首已位于前方车辆后阴影，3-6秒从车后走出后才对话和威胁，人物可用性明确。",
+      "fix_instruction": "若不通过，应补车后阴影位置或黑衣人入场动作。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "许知夏站到顾北辰身侧但未越过他，禁止项锚定许知夏越位、黑衣人带走、顾北辰退后和甩棍变枪，均为本组具体风险。",
+      "fix_instruction": "若不通过，应补保护站位或替换泛泛禁止项。"
+    },
+    {
+      "group": "第9组-第11组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "三名黑衣人的处理被拆为三组：第一名被击膝、第二名被肘击绊倒并发现车胎、第三名被压住后转入消防通道，没有同组过载。",
+      "fix_instruction": "若不通过，应继续拆分单个攻击链或逃离动作。"
+    },
+    {
+      "group": "第12组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第11组尾部两人冲向消防通道，第12组组首在消防通道安全门前承接；定位器在第12组出现并保持到第13组被秦越取下。",
+      "fix_instruction": "若不通过，应在第12组组首补安全门和后方车辆位置。"
+    },
+    {
+      "group": "第13组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "秦越在车库尽头走出，取下车底定位器并说“原来是顾北辰？他果然还活着。”，保留原剧本尾钩。",
+      "fix_instruction": "若不通过，应恢复秦越、定位器和该句台词。"
+    },
+    {
+      "group": "第1组-第13组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文未出现Seedance说明、自动分镜、参考模板、工程占位符、JSON残留或模板化泛句。",
+      "fix_instruction": "若不通过，应删除模型词和工程词。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

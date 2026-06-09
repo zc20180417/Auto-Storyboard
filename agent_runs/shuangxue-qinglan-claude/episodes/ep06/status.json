@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep06",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep06-agent-cli-storyboard.txt",
+  "summary": "银行大厅查卡流水场景，三组分镜通过审核：柜员接过破旧银行卡查明细、揭示短信号码被改两年、沈清窗外看到赵强新车并心声确认。台词节奏合格，空间连续，道具流转清楚，OS正确闭口。",
+  "hard_issues_remaining": [],
+  "warnings": ["第3组第三段6-11秒为轻反应收尾，可考虑缩短以压缩整组时长。"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

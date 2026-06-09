@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "summary": "ep03 整集分镜已对照原剧本完成审核，办公室试探、车库查车、周氏设局三段剧情和关键台词均保留，未发现阻断交付的 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "evidence": "许知夏OS写为许知夏嘴唇闭合不做口型，内心声内容保持原文'他怎么知道我绕了山路？'，没有变成现场开口。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏质问'普通司机不会连降两挡用发动机刹车，更不会一眼看出油管被人剪断。'安排在6-11秒，约31个有效字/5秒，字秒比约6.2，未超过6.5硬上限。"
+    },
+    {
+      "group": "第8组",
+      "type": "script_fidelity",
+      "evidence": "赵明海汇报山路失败、司机不简单和刹车被剪还能控车，周振邦冷笑质问'一个司机，就搅黄了你两辆车？'均按原剧本顺序保留。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "evidence": "断裂刹车油管先在车底切口处被手电照出，再由顾北辰用纸巾包起收进口袋，下一组组首延续口袋内证物状态。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "许知夏放下签好的合同、赵明海追问盛远签约、许知夏回答分段结算和回款保障，台词与剧情因果均未改写。",
+      "fix_instruction": "若不通过，应恢复合同落桌动作和两句签约对白原文。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "赵明海现场开口试探山路，许知夏现场冷声反问；许知夏OS明确为内心声且嘴唇闭合。",
+      "fix_instruction": "若不通过，应把OS改为内心声并标明嘴唇闭合不做口型。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第4组仅承载赵明海离开办公室后拨出手机的短承接动作，6秒短组符合短动作余波与暗线转场，不硬凑10秒。",
+      "fix_instruction": "若不通过，应并入相邻办公室退场动作或压缩为明确短承接。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组组尾交代油管证物已被顾北辰收进口袋，第6组组首继续写纸巾包裹的油管位于顾北辰外套口袋内。",
+      "fix_instruction": "若不通过，应在第5组尾或第6组首补足油管证物位置。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "许知夏对顾北辰问身份，顾北辰对许知夏回答保镖基地训练经历，许知夏再对顾北辰要求查到后告知，对话对象明确。",
+      "fix_instruction": "若不通过，应补明每句现场对白的说话对象。"
+    },
+    {
+      "group": "第9组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "第9组涉及周振邦OS和红酒杯关键道具，视频禁止项锚定周振邦、赵明海、红酒杯和许知夏，数量3项且不含泛泛词。",
+      "fix_instruction": "若不通过，应删除无锚点禁止项或改成本组人物、道具、场景相关的具体错误。"
+    },
+    {
+      "group": "第1组-第9组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模板编号、参考图、自动分镜、模型说明词、@占位符或模板化批量描述，均为自然分镜文本。",
+      "fix_instruction": "若不通过，应删除工程词和模板化表达，改成可见动作、声音来源和道具状态。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

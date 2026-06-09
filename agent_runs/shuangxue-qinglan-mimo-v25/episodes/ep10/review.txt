@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "summary": "第10集分镜通过审核。6组分镜完整覆盖刘美娟理财谎言、沈清步步紧逼、野鸡传单暴露、赵强打圆场失败、沈清带母离场、刘美娟赵强惊慌密谋等关键剧情。台词指向明确、空间单一、道具连续、节奏合格。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组14秒，刘美娟16字/2.5秒=6.4、沈清12字/2.5秒=4.8、刘美娟19字/3秒=6.33、赵强16字/3秒=5.33、沈清18字/3秒=6.0，各段均在6.5字/秒硬上限以内。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "evidence": "第3组组首：沈清位于画面中央手持流水单、刘美娟位于画面右侧双手攥包。与第2组组尾（沈清持流水单、刘美娟站原位心虚）状态连续，无空间跳变。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "evidence": "赵强'合同都在公司走账'、沈清'钱根本不在我妈名下'、赵强'自家人放谁名下不都一样'、沈清'带我妈去银行查'等关键台词完整保留，说话对象、台词顺序与原剧本一致。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "皱巴巴的广告宣传单从刘美娟包底掏出（第4组0-2秒）→递到沈清面前（2-4.5秒）→沈清接过（4.5-7秒）→举到刘美娟眼前质问（7-12秒），道具归属和状态变化连续清楚。"
+    },
+    {
+      "group": "第6组",
+      "type": "generation_density",
+      "evidence": "第6组8秒属短动作余波组：沈清警告+扶母离场（3秒）、刘美娟惊慌抓赵强（2秒）、赵强密谋烧账单（3秒），每段一个主动作，无过载。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "所有台词均为画面人物现场开口对白，每句写明'A对B说道/问道'格式，无心声/画外音混用。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第1组组尾：沈清手持银行流水单、刘美娟站原位、周桂兰在左侧偏后。第2组组首：沈清持流水单、刘美娟眼神躲闪、周桂兰在左侧偏后。状态连续。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第3组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "每段只承载一个主动作或一句对白：伸手要合同、结巴推脱、逼看手机、翻找包。动作拆分清楚，无过载。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第4组",
+      "type": "video_negative_constraints",
+      "result": "warning",
+      "evidence": "第4组涉及关键道具传单的递接和展示过程，正文清楚但未写视频禁止项。建议补充如'传单从刘美娟手中消失''沈清提前举传单'等2-3条本组特有风险。",
+      "fix_instruction": "在第4组组尾衔接后补充视频禁止项：传单消失、沈清提前举传单质问、刘美娟手部动作缺失。"
+    },
+    {
+      "group": "第5组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "赵强18字/3秒=6.0、沈清16字/3秒=5.33、赵强13字/3秒=4.33、沈清14字/3秒=4.67，各段均在合理范围内。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "刘美娟对赵强低声说道、赵强对刘美娟压低声音说道，说话对象明确，音量状态与情境匹配。",
+      "fix_instruction": "无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "video_negative_constraints",
+      "problem": "第4组涉及关键道具传单的递接和展示过程，但未提供视频禁止项。",
+      "evidence": "传单从刘美娟包底掏出→递出→沈清接过→举到眼前，道具状态变化连续但缺少禁止项保护。",
+      "fix": "建议在第4组补充视频禁止项：传单消失、沈清提前举传单质问、刘美娟手部动作缺失。"
+    }
+  ]
+}

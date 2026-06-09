@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "ep20 全集7组通过审核：台词忠实完整保留遗嘱揭露、保姆费质问和青花瓷追问的全部关键内容，口型指向正确，时长节奏合理，空间单一且组间状态连续，道具油纸包→遗嘱→手机流转清晰。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清连续台词29字÷4.5秒=6.4字/秒，未超6.5字/秒硬上限；宣读遗嘱19字÷3.5秒=5.4字/秒，在合理范围内。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "单一物理空间周家正屋客厅，沈清指向博古架空位、周建国反应，无跨空间。7秒短组为单句质问+反应镜头，属短承接。"
+    },
+    {
+      "group": "第7组",
+      "type": "script_fidelity",
+      "evidence": "沈清台词'偷盗古董可是重罪''明早八点我来收房，谁还留在里面，我就让警察请他出来！'完整保留；'沈清扶着周桂兰，转身决绝地离开客厅'忠实还原为'沈清转身走向周桂兰，伸手扶住周桂兰的手臂，两人一起转身朝客厅门口方向走去'。"
+    },
+    {
+      "group": "第1组",
+      "type": "handoff_continuity",
+      "evidence": "第1组组尾'周桂兰起身准备取物'，第2组组首'周桂兰刚起身站立'，人物位置连续；周建国太师椅位置、沈清站位不变。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "所有台词均为画面内现场对白，无心声/旁白/画外音，每句写明说话人和对象。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "5个时间段承载拍遗嘱、指字宣读、宣读遗嘱、周建国震惊、沈清逼视，每个时间段只承载一个主动作或连续对话节拍，15秒容量合理。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "上一组组尾'周建国脸色苍白冒冷汗'，本组组首'周建国脸色苍白，额头冒冷汗'，状态连续；沈清位置从指向博古架过渡到面向周建国。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第6组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "手机在第6组7-12秒由沈清举起，组尾'沈清手持手机站在原位'，第7组组首未提手机但沈清已放下（无矛盾，手机非关键连续道具）。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "三个时间段分别承载：周建国跌坐（单一动作）、沈清连续对白（一个说话节拍）、沈清扶周桂兰离开（单一动作），每段一个主动作。",
+      "fix_instruction": "无需修改"
+    },
+    {
+      "group": "第4组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "本集无复杂站位、保护关系或多人物调度组需要视频禁止项；普通对话组和短反应组均省略，符合规则。",
+      "fix_instruction": "无需修改"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "timing_math",
+      "problem": "第5组7秒为本集最短组，属单句质问+反应镜头的短承接，理由成立但需提示。",
+      "evidence": "沈清质问10字÷3秒=3.3字/秒，周建国反应4秒，总7秒。",
+      "fix": "无需修改，符合短承接例外规则。"
+    }
+  ]
+}

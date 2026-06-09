@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep02",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep02-agent-cli-storyboard.txt",
+  "summary": "第2集分镜稿还原杂物间打手揭穿和举卡带母查账核心节拍，共3组26秒。沈清打掉刘美娟的手揭穿其贪图卡中钱款，随后扶起发抖的母亲周桂兰披上外套带她去查账。台词指向清晰，时空连续，道具归属明确。审核通过，无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第2组6-9秒时间段字秒比6.3字/秒，接近6.5硬上限。",
+    "第3组0-2秒扶母复合动作链2秒内完成可能偏紧。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

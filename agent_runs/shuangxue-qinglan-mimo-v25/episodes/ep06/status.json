@@ -1,0 +1,19 @@
+{
+  "episode_id": "ep06",
+  "status": "done",
+  "output_name": "ep06-ep06-agent-cli-storyboard.txt",
+  "summary": "7组分镜覆盖客厅对质、杂物间母女、银行调查三个场景，台词全部忠实保留，字秒比合格，OS心声正确标注闭口。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "video_negative_constraints",
+      "problem": "刘美娟冲入+周建国起身打断属于多人物调度组，建议补充视频禁止项。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

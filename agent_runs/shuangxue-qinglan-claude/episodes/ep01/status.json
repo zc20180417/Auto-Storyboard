@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep01",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep01-agent-cli-storyboard.txt",
+  "summary": "第1集分镜2组完成，沈清在杂物间门外撞上门框后听到刘美娟画外音，转头盯住餐厅窗户咬牙说出'到账真准'，reviewer通过无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "generation_density",
+      "problem": "第2组总时长8秒，属于短组（6-9秒），用于承载单句咬牙反应，理由成立，但可提示此为短承接组。",
+      "evidence": "原剧本仅有沈清一句12字台词和转头动作，自然时长约4-5秒，8秒已合理留白。",
+      "fix": "无需修复，仅作交付说明提示。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

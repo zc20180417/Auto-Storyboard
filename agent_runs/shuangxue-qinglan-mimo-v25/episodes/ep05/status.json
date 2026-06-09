@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep05",
+  "status": "done",
+  "output_name": "ep05-ep05-agent-cli-storyboard.txt",
+  "summary": "沈清在周家流水席发现母亲周桂兰在厨房吃剩菜，端碗砸桌质问刘美娟和周建国，揭露赡养费被挪用，赵强匆忙入场打电话暗示账目问题。",
+  "hard_issues_remaining": [],
+  "warnings": ["第5组7秒短组作为致命反击戏剧节拍保留", "第6组7秒短组作为赵强入场悬念收尾保留"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

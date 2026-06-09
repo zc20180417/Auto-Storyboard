@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep29",
+  "status": "done",
+  "output_name": "ep29-ep29-agent-cli-storyboard.txt",
+  "summary": "周建国落魄拾荒，街头偶见女儿沈清企业家专访上屏，追车求认被司机拦住，周桂兰冷漠拒绝递百元后驱车离去，周建国攥钱悔泪。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "主持VO台词字秒比6.25字/秒，接近6.5上限但未超线"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

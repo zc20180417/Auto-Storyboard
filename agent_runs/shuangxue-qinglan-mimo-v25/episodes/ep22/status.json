@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep22",
+  "status": "done",
+  "output_name": "ep22-ep22-agent-cli-storyboard.txt",
+  "summary": "第22集法院强制执行清房+沈清身份揭晓，5组分镜全部通过审核，台词节奏合格，空间锁定完整。",
+  "hard_issues_remaining": [],
+  "warnings": ["G01→G02场景转换（室内→室外）沈清转场过程未明确交代，但组首空间锁定已包含其位置"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

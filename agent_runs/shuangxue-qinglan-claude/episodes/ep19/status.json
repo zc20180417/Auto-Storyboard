@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep19",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep19-agent-cli-storyboard.txt",
+  "summary": "沈清在周家正屋客厅收起镯子后宣示房屋所有权，一字一句下达逐客令后厉喝赶人，周美娟和周建国联合反击。4组分镜，37秒，无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": ["第2组沈清冷酷台词语速偏慢（3.4字/秒），属风格性节奏选择，不构成阻断。"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

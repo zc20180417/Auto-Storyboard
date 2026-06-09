@@ -1,0 +1,84 @@
+{
+  "pass": true,
+  "summary": "ep30母女释怀场景仅1组11秒，台词节奏合理，空间锁定完整，剧本忠实度高，无硬问题。",
+  "checked_groups": ["第1组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第一段2-5秒：13字/3秒=4.3字/秒，深情对白合理；第二段5-8.5秒：17字/3.5秒=4.9字/秒，情绪对白合理；第三段8.5-11秒：8字/2.5秒=3.2字/秒，含镜头拉远动作，合理。"
+    },
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "evidence": "全组单一物理空间（公寓露台），组首锁定明确列出两人物画面位置、身体朝向和玉镯归属，无跨场景。"
+    },
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "三句台词原文完整保留，说话对象明确，沈清握住玉镯的手、靠在母亲肩头、阳光洒落等关键动作和视觉意象均保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "三句台词均为画面人物现场开口对白，每句写明说话人和对象（沈清对周桂兰、周桂兰对沈清），无心声/画外音混用。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第1组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "全组强节拍约3个（手部特写+首轮对白、次轮对白+靠肩动作、拉远+收尾对白），属同一温情收尾事件链，无并列抢焦点，每段只承载一个主动作。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第1组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "本组为唯一一组，组尾衔接明确列出沈清靠肩、周桂兰手被握住、玉镯在腕、阳光持续等状态，可供下一组继承。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第1组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "玉镯在组首锁定中归属周桂兰右手腕并被沈清双手包覆，0-2秒特写再次确认，全组无道具跳变。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第1组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "四个时间段各承载一个主动作或一个连续对话节拍，无多动作塞入同一时间段，非主动作人物不适用。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第1组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "本组为普通温情对话组，无复杂动作/保护站位/多人物调度，省略视频禁止项符合规则。",
+      "fix_instruction": "无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

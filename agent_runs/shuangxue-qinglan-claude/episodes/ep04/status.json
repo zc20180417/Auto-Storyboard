@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep04",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep04-agent-cli-storyboard.txt",
+  "summary": "ep04共4组36秒，小雨炫耀洋娃娃→沈清追问→小雨泄露钱一到账→刘美娟惊恐捂嘴→沈清寒意爆发，台词节奏和空间连续性全部通过审核。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "小雨回答台词19字÷3.5秒≈5.4字/秒，接近情绪对白上限但未超过6.5硬上限",
+    "第3组8秒偏短，但属于高冲击打断独立节拍，拆组理由成立"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

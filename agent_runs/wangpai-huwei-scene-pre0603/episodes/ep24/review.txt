@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "summary": "ep24 整集分镜按保险室、会客室、楼梯间拆组，保留取证反制、许知夏正面反击秦越、电梯停运和顾北辰护送突围，未发现 hard issue。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "秦越“沈曼背叛我？”6字给1.5秒，约4.0字/秒；顾北辰反击约19字给4.5秒，约4.2字/秒；顾北辰OS约16字给4秒，均未超过6.5字/秒硬上限。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "顾北辰砸喷淋头、水雾让红外线短暂失灵、说“我选第三个。”、拔下录音笔并踢自毁装置进水短路，完整保留原剧本动作和因果。"
+    },
+    {
+      "group": "第8组",
+      "type": "space_locking",
+      "evidence": "楼梯间组首给出许知夏、安全门、上下两侧秦越手下位置；顾北辰先从安全门冲出并挡在许知夏身前，人物可用性与保护站位清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "顾北辰OS作为心声承载，明确嘴唇闭合不做口型；现场对白均为秦越和顾北辰面对面说话。",
+      "fix_instruction": "若不通过，应写明心声闭口，或补充现场对白对象。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "录音笔从暗柜托架被金属杆挑起，强磁自毁装置从柜底弹出；组尾继续保持录音笔在金属杆前端、装置倒计时亮起。",
+      "fix_instruction": "若不通过，应补充录音笔位置和强磁装置弹出的可见过渡。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "喷淋头破裂、水雾干扰、短句反击、取笔并踢短路装置分段清楚，最后5秒用于完整复合动作链，没有把全部动作塞入单个短镜头。",
+      "fix_instruction": "若不通过，应拆开取笔和踢装置，或增加单独短组。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第4组门仍关闭，第5组从门被推开开始，秦越入场后再对许知夏说旧案台词，许知夏站起后反击，门和人物位置连续。",
+      "fix_instruction": "若不通过，应在第4组尾补门仍关闭，或第5组开头补秦越入场动作。"
+    },
+    {
+      "group": "第6组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "顾北辰“笔到手，撤。”来自耳机，许知夏嘴唇闭合不做口型；该声音与保险室取证结果承接。",
+      "fix_instruction": "若不通过，应改成耳机声并补许知夏听见后的可见反应。"
+    },
+    {
+      "group": "第8组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "顾北辰入场、挡在许知夏身前、放话、下撤、上下夹击逼近、格开下方手臂依次分段；保护对象和遮挡关系明确。",
+      "fix_instruction": "若不通过，应拆分楼梯间打斗并单独锚定顾北辰与许知夏站位。"
+    },
+    {
+      "group": "第8组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "复杂保护打斗组提供4条具体视频禁止项，分别锚定录音笔、许知夏、秦越手下和顾北辰站位，没有泛泛词。",
+      "fix_instruction": "若不通过，应替换泛化禁止项为本组具体人物和道具风险。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "正文未出现模型说明、模板编号、参考图占位、自动分镜或规则自检内容。",
+      "fix_instruction": "若不通过，应删除污染内容并改写为自然画面。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

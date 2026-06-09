@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep11",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep11-agent-cli-storyboard.txt",
+  "summary": "沈清单人场景，阴天周家院门外发现伪造授权委托书，从震惊到怒斥周建国，三组分镜通过审核。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "generation_density",
+      "problem": "第2组12秒，有效台词约22字（约4.5秒朗读），剩余时间主要由情绪反应和道具动作支撑，接近长组准入下限。",
+      "evidence": "台词合计约4.5秒朗读+情绪停顿和攥文件动作。",
+      "fix": "可接受，因该组承载关键揭示（日期+代办人签名）。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

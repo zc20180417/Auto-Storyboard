@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep10",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep10-agent-cli-storyboard.txt",
+  "summary": "第10集单场景3组25秒，赵强打圆场被沈清戳穿走公司账问题，沈清扶周桂兰离场去银行查账，刘美娟惊慌赵强下令销毁旧账单。台词动作忠实原剧本，节奏合理，格式完整。",
+  "hard_issues_remaining": [],
+  "warnings": ["第3组5-7秒特写赵强拨号为合理画面延伸，原剧本只写下令未明确写拨号动作"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

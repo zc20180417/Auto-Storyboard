@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "第2集分镜稿忠实还原原剧本打手揭穿和举卡带母查账核心节拍，台词指向清晰，时空连续，道具归属明确，无硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组各时间段字秒比：0-2.5秒 10字/2.5秒=4.0、2.5-4.5秒 7字/2秒=3.5、4.5-7秒 14字/2.5秒=5.6，均低于6.5硬上限。"
+    },
+    {
+      "group": "第2组",
+      "type": "handoff_continuity",
+      "evidence": "第1组组尾：沈清面向刘美娟站立、蛋糕砸在地上、周桂兰蹲在角落发抖。第2组组首：沈清位于画面中央、周桂兰仍蹲在角落发抖、刘美娟在右后方、蛋糕仍在地上。人物位置和状态连续，沈清掏卡为新增可见动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "逐句核对原剧本：沈清转身扶起周桂兰→0-2秒动作镜头；拿外套披上→2-4秒；沈清'妈穿上衣服我现在带你去查账'→2-4秒；刘美娟'大半夜查什么账银行早关门了'→4-6.5秒；沈清'自助机二十四小时开着查个余额足够了'→6.5-10秒。台词原文、说话对象和顺序完全保留。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "全部台词为画面内真人开口对白，每句均写明'A对B说道/尖叫道/怒骂道'格式。无心声、画外音或电话音承载。",
+      "fix_instruction": "无需修改，口型和声音来源均正确。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组9秒包含4个时间段：举卡展示1秒、反问台词2.5秒、刘美娟反应2.5秒、沈清举卡对峙3秒。强节拍数3个（举卡、对话交锋、举卡对峙），未超4个上限。每个时间段只承载一个主动作或一个连续对话节拍。",
+      "fix_instruction": "无需修改，强节拍密度和时间段分配合理。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组组尾：沈清举卡面向刘美娟、周桂兰蹲在角落发抖、刘美娟脸色发白。第3组组首：沈清手持银行卡、周桂兰仍蹲在杂物堆旁发抖、刘美娟在右后方。人物位置和状态连续，沈清转身扶母为自然过渡动作。",
+      "fix_instruction": "无需修改，组间状态连续。"
+    },
+    {
+      "group": "第2组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "银行卡在第2组0-1秒由沈清掏出举起，1-3.5秒台词时仍在手中，6-9秒再次举到刘美娟眼前。第3组组首写明沈清手中持有银行卡。道具归属全程连续。",
+      "fix_instruction": "无需修改，道具归属和状态连续。"
+    },
+    {
+      "group": "第3组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "第3组4个时间段：扶起母亲2秒、穿衣+台词2秒、刘美娟喊话2.5秒、沈清回应3.5秒。每个时间段只承载一个主动作或一个台词。非主动作人物刘美娟和周桂兰只写站位和轻反应，未抢戏。",
+      "fix_instruction": "无需修改，动作原子性合格。"
+    },
+    {
+      "group": "第1组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "三组场景简单（单一杂物间）、人物少（3人）、动作清楚（打手、举卡、扶母穿衣），正文已写清站位关系和道具归属。关键道具蛋糕在第1组落地后第2组组首写明仍在地上，无需额外视频禁止项。",
+      "fix_instruction": "无需修改，视频禁止项按规则可省略。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "第2组6-9秒时间段字秒比6.3字/秒，接近6.5硬上限。",
+      "evidence": "既然你不稀罕那这卡里的钱最好一分都没少=19字÷3秒=6.3字/秒。",
+      "fix": "若口型验证发现偏快，可将6-9秒延长至6-9.5秒，组总时长调整为10秒。"
+    },
+    {
+      "severity": "soft",
+      "group": "第3组",
+      "rule": "generation_density",
+      "problem": "第3组0-2秒扶母为复合动作链（蹲下+扶臂+扶起），2秒内完成可能偏紧。",
+      "evidence": "0-2秒描述'蹲下身伸手扶住周桂兰的手臂，将她从杂物堆旁慢慢扶起来'，包含蹲下、扶臂、扶起三个子动作。",
+      "fix": "若验证发现2秒不够，可将0-2秒延长至0-2.5秒，后续时间段相应微调。"
+    }
+  ]
+}

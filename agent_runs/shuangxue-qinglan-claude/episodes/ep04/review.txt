@@ -1,0 +1,106 @@
+{
+  "pass": true,
+  "summary": "ep04共4组36秒，全部通过审核。台词节奏、空间连续性、剧本忠实度、格式和视频可执行性均无硬问题。小雨泄露信息和刘美娟惊恐捂嘴的高冲击打断拆组合理，沈清寒意爆发单独成组节奏清楚。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "小雨台词11字÷2.5秒=4.4字/秒，刘美娟台词12字÷2.5秒=4.8字/秒，小雨第二句约16字÷3秒≈5.3字/秒，均在普通对白4.2-4.8字/秒和情绪对白4.8-5.5字/秒范围内，未超过6.5硬上限。"
+    },
+    {
+      "group": "第2组",
+      "type": "space_locking",
+      "evidence": "全4组均在周家正屋客厅单一物理空间内，无跨场景。组首空间锁定写明沙发位置、三个人物位置和朝向，与前一组组尾状态连续。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "刘美娟'脸色煞白猛地扑上去捂住小雨的嘴'和'小孩子瞎说什么！回屋去！'完整保留；小雨被捂嘴的反应忠实于原剧本。第4组沈清'钱一到账？我那八千块钱，算得可真准啊！'原文保留。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "evidence": "第3组拆为'起身扑去(2s)+捂嘴(2s)+斥责(2s)+小雨反应(2s)'四个单主动作时间段，不把刘美娟起身、扑去、捂嘴、斥责塞进一镜。第4组沈清观察(2s)+台词(4s)+双人反应(3s)节奏从容。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "所有对白均为画面内真人开口，写明'A对B说道'。无心声、画外音或电话音。小雨对刘美娟说道、刘美娟对小雨说道、小雨对刘美娟说道，指向全部正确。",
+      "fix_instruction": "无需修改，对白指向和口型均正确。"
+    },
+    {
+      "group": "第2组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "沈清追问15字÷3秒=5.0字/秒（情绪对白），小雨回答19字÷3.5秒≈5.4字/秒（情绪/得意对白），刘美娟反应2秒无台词。均未超过6.5硬上限。",
+      "fix_instruction": "无需修改，台词节奏在合理范围内。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组组尾：小雨得意站着抱洋娃娃、刘美娟脸色僵住坐沙发、沈清坐另一侧。第3组组首：小雨仍站客厅中央抱洋娃娃、刘美娟仍坐沙发脸色僵住、沈清坐另一侧看向刘美娟。人物位置、道具归属、姿态全部连续。",
+      "fix_instruction": "无需修改，组间状态连续。"
+    },
+    {
+      "group": "第3组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "第3组4个时间段各承载一个主动作：起身(2s)、捂嘴(2s)、斥责(2s)、小雨反应+沈清视线(2s)。刘美娟的起身→扑去→捂嘴是同一连续动作链的阶段，被拆成两个清楚时间段。沈清在6-8秒只做视线移动，未抢主动作。",
+      "fix_instruction": "无需修改，每个时间段只承载一个主动作。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "进口洋娃娃全程连续：第1组小雨抱着→第2组小雨抱在胸前→第3组被挤在两人之间→第4组夹在刘美娟和小雨之间。归属和位置变化均有可见过渡，未突然消失或跳变。",
+      "fix_instruction": "无需修改，道具归属连续。"
+    },
+    {
+      "group": "第4组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "4组视频禁止项均为2-4个本组特有剧情错误，锚定具体人物（小雨、刘美娟、沈清）和道具（洋娃娃）。无泛泛词、无模板占位、无无锚点条目。",
+      "fix_instruction": "无需修改，视频禁止项均锚定具体人物和道具。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "小雨回答台词19字÷3.5秒≈5.4字/秒，接近情绪对白上限5.5字/秒，但未超过6.5硬上限。",
+      "evidence": "小雨对沈清得意地说道'妈妈说不怕，钱一到账就能把宴席尾款结了！'，19字÷3.5秒=5.4字/秒。",
+      "fix": "可接受，小雨得意语速偏快符合角色情绪。若需更稳妥可延长至4秒（4.8字/秒）。"
+    },
+    {
+      "severity": "soft",
+      "group": "第3组",
+      "rule": "generation_density",
+      "problem": "第3组8秒偏短，但属于刘美娟高冲击打断的独立节拍，拆组理由成立。",
+      "evidence": "刘美娟起身→捂嘴→斥责→小雨反应，4个时间段各2秒，8秒短组承接第2组信息泄露的冲击。",
+      "fix": "无需修改，8秒短组符合'高冲击打断后先稳定打断/反应'规则。"
+    }
+  ]
+}

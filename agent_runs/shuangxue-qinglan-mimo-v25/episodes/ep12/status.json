@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep12",
+  "status": "done",
+  "output_name": "ep12-ep12-agent-cli-storyboard.txt",
+  "summary": "EP12共6组，沈清携伪造委托书闯入周家客厅揭穿周建国，周桂兰崩溃痛哭，周美娟赵强加入对峙，沈清铺满银行流水账单发出法庭见的最后通牒。全部台词忠实保留，节奏紧凑。",
+  "hard_issues_remaining": [],
+  "warnings": ["第4-6组连续三组12秒以上，但各有独立戏剧目标，非流程拆碎。"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

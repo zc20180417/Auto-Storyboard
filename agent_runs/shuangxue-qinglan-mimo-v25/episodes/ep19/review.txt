@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "summary": "第19集6组分镜全部通过审核。台词指向清楚，时长合理，空间单一，道具状态连续，无模板污染。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "沈清'很好，十九万二，一分不少'11字÷2.5秒=4.4字/秒；赵强'钱还了，你把那视频删了，别报警'15字÷4秒=3.75字/秒；沈清'删视频？我有说还了本金就算完吗？'14字÷3.5秒=4.0字/秒。均在合理范围内。"
+    },
+    {
+      "group": "第3组",
+      "type": "generation_density",
+      "evidence": "15秒长组承载5句台词+1个护腕反应。每时间段一个主动作或连续对话节拍。有足够台词容量（约7秒自然朗读）和冲突升级（从威胁到索要金镯子）。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "金镯子从周美娟手腕→赵强撸下→赵强双手捧着→沈清纸巾垫着接过。每个状态变化都有可见过渡动作。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "全部为画面内现场对白，每句写明'A对B说道'，无心声/画外音混用。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "12秒组承载1个沉默反应+2句台词+1个指向动作+1个等待反应。每个时间段单一主动作，无过载。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第3组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第2组尾→第3组首：周美娟从后退变叉腰是同空间自然反应变化，沈清从画面左侧保持，赵强地面仰头保持。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第4组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项4条，均锚定本组具体人物和道具：金镯子消失、赵强未站起、沈清直接用手碰、手腕未掐红。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第5组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "金镯子从第4组纸巾中→第5组收进衣袋，纸巾包裹状态连续。",
+      "fix_instruction": "无需修改。"
+    },
+    {
+      "group": "第6组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "4个时间段各承载一个主动作或连续对话节拍：沈清命令、沈清厉喝+反应、周美娟大喊、周建国暴跳。非主动作人物（赵强）只写站位和轻反应。",
+      "fix_instruction": "无需修改。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第3组",
+      "rule": "generation_density",
+      "problem": "15秒长组承载5个台词节拍，处于上限边缘，但有足够台词容量和冲突升级支撑。",
+      "evidence": "5句台词约7秒自然朗读+视线移动+护腕反应，每个时间段单一主动作。",
+      "fix": "可接受，无需修改。"
+    },
+    {
+      "severity": "soft",
+      "group": "第4组",
+      "rule": "action_atomicity",
+      "problem": "赵强'站起身+扑去+掐手腕'属于同一连续动作链，在2.5秒内完成，时间偏紧。",
+      "evidence": "赵强从地面到掐住手腕是因果相连动作，2.5秒给复合动作链偏紧但可执行。",
+      "fix": "可接受，若实际生成效果仓促可考虑延长到3秒。"
+    }
+  ]
+}

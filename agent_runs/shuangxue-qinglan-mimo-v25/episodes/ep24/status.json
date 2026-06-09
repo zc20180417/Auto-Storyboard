@@ -1,0 +1,29 @@
+{
+  "episode_id": "ep24",
+  "status": "done",
+  "output_name": "ep24-ep24-agent-cli-storyboard.txt",
+  "summary": "第24集分镜完成。5组共59秒21镜头，覆盖酒店宴会厅母女温馨、周建国闯入被律师截获、五百万对峙、LED屏幕证据揭示、高利贷致命一击。台词指向正确，空间单一，时间轴连续，reviewer通过。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第2组",
+      "rule": "dialogue_pacing",
+      "problem": "律师台词24字/4秒=6.0字/秒，周建国台词18字/3秒=6.0字/秒，偏快但在6.5硬上限内。",
+      "evidence": "7-11秒和11-14秒台词密度偏高。",
+      "fix": "可考虑将G2从14秒延长至15秒降低密度。"
+    },
+    {
+      "severity": "soft",
+      "group": "第2组到第3组",
+      "rule": "handoff_continuity",
+      "problem": "周美娟和赵强在G2被隔离后G3未出现，到G4周美娟重新出现在周建国身后，位置过渡略缺交代。",
+      "evidence": "G2组尾未提周美娟/赵强位置，G3组首未列出二人。",
+      "fix": "建议在G3组首空间锁定中补充周美娟和赵强状态。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 2
+}

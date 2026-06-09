@@ -1,0 +1,12 @@
+{
+  "episode_id": "ep27",
+  "status": "done",
+  "output_name": "《霜雪落尽见清兰》-ep27-agent-cli-storyboard.txt",
+  "summary": "宴会厅掌声与宾客喝彩，沈清与周桂兰母女碰杯，两组分镜忠实原剧本，台词节奏合规，空间连续性好。",
+  "hard_issues_remaining": [],
+  "warnings": ["宾客甲和宾客乙对白语速5.4-5.6字/秒，属情绪对白正常范围，偏快"],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

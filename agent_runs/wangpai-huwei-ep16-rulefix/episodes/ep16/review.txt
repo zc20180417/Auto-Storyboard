@@ -1,0 +1,122 @@
+{
+  "pass": true,
+  "summary": "ep16新版按scene模式完成，保留原剧本关键台词、线索、人物关系和困局节拍，将同一冷库内的连续事件链合并为10组127秒，未发现阻断交付的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "evidence": "冷库门打开、钢架封存盒、许知夏OS寻找第二支录音笔、A17空盒和三年前旧案当晚封条均按原剧本顺序保留。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "顾北辰“不是今晚拿的。三年前就动过。”约13字给4秒并伴随捡封条动作；许父VO约21字给4.5秒，约4.7字/秒，未超过6.5字/秒。"
+    },
+    {
+      "group": "第4组",
+      "type": "generation_density",
+      "evidence": "许知夏问备份、顾北辰判断录音笔只是一段、鼓掌声、秦越押赵明海现身与秦越短句属于同一冷库线索被打断的连续事件链，13秒内分4段承载，未拆成多个低密度长组。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "evidence": "第6组尾部冷库门落锁、秦越在门外、温控屏下降；第7组组首继承门已锁、秦越在玻璃外、周振邦和赵明海在门内，状态连续。"
+    },
+    {
+      "group": "第9组",
+      "type": "action_atomicity",
+      "evidence": "顾北辰横跨保护、撞开手下、击中咽喉、肘击第二人、许知夏拍下坐标、备用电源切断按顺序分段，保护对象和手机坐标状态清楚。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "顾北辰对许知夏说明门锁状态，许知夏对顾北辰追问秦越，顾北辰再对许知夏回应，没有假对象或漏对象。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第2组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "许知夏OS明确为内心声音且嘴唇闭合不做口型，现场动作只承载进入冷库和打开A17。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第3组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "本组现实冷库到雨夜仓库外明确标注回忆闪回，属于允许跨空间例外；闪回人物与道具在进入闪回前后都清楚。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第5组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵明海发短信自救、A17只知编号、东西不在手里，周振邦喝止，以及许知夏指出秦越没找到完整备份均保留，没有改变人物关系。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第6组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第6组总时长13秒，时间段0-2、2-7.5、7.5-10.5、10.5-13连续，镜头数4个与标题一致。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第7组",
+      "type": "dialogue_pacing",
+      "result": "pass",
+      "evidence": "秦越约20字台词给4秒，周振邦约8字给2秒，秦越弃子台词约15字给3.5秒，顾北辰约7字给3秒内含转向动作，均低于6.5字/秒且不拖慢。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第8组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "坐标刻痕固定在A17空盒底部，许知夏先发现再喊出旧仓储转运站，秦越才命令手下毁掉它，道具状态与信息顺序一致。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第9组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "禁止项锚定许知夏拍照、顾北辰保护站位、秦越手下抢手机和温控屏可见性，均为本组具体风险，数量4条。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第10组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第10组为断电后的9秒短承接，只有握手、两句目标确认和秦越VO威胁，没有为了凑10秒加入普通凝视或停顿。",
+      "fix_instruction": "无需修复。"
+    },
+    {
+      "group": "第1组-第10组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "未发现自然收尾、不强制静止、空间先被交代出来、Seedance自动、参考模板、@图片等污染词或工程词。",
+      "fix_instruction": "无需修复。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

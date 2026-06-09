@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep01",
+  "storyboard_rule_version": "storyboard-quality-policy-2026-05-31-v1",
+  "storyboard_quality_policy_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\storyboard-quality-policy.json",
+  "episode_number": 1,
+  "display_name": "ep01",
+  "series_title": "ep01",
+  "source_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\split_scripts\\wangpai-huwei-ep01-rulefix\\ep01.txt",
+  "output_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\outputs_agent_wangpai_huwei_ep01_rulefix\\ep01-ep01-agent-cli-storyboard.txt",
+  "storyboard_aspect": "vertical",
+  "generator_skill_name": "storyboard-generator",
+  "reviewer_skill_name": "storyboard-reviewer",
+  "reviewer_source": "storyboard-reviewer"
+}

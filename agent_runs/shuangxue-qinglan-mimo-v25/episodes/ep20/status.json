@@ -1,0 +1,14 @@
+{
+  "episode_id": "ep20",
+  "status": "done",
+  "output_name": "ep20-ep20-agent-cli-storyboard.txt",
+  "summary": "ep20完成：7组分镜，80秒总时长，遗嘱揭露→保姆费质问→青花瓷追问→通牒收房的完整冲突链，台词全部忠实保留，审核通过无硬问题。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    "第5组7秒为本集最短组，属单句质问+反应镜头的短承接，理由成立。"
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

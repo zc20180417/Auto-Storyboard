@@ -1,0 +1,103 @@
+{
+  "pass": true,
+  "summary": "第13集审核通过：沈清与周美娟一家的养老钱对质场景，7组全部台词忠实、节奏合理、空间单一连续、格式规范。原剧本中'刘美娟'为笔误，统一为周美娟。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "第1组35字有效台词/9秒=3.9字/秒，符合普通对白4.5字/秒目标。沈清的冷冽/嘲讽/逼问台词按情绪对白5.2字/秒估算，时长分配合理。"
+    },
+    {
+      "group": "第3组",
+      "type": "script_fidelity",
+      "evidence": "第3组保留原剧本廉价止痛片证据、周桂兰落泪'妈真没花过他们大钱'、周美娟狡辩'没来得及买好药'全部台词和关键动作。"
+    },
+    {
+      "group": "第5组",
+      "type": "space_locking",
+      "evidence": "第5组组首空间锁定承接第4组状态，列出周家正屋客厅、长桌、沈清/赵强/周建国三人位置和朝向。全集7组均在同一物理空间，无跨场景。"
+    },
+    {
+      "group": "第4组",
+      "type": "prop_continuity",
+      "evidence": "手机道具从第4组沈清拿出→点开屏幕→举向周美娟→收回身前，状态变化清晰。组尾衔接写明'沈清手中仍握手机、屏幕亮着'，与后续组连续。"
+    },
+    {
+      "group": "第7组",
+      "type": "handoff_continuity",
+      "evidence": "第6组组尾周建国手掌按桌面、沈清直视周建国；第7组组首状态完全承接。全集组间状态连续，无跳变。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "全集7组均为画面内真人开口对白，每句均写明'A对B说道/问道/喊道'格式，无心声/画外音/电话音混用。无OS/旁白需要闭口的场景。",
+      "fix_instruction": "无需修改，口型和声音承载正确。"
+    },
+    {
+      "group": "第2组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "第2组强节拍：周美娟心虚开口、拔高声调、沈清冷笑反问、扔塑料袋。4个节拍分布在12秒内，每个时间段一个主动作，属同一对质事件链的连续推进。",
+      "fix_instruction": "无需修改，强节拍分布合理。"
+    },
+    {
+      "group": "第5组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "第5组4个时间段各承载一个主动作或连续对话节拍：赵强上前打圆场、沈清追问、沈清逼视+赵强结巴、沈清伸手+赵强结巴。无动作过载。",
+      "fix_instruction": "无需修改，动作原子性合格。"
+    },
+    {
+      "group": "第6组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组组尾沈清右手前伸、赵强眼神闪躲、周建国手掌抬起；第6组组首周建国手掌抬起即将落下，状态完全连续。",
+      "fix_instruction": "无需修改，组间状态连续。"
+    },
+    {
+      "group": "第7组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "本集以对话对质为主，无复杂动作/保护站位/关键道具操作组，各组合理省略视频禁止项。无模板化禁止项或泛泛词。",
+      "fix_instruction": "无需修改，视频禁止项省略合理。"
+    },
+    {
+      "group": "第4组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全集7组无模型说明词、模板化描述、@图片/@视频/@音频占位符或非分镜正文内容。光影描述具体且各组略有变化，未机械重复。",
+      "fix_instruction": "无需修改，无提示词污染。"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第7组",
+      "rule": "script_fidelity",
+      "problem": "原剧本seg04中'刘美娟'应为'周美娟'的笔误，分镜已统一为周美娟",
+      "evidence": "原剧本第13集13-4中出现'刘美娟(得意): 你怎么证明短信号码是我的？'，但全集其他位置和人物表均为周美娟",
+      "fix": "已统一为周美娟，与全集一致。建议确认原剧本是否需要修正。"
+    }
+  ]
+}

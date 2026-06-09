@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "summary": "第14集共1组，结构完整，台词全部保留，空间单一，时长14秒合理，无硬问题。",
+  "checked_groups": ["第1组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "dialogue_pacing",
+      "evidence": "总台词30字/14秒=2.14字秒比。各时间段台词分布：'2-4秒'沈清6字/2秒=3.0（含环视动作，情绪对白基准5.2下合理），'4-7秒'周建国7字/3秒=2.33（含身体前倾质问动作），'7-9.5秒'沈清9字/2.5秒=3.6（含视线移动），'12-14秒'8字/2秒=4.0。所有段均低于6.5硬上限。"
+    },
+    {
+      "group": "第1组",
+      "type": "space_locking",
+      "evidence": "单一物理空间'周家正屋客厅'，组首锁定沈清（画面中央/面向镜头/手持手机）、周美娟（画面左侧/侧对镜头/脸朝画右）、周建国（画面右侧/侧对镜头/脸朝画左）、刘（画面右后方/侧对镜头/脸朝画左）和众人（背景两侧），无跨空间问题。"
+    },
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "剧本7个节拍全部保留：(1)手指悬停确认转账按钮 (2)沈清环视宣告'大家都听好了' (3)周建国阴沉质问'你到底转了多少' (4)沈清盯着刘说'既然要证明，不用太多' (5)沈清冷酷说'我现在就转账' (6)所有人屏息盯手 (7)沈清按按钮说'确认转账，两元'。台词顺序、说话对象、关键反转完整。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "全部对白为画面内现场开口：沈清对众人说道、周建国对沈清质问道、沈清对刘说道、沈清按按钮时说确认转账。无心声/画外音/电话音混用，无需闭口标注。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第1组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "1组内1个核心事件链（宣布→追问→回应→屏息→按按钮确认），每时间段仅1个主动作或对话节拍。6个时间段、14秒、无强节拍过载。'9.5-12秒'全景反应镜头2.5秒承载众人屏息，属必要戏剧铺垫非凑时长。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第1组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "本集仅1组，无相邻组衔接问题。组尾锚定沈清手指按在屏幕上、众人视线锁定手机、周建国身体前倾，为后续集提供连续性基础。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第1组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "手机全程在沈清手中：组首手指悬停→环视时持有→对刘说话时持有→按下按钮。确认转账按钮状态从'悬停未触碰'→'按下变色'，连续无跳变。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第1组",
+      "type": "action_atomicity",
+      "result": "pass",
+      "evidence": "6个时间段各承载1个动作/对话：(1)手指悬停 (2)环视宣告 (3)质问 (4)盯刘回应 (5)全景屏息反应 (6)按按钮确认。非主动作人物周美娟、刘、众人仅写站位和视线，无抢戏。",
+      "fix_instruction": "无需修复"
+    },
+    {
+      "group": "第1组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "本组为单空间简单动作+对话组，核心道具'手机'和'确认转账按钮'在正文状态清楚，非复杂动作/保护站位/多人物调度组，视频禁止项可省略。",
+      "fix_instruction": "无需修复"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第1组",
+      "rule": "video_negative_constraints",
+      "problem": "最后一组涉及关键道具操作（按确认转账按钮），可选择性补充2-3条视频禁止项增强生成稳定性。",
+      "evidence": "12-14秒沈清按按钮为核心动作，正文描述清楚但无显式禁止项约束。",
+      "fix": "可补：视频禁止项：确认转账按钮文字消失、沈清手指未接触屏幕、众人视线离开手机"
+    }
+  ]
+}

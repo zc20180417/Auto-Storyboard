@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep23",
+  "status": "done",
+  "output_name": "《王牌护卫》-ep23-agent-cli-storyboard.txt",
+  "summary": "顾北辰伪装维修人员潜入启元顶层，被秦越用录音笔和红外线空房设局反制；顾北辰触发袖口信号，沈曼接通声纹备份，真正暗格弹开，秦越露出惊惶。",
+  "hard_issues_remaining": [],
+  "warnings": [
+    {
+      "severity": "soft",
+      "group": "第5组",
+      "rule": "timing_math",
+      "problem": "第5组为9秒短组。",
+      "evidence": "该组承担沈曼接通声纹、暗格弹开和秦越惊惶，是跨空间蒙太奇短承接和反转余波，短组理由成立。",
+      "fix": "可保留；不建议为了10秒下限增加无剧本依据的停顿。"
+    }
+  ],
+  "reviewer_source": "storyboard-reviewer",
+  "reviewer_pass": true,
+  "reviewer_issues_count": 0,
+  "reviewer_warnings_count": 1
+}

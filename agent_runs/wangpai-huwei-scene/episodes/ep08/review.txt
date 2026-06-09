@@ -1,0 +1,115 @@
+{
+  "pass": true,
+  "summary": "ep08 已对照原剧本、竖屏 generator 规则和当前 final.txt 审查，办公室撤离、复制硬盘、秦越黑车旁观、地下车库伏击和定位器揭示均保留，未发现阻断生产的硬问题。",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "space_locking": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "action_atomicity": "checked",
+    "video_negative_constraints": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "script_fidelity",
+      "evidence": "保留顾北辰合电脑、拔硬盘、装防静电袋，以及“今晚不能留在公司”“许叔以前有个安全屋”等撤离信息。"
+    },
+    {
+      "group": "第3组",
+      "type": "dialogue_pacing",
+      "evidence": "许知夏“他们越想抢...”约31字给6秒，约5.2字/秒；“别拿我爸转移话题。插硬盘”约12字给2.5秒，约4.8字/秒，未超过6.5字/秒。"
+    },
+    {
+      "group": "第5组",
+      "type": "audio_mouth_sync",
+      "evidence": "许知夏OS标明嘴唇闭合，声音作为内心声出现；顾北辰“别出声，站我身后”是现场低声对白，口型来源明确。"
+    },
+    {
+      "group": "第7组",
+      "type": "action_atomicity",
+      "evidence": "黑衣人甲冲来、顾北辰挡击拧腕、击膝跪地、第二人袭来并被放倒分成4个时间段，打斗动作没有压在一个镜头内。"
+    },
+    {
+      "group": "第10组",
+      "type": "format",
+      "evidence": "标题使用EP08-G10 cut_id，10秒内4个连续时间段，最后一段结束于10秒，镜头数与实际时间段一致。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第1组",
+      "type": "prop_continuity",
+      "result": "pass",
+      "evidence": "加密硬盘从电脑拔下并与旧档案一起进入防静电袋，组尾明确防静电袋在顾北辰手边，支撑后续重新取出硬盘复制。",
+      "fix_instruction": "若不通过，应补充加密硬盘、旧档案和防静电袋之间的可见转移。"
+    },
+    {
+      "group": "第4组",
+      "type": "space_locking",
+      "result": "pass",
+      "evidence": "秦越和手下单独放在许氏集团楼下黑车内一组，没有与办公室或车库动作混在同一组，物理空间清楚。",
+      "fix_instruction": "若不通过，应将楼下黑车段与办公室/车库段拆开。"
+    },
+    {
+      "group": "第5组",
+      "type": "character_availability",
+      "result": "pass",
+      "evidence": "黑衣人三名在组首锁定为藏在车辆后侧阴影里，10-13秒再从车后走出，突然出现有可生成位置来源。",
+      "fix_instruction": "若不通过，应在组首补黑衣人的遮挡位置或在说话前安排入场。"
+    },
+    {
+      "group": "第6组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "黑衣人甲对顾北辰、顾北辰对黑衣人甲、许知夏对黑衣人甲的对白对象均明确，没有假对象对白。",
+      "fix_instruction": "若不通过，应逐句补足真实对话对象。"
+    },
+    {
+      "group": "第8组",
+      "type": "generation_density",
+      "result": "pass",
+      "evidence": "车门、漏气车胎、许知夏报警、顾北辰压住第三人并指向消防通道、两人冲向安全门分段承载，13秒内动作链清楚。",
+      "fix_instruction": "若不通过，应把发现漏气和冲向安全门拆成两组。"
+    },
+    {
+      "group": "第9组",
+      "type": "audio_mouth_sync",
+      "result": "pass",
+      "evidence": "顾北辰OS明确嘴唇闭合且定位器特写承载他的判断，许知夏和顾北辰后续现场对白另有口型来源。",
+      "fix_instruction": "若不通过，应把OS改为闭口内心声或改成现场低声自语。"
+    },
+    {
+      "group": "第9组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第8组尾两人冲向左边安全门，第9组首两人已到安全门前，黑衣人仍在后方追来，位置和追赶压力连续。",
+      "fix_instruction": "若不通过，应在第8组尾或第9组首补安全门前的位置过渡。"
+    },
+    {
+      "group": "第10组",
+      "type": "video_negative_constraints",
+      "result": "pass",
+      "evidence": "视频禁止项锚定秦越、微型定位器、顾北辰和安全门，限制秦越进门、道具归属和人物误出现，数量3条且聚焦本组风险。",
+      "fix_instruction": "若不通过，应替换泛泛禁止词为本组人物、道具或场景锚点。"
+    },
+    {
+      "group": "第1组",
+      "type": "prompt_pollution",
+      "result": "pass",
+      "evidence": "全文未出现Seedance说明词、参考模板、@图片/@视频/@音频、自动正反打或模板化批量描述。",
+      "fix_instruction": "若不通过，应删除模型说明词和非分镜正文。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}
