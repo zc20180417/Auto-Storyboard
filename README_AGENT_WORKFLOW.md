@@ -82,6 +82,18 @@
 
 横屏工作区的 `TASK.md` 会指向 `storyboard-horizontal-generator` 和 `storyboard-horizontal-reviewer`。不要把横屏任务交给默认竖屏 skill，也不要把横屏题材包或项目包迁移到无关剧本。
 
+如果要生成动漫 3D CG 短剧风格，显式指定 `-VisualStyle 3d-cg`：
+
+```powershell
+.\prepare-agent.ps1 scene my-cg-run `
+  -Source .\split_scripts\<episode-folder> `
+  -OutDir .\outputs_agent_my_cg_run `
+  -VisualStyle 3d-cg `
+  -Force
+```
+
+`VisualStyle` 是媒介风格维度，不替代 `Aspect` 或 `TargetVideoModel`。默认 `live-action` 继续输出真人实拍短剧口径；`3d-cg` 会让工作区任务读取 `agent_skills/3d-cg-visual-style/SKILL.md`，并让生成提示、收集尾部和资产提示词切换为动漫 3D CG 口径：二次元角色设计、风格化面部与眼睛、清晰轮廓线、高质量卡通渲染、PBR材质与手绘质感融合、表情绑定、口型同步，以及冷冽刀光、气流压迫、碎石悬浮、贴地冲击尘浪、金属裂纹冷光等动作服务型大片特效。无论哪种风格，分镜结构、对白对象、时间规则、组首/组尾连续和 reviewer 门禁不变。
+
 生成后会得到：
 
 ```text

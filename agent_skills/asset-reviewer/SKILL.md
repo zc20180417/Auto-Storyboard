@@ -18,6 +18,7 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - run 级 `asset_bible.md`，多集项目必须存在；单集项目可以没有
 - `agent_skills/asset-extractor/SKILL.md`
 - `agent_skills/optimize-image-prompts/SKILL.md`
+- 如果当前 run 是 `visual_style=3d-cg` / `Visual style: 3d-cg`，还必须读取 `agent_skills/3d-cg-visual-style/SKILL.md`，并按 3D CG 资产口径审核提示词。
 
 如果缺少 `assets.md` 或 `final.txt`，直接返回 `pass=false`。多集项目缺少 `asset_bible.md` 时也必须返回 `pass=false`，并指出需要先建立 run 级 bible。
 
@@ -39,6 +40,7 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - `binding_completeness`：每个分镜 cut 是否至少有主场景绑定，关键角色、关键道具和关键服装状态是否绑定到实际出现的 cut；不要求普通背景小物全量绑定。
 - `video_reference_readiness`：`use_for_video=yes` 的绑定是否指向适合生成或复用参考图的资产/状态，而不是纯文字说明或不建议入库元素。
 - `xlsx_readiness`：六个标准表是否存在，表头是否可转换 Excel，单元格内是否误用竖线 `|` 导致错列。
+- `visual_style_consistency`：资产提示词是否符合当前 run 的视觉风格。`live-action` 不应写成 3D 模型资产；`3d-cg` 不应写成真人演员定妆照，也不应在负面词中禁止 3D/CG、动漫、二次元或卡通渲染本身；动作特效资产应是动作服务型大片特效，不应写成法阵、游戏技能 UI、满屏粒子或遮脸光效。
 
 ## 稳定 taxonomy
 
@@ -71,6 +73,7 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - `missing_key_character_binding`：关键人物没有绑定到出现的 cut。
 - `missing_key_prop_binding`：关键道具没有绑定到出现的 cut。
 - `unnecessary_video_reference`：不适合视频参考图的资产被标为 `use_for_video=yes`。
+- `visual_style_conflict`：资产提示词与当前视觉风格冲突，例如 3D CG run 中写真人实拍定妆照，缺少动漫3D/二次元角色/清晰轮廓线/卡通渲染/动作服务型大片特效等正向媒介锚点，负面词禁止“3D渲染/CG感/动画感/卡通/动漫/二次元”，或把动作特效写成法阵、游戏技能 UI、满屏粒子、遮脸光效、特效盖住主体。
 
 ## 判断口径
 
@@ -105,6 +108,7 @@ JSON 结构如下：
     "cut_binding_accuracy": "checked",
     "binding_completeness": "checked",
     "video_reference_readiness": "checked",
+    "visual_style_consistency": "checked",
     "xlsx_readiness": "checked"
   },
   "spot_checks": [

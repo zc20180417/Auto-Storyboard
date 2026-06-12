@@ -43,11 +43,52 @@ PROJECT_AGENT_SKILLS_DIR = "agent_skills"
 SEEDANCE_PROMPT_PROFILE_PATH = "agent_skills/seedance-prompt-profile/SKILL.md"
 HAPPYHORSE_PROMPT_PROFILE_PATH = "agent_skills/happyhorse-prompt-profile/SKILL.md"
 AI_VIDEO_PROMPT_SKILL_PATH = "agent_skills/ai-video-prompt/SKILL.md"
+CG_VISUAL_STYLE_SKILL_PATH = "agent_skills/3d-cg-visual-style/SKILL.md"
 STORYBOARD_QUALITY_POLICY_PATH = "agent_skills/storyboard-quality-policy.json"
 AGENT_WORKSPACE_VERSION = 1
 SIMPLE_BATCH_MAX_SCRIPT_CHARS = 2500
 SIMPLE_BATCH_MAX_SEGMENTS = 1
 MAX_EPISODES_PER_WORKER_BATCH = 2
+
+VISUAL_STYLE_CONFIG = {
+    "live-action": {
+        "label": "真人实拍",
+        "style_line": "画面风格：浅景深，电影质感，4K画质，真人实拍风格，细节丰富，无字幕，无配乐",
+        "negative_line": "--neg 模糊，低分辨率，扭曲，变形，卡通，油画，3D渲染，塑料感，西方人面孔，面部融合，过曝，色彩失真，伪影，叠加字幕，硬字幕，烧录字幕，后期添加的文字，水印，logo，标题文字，片名，演职员表，背景音乐，配乐，BGM，叠加文字，画面外文字",
+        "task_guidance": (
+            "默认真人实拍短剧风格：写真实摄影可执行画面、自然光影、真实材质、真实人物口型；"
+            "不要写成卡通、动画、3D渲染或塑料玩具质感。"
+        ),
+        "asset_guidance": (
+            "资产提示词使用真人短剧定妆照、真实空镜、真实道具材质口径；"
+            "避免卡通、3D渲染、塑料感。"
+        ),
+    },
+    "3d-cg": {
+        "label": "动漫3D CG",
+        "style_line": "画面风格：高质量动漫3D CG短剧风格，二次元角色设计，风格化面部与眼睛，清晰轮廓线，高质量卡通渲染，PBR材质与手绘质感融合，电影级布光，景深自然，表情绑定细腻，口型同步清楚，动作流畅，动作服务型大片特效，冷冽刀光，气流压迫，碎石悬浮，贴地冲击尘浪，金属裂纹冷光，无字幕，无配乐",
+        "negative_line": "--neg 模糊，低分辨率，扭曲，变形，低多边形，廉价游戏建模，塑料玩具感，面部僵硬，表情死板，眼神空洞，口型错位，穿模，骨骼错位，手指畸形，材质粗糙，贴图拉伸，轮廓线抖动，过曝，色彩失真，伪影，满屏粒子，过曝光效，遮脸光效，特效盖住主体，游戏技能UI，法阵文字，魔法阵，廉价仙侠宣传片感，叠加字幕，硬字幕，烧录字幕，后期添加的文字，水印，logo，标题文字，片名，演职员表，背景音乐，配乐，BGM，叠加文字，画面外文字",
+        "task_guidance": (
+            "动漫3D CG短剧风格：保留短剧分镜、对白、站位、道具连续和时间规则，但画面描述应服务于"
+            "二次元角色设计、风格化面部与眼睛、清晰轮廓线、高质量卡通渲染、PBR材质与手绘质感融合、"
+            "稳定表情绑定、清楚口型同步和流畅动作；动作/打斗/压迫/情绪峰值可以加入刀光、气流、碎石、尘浪、金属冷光等"
+            "动作服务型大片特效，但特效必须跟随具体动作和受力结果，不得写成法阵、满屏粒子、游戏技能 UI 或盖住人物主体；"
+            "不要写真人实拍、真实摄影、真实演员、纪录片摄影等真人媒介词。"
+        ),
+        "asset_guidance": (
+            "资产提示词使用动漫3D角色模型设定、二次元脸型和眼睛、发型体块、清晰轮廓线、"
+            "PBR材质与手绘质感融合的场景/道具口径；人物资产强调角色比例、表情绑定友好特征、"
+            "发型体块、服装材质和可复用模型状态；场景资产仍为空镜。"
+        ),
+    },
+}
+
+
+def visual_style_config(visual_style: str) -> dict[str, str]:
+    try:
+        return VISUAL_STYLE_CONFIG[visual_style]
+    except KeyError as exc:
+        raise ValueError(f"unsupported visual style: {visual_style}") from exc
 
 STORYBOARD_ASPECT_CONFIG = {
     "vertical": {
@@ -248,13 +289,17 @@ def make_agent_context(
     seedance_profile_path: Path,
     happyhorse_profile_path: Path | None,
     ai_video_prompt_skill_path: Path | None,
+    cg_visual_style_skill_path: Path | None,
     target_video_model: str,
+    visual_style: str,
     aspect: str,
     mode: str,
 ) -> str:
     aspect_cfg = storyboard_aspect_config(aspect)
     aspect_label = aspect_cfg["label"]
     reviewer_skill_name = aspect_cfg["reviewer_name"]
+    style_cfg = visual_style_config(visual_style)
+    visual_style_label = style_cfg["label"]
     if target_video_model == "happyhorse":
         model_profile_lines = textwrap.dedent(
             f"""
@@ -273,6 +318,9 @@ def make_agent_context(
             """
         ).strip()
         profile_rule = "Seedance Prompt Profile 只作为短剧风格参考层"
+    visual_style_lines = ""
+    if visual_style == "3d-cg":
+        visual_style_lines = f"\n- 3D CG Visual Style Skill: `{cg_visual_style_skill_path}`"
 
     return textwrap.dedent(
         f"""
@@ -286,15 +334,18 @@ def make_agent_context(
         - Episodes in this run: `{episodes_count}`
         - Generation mode: `{mode}`
         - Storyboard aspect: `{aspect}` ({aspect_label})
+        - Visual style: `{visual_style}` ({visual_style_label})
         - Generation Skill: `{generator_skill_path}`
         - Review Skill: `{reviewer_skill_path}`
         {model_profile_lines}
+        {visual_style_lines}
 
         ## Core Rules
         - dispatcher 不生成、不审核、不修稿；dispatcher 只创建 subagents/workers 并分发 episode prompt。
         - episode worker 是{aspect_label}短剧分镜生产 agent，只处理自己被分配的单个 episode。
         - 生成和审核规则全部以两个标准 `SKILL.md` 为准；{profile_rule}，不要在任务文件里重新解释规则。
         - profile 不得替代主生成规则，不得把模板编号、官方模板说明、`@图片/@视频/@音频` 占位符、广告/产品/视频延长/轨道补全/一镜到底等非短剧模板语气写入 `final.txt`。
+        - Visual style 是本 run 的媒介风格约束：`{visual_style}`（{visual_style_label}）。{style_cfg["task_guidance"]}
         - episode worker 可以生成和初审，但 `review.txt` 必须按 `{reviewer_skill_name}/SKILL.md` 逐项审稿，不能写空泛通过。
         - 若用户要求强审核模式，reviewer-only worker 必须独立复审 `final.txt`。
         - `single` 模式：整集一次生成，再整集审核一次。
@@ -320,7 +371,9 @@ def make_episode_task(
     seedance_profile_path: Path,
     happyhorse_profile_path: Path | None,
     ai_video_prompt_skill_path: Path | None,
+    cg_visual_style_skill_path: Path | None,
     target_video_model: str,
+    visual_style: str,
     aspect: str,
     mode: str,
 ) -> str:
@@ -328,6 +381,8 @@ def make_episode_task(
     aspect_cfg = storyboard_aspect_config(aspect)
     aspect_label = aspect_cfg["label"]
     reviewer_skill_name = aspect_cfg["reviewer_name"]
+    style_cfg = visual_style_config(visual_style)
+    visual_style_label = style_cfg["label"]
     if aspect == "horizontal":
         aspect_contract_line = "Horizontal outputs must be generated as polished, Seedance-ready deliverables on the first pass, not rough drafts waiting for a separate rewrite. Use the current horizontal Seedance wrapper: `**人物**`, `**场景**`, `**道具/关键视觉资产**`, `**组间承接**`, `**横屏构图/调度**`, bare `N-M` shot-number lines, then each shot with `**镜头描述**`, `**光影设计**`, `**本镜估算时长**`, followed by `**组尾衔接**`, `**画面风格**`, `**运镜强化词**`, `**Seedance执行提示补充**`, and `**--neg**`. Do not write `**镜头号**：N-M`; do not use the old horizontal `组首空间锁定` or per-shot `运镜设计` fields. Keep assets under 9 per group; if the script requires more, split the group instead of deleting key story elements."
         group_timing_line = "Horizontal groups use bare `N-M` shot numbers and `**本镜估算时长**：X秒` per shot; each group's estimated shot durations must sum to the integer group total. Prefer integer shot durations; use 0.5 seconds only for short reactions, prop inserts, or action aftershocks. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds. Do not compress key dialogue meaning just to fit the 15-second cap; split shots or groups instead."
@@ -365,6 +420,29 @@ def make_episode_task(
         profile_input_line = f"- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
         profile_constraint = "Seedance Prompt Profile is only a reference layer"
         happyhorse_prompt_boundary = ""
+    visual_style_input_line = ""
+    visual_style_workflow_phrase = ""
+    if visual_style == "3d-cg":
+        visual_style_input_line = f"\n- 3D CG visual style skill: `{cg_visual_style_skill_path}`，只作为 3D CG 媒介风格参考层，不得替代主生成和审核规则"
+        visual_style_workflow_phrase = ", the 3D CG visual style skill"
+    if aspect == "horizontal":
+        if visual_style == "3d-cg":
+            style_delivery_line = (
+                "横屏 final.txt 每组必须直接写入 3D CG 版 `**画面风格**` 和 `**--neg**`："
+                "正向包含高质量动漫3D CG短剧风格、二次元角色设计、风格化面部与眼睛、清晰轮廓线、"
+                "高质量卡通渲染、PBR材质与手绘质感融合、电影级布光、自然景深；"
+                "不得写真人实拍、真实摄影、真实演员；负向不得包含 `3D渲染`、`CG感`、`动画感`、`卡通`、`动漫`、`二次元`。"
+            )
+        else:
+            style_delivery_line = (
+                "横屏 final.txt 每组必须直接写入真人实拍版 `**画面风格**` 和 `**--neg**`；"
+                "收集阶段不会为横屏追加固定尾部。"
+            )
+    else:
+        style_delivery_line = (
+            "收集阶段会按该风格追加每组固定 `画面风格` 和基础 `--neg`；"
+            "worker 不要在 `final.txt` 每组重复写固定尾部。"
+        )
 
     if mode == "scene":
         inputs = "- Segment scripts: `segments/seg*/script.txt`"
@@ -380,7 +458,7 @@ def make_episode_task(
         ).strip()
         workflow = textwrap.dedent(
             f"""
-            1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, `script.txt`, and each segment script.
+            1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}{visual_style_workflow_phrase}, `script.txt`, and each segment script.
             2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
             3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. {group_timing_line}
             4. Review the assembled `final.txt` once using `{reviewer_skill_name}`; write the raw reviewer JSON to `review.txt`.
@@ -400,7 +478,7 @@ def make_episode_task(
         ).strip()
         workflow = textwrap.dedent(
             f"""
-            1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}, and `script.txt`.
+            1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}{visual_style_workflow_phrase}, and `script.txt`.
             2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. {group_timing_line}
             3. Review the full episode once using the review skill; write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
@@ -419,7 +497,9 @@ Aspect: `{aspect}` ({aspect_label})
 - Generation skill: `{generator_skill_path}`
 - Review skill: `{reviewer_skill_path}`
 - Target video model: `{target_video_model}`
+- Visual style: `{visual_style}` ({visual_style_label})
 {profile_input_line}
+{visual_style_input_line}
 - Full episode script: `script.txt`
 {inputs}
 
@@ -427,6 +507,12 @@ Aspect: `{aspect}` ({aspect_label})
 {outputs}
 
 {make_production_focus_block(aspect=aspect, target_video_model=target_video_model)}
+
+## Visual Style Contract
+- 本 run 的视觉风格是 `{visual_style}`（{visual_style_label}）。
+- {style_cfg["task_guidance"]}
+- {style_delivery_line}
+- `视频禁止项` 仍只写本组剧情错误，不要混入通用画质词或媒介风格词。
 
 ## Workflow
 {workflow}
@@ -899,8 +985,8 @@ CLEAN_SHOT_SECONDS_RE = re.compile(r"(?:\*\*)?本镜估算时长(?:\*\*)?[：:]\
 CLEAN_GROUP_TOTAL_RE = re.compile(r"总时长[：:]\s*(?P<seconds>\d{1,3}(?:\.\d+)?)\s*秒")
 CLEAN_GROUP_SHOTS_RE = re.compile(r"镜头数[：:]\s*(?P<shots>\d{1,3})\s*个")
 MACHINE_TAG_RE = re.compile(r"(?m)^\ufeff?\s*<<<(?:GROUP|GROUP_END|SHOT|SHOT_END)\b.*?>>>\s*$")
-VERTICAL_SEEDANCE_STYLE_LINE = "画面风格：浅景深，电影质感，4K画质，真人实拍风格，细节丰富，无字幕，无配乐"
-VERTICAL_SEEDANCE_NEGATIVE_LINE = "--neg 模糊，低分辨率，扭曲，变形，卡通，油画，3D渲染，塑料感，西方人面孔，面部融合，过曝，色彩失真，伪影，叠加字幕，硬字幕，烧录字幕，后期添加的文字，水印，logo，标题文字，片名，演职员表，背景音乐，配乐，BGM，叠加文字，画面外文字"
+VERTICAL_SEEDANCE_STYLE_LINE = VISUAL_STYLE_CONFIG["live-action"]["style_line"]
+VERTICAL_SEEDANCE_NEGATIVE_LINE = VISUAL_STYLE_CONFIG["live-action"]["negative_line"]
 GROUP_END_MARKER_RE = re.compile(
     r"(?m)^\s*===\s*第[0-9一二三四五六七八九十百千万零〇两]+组结束\s*===\s*$"
 )
@@ -1519,6 +1605,43 @@ def validate_horizontal_output_structure_contract(content: str) -> list[str]:
     return issues
 
 
+def validate_horizontal_visual_style_contract(content: str, *, visual_style: str) -> list[str]:
+    issues: list[str] = []
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    if visual_style != "3d-cg":
+        return issues
+
+    live_action_markers = ("真人实拍", "真实摄影", "真实演员", "纪录片摄影")
+    required_style_markers = ("3D CG", "动漫3D", "二次元", "风格化面部", "清晰轮廓线", "高质量卡通渲染", "PBR")
+    forbidden_neg_markers = ("3D渲染", "CG感", "动画感", "卡通", "二次元", "动漫")
+
+    for index, group_match in enumerate(group_matches):
+        raw_group = group_match.group("num")
+        group_number = _group_number(raw_group) or index + 1
+        block_start = group_match.end()
+        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
+        block = content[block_start:block_end]
+
+        style_text = _horizontal_field_value(block, "画面风格") or ""
+        neg_text = _horizontal_field_value(block, "--neg") or ""
+        live_hits = [marker for marker in live_action_markers if marker in style_text]
+        if live_hits:
+            issues.append(
+                f"第{group_number}组是 3D CG 横屏 run，但 `画面风格` 包含真人媒介词 `{ ' / '.join(live_hits) }`。"
+            )
+        if not any(marker in style_text for marker in required_style_markers):
+            issues.append(
+                f"第{group_number}组是 3D CG 横屏 run，但 `画面风格` 缺少动漫3D CG/二次元角色/清晰轮廓线/高质量卡通渲染/PBR 等媒介锚点。"
+            )
+        neg_hits = [marker for marker in forbidden_neg_markers if marker in neg_text]
+        if neg_hits:
+            issues.append(
+                f"第{group_number}组是 3D CG 横屏 run，但 `--neg` 否定目标媒介 `{ ' / '.join(neg_hits) }`。"
+            )
+
+    return issues
+
+
 def validate_horizontal_camera_motion_contract(content: str) -> list[str]:
     issues: list[str] = []
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
@@ -1863,7 +1986,7 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
     return issues
 
 
-def _append_vertical_seedance_tail_to_block(block: str) -> str:
+def _append_vertical_seedance_tail_to_block(block: str, *, visual_style: str = "live-action") -> str:
     negative_hints: list[str] = []
 
     def remove_negative_hint(match: re.Match[str]) -> str:
@@ -1873,14 +1996,17 @@ def _append_vertical_seedance_tail_to_block(block: str) -> str:
         return ""
 
     block = VIDEO_NEGATIVE_HINT_RE.sub(remove_negative_hint, block)
-    negative_line = VERTICAL_SEEDANCE_NEGATIVE_LINE
+    style_cfg = visual_style_config(visual_style)
+    style_line = style_cfg["style_line"]
+    base_negative_line = style_cfg["negative_line"]
+    negative_line = base_negative_line
     if negative_hints:
         negative_line = f"{negative_line}，{'，'.join(negative_hints)}"
 
     additions = []
-    if VERTICAL_SEEDANCE_STYLE_LINE not in block:
-        additions.append(VERTICAL_SEEDANCE_STYLE_LINE)
-    if VERTICAL_SEEDANCE_NEGATIVE_LINE not in block:
+    if style_line not in block:
+        additions.append(style_line)
+    if base_negative_line not in block:
         additions.append(negative_line)
     if not additions:
         return block
@@ -1892,7 +2018,7 @@ def _append_vertical_seedance_tail_to_block(block: str) -> str:
     return block.rstrip() + "\n\n" + tail.rstrip() + "\n"
 
 
-def append_vertical_seedance_tail_to_groups(content: str) -> str:
+def append_vertical_seedance_tail_to_groups(content: str, *, visual_style: str = "live-action") -> str:
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
     if not group_matches:
         return content
@@ -1903,7 +2029,7 @@ def append_vertical_seedance_tail_to_groups(content: str) -> str:
         block_start = group_match.end()
         block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
         parts.append(content[cursor:block_start])
-        parts.append(_append_vertical_seedance_tail_to_block(content[block_start:block_end]))
+        parts.append(_append_vertical_seedance_tail_to_block(content[block_start:block_end], visual_style=visual_style))
         cursor = block_end
     parts.append(content[cursor:])
     return "".join(parts)
@@ -1915,6 +2041,27 @@ def is_happyhorse_episode_dir(episode_dir: Path) -> bool:
         return False
     task_text = task_path.read_text(encoding="utf-8", errors="replace")
     return "Target video model: `happyhorse`" in task_text
+
+
+def episode_visual_style(episode_dir: Path) -> str:
+    meta_path = episode_dir / "episode.json"
+    if meta_path.is_file():
+        try:
+            meta = read_json(meta_path)
+        except Exception:
+            meta = {}
+        value = meta.get("visual_style")
+        if isinstance(value, str) and value.strip() in VISUAL_STYLE_CONFIG:
+            return value.strip()
+
+    task_path = episode_dir / "TASK.md"
+    if task_path.is_file():
+        task_text = task_path.read_text(encoding="utf-8", errors="replace")
+        match = re.search(r"Visual style:\s*`(?P<value>[^`]+)`", task_text)
+        if match and match.group("value") in VISUAL_STYLE_CONFIG:
+            return match.group("value")
+
+    return "live-action"
 
 
 def validate_happyhorse_prompt_contract(content: str) -> list[str]:
@@ -2555,8 +2702,10 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         print(f"[error] Seedance prompt profile not found: {seedance_profile_path}", file=sys.stderr)
         return 1
     target_video_model = args.target_video_model
+    visual_style = args.visual_style
     happyhorse_profile_path: Path | None = None
     ai_video_prompt_skill_path: Path | None = None
+    cg_visual_style_skill_path: Path | None = None
     if target_video_model == "happyhorse":
         happyhorse_profile_path = (project_root / HAPPYHORSE_PROMPT_PROFILE_PATH).resolve()
         if not happyhorse_profile_path.is_file():
@@ -2565,6 +2714,11 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         ai_video_prompt_skill_path = (project_root / AI_VIDEO_PROMPT_SKILL_PATH).resolve()
         if not ai_video_prompt_skill_path.is_file():
             print(f"[error] AI video prompt skill not found: {ai_video_prompt_skill_path}", file=sys.stderr)
+            return 1
+    if visual_style == "3d-cg":
+        cg_visual_style_skill_path = (project_root / CG_VISUAL_STYLE_SKILL_PATH).resolve()
+        if not cg_visual_style_skill_path.is_file():
+            print(f"[error] 3D CG visual style skill not found: {cg_visual_style_skill_path}", file=sys.stderr)
             return 1
 
     write_utf8(run_dir / "context.md", make_agent_context(
@@ -2578,7 +2732,9 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         seedance_profile_path=seedance_profile_path,
         happyhorse_profile_path=happyhorse_profile_path,
         ai_video_prompt_skill_path=ai_video_prompt_skill_path,
+        cg_visual_style_skill_path=cg_visual_style_skill_path,
         target_video_model=target_video_model,
+        visual_style=visual_style,
         aspect=aspect,
         mode=args.mode,
     ))
@@ -2598,8 +2754,10 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         "seedance_profile_path": str(seedance_profile_path),
         "storyboard_aspect": aspect,
         "target_video_model": target_video_model,
+        "visual_style": visual_style,
         "happyhorse_profile_path": str(happyhorse_profile_path) if happyhorse_profile_path else None,
         "ai_video_prompt_skill_path": str(ai_video_prompt_skill_path) if ai_video_prompt_skill_path else None,
+        "cg_visual_style_skill_path": str(cg_visual_style_skill_path) if cg_visual_style_skill_path else None,
         "out_dir": str(out_dir),
         "agent": args.agent,
         "mode": args.mode,
@@ -2624,6 +2782,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             "source_path": str(episode.source_path),
             "output_path": str(output_path),
             "storyboard_aspect": aspect,
+            "visual_style": visual_style,
             "generator_skill_name": aspect_cfg["generator_name"],
             "reviewer_skill_name": aspect_cfg["reviewer_name"],
             "reviewer_source": aspect_cfg["reviewer_name"],
@@ -2659,7 +2818,9 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             seedance_profile_path=seedance_profile_path,
             happyhorse_profile_path=happyhorse_profile_path,
             ai_video_prompt_skill_path=ai_video_prompt_skill_path,
+            cg_visual_style_skill_path=cg_visual_style_skill_path,
             target_video_model=target_video_model,
+            visual_style=visual_style,
             aspect=aspect,
             mode=args.mode,
         )
@@ -2763,10 +2924,15 @@ def validate_episode(args: argparse.Namespace) -> int:
     if horizontal_run:
         horizontal_motion_issues = validate_horizontal_camera_motion_contract(content)
         horizontal_output_structure_issues = validate_horizontal_output_structure_contract(content)
+        horizontal_visual_style_issues = validate_horizontal_visual_style_contract(
+            content,
+            visual_style=episode_visual_style(episode_dir),
+        )
         physical_plausibility_issues = validate_physical_plausibility_floor(content)
     else:
         horizontal_motion_issues = []
         horizontal_output_structure_issues = []
+        horizontal_visual_style_issues = []
         physical_plausibility_issues = []
     happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
     if pre_check:
@@ -2788,6 +2954,7 @@ def validate_episode(args: argparse.Namespace) -> int:
         + quality_issues
         + horizontal_motion_issues
         + horizontal_output_structure_issues
+        + horizontal_visual_style_issues
         + physical_plausibility_issues
         + happyhorse_issues
         + review_issues
@@ -2842,6 +3009,7 @@ def validate_episode(args: argparse.Namespace) -> int:
     if horizontal_run:
         report_lines.append("- horizontal_camera_motion: passed")
         report_lines.append("- horizontal_output_structure: passed")
+        report_lines.append("- horizontal_visual_style: passed")
         report_lines.append("- physical_plausibility: passed")
     if is_happyhorse_episode_dir(episode_dir):
         report_lines.append("- happyhorse_prompt_contract: passed")
@@ -2898,10 +3066,15 @@ def collect_run(args: argparse.Namespace) -> int:
         if horizontal_run:
             horizontal_motion_issues = validate_horizontal_camera_motion_contract(content)
             horizontal_output_structure_issues = validate_horizontal_output_structure_contract(content)
+            horizontal_visual_style_issues = validate_horizontal_visual_style_contract(
+                content,
+                visual_style=episode_visual_style(episode_dir),
+            )
             physical_plausibility_issues = validate_physical_plausibility_floor(content)
         else:
             horizontal_motion_issues = []
             horizontal_output_structure_issues = []
+            horizontal_visual_style_issues = []
             physical_plausibility_issues = []
         happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
         review_issues = validate_review_artifacts(episode_dir)
@@ -2911,6 +3084,7 @@ def collect_run(args: argparse.Namespace) -> int:
             + quality_issues
             + horizontal_motion_issues
             + horizontal_output_structure_issues
+            + horizontal_visual_style_issues
             + physical_plausibility_issues
             + happyhorse_issues
             + review_issues
@@ -2934,6 +3108,7 @@ def collect_run(args: argparse.Namespace) -> int:
             summary_lines.extend(f"- quality_floor: {issue}" for issue in quality_issues[:8])
             summary_lines.extend(f"- horizontal_camera_motion: {issue}" for issue in horizontal_motion_issues[:8])
             summary_lines.extend(f"- horizontal_output_structure: {issue}" for issue in horizontal_output_structure_issues[:8])
+            summary_lines.extend(f"- horizontal_visual_style: {issue}" for issue in horizontal_visual_style_issues[:8])
             summary_lines.extend(f"- physical_plausibility: {issue}" for issue in physical_plausibility_issues[:8])
             summary_lines.extend(f"- happyhorse_prompt_contract: {issue}" for issue in happyhorse_issues[:8])
             summary_lines.extend(f"- storyboard_reviewer: {issue}" for issue in review_issues[:8])
@@ -2956,7 +3131,10 @@ def collect_run(args: argparse.Namespace) -> int:
 
         output_content = content
         if not horizontal_run and not is_happyhorse_episode_dir(episode_dir):
-            output_content = append_vertical_seedance_tail_to_groups(output_content)
+            output_content = append_vertical_seedance_tail_to_groups(
+                output_content,
+                visual_style=episode_visual_style(episode_dir),
+            )
 
         write_utf8(output_path, output_content)
         if export_index:
@@ -3071,6 +3249,12 @@ def parse_args() -> argparse.Namespace:
         choices=["seedance", "happyhorse"],
         default="seedance",
         help="Video prompt profile to expose to episode workers. Default keeps the existing Seedance storyboard workflow.",
+    )
+    prepare.add_argument(
+        "--visual-style",
+        choices=sorted(VISUAL_STYLE_CONFIG.keys()),
+        default="live-action",
+        help="Visual medium style. Use 3d-cg for anime-style 3D CG short-drama workflows; default keeps the existing live-action short-drama style.",
     )
     prepare.add_argument(
         "--aspect",
