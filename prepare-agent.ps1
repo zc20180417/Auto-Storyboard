@@ -17,8 +17,6 @@ param(
     [string]$OutputModelSuffix = "agent-cli",
     [ValidateSet("vertical", "horizontal")]
     [string]$Aspect = "vertical",
-    [ValidateSet("seedance", "happyhorse")]
-    [string]$TargetVideoModel = "seedance",
     [ValidateSet("live-action", "3d-cg")]
     [string]$VisualStyle = "live-action",
     [switch]$Force
@@ -53,7 +51,6 @@ $cmdArgs = @(
     "--parallelism", "$Parallelism",
     "--output-model-suffix", $OutputModelSuffix,
     "--aspect", $Aspect,
-    "--target-video-model", $TargetVideoModel,
     "--visual-style", $VisualStyle,
     "--mode", $Mode
 )
@@ -72,7 +69,6 @@ if ($Force) {
 
 Write-Host "[prepare-agent] mode=$Mode"
 Write-Host "[prepare-agent] aspect=$Aspect"
-Write-Host "[prepare-agent] target video model=$TargetVideoModel"
 Write-Host "[prepare-agent] visual style=$VisualStyle"
 Write-Host "[prepare-agent] source=$Source"
 if ($Prompt -and $AllowPromptOverride) {

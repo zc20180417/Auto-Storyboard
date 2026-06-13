@@ -41,8 +41,6 @@ DEFAULT_AGENT_RUNS_DIR = "agent_runs"
 DEFAULT_AGENT_OUTPUT_DIR = "outputs_agent"
 PROJECT_AGENT_SKILLS_DIR = "agent_skills"
 SEEDANCE_PROMPT_PROFILE_PATH = "agent_skills/seedance-prompt-profile/SKILL.md"
-HAPPYHORSE_PROMPT_PROFILE_PATH = "agent_skills/happyhorse-prompt-profile/SKILL.md"
-AI_VIDEO_PROMPT_SKILL_PATH = "agent_skills/ai-video-prompt/SKILL.md"
 CG_VISUAL_STYLE_SKILL_PATH = "agent_skills/3d-cg-visual-style/SKILL.md"
 STORYBOARD_QUALITY_POLICY_PATH = "agent_skills/storyboard-quality-policy.json"
 AGENT_WORKSPACE_VERSION = 1
@@ -287,37 +285,23 @@ def make_agent_context(
     generator_skill_path: Path,
     reviewer_skill_path: Path,
     seedance_profile_path: Path,
-    happyhorse_profile_path: Path | None,
-    ai_video_prompt_skill_path: Path | None,
-    cg_visual_style_skill_path: Path | None,
-    target_video_model: str,
-    visual_style: str,
     aspect: str,
     mode: str,
+    cg_visual_style_skill_path: Path | None = None,
+    visual_style: str = "live-action",
 ) -> str:
     aspect_cfg = storyboard_aspect_config(aspect)
     aspect_label = aspect_cfg["label"]
     reviewer_skill_name = aspect_cfg["reviewer_name"]
     style_cfg = visual_style_config(visual_style)
     visual_style_label = style_cfg["label"]
-    if target_video_model == "happyhorse":
-        model_profile_lines = textwrap.dedent(
-            f"""
-            - Target video model: `happyhorse`
-            - HappyHorse Prompt Profile: `{happyhorse_profile_path}`
-            - AI Video Prompt Skill: `{ai_video_prompt_skill_path}`
-            - Seedance Prompt Profile: `{seedance_profile_path}`
-            """
-        ).strip()
-        profile_rule = "HappyHorse / Seedance Prompt Profile 与 AI Video Prompt Skill 只作为 HappyHorse 目标模型下的短剧风格参考层"
-    else:
-        model_profile_lines = textwrap.dedent(
-            f"""
-            - Target video model: `seedance`
-            - Seedance Prompt Profile: `{seedance_profile_path}`
-            """
-        ).strip()
-        profile_rule = "Seedance Prompt Profile 只作为短剧风格参考层"
+    model_profile_lines = textwrap.dedent(
+        f"""
+        - Target video model: `seedance`
+        - Seedance Prompt Profile: `{seedance_profile_path}`
+        """
+    ).strip()
+    profile_rule = "Seedance Prompt Profile 只作为短剧风格参考层"
     visual_style_lines = ""
     if visual_style == "3d-cg":
         visual_style_lines = f"\n- 3D CG Visual Style Skill: `{cg_visual_style_skill_path}`"
@@ -369,13 +353,10 @@ def make_episode_task(
     generator_skill_path: Path,
     reviewer_skill_path: Path,
     seedance_profile_path: Path,
-    happyhorse_profile_path: Path | None,
-    ai_video_prompt_skill_path: Path | None,
-    cg_visual_style_skill_path: Path | None,
-    target_video_model: str,
-    visual_style: str,
     aspect: str,
     mode: str,
+    cg_visual_style_skill_path: Path | None = None,
+    visual_style: str = "live-action",
 ) -> str:
     rel_root = episode_dir.relative_to(run_dir)
     aspect_cfg = storyboard_aspect_config(aspect)
@@ -391,35 +372,9 @@ def make_episode_task(
         aspect_contract_line = "Vertical outputs follow the vertical generator skill contract; do not apply horizontal camera-motion fields unless the run aspect is horizontal."
         group_timing_line = "Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds."
         asset_id_contract_line = "- Do not put asset IDs in `final.txt`; asset binding belongs to the asset extraction stage."
-    if target_video_model == "happyhorse":
-        profile_read_phrase = "the HappyHorse / Seedance prompt profiles, and the AI video prompt skill"
-        profile_input_line = f"- HappyHorse prompt profile: `{happyhorse_profile_path}`，只作为 HappyHorse 1.0 视频提示词参考层，不得复制官方 case、控制台占位符或非短剧模板语气到 `final.txt`\n- AI video prompt skill: `{ai_video_prompt_skill_path}`，只在 HappyHorse 目标模型下作为提示词优化参考；不得复制 `@图`、`Image`、参考图/首帧槽位、独立音频时间轴、BGM 或视频编辑模板语气到 `final.txt`\n- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
-        profile_constraint = "HappyHorse / Seedance Prompt Profiles and AI Video Prompt Skill are only reference layers for the HappyHorse target"
-        happyhorse_prompt_boundary = textwrap.dedent(
-            """
-            ## HappyHorse Output Contract
-            - For HappyHorse, every group must use this visible wrapper: `【场景】`, `【主体】`, `【运动】`, `【音频】`, `组尾衔接`, `【画面风格】`.
-            - Do not use the default Seedance-looking wrapper in `final.txt`: no `**人物**`, `**场景**`, `**道具**`, `组首空间锁定`, `画面风格：`, or standalone `--neg` lines.
-            - Use HappyHorse Prompt Tuner as a minimal repair / structure cleanup layer, not an aggressive rewrite layer. Preserve key shots, action stages, character relations, key props, original dialogue, and sound design.
-            - Before writing each group, internally check five anchors: subject, scene, motion, camera, and sound. Fill only missing anchors; do not add brands, props, subtitles, BGM, or interface settings that are not in the script.
-            - Put scene/time/light/environment into `【场景】`. Put visible characters, key props, positions, body orientation, gaze, dialogue targets, and prop ownership into `【主体】`.
-            - Put all time-coded shot ranges only under `【运动】`. Each time range must be a standalone Chinese `秒` line, for example `0-4.5秒：`, followed by `镜头描述：` and `光影设计：`.
-            - `【运动】` is for visible action, camera movement, mouth movement, body reaction, prop operation, and light changes. Do not repeat full dialogue there; full script dialogue belongs in `【音频】`.
-            - Use `【音频】` for sounds and dialogue, but do not repeat timecodes there. Use `第一段/第二段/第三段` to align with the movement segments.
-            - Keep `【画面风格】` short: visual style, no subtitles/no music, and a compact `负向：...` list of at most 8 items.
-            - Do not put production-side interface parameters in `final.txt`: no aspect ratio such as `16:9` / `9:16`, no repeated group duration such as `11秒` / `11s`, and no resolution labels such as `4K` / `1080p`.
-            - Use `ai-video-prompt` only to improve HappyHorse-friendly wording: concrete visual compensation, stable camera movement, and clear dialogue/audio ownership.
-            - Keep the Auto-Storyboard contract unchanged: natural Chinese storyboard text, `cut_id`, group headings, Chinese `秒` time ranges, group tail continuity, reviewer pass, and validate gate.
-            - Do not write production-side image bindings such as `@图`, `Image 1`, `参考图`, `首帧`, `尾帧`, or reference-image instructions. Reference images are bound later by the video production workflow.
-            - Do not add BGM, subtitles, interface parameters, bracketed `[0-3s]` timelines, `s` time units, or a separate audio timeline.
-            - Dialogue and dubbing hints from `ai-video-prompt` must be converted into natural `【音频】` prose. Do not copy raw `[]` / `<>` acoustic-control markup into `final.txt` unless the original script explicitly contains that audible content.
-            """
-        ).strip()
-    else:
-        profile_read_phrase = "the Seedance prompt profile"
-        profile_input_line = f"- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
-        profile_constraint = "Seedance Prompt Profile is only a reference layer"
-        happyhorse_prompt_boundary = ""
+    profile_read_phrase = "the Seedance prompt profile"
+    profile_input_line = f"- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
+    profile_constraint = "Seedance Prompt Profile is only a reference layer"
     visual_style_input_line = ""
     visual_style_workflow_phrase = ""
     if visual_style == "3d-cg":
@@ -432,6 +387,8 @@ def make_episode_task(
                 "正向包含高质量动漫3D CG短剧风格、二次元角色设计、风格化面部与眼睛、清晰轮廓线、"
                 "高质量卡通渲染、PBR材质与手绘质感融合、电影级布光、自然景深；"
                 "不得写真人实拍、真实摄影、真实演员；负向不得包含 `3D渲染`、`CG感`、`动画感`、`卡通`、`动漫`、`二次元`。"
+                "3D CG 横屏每组至少安排 1 个有明确路径或落点的可见运镜，例如横向跟拍、前景掠过、半环绕、贴地推进、低角度推近、焦点转移或急停落点；"
+                "对白密集段仍保留稳定镜头承载口型，不要全组炫技运动。"
             )
         else:
             style_delivery_line = (
@@ -496,7 +453,7 @@ Aspect: `{aspect}` ({aspect_label})
 - Run context: `../../context.md`
 - Generation skill: `{generator_skill_path}`
 - Review skill: `{reviewer_skill_path}`
-- Target video model: `{target_video_model}`
+- Target video model: `seedance`
 - Visual style: `{visual_style}` ({visual_style_label})
 {profile_input_line}
 {visual_style_input_line}
@@ -506,7 +463,7 @@ Aspect: `{aspect}` ({aspect_label})
 ## Required Outputs
 {outputs}
 
-{make_production_focus_block(aspect=aspect, target_video_model=target_video_model)}
+{make_production_focus_block(aspect=aspect)}
 
 ## Visual Style Contract
 - 本 run 的视觉风格是 `{visual_style}`（{visual_style_label}）。
@@ -516,8 +473,6 @@ Aspect: `{aspect}` ({aspect_label})
 
 ## Workflow
 {workflow}
-
-{happyhorse_prompt_boundary}
 
 Pre-check command (run before calling {reviewer_skill_name} to catch mechanical issues early):
 
@@ -575,7 +530,7 @@ Template/model-term pollution must use `prompt_pollution` as the issue/warning `
 """.strip()
 
 
-def make_production_focus_block(*, aspect: str, target_video_model: str) -> str:
+def make_production_focus_block(*, aspect: str) -> str:
     if aspect != "vertical":
         return ""
     policy_version = storyboard_quality_policy_version()
@@ -1003,14 +958,6 @@ DEFAULT_STORYBOARD_QUALITY_POLICY = {
     },
 }
 _STORYBOARD_QUALITY_POLICY_CACHE: dict | None = None
-HAPPYHORSE_REQUIRED_SECTIONS = ("【场景】", "【主体】", "【运动】", "【音频】", "【画面风格】")
-HAPPYHORSE_SEEDANCE_STYLE_MARKERS = ("**人物**", "**场景**", "**道具**", "组首空间锁定", "画面风格：", "【技术参数】")
-HAPPYHORSE_INTERFACE_PARAM_RE = re.compile(
-    r"(?i)(?:\b\d+\s*[:：]\s*\d+\b|\b\d{1,3}(?:\.\d+)?\s*s\b|\b(?:4k|8k|1080p|720p)\b|(?:^|[|，,、；;])\s*\d{1,3}(?:\.\d+)?\s*秒(?:\s*(?:[|，,、；;]|$)))"
-)
-HAPPYHORSE_NEGATIVE_MAX_ITEMS = 8
-HAPPYHORSE_STYLE_MAX_CHARS = 180
-HAPPYHORSE_DIALOGUE_IN_MOTION_RE = re.compile(r"[“\"]([^”\"]{2,})[”\"]")
 REQUIRED_AUDIT_COVERAGE_KEYS = (
     "script_fidelity",
     "dialogue_direction",
@@ -1049,6 +996,8 @@ HORIZONTAL_CAMERA_MOTION_VAGUE_PATTERNS = (
     "更有动感",
 )
 HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS = (
+    "低角度推近",
+    "轻推近",
     "推近",
     "推进",
     "后拉",
@@ -1058,7 +1007,13 @@ HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS = (
     "平移",
     "横移",
     "摇向",
+    "前景掠过",
     "掠过",
+    "半环绕",
+    "环绕",
+    "贴地推进",
+    "焦点转移",
+    "急停落点",
     "手持",
     "移动",
 )
@@ -1166,10 +1121,6 @@ MODEL_META_PROMPT_PATTERNS = (
     "由 Seedance",
     "Seedance 自动",
     "Seedance自动",
-    "HappyHorse 可",
-    "由 HappyHorse",
-    "HappyHorse 自动",
-    "HappyHorse自动",
     "自动正反打",
     "自动分镜",
     "人物图",
@@ -1413,77 +1364,6 @@ def validate_dialogue_pacing_floor(content: str) -> list[str]:
     return issues
 
 
-HAPPYHORSE_AUDIO_SEGMENT_RE = re.compile(
-    r"(第[一二三四五六七八九十0-9]+段)\s*[：:]"
-)
-
-
-def _extract_happyhorse_audio_segments(audio_text: str) -> list[tuple[str, str]]:
-    matches = list(HAPPYHORSE_AUDIO_SEGMENT_RE.finditer(audio_text))
-    if not matches:
-        return []
-
-    segments: list[tuple[str, str]] = []
-    for index, match in enumerate(matches):
-        start = match.end()
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(audio_text)
-        segments.append((match.group(1), audio_text[start:end]))
-    return segments
-
-
-def validate_happyhorse_audio_dialogue_pacing(content: str) -> list[str]:
-    issues: list[str] = []
-    group_matches = list(CLEAN_GROUP_RE.finditer(content))
-    for index, group_match in enumerate(group_matches):
-        group_number = _group_number(group_match.group("num")) or (index + 1)
-        block_start = group_match.end()
-        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
-        block = content[block_start:block_end]
-
-        if "【音频】" not in block or "【运动】" not in block:
-            continue
-
-        time_matches = list(CLEAN_SHOT_TIME_RANGE_LINE_RE.finditer(block))
-        if not time_matches:
-            continue
-        durations = [
-            _parse_seconds(time_match.group("end")) - _parse_seconds(time_match.group("start"))
-            for time_match in time_matches
-        ]
-
-        audio_match = re.search(
-            r"【音频】(?P<audio>.*?)(?:\n\s*组尾衔接[：:]|\n\s*【画面风格】|$)",
-            block,
-            flags=re.S,
-        )
-        if not audio_match:
-            continue
-
-        audio_segments = _extract_happyhorse_audio_segments(audio_match.group("audio"))
-        if not audio_segments:
-            continue
-
-        for segment_index, (segment_label, segment_text) in enumerate(audio_segments):
-            if segment_index >= len(durations):
-                break
-            seconds = durations[segment_index]
-            if seconds <= 0:
-                continue
-
-            chars = _effective_dialogue_chars(segment_text)
-            if chars == 0:
-                continue
-
-            cps = chars / seconds
-            if cps > 6.5:
-                issues.append(
-                    f"第{group_number}组 {segment_label} 音频台词节奏过快；有效字数 {chars}，"
-                    f"对应运动段 {_format_seconds(seconds)} 秒，字秒比 {cps:.1f}，超过 6.5 字/秒硬上限。"
-                )
-
-    return issues
-
-
 def is_horizontal_episode_dir(episode_dir: Path) -> bool:
     meta_path = episode_dir / "episode.json"
     if meta_path.is_file():
@@ -1642,7 +1522,7 @@ def validate_horizontal_visual_style_contract(content: str, *, visual_style: str
     return issues
 
 
-def validate_horizontal_camera_motion_contract(content: str) -> list[str]:
+def validate_horizontal_camera_motion_contract(content: str, *, visual_style: str = "live-action") -> list[str]:
     issues: list[str] = []
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
     for index, group_match in enumerate(group_matches):
@@ -1677,6 +1557,17 @@ def validate_horizontal_camera_motion_contract(content: str) -> list[str]:
             any(pattern in shot_text for pattern in HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS)
             for _shot_label, _seconds, shot_text in shots
         )
+        active_motion_text = "\n".join([motion_text, *(shot_text for _shot_label, _seconds, shot_text in shots)])
+        if (
+            visual_style == "3d-cg"
+            and not any(pattern in active_motion_text for pattern in HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS)
+        ):
+            issues.append(
+                f"第{group_number}组是 3D CG 横屏，但缺少可见运镜；"
+                "至少安排 1 个有明确路径或落点的横向跟拍、前景掠过、半环绕、贴地推进、低角度推近、焦点转移或急停落点，"
+                "避免整组只用固定机位或稳定中景。"
+            )
+
         stable_count = sum(
             any(pattern in shot_text or pattern in motion_text for pattern in HORIZONTAL_CAMERA_MOTION_STABLE_PATTERNS)
             for _shot_label, _seconds, shot_text in shots
@@ -2035,14 +1926,6 @@ def append_vertical_seedance_tail_to_groups(content: str, *, visual_style: str =
     return "".join(parts)
 
 
-def is_happyhorse_episode_dir(episode_dir: Path) -> bool:
-    task_path = episode_dir / "TASK.md"
-    if not task_path.is_file():
-        return False
-    task_text = task_path.read_text(encoding="utf-8", errors="replace")
-    return "Target video model: `happyhorse`" in task_text
-
-
 def episode_visual_style(episode_dir: Path) -> str:
     meta_path = episode_dir / "episode.json"
     if meta_path.is_file():
@@ -2062,56 +1945,6 @@ def episode_visual_style(episode_dir: Path) -> str:
             return match.group("value")
 
     return "live-action"
-
-
-def validate_happyhorse_prompt_contract(content: str) -> list[str]:
-    issues: list[str] = []
-    group_matches = list(CLEAN_GROUP_RE.finditer(content))
-    for index, group_match in enumerate(group_matches):
-        group_number = _group_number(group_match.group("num")) or (index + 1)
-        block_start = group_match.end()
-        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
-        block = content[block_start:block_end]
-
-        for section in HAPPYHORSE_REQUIRED_SECTIONS:
-            if section not in block:
-                issues.append(f"第{group_number}组缺少 HappyHorse 专属段落 `{section}`。")
-
-        for marker in HAPPYHORSE_SEEDANCE_STYLE_MARKERS:
-            if marker in block:
-                issues.append(f"第{group_number}组仍包含 Seedance 默认外观 `{marker}`；HappyHorse 目标下应改写进 `【场景】/【主体】/【画面风格】`。")
-
-        if re.search(r"(?m)^\s*--neg\b", block):
-            issues.append(f"第{group_number}组仍使用独立 `--neg` 行；HappyHorse 目标下负向词应写入 `【画面风格】` 的 `负向：`。")
-
-        motion_match = re.search(r"【运动】(?P<motion>.*?)(?:\n\s*【音频】|\n\s*组尾衔接[：:]|\n\s*【画面风格】|$)", block, flags=re.S)
-        if motion_match and HAPPYHORSE_DIALOGUE_IN_MOTION_RE.search(motion_match.group("motion")):
-            issues.append(f"第{group_number}组 `【运动】` 中出现完整引号台词；HappyHorse 目标下完整台词只放在 `【音频】`，运动段只写开口、口型、视线和身体反应。")
-
-        audio_match = re.search(r"【音频】(?P<audio>.*?)(?:\n\s*组尾衔接[：:]|\n\s*【画面风格】|\n\s*【技术参数】|$)", block, flags=re.S)
-        if audio_match and CLEAN_SHOT_TIME_RANGE_RE.search(audio_match.group("audio")):
-            issues.append(f"第{group_number}组 `【音频】` 中重复写了时间码；HappyHorse 目标下只允许 `【运动】` 出现时间段。")
-
-        style_match = re.search(r"【画面风格】(?P<style>.*?)(?:\n\s*===\s*第|\Z)", block, flags=re.S)
-        if style_match:
-            style_text = style_match.group("style").strip()
-            if "负向" not in style_text:
-                issues.append(f"第{group_number}组 `【画面风格】` 缺少 `负向：`。")
-            if len(style_text) > HAPPYHORSE_STYLE_MAX_CHARS:
-                issues.append(f"第{group_number}组 `【画面风格】` 过长；HappyHorse 目标下风格和负向词应短写，避免每组重复长串通用负向词。")
-            negative_match = re.search(r"负向[：:](?P<negative>.*)", style_text, flags=re.S)
-            if negative_match:
-                negative_items = [
-                    item.strip()
-                    for item in re.split(r"[，,、；;]", negative_match.group("negative"))
-                    if item.strip()
-                ]
-                if len(negative_items) > HAPPYHORSE_NEGATIVE_MAX_ITEMS:
-                    issues.append(f"第{group_number}组 `【画面风格】` 负向词超过 {HAPPYHORSE_NEGATIVE_MAX_ITEMS} 项；请压缩为 HappyHorse 需要的短负向列表。")
-            if HAPPYHORSE_INTERFACE_PARAM_RE.search(style_text):
-                issues.append(f"第{group_number}组 `【画面风格】` 包含比例、时长或分辨率等生产界面参数；这些参数不要写进分镜提示词正文。")
-
-    return issues
 
 
 def validate_storyboard_quality_floor(content: str, *, allow_horizontal_output_fields: bool = False) -> list[str]:
@@ -2141,7 +1974,6 @@ def validate_storyboard_quality_floor(content: str, *, allow_horizontal_output_f
                 "只有原剧本明确连续动作时才可到3秒。"
             )
     issues.extend(validate_dialogue_pacing_floor(content))
-    issues.extend(validate_happyhorse_audio_dialogue_pacing(content))
     return issues
 
 
@@ -2701,20 +2533,8 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     if not seedance_profile_path.is_file():
         print(f"[error] Seedance prompt profile not found: {seedance_profile_path}", file=sys.stderr)
         return 1
-    target_video_model = args.target_video_model
     visual_style = args.visual_style
-    happyhorse_profile_path: Path | None = None
-    ai_video_prompt_skill_path: Path | None = None
     cg_visual_style_skill_path: Path | None = None
-    if target_video_model == "happyhorse":
-        happyhorse_profile_path = (project_root / HAPPYHORSE_PROMPT_PROFILE_PATH).resolve()
-        if not happyhorse_profile_path.is_file():
-            print(f"[error] HappyHorse prompt profile not found: {happyhorse_profile_path}", file=sys.stderr)
-            return 1
-        ai_video_prompt_skill_path = (project_root / AI_VIDEO_PROMPT_SKILL_PATH).resolve()
-        if not ai_video_prompt_skill_path.is_file():
-            print(f"[error] AI video prompt skill not found: {ai_video_prompt_skill_path}", file=sys.stderr)
-            return 1
     if visual_style == "3d-cg":
         cg_visual_style_skill_path = (project_root / CG_VISUAL_STYLE_SKILL_PATH).resolve()
         if not cg_visual_style_skill_path.is_file():
@@ -2730,10 +2550,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         generator_skill_path=generator_skill_path,
         reviewer_skill_path=reviewer_skill_path,
         seedance_profile_path=seedance_profile_path,
-        happyhorse_profile_path=happyhorse_profile_path,
-        ai_video_prompt_skill_path=ai_video_prompt_skill_path,
         cg_visual_style_skill_path=cg_visual_style_skill_path,
-        target_video_model=target_video_model,
         visual_style=visual_style,
         aspect=aspect,
         mode=args.mode,
@@ -2753,10 +2570,8 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         "reviewer_skill_path": str(reviewer_skill_path),
         "seedance_profile_path": str(seedance_profile_path),
         "storyboard_aspect": aspect,
-        "target_video_model": target_video_model,
+        "target_video_model": "seedance",
         "visual_style": visual_style,
-        "happyhorse_profile_path": str(happyhorse_profile_path) if happyhorse_profile_path else None,
-        "ai_video_prompt_skill_path": str(ai_video_prompt_skill_path) if ai_video_prompt_skill_path else None,
         "cg_visual_style_skill_path": str(cg_visual_style_skill_path) if cg_visual_style_skill_path else None,
         "out_dir": str(out_dir),
         "agent": args.agent,
@@ -2816,10 +2631,7 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             generator_skill_path=generator_skill_path,
             reviewer_skill_path=reviewer_skill_path,
             seedance_profile_path=seedance_profile_path,
-            happyhorse_profile_path=happyhorse_profile_path,
-            ai_video_prompt_skill_path=ai_video_prompt_skill_path,
             cg_visual_style_skill_path=cg_visual_style_skill_path,
-            target_video_model=target_video_model,
             visual_style=visual_style,
             aspect=aspect,
             mode=args.mode,
@@ -2922,7 +2734,10 @@ def validate_episode(args: argparse.Namespace) -> int:
     horizontal_run = is_horizontal_episode_dir(episode_dir)
     quality_issues = validate_storyboard_quality_floor(content, allow_horizontal_output_fields=horizontal_run)
     if horizontal_run:
-        horizontal_motion_issues = validate_horizontal_camera_motion_contract(content)
+        horizontal_motion_issues = validate_horizontal_camera_motion_contract(
+            content,
+            visual_style=episode_visual_style(episode_dir),
+        )
         horizontal_output_structure_issues = validate_horizontal_output_structure_contract(content)
         horizontal_visual_style_issues = validate_horizontal_visual_style_contract(
             content,
@@ -2934,7 +2749,6 @@ def validate_episode(args: argparse.Namespace) -> int:
         horizontal_output_structure_issues = []
         horizontal_visual_style_issues = []
         physical_plausibility_issues = []
-    happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
     if pre_check:
         review_issues: list[str] = []
         review_pass_issues: list[str] = []
@@ -2956,7 +2770,6 @@ def validate_episode(args: argparse.Namespace) -> int:
         + horizontal_output_structure_issues
         + horizontal_visual_style_issues
         + physical_plausibility_issues
-        + happyhorse_issues
         + review_issues
         + review_pass_issues
     )
@@ -2984,10 +2797,6 @@ def validate_episode(args: argparse.Namespace) -> int:
             report_lines.append("## Horizontal Output Structure")
             report_lines.extend(f"- {issue}" for issue in horizontal_output_structure_issues)
             report_lines.append("")
-        if happyhorse_issues:
-            report_lines.append("## HappyHorse Prompt Contract")
-            report_lines.extend(f"- {issue}" for issue in happyhorse_issues)
-            report_lines.append("")
         if review_issues:
             report_lines.append("## Storyboard Reviewer Evidence")
             report_lines.extend(f"- {issue}" for issue in review_issues)
@@ -3011,8 +2820,6 @@ def validate_episode(args: argparse.Namespace) -> int:
         report_lines.append("- horizontal_output_structure: passed")
         report_lines.append("- horizontal_visual_style: passed")
         report_lines.append("- physical_plausibility: passed")
-    if is_happyhorse_episode_dir(episode_dir):
-        report_lines.append("- happyhorse_prompt_contract: passed")
     if not pre_check:
         report_lines.append("- review_evidence: passed")
         report_lines.append("- storyboard_reviewer: passed")
@@ -3064,7 +2871,10 @@ def collect_run(args: argparse.Namespace) -> int:
         horizontal_run = is_horizontal_episode_dir(episode_dir)
         quality_issues = validate_storyboard_quality_floor(content, allow_horizontal_output_fields=horizontal_run)
         if horizontal_run:
-            horizontal_motion_issues = validate_horizontal_camera_motion_contract(content)
+            horizontal_motion_issues = validate_horizontal_camera_motion_contract(
+                content,
+                visual_style=episode_visual_style(episode_dir),
+            )
             horizontal_output_structure_issues = validate_horizontal_output_structure_contract(content)
             horizontal_visual_style_issues = validate_horizontal_visual_style_contract(
                 content,
@@ -3076,7 +2886,6 @@ def collect_run(args: argparse.Namespace) -> int:
             horizontal_output_structure_issues = []
             horizontal_visual_style_issues = []
             physical_plausibility_issues = []
-        happyhorse_issues = validate_happyhorse_prompt_contract(content) if is_happyhorse_episode_dir(episode_dir) else []
         review_issues = validate_review_artifacts(episode_dir)
         issues = (
             clean_issues
@@ -3086,7 +2895,6 @@ def collect_run(args: argparse.Namespace) -> int:
             + horizontal_output_structure_issues
             + horizontal_visual_style_issues
             + physical_plausibility_issues
-            + happyhorse_issues
             + review_issues
         )
         review_payload, review_error = _read_review_json(
@@ -3110,7 +2918,6 @@ def collect_run(args: argparse.Namespace) -> int:
             summary_lines.extend(f"- horizontal_output_structure: {issue}" for issue in horizontal_output_structure_issues[:8])
             summary_lines.extend(f"- horizontal_visual_style: {issue}" for issue in horizontal_visual_style_issues[:8])
             summary_lines.extend(f"- physical_plausibility: {issue}" for issue in physical_plausibility_issues[:8])
-            summary_lines.extend(f"- happyhorse_prompt_contract: {issue}" for issue in happyhorse_issues[:8])
             summary_lines.extend(f"- storyboard_reviewer: {issue}" for issue in review_issues[:8])
             summary_lines.append("- copied: skipped because validation failed")
             summary_lines.append("- existing_output: not modified")
@@ -3130,7 +2937,7 @@ def collect_run(args: argparse.Namespace) -> int:
             continue
 
         output_content = content
-        if not horizontal_run and not is_happyhorse_episode_dir(episode_dir):
+        if not horizontal_run:
             output_content = append_vertical_seedance_tail_to_groups(
                 output_content,
                 visual_style=episode_visual_style(episode_dir),
@@ -3150,10 +2957,9 @@ def collect_run(args: argparse.Namespace) -> int:
                 if stale_output.exists():
                     stale_output.unlink()
         copied += 1
-        happyhorse_summary = ", happyhorse_prompt_contract_passed" if is_happyhorse_episode_dir(episode_dir) else ""
         summary_lines.append(
             f"- status: {status}, clean_format_passed, quality_floor_passed, "
-            f"review_evidence_passed, storyboard_reviewer_passed{happyhorse_summary}"
+            f"review_evidence_passed, storyboard_reviewer_passed"
         )
         if changes:
             summary_lines.append(f"- clean_numbering_fixed: {'; '.join(changes[:8])}")
@@ -3244,12 +3050,6 @@ def parse_args() -> argparse.Namespace:
     prepare.add_argument("--agent", choices=["codex", "qwen", "kimi"], default="codex")
     prepare.add_argument("--model", default=None, help="Optional CLI model override.")
     prepare.add_argument("--output-model-suffix", default="agent-cli")
-    prepare.add_argument(
-        "--target-video-model",
-        choices=["seedance", "happyhorse"],
-        default="seedance",
-        help="Video prompt profile to expose to episode workers. Default keeps the existing Seedance storyboard workflow.",
-    )
     prepare.add_argument(
         "--visual-style",
         choices=sorted(VISUAL_STYLE_CONFIG.keys()),

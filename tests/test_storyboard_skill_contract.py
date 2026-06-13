@@ -6,6 +6,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GENERATOR_SKILL = ROOT / "agent_skills" / "storyboard-generator" / "SKILL.md"
 REVIEWER_SKILL = ROOT / "agent_skills" / "storyboard-reviewer" / "SKILL.md"
+HORIZONTAL_GENERATOR_SKILL = ROOT / "agent_skills" / "storyboard-horizontal-generator" / "SKILL.md"
+CG_VISUAL_STYLE_SKILL = ROOT / "agent_skills" / "3d-cg-visual-style" / "SKILL.md"
 CRAFT_PASS_SKILL = ROOT / "agent_skills" / "storyboard-craft-pass" / "SKILL.md"
 QUALITY_POLICY = ROOT / "agent_skills" / "storyboard-quality-policy.json"
 DIALOGUE_PROMPT = ROOT / "竖屏分镜规则_对话版.txt"
@@ -151,6 +153,37 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn("组尾衔接只写连续性锚点", text)
         self.assertNotIn("默认 10-15 秒", text)
         self.assertNotIn("自然收尾", text)
+
+    def test_cg_visual_style_skill_splits_vertical_collect_and_horizontal_inline_tail(self):
+        text = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("竖屏：收集阶段统一追加 3D CG 固定尾部", text)
+        self.assertIn("横屏：`final.txt` 每组必须直接包含 3D CG 版", text)
+        self.assertIn("不得沿用真人实拍尾部", text)
+
+    def test_horizontal_3d_cg_base_negative_does_not_ban_target_medium(self):
+        text = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        start = text.index("3D CG run 基础负面词：")
+        end = text.index("3D CG run 不要把", start)
+        base_negative_block = text[start:end]
+
+        for forbidden in ("3D渲染", "CG感", "动画感", "卡通", "动漫", "二次元"):
+            self.assertNotIn(forbidden, base_negative_block)
+
+    def test_horizontal_3d_cg_generator_requires_motivated_camera_motion(self):
+        text = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("3D CG 横屏运镜强化", text)
+        self.assertIn("每组至少安排 1 个有明确路径或落点的可见运镜", text)
+        self.assertIn("横向跟拍、前景掠过、半环绕、贴地推进、低角度推近、焦点转移、急停落点", text)
+        self.assertIn("不能只写固定机位或稳定中景到底", text)
+
+    def test_horizontal_reviewer_flags_static_3d_cg_camera_motion(self):
+        text = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+
+        self.assertIn("3D CG 横屏组缺少可见运镜", text)
+        self.assertIn("整组只用固定机位、稳定中景或静态构图", text)
+        self.assertIn("没有横向跟拍、前景掠过、半环绕、贴地推进、低角度推近、焦点转移或急停落点", text)
 
 
 if __name__ == "__main__":
