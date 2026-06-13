@@ -185,6 +185,26 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn("整组只用固定机位、稳定中景或静态构图", text)
         self.assertIn("没有横向跟拍、前景掠过、半环绕、贴地推进、低角度推近、焦点转移或急停落点", text)
 
+    def test_xianxia_3d_cg_effects_must_enter_storyboard_body(self):
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+
+        for text in (generator, visual_style):
+            self.assertIn("仙侠", text)
+            self.assertIn("强节拍", text)
+            self.assertIn("镜头描述", text)
+            self.assertIn("光影设计", text)
+            self.assertIn("不能只靠固定", text)
+            self.assertIn("真气", text)
+            self.assertIn("罡气", text)
+            self.assertIn("玄铁", text)
+            self.assertIn("灵药", text)
+
+        self.assertIn("不能只在固定 `画面风格` 尾部出现特效词", reviewer)
+        self.assertIn("只靠固定 `画面风格` 尾部", reviewer)
+        self.assertIn("special_effects", reviewer)
+
 
 if __name__ == "__main__":
     unittest.main()

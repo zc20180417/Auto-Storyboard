@@ -63,6 +63,8 @@ class EpisodeTaskFocusTests(unittest.TestCase):
         self.assertIn("横屏 final.txt 每组必须直接写入 3D CG 版", task)
         self.assertIn("负向不得包含 `3D渲染`、`CG感`、`动画感`、`卡通`、`动漫`、`二次元`", task)
         self.assertIn("3D CG 横屏每组至少安排 1 个有明确路径或落点的可见运镜", task)
+        self.assertIn("仙侠、玄幻、古武、强者归来、灵药/玄铁/真气/罡气/剑气题材的强节拍", task)
+        self.assertIn("不能只靠固定画面风格尾部", task)
         self.assertNotIn("真人实拍短剧质感", task)
 
 
