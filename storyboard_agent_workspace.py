@@ -289,11 +289,11 @@ def make_agent_context(
     seedance_profile_path: Path,
     happyhorse_profile_path: Path | None,
     ai_video_prompt_skill_path: Path | None,
-    cg_visual_style_skill_path: Path | None,
     target_video_model: str,
-    visual_style: str,
     aspect: str,
     mode: str,
+    cg_visual_style_skill_path: Path | None = None,
+    visual_style: str = "live-action",
 ) -> str:
     aspect_cfg = storyboard_aspect_config(aspect)
     aspect_label = aspect_cfg["label"]
@@ -371,11 +371,11 @@ def make_episode_task(
     seedance_profile_path: Path,
     happyhorse_profile_path: Path | None,
     ai_video_prompt_skill_path: Path | None,
-    cg_visual_style_skill_path: Path | None,
     target_video_model: str,
-    visual_style: str,
     aspect: str,
     mode: str,
+    cg_visual_style_skill_path: Path | None = None,
+    visual_style: str = "live-action",
 ) -> str:
     rel_root = episode_dir.relative_to(run_dir)
     aspect_cfg = storyboard_aspect_config(aspect)
@@ -432,6 +432,8 @@ def make_episode_task(
                 "正向包含高质量动漫3D CG短剧风格、二次元角色设计、风格化面部与眼睛、清晰轮廓线、"
                 "高质量卡通渲染、PBR材质与手绘质感融合、电影级布光、自然景深；"
                 "不得写真人实拍、真实摄影、真实演员；负向不得包含 `3D渲染`、`CG感`、`动画感`、`卡通`、`动漫`、`二次元`。"
+                "3D CG 横屏每组至少安排 1 个有明确路径或落点的可见运镜，例如横向跟拍、前景掠过、半环绕、贴地推进、低角度推近、焦点转移或急停落点；"
+                "对白密集段仍保留稳定镜头承载口型，不要全组炫技运动。"
             )
         else:
             style_delivery_line = (
@@ -1049,6 +1051,8 @@ HORIZONTAL_CAMERA_MOTION_VAGUE_PATTERNS = (
     "更有动感",
 )
 HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS = (
+    "低角度推近",
+    "轻推近",
     "推近",
     "推进",
     "后拉",
@@ -1058,7 +1062,13 @@ HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS = (
     "平移",
     "横移",
     "摇向",
+    "前景掠过",
     "掠过",
+    "半环绕",
+    "环绕",
+    "贴地推进",
+    "焦点转移",
+    "急停落点",
     "手持",
     "移动",
 )
@@ -1642,7 +1652,7 @@ def validate_horizontal_visual_style_contract(content: str, *, visual_style: str
     return issues
 
 
-def validate_horizontal_camera_motion_contract(content: str) -> list[str]:
+def validate_horizontal_camera_motion_contract(content: str, *, visual_style: str = "live-action") -> list[str]:
     issues: list[str] = []
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
     for index, group_match in enumerate(group_matches):
@@ -1677,6 +1687,17 @@ def validate_horizontal_camera_motion_contract(content: str) -> list[str]:
             any(pattern in shot_text for pattern in HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS)
             for _shot_label, _seconds, shot_text in shots
         )
+        active_motion_text = "\n".join([motion_text, *(shot_text for _shot_label, _seconds, shot_text in shots)])
+        if (
+            visual_style == "3d-cg"
+            and not any(pattern in active_motion_text for pattern in HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS)
+        ):
+            issues.append(
+                f"第{group_number}组是 3D CG 横屏，但缺少可见运镜；"
+                "至少安排 1 个有明确路径或落点的横向跟拍、前景掠过、半环绕、贴地推进、低角度推近、焦点转移或急停落点，"
+                "避免整组只用固定机位或稳定中景。"
+            )
+
         stable_count = sum(
             any(pattern in shot_text or pattern in motion_text for pattern in HORIZONTAL_CAMERA_MOTION_STABLE_PATTERNS)
             for _shot_label, _seconds, shot_text in shots
@@ -2922,7 +2943,10 @@ def validate_episode(args: argparse.Namespace) -> int:
     horizontal_run = is_horizontal_episode_dir(episode_dir)
     quality_issues = validate_storyboard_quality_floor(content, allow_horizontal_output_fields=horizontal_run)
     if horizontal_run:
-        horizontal_motion_issues = validate_horizontal_camera_motion_contract(content)
+        horizontal_motion_issues = validate_horizontal_camera_motion_contract(
+            content,
+            visual_style=episode_visual_style(episode_dir),
+        )
         horizontal_output_structure_issues = validate_horizontal_output_structure_contract(content)
         horizontal_visual_style_issues = validate_horizontal_visual_style_contract(
             content,
@@ -3064,7 +3088,10 @@ def collect_run(args: argparse.Namespace) -> int:
         horizontal_run = is_horizontal_episode_dir(episode_dir)
         quality_issues = validate_storyboard_quality_floor(content, allow_horizontal_output_fields=horizontal_run)
         if horizontal_run:
-            horizontal_motion_issues = validate_horizontal_camera_motion_contract(content)
+            horizontal_motion_issues = validate_horizontal_camera_motion_contract(
+                content,
+                visual_style=episode_visual_style(episode_dir),
+            )
             horizontal_output_structure_issues = validate_horizontal_output_structure_contract(content)
             horizontal_visual_style_issues = validate_horizontal_visual_style_contract(
                 content,
