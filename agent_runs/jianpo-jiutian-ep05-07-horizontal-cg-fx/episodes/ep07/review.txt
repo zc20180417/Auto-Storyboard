@@ -1,0 +1,116 @@
+{
+  "pass": true,
+  "summary": "已对照第7集完整脚本、storyboard-horizontal-generator、storyboard-horizontal-reviewer和3D CG视觉规则复审整集final，10组保留所有关键台词、竞价因果和道具状态，横屏格式、3D CG正文特效、运镜、时长和review证据均通过。",
+  "source_status": "script_provided",
+  "checked_groups": ["第1组", "第2组", "第3组", "第4组", "第5组", "第6组", "第7组", "第8组", "第9组", "第10组"],
+  "audit_coverage": {
+    "script_fidelity": "checked",
+    "dialogue_direction": "checked",
+    "timing_math": "checked",
+    "dialogue_pacing": "checked",
+    "format": "checked",
+    "character_availability": "checked",
+    "handoff_continuity": "checked",
+    "filmability": "checked",
+    "horizontal_composition": "checked",
+    "screen_direction": "checked",
+    "blocking_continuity": "checked",
+    "camera_motion": "checked",
+    "audio_mouth_sync": "checked",
+    "generation_density": "checked",
+    "narrative_progression": "checked",
+    "asset_scope": "checked",
+    "prop_continuity": "checked",
+    "physical_continuity": "checked",
+    "special_effects": "checked",
+    "genre_style": "checked",
+    "prompt_pollution": "checked"
+  },
+  "spot_checks": [
+    {
+      "group": "第1组",
+      "type": "format",
+      "evidence": "第1组标题含cut_id EP07-G01，包含人物、场景、道具/关键视觉资产、组间承接、横屏构图/调度、镜头描述、光影设计、本镜估算时长、组尾衔接、画面风格、运镜强化词、Seedance执行提示补充和--neg。"
+    },
+    {
+      "group": "第4组",
+      "type": "special_effects",
+      "evidence": "第4组玄铁卡亮相写暗金纹路沿金龙图腾微亮、守卫刀光被暗金微光压下、管事跪拜时烛火轻颤和衣袖被无形气压掀动，强节拍正文特效充足且克制。"
+    },
+    {
+      "group": "第7组",
+      "type": "special_effects",
+      "evidence": "第7组太乙神芝首次亮相时写盒缝青金灵光、药香极淡流光绕盒边散开，并限制只照亮手指和桌面，不生成法阵。"
+    },
+    {
+      "group": "第9组",
+      "type": "script_fidelity",
+      "evidence": "第9组保留敌国使臣阻止沐家拿解药、赵天宇两百万两、沐清寒两百五十万两和沐家全部现银压力，台词顺序与脚本一致。"
+    },
+    {
+      "group": "第10组",
+      "type": "special_effects",
+      "evidence": "第10组五百万两逼局写拍卖槌震动杯盏、盒缝青金灵光一闪、全场烛火轻颤、赵天宇眼底暗红高光和前景衣袖被无形气压掀动，特效绑定竞价压制。"
+    }
+  ],
+  "semantic_checks": [
+    {
+      "group": "第2组",
+      "type": "script_fidelity",
+      "result": "pass",
+      "evidence": "赵天宇带石膏由下人扶下马车，两句嘲讽和沐清寒冷回应均保留，未把赵天宇写成行动自如或魔化。",
+      "fix_instruction": "若不通过，应恢复石膏、下人搀扶和三句原台词，并删除改变人物状态的动作。"
+    },
+    {
+      "group": "第3组",
+      "type": "camera_motion",
+      "result": "pass",
+      "evidence": "第3组低角度推近赵天宇命令，贴地推进跟随守卫抽刀，稳定中景承载威胁台词，3D CG可见运镜和口型稳定兼顾。",
+      "fix_instruction": "若不通过，应补一个明确路径或落点的运镜，并保留稳定对白镜头。"
+    },
+    {
+      "group": "第4组",
+      "type": "asset_scope",
+      "result": "pass",
+      "evidence": "第4组人物5项、场景1项、道具3项，合计9项；玄铁卡、金龙图腾、守卫长刀均为本组关键视觉资产。",
+      "fix_instruction": "若不通过，应删普通环境细节资产或拆组，不能删除玄铁卡或金龙图腾。"
+    },
+    {
+      "group": "第5组",
+      "type": "handoff_continuity",
+      "result": "pass",
+      "evidence": "第5组承接第4组管事跪拜、玄铁卡在陆渊指间、守卫长刀低垂和赵天宇右侧质疑，组尾建立陆渊沐清寒进入门内、赵天宇留在门口和茶盏在手中。",
+      "fix_instruction": "若不通过，应补足上一组尾部状态和下一组开头方向、道具归属，避免凭空新增茶盏或换位。"
+    },
+    {
+      "group": "第6组",
+      "type": "physical_continuity",
+      "result": "pass",
+      "evidence": "第6组茶盏从赵天宇手中被捏碎，玻璃渣刺破手心，组尾继续保留碎茶盏、玻璃渣和掌心出血，状态来源清楚。",
+      "fix_instruction": "若不通过，应明确茶盏持有、受力、碎片落点和伤口持续。"
+    },
+    {
+      "group": "第7组",
+      "type": "genre_style",
+      "result": "pass",
+      "evidence": "第7组保持古武仙侠拍卖场语境，太乙神芝灵光用动漫3D CG青金微光和药香流光表现，没有混入真人实拍媒介词或现代道具。",
+      "fix_instruction": "若不通过，应删除真人媒介词、现代物件或不属于灵物亮相的夸张光效。"
+    },
+    {
+      "group": "第8组",
+      "type": "timing_math",
+      "result": "pass",
+      "evidence": "第8组总时长7秒，2个镜头分别3秒和4秒相加一致；该组是竞价铃道具插入和单句报价短节拍，短组理由成立。",
+      "fix_instruction": "若不通过，应修正镜头时长合计，或与相邻同场内容合并但不得硬凑低密度空镜。"
+    },
+    {
+      "group": "第10组",
+      "type": "dialogue_direction",
+      "result": "pass",
+      "evidence": "赵天宇五百万两台词写明对上方包厢沐清寒方向喊，敌国使臣在身后阴影里不出声，沐清寒作为远处承压对象可见。",
+      "fix_instruction": "若不通过，应补充赵天宇台词对象和沐清寒所在方位，避免变成无对象喊价。"
+    }
+  ],
+  "issues": [],
+  "warnings": []
+}

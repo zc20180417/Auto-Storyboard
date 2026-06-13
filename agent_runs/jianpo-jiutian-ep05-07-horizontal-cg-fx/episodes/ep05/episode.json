@@ -1,0 +1,15 @@
+{
+  "episode_id": "ep05",
+  "storyboard_rule_version": "storyboard-quality-policy-2026-05-31-v1",
+  "storyboard_quality_policy_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\agent_skills\\storyboard-quality-policy.json",
+  "episode_number": 5,
+  "display_name": "剑破九天第05集",
+  "series_title": "剑破九天",
+  "source_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\split_scripts\\jianpo-jiutian-ep05-07\\剑破九天第05集.txt",
+  "output_path": "H:\\BaiduNetdiskDownload\\Auto-Storyboard\\outputs_agent_jianpo_jiutian_ep05_07_horizontal_cg_fx\\剑破九天-ep05-agent-cli-storyboard.txt",
+  "storyboard_aspect": "horizontal",
+  "visual_style": "3d-cg",
+  "generator_skill_name": "storyboard-horizontal-generator",
+  "reviewer_skill_name": "storyboard-horizontal-reviewer",
+  "reviewer_source": "storyboard-horizontal-reviewer"
+}
