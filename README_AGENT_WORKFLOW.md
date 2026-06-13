@@ -23,8 +23,6 @@
 - `agent_skills/storyboard-horizontal-reviewer/SKILL.md`：横屏 16:9 审核 skill，输出 raw JSON 审核结果。
 - `agent_skills/storyboard-horizontal-generator/TOPIC_PACKS.md`：横屏可选题材包；只有任务书、剧本或用户明确指向对应题材时启用。
 - `agent_skills/storyboard-horizontal-generator/project_packs/`：横屏项目专属包；只有任务书、剧本标题、角色设定或用户明确指定对应项目时启用。
-- `agent_skills/happyhorse-prompt-profile/SKILL.md`：HappyHorse 1.0 视频提示词风格摘要；只有准备工作区时显式指定 `--target-video-model happyhorse` / `-TargetVideoModel happyhorse` 才启用，默认仍使用原来的 Seedance 分镜口径。
-- `agent_skills/ai-video-prompt/SKILL.md`：HappyHorse 目标模型下的补充提示词优化参考；只有 `happyhorse-prompt-profile` 启用时才读取，默认 Seedance 工作流不得套用。HappyHorse 调优默认只做最小修补和结构清理，保留关键镜头、动作、台词和声音，按主体/场景/运动/镜头/声音补齐锚点。
 - `agent_skills/seedance-prompt-profile/SKILL.md`：Seedance 2.0 官方模板风格摘要，只作为生成前参考层，不复制模板正文。
 - `agent_skills/asset-extractor/SKILL.md`：分镜完成后的生图资产表抽取 skill。
 - `agent_runs/`：每次 agent 运行的工作区。
@@ -92,7 +90,7 @@
   -Force
 ```
 
-`VisualStyle` 是媒介风格维度，不替代 `Aspect` 或 `TargetVideoModel`。默认 `live-action` 继续输出真人实拍短剧口径；`3d-cg` 会让工作区任务读取 `agent_skills/3d-cg-visual-style/SKILL.md`，并让生成提示、收集尾部和资产提示词切换为动漫 3D CG 口径：二次元角色设计、风格化面部与眼睛、清晰轮廓线、高质量卡通渲染、PBR材质与手绘质感融合、表情绑定、口型同步，以及冷冽刀光、气流压迫、碎石悬浮、贴地冲击尘浪、金属裂纹冷光等动作服务型大片特效。无论哪种风格，分镜结构、对白对象、时间规则、组首/组尾连续和 reviewer 门禁不变。
+`VisualStyle` 是媒介风格维度，不替代 `Aspect`。默认 `live-action` 继续输出真人实拍短剧口径；`3d-cg` 会让工作区任务读取 `agent_skills/3d-cg-visual-style/SKILL.md`，并让生成提示、收集尾部和资产提示词切换为动漫 3D CG 口径：二次元角色设计、风格化面部与眼睛、清晰轮廓线、高质量卡通渲染、PBR材质与手绘质感融合、表情绑定、口型同步，以及冷冽刀光、气流压迫、碎石悬浮、贴地冲击尘浪、金属裂纹冷光等动作服务型大片特效。无论哪种风格，分镜结构、对白对象、时间规则、组首/组尾连续和 reviewer 门禁不变。
 
 生成后会得到：
 
