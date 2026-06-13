@@ -11,6 +11,7 @@ CG_VISUAL_STYLE_SKILL = ROOT / "agent_skills" / "3d-cg-visual-style" / "SKILL.md
 CRAFT_PASS_SKILL = ROOT / "agent_skills" / "storyboard-craft-pass" / "SKILL.md"
 QUALITY_POLICY = ROOT / "agent_skills" / "storyboard-quality-policy.json"
 DIALOGUE_PROMPT = ROOT / "竖屏分镜规则_对话版.txt"
+WORKSPACE_SCRIPT = ROOT / "storyboard_agent_workspace.py"
 
 
 class StoryboardSkillContractTests(unittest.TestCase):
@@ -185,25 +186,78 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn("整组只用固定机位、稳定中景或静态构图", text)
         self.assertIn("没有横向跟拍、前景掠过、半环绕、贴地推进、低角度推近、焦点转移或急停落点", text)
 
-    def test_xianxia_3d_cg_effects_must_enter_storyboard_body(self):
+    def test_3d_cg_visual_peak_effects_must_enter_storyboard_body(self):
         generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
         visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
         reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
 
         for text in (generator, visual_style):
-            self.assertIn("仙侠", text)
+            self.assertIn("视觉峰值", text)
+            self.assertIn("不只来自打斗", text)
+            self.assertIn("当前剧本", text)
             self.assertIn("强节拍", text)
             self.assertIn("镜头描述", text)
             self.assertIn("光影设计", text)
             self.assertIn("不能只靠固定", text)
-            self.assertIn("真气", text)
-            self.assertIn("罡气", text)
-            self.assertIn("玄铁", text)
-            self.assertIn("灵药", text)
+            self.assertIn("不是固定触发词表", text)
+            self.assertIn("来源", text)
+            self.assertIn("路径", text)
+            self.assertIn("反馈", text)
+            self.assertIn("收束", text)
 
+        self.assertIn("visual_peak", reviewer)
+        self.assertIn("visual_peak_too_weak", reviewer)
         self.assertIn("不能只在固定 `画面风格` 尾部出现特效词", reviewer)
         self.assertIn("只靠固定 `画面风格` 尾部", reviewer)
         self.assertIn("special_effects", reviewer)
+
+    def test_core_effect_validator_does_not_classify_genre_keywords(self):
+        text = WORKSPACE_SCRIPT.read_text(encoding="utf-8")
+
+        self.assertIn("effect_required", text)
+        self.assertIn("validate_effect_placement", text)
+        self.assertNotIn("HORIZONTAL_XIANXIA_TOPIC_MARKERS", text)
+        self.assertNotIn("HORIZONTAL_SPECIAL_EFFECTS_HARD_STRONG_BEAT_TERMS", text)
+        self.assertNotIn("玄铁", text)
+        self.assertNotIn("真气", text)
+
+    def test_horizontal_3d_cg_fixed_style_tail_stays_generic(self):
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        start = generator.index("**画面风格**：按当前 run 的视觉风格填写。")
+        end = generator.index("**运镜强化词**", start)
+        style_contract = generator[start:end]
+
+        self.assertIn("按剧情峰值使用剧情服务型动漫 CG 特效", style_contract)
+        self.assertNotIn("动作服务型大片特效，冷冽刀光", style_contract)
+        self.assertNotIn("气流压迫，碎石悬浮，贴地冲击尘浪", style_contract)
+        self.assertIn("**视觉峰值/特效重点**", generator)
+
+    def test_3d_cg_rules_do_not_leak_project_character_names(self):
+        files = (
+            HORIZONTAL_GENERATOR_SKILL,
+            CG_VISUAL_STYLE_SKILL,
+        )
+
+        for path in files:
+            text = path.read_text(encoding="utf-8")
+            self.assertNotIn("冰清寒", text)
+            self.assertNotIn("赵天宇", text)
+            self.assertNotIn("太乙神芝", text)
+
+    def test_3d_cg_visual_style_keeps_horizontal_and_vertical_contracts_separate(self):
+        visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("竖屏 run：保留竖屏主合同中的 `组首空间锁定`", visual_style)
+        self.assertIn("横屏 run：不使用旧竖屏字段 `组首空间锁定`", visual_style)
+        self.assertIn("`**组间承接**` 或 `**横屏构图/调度**`", visual_style)
+
+    def test_horizontal_reviewer_special_effects_severity_is_explicit(self):
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+
+        self.assertIn("### visual_peak / special_effects 审核", reviewer)
+        self.assertIn("Hard issue：当前剧本已判定需要强特效的动作", reviewer)
+        self.assertIn("visual_peak_too_weak", reviewer)
+        self.assertIn("Warning：身份揭示、竞价压制、强者压场", reviewer)
 
 
 if __name__ == "__main__":

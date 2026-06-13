@@ -22,6 +22,7 @@
     "asset_scope": "checked",
     "prop_continuity": "checked",
     "physical_continuity": "checked",
+    "visual_peak": "checked",
     "special_effects": "checked",
     "genre_style": "checked",
     "prompt_pollution": "checked"

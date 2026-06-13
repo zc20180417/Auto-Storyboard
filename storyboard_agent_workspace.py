@@ -64,14 +64,16 @@ VISUAL_STYLE_CONFIG = {
     },
     "3d-cg": {
         "label": "动漫3D CG",
-        "style_line": "画面风格：高质量动漫3D CG短剧风格，二次元角色设计，风格化面部与眼睛，清晰轮廓线，高质量卡通渲染，PBR材质与手绘质感融合，电影级布光，景深自然，表情绑定细腻，口型同步清楚，动作流畅，动作服务型大片特效，冷冽刀光，气流压迫，碎石悬浮，贴地冲击尘浪，金属裂纹冷光，无字幕，无配乐",
+        "style_line": "画面风格：高质量动漫3D CG短剧风格，二次元角色设计，风格化面部与眼睛，清晰轮廓线，高质量卡通渲染，PBR材质与手绘质感融合，电影级布光，景深自然，表情绑定细腻，口型同步清楚，动作流畅，按剧情峰值使用剧情服务型动漫 CG 特效，包含动作冲击、道具显影、环境反馈、压迫光影、心理异象或余波收束，主体始终清楚，无字幕，无配乐",
         "negative_line": "--neg 模糊，低分辨率，扭曲，变形，低多边形，廉价游戏建模，塑料玩具感，面部僵硬，表情死板，眼神空洞，口型错位，穿模，骨骼错位，手指畸形，材质粗糙，贴图拉伸，轮廓线抖动，过曝，色彩失真，伪影，满屏粒子，过曝光效，遮脸光效，特效盖住主体，游戏技能UI，法阵文字，魔法阵，廉价仙侠宣传片感，叠加字幕，硬字幕，烧录字幕，后期添加的文字，水印，logo，标题文字，片名，演职员表，背景音乐，配乐，BGM，叠加文字，画面外文字",
         "task_guidance": (
             "动漫3D CG短剧风格：保留短剧分镜、对白、站位、道具连续和时间规则，但画面描述应服务于"
             "二次元角色设计、风格化面部与眼睛、清晰轮廓线、高质量卡通渲染、PBR材质与手绘质感融合、"
-            "稳定表情绑定、清楚口型同步和流畅动作；动作/打斗/压迫/情绪峰值可以加入刀光、气流、碎石、尘浪、金属冷光等"
-            "动作服务型大片特效；仙侠、玄幻、古武、强者归来、灵药/玄铁/真气/罡气/剑气题材的强节拍必须把克制可见特效写入"
-            "镜头描述或光影设计，不能只靠固定画面风格尾部；特效必须跟随具体动作、灵物、压迫和受力结果，不得写成法阵、满屏粒子、游戏技能 UI 或盖住人物主体；"
+            "稳定表情绑定、清楚口型同步和流畅动作；视觉峰值不只来自打斗，也可来自"
+            "关键道具显影、身份揭示、权力压场、危险进入、环境异变、心理冲击、信息落点或情绪爆点；"
+            "beat/hero 级视觉峰值必须写入镜头描述、光影设计、运镜强化词或 Seedance 执行提示补充，"
+            "不能只靠固定画面风格尾部；特效必须跟随具体人物、动作、道具、空间、环境、心理、权力或信息落点，"
+            "不得写成法阵、满屏粒子、游戏技能 UI 或盖住人物主体；"
             "不要写真人实拍、真实摄影、真实演员、纪录片摄影等真人媒介词。"
         ),
         "asset_guidance": (
@@ -366,7 +368,7 @@ def make_episode_task(
     style_cfg = visual_style_config(visual_style)
     visual_style_label = style_cfg["label"]
     if aspect == "horizontal":
-        aspect_contract_line = "Horizontal outputs must be generated as polished, Seedance-ready deliverables on the first pass, not rough drafts waiting for a separate rewrite. Use the current horizontal Seedance wrapper: `**人物**`, `**场景**`, `**道具/关键视觉资产**`, `**组间承接**`, `**横屏构图/调度**`, bare `N-M` shot-number lines, then each shot with `**镜头描述**`, `**光影设计**`, `**本镜估算时长**`, followed by `**组尾衔接**`, `**画面风格**`, `**运镜强化词**`, `**Seedance执行提示补充**`, and `**--neg**`. Do not write `**镜头号**：N-M`; do not use the old horizontal `组首空间锁定` or per-shot `运镜设计` fields. Keep assets under 9 per group; if the script requires more, split the group instead of deleting key story elements."
+        aspect_contract_line = "Horizontal outputs must be generated as polished, Seedance-ready deliverables on the first pass, not rough drafts waiting for a separate rewrite. Use the current horizontal Seedance wrapper: `**人物**`, `**场景**`, `**道具/关键视觉资产**`, `**视觉峰值/特效重点**`, `**组间承接**`, `**横屏构图/调度**`, bare `N-M` shot-number lines, then each shot with `**镜头描述**`, `**光影设计**`, `**本镜估算时长**`, followed by `**组尾衔接**`, `**画面风格**`, `**运镜强化词**`, `**Seedance执行提示补充**`, and `**--neg**`. Do not write `**镜头号**：N-M`; do not use the old horizontal `组首空间锁定` or per-shot `运镜设计` fields. Keep assets under 9 per group; if the script requires more, split the group instead of deleting key story elements."
         group_timing_line = "Horizontal groups use bare `N-M` shot numbers and `**本镜估算时长**：X秒` per shot; each group's estimated shot durations must sum to the integer group total. Prefer integer shot durations; use 0.5 seconds only for short reactions, prop inserts, or action aftershocks. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds. Do not compress key dialogue meaning just to fit the 15-second cap; split shots or groups instead."
         asset_id_contract_line = "- Horizontal final.txt may preserve user-provided asset IDs in `**人物**`, `**场景**`, and `**道具/关键视觉资产**`, such as `天天图8`; do not invent asset IDs, and do not write `参考图`, `首帧参考`, `尾帧参考`, `@图片`, `@视频`, or upload/call instructions."
     else:
@@ -390,6 +392,8 @@ def make_episode_task(
                 "不得写真人实拍、真实摄影、真实演员；负向不得包含 `3D渲染`、`CG感`、`动画感`、`卡通`、`动漫`、`二次元`。"
                 "3D CG 横屏每组至少安排 1 个有明确路径或落点的可见运镜，例如横向跟拍、前景掠过、半环绕、贴地推进、低角度推近、焦点转移或急停落点；"
                 "对白密集段仍保留稳定镜头承载口型，不要全组炫技运动。"
+                "视觉峰值不只来自打斗，也要判断关键道具显影、身份揭示、权力压场、危险进入、环境异变、心理冲击、信息落点；"
+                "beat/hero 级视觉峰值必须进入镜头描述、光影设计、运镜强化词或 Seedance 执行提示补充，不能只靠固定画面风格尾部。"
             )
         else:
             style_delivery_line = (
@@ -981,6 +985,7 @@ HORIZONTAL_AUDIT_COVERAGE_KEYS = (
     "asset_scope",
     "prop_continuity",
     "physical_continuity",
+    "visual_peak",
     "special_effects",
     "genre_style",
     "prompt_pollution",
@@ -1017,6 +1022,52 @@ HORIZONTAL_CAMERA_MOTION_ACTIVE_PATTERNS = (
     "急停落点",
     "手持",
     "移动",
+)
+HORIZONTAL_EFFECT_BODY_MARKERS = (
+    "冷光",
+    "暗金",
+    "空气波纹",
+    "风压",
+    "衣摆",
+    "尘浪",
+    "碎石",
+    "裂纹",
+    "裂光",
+    "刀光",
+    "微光",
+    "波纹",
+    "烟雾",
+    "气流",
+    "冲击",
+    "震开",
+    "火星",
+    "高光",
+    "边光",
+    "特效",
+)
+HORIZONTAL_EFFECT_TAIL_MARKERS = (
+    "动作服务型特效",
+    "动作服务型大片特效",
+    "特效",
+    "冷冽刀光",
+    "刀光",
+    "气流压迫",
+    "碎石悬浮",
+    "贴地冲击尘浪",
+    "金属裂纹冷光",
+)
+HORIZONTAL_EFFECT_BAD_TERMS = (
+    "满屏粒子",
+    "巨大法阵",
+    "魔法阵",
+    "法术光球",
+    "技能 UI",
+    "技能UI",
+    "光束吞没",
+    "过曝光束",
+    "遮脸光效",
+    "特效盖住主体",
+    "吞没人物",
 )
 HORIZONTAL_CAMERA_MOTION_STABLE_PATTERNS = (
     "固定机位",
@@ -1416,6 +1467,7 @@ def validate_horizontal_output_structure_contract(content: str) -> list[str]:
         "人物",
         "场景",
         "道具/关键视觉资产",
+        "视觉峰值/特效重点",
         "组间承接",
         "横屏构图/调度",
         "组尾衔接",
@@ -1518,6 +1570,95 @@ def validate_horizontal_visual_style_contract(content: str, *, visual_style: str
         if neg_hits:
             issues.append(
                 f"第{group_number}组是 3D CG 横屏 run，但 `--neg` 否定目标媒介 `{ ' / '.join(neg_hits) }`。"
+            )
+
+    return issues
+
+
+def _horizontal_shot_effect_body_text(shot_text: str) -> str:
+    lines: list[str] = []
+    for label in ("镜头描述", "光影设计"):
+        value = _horizontal_field_value(shot_text, label)
+        if value:
+            lines.append(value)
+    return "\n".join(lines)
+
+
+def _positive_bad_effect_hits(text: str) -> list[str]:
+    hits: list[str] = []
+    negation_pattern = re.compile(r"(不|不要|不得|不能|禁止|避免|无|不出现|不形成|不生成|不做)")
+    for term in HORIZONTAL_EFFECT_BAD_TERMS:
+        start = 0
+        while True:
+            index = text.find(term, start)
+            if index == -1:
+                break
+            prefix = text[max(0, index - 32) : index].strip()
+            clause_prefix = re.split(r"[，,；;。.\n]", prefix)[-1]
+            if not negation_pattern.search(clause_prefix):
+                hits.append(term)
+                break
+            start = index + len(term)
+    return hits
+
+
+def validate_effect_placement(
+    content: str,
+    *,
+    visual_style: str = "live-action",
+    effect_required: str = "none",
+) -> list[str]:
+    issues: list[str] = []
+    if visual_style != "3d-cg":
+        return issues
+    if effect_required not in {"none", "subtle", "strong"}:
+        issues.append(f"effect_required must be one of none/subtle/strong, got `{effect_required}`.")
+        return issues
+
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    for index, group_match in enumerate(group_matches):
+        raw_group = group_match.group("num")
+        group_number = _group_number(raw_group) or index + 1
+        block_start = group_match.end()
+        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
+        block = content[block_start:block_end]
+
+        shots = [
+            _horizontal_shot_effect_body_text(shot_text)
+            for current_group, _shot_label, _seconds, shot_text in _iter_storyboard_shots(content)
+            if current_group == _group_number(raw_group)
+        ]
+        body_text = "\n".join(
+            [
+                *shots,
+                _horizontal_field_value(block, "运镜强化词") or "",
+                _horizontal_field_value(block, "Seedance执行提示补充") or "",
+            ]
+        )
+        bad_hits = _positive_bad_effect_hits(body_text)
+        if bad_hits:
+            issues.append(
+                f"effect_overdone: 第{group_number}组正文特效过度或遮挡主体 `{ ' / '.join(bad_hits) }`；"
+                "3D CG 特效必须服务动作、受力或道具状态，不能吞没人物、遮脸或变成游戏技能 UI。"
+            )
+
+        if effect_required == "none":
+            continue
+
+        body_hits = [term for term in HORIZONTAL_EFFECT_BODY_MARKERS if term in body_text]
+        if not body_hits:
+            style_text = _horizontal_field_value(block, "画面风格") or ""
+            style_hits = [term for term in HORIZONTAL_EFFECT_TAIL_MARKERS if term in style_text]
+            severity = "hard" if effect_required == "strong" else "warning"
+            if style_hits:
+                issues.append(
+                    f"effect_only_in_tail: 第{group_number}组已标记为 `{effect_required}` 特效需求，"
+                    f"但特效只出现在固定 `画面风格` 尾部 `{ ' / '.join(style_hits[:4]) }`，没有进入镜头正文、光影、运镜或 Seedance 执行提示；severity={severity}。"
+                )
+                continue
+            issues.append(
+                f"effect_missing_body: 第{group_number}组已标记为 `{effect_required}` 特效需求，"
+                f"但镜头正文、光影、运镜和 Seedance 执行提示都没有承载可见特效；severity={severity}。"
             )
 
     return issues
@@ -2744,11 +2885,17 @@ def validate_episode(args: argparse.Namespace) -> int:
             content,
             visual_style=episode_visual_style(episode_dir),
         )
+        horizontal_special_effect_issues = validate_effect_placement(
+            content,
+            visual_style=episode_visual_style(episode_dir),
+            effect_required="none",
+        )
         physical_plausibility_issues = validate_physical_plausibility_floor(content)
     else:
         horizontal_motion_issues = []
         horizontal_output_structure_issues = []
         horizontal_visual_style_issues = []
+        horizontal_special_effect_issues = []
         physical_plausibility_issues = []
     if pre_check:
         review_issues: list[str] = []
@@ -2770,6 +2917,7 @@ def validate_episode(args: argparse.Namespace) -> int:
         + horizontal_motion_issues
         + horizontal_output_structure_issues
         + horizontal_visual_style_issues
+        + horizontal_special_effect_issues
         + physical_plausibility_issues
         + review_issues
         + review_pass_issues
@@ -2798,6 +2946,18 @@ def validate_episode(args: argparse.Namespace) -> int:
             report_lines.append("## Horizontal Output Structure")
             report_lines.extend(f"- {issue}" for issue in horizontal_output_structure_issues)
             report_lines.append("")
+        if horizontal_visual_style_issues:
+            report_lines.append("## Horizontal Visual Style")
+            report_lines.extend(f"- {issue}" for issue in horizontal_visual_style_issues)
+            report_lines.append("")
+        if horizontal_special_effect_issues:
+            report_lines.append("## Horizontal Special Effects")
+            report_lines.extend(f"- {issue}" for issue in horizontal_special_effect_issues)
+            report_lines.append("")
+        if physical_plausibility_issues:
+            report_lines.append("## Physical Plausibility")
+            report_lines.extend(f"- {issue}" for issue in physical_plausibility_issues)
+            report_lines.append("")
         if review_issues:
             report_lines.append("## Storyboard Reviewer Evidence")
             report_lines.extend(f"- {issue}" for issue in review_issues)
@@ -2820,6 +2980,7 @@ def validate_episode(args: argparse.Namespace) -> int:
         report_lines.append("- horizontal_camera_motion: passed")
         report_lines.append("- horizontal_output_structure: passed")
         report_lines.append("- horizontal_visual_style: passed")
+        report_lines.append("- horizontal_special_effects: passed")
         report_lines.append("- physical_plausibility: passed")
     if not pre_check:
         report_lines.append("- review_evidence: passed")
@@ -2881,11 +3042,17 @@ def collect_run(args: argparse.Namespace) -> int:
                 content,
                 visual_style=episode_visual_style(episode_dir),
             )
+            horizontal_special_effect_issues = validate_effect_placement(
+                content,
+                visual_style=episode_visual_style(episode_dir),
+                effect_required="none",
+            )
             physical_plausibility_issues = validate_physical_plausibility_floor(content)
         else:
             horizontal_motion_issues = []
             horizontal_output_structure_issues = []
             horizontal_visual_style_issues = []
+            horizontal_special_effect_issues = []
             physical_plausibility_issues = []
         review_issues = validate_review_artifacts(episode_dir)
         issues = (
@@ -2895,6 +3062,7 @@ def collect_run(args: argparse.Namespace) -> int:
             + horizontal_motion_issues
             + horizontal_output_structure_issues
             + horizontal_visual_style_issues
+            + horizontal_special_effect_issues
             + physical_plausibility_issues
             + review_issues
         )
@@ -2918,6 +3086,7 @@ def collect_run(args: argparse.Namespace) -> int:
             summary_lines.extend(f"- horizontal_camera_motion: {issue}" for issue in horizontal_motion_issues[:8])
             summary_lines.extend(f"- horizontal_output_structure: {issue}" for issue in horizontal_output_structure_issues[:8])
             summary_lines.extend(f"- horizontal_visual_style: {issue}" for issue in horizontal_visual_style_issues[:8])
+            summary_lines.extend(f"- horizontal_special_effects: {issue}" for issue in horizontal_special_effect_issues[:8])
             summary_lines.extend(f"- physical_plausibility: {issue}" for issue in physical_plausibility_issues[:8])
             summary_lines.extend(f"- storyboard_reviewer: {issue}" for issue in review_issues[:8])
             summary_lines.append("- copied: skipped because validation failed")
