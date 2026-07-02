@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 GENERATOR_SKILL = ROOT / "agent_skills" / "storyboard-generator" / "SKILL.md"
 REVIEWER_SKILL = ROOT / "agent_skills" / "storyboard-reviewer" / "SKILL.md"
 HORIZONTAL_GENERATOR_SKILL = ROOT / "agent_skills" / "storyboard-horizontal-generator" / "SKILL.md"
+HORIZONTAL_TOPIC_PACKS = ROOT / "agent_skills" / "storyboard-horizontal-generator" / "TOPIC_PACKS.md"
 CG_VISUAL_STYLE_SKILL = ROOT / "agent_skills" / "3d-cg-visual-style" / "SKILL.md"
 CRAFT_PASS_SKILL = ROOT / "agent_skills" / "storyboard-craft-pass" / "SKILL.md"
 QUALITY_POLICY = ROOT / "agent_skills" / "storyboard-quality-policy.json"
@@ -221,16 +222,185 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertNotIn("玄铁", text)
         self.assertNotIn("真气", text)
 
+    def test_workspace_runtime_uses_auto_visual_peak_effect_validation(self):
+        text = WORKSPACE_SCRIPT.read_text(encoding="utf-8")
+
+        self.assertIn('effect_required="auto"', text)
+        self.assertIn("_effect_required_from_visual_peak", text)
+        self.assertIn("hero", text)
+        self.assertIn("beat", text)
+        self.assertNotIn('horizontal_special_effect_issues = validate_effect_placement(\n            content,\n            visual_style=episode_visual_style(episode_dir),\n            effect_required="none"', text)
+
+    def test_3d_cg_base_negative_line_keeps_visual_peak_negatives_conditional(self):
+        script = WORKSPACE_SCRIPT.read_text(encoding="utf-8")
+        visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        start = generator.index("3D CG run 基础负面词：")
+        end = generator.index("3D CG run 不要把", start)
+        base_negative_block = generator[start:end]
+
+        for forbidden in (
+            "满屏粒子",
+            "过曝光效",
+            "遮脸光效",
+            "特效盖住主体",
+            "游戏技能UI",
+            "法阵文字",
+            "魔法阵",
+            "廉价仙侠宣传片感",
+        ):
+            self.assertNotIn(forbidden, script.split('"negative_line": "', 2)[-1].split('",', 1)[0])
+            self.assertNotIn(forbidden, base_negative_block)
+
+        self.assertIn("视觉峰值特效条件负面", generator)
+        self.assertIn("无来源满屏粒子", generator)
+        self.assertIn("过曝吞没人物面部", generator)
+        self.assertIn("条件负面", visual_style)
+
+    def test_common_3d_cg_skill_delegates_xianxia_examples_to_topic_pack(self):
+        visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+        topic_packs = HORIZONTAL_TOPIC_PACKS.read_text(encoding="utf-8")
+
+        self.assertNotIn("陆地出场 / 压迫特效", visual_style)
+        self.assertIn("落地出场 / 压场特效", topic_packs)
+        self.assertIn("## 仙侠 / 玄幻 / 古武 / 强者归来", topic_packs)
+        self.assertIn("压迫建立 -> 触发 -> 主视觉爆点 -> 结果确认", topic_packs)
+        self.assertIn("无来源大光球", topic_packs)
+        self.assertIn("法阵文字", topic_packs)
+
     def test_horizontal_3d_cg_fixed_style_tail_stays_generic(self):
         generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        script = WORKSPACE_SCRIPT.read_text(encoding="utf-8")
         start = generator.index("**画面风格**：按当前 run 的视觉风格填写。")
         end = generator.index("**运镜强化词**", start)
         style_contract = generator[start:end]
 
-        self.assertIn("按剧情峰值使用剧情服务型动漫 CG 特效", style_contract)
-        self.assertNotIn("动作服务型大片特效，冷冽刀光", style_contract)
-        self.assertNotIn("气流压迫，碎石悬浮，贴地冲击尘浪", style_contract)
+        self.assertIn("按本组 `视觉峰值/特效重点` 使用剧情服务型动漫 CG 特效", style_contract)
+        self.assertIn("特效必须绑定动作、道具、身份、权力、环境、心理或信息落点", style_contract)
+        self.assertIn("按本组视觉峰值/特效重点使用剧情服务型动漫 CG 特效", script)
+        for forbidden in ("动作服务型大片特效", "冷冽刀光", "气流压迫", "碎石悬浮", "贴地冲击尘浪", "金属裂纹冷光"):
+            self.assertNotIn(forbidden, style_contract)
         self.assertIn("**视觉峰值/特效重点**", generator)
+
+    def test_horizontal_3d_cg_hero_requires_explicit_main_visual_contract(self):
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+
+        for text in (generator, reviewer):
+            self.assertIn("主视觉镜头", text)
+            self.assertIn("峰值类型", text)
+            self.assertIn("主视觉事件", text)
+            self.assertIn("结果反馈", text)
+            self.assertIn("没有主视觉镜头", text)
+            self.assertIn("降为 `beat`", text)
+
+        self.assertIn("visual_peak_hero_missing_field", WORKSPACE_SCRIPT.read_text(encoding="utf-8"))
+        self.assertIn("visual_peak_hero_bad_main_shot", WORKSPACE_SCRIPT.read_text(encoding="utf-8"))
+
+    def test_horizontal_generator_hero_required_fields_match_reviewer(self):
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+
+        self.assertIn("`hero` 必须写出主视觉镜头、峰值类型、主视觉事件和结果反馈", generator)
+        self.assertIn("`hero` 必须包含 `主视觉镜头`、`峰值类型`、`主视觉事件`、`结果反馈`", reviewer)
+        self.assertIn("建议包含 `主视觉承载方式`", reviewer)
+        self.assertNotIn("主视觉承载方式`、`主视觉事件` 和 `结果反馈`", generator)
+        self.assertNotIn("必须写清主视觉镜头、峰值类型、主视觉承载方式、主视觉事件和结果反馈", generator)
+        self.assertNotIn("四行结构", generator)
+
+    def test_visual_peak_rules_control_weak_effect_language(self):
+        visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+
+        for text in (visual_style, reviewer):
+            self.assertIn("极弱", text)
+            self.assertIn("很小", text)
+            self.assertIn("一闪即灭", text)
+            self.assertIn("低范围", text)
+
+        self.assertIn("不要反复用", visual_style)
+        self.assertIn("visual_peak_too_weak", reviewer)
+        self.assertIn("只有微光、细纹、一闪、极弱、很小或低范围", reviewer)
+
+    def test_hero_visual_peak_requires_layered_feedback(self):
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+        visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+
+        for text in (generator, reviewer, visual_style):
+            self.assertIn("hero 不是“有一个特效点”", text)
+            self.assertIn("至少 3 层可见反馈", text)
+            self.assertIn("主视觉形态", text)
+            self.assertIn("人物/道具受力", text)
+            self.assertIn("环境反馈", text)
+            self.assertIn("运镜配合", text)
+            self.assertIn("结果收束", text)
+
+        self.assertIn("缺少 3 层反馈", reviewer)
+        self.assertIn("visual_peak_too_weak", reviewer)
+
+    def test_3d_cg_hero_vfx_rules_are_video_model_friendly(self):
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+        visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+        workspace = WORKSPACE_SCRIPT.read_text(encoding="utf-8")
+
+        for text in (generator, visual_style):
+            self.assertIn("主视觉承载方式", text)
+            self.assertIn("隔空能量间隙", text)
+            self.assertIn("外层护体壳", text)
+            self.assertIn("压缩冲击面", text)
+            self.assertIn("避免普通能量球和白烟化", text)
+            self.assertIn("受力方向", text)
+            self.assertIn("附着对象", text)
+            self.assertIn("光影设计模板", text)
+            self.assertIn("主光源", text)
+            self.assertIn("特效光材质", text)
+            self.assertIn("作用范围", text)
+            self.assertIn("不要通过“极弱、很小、一闪即灭”", text)
+
+        for issue_code in ("visual_peak_too_small", "contact_staging_risk", "generic_vfx_form"):
+            self.assertIn(issue_code, reviewer)
+            self.assertIn(issue_code, workspace)
+
+        self.assertIn("真实肢体贴合", reviewer)
+        self.assertIn("普通圆形能量球、白烟团、电纹贴图", reviewer)
+
+    def test_3d_cg_hero_vfx_requires_impact_curve_and_scale(self):
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+        visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+        workspace = WORKSPACE_SCRIPT.read_text(encoding="utf-8")
+
+        for text in (generator, visual_style):
+            self.assertIn("爆发帧", text)
+            self.assertIn("扩散路径", text)
+            self.assertIn("场景级反馈", text)
+            self.assertIn("余波收束", text)
+            self.assertIn("强烈但有来源", text)
+            self.assertIn("高规格国漫番剧级战斗特效", text)
+            self.assertIn("慢动作冲击帧", text)
+            self.assertIn("体积光余波", text)
+            self.assertIn("屏幕边缘轻微震颤", text)
+            self.assertIn("触发镜头", text)
+            self.assertIn("冲击镜头", text)
+            self.assertIn("余波展示镜头", text)
+
+        for issue_code in ("hero_no_impact_curve", "vfx_scale_too_local", "negative_prompt_over_suppresses_vfx"):
+            self.assertIn(issue_code, reviewer)
+            self.assertIn(issue_code, workspace)
+
+    def test_3d_cg_negative_prompts_do_not_suppress_strong_vfx(self):
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+
+        for text in (generator, visual_style, reviewer):
+            self.assertIn("不要把“强光效、大片特效、强能量、粒子、光效”作为负面词", text)
+            self.assertIn("只禁错误形态，不禁强度本身", text)
+            self.assertIn("无来源满屏粒子", text)
+            self.assertIn("过曝吞没人物面部", text)
+            self.assertIn("遮挡口型的强光", text)
 
     def test_3d_cg_rules_do_not_leak_project_character_names(self):
         files = (
