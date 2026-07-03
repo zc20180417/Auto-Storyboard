@@ -308,6 +308,23 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertNotIn("必须写清主视觉镜头、峰值类型、主视觉承载方式、主视觉事件和结果反馈", generator)
         self.assertNotIn("四行结构", generator)
 
+    def test_horizontal_main_scene_blocks_recurring_subzones_and_named_background_speakers(self):
+        generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
+
+        self.assertIn("主场景空间地图", generator)
+        self.assertIn("同一主场景内反复出现的子区域必须统一命名", generator)
+        self.assertIn("后续组必须复用同一个子区域名称", generator)
+        self.assertIn("命名食客、命名群演或后续会发声的背景人物", generator)
+        self.assertIn("首次个体化时必须写进 `**人物**`", generator)
+        self.assertIn("入口/出口、固定交互点或高位、主要行动路线、固定停留点", generator)
+        self.assertIn("不要只写“食客群体/群众/同事/路人”", generator)
+        self.assertIn("从上一组尾部位置到本组开头位置必须有可见路线", generator)
+
+        self.assertIn("同一物理主场景内的子区域命名漂移", reviewer)
+        self.assertIn("命名食客、命名群演或后续会发声的背景人物没有在首次个体化时进入 `人物`", reviewer)
+        self.assertIn("组间承接跳过位移路线", reviewer)
+
     def test_visual_peak_rules_control_weak_effect_language(self):
         visual_style = CG_VISUAL_STYLE_SKILL.read_text(encoding="utf-8")
         reviewer = (ROOT / "agent_skills" / "storyboard-horizontal-reviewer" / "SKILL.md").read_text(encoding="utf-8")
