@@ -64,8 +64,8 @@ VISUAL_STYLE_CONFIG = {
     },
     "3d-cg": {
         "label": "动漫3D CG",
-        "style_line": "画面风格：高质量动漫3D CG短剧风格，二次元角色设计，风格化面部与眼睛，清晰轮廓线，高质量卡通渲染，PBR材质与手绘质感融合，电影级布光，景深自然，表情绑定细腻，口型同步清楚，动作流畅，按剧情峰值使用剧情服务型动漫 CG 特效，包含动作冲击、道具显影、环境反馈、压迫光影、心理异象或余波收束，主体始终清楚，无字幕，无配乐",
-        "negative_line": "--neg 模糊，低分辨率，扭曲，变形，低多边形，廉价游戏建模，塑料玩具感，面部僵硬，表情死板，眼神空洞，口型错位，穿模，骨骼错位，手指畸形，材质粗糙，贴图拉伸，轮廓线抖动，过曝，色彩失真，伪影，满屏粒子，过曝光效，遮脸光效，特效盖住主体，游戏技能UI，法阵文字，魔法阵，廉价仙侠宣传片感，叠加字幕，硬字幕，烧录字幕，后期添加的文字，水印，logo，标题文字，片名，演职员表，背景音乐，配乐，BGM，叠加文字，画面外文字",
+        "style_line": "画面风格：高质量动漫3D CG短剧风格，二次元角色设计，风格化面部与眼睛，清晰轮廓线，高质量卡通渲染，PBR材质与手绘质感融合，电影级布光，景深自然，表情绑定细腻，口型同步清楚，动作流畅，按本组视觉峰值/特效重点使用剧情服务型动漫 CG 特效，特效必须绑定动作、道具、身份、权力、环境、心理或信息落点，主体始终清楚，无字幕，无配乐",
+        "negative_line": "--neg 模糊，低分辨率，扭曲，变形，低多边形，廉价游戏建模，塑料玩具感，面部僵硬，表情死板，眼神空洞，口型错位，穿模，骨骼错位，手指畸形，材质粗糙，贴图拉伸，轮廓线抖动，过曝，色彩失真，伪影，叠加字幕，硬字幕，烧录字幕，后期添加的文字，水印，logo，标题文字，片名，演职员表，背景音乐，配乐，BGM，叠加文字，画面外文字",
         "task_guidance": (
             "动漫3D CG短剧风格：保留短剧分镜、对白、站位、道具连续和时间规则，但画面描述应服务于"
             "二次元角色设计、风格化面部与眼睛、清晰轮廓线、高质量卡通渲染、PBR材质与手绘质感融合、"
@@ -73,7 +73,8 @@ VISUAL_STYLE_CONFIG = {
             "关键道具显影、身份揭示、权力压场、危险进入、环境异变、心理冲击、信息落点或情绪爆点；"
             "beat/hero 级视觉峰值必须写入镜头描述、光影设计、运镜强化词或 Seedance 执行提示补充，"
             "不能只靠固定画面风格尾部；特效必须跟随具体人物、动作、道具、空间、环境、心理、权力或信息落点，"
-            "不得写成法阵、满屏粒子、游戏技能 UI 或盖住人物主体；"
+            "不得写成法阵、满屏粒子、游戏技能 UI 或盖住人物主体；固定画面风格不得列冷冽刀光、气流压迫、"
+            "碎石悬浮等具体特效；hero 必须写主视觉镜头、峰值类型、主视觉事件和结果反馈；"
             "不要写真人实拍、真实摄影、真实演员、纪录片摄影等真人媒介词。"
         ),
         "asset_guidance": (
@@ -1056,6 +1057,16 @@ HORIZONTAL_EFFECT_TAIL_MARKERS = (
     "贴地冲击尘浪",
     "金属裂纹冷光",
 )
+HORIZONTAL_STYLE_TAIL_CONCRETE_EFFECT_MARKERS = (
+    "动作服务型特效",
+    "动作服务型大片特效",
+    "冷冽刀光",
+    "刀光",
+    "气流压迫",
+    "碎石悬浮",
+    "贴地冲击尘浪",
+    "金属裂纹冷光",
+)
 HORIZONTAL_EFFECT_BAD_TERMS = (
     "满屏粒子",
     "巨大法阵",
@@ -1068,6 +1079,193 @@ HORIZONTAL_EFFECT_BAD_TERMS = (
     "遮脸光效",
     "特效盖住主体",
     "吞没人物",
+)
+HORIZONTAL_HERO_WEAK_TERMS = (
+    "短促",
+    "短亮",
+    "极弱",
+    "范围很小",
+    "低范围",
+    "一闪即灭",
+    "只贴着",
+    "收束成细线",
+    "微弱气流",
+    "细小冷光",
+)
+HORIZONTAL_HERO_MATERIAL_TERMS = (
+    "透明壳",
+    "透明护体",
+    "护体壳",
+    "护体外壳",
+    "外层护体",
+    "护层",
+    "琉璃",
+    "金属裂光",
+    "暗金纹路",
+    "压缩冲击面",
+    "冲击面",
+    "折射",
+    "裂纹",
+    "纹路",
+    "光屑",
+)
+HORIZONTAL_HERO_DIRECTION_TERMS = (
+    "从",
+    "沿",
+    "向",
+    "左",
+    "右",
+    "上",
+    "下",
+    "前方",
+    "后方",
+    "凹陷",
+    "外推",
+    "扩开",
+    "压向",
+    "半弧",
+    "路径",
+)
+HORIZONTAL_HERO_ENVIRONMENT_TERMS = (
+    "火光",
+    "火盆",
+    "烛火",
+    "尘粒",
+    "尘浪",
+    "尘环",
+    "衣袖",
+    "地面",
+    "青石",
+    "桌面",
+    "人群",
+    "裂纹",
+    "伏低",
+    "震动",
+    "后缩",
+)
+HORIZONTAL_HERO_RESULT_TERMS = (
+    "停住",
+    "截停",
+    "后退",
+    "倒飞",
+    "断裂",
+    "塌陷",
+    "破散",
+    "沉默",
+    "低头",
+    "安心",
+    "下坠",
+    "裂开",
+    "收束",
+    "确认",
+)
+HORIZONTAL_HERO_IMPACT_BURST_TERMS = (
+    "爆发帧",
+    "冲击帧",
+    "爆点",
+    "撞击瞬间",
+    "破防瞬间",
+    "断裂瞬间",
+    "亮核",
+    "压缩光核",
+    "爆开",
+    "爆裂",
+)
+HORIZONTAL_HERO_IMPACT_EXPANSION_TERMS = (
+    "扩散路径",
+    "向外扩",
+    "外扩",
+    "扩开",
+    "扫开",
+    "半弧",
+    "穿过",
+    "推进",
+    "沿",
+    "引导线",
+)
+HORIZONTAL_HERO_IMPACT_AFTERSHOCK_TERMS = (
+    "余波",
+    "收束",
+    "残光",
+    "压暗",
+    "伏低",
+    "回落",
+    "主光",
+    "体积光",
+    "屏幕边缘轻微震颤",
+    "画面边缘轻微震颤",
+)
+HORIZONTAL_HERO_SCENE_SCALE_TERMS = (
+    "全场",
+    "场景",
+    "空间",
+    "前景",
+    "背景",
+    "屏幕边缘",
+    "画面边缘",
+    "主光",
+    "体积光",
+    "火盆",
+    "烛火",
+    "火光",
+    "地面",
+    "青石",
+    "桌面",
+    "尘粒",
+    "尘浪",
+    "尘环",
+    "衣袖",
+    "人群",
+    "众人",
+    "半圈",
+    "一圈",
+)
+HORIZONTAL_HERO_CONTACT_RISK_PATTERNS = (
+    re.compile(r"掌心贴上[^，。；;\n]{0,16}(?:腕|拳|手|臂|骨)"),
+    re.compile(r"手掌贴[^，。；;\n]{0,16}(?:腕|拳|手|臂|骨)"),
+    re.compile(r"贴上[^，。；;\n]{0,16}(?:腕骨|拳腕|手腕|前臂)"),
+    re.compile(r"(?:抓住|锁住|截住)[^，。；;\n]{0,16}(?:手腕|腕骨|拳腕|前臂)"),
+    re.compile(r"真实肢体贴合"),
+)
+HORIZONTAL_HERO_CONTACT_SAFETY_TERMS = (
+    "半寸",
+    "隔空",
+    "能量间隙",
+    "外层护体壳",
+    "护体壳",
+    "护体外壳",
+    "压缩冲击面",
+    "相对位置",
+    "不真实贴合",
+    "防穿模",
+)
+HORIZONTAL_HERO_GENERIC_VFX_TERMS = (
+    "冷白光球",
+    "光球",
+    "能量球",
+    "白烟团",
+    "白烟",
+    "烟团",
+    "电纹贴图",
+    "电纹",
+    "能量爆开",
+    "白光爆开",
+    "圆形护盾",
+    "完整圆形",
+)
+HORIZONTAL_NEGATIVE_OVER_SUPPRESS_TERMS = (
+    "强光效",
+    "大片特效",
+    "强能量",
+    "强特效",
+    "粒子",
+    "光效",
+    "满屏粒子",
+    "过曝光效",
+    "遮脸光效",
+    "特效盖住主体",
+    "魔法阵",
+    "廉价仙侠宣传片感",
 )
 HORIZONTAL_CAMERA_MOTION_STABLE_PATTERNS = (
     "固定机位",
@@ -1190,6 +1388,13 @@ HORIZONTAL_OUTPUT_FIELD_PATTERNS = (
     "Seedance 执行提示补充",
     "本镜估算时长",
 )
+HORIZONTAL_FIELD_LINE_RE = re.compile(
+    r"(?m)^\s*(?:\*\*)?(?:人物|场景|道具/关键视觉资产|视觉峰值/特效重点|组间承接|横屏构图/调度|"
+    r"镜头描述|光影设计|本镜估算时长|组尾衔接|画面风格|运镜强化词|Seedance执行提示补充|"
+    r"Seedance 执行提示补充|--neg)(?:\*\*)?(?:\s*[：:]|\s+)"
+)
+HORIZONTAL_VISUAL_PEAK_HERO_FIELDS = ("主视觉镜头", "峰值类型", "主视觉事件", "结果反馈")
+HORIZONTAL_MAIN_VISUAL_SHOT_RE = re.compile(r"(?<!\d)(?P<shot>\d{1,3}-\d{1,2})(?!\d)")
 REVIEWER_ALLOWED_SEMANTIC_RESULTS = {"pass", "warning", "issue"}
 REVIEWER_PROMPT_POLLUTION_MARKERS = LOW_QUALITY_TEMPLATE_PATTERNS + MODEL_META_PROMPT_PATTERNS + (
     "由模型自动",
@@ -1444,6 +1649,21 @@ def _horizontal_field_value(block: str, label: str) -> str | None:
     return match.group("value").strip() if match else None
 
 
+def _horizontal_field_block(block: str, label: str) -> str | None:
+    if label == "--neg":
+        pattern = re.compile(r"(?m)^\s*(?:\*\*)?--neg(?:\*\*)?(?:\s*[：:])?\s*(?P<value>.*?)\s*$")
+    else:
+        pattern = re.compile(rf"(?m)^\s*(?:\*\*)?{re.escape(label)}(?:\*\*)?\s*[：:]\s*(?P<value>.*?)\s*$")
+    match = pattern.search(block)
+    if not match:
+        return None
+
+    following = block[match.end() :]
+    next_field = HORIZONTAL_FIELD_LINE_RE.search(following)
+    end = match.end() + next_field.start() if next_field else len(block)
+    return block[match.start() : end].strip()
+
+
 def _horizontal_shot_block_has_field(shot_block: str, label: str) -> bool:
     return re.search(rf"(?m)^\s*(?:\*\*)?{re.escape(label)}(?:\*\*)?\s*[：:]", shot_block) is not None
 
@@ -1538,6 +1758,18 @@ def validate_horizontal_output_structure_contract(content: str) -> list[str]:
     return issues
 
 
+def _horizontal_negative_over_suppression_hits(neg_text: str) -> list[str]:
+    hits: list[str] = []
+    for raw_item in re.split(r"[，,、；;]", neg_text):
+        item = raw_item.strip().strip("`")
+        if not item:
+            continue
+        normalized = re.sub(r"\s+", "", item)
+        if normalized in HORIZONTAL_NEGATIVE_OVER_SUPPRESS_TERMS and item not in hits:
+            hits.append(item)
+    return hits
+
+
 def validate_horizontal_visual_style_contract(content: str, *, visual_style: str) -> list[str]:
     issues: list[str] = []
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
@@ -1566,10 +1798,24 @@ def validate_horizontal_visual_style_contract(content: str, *, visual_style: str
             issues.append(
                 f"第{group_number}组是 3D CG 横屏 run，但 `画面风格` 缺少动漫3D CG/二次元角色/清晰轮廓线/高质量卡通渲染/PBR 等媒介锚点。"
             )
+        fixed_tail_hits = [marker for marker in HORIZONTAL_STYLE_TAIL_CONCRETE_EFFECT_MARKERS if marker in style_text]
+        if fixed_tail_hits:
+            issues.append(
+                f"fixed_style_effect_tail: 第{group_number}组 `画面风格` 固定尾部包含具体特效词 "
+                f"`{ ' / '.join(fixed_tail_hits[:5]) }`；具体特效应进入镜头描述、光影设计、运镜或 Seedance 执行提示。"
+            )
         neg_hits = [marker for marker in forbidden_neg_markers if marker in neg_text]
         if neg_hits:
             issues.append(
                 f"第{group_number}组是 3D CG 横屏 run，但 `--neg` 否定目标媒介 `{ ' / '.join(neg_hits) }`。"
+            )
+        over_suppress_hits = _horizontal_negative_over_suppression_hits(neg_text)
+        if over_suppress_hits:
+            issues.append(
+                f"negative_prompt_over_suppresses_vfx: 第{group_number}组 3D CG `--neg` 使用 "
+                f"`{ ' / '.join(over_suppress_hits[:6]) }` 等泛泛强特效负面词，可能压制视觉峰值；"
+                "应只禁错误形态，例如无来源满屏粒子、过曝吞没人物面部、遮挡口型的强光、"
+                "特效盖住主体动作路径、魔法阵贴图或廉价页游特效。"
             )
 
     return issues
@@ -1584,10 +1830,10 @@ def _horizontal_shot_effect_body_text(shot_text: str) -> str:
     return "\n".join(lines)
 
 
-def _positive_bad_effect_hits(text: str) -> list[str]:
+def _positive_term_hits(text: str, terms: tuple[str, ...]) -> list[str]:
     hits: list[str] = []
     negation_pattern = re.compile(r"(不|不要|不得|不能|禁止|避免|无|不出现|不形成|不生成|不做)")
-    for term in HORIZONTAL_EFFECT_BAD_TERMS:
+    for term in terms:
         start = 0
         while True:
             index = text.find(term, start)
@@ -1602,6 +1848,163 @@ def _positive_bad_effect_hits(text: str) -> list[str]:
     return hits
 
 
+def _positive_bad_effect_hits(text: str) -> list[str]:
+    return _positive_term_hits(text, HORIZONTAL_EFFECT_BAD_TERMS)
+
+
+def _horizontal_shot_blocks_by_label(block: str) -> dict[str, str]:
+    shot_matches = list(CLEAN_LEGACY_SHOT_RE.finditer(block))
+    shot_blocks: dict[str, str] = {}
+    for index, shot_match in enumerate(shot_matches):
+        label = f"{shot_match.group('group')}-{shot_match.group('shot')}"
+        start = shot_match.start()
+        end = shot_matches[index + 1].start() if index + 1 < len(shot_matches) else len(block)
+        shot_blocks[label] = block[start:end]
+    return shot_blocks
+
+
+def _horizontal_visual_peak_field_value(visual_peak_block: str, field: str) -> str | None:
+    pattern = re.compile(rf"(?m)^\s*[-*]?\s*{re.escape(field)}\s*[：:]\s*(?P<value>.*?)\s*$")
+    match = pattern.search(visual_peak_block)
+    return match.group("value").strip() if match else None
+
+
+def _visual_peak_layer_count(text: str) -> int:
+    layers = (
+        HORIZONTAL_HERO_MATERIAL_TERMS,
+        HORIZONTAL_HERO_DIRECTION_TERMS,
+        HORIZONTAL_HERO_ENVIRONMENT_TERMS,
+        HORIZONTAL_HERO_RESULT_TERMS,
+    )
+    return sum(1 for terms in layers if any(term in text for term in terms))
+
+
+def _visual_peak_impact_curve_count(text: str) -> int:
+    curve_layers = (
+        HORIZONTAL_HERO_IMPACT_BURST_TERMS,
+        HORIZONTAL_HERO_IMPACT_EXPANSION_TERMS,
+        HORIZONTAL_HERO_IMPACT_AFTERSHOCK_TERMS,
+    )
+    return sum(1 for terms in curve_layers if any(term in text for term in terms))
+
+
+def _visual_peak_scene_scale_count(text: str) -> int:
+    return sum(1 for term in HORIZONTAL_HERO_SCENE_SCALE_TERMS if term in text)
+
+
+def validate_visual_peak_contract(content: str, *, visual_style: str = "live-action") -> list[str]:
+    issues: list[str] = []
+    if visual_style != "3d-cg":
+        return issues
+
+    group_matches = list(CLEAN_GROUP_RE.finditer(content))
+    for index, group_match in enumerate(group_matches):
+        raw_group = group_match.group("num")
+        group_number = _group_number(raw_group) or index + 1
+        block_start = group_match.end()
+        block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
+        block = content[block_start:block_end]
+
+        visual_peak = (_horizontal_field_value(block, "视觉峰值/特效重点") or "").strip()
+        if not re.match(r"(?i)^\s*hero\s*[：:：，,、\s-]?", visual_peak):
+            continue
+
+        visual_peak_block = _horizontal_field_block(block, "视觉峰值/特效重点") or ""
+        field_values: dict[str, str] = {}
+        for field in HORIZONTAL_VISUAL_PEAK_HERO_FIELDS:
+            value = _horizontal_visual_peak_field_value(visual_peak_block, field)
+            if not value:
+                issues.append(
+                    f"visual_peak_hero_missing_field: 第{group_number}组声明为 `hero`，但 `视觉峰值/特效重点` "
+                    f"缺少 `{field}`；没有主视觉镜头或结果反馈时应降为 `beat` 或重写 hero。"
+                )
+                continue
+            field_values[field] = value
+
+        main_shot_value = field_values.get("主视觉镜头")
+        if not main_shot_value:
+            continue
+
+        referenced_shots = [match.group("shot") for match in HORIZONTAL_MAIN_VISUAL_SHOT_RE.finditer(main_shot_value)]
+        if not referenced_shots:
+            issues.append(
+                f"visual_peak_hero_missing_main_shot: 第{group_number}组声明为 `hero`，"
+                "`主视觉镜头` 必须写实际镜头号，例如 `N-2`。"
+            )
+            continue
+
+        available_shots = {f"{match.group('group')}-{match.group('shot')}" for match in CLEAN_LEGACY_SHOT_RE.finditer(block)}
+        for shot_label in referenced_shots:
+            if shot_label not in available_shots:
+                issues.append(
+                    f"visual_peak_hero_bad_main_shot: 第{group_number}组声明为 `hero`，但 `主视觉镜头` 引用了 "
+                    f"`{shot_label}`；可用镜头号为 `{ ' / '.join(sorted(available_shots)) or '无' }`。"
+                )
+
+        shot_blocks = _horizontal_shot_blocks_by_label(block)
+        main_visual_text = "\n".join(
+            [
+                visual_peak_block,
+                *(shot_blocks.get(shot_label, "") for shot_label in referenced_shots),
+                _horizontal_field_value(block, "运镜强化词") or "",
+                _horizontal_field_value(block, "Seedance执行提示补充") or "",
+            ]
+        )
+        layer_count = _visual_peak_layer_count(main_visual_text)
+        impact_curve_count = _visual_peak_impact_curve_count(main_visual_text)
+        scene_scale_count = _visual_peak_scene_scale_count(main_visual_text)
+
+        weak_hits = [term for term in HORIZONTAL_HERO_WEAK_TERMS if term in main_visual_text]
+        if weak_hits and layer_count < 3:
+            issues.append(
+                f"visual_peak_too_small: 第{group_number}组声明为 `hero`，但主视觉镜头主要依赖 "
+                f"`{ ' / '.join(weak_hits[:5]) }` 等降强度描述，且缺少明确材质、方向、环境反馈和结果收束；"
+                "应降为 `beat`，或补主视觉材质、受力方向、环境反馈和结果收束。"
+            )
+
+        if impact_curve_count < 2:
+            issues.append(
+                f"hero_no_impact_curve: 第{group_number}组声明为 `hero`，但主视觉缺少爆发帧、扩散路径、"
+                "余波收束中的大多数阶段；应写清触发前压迫、爆发帧/冲击帧、特效扩散路径、场景级反馈和余波收束。"
+            )
+
+        if scene_scale_count < 1:
+            issues.append(
+                f"vfx_scale_too_local: 第{group_number}组声明为 `hero`，但主视觉停留在局部光点或局部材质反应，"
+                "没有触达全场主光、屏幕/画面边缘、火盆/烛火、地面/桌面、尘粒/衣袖或人群反应等场景级反馈。"
+            )
+
+        contact_risk = any(pattern.search(main_visual_text) for pattern in HORIZONTAL_HERO_CONTACT_RISK_PATTERNS)
+        contact_safe = any(term in main_visual_text for term in HORIZONTAL_HERO_CONTACT_SAFETY_TERMS)
+        if contact_risk and not contact_safe:
+            issues.append(
+                f"contact_staging_risk: 第{group_number}组 `hero` 主视觉涉及近身真实贴合，但没有写清半寸能量间隙、"
+                "外层护体壳受力或防穿模约束；应把特效放在可见间隙、护盾外壳、道具表面或地面反馈上。"
+            )
+
+        generic_hits = _positive_term_hits(main_visual_text, HORIZONTAL_HERO_GENERIC_VFX_TERMS)
+        if generic_hits and layer_count < 4:
+            issues.append(
+                f"generic_vfx_form: 第{group_number}组 `hero` 主视觉可能退化为普通能量球/白烟/电纹 `{ ' / '.join(generic_hits[:5]) }`，"
+                "但缺少受力方向、附着对象、材质和环境反馈；应写成压缩冲击面、护体壳裂纹、道具表面纹路或地面/火光反馈。"
+            )
+
+    return issues
+
+
+def _effect_required_from_visual_peak(block: str) -> tuple[str, str]:
+    visual_peak = (_horizontal_field_value(block, "视觉峰值/特效重点") or "").strip()
+    match = re.match(r"(?i)^\s*(hero|beat|atmosphere)\s*[：:：，,、\s-]?", visual_peak)
+    if not match:
+        return "无", "none"
+    peak_level = match.group(1).lower()
+    if peak_level == "hero":
+        return "hero", "strong"
+    if peak_level == "beat":
+        return "beat", "subtle"
+    return "atmosphere", "none"
+
+
 def validate_effect_placement(
     content: str,
     *,
@@ -1611,9 +2014,11 @@ def validate_effect_placement(
     issues: list[str] = []
     if visual_style != "3d-cg":
         return issues
-    if effect_required not in {"none", "subtle", "strong"}:
-        issues.append(f"effect_required must be one of none/subtle/strong, got `{effect_required}`.")
+    if effect_required not in {"none", "subtle", "strong", "auto"}:
+        issues.append(f"effect_required must be one of none/subtle/strong/auto, got `{effect_required}`.")
         return issues
+
+    issues.extend(validate_visual_peak_contract(content, visual_style=visual_style))
 
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
     for index, group_match in enumerate(group_matches):
@@ -1642,22 +2047,25 @@ def validate_effect_placement(
                 "3D CG 特效必须服务动作、受力或道具状态，不能吞没人物、遮脸或变成游戏技能 UI。"
             )
 
-        if effect_required == "none":
+        visual_peak_level, group_effect_required = (
+            _effect_required_from_visual_peak(block) if effect_required == "auto" else (effect_required, effect_required)
+        )
+        if group_effect_required == "none":
             continue
 
         body_hits = [term for term in HORIZONTAL_EFFECT_BODY_MARKERS if term in body_text]
         if not body_hits:
             style_text = _horizontal_field_value(block, "画面风格") or ""
             style_hits = [term for term in HORIZONTAL_EFFECT_TAIL_MARKERS if term in style_text]
-            severity = "hard" if effect_required == "strong" else "warning"
+            severity = "hard" if group_effect_required == "strong" else "warning"
             if style_hits:
                 issues.append(
-                    f"effect_only_in_tail: 第{group_number}组已标记为 `{effect_required}` 特效需求，"
+                    f"effect_only_in_tail: 第{group_number}组已声明为 `{visual_peak_level}`，映射为 `{group_effect_required}` 特效需求，"
                     f"但特效只出现在固定 `画面风格` 尾部 `{ ' / '.join(style_hits[:4]) }`，没有进入镜头正文、光影、运镜或 Seedance 执行提示；severity={severity}。"
                 )
                 continue
             issues.append(
-                f"effect_missing_body: 第{group_number}组已标记为 `{effect_required}` 特效需求，"
+                f"effect_missing_body: 第{group_number}组已声明为 `{visual_peak_level}`，映射为 `{group_effect_required}` 特效需求，"
                 f"但镜头正文、光影、运镜和 Seedance 执行提示都没有承载可见特效；severity={severity}。"
             )
 
@@ -2888,7 +3296,7 @@ def validate_episode(args: argparse.Namespace) -> int:
         horizontal_special_effect_issues = validate_effect_placement(
             content,
             visual_style=episode_visual_style(episode_dir),
-            effect_required="none",
+            effect_required="auto",
         )
         physical_plausibility_issues = validate_physical_plausibility_floor(content)
     else:
@@ -3045,7 +3453,7 @@ def collect_run(args: argparse.Namespace) -> int:
             horizontal_special_effect_issues = validate_effect_placement(
                 content,
                 visual_style=episode_visual_style(episode_dir),
-                effect_required="none",
+                effect_required="auto",
             )
             physical_plausibility_issues = validate_physical_plausibility_floor(content)
         else:

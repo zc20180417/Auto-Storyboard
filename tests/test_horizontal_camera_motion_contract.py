@@ -79,6 +79,102 @@ STRONG_EFFECT_IN_BODY_GROUP = STRONG_EFFECT_ONLY_IN_TAIL_GROUP.replace(
 )
 
 
+STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP = STRONG_EFFECT_IN_BODY_GROUP.replace(
+    "**视觉峰值/特效重点**：hero：角色A的决定性动作造成关键道具边缘冷光、角色B后退和众人态度突变。",
+    "\n".join(
+        [
+            "**视觉峰值/特效重点**：hero：角色A的决定性动作造成关键道具边缘冷光、角色B后退和众人态度突变。",
+            "- 主视觉镜头：1-1",
+            "- 峰值类型：道具显影 / 权力压场",
+            "- 主视觉事件：关键道具边缘冷光沿桌面掠过，角色B被气流震得后退。",
+            "- 结果反馈：众人态度突变，关键道具保持在画面中心。",
+        ]
+    ),
+)
+
+
+HERO_WITH_WRONG_MAIN_SHOT_GROUP = STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP.replace(
+    "- 主视觉镜头：1-1",
+    "- 主视觉镜头：2-1",
+)
+
+
+WEAK_HERO_SMALL_VFX_GROUP = STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP.replace(
+    "**镜头描述**：角色A做出决定性动作，关键道具边缘短促冷光沿桌面掠过，角色B被气流震得后退，众人态度突变。",
+    "**镜头描述**：角色A做出决定性动作，掌前只有短促冷光一闪即灭，微弱气流低范围散开，角色B轻微后退。",
+).replace(
+    "**光影设计**：冷光只贴住关键道具边缘，角色A和角色B面部清楚，口型不被遮挡。",
+    "**光影设计**：细小冷光短亮后收束成细线，人物面部清楚。",
+).replace(
+    "- 主视觉事件：关键道具边缘冷光沿桌面掠过，角色B被气流震得后退。",
+    "- 主视觉事件：掌前短促冷光一闪即灭，微弱气流低范围散开。",
+)
+
+
+CONTACT_RISK_HERO_GROUP = STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP.replace(
+    "**镜头描述**：角色A做出决定性动作，关键道具边缘短促冷光沿桌面掠过，角色B被气流震得后退，众人态度突变。",
+    "**镜头描述**：角色A掌心贴上角色B腕骨，冷光沿腕骨扩开，角色B被迫停住。",
+).replace(
+    "- 主视觉事件：关键道具边缘冷光沿桌面掠过，角色B被气流震得后退。",
+    "- 主视觉事件：角色A掌心贴上角色B腕骨，冷光沿腕骨扩开。",
+)
+
+
+CONTACT_SAFE_HERO_GROUP = CONTACT_RISK_HERO_GROUP.replace(
+    "角色A掌心贴上角色B腕骨，冷光沿腕骨扩开，角色B被迫停住。",
+    "角色A左掌停在角色B拳腕前方半寸，掌心与拳腕之间形成冷白压缩冲击面，角色B拳臂外层护体壳被顶出凹陷，尘粒从两人之间低位外推，角色B被迫停住。",
+).replace(
+    "角色A掌心贴上角色B腕骨，冷光沿腕骨扩开。",
+    "角色A左掌停在角色B拳腕前方半寸，掌心与拳腕之间形成冷白压缩冲击面，角色B拳臂外层护体壳被顶出凹陷。",
+)
+
+
+GENERIC_VFX_FORM_GROUP = STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP.replace(
+    "**镜头描述**：角色A做出决定性动作，关键道具边缘短促冷光沿桌面掠过，角色B被气流震得后退，众人态度突变。",
+    "**镜头描述**：角色A抬手，冷白光球在掌前爆开，周围白烟和电纹扩散，角色B被迫后退。",
+).replace(
+    "- 主视觉事件：关键道具边缘冷光沿桌面掠过，角色B被气流震得后退。",
+    "- 主视觉事件：冷白光球在掌前爆开，周围白烟和电纹扩散。",
+)
+
+
+HERO_WITH_IMPACT_CURVE_GROUP = STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP.replace(
+    "**镜头描述**：角色A做出决定性动作，关键道具边缘短促冷光沿桌面掠过，角色B被气流震得后退，众人态度突变。",
+    (
+        "**镜头描述**：角色A抬掌前半拍压低全场火光，爆发帧中关键道具边缘形成压缩光核，"
+        "冷白裂光沿桌面扩散路径向右扫开，桌面尘粒和火盆主光被压暗半秒，屏幕边缘轻微震颤，"
+        "体积光余波收束到角色B后退和众人沉默。"
+    ),
+).replace(
+    "**光影设计**：冷光只贴住关键道具边缘，角色A和角色B面部清楚，口型不被遮挡。",
+    (
+        "**光影设计**：高规格国漫番剧级战斗特效，主光由火盆暖光转为压缩光核短促主导；"
+        "慢动作冲击帧里裂光只沿道具边缘和桌面展开，体积光余波压暗全场主光半秒，不遮挡人物脸和口型。"
+    ),
+).replace(
+    "- 主视觉事件：关键道具边缘冷光沿桌面掠过，角色B被气流震得后退。",
+    (
+        "- 主视觉事件：爆发帧中关键道具边缘形成压缩光核，裂光沿桌面扩散路径向右扫开，"
+        "触发镜头、冲击镜头和余波展示镜头形成连续爆点曲线。"
+    ),
+).replace(
+    "- 结果反馈：众人态度突变，关键道具保持在画面中心。",
+    "- 结果反馈：火盆主光被压暗半秒，屏幕边缘轻微震颤后余波收束，角色B后退，众人沉默。",
+)
+
+
+BROAD_NEGATIVE_PROMPT_GROUP = STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP.replace(
+    "**--neg** 模糊，水印，logo，字幕",
+    "**--neg** 模糊，水印，logo，字幕，强光效，大片特效，强能量，粒子，光效，满屏粒子，过曝光效，遮脸光效，特效盖住主体，魔法阵，廉价仙侠宣传片感",
+)
+
+
+PRECISE_NEGATIVE_PROMPT_GROUP = STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP.replace(
+    "**--neg** 模糊，水印，logo，字幕",
+    "**--neg** 模糊，水印，logo，字幕，无来源满屏粒子，过曝吞没人物面部，遮挡口型的强光，特效盖住主体动作路径，魔法阵贴图，廉价页游特效",
+)
+
+
 OVERDONE_EFFECT_GROUP = """=== [cut_id: EP01-G02] 第2组：过度光效（总时长：5秒，镜头数：1个） ===
 
 **人物**：角色A、角色B
@@ -103,7 +199,7 @@ OVERDONE_EFFECT_GROUP = """=== [cut_id: EP01-G02] 第2组：过度光效（总�
 """
 
 
-NEGATED_OVERDONE_EFFECT_GROUP = STRONG_EFFECT_IN_BODY_GROUP.replace(
+NEGATED_OVERDONE_EFFECT_GROUP = STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP.replace(
     "**光影设计**：冷光只贴住关键道具边缘，角色A和角色B面部清楚，口型不被遮挡。",
     "**光影设计**：冷光只贴住关键道具边缘，不形成满屏粒子；角色A和角色B面部清楚，口型不被遮挡。",
 ).replace(
@@ -147,6 +243,111 @@ class HorizontalCameraMotionContractTests(unittest.TestCase):
 
         self.assertTrue(any("effect_only_in_tail" in issue for issue in issues))
 
+    def test_declared_hero_effect_only_in_tail_fails_in_auto_mode(self):
+        issues = saw.validate_effect_placement(
+            STRONG_EFFECT_ONLY_IN_TAIL_GROUP,
+            visual_style="3d-cg",
+            effect_required="auto",
+        )
+
+        self.assertTrue(any("effect_only_in_tail" in issue and "`hero`" in issue for issue in issues))
+
+    def test_declared_hero_requires_main_visual_shot_fields(self):
+        issues = saw.validate_visual_peak_contract(
+            STRONG_EFFECT_IN_BODY_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertTrue(any("visual_peak_hero_missing_field" in issue and "主视觉镜头" in issue for issue in issues))
+
+    def test_declared_hero_accepts_main_visual_shot_fields(self):
+        issues = saw.validate_visual_peak_contract(
+            STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertFalse(any("visual_peak_hero" in issue for issue in issues))
+
+    def test_declared_hero_main_visual_shot_must_belong_to_same_group(self):
+        issues = saw.validate_visual_peak_contract(
+            HERO_WITH_WRONG_MAIN_SHOT_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertTrue(any("visual_peak_hero_bad_main_shot" in issue and "`2-1`" in issue for issue in issues))
+
+    def test_declared_hero_rejects_small_local_vfx(self):
+        issues = saw.validate_visual_peak_contract(
+            WEAK_HERO_SMALL_VFX_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertTrue(any("visual_peak_too_small" in issue for issue in issues))
+
+    def test_declared_hero_rejects_contact_staging_risk(self):
+        issues = saw.validate_visual_peak_contract(
+            CONTACT_RISK_HERO_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertTrue(any("contact_staging_risk" in issue for issue in issues))
+
+    def test_declared_hero_accepts_contact_with_energy_gap_and_outer_shell(self):
+        issues = saw.validate_visual_peak_contract(
+            CONTACT_SAFE_HERO_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertFalse(any("contact_staging_risk" in issue for issue in issues))
+
+    def test_declared_hero_rejects_generic_energy_ball_form(self):
+        issues = saw.validate_visual_peak_contract(
+            GENERIC_VFX_FORM_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertTrue(any("generic_vfx_form" in issue for issue in issues))
+
+    def test_declared_hero_rejects_missing_impact_curve(self):
+        issues = saw.validate_visual_peak_contract(
+            STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertTrue(any("hero_no_impact_curve" in issue for issue in issues))
+
+    def test_declared_hero_accepts_impact_curve_and_scene_scale(self):
+        issues = saw.validate_visual_peak_contract(
+            HERO_WITH_IMPACT_CURVE_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertFalse(any("hero_no_impact_curve" in issue or "vfx_scale_too_local" in issue for issue in issues))
+
+    def test_3d_cg_negative_prompt_rejects_over_suppressing_vfx_terms(self):
+        issues = saw.validate_horizontal_visual_style_contract(
+            BROAD_NEGATIVE_PROMPT_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertTrue(any("negative_prompt_over_suppresses_vfx" in issue for issue in issues))
+
+    def test_3d_cg_negative_prompt_allows_precise_bad_form_terms(self):
+        issues = saw.validate_horizontal_visual_style_contract(
+            PRECISE_NEGATIVE_PROMPT_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertFalse(any("negative_prompt_over_suppresses_vfx" in issue for issue in issues))
+
+    def test_fixed_style_tail_cannot_list_concrete_effect_markers(self):
+        issues = saw.validate_horizontal_visual_style_contract(
+            STRONG_EFFECT_ONLY_IN_TAIL_GROUP,
+            visual_style="3d-cg",
+        )
+
+        self.assertTrue(any("fixed_style_effect_tail" in issue and "冷冽刀光" in issue for issue in issues))
+
     def test_effect_not_required_keeps_clean_dialogue_group_allowed(self):
         issues = saw.validate_effect_placement(
             STATIC_HORIZONTAL_GROUP,
@@ -156,9 +357,18 @@ class HorizontalCameraMotionContractTests(unittest.TestCase):
 
         self.assertFalse(any("effect_only_in_tail" in issue or "effect_missing_body" in issue for issue in issues))
 
+    def test_declared_no_visual_peak_does_not_require_effect_in_auto_mode(self):
+        issues = saw.validate_effect_placement(
+            STATIC_HORIZONTAL_GROUP,
+            visual_style="3d-cg",
+            effect_required="auto",
+        )
+
+        self.assertFalse(any("effect_only_in_tail" in issue or "effect_missing_body" in issue for issue in issues))
+
     def test_required_strong_effect_passes_when_body_carries_effect(self):
         issues = saw.validate_effect_placement(
-            STRONG_EFFECT_IN_BODY_GROUP,
+            STRONG_EFFECT_IN_BODY_WITH_HERO_FIELDS_GROUP,
             visual_style="3d-cg",
             effect_required="strong",
         )
