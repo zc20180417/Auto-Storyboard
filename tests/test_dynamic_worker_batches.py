@@ -1,6 +1,7 @@
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from types import SimpleNamespace
 
 import storyboard_agent_workspace as saw
 
@@ -42,6 +43,30 @@ class DynamicWorkerBatchTests(unittest.TestCase):
             [["ep01"], ["ep02"], ["ep03"], ["ep04", "ep05"]],
         )
 
+    def test_pairs_adjacent_continuous_scene_even_when_episodes_are_complex(self):
+        ep01 = task("ep01", 6000, segments=3)
+        ep02 = task("ep02", 7000, segments=4)
+        ep01["continuity_with_next"] = True
+        ep02["continuous_from_previous"] = True
+
+        batches = saw.build_worker_batches([ep01, ep02])
+
+        self.assertEqual(
+            [[item["episode_id"] for item in batch] for batch in batches],
+            [["ep01", "ep02"]],
+        )
+
+    def test_detects_same_scene_at_adjacent_source_boundary(self):
+        episodes = [
+            saw.EpisodeInput(Path("ep01.txt"), 1, "ep01", "测试剧", "场1-1：外景 小区停车场 - 傍晚\n甲递出钥匙。"),
+            saw.EpisodeInput(Path("ep02.txt"), 2, "ep02", "测试剧", "场2-1：外景 小区停车场 - 日\n乙接住钥匙。"),
+        ]
+
+        links = saw.build_source_continuity_links(episodes)
+
+        self.assertEqual(len(links), 1)
+        self.assertTrue(links[0]["time_conflict"])
+
     def test_dispatcher_files_include_dynamic_batches(self):
         with TemporaryDirectory() as tmp:
             run_dir = Path(tmp)
@@ -64,6 +89,50 @@ class DynamicWorkerBatchTests(unittest.TestCase):
             self.assertIn("Dynamic worker batches:", next_steps)
             self.assertIn("- batch 1: `ep01`, `ep02`", next_steps)
             self.assertIn("- batch 2: `ep03`", next_steps)
+
+    def test_prepare_writes_vertical_boundary_context_and_v2_contract(self):
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "source"
+            source.mkdir()
+            (source / "第01集.txt").write_text(
+                "# 第1集\n场1-1：外景 小区道路 - 傍晚\n甲拦在车前。\n",
+                encoding="utf-8",
+            )
+            (source / "第02集.txt").write_text(
+                "# 第2集\n场2-1：外景 小区道路 - 日\n甲仍拦在车前。\n",
+                encoding="utf-8",
+            )
+            args = SimpleNamespace(
+                source=source,
+                prompt=None,
+                review_skill=None,
+                workspace_dir=root / "runs",
+                out_dir=root / "outputs",
+                run_name="boundary-test",
+                agent="codex",
+                model=None,
+                output_model_suffix="test",
+                mode="scene",
+                aspect="vertical",
+                visual_style="live-action",
+                parallelism=5,
+                force=False,
+            )
+
+            result = saw.prepare_workspace(args)
+
+            self.assertEqual(result, 0)
+            run_dir = root / "runs" / "boundary-test"
+            ep02 = run_dir / "episodes" / "ep02"
+            boundary = (ep02 / "boundary_context.md").read_text(encoding="utf-8")
+            metadata = saw.read_json(ep02 / "episode.json")
+            manifest = saw.read_json(run_dir / "manifest.json")
+            self.assertIn("continuous_from_previous: true", boundary)
+            self.assertIn("previous_final: ../ep01/final.txt", boundary)
+            self.assertEqual(metadata["vertical_review_contract_version"], 2)
+            self.assertTrue(metadata["continuous_from_previous"])
+            self.assertTrue(manifest["episodes"][0]["continuity_with_next"])
 
 
 if __name__ == "__main__":

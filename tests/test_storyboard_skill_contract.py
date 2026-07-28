@@ -71,9 +71,12 @@ class StoryboardSkillContractTests(unittest.TestCase):
 
         self.assertIn("强节拍是容量核算工具，不是自动拆组触发器", generator_text)
         self.assertIn("连续事件链", generator_text)
-        self.assertIn("不要因为每一步都有状态变化就机械拆成多个 10-15 秒组", generator_text)
+        self.assertIn("不要因为每一步都有状态变化就机械拆段、拆组或加时", generator_text)
+        self.assertIn("可以在 2-3 秒内紧凑完成", generator_text)
         self.assertIn("强节拍只用于判断容量，不用于机械拆组", generator_text)
         self.assertIn("不能只按数量判 hard issue", reviewer_text)
+        self.assertIn("不得仅按动词数量判错", reviewer_text)
+        self.assertNotIn("复合动作链低于 4 秒", reviewer_text)
         self.assertNotIn("对白+外部事件+中等/长动作+道具操作 同组？→ 是则拆组", generator_text)
 
     def test_high_impact_interrupt_reposition_rule_is_reviewed(self):
@@ -88,11 +91,39 @@ class StoryboardSkillContractTests(unittest.TestCase):
     def test_reviewer_template_includes_video_execution_coverage(self):
         text = REVIEWER_SKILL.read_text(encoding="utf-8")
 
-        self.assertIn("生产 reviewer 默认也应在 `audit_coverage` 中包含并检查", text)
+        self.assertIn("生产 reviewer 必须在 `audit_coverage` 中额外包含并检查", text)
         self.assertIn('"action_atomicity": "checked"', text)
         self.assertIn('"video_negative_constraints": "checked"', text)
+        self.assertIn('"camera_motion_reasonableness": "checked"', text)
+        self.assertIn('"cross_episode_continuity": "checked"', text)
         self.assertIn('"type": "action_atomicity"', text)
         self.assertIn('"type": "video_negative_constraints"', text)
+
+    def test_vertical_camera_motion_is_reasoned_not_quota_driven(self):
+        generator = GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer = REVIEWER_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("不设每组或每集运镜数量指标", generator)
+        self.assertIn("有动机、路径、主体和落点", generator)
+        self.assertIn("允许多镜连续使用运镜", generator)
+        self.assertIn("运镜多或少本身都不是质量结论", reviewer)
+        self.assertIn("camera_motion_reasonableness", reviewer)
+        self.assertNotIn("每组最多 1 个有动机运镜", generator)
+        self.assertNotIn("嘴炮 / 压迫对峙 →", generator)
+
+    def test_vertical_dialogue_and_cross_episode_evidence_are_explicit(self):
+        generator = GENERATOR_SKILL.read_text(encoding="utf-8")
+        reviewer = REVIEWER_SKILL.read_text(encoding="utf-8")
+
+        self.assertIn("1-4 字通常 1 秒", generator)
+        self.assertIn("实际分配时长若比", generator)
+        self.assertIn("上一集末尾与本集开头连续性", generator)
+        self.assertIn("source_continuity_conflict", generator)
+        self.assertIn("跨集连续性错误", reviewer)
+        self.assertIn("dialogue_checks", reviewer)
+        self.assertIn("handoff_checks", reviewer)
+        self.assertIn("camera_motion_checks", reviewer)
+        self.assertIn("issue_instances_total", reviewer)
 
     def test_generator_prevents_low_density_time_padding(self):
         text = GENERATOR_SKILL.read_text(encoding="utf-8")
@@ -153,6 +184,9 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn("停顿不是质感例外", text)
         self.assertNotIn("有动机戏剧停顿（极窄例外，默认不用）", text)
         self.assertIn("组尾衔接只写连续性锚点", text)
+        self.assertIn("不设每组或每集数量指标", text)
+        self.assertIn("1-4 字通常 1 秒", text)
+        self.assertNotIn("每组最多 1 个运镜", text)
         self.assertNotIn("默认 10-15 秒", text)
         self.assertNotIn("自然收尾", text)
 
