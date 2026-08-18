@@ -8,7 +8,7 @@
 - 每集是独立任务，可以并发；每集内部可按场景拆段，降低长剧本文本漂移。
 - Python 只检查客观边界：文件是否存在、自然格式是否干净、是否能收集结果。
 - 最终稿是自然分镜格式，不输出 JSON、调试标记或其他非分镜正文内容。
-- 竖屏 Seedance 固定尾部“画面风格”和 `--neg` 由 Python 收集阶段统一拼接，worker 的 `final.txt` 不需要逐组重复输出。
+- 默认 `seedance-2.0` 竖屏固定尾部“画面风格”和基础 `--neg` 由 Python 收集阶段统一拼接；独立 `seedance-2.5-live-vertical` 改为专属真人画面/原生声音尾部，不追加旧版大包通用 `--neg`。worker 的 `final.txt` 都不需要逐组重复固定尾部。
 - 复杂动作、保护站位、关键道具连续组可以在 `final.txt` 写 `视频禁止项：...`；收集阶段会把它并入该组 `--neg`。每组只写 2-5 个具体剧情错误，且每条必须锚定本组人物名、关键道具名、场景名，或本集全文已出现的人物/道具；不要写“人物换位”“道具消失”“场景变形”这类无锚点通用词。
 - 视频禁止项质量规则由 `agent_skills/storyboard-quality-policy.json` 管理，Python 校验读取该 policy 的泛泛词、占位词、数量限制和上下文锚点停用词，再结合本组 `人物/道具/场景` 和本集全文上下文做锚点检查，避免为不同剧维护不同硬编码词表。
 - 失败也保留 `draft.txt`、`review.md`、`final.txt` 和 `status.json`，方便人工或 agent 继续接力。
@@ -24,6 +24,9 @@
 - `agent_skills/storyboard-horizontal-generator/TOPIC_PACKS.md`：横屏可选题材包；只有任务书、剧本或用户明确指向对应题材时启用。
 - `agent_skills/storyboard-horizontal-generator/project_packs/`：横屏项目专属包；只有任务书、剧本标题、角色设定或用户明确指定对应项目时启用。
 - `agent_skills/seedance-prompt-profile/SKILL.md`：Seedance 2.0 官方模板风格摘要，只作为生成前参考层，不复制模板正文。
+- `agent_skills/seedance-2-5-live-vertical/SKILL.md`：独立 Seedance 2.5 真人竖屏模型硬合同。
+- `agent_skills/seedance-2-5-live-vertical-generator/SKILL.md`：2.5 profile 专属分镜生成器。
+- `agent_skills/seedance-2-5-live-vertical-reviewer/SKILL.md`：2.5 profile 专属真实审核器。
 - `agent_skills/asset-extractor/SKILL.md`：分镜完成后的生图资产表抽取 skill。
 - `agent_runs/`：每次 agent 运行的工作区。
 - `outputs_agent_*`：收集后的最终分镜输出目录。
@@ -92,12 +95,28 @@
 
 `VisualStyle` 是媒介风格维度，不替代 `Aspect`。默认 `live-action` 继续输出真人实拍短剧口径；`3d-cg` 会让工作区任务读取 `agent_skills/3d-cg-visual-style/SKILL.md`，并让生成提示、收集尾部和资产提示词切换为动漫 3D CG 口径：二次元角色设计、风格化面部与眼睛、清晰轮廓线、高质量卡通渲染、PBR材质与手绘质感融合、表情绑定、口型同步，以及冷冽刀光、气流压迫、碎石悬浮、贴地冲击尘浪、金属裂纹冷光等动作服务型大片特效。无论哪种风格，分镜结构、对白对象、时间规则、组首/组尾连续和 reviewer 门禁不变。
 
+如果目标是 Seedance 2.5 真人竖屏短剧，显式选择独立 profile：
+
+```powershell
+.\prepare-agent.ps1 scene my-seedance25-run `
+  -Source .\split_scripts\<episode-folder> `
+  -OutDir .\outputs_agent_my_seedance25 `
+  -Aspect vertical `
+  -VisualStyle live-action `
+  -VideoProfile seedance-2.5-live-vertical `
+  -VideoResolution 720p `
+  -Force
+```
+
+该 profile 只允许 `vertical` + `live-action`，目标模型为 `doubao-seedance-2-5-260628`，唯一任务类型为 `multimodal_generation`。工作区会写出 `video_profile.json`，并把任务类型、至少 1 项真实图片/视频/音频素材要求、禁用任务模式、9:16、480p/720p、24fps、原生音频、4-30 秒整数时间轴写入 manifest、episode metadata、context 和 TASK；默认 720p。图片、视频、音频只是多模态输入素材，不代表独立“参考生成”模式；纯文本、参考生成、首尾帧/关键帧、编辑、延长/续写、轨道补全均禁用。不要与横屏或 3D CG 混用。不显式选择时，旧 `seedance-2.0` 仍是默认值，现有 run 不迁移。
+
 生成后会得到：
 
 ```text
 agent_runs\<run-name>\
 ├── context.md
 ├── manifest.json
+├── video_profile.json
 ├── NEXT_STEPS.md
 ├── COLLECT_RESULTS.ps1
 └── episodes\
@@ -264,14 +283,16 @@ agent_runs\<run-name>\asset_bible.md
 
 ## 生产审核口径
 
-竖屏默认以 `storyboard-reviewer` 为审核器；横屏以 `storyboard-horizontal-reviewer` 为审核器。两者都必须对照原剧本和当前分镜做真实审核。
+默认竖屏以 `storyboard-reviewer` 为审核器；`seedance-2.5-live-vertical` 以独立 `seedance-2-5-live-vertical-reviewer` 为审核器；横屏以 `storyboard-horizontal-reviewer` 为审核器。三者都必须对照原剧本和当前分镜做真实审核。
 
 - 忠于原剧本：不删关键台词，不乱改人物关系，不额外添加剧情。
 - 对话指向：真人对话必须写清“谁对谁说”。
 - 台词速度：普通对白目标约 4.5 字/秒，情绪对白目标约 5.2 字/秒；有效字数 / 秒 > 6.5 是 hard issue，5.8-6.5 是 warning。
 - 镜头过长也要审：不能靠新增停顿、长凝视、慢动作凑时长。
 - 无台词镜头通常 2-3 秒，不能用 4-5 秒凑组时长。
-- 竖屏组内时间段允许 0.5 秒粒度；组总时长必须是整数 10-15 秒，标题总时长要等于镜头时长相加。
+- 默认 `seedance-2.0` 竖屏组内时间段允许 0.5 秒粒度，组总时长硬范围 6-15 秒；10-15 秒是常用承载区间，6-9 秒只用于合理短组。
+- `seedance-2.5-live-vertical` 组内只用整数秒边界，组总时长硬范围 4-30 秒；8-15 秒是常用承载区间，4-7 秒只用于真实短节拍，16-30 秒必须有足够容量并按主要状态变化分阶段。
+- `seedance-2.5-live-vertical` reviewer 还必须检查 `multimodal_task_scope`：正文只能服务 `multimodal_generation`，任何纯文本、参考生成、首尾帧/关键帧、编辑、延长或轨道补全指令都是 hard issue。
 - 横屏使用 `**本镜估算时长**`，组总时长必须是整数 6-15 秒，默认优先 10-15 秒；只有短承接、单句反应、道具插入、短动作余波、片尾意象或不可硬凑的极短戏剧节拍才允许 6-9 秒短组。
 - 景别重复不要机械判错，正反打同景别可接受。
 - 最终稿禁止 JSON、调试标记或其他非分镜正文内容，必须是自然分镜文本。

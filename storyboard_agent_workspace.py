@@ -41,13 +41,153 @@ DEFAULT_AGENT_RUNS_DIR = "agent_runs"
 DEFAULT_AGENT_OUTPUT_DIR = "outputs_agent"
 PROJECT_AGENT_SKILLS_DIR = "agent_skills"
 SEEDANCE_PROMPT_PROFILE_PATH = "agent_skills/seedance-prompt-profile/SKILL.md"
+SEEDANCE25_LIVE_VERTICAL_PROFILE_PATH = "agent_skills/seedance-2-5-live-vertical/SKILL.md"
 CG_VISUAL_STYLE_SKILL_PATH = "agent_skills/3d-cg-visual-style/SKILL.md"
 STORYBOARD_QUALITY_POLICY_PATH = "agent_skills/storyboard-quality-policy.json"
-AGENT_WORKSPACE_VERSION = 1
+AGENT_WORKSPACE_VERSION = 2
 VERTICAL_REVIEW_CONTRACT_VERSION = 2
 SIMPLE_BATCH_MAX_SCRIPT_CHARS = 2500
 SIMPLE_BATCH_MAX_SEGMENTS = 1
 MAX_EPISODES_PER_WORKER_BATCH = 2
+
+DEFAULT_VIDEO_PROFILE = "seedance-2.0"
+SEEDANCE25_LIVE_VERTICAL_PROFILE = "seedance-2.5-live-vertical"
+
+VIDEO_PROFILE_CONFIG = {
+    DEFAULT_VIDEO_PROFILE: {
+        "label": "Seedance 2.0 兼容流程",
+        "target_video_model": "seedance",
+        "profile_skill_path": SEEDANCE_PROMPT_PROFILE_PATH,
+        "supported_aspects": ("vertical", "horizontal"),
+        "supported_visual_styles": tuple(),
+        "generator_dir": None,
+        "reviewer_dir": None,
+        "generator_name": None,
+        "reviewer_name": None,
+        "duration_min_seconds": 6,
+        "duration_max_seconds": 15,
+        "timeline_granularity_seconds": 0.5,
+        "aspect_ratio": None,
+        "supported_resolutions": tuple(),
+        "default_resolution": None,
+        "fps": None,
+        "generate_audio": None,
+        "video_task_type": None,
+        "requires_multimodal_materials": False,
+        "minimum_material_inputs": 0,
+        "allowed_multimodal_material_types": tuple(),
+        "forbidden_video_task_modes": tuple(),
+        "collection_tail_mode": "legacy",
+        "collection_tail_lines": tuple(),
+        "base_negative_line": None,
+        "profile_role": "reference",
+        "contract_version": 1,
+    },
+    SEEDANCE25_LIVE_VERTICAL_PROFILE: {
+        "label": "Seedance 2.5 真人竖屏短剧",
+        "target_video_model": "doubao-seedance-2-5-260628",
+        "profile_skill_path": SEEDANCE25_LIVE_VERTICAL_PROFILE_PATH,
+        "supported_aspects": ("vertical",),
+        "supported_visual_styles": ("live-action",),
+        "generator_dir": "seedance-2-5-live-vertical-generator",
+        "reviewer_dir": "seedance-2-5-live-vertical-reviewer",
+        "generator_name": "seedance-2-5-live-vertical-generator",
+        "reviewer_name": "seedance-2-5-live-vertical-reviewer",
+        "duration_min_seconds": 4,
+        "duration_max_seconds": 30,
+        "timeline_granularity_seconds": 1,
+        "aspect_ratio": "9:16",
+        "supported_resolutions": ("480p", "720p"),
+        "default_resolution": "720p",
+        "fps": 24,
+        "generate_audio": True,
+        "video_task_type": "multimodal_generation",
+        "requires_multimodal_materials": True,
+        "minimum_material_inputs": 1,
+        "allowed_multimodal_material_types": ("image", "video", "audio"),
+        "forbidden_video_task_modes": (
+            "text_only_generation",
+            "reference_generation",
+            "first_last_frame_generation",
+            "keyframe_generation",
+            "video_edit",
+            "video_extend",
+            "track_completion",
+        ),
+        "collection_tail_mode": "seedance-2.5-live-vertical",
+        "collection_tail_lines": (
+            "画面风格：真人实拍竖屏短剧，真实摄影，自然光影，电影感浅景深，真实材质，表演自然，人物口型清楚",
+            "声音设计：生成与画面同步的现场对白、环境音和必要音效，无字幕，无配乐",
+        ),
+        "base_negative_line": "",
+        "profile_role": "hard-contract",
+        "contract_version": 2,
+    },
+}
+
+SEEDANCE25_FORBIDDEN_TASK_MODE_TERMS = {
+    "text_only_generation": ("纯文本生成", "文生视频", "text_only_generation", "text_to_video"),
+    "reference_generation": (
+        "多模态参考生成",
+        "普通参考生成",
+        "素材参考生成",
+        "参考图生成",
+        "参考视频生成",
+        "参考生成",
+        "reference_generation",
+    ),
+    "first_last_frame_generation": (
+        "首尾帧生成",
+        "首帧参考",
+        "尾帧参考",
+        "首尾帧",
+        "first_last_frame_generation",
+    ),
+    "keyframe_generation": ("关键帧生成", "关键帧模式", "keyframe_generation"),
+    "video_edit": ("视频编辑", "编辑视频", "video_edit"),
+    "video_extend": ("视频延长", "延长视频", "视频续写", "video_extend"),
+    "track_completion": ("轨道补全", "track_completion"),
+}
+
+
+def video_profile_config(video_profile: str) -> dict:
+    try:
+        return VIDEO_PROFILE_CONFIG[video_profile]
+    except KeyError as exc:
+        raise ValueError(f"unsupported video profile: {video_profile}") from exc
+
+
+def resolved_video_resolution(video_profile: str, requested_resolution: str | None = None) -> str | None:
+    cfg = video_profile_config(video_profile)
+    resolution = requested_resolution or cfg["default_resolution"]
+    supported = cfg["supported_resolutions"]
+    if resolution and resolution not in supported:
+        choices = ", ".join(supported) if supported else "none"
+        raise ValueError(
+            f"video profile {video_profile} does not support resolution {resolution}; "
+            f"supported: {choices}"
+        )
+    return resolution
+
+
+def validate_video_profile_selection(
+    *,
+    video_profile: str,
+    aspect: str,
+    visual_style: str,
+    resolution: str | None = None,
+) -> str | None:
+    cfg = video_profile_config(video_profile)
+    if aspect not in cfg["supported_aspects"]:
+        return f"video profile {video_profile} only supports aspect: {', '.join(cfg['supported_aspects'])}"
+    styles = cfg["supported_visual_styles"]
+    if styles and visual_style not in styles:
+        return f"video profile {video_profile} only supports visual style: {', '.join(styles)}"
+    try:
+        resolved_video_resolution(video_profile, resolution)
+    except ValueError as exc:
+        return str(exc)
+    return None
 
 VISUAL_STYLE_CONFIG = {
     "live-action": {
@@ -132,6 +272,37 @@ def storyboard_aspect_config(aspect: str) -> dict[str, str]:
         return STORYBOARD_ASPECT_CONFIG[aspect]
     except KeyError as exc:
         raise ValueError(f"unsupported storyboard aspect: {aspect}") from exc
+
+
+def storyboard_workflow_config(aspect: str, video_profile: str = DEFAULT_VIDEO_PROFILE) -> dict[str, str]:
+    aspect_cfg = dict(storyboard_aspect_config(aspect))
+    profile_cfg = video_profile_config(video_profile)
+    for key in ("generator_dir", "reviewer_dir", "generator_name", "reviewer_name"):
+        override = profile_cfg.get(key)
+        if override:
+            aspect_cfg[key] = override
+    if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
+        aspect_cfg["generator_description"] = (
+            "Generate live-action 9:16 Chinese vertical short-drama storyboards for Seedance 2.5, "
+            "with integer-second staging, native audio, and script-faithful continuity."
+        )
+        aspect_cfg["reviewer_description"] = (
+            "Review Seedance 2.5 live-action vertical short-drama storyboards against the script, "
+            "profile timing, audio, space, continuity, and generation-density contracts."
+        )
+    return aspect_cfg
+
+
+VERTICAL_REVIEWER_SOURCES = frozenset(
+    {
+        STORYBOARD_ASPECT_CONFIG["vertical"]["reviewer_name"],
+        VIDEO_PROFILE_CONFIG[SEEDANCE25_LIVE_VERTICAL_PROFILE]["reviewer_name"],
+    }
+)
+
+
+def is_vertical_v2_reviewer(reviewer_source: str | None, review_contract_version: int) -> bool:
+    return reviewer_source in VERTICAL_REVIEWER_SOURCES and review_contract_version >= 2
 
 
 def write_utf8(path: Path, content: str) -> None:
@@ -294,22 +465,77 @@ def make_agent_context(
     mode: str,
     cg_visual_style_skill_path: Path | None = None,
     visual_style: str = "live-action",
+    video_profile: str = DEFAULT_VIDEO_PROFILE,
+    video_resolution: str | None = None,
 ) -> str:
-    aspect_cfg = storyboard_aspect_config(aspect)
+    aspect_cfg = storyboard_workflow_config(aspect, video_profile)
     aspect_label = aspect_cfg["label"]
     reviewer_skill_name = aspect_cfg["reviewer_name"]
     style_cfg = visual_style_config(visual_style)
     visual_style_label = style_cfg["label"]
-    model_profile_lines = textwrap.dedent(
-        f"""
-        - Target video model: `seedance`
-        - Seedance Prompt Profile: `{seedance_profile_path}`
-        """
-    ).strip()
-    profile_rule = "Seedance Prompt Profile 只作为短剧风格参考层"
-    visual_style_lines = ""
+    profile_cfg = video_profile_config(video_profile)
+    resolution = resolved_video_resolution(video_profile, video_resolution)
+    model_profile_items = [
+        f"- Video profile: `{video_profile}` ({profile_cfg['label']})",
+        f"- Target video model: `{profile_cfg['target_video_model']}`",
+        f"- Seedance Prompt Profile: `{seedance_profile_path}`",
+    ]
+    if resolution:
+        model_profile_items.append(f"- Video resolution: `{resolution}`")
+    if profile_cfg["aspect_ratio"]:
+        model_profile_items.append(f"- Aspect ratio parameter: `{profile_cfg['aspect_ratio']}`")
+    if profile_cfg["fps"]:
+        model_profile_items.append(f"- Output FPS: `{profile_cfg['fps']}`")
+    if profile_cfg["generate_audio"] is not None:
+        model_profile_items.append(
+            f"- Native audio generation: `{str(profile_cfg['generate_audio']).lower()}`"
+        )
+    if profile_cfg["video_task_type"]:
+        model_profile_items.extend(
+            [
+                f"- Video task type: `{profile_cfg['video_task_type']}` (only)",
+                "- Requires actual multimodal materials: "
+                f"`{str(profile_cfg['requires_multimodal_materials']).lower()}`; "
+                f"minimum `{profile_cfg['minimum_material_inputs']}` image/video/audio input",
+                "- Allowed multimodal material types: `"
+                + "`, `".join(profile_cfg["allowed_multimodal_material_types"])
+                + "`",
+                "- Forbidden video task modes: `"
+                + "`, `".join(profile_cfg["forbidden_video_task_modes"])
+                + "`",
+            ]
+        )
+    model_profile_items.extend(
+        [
+            f"- Group duration contract: `{profile_cfg['duration_min_seconds']}-{profile_cfg['duration_max_seconds']}` seconds",
+            f"- Model-facing timeline granularity: `{profile_cfg['timeline_granularity_seconds']}` second(s)",
+        ]
+    )
+    model_profile_block = textwrap.indent("\n".join(model_profile_items), "        ")
+    if profile_cfg["profile_role"] == "hard-contract":
+        profile_rule = (
+            "Seedance 2.5 profile 是模型硬合同；唯一视频任务是 `multimodal_generation`，"
+            "它只覆盖模型特定的时长、时间轴、参数、音频、素材职责和尾部规则，"
+            "原剧本忠实、空间锁定、连续性、可拍性和真实审核仍以生成/审核 Skill 为准"
+        )
+        prompt_surface_rule = (
+            "`final.txt` 保持资产无关的分镜母版，不手写虚构的 `@图片/@视频/@音频`；"
+            "只有下游拿到至少一项真实图片/视频/音频素材绑定后，才按 profile 写入素材序号与职责；"
+            "这些都是多模态输入素材，不是独立的参考生成模式；不得回退到纯文本，也不得切换到参考生成、"
+            "首尾帧/关键帧、视频编辑、视频延长或轨道补全"
+        )
+    else:
+        profile_rule = "Seedance Prompt Profile 只作为短剧风格参考层"
+        prompt_surface_rule = (
+            "profile 不得替代主生成规则，不得把模板编号、官方模板说明、`@图片/@视频/@音频` 占位符、"
+            "广告/产品/视频延长/轨道补全/一镜到底等非短剧模板语气写入 `final.txt`"
+        )
+    visual_style_block = ""
     if visual_style == "3d-cg":
-        visual_style_lines = f"\n- 3D CG Visual Style Skill: `{cg_visual_style_skill_path}`"
+        visual_style_block = textwrap.indent(
+            f"- 3D CG Visual Style Skill: `{cg_visual_style_skill_path}`",
+            "        ",
+        )
 
     return textwrap.dedent(
         f"""
@@ -326,14 +552,14 @@ def make_agent_context(
         - Visual style: `{visual_style}` ({visual_style_label})
         - Generation Skill: `{generator_skill_path}`
         - Review Skill: `{reviewer_skill_path}`
-        {model_profile_lines}
-        {visual_style_lines}
+{model_profile_block}
+{visual_style_block}
 
         ## Core Rules
         - dispatcher 不生成、不审核、不修稿；dispatcher 只创建 subagents/workers 并分发 episode prompt。
         - episode worker 是{aspect_label}短剧分镜生产 agent，只处理自己被分配的单个 episode。
         - 生成和审核规则全部以两个标准 `SKILL.md` 为准；{profile_rule}，不要在任务文件里重新解释规则。
-        - profile 不得替代主生成规则，不得把模板编号、官方模板说明、`@图片/@视频/@音频` 占位符、广告/产品/视频延长/轨道补全/一镜到底等非短剧模板语气写入 `final.txt`。
+        - {prompt_surface_rule}。
         - Visual style 是本 run 的媒介风格约束：`{visual_style}`（{visual_style_label}）。{style_cfg["task_guidance"]}
         - episode worker 可以生成和初审，但 `review.txt` 必须按 `{reviewer_skill_name}/SKILL.md` 逐项审稿，不能写空泛通过。
         - 若用户要求强审核模式，reviewer-only worker 必须独立复审 `final.txt`。
@@ -362,13 +588,30 @@ def make_episode_task(
     mode: str,
     cg_visual_style_skill_path: Path | None = None,
     visual_style: str = "live-action",
+    video_profile: str = DEFAULT_VIDEO_PROFILE,
+    video_resolution: str | None = None,
 ) -> str:
     rel_root = episode_dir.relative_to(run_dir)
-    aspect_cfg = storyboard_aspect_config(aspect)
+    aspect_cfg = storyboard_workflow_config(aspect, video_profile)
     aspect_label = aspect_cfg["label"]
     reviewer_skill_name = aspect_cfg["reviewer_name"]
     style_cfg = visual_style_config(visual_style)
     visual_style_label = style_cfg["label"]
+    profile_cfg = video_profile_config(video_profile)
+    resolution = resolved_video_resolution(video_profile, video_resolution)
+    video_task_input_lines = ""
+    if profile_cfg["video_task_type"]:
+        video_task_input_lines = "\n".join(
+            [
+                f"- Video task type: `{profile_cfg['video_task_type']}` (the only supported task)",
+                "- Multimodal material requirement: at least "
+                f"`{profile_cfg['minimum_material_inputs']}` actual image/video/audio input before a model call; "
+                "the storyboard master alone is not generation-ready",
+                "- Forbidden video task modes: `"
+                + "`, `".join(profile_cfg["forbidden_video_task_modes"])
+                + "`",
+            ]
+        )
     if aspect == "horizontal":
         aspect_contract_line = "Horizontal outputs must be generated as polished, Seedance-ready deliverables on the first pass, not rough drafts waiting for a separate rewrite. Use the current horizontal Seedance wrapper: `**人物**`, `**场景**`, `**道具/关键视觉资产**`, `**视觉峰值/特效重点**`, `**组间承接**`, `**横屏构图/调度**`, bare `N-M` shot-number lines, then each shot with `**镜头描述**`, `**光影设计**`, `**本镜估算时长**`, followed by `**组尾衔接**`, `**画面风格**`, `**运镜强化词**`, `**Seedance执行提示补充**`, and `**--neg**`. Do not write `**镜头号**：N-M`; do not use the old horizontal `组首空间锁定` or per-shot `运镜设计` fields. Keep assets under 9 per group; if the script requires more, split the group instead of deleting key story elements."
         group_timing_line = "Horizontal groups use bare `N-M` shot numbers and `**本镜估算时长**：X秒` per shot; each group's estimated shot durations must sum to the integer group total. Prefer integer shot durations; use 0.5 seconds only for short reactions, prop inserts, or action aftershocks. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds. Do not compress key dialogue meaning just to fit the 15-second cap; split shots or groups instead."
@@ -378,14 +621,32 @@ def make_episode_task(
         vertical_review_evidence_line = ""
     else:
         aspect_contract_line = "Vertical outputs follow the vertical generator skill contract; do not apply horizontal camera-motion fields unless the run aspect is horizontal."
-        group_timing_line = "Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds."
+        if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
+            group_timing_line = (
+                "Group-internal model-facing time ranges must use integer-second boundaries and the group total must be an integer second. "
+                "The hard model range is 4-30 seconds. Prefer natural 8-15 second short-drama groups; use 4-7 seconds only for genuine short beats, "
+                "and use 16-30 seconds only for a coherent staged passage with enough dialogue/action capacity and one major state change per stage."
+            )
+        else:
+            group_timing_line = "Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds."
         asset_id_contract_line = "- Do not put asset IDs in `final.txt`; asset binding belongs to the asset extraction stage."
         boundary_input_line = "- Cross-episode boundary: `boundary_context.md` when present. If it marks a continuous boundary, compare its previous-episode tail with this episode's first group during generation and review."
         boundary_workflow_phrase = ", `boundary_context.md` when present"
         vertical_review_evidence_line = f"For new vertical runs, reviewer JSON must also include complete `dialogue_checks`, `handoff_checks`, `camera_motion_checks`, `issue_instances_total`, and `affected_groups` as defined by `{reviewer_skill_name}/SKILL.md`. These are evidence records, not optional prose."
-    profile_read_phrase = "the Seedance prompt profile"
-    profile_input_line = f"- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
-    profile_constraint = "Seedance Prompt Profile is only a reference layer"
+    profile_read_phrase = "the selected Seedance prompt profile"
+    if profile_cfg["profile_role"] == "hard-contract":
+        profile_input_line = (
+            f"- Seedance prompt profile: `{seedance_profile_path}`，这是 `{video_profile}` 的模型硬合同；"
+            "模型特定的唯一多模态生成任务、时长、整数时间轴、参数分离、原生音频、素材职责和尾部规则以它为准"
+        )
+        profile_constraint = (
+            "the Seedance 2.5 profile overrides only model-specific clauses inherited from older Seedance contracts; "
+            "its only task is multimodal_generation and it forbids text-only/reference/keyframe/edit/extend/track-completion modes; "
+            "it does not weaken script fidelity, spatial continuity, filmability, or reviewer evidence"
+        )
+    else:
+        profile_input_line = f"- Seedance prompt profile: `{seedance_profile_path}`，只作为短剧风格参考层，不得复制模板正文、模板编号、官方占位符或非短剧模板语气到 `final.txt`"
+        profile_constraint = "Seedance Prompt Profile is only a reference layer"
     visual_style_input_line = ""
     visual_style_workflow_phrase = ""
     if visual_style == "3d-cg":
@@ -409,10 +670,16 @@ def make_episode_task(
                 "收集阶段不会为横屏追加固定尾部。"
             )
     else:
-        style_delivery_line = (
-            "收集阶段会按该风格追加每组固定 `画面风格` 和基础 `--neg`；"
-            "worker 不要在 `final.txt` 每组重复写固定尾部。"
-        )
+        if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
+            style_delivery_line = (
+                "收集阶段会追加 Seedance 2.5 专属真人短剧画面/声音尾部；不会追加旧版大包通用 `--neg`。"
+                "worker 只在确有本组剧情风险时写 2-5 条具体 `视频禁止项`，收集时才转换为聚焦负面词。"
+            )
+        else:
+            style_delivery_line = (
+                "收集阶段会按该风格追加每组固定 `画面风格` 和基础 `--neg`；"
+                "worker 不要在 `final.txt` 每组重复写固定尾部。"
+            )
 
     if mode == "scene":
         inputs = "- Segment scripts: `segments/seg*/script.txt`"
@@ -466,7 +733,10 @@ Aspect: `{aspect}` ({aspect_label})
 - Run context: `../../context.md`
 - Generation skill: `{generator_skill_path}`
 - Review skill: `{reviewer_skill_path}`
-- Target video model: `seedance`
+- Video profile: `{video_profile}` ({profile_cfg['label']})
+- Target video model: `{profile_cfg['target_video_model']}`
+{video_task_input_lines}
+- Video parameters: ratio `{profile_cfg['aspect_ratio'] or 'profile-default'}`, resolution `{resolution or 'profile-default'}`, fps `{profile_cfg['fps'] or 'profile-default'}`, generate_audio `{str(profile_cfg['generate_audio']).lower() if profile_cfg['generate_audio'] is not None else 'profile-default'}`
 - Visual style: `{visual_style}` ({visual_style_label})
 {profile_input_line}
 {visual_style_input_line}
@@ -477,7 +747,7 @@ Aspect: `{aspect}` ({aspect_label})
 ## Required Outputs
 {outputs}
 
-{make_production_focus_block(aspect=aspect)}
+{make_production_focus_block(aspect=aspect, video_profile=video_profile)}
 
 ## Visual Style Contract
 - 本 run 的视觉风格是 `{visual_style}`（{visual_style_label}）。
@@ -545,10 +815,21 @@ Template/model-term pollution must use `prompt_pollution` as the issue/warning `
 """.strip()
 
 
-def make_production_focus_block(*, aspect: str) -> str:
+def make_production_focus_block(
+    *,
+    aspect: str,
+    video_profile: str = DEFAULT_VIDEO_PROFILE,
+) -> str:
     if aspect != "vertical":
         return ""
     policy_version = storyboard_quality_policy_version()
+    if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
+        timing_focus = (
+            "- 先按内部表演节奏精确估时，再把模型可见时间轴整理成整数秒边界；"
+            "4-7 秒只用于真实短节拍，8-15 秒是常用承载区间，16-30 秒必须分阶段且每阶段只保留一个主要状态变化。"
+        )
+    else:
+        timing_focus = "- 不要为凑满 10 秒硬塞动作、对白或停顿；短承接和单句反应允许保留 6-9 秒。"
     return textwrap.dedent(
         f"""
         ## Production Focus
@@ -556,7 +837,7 @@ def make_production_focus_block(*, aspect: str) -> str:
         - 每个时间段默认只承载一个主动作目标；同一主体、空间、目标且顺序和结果清楚的紧凑动作链可在 2-3 秒完成，不按动词数量机械拆分。
         - 每镜可合理运镜也可固定机位，不设数量指标；运镜必须写清动机、主体、路径和落点，并与动作、竖屏构图和连续性兼容。
         - 高冲击打断后先稳定打断/反应，放下道具、跨位移、保护站位、团圆确认等归位动作另起时间段或另组。
-        - 不要为凑满 10 秒硬塞动作、对白或停顿；短承接和单句反应允许保留 6-9 秒。
+        {timing_focus}
         - 保护动作写清挡在谁前面，非主动作人物只写站位和轻反应，不抢主动作。
         - 关键道具写清归属、位置和状态变化，组尾必须能接到下一组。
         - `视频禁止项` 只写 2-5 个具体剧情错误，必须锚定本组或本集上下文；完整规则仍以 generator/reviewer skill 和 quality policy 为准（policy: `{policy_version}`）。
@@ -597,8 +878,9 @@ def ensure_project_agent_skills(
     prompt_path: Path | None,
     review_skill_path: Path | None,
     aspect: str,
+    video_profile: str = DEFAULT_VIDEO_PROFILE,
 ) -> tuple[Path, Path, Path, Path]:
-    aspect_cfg = storyboard_aspect_config(aspect)
+    aspect_cfg = storyboard_workflow_config(aspect, video_profile)
     skills_root = project_root / PROJECT_AGENT_SKILLS_DIR
     generator_skill_dir = skills_root / aspect_cfg["generator_dir"]
     reviewer_skill_dir = skills_root / aspect_cfg["reviewer_dir"]
@@ -1058,6 +1340,7 @@ VERTICAL_V2_AUDIT_COVERAGE_KEYS = (
     "camera_motion_reasonableness",
     "cross_episode_continuity",
 )
+SEEDANCE25_AUDIT_COVERAGE_KEYS = ("multimodal_task_scope",)
 HORIZONTAL_AUDIT_COVERAGE_KEYS = (
     "horizontal_composition",
     "screen_direction",
@@ -1585,6 +1868,18 @@ def _is_half_second(value: float) -> bool:
     return abs(value * 2 - round(value * 2)) < 1e-6
 
 
+def _matches_time_granularity(value: float, granularity_seconds: float) -> bool:
+    if granularity_seconds <= 0:
+        raise ValueError("timeline granularity must be positive")
+    return abs(value / granularity_seconds - round(value / granularity_seconds)) < 1e-6
+
+
+def _time_granularity_issue(label: str, granularity_seconds: float) -> str:
+    if abs(granularity_seconds - 1) < 1e-6:
+        return f"{label} 时间点必须使用整数秒边界。"
+    return f"{label} 时间点必须使用 {_format_seconds(granularity_seconds)} 秒粒度。"
+
+
 def _is_integer_second(value: float) -> bool:
     return abs(value - round(value)) < 1e-6
 
@@ -1593,7 +1888,11 @@ def _json_seconds(value: float) -> int | float:
     return int(round(value)) if _is_integer_second(value) else round(value, 1)
 
 
-def _extract_time_range_durations(time_matches: list[re.Match]) -> tuple[list[float], list[str]]:
+def _extract_time_range_durations(
+    time_matches: list[re.Match],
+    *,
+    timeline_granularity_seconds: float = 0.5,
+) -> tuple[list[float], list[str]]:
     durations: list[float] = []
     issues: list[str] = []
     previous_end: float | None = None
@@ -1604,8 +1903,11 @@ def _extract_time_range_durations(time_matches: list[re.Match]) -> tuple[list[fl
         duration = end - start
         label = f"{_format_seconds(start)}-{_format_seconds(end)}秒"
         durations.append(duration)
-        if not _is_half_second(start) or not _is_half_second(end):
-            issues.append(f"{label} 时间点必须使用 0.5 秒粒度。")
+        if (
+            not _matches_time_granularity(start, timeline_granularity_seconds)
+            or not _matches_time_granularity(end, timeline_granularity_seconds)
+        ):
+            issues.append(_time_granularity_issue(label, timeline_granularity_seconds))
         if duration <= 0:
             issues.append(f"{label} 时间段结束秒数必须大于开始秒数。")
         if index == 0 and abs(start) > 1e-6:
@@ -1620,7 +1922,12 @@ def _extract_time_range_durations(time_matches: list[re.Match]) -> tuple[list[fl
     return durations, issues
 
 
-def _extract_legacy_shot_durations(block: str, shot_matches: list[re.Match]) -> tuple[list[float], list[str]]:
+def _extract_legacy_shot_durations(
+    block: str,
+    shot_matches: list[re.Match],
+    *,
+    timeline_granularity_seconds: float = 0.5,
+) -> tuple[list[float], list[str]]:
     durations: list[float] = []
     issues: list[str] = []
 
@@ -1634,8 +1941,14 @@ def _extract_legacy_shot_durations(block: str, shot_matches: list[re.Match]) -> 
         if seconds_match:
             seconds = _parse_seconds(seconds_match.group("seconds"))
             durations.append(seconds)
-            if not _is_half_second(seconds):
-                issues.append(f"{shot_label} 本镜估算时长必须使用 0.5 秒粒度。")
+            if not _matches_time_granularity(seconds, timeline_granularity_seconds):
+                if abs(timeline_granularity_seconds - 1) < 1e-6:
+                    issues.append(f"{shot_label} 本镜估算时长必须使用整数秒。")
+                else:
+                    issues.append(
+                        f"{shot_label} 本镜估算时长必须使用 "
+                        f"{_format_seconds(timeline_granularity_seconds)} 秒粒度。"
+                    )
         else:
             issues.append(f"{shot_label} 缺少时间段，例如：0-4秒：。")
 
@@ -2409,10 +2722,39 @@ def _validate_video_negative_hint_items(
     return issues
 
 
-def validate_clean_storyboard_format(content: str) -> list[str]:
+def validate_clean_storyboard_format(
+    content: str,
+    *,
+    video_profile: str = DEFAULT_VIDEO_PROFILE,
+) -> list[str]:
     issues: list[str] = []
+    profile_cfg = video_profile_config(video_profile)
+    timeline_granularity = float(profile_cfg["timeline_granularity_seconds"])
+    duration_min = float(profile_cfg["duration_min_seconds"])
+    duration_max = float(profile_cfg["duration_max_seconds"])
     if MACHINE_TAG_RE.search(content):
         issues.append("最终分镜中仍包含三尖括号机器标签，请删除这些标签。")
+    if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
+        for task_mode, terms in SEEDANCE25_FORBIDDEN_TASK_MODE_TERMS.items():
+            hits = [term for term in terms if term in content]
+            if hits:
+                issues.append(
+                    "Seedance 2.5 profile 唯一支持 `multimodal_generation`；"
+                    f"分镜正文命中不支持的任务模式 `{task_mode}`（`{hits[0]}`）。"
+                    "图片、视频、音频只能作为实际多模态输入素材，不得切换为其他任务模式。"
+                )
+        if "4K画质" in content:
+            issues.append("Seedance 2.5 分镜母版不得用 `4K画质` 冒充分辨率参数；分辨率由 video_profile.json/API 参数控制。")
+        if re.search(r"(?i)\b1080p\b", content):
+            issues.append("当前 Seedance 2.5 profile 未启用 1080p；不要把未启用分辨率写进分镜正文。")
+        if VERTICAL_SEEDANCE_NEGATIVE_LINE in content:
+            issues.append("Seedance 2.5 分镜母版包含旧版大包 `--neg`；请删除并仅保留本组聚焦 `视频禁止项`。")
+        elif re.search(r"(?m)^\s*--neg(?:\s|$)", content):
+            issues.append("Seedance 2.5 分镜母版不要直接写 `--neg`；请改成 2-5 个本组聚焦 `视频禁止项`，由收集阶段转换。")
+        for tail_line in video_profile_config(video_profile)["collection_tail_lines"]:
+            if tail_line in content:
+                issues.append("Seedance 2.5 固定画面/声音尾部由收集阶段追加，worker 的 final.txt 不得预写固定尾部。")
+                break
 
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
     if not group_matches:
@@ -2455,10 +2797,17 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
         legacy_shot_matches = list(CLEAN_LEGACY_SHOT_RE.finditer(block))
 
         if time_matches:
-            seconds, time_issues = _extract_time_range_durations(time_matches)
+            seconds, time_issues = _extract_time_range_durations(
+                time_matches,
+                timeline_granularity_seconds=timeline_granularity,
+            )
             shot_count = len(time_matches)
         else:
-            seconds, time_issues = _extract_legacy_shot_durations(block, legacy_shot_matches)
+            seconds, time_issues = _extract_legacy_shot_durations(
+                block,
+                legacy_shot_matches,
+                timeline_granularity_seconds=timeline_granularity,
+            )
             shot_count = len(legacy_shot_matches)
         issues.extend(time_issues)
         if not time_matches and not legacy_shot_matches:
@@ -2498,8 +2847,12 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
                     f"第{group_number}组最后时间段结束于{_format_seconds(final_end)}秒，"
                     f"应等于标题总时长{_format_seconds(declared_total)}秒。"
                 )
-        if seconds and not (6 <= seconds_sum <= 15):
-            issues.append(f"第{group_number}组镜头时长相加={_format_seconds(seconds_sum)}秒，不在视频模型支持的6-15秒范围内。")
+        if seconds and not (duration_min <= seconds_sum <= duration_max):
+            issues.append(
+                f"第{group_number}组镜头时长相加={_format_seconds(seconds_sum)}秒，"
+                f"不在 `{video_profile}` 支持的{_format_seconds(duration_min)}-"
+                f"{_format_seconds(duration_max)}秒范围内。"
+            )
         if shots_match:
             declared_shots = int(shots_match.group("shots"))
             if declared_shots != shot_count:
@@ -2510,7 +2863,12 @@ def validate_clean_storyboard_format(content: str) -> list[str]:
     return issues
 
 
-def _append_vertical_seedance_tail_to_block(block: str, *, visual_style: str = "live-action") -> str:
+def _append_vertical_seedance_tail_to_block(
+    block: str,
+    *,
+    visual_style: str = "live-action",
+    video_profile: str = DEFAULT_VIDEO_PROFILE,
+) -> str:
     negative_hints: list[str] = []
 
     def remove_negative_hint(match: re.Match[str]) -> str:
@@ -2520,18 +2878,29 @@ def _append_vertical_seedance_tail_to_block(block: str, *, visual_style: str = "
         return ""
 
     block = VIDEO_NEGATIVE_HINT_RE.sub(remove_negative_hint, block)
-    style_cfg = visual_style_config(visual_style)
-    style_line = style_cfg["style_line"]
-    base_negative_line = style_cfg["negative_line"]
-    negative_line = base_negative_line
-    if negative_hints:
-        negative_line = f"{negative_line}，{'，'.join(negative_hints)}"
+    profile_cfg = video_profile_config(video_profile)
+    if profile_cfg["collection_tail_mode"] == "legacy":
+        style_cfg = visual_style_config(visual_style)
+        tail_lines = [style_cfg["style_line"]]
+        base_negative_line = style_cfg["negative_line"]
+    else:
+        tail_lines = list(profile_cfg["collection_tail_lines"])
+        base_negative_line = str(profile_cfg["base_negative_line"] or "")
 
-    additions = []
-    if style_line not in block:
-        additions.append(style_line)
-    if base_negative_line not in block:
-        additions.append(negative_line)
+    additions = [line for line in tail_lines if line not in block]
+    if negative_hints:
+        negative_items = "，".join(negative_hints)
+        negative_line = f"{base_negative_line}，{negative_items}" if base_negative_line else f"--neg {negative_items}"
+    else:
+        negative_line = base_negative_line
+    if negative_line:
+        has_negative_line = (
+            base_negative_line in block
+            if base_negative_line
+            else re.search(r"(?m)^\s*--neg(?:\s|$)", block) is not None
+        )
+        if not has_negative_line:
+            additions.append(negative_line)
     if not additions:
         return block
 
@@ -2542,7 +2911,12 @@ def _append_vertical_seedance_tail_to_block(block: str, *, visual_style: str = "
     return block.rstrip() + "\n\n" + tail.rstrip() + "\n"
 
 
-def append_vertical_seedance_tail_to_groups(content: str, *, visual_style: str = "live-action") -> str:
+def append_vertical_seedance_tail_to_groups(
+    content: str,
+    *,
+    visual_style: str = "live-action",
+    video_profile: str = DEFAULT_VIDEO_PROFILE,
+) -> str:
     group_matches = list(CLEAN_GROUP_RE.finditer(content))
     if not group_matches:
         return content
@@ -2553,7 +2927,13 @@ def append_vertical_seedance_tail_to_groups(content: str, *, visual_style: str =
         block_start = group_match.end()
         block_end = group_matches[index + 1].start() if index + 1 < len(group_matches) else len(content)
         parts.append(content[cursor:block_start])
-        parts.append(_append_vertical_seedance_tail_to_block(content[block_start:block_end], visual_style=visual_style))
+        parts.append(
+            _append_vertical_seedance_tail_to_block(
+                content[block_start:block_end],
+                visual_style=visual_style,
+                video_profile=video_profile,
+            )
+        )
         cursor = block_end
     parts.append(content[cursor:])
     return "".join(parts)
@@ -2578,6 +2958,61 @@ def episode_visual_style(episode_dir: Path) -> str:
             return match.group("value")
 
     return "live-action"
+
+
+def episode_video_profile(episode_dir: Path) -> str:
+    meta_path = episode_dir / "episode.json"
+    if meta_path.is_file():
+        try:
+            meta = read_json(meta_path)
+        except Exception:
+            meta = {}
+        value = meta.get("video_profile")
+        if isinstance(value, str) and value.strip() in VIDEO_PROFILE_CONFIG:
+            return value.strip()
+
+    task_path = episode_dir / "TASK.md"
+    if task_path.is_file():
+        task_text = task_path.read_text(encoding="utf-8", errors="replace")
+        match = re.search(r"Video profile:\s*`(?P<value>[^`]+)`", task_text)
+        if match and match.group("value") in VIDEO_PROFILE_CONFIG:
+            return match.group("value")
+
+    return DEFAULT_VIDEO_PROFILE
+
+
+def validate_episode_video_profile_contract(episode_dir: Path) -> list[str]:
+    """Validate the episode-level machine contract for strict video profiles."""
+    if episode_video_profile(episode_dir) != SEEDANCE25_LIVE_VERTICAL_PROFILE:
+        return []
+
+    meta_path = episode_dir / "episode.json"
+    if not meta_path.is_file():
+        return ["Seedance 2.5 episode 缺少 episode.json，无法确认 multimodal_generation 唯一任务合同。"]
+    try:
+        meta = read_json(meta_path)
+    except Exception as exc:
+        return [f"Seedance 2.5 episode.json 无法解析：{exc}"]
+
+    profile_cfg = video_profile_config(SEEDANCE25_LIVE_VERTICAL_PROFILE)
+    expected_scalars = {
+        "video_profile_contract_version": profile_cfg["contract_version"],
+        "video_task_type": profile_cfg["video_task_type"],
+        "requires_multimodal_materials": profile_cfg["requires_multimodal_materials"],
+        "minimum_material_inputs": profile_cfg["minimum_material_inputs"],
+    }
+    expected_lists = {
+        "allowed_multimodal_material_types": list(profile_cfg["allowed_multimodal_material_types"]),
+        "forbidden_video_task_modes": list(profile_cfg["forbidden_video_task_modes"]),
+    }
+    issues: list[str] = []
+    for key, expected in expected_scalars.items():
+        if meta.get(key) != expected:
+            issues.append(f"episode.json `{key}` 必须为 `{expected}`。")
+    for key, expected in expected_lists.items():
+        if meta.get(key) != expected:
+            issues.append(f"episode.json `{key}` 必须与 Seedance 2.5 profile 机器合同一致。")
+    return issues
 
 
 def validate_storyboard_quality_floor(content: str, *, allow_horizontal_output_fields: bool = False) -> list[str]:
@@ -2646,8 +3081,11 @@ def _required_audit_coverage_keys(
     if reviewer_source == "storyboard-horizontal-reviewer":
         base_keys = tuple(key for key in REQUIRED_AUDIT_COVERAGE_KEYS if key != "space_locking")
         return base_keys + HORIZONTAL_AUDIT_COVERAGE_KEYS
-    if reviewer_source == "storyboard-reviewer" and review_contract_version >= 2:
-        return REQUIRED_AUDIT_COVERAGE_KEYS + VERTICAL_V2_AUDIT_COVERAGE_KEYS
+    if is_vertical_v2_reviewer(reviewer_source, review_contract_version):
+        keys = REQUIRED_AUDIT_COVERAGE_KEYS + VERTICAL_V2_AUDIT_COVERAGE_KEYS
+        if reviewer_source == VIDEO_PROFILE_CONFIG[SEEDANCE25_LIVE_VERTICAL_PROFILE]["reviewer_name"]:
+            keys += SEEDANCE25_AUDIT_COVERAGE_KEYS
+        return keys
     return REQUIRED_AUDIT_COVERAGE_KEYS
 
 
@@ -2693,7 +3131,7 @@ def _read_review_json(
         "issues": list,
         "warnings": list,
     }
-    if reviewer_source == "storyboard-reviewer" and review_contract_version >= 2:
+    if is_vertical_v2_reviewer(reviewer_source, review_contract_version):
         required_types.update(
             {
                 "dialogue_checks": list,
@@ -2788,7 +3226,7 @@ def _read_review_json(
                     "but rule is not `prompt_pollution`"
                 )
 
-    if reviewer_source == "storyboard-reviewer" and review_contract_version >= 2:
+    if is_vertical_v2_reviewer(reviewer_source, review_contract_version):
         if payload["issue_instances_total"] < len(payload["issues"]):
             return None, f"{path.name} issue_instances_total cannot be smaller than issues length"
         if not all(isinstance(item, str) and item.strip() for item in payload["affected_groups"]):
@@ -3287,7 +3725,7 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
         if final_path.is_file():
             final_content = final_path.read_text(encoding="utf-8", errors="replace")
             issues.extend(_validate_review_checked_groups(review_payload, final_content, "review.txt"))
-            if expected_reviewer_source == "storyboard-reviewer" and review_contract_version >= 2:
+            if is_vertical_v2_reviewer(expected_reviewer_source, review_contract_version):
                 issues.extend(
                     validate_vertical_review_evidence(
                         review_payload,
@@ -3361,7 +3799,7 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
                     target_content = review_target.read_text(encoding="utf-8", errors="replace")
                     for issue in _validate_review_checked_groups(segment_payload, target_content, "review.md"):
                         issues.append(f"{segment_dir.name}: {issue}")
-                    if expected_reviewer_source == "storyboard-reviewer" and review_contract_version >= 2:
+                    if is_vertical_v2_reviewer(expected_reviewer_source, review_contract_version):
                         for issue in validate_vertical_review_evidence(
                             segment_payload,
                             target_content,
@@ -3376,6 +3814,21 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     project_root = Path.cwd().resolve()
     source = args.source.resolve()
     prompt_path = find_prompt_file(project_root, args.prompt).resolve() if args.prompt else None
+    aspect = args.aspect
+    visual_style = args.visual_style
+    video_profile = getattr(args, "video_profile", DEFAULT_VIDEO_PROFILE)
+    requested_resolution = getattr(args, "video_resolution", None)
+    selection_error = validate_video_profile_selection(
+        video_profile=video_profile,
+        aspect=aspect,
+        visual_style=visual_style,
+        resolution=requested_resolution,
+    )
+    if selection_error:
+        print(f"[error] {selection_error}", file=sys.stderr)
+        return 2
+    profile_cfg = video_profile_config(video_profile)
+    video_resolution = resolved_video_resolution(video_profile, requested_resolution)
     episodes = resolve_source_episodes(source)
     if not episodes:
         print("[error] no episodes found", file=sys.stderr)
@@ -3397,19 +3850,18 @@ def prepare_workspace(args: argparse.Namespace) -> int:
     run_dir.mkdir(parents=True, exist_ok=True)
     (run_dir / "episodes").mkdir(exist_ok=True)
     out_dir.mkdir(parents=True, exist_ok=True)
-    aspect = args.aspect
-    aspect_cfg = storyboard_aspect_config(aspect)
+    aspect_cfg = storyboard_workflow_config(aspect, video_profile)
     generator_skill_path, reviewer_skill_path, generation_rules_source, reviewer_rules_source = ensure_project_agent_skills(
         project_root=project_root,
         prompt_path=prompt_path,
         review_skill_path=args.review_skill,
         aspect=aspect,
+        video_profile=video_profile,
     )
-    seedance_profile_path = (project_root / SEEDANCE_PROMPT_PROFILE_PATH).resolve()
+    seedance_profile_path = (project_root / profile_cfg["profile_skill_path"]).resolve()
     if not seedance_profile_path.is_file():
         print(f"[error] Seedance prompt profile not found: {seedance_profile_path}", file=sys.stderr)
         return 1
-    visual_style = args.visual_style
     cg_visual_style_skill_path: Path | None = None
     if visual_style == "3d-cg":
         cg_visual_style_skill_path = (project_root / CG_VISUAL_STYLE_SKILL_PATH).resolve()
@@ -3430,7 +3882,33 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         visual_style=visual_style,
         aspect=aspect,
         mode=args.mode,
+        video_profile=video_profile,
+        video_resolution=video_resolution,
     ))
+    profile_contract = {
+        "profile_id": video_profile,
+        "contract_version": profile_cfg["contract_version"],
+        "label": profile_cfg["label"],
+        "target_video_model": profile_cfg["target_video_model"],
+        "profile_skill_path": str(seedance_profile_path),
+        "storyboard_aspect": aspect,
+        "visual_style": visual_style,
+        "aspect_ratio": profile_cfg["aspect_ratio"],
+        "resolution": video_resolution,
+        "supported_resolutions": list(profile_cfg["supported_resolutions"]),
+        "fps": profile_cfg["fps"],
+        "generate_audio": profile_cfg["generate_audio"],
+        "video_task_type": profile_cfg["video_task_type"],
+        "requires_multimodal_materials": profile_cfg["requires_multimodal_materials"],
+        "minimum_material_inputs": profile_cfg["minimum_material_inputs"],
+        "allowed_multimodal_material_types": list(profile_cfg["allowed_multimodal_material_types"]),
+        "forbidden_video_task_modes": list(profile_cfg["forbidden_video_task_modes"]),
+        "duration_min_seconds": profile_cfg["duration_min_seconds"],
+        "duration_max_seconds": profile_cfg["duration_max_seconds"],
+        "timeline_granularity_seconds": profile_cfg["timeline_granularity_seconds"],
+        "collection_tail_mode": profile_cfg["collection_tail_mode"],
+    }
+    write_json(run_dir / "video_profile.json", profile_contract)
     manifest: dict = {
         "version": AGENT_WORKSPACE_VERSION,
         "storyboard_rule_version": storyboard_quality_policy_version(),
@@ -3445,8 +3923,23 @@ def prepare_workspace(args: argparse.Namespace) -> int:
         "generator_skill_path": str(generator_skill_path),
         "reviewer_skill_path": str(reviewer_skill_path),
         "seedance_profile_path": str(seedance_profile_path),
+        "video_profile_path": str(run_dir / "video_profile.json"),
+        "video_profile": video_profile,
+        "video_profile_contract_version": profile_cfg["contract_version"],
         "storyboard_aspect": aspect,
-        "target_video_model": "seedance",
+        "target_video_model": profile_cfg["target_video_model"],
+        "video_resolution": video_resolution,
+        "video_aspect_ratio": profile_cfg["aspect_ratio"],
+        "video_fps": profile_cfg["fps"],
+        "generate_audio": profile_cfg["generate_audio"],
+        "video_task_type": profile_cfg["video_task_type"],
+        "requires_multimodal_materials": profile_cfg["requires_multimodal_materials"],
+        "minimum_material_inputs": profile_cfg["minimum_material_inputs"],
+        "allowed_multimodal_material_types": list(profile_cfg["allowed_multimodal_material_types"]),
+        "forbidden_video_task_modes": list(profile_cfg["forbidden_video_task_modes"]),
+        "group_duration_min_seconds": profile_cfg["duration_min_seconds"],
+        "group_duration_max_seconds": profile_cfg["duration_max_seconds"],
+        "timeline_granularity_seconds": profile_cfg["timeline_granularity_seconds"],
         "visual_style": visual_style,
         "cg_visual_style_skill_path": str(cg_visual_style_skill_path) if cg_visual_style_skill_path else None,
         "out_dir": str(out_dir),
@@ -3512,6 +4005,22 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             "output_path": str(output_path),
             "storyboard_aspect": aspect,
             "visual_style": visual_style,
+            "video_profile": video_profile,
+            "video_profile_contract_version": profile_cfg["contract_version"],
+            "seedance_profile_path": str(seedance_profile_path),
+            "target_video_model": profile_cfg["target_video_model"],
+            "video_resolution": video_resolution,
+            "video_aspect_ratio": profile_cfg["aspect_ratio"],
+            "video_fps": profile_cfg["fps"],
+            "generate_audio": profile_cfg["generate_audio"],
+            "video_task_type": profile_cfg["video_task_type"],
+            "requires_multimodal_materials": profile_cfg["requires_multimodal_materials"],
+            "minimum_material_inputs": profile_cfg["minimum_material_inputs"],
+            "allowed_multimodal_material_types": list(profile_cfg["allowed_multimodal_material_types"]),
+            "forbidden_video_task_modes": list(profile_cfg["forbidden_video_task_modes"]),
+            "group_duration_min_seconds": profile_cfg["duration_min_seconds"],
+            "group_duration_max_seconds": profile_cfg["duration_max_seconds"],
+            "timeline_granularity_seconds": profile_cfg["timeline_granularity_seconds"],
             "generator_skill_name": aspect_cfg["generator_name"],
             "reviewer_skill_name": aspect_cfg["reviewer_name"],
             "reviewer_source": aspect_cfg["reviewer_name"],
@@ -3552,6 +4061,8 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             visual_style=visual_style,
             aspect=aspect,
             mode=args.mode,
+            video_profile=video_profile,
+            video_resolution=video_resolution,
         )
         write_utf8(episode_dir / "TASK.md", task_text)
         prompt_file = episode_dir / "agent_prompt.md"
@@ -3645,10 +4156,12 @@ def validate_episode(args: argparse.Namespace) -> int:
         if cut_id_changes:
             fix_messages.append("normalized cut_id " + "; ".join(cut_id_changes[:8]))
         if fix_messages:
-            write_utf8(final_path, content)
+            write_utf8(target_path, content)
             print("[fixed] " + " | ".join(fix_messages))
 
-    clean_issues = validate_clean_storyboard_format(content)
+    video_profile = episode_video_profile(episode_dir)
+    video_profile_contract_issues = validate_episode_video_profile_contract(episode_dir)
+    clean_issues = validate_clean_storyboard_format(content, video_profile=video_profile)
     cut_id_issues = validate_storyboard_cut_ids(content, episode_id)
     horizontal_run = is_horizontal_episode_dir(episode_dir)
     quality_issues = validate_storyboard_quality_floor(content, allow_horizontal_output_fields=horizontal_run)
@@ -3693,7 +4206,8 @@ def validate_episode(args: argparse.Namespace) -> int:
         if review_error is None and not _storyboard_review_passed(review_payload):
             review_pass_issues.append("storyboard_reviewer: reviewer_not_passed")
     issues = (
-        clean_issues
+        video_profile_contract_issues
+        + clean_issues
         + cut_id_issues
         + quality_issues
         + horizontal_motion_issues
@@ -3709,6 +4223,10 @@ def validate_episode(args: argparse.Namespace) -> int:
     if issues:
         report_lines.append("status: failed")
         report_lines.append("")
+        if video_profile_contract_issues:
+            report_lines.append("## Video Profile Contract")
+            report_lines.extend(f"- {issue}" for issue in video_profile_contract_issues)
+            report_lines.append("")
         if clean_issues:
             report_lines.append("## Clean Format")
             report_lines.extend(f"- {issue}" for issue in clean_issues)
@@ -3760,6 +4278,8 @@ def validate_episode(args: argparse.Namespace) -> int:
 
     report_lines.append("status: passed")
     report_lines.append("")
+    if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
+        report_lines.append("- video_profile_contract: multimodal_generation-only passed")
     report_lines.append("- clean_format: passed")
     report_lines.append("- cut_id_contract: passed")
     report_lines.append("- quality_floor: passed")
@@ -3817,7 +4337,8 @@ def collect_run(args: argparse.Namespace) -> int:
         episode_contract_id = episode_id_for_cut_contract(episode_dir)
         content, cut_id_changes = ensure_storyboard_cut_ids(content, episode_contract_id)
         changes.extend(cut_id_changes)
-        clean_issues = validate_clean_storyboard_format(content)
+        video_profile = episode_video_profile(episode_dir)
+        clean_issues = validate_clean_storyboard_format(content, video_profile=video_profile)
         cut_id_issues = validate_storyboard_cut_ids(content, episode_contract_id)
         horizontal_run = is_horizontal_episode_dir(episode_dir)
         quality_issues = validate_storyboard_quality_floor(content, allow_horizontal_output_fields=horizontal_run)
@@ -3907,6 +4428,7 @@ def collect_run(args: argparse.Namespace) -> int:
             output_content = append_vertical_seedance_tail_to_groups(
                 output_content,
                 visual_style=episode_visual_style(episode_dir),
+                video_profile=video_profile,
             )
 
         write_utf8(output_path, output_content)
@@ -4016,6 +4538,21 @@ def parse_args() -> argparse.Namespace:
     prepare.add_argument("--agent", choices=["codex", "qwen", "kimi"], default="codex")
     prepare.add_argument("--model", default=None, help="Optional CLI model override.")
     prepare.add_argument("--output-model-suffix", default="agent-cli")
+    prepare.add_argument(
+        "--video-profile",
+        choices=sorted(VIDEO_PROFILE_CONFIG.keys()),
+        default=DEFAULT_VIDEO_PROFILE,
+        help=(
+            "Target-video contract. The default preserves the existing Seedance 2.0 workflow; "
+            "seedance-2.5-live-vertical enables the independent live-action 9:16 profile."
+        ),
+    )
+    prepare.add_argument(
+        "--video-resolution",
+        choices=["480p", "720p"],
+        default=None,
+        help="Optional profile resolution override. Seedance 2.5 live vertical defaults to 720p.",
+    )
     prepare.add_argument(
         "--visual-style",
         choices=sorted(VISUAL_STYLE_CONFIG.keys()),

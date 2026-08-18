@@ -37,6 +37,21 @@
 
 默认 `-VisualStyle live-action`，继续使用真人实拍短剧口径。
 
+如需独立的 Seedance 2.5 真人竖屏短剧合同，显式选择 profile：
+
+```powershell
+.\prepare-agent.ps1 scene <run-name> `
+  -Source .\split_scripts\<episode-folder> `
+  -OutDir .\outputs_agent_<name> `
+  -Aspect vertical `
+  -VisualStyle live-action `
+  -VideoProfile seedance-2.5-live-vertical `
+  -VideoResolution 720p `
+  -Force
+```
+
+该 profile 固定目标模型 `doubao-seedance-2-5-260628`，使用 9:16、24fps、原生音频、4-30 秒整数时间轴；当前只开放 480p/720p，默认 720p。唯一视频任务是 `multimodal_generation`，真实模型调用必须至少绑定 1 项图片、视频或音频素材；分镜母版本身不等于生成就绪。纯文本、参考生成、首尾帧/关键帧、视频编辑、视频延长/续写和轨道补全全部禁用。它会切换到独立生成器、审核器和收集尾部，且不会追加旧版大包通用 `--neg`。不传 `-VideoProfile` 时仍走原有 `seedance-2.0` 默认流程。
+
 agent 完成后收集结果：
 
 ```powershell
@@ -50,6 +65,7 @@ agent 完成后收集结果：
 - 不要让 Python 调用 Codex/Qwen/Claude CLI。
 - 最终输出必须是自然分镜文本，不要机器标签，不要 JSON。
 - 竖屏默认读取 `agent_skills/storyboard-generator` / `agent_skills/storyboard-reviewer`。
+- `-VideoProfile seedance-2.5-live-vertical` 只支持 `vertical` + `live-action` + `multimodal_generation`，读取独立的 `seedance-2-5-live-vertical-generator` / `seedance-2-5-live-vertical-reviewer` / `seedance-2-5-live-vertical`；没有真实多模态素材时不得回退到其他任务模式。
 - 横屏读取 `agent_skills/storyboard-horizontal-generator` / `agent_skills/storyboard-horizontal-reviewer`；横屏最终分镜仍是自然分镜正文，横屏 reviewer 输出 raw JSON 审核结果。
 - `-VisualStyle 3d-cg` 会切换生成提示、收集尾部和资产提示词口径为动漫 3D CG；它不是新题材，不改变剧情忠实度、时长、站位、道具连续和 reviewer 门禁。
 - 新剧本格式不稳定时，先人工/agent 识别集数边界，再写专用拆分脚本。

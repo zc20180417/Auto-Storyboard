@@ -19,6 +19,9 @@ param(
     [string]$Aspect = "vertical",
     [ValidateSet("live-action", "3d-cg")]
     [string]$VisualStyle = "live-action",
+    [ValidateSet("seedance-2.0", "seedance-2.5-live-vertical")]
+    [string]$VideoProfile = "seedance-2.0",
+    [string]$VideoResolution = "",
     [switch]$Force
 )
 
@@ -52,8 +55,13 @@ $cmdArgs = @(
     "--output-model-suffix", $OutputModelSuffix,
     "--aspect", $Aspect,
     "--visual-style", $VisualStyle,
+    "--video-profile", $VideoProfile,
     "--mode", $Mode
 )
+
+if ($VideoResolution) {
+    $cmdArgs += @("--video-resolution", $VideoResolution)
+}
 
 if ($RunName) {
     $cmdArgs += @("--run-name", $RunName)
@@ -70,11 +78,20 @@ if ($Force) {
 Write-Host "[prepare-agent] mode=$Mode"
 Write-Host "[prepare-agent] aspect=$Aspect"
 Write-Host "[prepare-agent] visual style=$VisualStyle"
+Write-Host "[prepare-agent] video profile=$VideoProfile"
+if ($VideoResolution) {
+    Write-Host "[prepare-agent] video resolution=$VideoResolution"
+}
 Write-Host "[prepare-agent] source=$Source"
 if ($Prompt -and $AllowPromptOverride) {
     Write-Host "[prepare-agent] prompt override=$Prompt"
 } else {
-    if ($Aspect -eq "horizontal") {
+    if ($VideoProfile -eq "seedance-2.5-live-vertical") {
+        Write-Host "[prepare-agent] video task=multimodal_generation (only; actual image/video/audio required)"
+        Write-Host "[prepare-agent] generation skill=agent_skills/seedance-2-5-live-vertical-generator/SKILL.md"
+        Write-Host "[prepare-agent] review skill=agent_skills/seedance-2-5-live-vertical-reviewer/SKILL.md"
+        Write-Host "[prepare-agent] profile skill=agent_skills/seedance-2-5-live-vertical/SKILL.md"
+    } elseif ($Aspect -eq "horizontal") {
         Write-Host "[prepare-agent] generation skill=agent_skills/storyboard-horizontal-generator/SKILL.md"
         Write-Host "[prepare-agent] review skill=agent_skills/storyboard-horizontal-reviewer/SKILL.md"
     } else {

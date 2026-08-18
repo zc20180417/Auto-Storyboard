@@ -24,8 +24,9 @@ dispatcher 必须创建 subagents/workers 并发分发，每个 worker 默认处
 3. 默认竖屏：`agent_skills/storyboard-generator/SKILL.md`
 4. 默认竖屏：`agent_skills/storyboard-reviewer/SKILL.md`
 5. 如果当前 run 的 `TASK.md` / `context.md` 标记 `Aspect: horizontal` 或 `storyboard_aspect=horizontal`，改读 `agent_skills/storyboard-horizontal-generator/SKILL.md` 和 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`，不要把横屏任务交给竖屏 skill。
-6. `agent_skills/seedance-prompt-profile/SKILL.md`（Seedance 官方模板风格摘要，只做参考层，不得复制模板正文）
-7. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`
+6. 如果当前 run 标记 `Video profile: seedance-2.5-live-vertical` 或 `video_profile=seedance-2.5-live-vertical`，改读 `agent_skills/seedance-2-5-live-vertical-generator/SKILL.md`、`agent_skills/seedance-2-5-live-vertical-reviewer/SKILL.md` 和 `agent_skills/seedance-2-5-live-vertical/SKILL.md`；该 profile 只允许 `vertical` + `live-action` + `multimodal_generation`，真实调用至少绑定 1 项图片/视频/音频素材，禁止纯文本、参考生成、首尾帧/关键帧、编辑、延长/续写和轨道补全；不要再套用 2.0 的 6-15 秒、0.5 秒时间轴或固定大包 `--neg`。
+7. 其他 run 读取 `agent_skills/seedance-prompt-profile/SKILL.md`（Seedance 2.0 官方模板风格摘要，只做参考层，不得复制模板正文）。
+8. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`
 
 ## 两种生产模式
 
@@ -206,6 +207,7 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 - 最新已验证 `scene` 工作区：`agent_runs/youyuanzhai6-scene`
 - 最新已验证 `single` 工作区：`agent_runs/youyuanzhai-single`
 - 当前竖屏主生成规则：`agent_skills/storyboard-generator/SKILL.md`
+- Seedance 2.5 真人竖屏独立 profile：`agent_skills/seedance-2-5-live-vertical/SKILL.md`；唯一任务是 `multimodal_generation`，生成器与审核器分别为 `agent_skills/seedance-2-5-live-vertical-generator/SKILL.md`、`agent_skills/seedance-2-5-live-vertical-reviewer/SKILL.md`。
 - 当前横屏主生成规则：`agent_skills/storyboard-horizontal-generator/SKILL.md`，审核规则为 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`，只在横屏 run 中使用。
 - Seedance 风格参考层：`agent_skills/seedance-prompt-profile/SKILL.md`，只用于选择性参考官方模板结构，不得替代主生成规则。
 - 不再默认使用 `6688竖屏古装分镜prompt.txt` 覆盖生成 skill；只有用户明确要求临时替换生成规则时，才可使用 prompt override。
