@@ -12,14 +12,19 @@
 
 - 任务包含 2 集以上 episode 时，本会话默认是 dispatcher。
 - dispatcher 禁止亲自生产分镜正文，禁止顺序处理多集，禁止写入任何 `episodes/ep*/draft.txt`、`episodes/ep*/final.txt`、`episodes/ep*/review.txt`、`episodes/ep*/segments/**`、`episodes/ep*/status.json`。
-- dispatcher 必须用 Agent 工具并发派发 worker：默认 **1 集 / worker**，未经用户明确批准不超过 **2 集 / worker**，最多同时 **5 个 worker**。（这是全文 worker 调度数量的唯一权威出处。）
+- dispatcher 必须用 Agent 工具并发派发 worker：默认 **1 集 / worker**，未经用户明确批准不超过 **2 集 / worker**。
+- 并发 worker 数以当前 run 的 `DISPATCH_PROMPT.md` / `NEXT_STEPS.md` 里的 `Run up to N workers in parallel` 为准（由 prepare 时的 `--parallelism` 决定，默认 5），但**任何情况下不得超过 5 个**。run 文件写的数大于 5 时按 5 执行。
 - 如果当前环境不能创建 worker/subagent，或创建 worker 需要用户授权，必须**立即停止并向用户请求分发授权**，或按当前 run 的 `DISPATCH_PROMPT.md` 输出 `NEED_USER_DISPATCH` 和待分发 prompt 路径。**不得因为不能开 worker 就降级为主线程顺序产稿。**
 
-### 2. 竖屏 / 横屏路由（对齐 AGENTS.md「先读这些文件」）
+### 2. skill 路由（对齐 AGENTS.md「先读这些文件」）
 
+**先看 video profile，再看 aspect。** profile 路由优先于下面的竖屏/横屏默认。
+
+- 当前 run 的 `TASK.md` / `context.md` 标记 `Video profile: seedance-2.5-live-vertical` 或 `video_profile=seedance-2.5-live-vertical` 时，generator 用 `agent_skills/seedance-2-5-live-vertical-generator/SKILL.md`，reviewer 用 `agent_skills/seedance-2-5-live-vertical-reviewer/SKILL.md`，并同时读模型硬合同 `agent_skills/seedance-2-5-live-vertical/SKILL.md`，`reviewer_source` = `seedance-2-5-live-vertical-reviewer`。该 profile 只允许 `vertical` + `live-action` + `multimodal_generation`，每组 4-30 整数秒、整数秒时间轴；**不要套用 2.0 的 6-15 秒、0.5 秒边界或固定大包 `--neg`**。
+- 未标记该 profile 时按 aspect 走下面两条（即 `seedance-2.0` 兼容流程）。
 - 默认竖屏：generator 用 `agent_skills/storyboard-generator/SKILL.md`，reviewer 用 `agent_skills/storyboard-reviewer/SKILL.md`，`status.json` 的 `reviewer_source` = `storyboard-reviewer`。
 - 当前 run 的 `TASK.md` / `context.md` 标记 `Aspect: horizontal` 或 `storyboard_aspect=horizontal` 时，改用 `agent_skills/storyboard-horizontal-generator/SKILL.md` 和 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`，`reviewer_source` = `storyboard-horizontal-reviewer`。
-- 不要把横屏任务交给竖屏 skill，反之亦然。一切以 `TASK.md` 指定的 skill 为准。
+- 不要把横屏任务交给竖屏 skill，反之亦然；也不要把 2.5 profile 的 run 交给 2.0 的通用竖屏 skill。一切以 `TASK.md` 指定的 skill 为准。
 
 ### 3. 模式默认
 

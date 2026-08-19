@@ -110,6 +110,8 @@
 
 该 profile 只允许 `vertical` + `live-action`，目标模型为 `doubao-seedance-2-5-260628`，唯一任务类型为 `multimodal_generation`。工作区会写出 `video_profile.json`，并把任务类型、至少 1 项真实图片/视频/音频素材要求、禁用任务模式、9:16、480p/720p、24fps、原生音频、4-30 秒整数时间轴写入 manifest、episode metadata、context 和 TASK；默认 720p。图片、视频、音频只是多模态输入素材，不代表独立“参考生成”模式；纯文本、参考生成、首尾帧/关键帧、编辑、延长/续写、轨道补全均禁用。不要与横屏或 3D CG 混用。不显式选择时，旧 `seedance-2.0` 仍是默认值，现有 run 不迁移。
 
+**仓库边界：** 本仓库对该 profile 的交付终点是 `final.txt` 分镜母版，**不产出可直接发起 Seedance 2.5 调用的成品提示词**，这是设计如此。`minimum_material_inputs=1` 所要求的真实图片/视频/音频素材绑定由本仓库之外的 Web/API 层负责。注意第 7 步资产阶段产出的 `asset_bindings.json` **不满足**这个要求——它的 `binding_role` 只有五种静态参考图角色，没有视频素材和音频素材角色，两者不能互相顶替。详见 `agent_skills/seedance-2-5-live-vertical/SKILL.md` 的「仓库边界」一节。
+
 生成后会得到：
 
 ```text
@@ -228,6 +230,8 @@ if ($failed.Count -gt 0) { throw "Validation failed: $($failed -join ', ')" }
 ### 7. 可选：生成生图资产表
 
 当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，先显式导出 `storyboard_index.json` / `storyboard_index.xlsx`，再读取 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，从单集 `final.txt` 和 `storyboard_index.json` 生成 `assets.md`、`assets.xlsx`、`asset_bindings.json`、`asset_review.json` 和 `asset_status.json`。
+
+> **注意导出会被后续校验清掉。** 默认是 txt-only：`validate-episode` / `collect-agent` 不带 `--export-index` 时不仅不导出，还会**主动删除**该 episode 已有的 `storyboard_index.json` / `storyboard_index.xlsx`（校验报告里显示 `storyboard_index_export: skipped (txt-only)`）。而 `asset-extractor` 强依赖 `storyboard_index.json` 校验 `cut_id`。所以导出后若再跑一次普通校验，资产阶段会因为索引消失而失败。要保留索引，请在每次 `validate-episode` 和 `collect-agent` 都带上 `--export-index`，或在资产阶段前用 `export-storyboard-index` 重新导出。
 
 多集项目不要让每集各自临场编人物设定。必须先创建 run 级别全局资产设定：
 
