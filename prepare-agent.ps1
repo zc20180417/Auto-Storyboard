@@ -11,7 +11,7 @@ param(
     [switch]$AllowPromptOverride,
     [string]$OutDir = ".\outputs_agent_6688_clean",
     [string]$WorkspaceDir = ".\agent_runs",
-    [ValidateSet("codex", "qwen", "kimi")]
+    [ValidateSet("codex", "qwen", "kimi", "claude")]
     [string]$Agent = "codex",
     [int]$Parallelism = 5,
     [string]$OutputModelSuffix = "agent-cli",

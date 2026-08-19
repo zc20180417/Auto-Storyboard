@@ -449,6 +449,52 @@ class Seedance25LiveVerticalProfileTests(unittest.TestCase):
             self.assertNotIn(saw.VERTICAL_SEEDANCE_NEGATIVE_LINE, collected)
             self.assertNotIn("4K画质", collected)
 
+    def test_model_contract_reference_stays_in_sync_with_machine_profile(self):
+        """model-contract.md 是人读快照，VIDEO_PROFILE_CONFIG 是机器真源。
+
+        两者写的是同一份官方参数，必须一起改。只改文档不改配置（或反过来）
+        以前不会被任何测试发现，这里把文档解析出来逐项对齐。
+        """
+        profile = saw.video_profile_config(saw.SEEDANCE25_LIVE_VERTICAL_PROFILE)
+        contract = (ROOT / "agent_skills" / "seedance-2-5-live-vertical" / "references" / "model-contract.md").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn(f"`{profile['target_video_model']}`", contract)
+        self.assertIn(f"`{profile['video_task_type']}` only", contract)
+        self.assertIn(f"`{profile['aspect_ratio']}`", contract)
+        self.assertIn(
+            f"integer seconds in `[{profile['duration_min_seconds']}, {profile['duration_max_seconds']}]`",
+            contract,
+        )
+        self.assertIn(f"FPS: `{profile['fps']}`", contract)
+        self.assertIn(f"Default resolution: `{profile['default_resolution']}`", contract)
+        for resolution in profile["supported_resolutions"]:
+            self.assertIn(f"`{resolution}`", contract)
+
+        # 未启用的分辨率不得只在文档里被悄悄放开。
+        for resolution in ("1080p", "2k", "4k", "4K"):
+            self.assertNotIn(resolution, profile["supported_resolutions"])
+            if resolution == "1080p":
+                self.assertIn("1080p is intentionally not enabled", contract)
+
+    def test_profile_declares_repo_boundary_for_material_binding(self):
+        """2.5 要求真实多模态素材绑定，但本仓库的 asset_bindings.json 只有静态参考图角色。
+
+        这个缺口必须是显式声明的，不能靠读者自己发现。
+        """
+        skill = (ROOT / "agent_skills" / "seedance-2-5-live-vertical" / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("## 仓库边界", skill)
+        self.assertIn("asset_bindings.json", skill)
+        self.assertIn("不满足", skill)
+
+        binding_roles = (ROOT / "agent_skills" / "asset-extractor" / "scripts" / "validate-assets.mjs").read_text(
+            encoding="utf-8"
+        )
+        # 一旦 asset-extractor 真的支持了视频/音频素材角色，本边界声明就该重写。
+        self.assertNotIn("video_material", binding_roles)
+        self.assertNotIn("audio_material", binding_roles)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -686,7 +686,9 @@ def make_episode_task(
         outputs = textwrap.dedent(
             """
             - `segments/segXX/draft.txt`
-            - `segments/segXX/review.md`
+            - `segments/segXX/review.md` (only when this episode has more than one segment;
+              with a single segment the episode-level `review.txt` already covers the same
+              groups, so writing both is duplicated work)
             - `segments/segXX/final.txt`
             - `final.txt`
             - `review.txt`
@@ -696,7 +698,7 @@ def make_episode_task(
         workflow = textwrap.dedent(
             f"""
             1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}{visual_style_workflow_phrase}, `script.txt`{boundary_workflow_phrase}, and each segment script.
-            2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/review.md` plus `segments/segXX/final.txt`.
+            2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/final.txt`. With more than one segment also write `segments/segXX/review.md`, scoped to that segment's own groups — cross-segment handoffs and whole-episode coverage belong to step 4, not repeated per segment. With a single segment, skip `review.md` and review once in step 4.
             3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. {group_timing_line}
             4. Review the assembled `final.txt` once using `{reviewer_skill_name}`; write the raw reviewer JSON to `review.txt`.
             5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `{reviewer_skill_name}` after repairs.
@@ -1105,7 +1107,12 @@ def write_runner_scripts(
     codex_example = ""
     qwen_example = ""
     kimi_example = ""
+    claude_example = ""
     if sample_task:
+        claude_example = (
+            f'In Claude Code, dispatch with the Agent tool (`run_in_background: true`) using the prompt '
+            f'from `{sample_task["prompt_file"]}`. Do not launch any model CLI.'
+        )
         codex_example = (
             f'codex exec --skip-git-repo-check --sandbox workspace-write --cd "{run_dir}"'
             f'{codex_model_arg} - < "{sample_task["prompt_file"]}"'
@@ -1117,7 +1124,9 @@ def write_runner_scripts(
         )
     tasks_markdown = "\n".join(task_lines)
 
-    if agent == "kimi":
+    if agent == "claude":
+        worker_capability = "Claude Code Agent tools (run_in_background)"
+    elif agent == "kimi":
         worker_capability = "Kimi Code Agent tools"
     elif agent == "qwen":
         worker_capability = "Qwen worker/subagent tools"
@@ -1125,12 +1134,18 @@ def write_runner_scripts(
         worker_capability = "Codex subagents/workers"
 
     manual_cli_blocks = []
-    if codex_example:
-        manual_cli_blocks.append(f"Codex example:\n\n```powershell\n{codex_example}\n```")
-    if qwen_example:
-        manual_cli_blocks.append(f"Qwen example:\n\n```powershell\n{qwen_example}\n```")
-    if agent == "kimi" and kimi_example:
-        manual_cli_blocks.append(f"Kimi Code example:\n\n{kimi_example}")
+    if agent == "claude":
+        # Claude Code dispatches through the Agent tool, never a model CLI, so the
+        # Codex/Qwen command lines below would be actively wrong guidance here.
+        if claude_example:
+            manual_cli_blocks.append(f"Claude Code dispatch:\n\n{claude_example}")
+    else:
+        if codex_example:
+            manual_cli_blocks.append(f"Codex example:\n\n```powershell\n{codex_example}\n```")
+        if qwen_example:
+            manual_cli_blocks.append(f"Qwen example:\n\n```powershell\n{qwen_example}\n```")
+        if agent == "kimi" and kimi_example:
+            manual_cli_blocks.append(f"Kimi Code example:\n\n{kimi_example}")
     manual_cli_section = "\n\n".join(manual_cli_blocks)
 
     write_utf8(
@@ -1138,7 +1153,7 @@ def write_runner_scripts(
         f"""# Dispatcher Instructions
 
 Python is intentionally limited to prepare / validate / collect.
-It must not launch Codex CLI, Qwen CLI, Kimi Code, or any model process.
+It must not launch Codex CLI, Qwen CLI, Kimi Code, Claude Code, or any model process.
 
 Do not treat this file as a production task list.
 Give `DISPATCH_PROMPT.md` to the host agent. The host agent is a dispatcher only and must not write episode files itself.
@@ -3105,7 +3120,17 @@ def _read_review_json(
     *,
     reviewer_source: str | None = None,
     review_contract_version: int = 1,
+    require_numeric_evidence: bool = True,
 ) -> tuple[dict | None, str | None]:
+    """Parse and schema-check a reviewer JSON artifact.
+
+    require_numeric_evidence=False drops dialogue/handoff/camera_motion from the required
+    keys. Used for segment reviews in a multi-segment episode: the episode review already
+    cross-checks every shot, every adjacent group pair and every camera move against the
+    assembled `final.txt`, so repeating that arithmetic per segment adds no verification,
+    only tokens. The judgment fields stay required, and any numeric array a segment review
+    does provide is still validated in full by the caller.
+    """
     if not path.is_file():
         return None, f"missing review file: {path.name}"
 
@@ -3134,13 +3159,18 @@ def _read_review_json(
     if is_vertical_v2_reviewer(reviewer_source, review_contract_version):
         required_types.update(
             {
-                "dialogue_checks": list,
-                "handoff_checks": list,
-                "camera_motion_checks": list,
                 "issue_instances_total": int,
                 "affected_groups": list,
             }
         )
+        if require_numeric_evidence:
+            required_types.update(
+                {
+                    "dialogue_checks": list,
+                    "handoff_checks": list,
+                    "camera_motion_checks": list,
+                }
+            )
     for key, expected_type in required_types.items():
         if not isinstance(payload.get(key), expected_type):
             return None, f"{path.name} missing reviewer field `{key}` with type {expected_type.__name__}"
@@ -3247,7 +3277,14 @@ def _read_review_json(
             ),
         }
         for collection_name, keys in check_contracts.items():
-            for index, item in enumerate(payload[collection_name], start=1):
+            entries = payload.get(collection_name)
+            if entries is None:
+                # Optional when require_numeric_evidence is False; still shape-checked below
+                # whenever the review actually supplies the array.
+                continue
+            if not isinstance(entries, list):
+                return None, f"{path.name} {collection_name} must be a list"
+            for index, item in enumerate(entries, start=1):
                 if not isinstance(item, dict):
                     return None, f"{path.name} {collection_name}[{index}] must be an object"
                 missing = [key for key in keys if item.get(key) in (None, "")]
@@ -3781,13 +3818,26 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
 
     segments_dir = episode_dir / "segments"
     if segments_dir.is_dir():
-        for segment_dir in sorted(path for path in segments_dir.iterdir() if path.is_dir()):
-            if not (segment_dir / "script.txt").is_file():
+        segment_dirs = [
+            path
+            for path in sorted(segments_dir.iterdir())
+            if path.is_dir() and (path / "script.txt").is_file()
+        ]
+        # A single-segment episode's segment review is, by construction, a review of the
+        # same groups as the episode review: identical dialogue_checks, handoff_checks and
+        # camera_motion_checks written twice. Measured on a real run the duplicate review
+        # cost more bytes than the storyboard it reviewed. Require it only when there is
+        # more than one segment; still validate it when a worker writes it anyway.
+        segment_review_required = len(segment_dirs) > 1
+        for segment_dir in segment_dirs:
+            review_path = segment_dir / "review.md"
+            if not segment_review_required and not review_path.is_file():
                 continue
             segment_payload, segment_error = _read_review_json(
-                segment_dir / "review.md",
+                review_path,
                 reviewer_source=expected_reviewer_source,
                 review_contract_version=review_contract_version,
+                require_numeric_evidence=False,
             )
             if segment_error:
                 issues.append(f"{segment_dir.name}: {segment_error}")
@@ -3799,7 +3849,16 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
                     target_content = review_target.read_text(encoding="utf-8", errors="replace")
                     for issue in _validate_review_checked_groups(segment_payload, target_content, "review.md"):
                         issues.append(f"{segment_dir.name}: {issue}")
-                    if is_vertical_v2_reviewer(expected_reviewer_source, review_contract_version):
+                    # Numeric evidence is optional here (the episode review covers it), but
+                    # a partial or invented array is worse than none: validate in full
+                    # whenever the segment review actually claims any of it.
+                    claims_numeric = any(
+                        segment_payload.get(key)
+                        for key in ("dialogue_checks", "handoff_checks", "camera_motion_checks")
+                    )
+                    if claims_numeric and is_vertical_v2_reviewer(
+                        expected_reviewer_source, review_contract_version
+                    ):
                         for issue in validate_vertical_review_evidence(
                             segment_payload,
                             target_content,
@@ -4535,7 +4594,7 @@ def parse_args() -> argparse.Namespace:
     prepare.add_argument("--workspace-dir", type=Path, default=Path(DEFAULT_AGENT_RUNS_DIR))
     prepare.add_argument("--out-dir", type=Path, default=Path(DEFAULT_AGENT_OUTPUT_DIR))
     prepare.add_argument("--run-name", default=None)
-    prepare.add_argument("--agent", choices=["codex", "qwen", "kimi"], default="codex")
+    prepare.add_argument("--agent", choices=["codex", "qwen", "kimi", "claude"], default="codex")
     prepare.add_argument("--model", default=None, help="Optional CLI model override.")
     prepare.add_argument("--output-model-suffix", default="agent-cli")
     prepare.add_argument(
@@ -4565,7 +4624,8 @@ def parse_args() -> argparse.Namespace:
         default="vertical",
         help="Storyboard aspect workflow. Use horizontal for the separate 16:9 horizontal generator/reviewer skills.",
     )
-    prepare.add_argument("--parallelism", type=int, default=3)
+    # Keep in sync with prepare-agent.ps1 -Parallelism and the CLAUDE.md worker cap.
+    prepare.add_argument("--parallelism", type=int, default=5)
     prepare.add_argument(
         "--mode",
         choices=["single", "scene"],
