@@ -13,7 +13,19 @@ function Write-HookLog {
 }
 
 function Read-HookPayload {
-    $raw = [Console]::In.ReadToEnd()
+    # Claude Code writes the hook payload as UTF-8. [Console]::In follows the console
+    # input code page (GBK/936 on zh-CN Windows), which mangles multibyte characters in
+    # last_assistant_message and breaks ConvertFrom-Json, silently skipping validation.
+    # Read the raw stdin stream with an explicit UTF-8 decoder instead. Setting
+    # [Console]::InputEncoding is avoided because it can throw when stdin is redirected.
+    try {
+        $stdinStream = [Console]::OpenStandardInput()
+        $reader = New-Object System.IO.StreamReader($stdinStream, (New-Object System.Text.UTF8Encoding($false)))
+        $raw = $reader.ReadToEnd()
+        $reader.Dispose()
+    } catch {
+        $raw = [Console]::In.ReadToEnd()
+    }
     if ([string]::IsNullOrWhiteSpace($raw)) {
         return [pscustomobject]@{ hook_event_name = "SubagentStop"; raw_input_empty = $true }
     }

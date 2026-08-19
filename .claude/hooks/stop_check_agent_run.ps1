@@ -13,7 +13,19 @@ function Write-HookLog {
 }
 
 function Read-HookPayload {
-    $raw = [Console]::In.ReadToEnd()
+    # Claude Code writes the hook payload as UTF-8. [Console]::In follows the console
+    # input code page (GBK/936 on zh-CN Windows), which mangles multibyte characters and
+    # breaks ConvertFrom-Json, silently skipping the gate. Read stdin with an explicit
+    # UTF-8 decoder instead. [Console]::InputEncoding is avoided: it can throw when
+    # stdin is redirected.
+    try {
+        $stdinStream = [Console]::OpenStandardInput()
+        $reader = New-Object System.IO.StreamReader($stdinStream, (New-Object System.Text.UTF8Encoding($false)))
+        $raw = $reader.ReadToEnd()
+        $reader.Dispose()
+    } catch {
+        $raw = [Console]::In.ReadToEnd()
+    }
     if ([string]::IsNullOrWhiteSpace($raw)) {
         return [pscustomobject]@{ hook_event_name = "Stop"; raw_input_empty = $true }
     }
@@ -69,6 +81,44 @@ function Get-FailureSummary {
 
 # --- Main ---
 $payload = Read-HookPayload
+
+# Episode workers write draft/final/review/status incrementally. Validating while any of
+# them is still running reports the half-written intermediate state as a gate failure:
+# noisy, unactionable, and impossible for the main thread to fix without racing the
+# worker's own writes. Worse, a worker blocked by that noise may step outside its assigned
+# episode to "unblock" the run. Wait for the workers to finish instead.
+$runningTasks = @()
+if ($payload -and $payload.PSObject.Properties.Name -contains "background_tasks") {
+    $runningTasks = @($payload.background_tasks | Where-Object { $_ -and $_.status -eq "running" })
+}
+if ($runningTasks.Count -gt 0) {
+    $names = ($runningTasks | ForEach-Object { $_.description }) -join ", "
+    Write-HookLog @{ event = "Stop"; result = "skip"; reason = "background workers still running"; running = $names }
+    '{"continue":true}'
+    exit 0
+}
+
+# This is a RUN-level gate: it requires every episode to validate and the run to be
+# collected. That is the main thread's acceptance step, not an episode worker's job.
+#
+# An episode worker only owns its own episode. Blocking it because a *sibling* episode is
+# incomplete gives it a failure it is not allowed to fix (its prompt scopes it to one
+# episode) and no way to stop. In an earlier run a worker in exactly that position went
+# outside its assigned episode and self-certified the edits to clear the gate. The
+# background_tasks check above does not help here: a subagent's payload lists only its own
+# children, so a sibling worker is invisible to it.
+#
+# So: inside a subagent session, stay out of the way and let the main thread run the gate.
+$agentId = $null
+if ($payload -and $payload.PSObject.Properties.Name -contains "agent_id") {
+    $agentId = $payload.agent_id
+}
+if ($agentId) {
+    Write-HookLog @{ event = "Stop"; result = "skip"; reason = "subagent session; run gate is the main thread's job"; agent_id = $agentId }
+    '{"continue":true}'
+    exit 0
+}
+
 $runDir = Get-RunDir
 if (-not $runDir) {
     Write-HookLog @{ event = "Stop"; result = "skip"; reason = "no agent run found" }
