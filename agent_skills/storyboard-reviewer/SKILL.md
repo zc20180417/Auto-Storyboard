@@ -149,6 +149,7 @@ generator 允许任意镜头使用合理运镜，也允许固定机位（见 gen
 
 ## 审核证据要求
 
+- `dialogue_checks`、`handoff_checks`、`camera_motion_checks` 中 `result=pass` 的条目，文字类证据字段（`evidence`、`mouth_duration`、`speech_type`、`characters`/`props`/`doors_vehicles`/`time_light`、`motivation`/`subject`/`path`/`endpoint`/`action_compatibility`）只需给出简短短语，例如“一致”“无变化”“路径清楚”，不必写完整句子；数值字段（`chars`/`seconds`/`chars_per_second`）和 `shot`/`from`/`to` 标签仍必须精确对应正文，不得省略或含糊。`result=warning` 或 `issue` 的条目必须按下列各条要求写出完整证据和修复建议，不得简化。
 - 时长类问题必须写明“有效字数 / 秒数 / 字秒比”或“无台词动作 / 秒数 / 为什么不足或拖沓”。
 - 密度类问题必须列出具体负载，例如“对白块2个、门外砸门1个、起身披衣走位复合动作1个、倒酒道具操作1个、情绪反转1个”。
 - 长组准入问题必须说明该 12-15 秒组缺少哪两类容量支撑，或指出连续长组如何把同一流程拆碎。
@@ -191,9 +192,9 @@ generator 允许任意镜头使用合理运镜，也允许固定机位（见 gen
 - `audit_coverage` 至少必须包含当前 Python 校验所需字段，且全部写成 `"checked"`：`script_fidelity`、`dialogue_direction`、`timing_math`、`dialogue_pacing`、`space_locking`、`format`、`character_availability`、`handoff_continuity`、`filmability`。
 - 生产 reviewer 必须在 `audit_coverage` 中额外包含并检查：`audio_mouth_sync`、`generation_density`、`action_atomicity`、`video_negative_constraints`、`prompt_pollution`、`prop_continuity`、`camera_motion_reasonableness`、`cross_episode_continuity`。没有跨集边界时，`cross_episode_continuity` 仍写 `"checked"`，证据说明“本集无连续边界”。
 - `spot_checks` 至少 3 条，优先覆盖台词节奏、空间/连续性、原剧本忠实度；若正文存在关键道具归属变化、片段密度、模板化描述或模型词风险，必须至少抽查其中一类。
-- `dialogue_checks` 必须逐镜覆盖所有含对白/旁白/心声的时间段，并记录有效字数、秒数、字秒比、口型承载、语气类型、结论和具体证据。
-- `handoff_checks` 必须覆盖全部相邻组接点，并逐项记录人物、道具、门窗/车辆、时间光线的连续性；存在跨集边界时，第一条必须是上一集末组到本集首组。
-- `camera_motion_checks` 必须覆盖正文中每个明确运镜镜头；没有运镜时输出空数组，不得伪造运镜检查。
+- `dialogue_checks` 必须逐镜覆盖所有含对白/旁白/心声的时间段，并精确记录有效字数、秒数、字秒比、口型承载、语气类型；`result=pass` 时结论证据可按上文简写，`result=warning/issue` 必须写出完整证据。
+- `handoff_checks` 必须覆盖全部相邻组接点，并逐项记录人物、道具、门窗/车辆、时间光线的连续性是否成立；存在跨集边界时，第一条必须是上一集末组到本集首组；`result=pass` 时各字段可按上文简写，`result=warning/issue` 必须写出具体矛盾。
+- `camera_motion_checks` 必须覆盖正文中每个明确运镜镜头；没有运镜时输出空数组，不得伪造运镜检查；`result=pass` 时各字段可按上文简写，`result=warning/issue` 必须写出具体缺失或冲突。
 - `issues` 最多展示 5 个代表性 hard issue，但 `issue_instances_total` 必须记录实际发现的 hard 证据点总数，`affected_groups` 必须列出所有受影响组，不能用“最多 5 条”掩盖问题分布。
 - `semantic_checks` 记录最关键语义审稿点；`result` 使用 `pass`、`warning` 或 `issue`。
 - `pass=true` 时，`issues` 必须为空，且 `semantic_checks` 中不得出现 `result=issue`；`pass=false` 时，`issues` 必须包含阻断交付的 hard issue。
@@ -293,32 +294,32 @@ JSON 结构如下：
       "chars": 8,
       "seconds": 2.0,
       "chars_per_second": 4.0,
-      "mouth_duration": "林远现场开口2秒",
+      "mouth_duration": "现场开口2秒",
       "speech_type": "ordinary",
       "result": "pass",
-      "evidence": "引用该镜台词和说话对象。"
+      "evidence": "一致（result=pass 简写；warning/issue 需引用具体台词和说话对象）。"
     }
   ],
   "handoff_checks": [
     {
       "from": "第1组",
       "to": "第2组",
-      "characters": "人物位置、姿态和相对镜头朝向的接续证据",
-      "props": "关键道具归属的接续证据",
-      "doors_vehicles": "门窗、车辆状态的接续证据；无则写无",
-      "time_light": "时间、天气、光线的接续证据",
+      "characters": "一致",
+      "props": "一致",
+      "doors_vehicles": "无",
+      "time_light": "一致",
       "result": "pass",
-      "evidence": "引用上一组组尾与下一组组首。"
+      "evidence": "一致（result=pass 简写；warning/issue 需引用上一组组尾与下一组组首具体状态）。"
     }
   ],
   "camera_motion_checks": [
     {
       "shot": "第2组 3-6秒",
-      "motivation": "跟住林远从门口移动到车旁",
+      "motivation": "跟随主体",
       "subject": "林远",
-      "path": "从门口右前侧跟随到车头外侧",
-      "endpoint": "停在副驾驶门外中景，林远和车门位于竖屏中央",
-      "action_compatibility": "人物位移方向一致，车门和手部全程可见",
+      "path": "门口到车旁",
+      "endpoint": "副驾门外中景",
+      "action_compatibility": "位移方向一致，车门/手部全程可见",
       "result": "pass"
     }
   ],

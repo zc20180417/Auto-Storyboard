@@ -87,9 +87,10 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
 - `audit_coverage.multimodal_task_scope=checked`，明确检查正文没有其他任务模式，并确认分镜母版只等待真实多模态素材绑定。
 - `spot_checks` 至少 3 条，引用具体台词、人物、道具、空间或动作。
 - `semantic_checks` 至少 3 条，每条含 `group/type/result/evidence/fix_instruction`。
-- `dialogue_checks` 逐镜覆盖全部对白、旁白、心声并精确记录字数、秒数、字秒比、口型承载和声音类型。
-- `handoff_checks` 覆盖全部相邻组；跨集连续时第一条覆盖上一集末组到本集首组。
-- `camera_motion_checks` 覆盖全部明确运镜；没有运镜时输出空数组，不伪造。
+- `dialogue_checks`、`handoff_checks`、`camera_motion_checks` 中 `result=pass` 的条目，文字类证据字段（`evidence`、`mouth_duration`、`speech_type`、`characters`/`props`/`doors_vehicles`/`time_light`、`motivation`/`subject`/`path`/`endpoint`/`action_compatibility`）只需给出简短短语（如“一致”“无变化”），不必写完整句子；数值字段（`chars`/`seconds`/`chars_per_second`）和 `shot`/`from`/`to` 标签仍必须精确对应正文。`result=warning` 或 `issue` 的条目必须写出完整证据和修复建议，不得简化。
+- `dialogue_checks` 逐镜覆盖全部对白、旁白、心声并精确记录字数、秒数、字秒比、口型承载和声音类型；`result=pass` 时结论证据可简写。
+- `handoff_checks` 覆盖全部相邻组；跨集连续时第一条覆盖上一集末组到本集首组；`result=pass` 时各字段可简写。
+- `camera_motion_checks` 覆盖全部明确运镜；没有运镜时输出空数组，不伪造；`result=pass` 时各字段可简写。
 - `issue_instances_total` 记录实际 hard 证据点总数；`affected_groups` 列全受影响组，不能被最多 5 条展示限制掩盖。
 
 ## 稳定 taxonomy
@@ -136,13 +137,13 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
     {"group": "第2组", "type": "handoff_continuity", "result": "issue", "evidence": "具体矛盾", "fix_instruction": "补哪个组尾/组首状态"}
   ],
   "dialogue_checks": [
-    {"shot": "第1组 0-3秒", "chars": 10, "seconds": 3.0, "chars_per_second": 3.33, "mouth_duration": "人物A现场开口3秒", "speech_type": "ordinary", "result": "pass", "evidence": "引用台词与对象"}
+    {"shot": "第1组 0-3秒", "chars": 10, "seconds": 3.0, "chars_per_second": 3.33, "mouth_duration": "现场开口3秒", "speech_type": "ordinary", "result": "pass", "evidence": "一致（result=pass 简写；warning/issue 需引用具体台词与对象）"}
   ],
   "handoff_checks": [
-    {"from": "第1组", "to": "第2组", "characters": "具体接续", "props": "具体接续", "doors_vehicles": "具体接续或无", "time_light": "具体接续", "result": "issue", "evidence": "引用两端"}
+    {"from": "第1组", "to": "第2组", "characters": "具体接续", "props": "具体接续", "doors_vehicles": "具体接续或无", "time_light": "具体接续", "result": "issue", "evidence": "引用两端（result=pass 时以上字段均可简写为“一致”或“无”）"}
   ],
   "camera_motion_checks": [
-    {"shot": "第1组 3-7秒", "motivation": "为何移动", "subject": "跟随/揭示主体", "path": "起点与路径", "endpoint": "最终景别和落点", "action_compatibility": "与动作、口型、竖屏构图如何兼容", "result": "pass"}
+    {"shot": "第1组 3-7秒", "motivation": "跟随主体", "subject": "跟随/揭示主体", "path": "起点到落点", "endpoint": "最终景别", "action_compatibility": "与动作、口型、竖屏构图兼容", "result": "pass"}
   ],
   "issue_instances_total": 1,
   "affected_groups": ["第2组"],
