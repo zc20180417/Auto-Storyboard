@@ -174,7 +174,7 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 .\collect-agent.ps1 .\agent_runs\<run-name>
 ```
 
-当前默认只收集分镜 `.txt`，不导出、不复制 `storyboard_index.json` / `storyboard_index.xlsx`。只有资产或 Web 链路明确需要索引时，才显式使用 `-ExportIndex` 或 `export-storyboard-index`。
+当前除 Seedance 2.5 外默认只收集分镜 `.txt`，不导出、不复制 `storyboard_index.json` / `storyboard_index.xlsx`。`seedance-2.5-live-vertical` 完整校验后必须自动保留并收集索引；其他 profile 只有资产或 Web 链路明确需要索引时，才显式使用 `-ExportIndex` 或 `export-storyboard-index`。
 
 ## 资产表生成
 
@@ -196,6 +196,7 @@ python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_ru
 - 资产抽取不得替代分镜审核，也不得改变分镜生产结果。
 - `asset_review.json` 必须来自 `asset-reviewer` 对照 `final.txt`、`assets.md`、`asset_bible.md` 和相关 skill 的真实审核；不能用 Excel 转换、脚本检查或空 issues JSON 伪造通过。
 - 转换 Excel 后必须运行 `node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir>` 做机械门禁校验。
+- `seedance-2.5-live-vertical` 在资产门禁通过后运行 `export-seedance-material-requirements`；`asset_bindings.json` 只代表逻辑静态绑定，不能冒充真实多模态素材。Auto-Storyboard 的本地清单不得写 Ark 字段，ManJuWeb 回写 `ark_sync_results.json` 后再运行 `validate-seedance-materials` 和 `export-seedance-package`。只有 `generation_ready=true`、`submit_allowed=true` 才可提交模型任务。
 - 只有 `asset_status.json` 中 `status=done`、`reviewer_source=asset-reviewer`、`reviewer_pass=true`、`reviewer_issues_count=0` 的资产可以收集。
 
 资产阶段调度规则：

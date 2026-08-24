@@ -108,9 +108,18 @@
   -Force
 ```
 
+也可使用固定入口（默认 720p），减少重复参数且不改变通用入口的 2.0 默认值：
+
+```powershell
+.\prepare-agent-seedance25.ps1 scene my-seedance25-run `
+  -Source .\split_scripts\<episode-folder> `
+  -OutDir .\outputs_agent_my_seedance25 `
+  -Force
+```
+
 该 profile 只允许 `vertical` + `live-action`，目标模型为 `doubao-seedance-2-5-260628`，唯一任务类型为 `multimodal_generation`。工作区会写出 `video_profile.json`，并把任务类型、至少 1 项真实图片/视频/音频素材要求、禁用任务模式、9:16、480p/720p、24fps、原生音频、4-30 秒整数时间轴写入 manifest、episode metadata、context 和 TASK；默认 720p。图片、视频、音频只是多模态输入素材，不代表独立“参考生成”模式；纯文本、参考生成、首尾帧/关键帧、编辑、延长/续写、轨道补全均禁用。不要与横屏或 3D CG 混用。不显式选择时，旧 `seedance-2.0` 仍是默认值，现有 run 不迁移。
 
-**仓库边界：** 本仓库对该 profile 的交付终点是 `final.txt` 分镜母版，**不产出可直接发起 Seedance 2.5 调用的成品提示词**，这是设计如此。`minimum_material_inputs=1` 所要求的真实图片/视频/音频素材绑定由本仓库之外的 Web/API 层负责。注意第 7 步资产阶段产出的 `asset_bindings.json` **不满足**这个要求——它的 `binding_role` 只有五种静态参考图角色，没有视频素材和音频素材角色，两者不能互相顶替。详见 `agent_skills/seedance-2-5-live-vertical/SKILL.md` 的「仓库边界」一节。
+**仓库边界：** `final.txt` 仍是资产无关母版；`asset_bindings.json` 仍只是 `cut_id -> 逻辑静态资产`，单独存在不满足真实多模态输入。本仓库新增确定性素材交接层，负责编译逻辑需求、登记本地文件、校验 ManJuWeb 回写并生成受哈希保护的请求包；ManJuWeb 是 Ark 上传、轮询、`assetId` 和状态的唯一权威来源。本仓库不复制 Ark 密钥和状态机。详见 `agent_skills/seedance-2-5-live-vertical/SKILL.md` 与 `docs/seedance-material-handoff-v1.md`。
 
 生成后会得到：
 
@@ -202,7 +211,7 @@ agent_runs\<run-name>\
 python .\storyboard_agent_workspace.py validate-episode --episode-dir .\agent_runs\youyuanzhai6-scene\episodes\ep01
 ```
 
-默认校验只检查并保留分镜 `final.txt`、`review.txt`、`status.json` 等生产必需文件，不再导出 `storyboard_index.json` / `storyboard_index.xlsx`。如果后续资产或 Web 链路需要索引，再显式加 `--export-index`，或单独运行 `export-storyboard-index`。
+默认校验只检查并保留分镜 `final.txt`、`review.txt`、`status.json` 等生产必需文件，不导出 `storyboard_index.json` / `storyboard_index.xlsx`。**例外：`seedance-2.5-live-vertical` 完整校验会自动生成并保留索引**，作为后续素材交接的稳定主键。其他 profile 如需索引，显式加 `--export-index`，或单独运行 `export-storyboard-index`。
 
 整轮校验可在 PowerShell 中跑：
 
@@ -224,14 +233,14 @@ if ($failed.Count -gt 0) { throw "Validation failed: $($failed -join ', ')" }
 收集后检查：
 
 - `outputs_agent_*` 下应有每集一个最终分镜 `.txt`。
-- 默认不会复制 `storyboard_index.json` / `storyboard_index.xlsx`；如需同时收集索引，运行 `.\collect-agent.ps1 .\agent_runs\<run-name> -ExportIndex`。
+- `seedance-2.5-live-vertical` 会自动复制 `storyboard_index.json` / `storyboard_index.xlsx`；其他 profile 默认不复制，如需索引运行 `.\collect-agent.ps1 .\agent_runs\<run-name> -ExportIndex`。
 - `agent_runs\<run-name>\SUMMARY.md` 应显示全部 `clean_format_passed, quality_floor_passed, storyboard_reviewer_passed`。
 
 ### 7. 可选：生成生图资产表
 
-当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，先显式导出 `storyboard_index.json` / `storyboard_index.xlsx`，再读取 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，从单集 `final.txt` 和 `storyboard_index.json` 生成 `assets.md`、`assets.xlsx`、`asset_bindings.json`、`asset_review.json` 和 `asset_status.json`。
+当需要把分镜交给其他 AI 生图/视频模型提前准备资产时，读取 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`，从单集 `final.txt` 和 `storyboard_index.json` 生成 `assets.md`、`assets.xlsx`、`asset_bindings.json`、`asset_review.json` 和 `asset_status.json`。Seedance 2.5 的索引已经由完整校验自动保留；其他 profile 先显式导出索引。
 
-> **注意导出会被后续校验清掉。** 默认是 txt-only：`validate-episode` / `collect-agent` 不带 `--export-index` 时不仅不导出，还会**主动删除**该 episode 已有的 `storyboard_index.json` / `storyboard_index.xlsx`（校验报告里显示 `storyboard_index_export: skipped (txt-only)`）。而 `asset-extractor` 强依赖 `storyboard_index.json` 校验 `cut_id`。所以导出后若再跑一次普通校验，资产阶段会因为索引消失而失败。要保留索引，请在每次 `validate-episode` 和 `collect-agent` 都带上 `--export-index`，或在资产阶段前用 `export-storyboard-index` 重新导出。
+> **索引保留规则：** Seedance 2.5 的完整 `validate-episode` 与 `collect-agent` 自动保留/收集索引，不需要 `--export-index`。其他 profile 仍是 txt-only：不带 `--export-index` 的普通校验会主动删除已有索引；资产阶段前需显式导出，并在后续校验/收集时持续带上 `--export-index`。
 
 多集项目不要让每集各自临场编人物设定。必须先创建 run 级别全局资产设定：
 
@@ -274,8 +283,27 @@ agent_runs\<run-name>\asset_bible.md
 
 - `asset_review.json` 必须来自 `asset-reviewer` 对照 `final.txt`、`assets.md`、`asset_bible.md` 和两份资产 skill 的真实审核。
 - 如果 reviewer 返回 hard issues，必须局部修复后复审，不能只跑 Excel 转换。
-- 转换 Excel 后必须运行 `node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir> --storyboard-index <episode-dir>\storyboard_index.json` 做机械门禁校验。
+- 转换 Excel 后必须运行 `node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir> --storyboard-index=<episode-dir>\storyboard_index.json` 做机械门禁校验。
 - 只有 `asset_status.json` 中 `status=done`、`reviewer_source=asset-reviewer`、`reviewer_pass=true`、`reviewer_issues_count=0` 的 episode 可以进入正式资产收集。
+
+### 8. 可选：编译 Seedance 2.5 素材交接与生成包
+
+资产审核及 `validate-assets.mjs` 通过后，先编译逻辑素材需求和本地素材登记模板：
+
+```powershell
+python .\storyboard_agent_workspace.py export-seedance-material-requirements --episode-dir <episode-dir>
+```
+
+在 `seedance_local_materials.json` 中填写真实文件、MIME、SHA-256 和授权确认，把两份 JSON 与实际图片交给 ManJuWeb。ManJuWeb 后端完成 Ark 复用/上传后，将响应原样保存为同目录 `ark_sync_results.json`。Auto-Storyboard 不写 Ark ID 或 Ark 状态。
+
+回写后执行门禁和编译：
+
+```powershell
+python .\storyboard_agent_workspace.py validate-seedance-materials --episode-dir <episode-dir>
+python .\storyboard_agent_workspace.py export-seedance-package --episode-dir <episode-dir>
+```
+
+只有输出 `generation_ready=true`、`submit_allowed=true` 才能提交 Seedance。生成包绑定 `final.txt`、索引、两份素材清单、Ark 回写和实际文件哈希，任一输入变化都会使旧包失效。当前 MVP 自动入库静态图片；视频、音频和公网 URL 会明确保持未就绪，不会被图片或旧 Ark ID 静默替代。
 
 资产阶段调度建议：
 

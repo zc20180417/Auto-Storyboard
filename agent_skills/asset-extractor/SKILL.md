@@ -99,6 +99,8 @@ node .\agent_skills\asset-extractor\scripts\extract-flat-storyboard-assets.mjs <
 - `asset_status.json`：资产任务状态，记录 reviewer 来源、pass、issues/warnings 数量和是否可收集。
 
 Markdown 正文不输出 JSON，不输出代码块。
+
+`asset_bindings.json` 只表达逻辑资产与静态参考图职责，不记录本地文件、授权确认、Ark `assetId` 或 Ark 状态，也不能单独证明 Seedance 2.5 已具备真实多模态输入。对于 `seedance-2.5-live-vertical`，资产审核和机械校验通过后，再由确定性命令将它编译成 `seedance_material_requirements.json` 与 `seedance_local_materials.json`；不要由 asset worker 手写这两份文件。
 所有资产表的提示词必须拆成四列：`静态生图提示词(中文)`、`负面提示词(中文)`、`静态生图提示词(英文)`、`负面提示词(英文)`。中文、英文内容要一致，但分别符合各自语言习惯。不要强制把负面词内联为 `--neg`；如果目标生产界面支持 `--neg`，可以在交付说明中说明可内联，否则负面词必须作为独立负面提示词字段使用。
 提示词生成时应直接完成优化，不保留“待优化”“粗稿”“占位提示词”。
 
@@ -408,6 +410,14 @@ node .\agent_skills\asset-extractor\scripts\assets-md-to-xlsx.mjs <global_asset_
 ```powershell
 node .\agent_skills\asset-extractor\scripts\validate-assets.mjs <episode-dir> --storyboard-index=<episode-dir>\storyboard_index.json
 ```
+
+Seedance 2.5 继续执行逻辑素材交接编译：
+
+```powershell
+python .\storyboard_agent_workspace.py export-seedance-material-requirements --episode-dir <episode-dir>
+```
+
+该命令只读取已校验的 `storyboard_index.json` 和 `asset_bindings.json`，不会上传 Ark、不会读取 Ark 密钥，也不会把 `use_for_video=no` 的绑定冒充为生成素材。实际文件由 `seedance_local_materials.json` 注册，Ark 状态由 ManJuWeb 回写的 `ark_sync_results.json` 唯一负责。
 
 ## 资产状态文件
 

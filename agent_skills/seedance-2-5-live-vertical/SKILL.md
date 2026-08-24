@@ -24,7 +24,7 @@ description: Apply the multimodal-generation-only Seedance 2.5 live-action verti
 - 图片、视频、音频是本次多模态生成的输入素材，不把它们另称为“参考生成”任务。
 - 明确禁止：纯文本生成、参考生成、首尾帧/关键帧生成、视频编辑、视频延长/续写、轨道补全。
 - 视频文件可以作为输入素材提供动作、节奏、运镜或其他明确职责，但不能作为待编辑或待延长的目标视频。
-- `final.txt` 是资产无关的分镜母版；未取得真实多模态素材绑定时只能继续准备素材，不能宣称已可发起模型生成。该绑定由本仓库之外的 Web/API 层提供，详见下方「仓库边界」。
+- `final.txt` 是资产无关的分镜母版；未取得真实多模态素材绑定时只能继续准备素材，不能宣称已可发起模型生成。Auto-Storyboard 负责逻辑需求、文件完整性与生成包编译，ManJuWeb 是 Ark 上传状态和 `assetId` 的唯一权威来源，详见下方「仓库边界」。
 
 ## 硬参数合同
 
@@ -73,17 +73,28 @@ description: Apply the multimodal-generation-only Seedance 2.5 live-action verti
 - 下游生成提示词必须按实际上传顺序引用素材，并明确每个素材“提供什么”和“不提供什么”。
 - 优先遵守用户给出的素材映射；没有职责的实际素材列为“未采用素材”，不要硬塞进正文。
 - 角色素材只负责身份、脸、体态、发型或服装状态；场景素材只负责空间与材质；道具素材只负责外观与状态；视频/音频素材必须写清动作、节奏、运镜或声音职责。
-- `final.txt` 是资产无关的分镜母版，不手写控制台占位符。只有 Web/API 层拿到真实多模态素材绑定后，才生成带 `@素材` 的模型提示词。
+- `final.txt` 是资产无关的分镜母版，不手写控制台占位符。只有 ManJuWeb 返回与本轮清单哈希一致的 Active Ark 结果后，Auto-Storyboard 的确定性编译器才生成带 `@素材` 的生成包。
 - 没有任何实际素材绑定时必须标记为未就绪，不得用剧本文本单独发起模型调用。
 
-## 仓库边界（本仓库到哪一步为止）
+## 仓库边界与交接文件
 
-- **本仓库的交付物终点是 `final.txt` 分镜母版，不产出可直接发起 Seedance 2.5 调用的成品提示词。** 这是设计如此，不是未完成的功能。
-- 本仓库 `agent_skills/asset-extractor` 产出的 `asset_bindings.json` **不满足**本 profile 的多模态素材绑定要求：它的 `binding_role` 只有 `scene_reference`、`character_reference`、`costume_reference`、`prop_reference`、`composition_reference` 五种静态参考图角色，没有视频素材和音频素材角色，`use_for_video` 表示的是「该参考图能否用于视频生成」，不是「这是一个视频素材」。
-- 因此 `asset_bindings.json` 存在，**不等于**本 profile 的 `minimum_material_inputs=1` 已满足。两者是不同的东西，不要互相顶替。
-- 真实的图片/视频/音频素材上传、按上传顺序映射 `@图片N`/`@视频N`/`@音频N`、逐素材写明「提供什么/不提供什么」，全部由本仓库之外的 Web/API 层负责。该层未接入前，本 profile 的 run 只能停在母版阶段。
-- 谁要把母版接到模型：需要在仓库外自行实现素材绑定表，或先扩展 `asset-extractor` 的 schema 以支持视频/音频素材角色。在那之前不要宣称某集「已可发起模型生成」。
+- Seedance 2.5 整集校验通过后，本仓库自动保留 `storyboard_index.json` / `storyboard_index.xlsx`；收集结果时也自动带上索引。每组使用稳定 `cut_id`，例如 `EP01-G01`。
+- `asset_bindings.json` 仍是 `cut_id -> 逻辑资产/状态` 的静态绑定，**单独存在不满足**真实多模态输入要求。它当前只有 `scene_reference`、`character_reference`、`costume_reference`、`prop_reference`、`composition_reference` 五种静态参考图角色；`use_for_video=yes` 表示该图片可用于视频生成，不表示它是视频素材。
+- Auto-Storyboard 从可用于视频的静态绑定编译 `seedance_material_requirements.json`，并维护不含任何 Ark 字段的 `seedance_local_materials.json`。前者说明每个 `cut_id` 需要什么、参考什么和不参考什么；后者只记录本地文件/公网 URL、MIME、SHA-256 与授权确认。
+- ManJuWeb 接收上述两份 JSON 和实际素材，复核文件 SHA-256、复用或上传 Ark、轮询到真实状态，再回写 `ark_sync_results.json`。Ark 状态和 `ark_asset_id` 只能由 ManJuWeb 维护，Auto-Storyboard 不复制上传、轮询、密钥或状态机逻辑。
+- Auto-Storyboard 只在 `final.txt`、`storyboard_index.json`、素材需求、本地素材清单和 Ark 回写结果的哈希全部匹配，并且每个 `cut_id` 至少有一项 Active 素材时，编译 `seedance_generation_package.json`。任一输入变化，旧生成包立即失效；`generation_ready=false` / `submit_allowed=false` 时禁止提交模型任务。
+- 当前 MVP 从 `asset_bindings.json` 自动编译静态图片职责。动作视频、运镜视频和声音素材角色已在交接合同中预留 `video` / `audio` 类型，但不从现有静态绑定中猜测，也不会把图片错误冒充视频或音频。
 - 使用真人脸素材前确认授权、合规来源和平台可接受性；不明来源的真人脸不得进入生成任务。
+
+单集交接命令：
+
+```powershell
+python .\storyboard_agent_workspace.py export-seedance-material-requirements --episode-dir <episode-dir>
+python .\storyboard_agent_workspace.py validate-seedance-materials --episode-dir <episode-dir>
+python .\storyboard_agent_workspace.py export-seedance-package --episode-dir <episode-dir>
+```
+
+完整 JSON 合同和 ManJuWeb 边界见 `docs/seedance-material-handoff-v1.md`。
 
 ## 负面约束
 

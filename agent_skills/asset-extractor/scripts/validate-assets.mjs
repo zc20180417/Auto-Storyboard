@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { createHash } from "node:crypto";
 
 const [episodeDirArg, ...optionArgs] = process.argv.slice(2);
 const options = Object.fromEntries(
@@ -18,6 +19,7 @@ if (!episodeDirArg) {
 
 const episodeDir = path.resolve(episodeDirArg);
 const requiredFiles = {
+  final: path.join(episodeDir, "final.txt"),
   assets: path.join(episodeDir, "assets.md"),
   workbook: path.join(episodeDir, "assets.xlsx"),
   bindings: path.join(episodeDir, "asset_bindings.json"),
@@ -26,6 +28,10 @@ const requiredFiles = {
     : path.join(episodeDir, "storyboard_index.json"),
   review: path.join(episodeDir, "asset_review.json"),
   status: path.join(episodeDir, "asset_status.json"),
+};
+const handoffFiles = {
+  requirements: path.join(episodeDir, "seedance_material_requirements.json"),
+  localMaterials: path.join(episodeDir, "seedance_local_materials.json"),
 };
 
 const REQUIRED_TABLES = [
@@ -177,6 +183,11 @@ async function readJson(filePath, label) {
     errors.push(`${label} is not valid JSON: ${error.message}`);
     return null;
   }
+}
+
+async function sha256File(filePath) {
+  const content = await fs.readFile(filePath);
+  return createHash("sha256").update(content).digest("hex");
 }
 
 function parseMarkdownRow(row) {
@@ -408,6 +419,115 @@ function validateAssetBindingsJson(bindingsPayload) {
   }
 }
 
+async function validateSeedanceHandoffContracts() {
+  const hasRequirements = await exists(handoffFiles.requirements);
+  const hasLocalMaterials = await exists(handoffFiles.localMaterials);
+  if (!hasRequirements && !hasLocalMaterials) return;
+  if (!hasRequirements || !hasLocalMaterials) {
+    errors.push("Seedance handoff must include both seedance_material_requirements.json and seedance_local_materials.json");
+    return;
+  }
+
+  const requirements = await readJson(
+    handoffFiles.requirements,
+    "seedance_material_requirements.json",
+  );
+  const localMaterials = await readJson(
+    handoffFiles.localMaterials,
+    "seedance_local_materials.json",
+  );
+  if (!requirements || !localMaterials) return;
+  if (
+    !(await exists(requiredFiles.final)) ||
+    !(await exists(requiredFiles.storyboardIndex)) ||
+    !(await exists(requiredFiles.bindings))
+  ) {
+    return;
+  }
+
+  if (requirements.schema_version !== 1) {
+    errors.push("seedance_material_requirements.json schema_version must be 1");
+  }
+  if (requirements.profile !== "seedance-2.5-live-vertical") {
+    errors.push("seedance_material_requirements.json profile must be seedance-2.5-live-vertical");
+  }
+  if (requirements.episode_id !== storyboardIndex?.episode_id) {
+    errors.push("seedance_material_requirements.json episode_id must match storyboard_index.json");
+  }
+  if (localMaterials.schema_version !== 1) {
+    errors.push("seedance_local_materials.json schema_version must be 1");
+  }
+  if (
+    localMaterials.project !== requirements.project ||
+    localMaterials.episode_id !== requirements.episode_id
+  ) {
+    errors.push("seedance_local_materials.json project/episode_id must match material requirements");
+  }
+
+  const expectedSourceHashes = {
+    storyboard_index_sha256: await sha256File(requiredFiles.storyboardIndex),
+    asset_bindings_sha256: await sha256File(requiredFiles.bindings),
+  };
+  const expectedFinalHash = await sha256File(requiredFiles.final);
+  if (storyboardIndex?.source_hashes?.final_txt_sha256 !== expectedFinalHash) {
+    errors.push("storyboard_index.json is stale for current final.txt; re-export the storyboard index");
+  }
+  if (
+    requirements.source_hashes?.storyboard_index_sha256 !== expectedSourceHashes.storyboard_index_sha256 ||
+    requirements.source_hashes?.asset_bindings_sha256 !== expectedSourceHashes.asset_bindings_sha256
+  ) {
+    errors.push("seedance_material_requirements.json is stale; re-run export-seedance-material-requirements");
+  }
+
+  if (!Array.isArray(requirements.requirements)) {
+    errors.push("seedance_material_requirements.json requirements must be an array");
+    return;
+  }
+  if (!Array.isArray(localMaterials.materials)) {
+    errors.push("seedance_local_materials.json materials must be an array");
+    return;
+  }
+
+  const knownCuts = new Set((storyboardIndex?.cuts || []).map((cut) => cut.cut_id));
+  const requirementIds = new Set();
+  const requirementKeys = new Set();
+  for (const [index, requirement] of requirements.requirements.entries()) {
+    const requirementId = requirement?.requirement_id;
+    if (!requirementId || requirementIds.has(requirementId)) {
+      errors.push(`seedance_material_requirements.json requirements[${index}] has a missing or duplicate requirement_id`);
+    }
+    requirementIds.add(requirementId);
+    if (!knownCuts.has(requirement?.cut_id)) {
+      errors.push(`seedance_material_requirements.json requirements[${index}] references unknown cut_id: ${requirement?.cut_id || "<empty>"}`);
+    }
+    if (!["image", "video", "audio"].includes(requirement?.media_type)) {
+      errors.push(`seedance_material_requirements.json requirements[${index}] has invalid media_type`);
+    }
+    requirementKeys.add(`${requirement?.media_type}:${requirement?.material_key}`);
+  }
+
+  const localKeys = new Set();
+  for (const [index, material] of localMaterials.materials.entries()) {
+    const key = `${material?.media_type}:${material?.material_key}`;
+    if (!material?.material_key || !["image", "video", "audio"].includes(material?.media_type)) {
+      errors.push(`seedance_local_materials.json materials[${index}] has an invalid material key or media_type`);
+    }
+    if (localKeys.has(key)) {
+      errors.push(`seedance_local_materials.json duplicate material: ${key}`);
+    }
+    localKeys.add(key);
+    if (!requirementKeys.has(key)) {
+      errors.push(`seedance_local_materials.json material has no logical requirement: ${key}`);
+    }
+    const forbiddenArkFields = Object.keys(material || {}).filter(
+      (field) => field.startsWith("ark_") || field === "arkAssetId" || field === "assetId",
+    );
+    if (forbiddenArkFields.length > 0) {
+      errors.push(`seedance_local_materials.json materials[${index}] contains ManJuWeb-owned fields: ${forbiddenArkFields.join(", ")}`);
+    }
+  }
+}
+
 function validateReview(review) {
   if (!review) return;
   if (review.pass !== true) errors.push("asset_review.pass must be true");
@@ -508,6 +628,7 @@ if (await exists(requiredFiles.bindings)) bindings = await readJson(requiredFile
 validateReview(review);
 validateStatus(status, review);
 validateAssetBindingsJson(bindings);
+await validateSeedanceHandoffContracts();
 await validateWorkbookFreshness();
 
 if (errors.length > 0) {

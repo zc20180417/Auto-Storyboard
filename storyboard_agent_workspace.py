@@ -36,6 +36,12 @@ from batch_generate_storyboards import (
     split_episode_into_segments,
     chinese_numeral_to_int,
 )
+from seedance_material_handoff import (
+    GENERATION_PACKAGE_FILE,
+    export_material_handoff,
+    validate_material_handoff,
+    write_generation_package,
+)
 
 
 DEFAULT_AGENT_RUNS_DIR = "agent_runs"
@@ -3855,6 +3861,7 @@ def build_storyboard_index_payload(
     content: str,
     episode_dir: Path,
     project: str | None = None,
+    source_final_sha256: str | None = None,
 ) -> dict:
     episode_id = episode_id_for_cut_contract(episode_dir)
     if project is None:
@@ -3901,6 +3908,10 @@ def build_storyboard_index_payload(
     return {
         "project": project,
         "episode_id": episode_id,
+        "source_hashes": {
+            "final_txt_sha256": source_final_sha256
+            or hashlib.sha256(content.encode("utf-8")).hexdigest(),
+        },
         "cuts": cuts,
     }
 
@@ -3975,7 +3986,11 @@ def write_storyboard_index_files(episode_dir: Path, content: str | None = None) 
     final_path = episode_dir / "final.txt"
     if content is None:
         content = final_path.read_text(encoding="utf-8", errors="replace")
-    payload = build_storyboard_index_payload(content=content, episode_dir=episode_dir)
+    payload = build_storyboard_index_payload(
+        content=content,
+        episode_dir=episode_dir,
+        source_final_sha256=hashlib.sha256(final_path.read_bytes()).hexdigest(),
+    )
     json_path = episode_dir / "storyboard_index.json"
     xlsx_path = episode_dir / "storyboard_index.xlsx"
     write_json(json_path, payload)
@@ -4729,9 +4744,16 @@ def validate_episode(args: argparse.Namespace) -> int:
     if not pre_check:
         report_lines.append("- review_evidence: passed")
         report_lines.append("- storyboard_reviewer: passed")
-        if getattr(args, "export_index", False):
+        should_export_index = (
+            getattr(args, "export_index", False)
+            or video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE
+        )
+        if should_export_index:
             write_storyboard_index_files(episode_dir, content)
-            report_lines.append("- storyboard_index_export: passed")
+            if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
+                report_lines.append("- storyboard_index_export: passed (required by Seedance 2.5)")
+            else:
+                report_lines.append("- storyboard_index_export: passed")
         else:
             remove_storyboard_index_files(episode_dir)
             report_lines.append("- storyboard_index_export: skipped (txt-only)")
@@ -4750,7 +4772,7 @@ def collect_run(args: argparse.Namespace) -> int:
     if args.out_dir:
         out_dir = args.out_dir.resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
-    export_index = bool(getattr(args, "export_index", False))
+    requested_export_index = bool(getattr(args, "export_index", False))
 
     summary_lines = ["# Agent Run Summary", ""]
     copied = 0
@@ -4773,6 +4795,7 @@ def collect_run(args: argparse.Namespace) -> int:
         content, cut_id_changes = ensure_storyboard_cut_ids(content, episode_contract_id)
         changes.extend(cut_id_changes)
         video_profile = episode_video_profile(episode_dir)
+        export_index = requested_export_index or video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE
         clean_issues = validate_clean_storyboard_format(content, video_profile=video_profile)
         cut_id_issues = validate_storyboard_cut_ids(content, episode_contract_id)
         horizontal_run = is_horizontal_episode_dir(episode_dir)
@@ -4868,7 +4891,7 @@ def collect_run(args: argparse.Namespace) -> int:
 
         write_utf8(output_path, output_content)
         if export_index:
-            index_json_path, index_xlsx_path = write_storyboard_index_files(episode_dir, output_content)
+            index_json_path, index_xlsx_path = write_storyboard_index_files(episode_dir, content)
             index_output_json = out_dir / f"{output_path.stem}_index.json"
             index_output_xlsx = out_dir / f"{output_path.stem}_index.xlsx"
             shutil.copy2(index_json_path, index_output_json)
@@ -4950,6 +4973,102 @@ def export_storyboard_index(args: argparse.Namespace) -> int:
     return 1 if failed else 0
 
 
+def export_seedance_material_requirements(args: argparse.Namespace) -> int:
+    episode_dir = args.episode_dir.resolve()
+    final_path = episode_dir / "final.txt"
+    if not final_path.is_file():
+        print(f"[error] missing final.txt: {episode_dir}", file=sys.stderr)
+        return 2
+    if episode_video_profile(episode_dir) != SEEDANCE25_LIVE_VERTICAL_PROFILE:
+        print(
+            f"[error] episode video profile must be {SEEDANCE25_LIVE_VERTICAL_PROFILE}",
+            file=sys.stderr,
+        )
+        return 2
+
+    index_path = episode_dir / "storyboard_index.json"
+    if not index_path.is_file():
+        print(
+            "[error] missing storyboard_index.json; run a full validate-episode first",
+            file=sys.stderr,
+        )
+        return 2
+    try:
+        index_payload = read_json(index_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"[error] invalid storyboard_index.json: {exc}", file=sys.stderr)
+        return 2
+    current_final_sha256 = hashlib.sha256(final_path.read_bytes()).hexdigest()
+    if index_payload.get("source_hashes", {}).get("final_txt_sha256") != current_final_sha256:
+        print(
+            "[error] storyboard_index.json is stale; rerun full validate-episode",
+            file=sys.stderr,
+        )
+        return 2
+    asset_status_path = episode_dir / "asset_status.json"
+    if not asset_status_path.is_file():
+        print(
+            "[error] missing asset_status.json; complete asset-reviewer and validate-assets first",
+            file=sys.stderr,
+        )
+        return 2
+    try:
+        asset_status = read_json(asset_status_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"[error] invalid asset_status.json: {exc}", file=sys.stderr)
+        return 2
+    if not (
+        asset_status.get("status") == "done"
+        and asset_status.get("reviewer_source") == "asset-reviewer"
+        and asset_status.get("reviewer_pass") is True
+        and asset_status.get("reviewer_issues_count") == 0
+    ):
+        print(
+            "[error] asset_status.json has not passed the asset-reviewer gate",
+            file=sys.stderr,
+        )
+        return 2
+    try:
+        requirements_path, local_materials_path = export_material_handoff(episode_dir)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"[error] {exc}", file=sys.stderr)
+        return 1
+    print(f"[exported] {requirements_path}")
+    print(f"[exported] {local_materials_path}")
+    return 0
+
+
+def validate_seedance_materials(args: argparse.Namespace) -> int:
+    episode_dir = args.episode_dir.resolve()
+    result = validate_material_handoff(episode_dir)
+    if result["generation_ready"]:
+        print("[passed] Seedance materials are generation-ready")
+        return 0
+    print("[not-ready] generation_ready=false")
+    for issue in result["issues"]:
+        print(f"- {issue}")
+    return 1
+
+
+def export_seedance_package(args: argparse.Namespace) -> int:
+    episode_dir = args.episode_dir.resolve()
+    output_path = args.output.resolve() if args.output else episode_dir / GENERATION_PACKAGE_FILE
+    try:
+        package_path = write_generation_package(episode_dir, output_path)
+        package = read_json(package_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"[error] {exc}", file=sys.stderr)
+        return 1
+    print(f"[exported] {package_path}")
+    if package.get("generation_ready") is True:
+        print("[passed] generation_ready=true")
+        return 0
+    print("[not-ready] generation_ready=false")
+    for issue in package.get("blocking_issues", []):
+        print(f"- {issue}")
+    return 1
+
+
 def run_workspace(args: argparse.Namespace) -> int:
     print(
         "[error] disabled by design: Python must not launch agent CLIs. "
@@ -5016,13 +5135,13 @@ def parse_args() -> argparse.Namespace:
     validate.add_argument("--fix-metadata", action="store_true")
     validate.add_argument("--pre-check", action="store_true", help="Only run format/timing/quality checks; skip review artifact validation. Use to catch mechanical issues before calling the LLM reviewer.")
     validate.add_argument("--content-file", type=Path, default=None, help="Validate this file instead of final.txt (use with --pre-check to validate a draft).")
-    validate.add_argument("--export-index", action="store_true", help="Also export storyboard_index.json/xlsx after full validation. Default is txt-only.")
+    validate.add_argument("--export-index", action="store_true", help="Also export storyboard_index.json/xlsx after full validation. Seedance 2.5 exports it automatically; other profiles default to txt-only.")
     validate.set_defaults(func=validate_episode)
 
     collect = subparsers.add_parser("collect", help="Collect final files from an agent run.")
     collect.add_argument("--run-dir", type=Path, required=True)
     collect.add_argument("--out-dir", type=Path, default=None)
-    collect.add_argument("--export-index", action="store_true", help="Also collect storyboard index JSON/XLSX files. Default is txt-only.")
+    collect.add_argument("--export-index", action="store_true", help="Also collect storyboard index JSON/XLSX files. Seedance 2.5 collects them automatically; other profiles default to txt-only.")
     collect.set_defaults(func=collect_run)
 
     export_index = subparsers.add_parser("export-storyboard-index", help="Export storyboard_index.json/xlsx for episode cuts.")
@@ -5030,6 +5149,28 @@ def parse_args() -> argparse.Namespace:
     export_index.add_argument("--run-dir", type=Path, default=None)
     export_index.add_argument("--fix-metadata", action="store_true")
     export_index.set_defaults(func=export_storyboard_index)
+
+    export_materials = subparsers.add_parser(
+        "export-seedance-material-requirements",
+        help="Compile Seedance 2.5 logical material requirements and a local-material template.",
+    )
+    export_materials.add_argument("--episode-dir", type=Path, required=True)
+    export_materials.set_defaults(func=export_seedance_material_requirements)
+
+    validate_materials = subparsers.add_parser(
+        "validate-seedance-materials",
+        help="Validate local material hashes, ManJuWeb Ark results, limits, and readiness.",
+    )
+    validate_materials.add_argument("--episode-dir", type=Path, required=True)
+    validate_materials.set_defaults(func=validate_seedance_materials)
+
+    export_package = subparsers.add_parser(
+        "export-seedance-package",
+        help="Export a hash-bound Seedance 2.5 generation package.",
+    )
+    export_package.add_argument("--episode-dir", type=Path, required=True)
+    export_package.add_argument("--output", type=Path, default=None)
+    export_package.set_defaults(func=export_seedance_package)
 
     run = subparsers.add_parser("run", help="Disabled: Python does not launch agent CLIs.")
     run.add_argument("--run-dir", type=Path, required=True)

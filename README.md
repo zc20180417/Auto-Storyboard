@@ -50,7 +50,26 @@
   -Force
 ```
 
+也可以使用固定入口，避免重复填写 profile、竖屏和真人参数；它不改变原 `prepare-agent.ps1` 的 Seedance 2.0 默认值：
+
+```powershell
+.\prepare-agent-seedance25.ps1 scene <run-name> `
+  -Source .\split_scripts\<episode-folder> `
+  -OutDir .\outputs_agent_<name> `
+  -Force
+```
+
 该 profile 固定目标模型 `doubao-seedance-2-5-260628`，使用 9:16、24fps、原生音频、4-30 秒整数时间轴；当前只开放 480p/720p，默认 720p。唯一视频任务是 `multimodal_generation`，真实模型调用必须至少绑定 1 项图片、视频或音频素材；分镜母版本身不等于生成就绪。纯文本、参考生成、首尾帧/关键帧、视频编辑、视频延长/续写和轨道补全全部禁用。它会切换到独立生成器、审核器和收集尾部，且不会追加旧版大包通用 `--neg`。不传 `-VideoProfile` 时仍走原有 `seedance-2.0` 默认流程。
+
+Seedance 2.5 校验会自动保留并收集 `storyboard_index.json` / `storyboard_index.xlsx`。资产表审核通过后，可编译素材交接清单；ManJuWeb 回写真实 Ark 结果后，再生成受哈希保护的可调用包：
+
+```powershell
+python .\storyboard_agent_workspace.py export-seedance-material-requirements --episode-dir <episode-dir>
+python .\storyboard_agent_workspace.py validate-seedance-materials --episode-dir <episode-dir>
+python .\storyboard_agent_workspace.py export-seedance-package --episode-dir <episode-dir>
+```
+
+Auto-Storyboard 不保存 Ark 状态，ManJuWeb 是 Ark `assetId` 和状态的唯一权威来源。完整边界见 [Seedance 2.5 素材交接合同](docs/seedance-material-handoff-v1.md)。
 
 agent 完成后收集结果：
 

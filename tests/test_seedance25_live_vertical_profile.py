@@ -1,3 +1,4 @@
+import hashlib
 import json
 import subprocess
 import sys
@@ -673,6 +674,15 @@ previous_final: ../ep00/final.txt
             )
             self.assertEqual(validate_result.returncode, 0, msg=validate_result.stderr + validate_result.stdout)
             self.assertIn("[passed] episode validation", validate_result.stdout)
+            self.assertTrue((episode_dir / "storyboard_index.json").is_file())
+            self.assertTrue((episode_dir / "storyboard_index.xlsx").is_file())
+            index_payload = json.loads(
+                (episode_dir / "storyboard_index.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(
+                index_payload["source_hashes"]["final_txt_sha256"],
+                hashlib.sha256((episode_dir / "final.txt").read_bytes()).hexdigest(),
+            )
 
             collect_result = subprocess.run(
                 [sys.executable, str(WORKSPACE_SCRIPT), "collect", "--run-dir", str(run_dir)],
@@ -686,6 +696,8 @@ previous_final: ../ep00/final.txt
             self.assertIn("声音设计：生成与画面同步的现场对白", collected)
             self.assertNotIn(saw.VERTICAL_SEEDANCE_NEGATIVE_LINE, collected)
             self.assertNotIn("4K画质", collected)
+            self.assertTrue((out_dir / f"{output_path.stem}_index.json").is_file())
+            self.assertTrue((out_dir / f"{output_path.stem}_index.xlsx").is_file())
 
     def test_model_contract_reference_stays_in_sync_with_machine_profile(self):
         """model-contract.md 是人读快照，VIDEO_PROFILE_CONFIG 是机器真源。
