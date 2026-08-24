@@ -5,7 +5,9 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
 
 # Seedance 2.5 真人竖屏短剧审核器
 
-只审稿，不润色，不全量重写。每次重新读取同一 episode 的 `script.txt`、待审 draft/final、本 reviewer、`seedance-2-5-live-vertical-generator/SKILL.md`、`seedance-2-5-live-vertical/SKILL.md`，以及存在时的 `boundary_context.md` 和上一集末组。不得用已有 review、status、校验器或生成者自评代替真实审核。
+只审稿，不润色，不全量重写。worker 启动时完整读取本 reviewer、`seedance-2-5-live-vertical-generator/SKILL.md` 和 `seedance-2-5-live-vertical/SKILL.md` 一次；同一 worker、同一 run 内文件未变化时直接复用，不在生成、审核、修复复审之间重复加载。每次审核仍必须重新读取同一 episode 的 `script.txt`、当前待审 draft/final，以及存在时的 `boundary_context.md` 和上一集实际末组。只有组装后的 v3 整集 `final.txt` 审核额外读取预检生成的 `review_facts.json`；scene 的 segment 草稿/成稿审核不读取该文件。不得用已有 review、status、校验器或生成者自评代替真实语义审核。
+
+`review_facts.json` 只提供当前 `final.txt` 的 SHA-256 和机械计数；跨集连续时还绑定上一集实际 `final.txt` 的集号与 SHA-256。它能证明审的是哪一版正文，也能替代重复输出逐镜数字数组，但不能判断剧情忠实、说话对象、动作可演性、道具接续或空间连续性。
 
 ## 判定原则
 
@@ -26,7 +28,7 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
 - 标题镜头数与实际时间段数不一致，或缺 `人物`、`场景`、`道具`、组首空间锁定、镜头描述、光影设计、组尾衔接、组结束标记。
 - 4-7 秒组不是必要短打断/反应/插入/余波/意象，且可自然合并；或为了把短节拍拉长，新增凝视、沉默、普通微表情和无信息停顿。
 - 16-30 秒组没有足够台词/声音、完整动作/道具变化、冲突升级/揭示/关系变化中的至少两类；没有清楚阶段；同一阶段包含多个并列状态变化；或只靠流程、看向、等待、站位延续撑时长。
-- **过度切碎（`generation_density`）：相邻两组或多组处于同一主要空间、同一冲突目标、同一批在场人物，属于一条连续流程（拨打/夺取/递出/登记/复核/追问/僵持等），合并后总时长仍 ≤30 秒，却被切成多个短组。** 每个接缝都是一次独立生成之间的连贯性风险，无理由的切分必须判 hard issue，`fix_instruction` 写明应合并哪几组、合并后总时长与阶段划分。存在跨空间、跨冲突目标、多主体并行、明显跨位移、重物搬运、多人协同、精细操作，或合并后关键状态说不清楚时，拆分是正当的，不判错。
+- **过度切碎（`generation_density`）：相邻两组或多组处于同一主要空间、同一冲突目标、同一批在场人物，属于一条连续流程（拨打/夺取/递出/登记/复核/追问/僵持等），合并后总时长仍 ≤30 秒，却被切成多个短组。** 每个接缝都是一次独立生成之间的连贯性风险，无理由的切分必须判 hard issue，`fix_instruction` 写明应合并哪几组、合并后总时长与阶段划分。存在跨空间、跨冲突目标、多主体并行、明显跨位移、重物搬运、多人协同、精细操作、独立戏剧节拍、信息落点、反应落点、原剧本明确停顿，或合并后关键状态说不清楚时，拆分是正当的，不判错。
 - 自然需要更长时间的剧情被硬压进 30 秒，导致对白、动作、转折或关键操作不可表演。
 
 ### 原剧本忠实
@@ -87,10 +89,11 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
 - `audit_coverage.multimodal_task_scope=checked`，明确检查正文没有其他任务模式，并确认分镜母版只等待真实多模态素材绑定。
 - `spot_checks` 至少 3 条，引用具体台词、人物、道具、空间或动作。
 - `semantic_checks` 至少 3 条，每条含 `group/type/result/evidence/fix_instruction`。
-- `dialogue_checks`、`handoff_checks`、`camera_motion_checks` 中 `result=pass` 的条目，文字类证据字段（`evidence`、`mouth_duration`、`speech_type`、`characters`/`props`/`doors_vehicles`/`time_light`、`motivation`/`subject`/`path`/`endpoint`/`action_compatibility`）只需给出简短短语（如“一致”“无变化”），不必写完整句子；数值字段（`chars`/`seconds`/`chars_per_second`）和 `shot`/`from`/`to` 标签仍必须精确对应正文。`result=warning` 或 `issue` 的条目必须写出完整证据和修复建议，不得简化。
-- `dialogue_checks` 逐镜覆盖全部对白、旁白、心声并精确记录字数、秒数、字秒比、口型承载和声音类型；`result=pass` 时结论证据可简写。
-- `handoff_checks` 覆盖全部相邻组；跨集连续时第一条覆盖上一集末组到本集首组；`result=pass` 时各字段可简写。
-- `camera_motion_checks` 覆盖全部明确运镜；没有运镜时输出空数组，不伪造；`result=pass` 时各字段可简写。
+- v3 整集 `review.txt` 先运行 `validate-episode --pre-check`，把 `review_facts.json.mechanical_evidence` 原样复制到审核 JSON；不得自行改哈希或计数。审核当前 `final.txt` 后，再按正文顺序把全部已核对项目的原文标签写入紧凑 `semantic_coverage`：全部对白镜头、全部相邻组接缝、跨集连续时的 `上一集实际末组->第1组`、全部明确运镜镜头；只写标签，不展开通过项长证据。多 segment 的 `segments/segXX/review.md` 不写 `mechanical_evidence` 或 `semantic_coverage`，两者由组装后的整集审核统一绑定。
+- 仍逐镜检查全部对白/旁白/心声的声音类型、对象、口型和可表演性，逐接缝检查人物/道具/门车/光线，逐个明确运镜检查动机、主体、路径、落点和动作兼容性；通过项不再展开成 `dialogue_checks`、`handoff_checks`、`camera_motion_checks` 数组。
+- 存在 `boundary_context.md` 时，`semantic_checks` 必须有一条 `type=cross_episode_continuity`、`group=第1组` 的具体证据，明确对照上一集实际末态与本集首帧；仅写 `handoff_count` 或覆盖标签不能替代这条语义证据。
+- 跨集 v3 预检若提示上一集 `final.txt` 不存在，必须等待前集完成；审核后若上一集哈希变化，本集必须重新 pre-check、重新审核，不能沿用旧 `review.txt`。
+- 任何机械计数对应内容里的语义异常，都写进 `semantic_checks`，并按严重性同步进入 `issues` 或 `warnings`；不能因为 Python 预检通过就跳过人工语义核对。
 - `issue_instances_total` 记录实际 hard 证据点总数；`affected_groups` 列全受影响组，不能被最多 5 条展示限制掩盖。
 
 ## 稳定 taxonomy
@@ -136,15 +139,18 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
     {"group": "第1组", "type": "generation_density", "result": "pass", "evidence": "具体证据", "fix_instruction": "失败时的局部修法"},
     {"group": "第2组", "type": "handoff_continuity", "result": "issue", "evidence": "具体矛盾", "fix_instruction": "补哪个组尾/组首状态"}
   ],
-  "dialogue_checks": [
-    {"shot": "第1组 0-3秒", "chars": 10, "seconds": 3.0, "chars_per_second": 3.33, "mouth_duration": "现场开口3秒", "speech_type": "ordinary", "result": "pass", "evidence": "一致（result=pass 简写；warning/issue 需引用具体台词与对象）"}
-  ],
-  "handoff_checks": [
-    {"from": "第1组", "to": "第2组", "characters": "具体接续", "props": "具体接续", "doors_vehicles": "具体接续或无", "time_light": "具体接续", "result": "issue", "evidence": "引用两端（result=pass 时以上字段均可简写为“一致”或“无”）"}
-  ],
-  "camera_motion_checks": [
-    {"shot": "第1组 3-7秒", "motivation": "跟随主体", "subject": "跟随/揭示主体", "path": "起点到落点", "endpoint": "最终景别", "action_compatibility": "与动作、口型、竖屏构图兼容", "result": "pass"}
-  ],
+  "mechanical_evidence": {
+    "final_sha256": "从 review_facts.json 原样复制的64位小写哈希",
+    "group_count": 2,
+    "dialogue_shot_count": 1,
+    "handoff_count": 1,
+    "camera_motion_shot_count": 1
+  },
+  "semantic_coverage": {
+    "dialogue_shots_checked": ["第1组 0-3秒"],
+    "handoffs_checked": ["第1组->第2组"],
+    "camera_motion_shots_checked": ["第1组 3-7秒"]
+  },
   "issue_instances_total": 1,
   "affected_groups": ["第2组"],
   "issues": [
@@ -157,3 +163,5 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
 ```
 
 `issues` 和 `warnings` 各最多展示 5 条代表项；`issue_instances_total` 与 `affected_groups` 仍必须覆盖全部实际 hard 问题。
+
+兼容旧 run：若 `episode.json.vertical_review_contract_version=2`，仍按该 run 已生成的 `TASK.md` 输出完整 `dialogue_checks`、`handoff_checks`、`camera_motion_checks`；只有 v3 使用 `review_facts.json`、紧凑 `mechanical_evidence` 和条目标识式 `semantic_coverage`。

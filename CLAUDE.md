@@ -54,7 +54,7 @@
 
 1. 读 `TASK.md`（确认 mode 和所需输出文件）。
 2. 读 `script.txt`（和 `segments/segXX/script.txt`，如果有）。
-3. 读 `TASK.md` 指定的 generator 和 reviewer skill（竖屏默认 `agent_skills/storyboard-generator/SKILL.md` 与 `agent_skills/storyboard-reviewer/SKILL.md`；横屏用 `agent_skills/storyboard-horizontal-generator/SKILL.md` 与 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`）。
+3. worker 启动时完整读一次 `TASK.md` 指定的 generator、reviewer 和 profile skill；同一 worker、同一 run 的文件未变化时，在审核、修复复审和双集 batch 的第二集直接复用，不重复加载。
 4. 使用 generator skill 生成分镜草稿。
 5. 使用 reviewer skill 做真实审核（输出原始 JSON 到 `review.txt` 或 `segments/segXX/review.md`）。
 6. 只修 reviewer 指出的 hard issues，不做无关重写。
@@ -62,7 +62,7 @@
 8. 运行 `python storyboard_agent_workspace.py validate-episode --episode-dir <episode_dir>` 直到通过，或无法修复时标记 `needs_review`。
 9. 完成后简要报告：哪一集、pass 还是 needs_review、剩余 issues 数。
 
-**关键：** `review.txt` 和 `segments/segXX/review.md` 必须是 storyboard-reviewer 返回的真实原始 JSON。不能写占位文本、不能伪造 review。validate-episode 会检查 reviewer 证据。
+**关键：** `review.txt` 和 `segments/segXX/review.md` 必须是 `TASK.md` 指定 reviewer 返回的真实原始 JSON。不能写占位文本、不能伪造 review。validate-episode 会检查 reviewer 证据。
 
 ### Worker prompt 模板
 
@@ -76,8 +76,8 @@ Episode 目录：{episode_dir}
 
 ## 第一步：读入所有规则和输入
 1. 读 `{episode_dir}/TASK.md` 了解 mode、aspect 和所需输出。
-2. 读 TASK.md 指定的 generator skill（竖屏默认 `agent_skills/storyboard-generator/SKILL.md`，横屏 `agent_skills/storyboard-horizontal-generator/SKILL.md`）。
-3. 读 TASK.md 指定的 reviewer skill（竖屏默认 `agent_skills/storyboard-reviewer/SKILL.md`，横屏 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`）。
+2. worker 首个 episode 完整读 `TASK.md` 指定的 generator skill，不按 aspect 猜测或覆盖 profile 路由；同 run 已加载且文件未变化时复用。
+3. worker 首个 episode 完整读 `TASK.md` 指定的 reviewer skill；审核与修复复审不重复加载未变化的 skill。
 4. 读 `{episode_dir}/script.txt`（和 segments 下的分段剧本，如有）。
 
 ## 第二步：按 TASK.md 的 Mode 执行

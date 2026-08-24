@@ -74,12 +74,12 @@ dispatcher 必须创建 subagents/workers 并发分发，每个 worker 默认处
 
 ## Worker 必须做的事
 
-worker 处理的每个 episode 都必须：
+worker 启动时必须完整读取当前 run 指定的两份标准 skill 和 profile；同一 worker、同一 run 内这些文件未变化时只读一次，不在生成、审核、修复复审或第二集之间重复加载。worker 处理的每个 episode 都必须：
 
-1. 读取自己的 `TASK.md`、`agent_prompt.md`、`script.txt`、两份标准 skill。
+1. 读取自己的 `TASK.md`、`agent_prompt.md`、`script.txt`；复用本 worker 已加载且未变化的标准 skill。
 2. 按 `TASK.md` 的 `Mode` 执行，不要自行改模式。
-3. 使用 `TASK.md` 指定的 generator skill 生成分镜草稿；竖屏默认 `storyboard-generator`，横屏使用 `storyboard-horizontal-generator`。
-4. 使用 `TASK.md` 指定的 reviewer skill 做真实审核；竖屏默认 `storyboard-reviewer`，横屏使用 `storyboard-horizontal-reviewer`，审核必须对照原剧本和当前分镜逐项检查。
+3. 使用 `TASK.md` 指定的 generator skill 生成分镜草稿，不按 aspect 猜测或覆盖 profile 路由。
+4. 使用 `TASK.md` 指定的 reviewer skill 做真实审核，审核必须对照原剧本和当前分镜逐项检查。
 5. 只修 reviewer 指出的 hard issues，不做无关重写。
 6. 修复后必须再次使用当前 run 指定 reviewer 复审，不能只跑格式校验。
 7. 写出该模式要求的全部文件。
@@ -100,13 +100,17 @@ worker 处理的每个 episode 都必须：
 - `review.txt`
 - `status.json`
 
+仅当当前 run 的 `TASK.md` / `episode.json` 标记 `vertical_review_contract_version >= 3` 时，整集 `final.txt` 通过 pre-check 后还会生成 `review_facts.json`；它不是 v2 或横屏 run 的必需输出，也不得手写。`scene` 的 segment 审核发生在整集事实文件生成之前，不读取或输出该文件。
+
 ### Reviewer 硬门槛
 
 `review.txt` 和 `segments/segXX/review.md` 必须是真实审核结果，不能写占位文本、JSON、或伪造通过状态。`validate-episode` 只是客观格式校验和 reviewer 证据校验，不能替代真实审核。
 
 真实审核必须满足以下证据要求：
 
-- reviewer 必须读取并对照同一 episode 的 `script.txt`、当前 `final.txt`，以及当前 run 指定的两份标准 skill。
+- reviewer 必须读取并对照同一 episode 的 `script.txt` 和当前待审 draft/final；只有 vertical review contract v3 的整集审核额外读取 pre-check 生成的 `review_facts.json`。当前 run 指定的标准 skill 可复用本 worker 已完整加载且未变化的版本，不能用已有 review/status 代替。
+- vertical review contract v3 的整集审核必须用紧凑 `semantic_coverage` 列出实际逐项核对的对白镜头、相邻组/跨集接缝和明确运镜；存在跨集边界时，还必须在 `semantic_checks` 写出第1组与上一集实际末态的具体连续性证据。
+- vertical review contract v3 的跨集 pre-check 会把上一集实际 `final.txt` 的集号和哈希绑定到 `review_facts.json`；上一集不存在时不得先审本集，上一集后续有修改时本集必须重新 pre-check 和复审。
 - `scene` 模式下，每个 `segments/segXX/review.md` 必须是该 segment 草稿的真实 reviewer JSON；整集 `review.txt` 必须是组装后 `final.txt` 的真实 reviewer JSON。
 - reviewer 至少检查：原剧本台词是否漏删改、人物关系是否错置、对话对象是否明确、组首空间锁定是否完整、组尾衔接是否自然、组时长和镜头时长是否符合规则、是否新增剧情或模板化描述。
 - 如果 reviewer 没有逐项审查，不允许写 `pass: true`；应写 `status: "needs_review"`，并在 `hard_issues_remaining` 中说明“reviewer 未完成”。
@@ -121,6 +125,7 @@ worker 处理的每个 episode 都必须：
 - 准备工作区。
 - 拆分或镜像输入文件。
 - clean-format / reviewer 证据校验。
+- 为 vertical review contract v3 生成只含当前 final 哈希、机械计数，以及跨集时上一集 final 绑定信息的 `review_facts.json`。
 - 收集结果。
 - 统计 SUMMARY。
 
@@ -153,7 +158,7 @@ worker 处理的每个 episode 都必须：
 收集前必须先确认每集已完成真实 reviewer：
 
 - 查看每集 `review.txt`，确认它是按当前 run 指定 reviewer 对照原剧本和 `final.txt` 生成的审核 JSON。
-- 查看 `status.json`，确认 `reviewer_source` 为当前 run 指定 reviewer（竖屏默认 `storyboard-reviewer`，横屏为 `storyboard-horizontal-reviewer`），且 `reviewer_pass`、`reviewer_issues_count`、`reviewer_warnings_count` 与 `review.txt` 一致。
+- 查看 `status.json`，确认 `reviewer_source` 与当前 run 的 `TASK.md` 指定 reviewer 完全一致，且 `reviewer_pass`、`reviewer_issues_count`、`reviewer_warnings_count` 与 `review.txt` 一致。
 - 如果发现 `review.txt` 是占位、空 issues 伪通过、只来自脚本校验、或没有真实审稿过程，必须停止收集，重新审核该 episode。
 - 只有真实 reviewer 通过或明确标记 `needs_review` 的 episode，才能进入收集；不能把未审核 episode 包装成 `done`。
 

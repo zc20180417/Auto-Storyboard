@@ -9,6 +9,7 @@ on directly.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -45,7 +46,8 @@ SEEDANCE25_LIVE_VERTICAL_PROFILE_PATH = "agent_skills/seedance-2-5-live-vertical
 CG_VISUAL_STYLE_SKILL_PATH = "agent_skills/3d-cg-visual-style/SKILL.md"
 STORYBOARD_QUALITY_POLICY_PATH = "agent_skills/storyboard-quality-policy.json"
 AGENT_WORKSPACE_VERSION = 2
-VERTICAL_REVIEW_CONTRACT_VERSION = 2
+VERTICAL_REVIEW_CONTRACT_VERSION = 3
+VERTICAL_REVIEW_FACTS_SCHEMA_VERSION = 1
 SIMPLE_BATCH_MAX_SCRIPT_CHARS = 2500
 SIMPLE_BATCH_MAX_SEGMENTS = 1
 MAX_EPISODES_PER_WORKER_BATCH = 2
@@ -189,6 +191,7 @@ def validate_video_profile_selection(
         return str(exc)
     return None
 
+
 VISUAL_STYLE_CONFIG = {
     "live-action": {
         "label": "真人实拍",
@@ -303,6 +306,16 @@ VERTICAL_REVIEWER_SOURCES = frozenset(
 
 def is_vertical_v2_reviewer(reviewer_source: str | None, review_contract_version: int) -> bool:
     return reviewer_source in VERTICAL_REVIEWER_SOURCES and review_contract_version >= 2
+
+
+def is_vertical_v3_reviewer(reviewer_source: str | None, review_contract_version: int) -> bool:
+    return reviewer_source in VERTICAL_REVIEWER_SOURCES and review_contract_version >= 3
+
+
+def resolved_vertical_review_contract_version(video_profile: str) -> int:
+    if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
+        return VERTICAL_REVIEW_CONTRACT_VERSION
+    return 2
 
 
 def write_utf8(path: Path, content: str) -> None:
@@ -559,6 +572,7 @@ def make_agent_context(
         - dispatcher 不生成、不审核、不修稿；dispatcher 只创建 subagents/workers 并分发 episode prompt。
         - episode worker 是{aspect_label}短剧分镜生产 agent，只处理自己被分配的单个 episode。
         - 生成和审核规则全部以两个标准 `SKILL.md` 为准；{profile_rule}，不要在任务文件里重新解释规则。
+        - 同一 worker、同一 run 的标准 Skill 和 profile 在启动时完整读取一次；文件未变化时在审核、修复复审和同 batch 第二集复用，逐集只重读 TASK、剧本、当前 final、机械事实和连续边界。
         - {prompt_surface_rule}。
         - Visual style 是本 run 的媒介风格约束：`{visual_style}`（{visual_style_label}）。{style_cfg["task_guidance"]}
         - episode worker 可以生成和初审，但 `review.txt` 必须按 `{reviewer_skill_name}/SKILL.md` 逐项审稿，不能写空泛通过。
@@ -598,6 +612,11 @@ def make_episode_task(
     style_cfg = visual_style_config(visual_style)
     visual_style_label = style_cfg["label"]
     profile_cfg = video_profile_config(video_profile)
+    review_contract_version = (
+        resolved_vertical_review_contract_version(video_profile)
+        if aspect == "vertical"
+        else None
+    )
     resolution = resolved_video_resolution(video_profile, video_resolution)
     video_task_input_lines = ""
     if profile_cfg["video_task_type"]:
@@ -624,15 +643,39 @@ def make_episode_task(
         if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
             group_timing_line = (
                 "Group-internal model-facing time ranges must use integer-second boundaries and the group total must be an integer second. "
-                "The hard model range is 4-30 seconds. Prefer natural 8-15 second short-drama groups; use 4-7 seconds only for genuine short beats, "
-                "and use 16-30 seconds only for a coherent staged passage with enough dialogue/action capacity and one major state change per stage."
+                "The hard model range is 4-30 seconds. For one continuous cluster with the same main space, conflict goal, and cast, prefer one staged "
+                "16-30 second group when the combined duration stays within 30 seconds. Use 8-15 seconds for an independent block that cannot merge "
+                "across a real space/goal/cast break or a distinct dramatic beat, information landing, reaction landing, or scripted pause; use 4-7 seconds only for a genuine short beat."
             )
         else:
             group_timing_line = "Group-internal time ranges may use 0.5-second boundaries, and the group total must be an integer second. Default groups should be 10-15 seconds; only justified short beats may be 6-9 seconds; never exceed 15 seconds."
         asset_id_contract_line = "- Do not put asset IDs in `final.txt`; asset binding belongs to the asset extraction stage."
         boundary_input_line = "- Cross-episode boundary: `boundary_context.md` when present. If it marks a continuous boundary, compare its previous-episode tail with this episode's first group during generation and review."
         boundary_workflow_phrase = ", `boundary_context.md` when present"
-        vertical_review_evidence_line = f"For new vertical runs, reviewer JSON must also include complete `dialogue_checks`, `handoff_checks`, `camera_motion_checks`, `issue_instances_total`, and `affected_groups` as defined by `{reviewer_skill_name}/SKILL.md`. These are evidence records, not optional prose."
+        if review_contract_version is not None and review_contract_version >= 3:
+            vertical_review_evidence_line = (
+                f"For vertical review contract v{review_contract_version}, run pre-check first so Python writes `review_facts.json`. "
+                "Reviewer JSON must copy its compact `mechanical_evidence` object exactly, list every semantically reviewed item in compact `semantic_coverage`, "
+                "and include `issue_instances_total` plus `affected_groups` as defined by "
+                f"`{reviewer_skill_name}/SKILL.md`. Do not repeat full `dialogue_checks`, `handoff_checks`, or `camera_motion_checks` arrays in v3; "
+                "the reviewer still checks their semantic correctness and reports only exceptions in semantic_checks/issues/warnings. For a continuous boundary, "
+                "pre-check also binds the actual predecessor final hash; if that file is missing or later changes, wait or re-review instead of reusing stale evidence."
+            )
+        else:
+            vertical_review_evidence_line = f"Reviewer JSON must include complete `dialogue_checks`, `handoff_checks`, `camera_motion_checks`, `issue_instances_total`, and `affected_groups` as defined by `{reviewer_skill_name}/SKILL.md`."
+    if aspect == "vertical" and review_contract_version is not None and review_contract_version >= 3:
+        review_preparation_clause = "Run pre-check to generate `review_facts.json`, then"
+        review_current_inputs = "`script.txt`, current `final.txt`, `review_facts.json` and the active boundary"
+        rereview_preparation_clause = "Run pre-check again and"
+    else:
+        review_preparation_clause = "Run pre-check, then"
+        review_current_inputs = "`script.txt` and current `final.txt`"
+        rereview_preparation_clause = "Run pre-check again and"
+    review_facts_output_line = (
+        "- `review_facts.json` (generated by pre-check; never hand-write)"
+        if aspect == "vertical" and review_contract_version is not None and review_contract_version >= 3
+        else ""
+    )
     profile_read_phrase = "the selected Seedance prompt profile"
     if profile_cfg["profile_role"] == "hard-contract":
         profile_input_line = (
@@ -684,24 +727,25 @@ def make_episode_task(
     if mode == "scene":
         inputs = "- Segment scripts: `segments/seg*/script.txt`"
         outputs = textwrap.dedent(
-            """
+            f"""
             - `segments/segXX/draft.txt`
             - `segments/segXX/review.md` (only when this episode has more than one segment;
               with a single segment the episode-level `review.txt` already covers the same
               groups, so writing both is duplicated work)
             - `segments/segXX/final.txt`
             - `final.txt`
+            {review_facts_output_line}
             - `review.txt`
             - `status.json`
             """
         ).strip()
         workflow = textwrap.dedent(
             f"""
-            1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}{visual_style_workflow_phrase}, `script.txt`{boundary_workflow_phrase}, and each segment script.
-            2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/final.txt`. With more than one segment also write `segments/segXX/review.md`, scoped to that segment's own groups — cross-segment handoffs and whole-episode coverage belong to step 4, not repeated per segment. With a single segment, skip `review.md` and review once in step 4.
+            1. At worker start, read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}{visual_style_workflow_phrase}, `script.txt`{boundary_workflow_phrase}, and each segment script. Keep immutable skills in the worker context; do not reread them during review or focused re-review unless the path or file changed.
+            2. For each segment, generate `segments/segXX/draft.txt`, review it, and write `segments/segXX/final.txt`. With more than one segment also write `segments/segXX/review.md`, scoped to that segment's own groups — cross-segment handoffs, v3 `mechanical_evidence`/`semantic_coverage`, and whole-episode coverage belong to step 4, not repeated per segment. With a single segment, skip `review.md` and review once in step 4.
             3. Assemble all segment finals into this episode's `final.txt`. Renumber natural group headings globally from 第1组. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. {group_timing_line}
-            4. Review the assembled `final.txt` once using `{reviewer_skill_name}`; write the raw reviewer JSON to `review.txt`.
-            5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. Re-run `{reviewer_skill_name}` after repairs.
+            4. {review_preparation_clause} reread {review_current_inputs} only; review once using `{reviewer_skill_name}` and write the raw reviewer JSON to `review.txt`.
+            5. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups. {rereview_preparation_clause} re-run `{reviewer_skill_name}` against the current final after repairs.
             6. Write `status.json` with reviewer metadata, then run validation. Validation is txt-only by default; storyboard index JSON/XLSX export is opt-in and not part of the current required output.
             7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
@@ -709,19 +753,20 @@ def make_episode_task(
     else:
         inputs = "- Segment scripts: not used in `single` mode."
         outputs = textwrap.dedent(
-            """
+            f"""
             - `final.txt`
+            {review_facts_output_line}
             - `review.txt`
             - `status.json`
             """
         ).strip()
         workflow = textwrap.dedent(
             f"""
-            1. Read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}{visual_style_workflow_phrase}, and `script.txt`{boundary_workflow_phrase}.
+            1. At worker start, read `../../context.md`, both standard `SKILL.md` files, {profile_read_phrase}{visual_style_workflow_phrase}, and `script.txt`{boundary_workflow_phrase}. Keep immutable skills in the worker context; do not reread them during review or focused re-review unless the path or file changed.
             2. Generate the full episode directly into `final.txt`. Every group heading must include a stable `cut_id` in the form `EPxx-GNN`, for example `=== [cut_id: EP02-G01] 第1组：标题（总时长：12秒，镜头数：4个） ===`. {group_timing_line}
-            3. Review the full episode once using the review skill; write `review.txt`.
+            3. {review_preparation_clause} reread {review_current_inputs} only; review the full episode once using the review skill and write `review.txt`.
             4. If hard issues exist, repair only the failed local groups in `final.txt`; do not rewrite unrelated groups.
-            5. Re-run `{reviewer_skill_name}` after repairs and update `review.txt`.
+            5. {rereview_preparation_clause} re-run `{reviewer_skill_name}` after repairs and update `review.txt`.
             6. Write `status.json` with reviewer metadata, then run validation. Validation is txt-only by default; storyboard index JSON/XLSX export is opt-in and not part of the current required output.
             7. If validation reports clean-format or reviewer-evidence issues, fix the affected files and rerun validation.
             """
@@ -735,6 +780,7 @@ Aspect: `{aspect}` ({aspect_label})
 - Run context: `../../context.md`
 - Generation skill: `{generator_skill_path}`
 - Review skill: `{reviewer_skill_path}`
+- Vertical review contract: `{f'v{review_contract_version}' if review_contract_version is not None else 'not applicable'}`
 - Video profile: `{video_profile}` ({profile_cfg['label']})
 - Target video model: `{profile_cfg['target_video_model']}`
 {video_task_input_lines}
@@ -828,7 +874,8 @@ def make_production_focus_block(
     if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
         timing_focus = (
             "- 先按内部表演节奏精确估时，再把模型可见时间轴整理成整数秒边界；"
-            "4-7 秒只用于真实短节拍，8-15 秒是常用承载区间，16-30 秒必须分阶段且每阶段只保留一个主要状态变化。"
+            "同场、同目标、同批人物的连续流程在总时长不超过 30 秒时优先合为 16-30 秒长组；"
+            "8-15 秒用于确有空间/目标/人物断点、独立戏剧节拍、信息落点、反应落点或原剧本明确停顿的独立块，4-7 秒只用于真实短节拍。"
         )
     else:
         timing_focus = "- 不要为凑满 10 秒硬塞动作、对白或停顿；短承接和单句反应允许保留 6-9 秒。"
@@ -1036,6 +1083,8 @@ def build_worker_batches(tasks: list[dict]) -> list[list[dict]]:
                 or (
                     is_simple_worker_batch_candidate(current)
                     and is_simple_worker_batch_candidate(next_task)
+                    and current.get("continuous_from_previous") is not True
+                    and next_task.get("continuous_from_previous") is not True
                 )
             )
         ):
@@ -1056,14 +1105,19 @@ def format_worker_batch_prompts(batch: list[dict]) -> str:
 
 
 def enrich_tasks_for_worker_batching(tasks: list[dict]) -> None:
-    for task in tasks:
-        if "script_chars" in task:
-            continue
-        script_path = Path(task["episode_dir"]) / "script.txt"
-        if script_path.exists():
-            task["script_chars"] = len(read_utf8_text(script_path))
-        else:
-            task["script_chars"] = SIMPLE_BATCH_MAX_SCRIPT_CHARS + 1
+    for index, task in enumerate(tasks):
+        if "script_chars" not in task:
+            script_path = Path(task["episode_dir"]) / "script.txt"
+            if script_path.exists():
+                task["script_chars"] = len(read_utf8_text(script_path))
+            else:
+                task["script_chars"] = SIMPLE_BATCH_MAX_SCRIPT_CHARS + 1
+        if (
+            task.get("continuous_from_previous") is True
+            and not task.get("depends_on_episode")
+            and index > 0
+        ):
+            task["depends_on_episode"] = tasks[index - 1]["episode_id"]
 
 
 def write_runner_scripts(
@@ -1094,13 +1148,16 @@ def write_runner_scripts(
         )
         pending_prompt_lines.append(f"- `{task['prompt_file']}`")
     for index, batch in enumerate(worker_batches, start=1):
+        dependency = batch[0].get("depends_on_episode")
+        dependency_label = f" [wait for `{dependency}`]" if dependency else " [ready]"
         worker_plan_lines.append(
-            f"- batch {index}: {format_worker_batch_label(batch)} -> {format_worker_batch_prompts(batch)}"
+            f"- batch {index}{dependency_label}: {format_worker_batch_label(batch)} -> {format_worker_batch_prompts(batch)}"
         )
-        if index <= parallelism:
-            initial_worker_lines.append(
-                f"- worker {index}: {format_worker_batch_label(batch)} -> {format_worker_batch_prompts(batch)}"
-            )
+    ready_batches = [batch for batch in worker_batches if not batch[0].get("depends_on_episode")]
+    for worker_index, batch in enumerate(ready_batches[:parallelism], start=1):
+        initial_worker_lines.append(
+            f"- worker {worker_index}: {format_worker_batch_label(batch)} -> {format_worker_batch_prompts(batch)}"
+        )
 
     codex_model_arg = f" -m {model}" if model else ""
     sample_task = tasks[0] if tasks else None
@@ -1186,7 +1243,7 @@ Initial worker wave:
 
 {chr(10).join(initial_worker_lines) if initial_worker_lines else "- No episodes found."}
 
-When any worker finishes, dispatch the next unfinished worker batch from the dynamic plan.
+When any worker finishes, dispatch any unfinished batch marked `[ready]`, or a blocked batch only after its dependency episode has `status=done`, a current `final.txt`, and passed validation. Do not occupy a worker slot waiting for an unfinished predecessor; fill it with another ready independent batch.
 
 ## Episode Tasks
 
@@ -1253,6 +1310,8 @@ Initial worker wave:
 All episode prompts:
 
 {chr(10).join(pending_prompt_lines) if pending_prompt_lines else "- No episodes found."}
+
+Never dispatch a batch marked `[wait for epXX]` until that predecessor has `status=done`, a current `final.txt`, and passed validation. Keep worker slots on ready independent batches instead of starting a blocked worker that can only wait.
 
 ## After Workers Finish
 
@@ -3124,12 +3183,11 @@ def _read_review_json(
 ) -> tuple[dict | None, str | None]:
     """Parse and schema-check a reviewer JSON artifact.
 
-    require_numeric_evidence=False drops dialogue/handoff/camera_motion from the required
-    keys. Used for segment reviews in a multi-segment episode: the episode review already
-    cross-checks every shot, every adjacent group pair and every camera move against the
-    assembled `final.txt`, so repeating that arithmetic per segment adds no verification,
-    only tokens. The judgment fields stay required, and any numeric array a segment review
-    does provide is still validated in full by the caller.
+    require_numeric_evidence=False drops episode-level mechanical evidence from the required
+    keys. Used for segment reviews in a multi-segment episode: the assembled episode review
+    already binds to `review_facts.json`, so repeating the same evidence per segment adds no
+    verification, only tokens. V2 artifacts keep their legacy detailed arrays; V3 artifacts
+    use compact `mechanical_evidence` plus item-label-only `semantic_coverage`.
     """
     if not path.is_file():
         return None, f"missing review file: {path.name}"
@@ -3163,7 +3221,12 @@ def _read_review_json(
                 "affected_groups": list,
             }
         )
-        if require_numeric_evidence:
+        if require_numeric_evidence and is_vertical_v3_reviewer(
+            reviewer_source, review_contract_version
+        ):
+            required_types["mechanical_evidence"] = dict
+            required_types["semantic_coverage"] = dict
+        elif require_numeric_evidence:
             required_types.update(
                 {
                     "dialogue_checks": list,
@@ -3262,6 +3325,50 @@ def _read_review_json(
         if not all(isinstance(item, str) and item.strip() for item in payload["affected_groups"]):
             return None, f"{path.name} affected_groups must contain non-empty group labels"
 
+        if is_vertical_v3_reviewer(reviewer_source, review_contract_version):
+            mechanical_evidence = payload.get("mechanical_evidence")
+            if mechanical_evidence is not None:
+                final_sha256 = mechanical_evidence.get("final_sha256")
+                if not isinstance(final_sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", final_sha256):
+                    return None, f"{path.name} mechanical_evidence.final_sha256 must be a lowercase SHA-256"
+                for key in (
+                    "group_count",
+                    "dialogue_shot_count",
+                    "handoff_count",
+                    "camera_motion_shot_count",
+                ):
+                    value = mechanical_evidence.get(key)
+                    if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+                        return None, f"{path.name} mechanical_evidence.{key} must be a non-negative integer"
+                previous_episode_id = mechanical_evidence.get("previous_episode_id")
+                previous_final_sha256 = mechanical_evidence.get("previous_final_sha256")
+                if (previous_episode_id is None) != (previous_final_sha256 is None):
+                    return None, f"{path.name} mechanical_evidence predecessor binding is incomplete"
+                if previous_episode_id is not None and (
+                    not isinstance(previous_episode_id, str) or not previous_episode_id.strip()
+                ):
+                    return None, f"{path.name} mechanical_evidence.previous_episode_id must be non-empty"
+                if previous_final_sha256 is not None and (
+                    not isinstance(previous_final_sha256, str)
+                    or not re.fullmatch(r"[0-9a-f]{64}", previous_final_sha256)
+                ):
+                    return None, f"{path.name} mechanical_evidence.previous_final_sha256 must be a lowercase SHA-256"
+            semantic_coverage = payload.get("semantic_coverage")
+            if semantic_coverage is not None:
+                for key in (
+                    "dialogue_shots_checked",
+                    "handoffs_checked",
+                    "camera_motion_shots_checked",
+                ):
+                    labels = semantic_coverage.get(key)
+                    if not isinstance(labels, list) or not all(
+                        isinstance(label, str) and label.strip() for label in labels
+                    ):
+                        return None, f"{path.name} semantic_coverage.{key} must be a list of labels"
+                    normalized = [_normalize_review_label(label) for label in labels]
+                    if len(normalized) != len(set(normalized)):
+                        return None, f"{path.name} semantic_coverage.{key} contains duplicate labels"
+
         check_contracts = {
             "dialogue_checks": (
                 "shot", "chars", "seconds", "chars_per_second", "mouth_duration",
@@ -3319,17 +3426,25 @@ def _storyboard_group_labels(content: str) -> list[str]:
 
 VERTICAL_CAMERA_MOTION_TERM_RE = re.compile(
     r"缓推|推近|推进|缓拉|拉远|跟拍|跟随|横移|平移|环绕|半环绕|甩镜|摇镜|"
-    r"手持跟随|贴地移动|贴地推进|绕行跟随"
+    r"上升|下降|升起|降下|手持跟随|贴地移动|贴地推进|绕行跟随"
 )
 VERTICAL_CAMERA_MOTION_ANCHOR_RE = re.compile(
     r"摄影机|本镜|机位|镜头(?:从|沿|向|跟|缓|轻|横|平|环|推|拉|摇|甩|贴|绕)"
+)
+VERTICAL_CAMERA_MOTION_DIRECTIONAL_RE = re.compile(
+    r"(?:摄影机|本镜|机位|镜头)(?:从|沿|向|朝|往)[^。\n；;，,]{0,24}(?:推|拉|摇|升|降)"
+    r"|(?:摄影机|本镜|机位|镜头)(?:缓慢?|轻微?|平稳)?(?:推|拉|摇|升|降)(?:近|远|向|到|起|下|高|低)"
 )
 
 
 def _vertical_camera_motion_shot_labels(content: str) -> list[str]:
     labels: list[str] = []
     for _group_number, shot_label, _seconds, shot_text in _iter_storyboard_shots(content):
-        if VERTICAL_CAMERA_MOTION_TERM_RE.search(shot_text) and VERTICAL_CAMERA_MOTION_ANCHOR_RE.search(shot_text):
+        has_named_motion = (
+            VERTICAL_CAMERA_MOTION_TERM_RE.search(shot_text)
+            and VERTICAL_CAMERA_MOTION_ANCHOR_RE.search(shot_text)
+        )
+        if has_named_motion or VERTICAL_CAMERA_MOTION_DIRECTIONAL_RE.search(shot_text):
             labels.append(shot_label)
     return labels
 
@@ -3338,78 +3453,284 @@ def _normalize_review_label(value: object) -> str:
     return re.sub(r"\s+", "", str(value or ""))
 
 
+def build_vertical_semantic_coverage(
+    content: str,
+    *,
+    require_cross_episode_boundary: bool = False,
+) -> dict:
+    """Return compact item labels that a v3 reviewer must explicitly cover."""
+    groups = _storyboard_group_labels(content)
+    dialogue_labels = [
+        shot_label
+        for _group_number, shot_label, _seconds, shot_text in _iter_storyboard_shots(content)
+        if _effective_dialogue_chars(shot_text)
+    ]
+    handoff_labels = [f"{left}->{right}" for left, right in zip(groups, groups[1:])]
+    if require_cross_episode_boundary and groups:
+        handoff_labels.insert(0, f"上一集实际末组->{groups[0]}")
+    return {
+        "dialogue_shots_checked": dialogue_labels,
+        "handoffs_checked": handoff_labels,
+        "camera_motion_shots_checked": _vertical_camera_motion_shot_labels(content),
+    }
+
+
+def build_vertical_review_facts(
+    content: str,
+    *,
+    review_contract_version: int,
+    require_cross_episode_boundary: bool = False,
+    previous_episode_id: str | None = None,
+    previous_final_content: str | None = None,
+) -> dict:
+    """Build compact deterministic facts for the semantic reviewer.
+
+    These facts intentionally cover only machine-verifiable scope. They bind a
+    review to the exact final text and replace verbose per-shot pass arrays; the
+    reviewer still owns script fidelity, spatial continuity and filmability.
+    """
+    coverage = build_vertical_semantic_coverage(
+        content,
+        require_cross_episode_boundary=require_cross_episode_boundary,
+    )
+    mechanical_evidence = {
+        "final_sha256": hashlib.sha256(content.encode("utf-8")).hexdigest(),
+        "group_count": len(_storyboard_group_labels(content)),
+        "dialogue_shot_count": len(coverage["dialogue_shots_checked"]),
+        "handoff_count": len(coverage["handoffs_checked"]),
+        "camera_motion_shot_count": len(coverage["camera_motion_shots_checked"]),
+    }
+    if require_cross_episode_boundary:
+        if not previous_episode_id or previous_final_content is None:
+            raise ValueError("cross-episode review facts require the actual previous final")
+        mechanical_evidence["previous_episode_id"] = previous_episode_id
+        mechanical_evidence["previous_final_sha256"] = hashlib.sha256(
+            previous_final_content.encode("utf-8")
+        ).hexdigest()
+    return {
+        "schema_version": VERTICAL_REVIEW_FACTS_SCHEMA_VERSION,
+        "review_contract_version": review_contract_version,
+        "mechanical_evidence": mechanical_evidence,
+    }
+
+
+def load_previous_final_binding(
+    episode_dir: Path,
+) -> tuple[str | None, str | None, list[str]]:
+    """Load the declared predecessor final without allowing paths outside this run."""
+    boundary_path = episode_dir / "boundary_context.md"
+    if not boundary_path.is_file():
+        return None, None, []
+    boundary_text = boundary_path.read_text(encoding="utf-8-sig", errors="replace")
+    episode_match = re.search(r"(?m)^previous_episode:\s*(?P<episode>.+?)\s*$", boundary_text)
+    if not episode_match:
+        return None, None, ["boundary_context.md missing `previous_episode` declaration"]
+    declared_episode_id = episode_match.group("episode").strip().strip('"\'')
+    if not declared_episode_id:
+        return None, None, ["boundary_context.md previous_episode must be non-empty"]
+    match = re.search(r"(?m)^previous_final:\s*(?P<path>.+?)\s*$", boundary_text)
+    if not match:
+        return None, None, ["boundary_context.md missing `previous_final` declaration"]
+    declared = match.group("path").strip().strip('"\'')
+    target = (episode_dir / declared).resolve()
+    episodes_root = episode_dir.parent.resolve()
+    try:
+        target.relative_to(episodes_root)
+    except ValueError:
+        return None, None, ["boundary_context.md previous_final must stay inside this run's episodes directory"]
+    if target.parent.parent != episodes_root:
+        return None, None, ["boundary_context.md previous_final must belong to a direct sibling episode directory"]
+    if target.parent == episode_dir.resolve():
+        return None, None, ["boundary_context.md previous_final cannot point to the current episode"]
+    if target.name != "final.txt" or not target.is_file():
+        return None, None, [f"boundary previous final is missing: {target}"]
+    if target.parent.name != declared_episode_id:
+        return None, None, [
+            "boundary_context.md previous_episode does not match the declared previous_final directory"
+        ]
+    meta_path = episode_dir / "episode.json"
+    if not meta_path.is_file():
+        return None, None, ["cross-episode v3 review requires episode.json dependency metadata"]
+    try:
+        meta = read_json(meta_path)
+    except (OSError, json.JSONDecodeError) as exc:
+        return None, None, [f"episode.json dependency metadata is invalid: {exc}"]
+    if not isinstance(meta, dict):
+        return None, None, ["episode.json dependency metadata must be a JSON object"]
+    depends_on_episode = meta.get("depends_on_episode")
+    if not isinstance(depends_on_episode, str) or not depends_on_episode.strip():
+        return None, None, ["episode.json missing `depends_on_episode` for cross-episode review"]
+    if depends_on_episode.strip() != declared_episode_id:
+        return None, None, [
+            "boundary_context.md previous_episode does not match episode.json depends_on_episode"
+        ]
+    return target.parent.name, target.read_text(encoding="utf-8", errors="replace"), []
+
+
+def build_vertical_review_facts_for_episode(
+    episode_dir: Path,
+    content: str,
+    *,
+    review_contract_version: int,
+) -> tuple[dict | None, list[str]]:
+    require_boundary = (episode_dir / "boundary_context.md").is_file()
+    previous_episode_id: str | None = None
+    previous_final_content: str | None = None
+    if require_boundary:
+        previous_episode_id, previous_final_content, issues = load_previous_final_binding(episode_dir)
+        if issues:
+            return None, issues
+    return (
+        build_vertical_review_facts(
+            content,
+            review_contract_version=review_contract_version,
+            require_cross_episode_boundary=require_boundary,
+            previous_episode_id=previous_episode_id,
+            previous_final_content=previous_final_content,
+        ),
+        [],
+    )
+
+
+def validate_vertical_review_facts_file(
+    episode_dir: Path,
+    content: str,
+    *,
+    review_contract_version: int,
+    require_cross_episode_boundary: bool = False,
+) -> list[str]:
+    facts_path = episode_dir / "review_facts.json"
+    if not facts_path.is_file():
+        return ["missing review facts: run validate-episode --pre-check before reviewer"]
+    try:
+        actual = read_json(facts_path)
+    except (OSError, json.JSONDecodeError) as exc:
+        return [f"review_facts.json is invalid: {exc}"]
+    expected, binding_issues = build_vertical_review_facts_for_episode(
+        episode_dir,
+        content,
+        review_contract_version=review_contract_version,
+    )
+    if binding_issues:
+        return binding_issues
+    if actual != expected:
+        return ["review_facts.json is stale or does not match current final.txt; rerun pre-check"]
+    return []
+
+
 def validate_vertical_review_evidence(
     payload: dict,
     content: str,
     review_name: str,
     *,
     require_cross_episode_boundary: bool = False,
+    review_contract_version: int = 2,
+    previous_episode_id: str | None = None,
+    previous_final_content: str | None = None,
 ) -> list[str]:
     """Verify that vertical reviewer evidence covers the actual draft, not generic claims."""
     issues: list[str] = []
 
-    expected_dialogue: dict[str, tuple[int, float]] = {}
-    for _group_number, shot_label, seconds, shot_text in _iter_storyboard_shots(content):
-        chars = _effective_dialogue_chars(shot_text)
-        if chars:
-            expected_dialogue[_normalize_review_label(shot_label)] = (chars, seconds)
-    actual_dialogue: dict[str, dict] = {}
-    for item in payload.get("dialogue_checks", []):
-        actual_dialogue[_normalize_review_label(item.get("shot"))] = item
-    missing_dialogue = sorted(set(expected_dialogue) - set(actual_dialogue))
-    if missing_dialogue:
-        issues.append(f"{review_name} dialogue_checks missing shots: {', '.join(missing_dialogue[:5])}")
-    for label, (expected_chars, expected_seconds) in expected_dialogue.items():
-        item = actual_dialogue.get(label)
-        if item is None:
-            continue
-        try:
-            chars = int(item.get("chars"))
-            seconds = float(item.get("seconds"))
-            cps = float(item.get("chars_per_second"))
-        except (TypeError, ValueError):
-            issues.append(f"{review_name} dialogue_checks `{label}` has non-numeric timing evidence")
-            continue
-        expected_cps = expected_chars / expected_seconds if expected_seconds else 0.0
-        if chars != expected_chars or abs(seconds - expected_seconds) > 0.05 or abs(cps - expected_cps) > 0.15:
+    if review_contract_version >= 3:
+        expected = build_vertical_review_facts(
+            content,
+            review_contract_version=review_contract_version,
+            require_cross_episode_boundary=require_cross_episode_boundary,
+            previous_episode_id=previous_episode_id,
+            previous_final_content=previous_final_content,
+        )["mechanical_evidence"]
+        actual = payload.get("mechanical_evidence")
+        if actual != expected:
             issues.append(
-                f"{review_name} dialogue_checks `{label}` does not match final text "
-                f"({expected_chars} chars/{_format_seconds(expected_seconds)}s/{expected_cps:.1f} cps)"
+                f"{review_name} mechanical_evidence does not match current final.txt/review_facts.json"
             )
-
-    groups = _storyboard_group_labels(content)
-    expected_handoffs = {
-        (_normalize_review_label(left), _normalize_review_label(right))
-        for left, right in zip(groups, groups[1:])
-    }
-    actual_handoffs = {
-        (_normalize_review_label(item.get("from")), _normalize_review_label(item.get("to")))
-        for item in payload.get("handoff_checks", [])
-    }
-    missing_handoffs = sorted(expected_handoffs - actual_handoffs)
-    if missing_handoffs:
-        rendered = ", ".join(f"{left}->{right}" for left, right in missing_handoffs[:5])
-        issues.append(f"{review_name} handoff_checks missing transitions: {rendered}")
-    if require_cross_episode_boundary:
-        first_group = _normalize_review_label(groups[0]) if groups else ""
-        has_boundary_check = any(
-            right == first_group and ("上一集" in left or re.search(r"ep\d+", left, re.IGNORECASE))
-            for left, right in actual_handoffs
+        expected_coverage = build_vertical_semantic_coverage(
+            content,
+            require_cross_episode_boundary=require_cross_episode_boundary,
         )
-        if not has_boundary_check:
-            issues.append(f"{review_name} handoff_checks missing previous-episode boundary to {first_group}")
+        actual_coverage = payload.get("semantic_coverage")
+        if actual_coverage != expected_coverage:
+            issues.append(
+                f"{review_name} semantic_coverage does not list every dialogue shot, handoff, and camera-motion shot"
+            )
+        if require_cross_episode_boundary:
+            groups = _storyboard_group_labels(content)
+            first_group = _normalize_review_label(groups[0]) if groups else ""
+            has_boundary_semantic_check = any(
+                isinstance(item, dict)
+                and item.get("type") == "cross_episode_continuity"
+                and _normalize_review_label(item.get("group")) == first_group
+                and item.get("result") in {"pass", "warning"}
+                and bool(str(item.get("evidence", "")).strip())
+                for item in payload.get("semantic_checks", [])
+            )
+            if not has_boundary_semantic_check:
+                issues.append(
+                    f"{review_name} missing cross_episode_continuity semantic evidence for {first_group}"
+                )
+    else:
+        expected_dialogue: dict[str, tuple[int, float]] = {}
+        for _group_number, shot_label, seconds, shot_text in _iter_storyboard_shots(content):
+            chars = _effective_dialogue_chars(shot_text)
+            if chars:
+                expected_dialogue[_normalize_review_label(shot_label)] = (chars, seconds)
+        actual_dialogue: dict[str, dict] = {}
+        for item in payload.get("dialogue_checks", []):
+            actual_dialogue[_normalize_review_label(item.get("shot"))] = item
+        missing_dialogue = sorted(set(expected_dialogue) - set(actual_dialogue))
+        if missing_dialogue:
+            issues.append(f"{review_name} dialogue_checks missing shots: {', '.join(missing_dialogue[:5])}")
+        for label, (expected_chars, expected_seconds) in expected_dialogue.items():
+            item = actual_dialogue.get(label)
+            if item is None:
+                continue
+            try:
+                chars = int(item.get("chars"))
+                seconds = float(item.get("seconds"))
+                cps = float(item.get("chars_per_second"))
+            except (TypeError, ValueError):
+                issues.append(f"{review_name} dialogue_checks `{label}` has non-numeric timing evidence")
+                continue
+            expected_cps = expected_chars / expected_seconds if expected_seconds else 0.0
+            if chars != expected_chars or abs(seconds - expected_seconds) > 0.05 or abs(cps - expected_cps) > 0.15:
+                issues.append(
+                    f"{review_name} dialogue_checks `{label}` does not match final text "
+                    f"({expected_chars} chars/{_format_seconds(expected_seconds)}s/{expected_cps:.1f} cps)"
+                )
 
-    expected_motion = {_normalize_review_label(label) for label in _vertical_camera_motion_shot_labels(content)}
-    actual_motion = {
-        _normalize_review_label(item.get("shot"))
-        for item in payload.get("camera_motion_checks", [])
-    }
-    missing_motion = sorted(expected_motion - actual_motion)
-    if missing_motion:
-        issues.append(f"{review_name} camera_motion_checks missing shots: {', '.join(missing_motion[:5])}")
-    unexpected_motion = sorted(actual_motion - expected_motion)
-    if unexpected_motion:
-        issues.append(f"{review_name} camera_motion_checks references shots without detected motion: {', '.join(unexpected_motion[:5])}")
+        groups = _storyboard_group_labels(content)
+        expected_handoffs = {
+            (_normalize_review_label(left), _normalize_review_label(right))
+            for left, right in zip(groups, groups[1:])
+        }
+        actual_handoffs = {
+            (_normalize_review_label(item.get("from")), _normalize_review_label(item.get("to")))
+            for item in payload.get("handoff_checks", [])
+        }
+        missing_handoffs = sorted(expected_handoffs - actual_handoffs)
+        if missing_handoffs:
+            rendered = ", ".join(f"{left}->{right}" for left, right in missing_handoffs[:5])
+            issues.append(f"{review_name} handoff_checks missing transitions: {rendered}")
+        if require_cross_episode_boundary:
+            first_group = _normalize_review_label(groups[0]) if groups else ""
+            has_boundary_check = any(
+                right == first_group and ("上一集" in left or re.search(r"ep\d+", left, re.IGNORECASE))
+                for left, right in actual_handoffs
+            )
+            if not has_boundary_check:
+                issues.append(f"{review_name} handoff_checks missing previous-episode boundary to {first_group}")
+
+        expected_motion = {_normalize_review_label(label) for label in _vertical_camera_motion_shot_labels(content)}
+        actual_motion = {
+            _normalize_review_label(item.get("shot"))
+            for item in payload.get("camera_motion_checks", [])
+        }
+        missing_motion = sorted(expected_motion - actual_motion)
+        if missing_motion:
+            issues.append(f"{review_name} camera_motion_checks missing shots: {', '.join(missing_motion[:5])}")
+        unexpected_motion = sorted(actual_motion - expected_motion)
+        if unexpected_motion:
+            issues.append(f"{review_name} camera_motion_checks references shots without detected motion: {', '.join(unexpected_motion[:5])}")
 
     issue_groups = {
         _normalize_review_label(item.get("group"))
@@ -3761,16 +4082,37 @@ def validate_review_artifacts(episode_dir: Path) -> list[str]:
         final_path = episode_dir / "final.txt"
         if final_path.is_file():
             final_content = final_path.read_text(encoding="utf-8", errors="replace")
+            requires_boundary = (episode_dir / "boundary_context.md").is_file()
             issues.extend(_validate_review_checked_groups(review_payload, final_content, "review.txt"))
             if is_vertical_v2_reviewer(expected_reviewer_source, review_contract_version):
-                issues.extend(
-                    validate_vertical_review_evidence(
-                        review_payload,
-                        final_content,
-                        "review.txt",
-                        require_cross_episode_boundary=(episode_dir / "boundary_context.md").is_file(),
+                previous_episode_id: str | None = None
+                previous_final_content: str | None = None
+                binding_issues: list[str] = []
+                if is_vertical_v3_reviewer(expected_reviewer_source, review_contract_version):
+                    issues.extend(
+                        validate_vertical_review_facts_file(
+                            episode_dir,
+                            final_content,
+                            review_contract_version=review_contract_version,
+                            require_cross_episode_boundary=requires_boundary,
+                        )
                     )
-                )
+                    if requires_boundary:
+                        previous_episode_id, previous_final_content, binding_issues = load_previous_final_binding(
+                            episode_dir
+                        )
+                if not binding_issues:
+                    issues.extend(
+                        validate_vertical_review_evidence(
+                            review_payload,
+                            final_content,
+                            "review.txt",
+                            require_cross_episode_boundary=requires_boundary,
+                            review_contract_version=review_contract_version,
+                            previous_episode_id=previous_episode_id,
+                            previous_final_content=previous_final_content,
+                        )
+                    )
 
     status_path = episode_dir / "status.json"
     status_payload: dict | None = None
@@ -4083,9 +4425,14 @@ def prepare_workspace(args: argparse.Namespace) -> int:
             "generator_skill_name": aspect_cfg["generator_name"],
             "reviewer_skill_name": aspect_cfg["reviewer_name"],
             "reviewer_source": aspect_cfg["reviewer_name"],
-            "vertical_review_contract_version": VERTICAL_REVIEW_CONTRACT_VERSION if aspect == "vertical" else None,
+            "vertical_review_contract_version": (
+                resolved_vertical_review_contract_version(video_profile)
+                if aspect == "vertical"
+                else None
+            ),
             "continuous_from_previous": boundary_link is not None,
             "continuity_with_next": zero_index in continuity_by_previous,
+            "depends_on_episode": episode_ids[int(boundary_link["previous_index"])] if boundary_link else None,
         }
         write_json(episode_dir / "episode.json", episode_meta)
 
@@ -4223,6 +4570,21 @@ def validate_episode(args: argparse.Namespace) -> int:
     clean_issues = validate_clean_storyboard_format(content, video_profile=video_profile)
     cut_id_issues = validate_storyboard_cut_ids(content, episode_id)
     horizontal_run = is_horizontal_episode_dir(episode_dir)
+    review_contract_version = _episode_review_contract_version(episode_dir)
+    manages_review_facts = (
+        pre_check
+        and content_file is None
+        and not horizontal_run
+        and review_contract_version >= 3
+    )
+    prepared_review_facts: dict | None = None
+    review_facts_input_issues: list[str] = []
+    if manages_review_facts:
+        prepared_review_facts, review_facts_input_issues = build_vertical_review_facts_for_episode(
+            episode_dir,
+            content,
+            review_contract_version=review_contract_version,
+        )
     quality_issues = validate_storyboard_quality_floor(content, allow_horizontal_output_fields=horizontal_run)
     if horizontal_run:
         horizontal_motion_issues = validate_horizontal_camera_motion_contract(
@@ -4246,7 +4608,7 @@ def validate_episode(args: argparse.Namespace) -> int:
         horizontal_visual_style_issues = []
         horizontal_special_effect_issues = []
         physical_plausibility_issues = []
-    if not horizontal_run and _episode_review_contract_version(episode_dir) >= 2:
+    if not horizontal_run and review_contract_version >= 2:
         vertical_space_lock_issues = validate_vertical_space_lock_contract(content)
     else:
         vertical_space_lock_issues = []
@@ -4275,11 +4637,14 @@ def validate_episode(args: argparse.Namespace) -> int:
         + horizontal_special_effect_issues
         + physical_plausibility_issues
         + vertical_space_lock_issues
+        + review_facts_input_issues
         + review_issues
         + review_pass_issues
     )
     report_lines = ["# Episode Validation", ""]
     if issues:
+        if manages_review_facts:
+            (episode_dir / "review_facts.json").unlink(missing_ok=True)
         report_lines.append("status: failed")
         report_lines.append("")
         if video_profile_contract_issues:
@@ -4322,6 +4687,10 @@ def validate_episode(args: argparse.Namespace) -> int:
             report_lines.append("## Vertical Space Lock")
             report_lines.extend(f"- {issue}" for issue in vertical_space_lock_issues)
             report_lines.append("")
+        if review_facts_input_issues:
+            report_lines.append("## Review Facts Input")
+            report_lines.extend(f"- {issue}" for issue in review_facts_input_issues)
+            report_lines.append("")
         if review_issues:
             report_lines.append("## Storyboard Reviewer Evidence")
             report_lines.extend(f"- {issue}" for issue in review_issues)
@@ -4337,6 +4706,13 @@ def validate_episode(args: argparse.Namespace) -> int:
 
     report_lines.append("status: passed")
     report_lines.append("")
+    if manages_review_facts:
+        assert prepared_review_facts is not None
+        write_json(
+            episode_dir / "review_facts.json",
+            prepared_review_facts,
+        )
+        report_lines.append("- review_facts: generated and bound to current final.txt")
     if video_profile == SEEDANCE25_LIVE_VERTICAL_PROFILE:
         report_lines.append("- video_profile_contract: multimodal_generation-only passed")
     report_lines.append("- clean_format: passed")
@@ -4348,7 +4724,7 @@ def validate_episode(args: argparse.Namespace) -> int:
         report_lines.append("- horizontal_visual_style: passed")
         report_lines.append("- horizontal_special_effects: passed")
         report_lines.append("- physical_plausibility: passed")
-    elif _episode_review_contract_version(episode_dir) >= 2:
+    elif review_contract_version >= 2:
         report_lines.append("- vertical_space_lock: passed")
     if not pre_check:
         report_lines.append("- review_evidence: passed")

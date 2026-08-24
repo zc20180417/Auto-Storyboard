@@ -56,6 +56,18 @@ class DynamicWorkerBatchTests(unittest.TestCase):
             [["ep01", "ep02"]],
         )
 
+    def test_does_not_delay_independent_episode_behind_continuous_tail(self):
+        ep02 = task("ep02", 1200)
+        ep02["continuous_from_previous"] = True
+        ep03 = task("ep03", 1200)
+
+        batches = saw.build_worker_batches([ep02, ep03])
+
+        self.assertEqual(
+            [[item["episode_id"] for item in batch] for batch in batches],
+            [["ep02"], ["ep03"]],
+        )
+
     def test_detects_same_scene_at_adjacent_source_boundary(self):
         episodes = [
             saw.EpisodeInput(Path("ep01.txt"), 1, "ep01", "测试剧", "场1-1：外景 小区停车场 - 傍晚\n甲递出钥匙。"),
@@ -87,8 +99,38 @@ class DynamicWorkerBatchTests(unittest.TestCase):
 
             next_steps = (run_dir / "NEXT_STEPS.md").read_text(encoding="utf-8")
             self.assertIn("Dynamic worker batches:", next_steps)
-            self.assertIn("- batch 1: `ep01`, `ep02`", next_steps)
-            self.assertIn("- batch 2: `ep03`", next_steps)
+            self.assertIn("- batch 1 [ready]: `ep01`, `ep02`", next_steps)
+            self.assertIn("- batch 2 [ready]: `ep03`", next_steps)
+
+    def test_initial_wave_skips_batches_waiting_for_previous_episode(self):
+        with TemporaryDirectory() as tmp:
+            run_dir = Path(tmp)
+            episodes = []
+            for episode_id in ("ep01", "ep02", "ep03", "ep04"):
+                episode_dir = run_dir / "episodes" / episode_id
+                episode_dir.mkdir(parents=True)
+                item = {
+                    **task(episode_id, 4000, segments=2),
+                    "episode_dir": str(episode_dir),
+                    "prompt_file": str(episode_dir / "agent_prompt.md"),
+                }
+                episodes.append(item)
+            episodes[0]["continuity_with_next"] = True
+            episodes[1]["continuous_from_previous"] = True
+            episodes[1]["depends_on_episode"] = "ep01"
+            episodes[1]["continuity_with_next"] = True
+            episodes[2]["continuous_from_previous"] = True
+            episodes[2]["depends_on_episode"] = "ep02"
+            saw.write_json(run_dir / "manifest.json", {"episodes": episodes})
+
+            saw.write_runner_scripts(run_dir=run_dir, agent="codex", parallelism=3, model=None)
+
+            dispatch = (run_dir / "DISPATCH_PROMPT.md").read_text(encoding="utf-8")
+            self.assertIn("- batch 2 [wait for `ep02`]: `ep03`", dispatch)
+            initial_wave = dispatch.split("Initial worker wave:", 1)[1].split("All episode prompts:", 1)[0]
+            self.assertIn("`ep01`, `ep02`", initial_wave)
+            self.assertIn("`ep04`", initial_wave)
+            self.assertNotIn("`ep03`", initial_wave)
 
     def test_prepare_writes_vertical_boundary_context_and_v2_contract(self):
         with TemporaryDirectory() as tmp:
