@@ -121,6 +121,8 @@ class Seedance25TimelineOnlyContractTests(unittest.TestCase):
         self.assertIn("来源是指尖", prompt)
         self.assertIn("沿元鼎外壁下腹的三道铸纹向上贴行", prompt)
         self.assertIn("形态收束为稳定的短火舌", prompt)
+        self.assertIn("景别按信息量和主体可读性自主选择", prompt)
+        self.assertNotIn("优先中景与中近景", prompt)
         self.assertNotIn("视觉峰值/特效重点", prompt)
         self.assertNotIn("运镜强化词", prompt)
         self.assertNotIn("Seedance执行提示补充", prompt)

@@ -977,7 +977,7 @@ def make_episode_task(
         )
     if aspect == "horizontal":
         if video_profile == SEEDANCE25_HORIZONTAL_XIANXIA_PROFILE:
-            aspect_contract_line = "Horizontal outputs must be generated as polished, Seedance-ready deliverables on the first pass, not rough drafts waiting for a separate rewrite. Use the current horizontal Seedance wrapper: `**人物**`, `**场景**`, `**道具/关键视觉资产**`, `**画面风格**` (完整整体画风说明), `**组间承接**`, `**横屏构图/调度**`, bare `N-M` shot-number lines, then each shot with `**镜头描述**`, `**光影设计**`, `**本镜估算时长**`, followed by `**组尾衔接**` and `**--neg**`. 特效、声音、物理约束和生成易错点必须直接写在实际连续时间轴中；Seedance 2.5 会根据主体、动作、构图、空间关系和节奏自行选择合理运镜，不把运镜当作必填字段或数量指标。只有剧情、轴线、复杂位移或连续性确实需要锁定镜头行为时，才在对应镜头写最少必要约束；不要写 `**一句话概述**`、`**视觉峰值/特效重点**`、`**运镜强化词**`、`**Seedance执行提示补充**`、`**镜头号**：N-M`，也不要使用旧横屏 `组首空间锁定` / 每镜 `运镜设计` 字段。Keep assets under 9 per group; if the script requires more, split the group instead of deleting key story elements."
+            aspect_contract_line = "Use the dedicated Seedance 2.5 timeline-only wrapper defined by the selected generator. 关键视觉事件必须直接进入实际时间轴，特效、声音、物理约束和生成易错点不得另起说明；不设独立峰值字段，不预设景别或运镜数量。不要写 `**一句话概述**`、`**视觉峰值/特效重点**`、`**运镜强化词**`、`**Seedance执行提示补充**` 或旧横屏字段；不再使用一句话概述或重复执行字段。Keep assets under 9 per group; if more are genuinely needed, split only at a stable state boundary."
         else:
             # Preserve the generic horizontal workflow.  Its visual-peak,
             # camera-summary, and execution fields are still part of that
@@ -1063,7 +1063,11 @@ def make_episode_task(
         profile_constraint = "Seedance Prompt Profile is only a reference layer"
     visual_style_input_line = ""
     visual_style_workflow_phrase = ""
-    if visual_style == "3d-cg":
+    # The dedicated Seedance 2.5 xianxia profile owns its visual preset and
+    # timeline-only contract. Do not load the generic 3D-CG skill as an extra
+    # context source: it still contains legacy hero/camera-field guidance for
+    # generic horizontal runs and can reintroduce those constraints.
+    if visual_style == "3d-cg" and video_profile != SEEDANCE25_HORIZONTAL_XIANXIA_PROFILE:
         visual_style_input_line = f"\n- 3D CG visual style skill: `{cg_visual_style_skill_path}`，只作为 3D CG 媒介风格参考层，不得替代主生成和审核规则"
         visual_style_workflow_phrase = ", the 3D CG visual style skill"
     preset_input_line = ""

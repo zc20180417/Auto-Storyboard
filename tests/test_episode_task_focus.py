@@ -112,6 +112,8 @@ class EpisodeTaskFocusTests(unittest.TestCase):
         self.assertIn("不再使用一句话概述或重复执行字段", task)
         self.assertNotIn("视觉峰值不只来自打斗", task)
         self.assertNotIn("beat/hero 级视觉峰值", task)
+        self.assertNotIn("3D CG visual style skill", task)
+        self.assertNotIn("agent_skills/3d-cg-visual-style/SKILL.md", task.replace("\\", "/"))
         self.assertNotIn("Default groups should be 10-15 seconds", task)
         self.assertNotIn("use 0.5 seconds", task)
 

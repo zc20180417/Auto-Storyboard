@@ -41,6 +41,11 @@ class Seedance25XianxiaSkillContractTests(unittest.TestCase):
         for forbidden_project_fact in ("方平", "元鼎", "落阳宗", "每日九次"):
             self.assertNotIn(forbidden_project_fact, text)
 
+        self.assertIn("核心效果", text)
+        self.assertIn("局部效果", text)
+        self.assertIn("环境底色", text)
+        self.assertIn("不是每个光点都需要一套完整的七项说明", text)
+
     def test_native_audio_contract_covers_dialogue_world_and_vfx_without_bgm(self):
         text = self.read(AUDIO)
 
@@ -76,6 +81,17 @@ class Seedance25XianxiaSkillContractTests(unittest.TestCase):
         self.assertNotIn("**Seedance执行提示补充**", generator)
         self.assertIn("不能替代动态语义链", vfx)
         self.assertIn("来源、形态、路径、作用对象、反馈、收束和声音", generator)
+        self.assertIn("不预设运镜、景别", generator)
+        self.assertNotIn("先用稳定中景或中远景重建", generator)
+        self.assertNotIn("主体尺度偏动漫叙事的中景与中近景", self.read(PROFILE_DIR / "references" / "visual-presets.md"))
+
+    def test_timing_is_natural_capacity_not_fixed_duration_bins(self):
+        generator = self.read(GENERATOR)
+
+        self.assertIn("4–30 秒只是模型合同范围，不是每组要命中的时长档位", generator)
+        self.assertIn("景别和镜头运动均按信息量自主选择", generator)
+        self.assertNotIn("4–7 秒：独立反应", generator)
+        self.assertNotIn("新场景建立通常 2 秒", generator)
 
     def test_reviewer_requires_real_script_comparison_vfx_provenance_and_audio(self):
         text = self.read(REVIEWER)
