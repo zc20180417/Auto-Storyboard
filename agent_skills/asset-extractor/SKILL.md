@@ -12,11 +12,14 @@ description: Extract scene, character, costume, and prop asset tables from a fin
 ## 输入
 
 - 单集分镜 `final.txt`
+- 同集 `storyboard_index.json`；当它包含 `workflow_identity` 时，这是 profile、preset、project pack 与实际加载规则的唯一分镜阶段身份快照
 - 推荐：当前 run 的全局资产设定 `asset_bible.md`
 - 可选：角色设定表、前集资产表、项目风格说明
 - 可选：当前 run 的视觉风格；如果 `manifest.json`、`context.md`、`TASK.md` 或用户说明中出现 `visual_style=3d-cg` / `Visual style: 3d-cg`，必须读取 `agent_skills/3d-cg-visual-style/SKILL.md`，并按 3D CG 资产口径写提示词。
 
 多集项目必须先建立 run 级 `asset_bible.md`，再跑分集资产抽取；单集项目可以没有 `asset_bible.md`。如果存在 `asset_bible.md`，人物、服装、核心场景和关键道具必须优先沿用其中设定；本集资产表只补充本集新增状态，不要改写全局设定。
+
+如果 `workflow_identity.project_pack_id=dandao-xiantu`，`asset_bible.md` 对元鼎只能登记稳定 `asset_id` / `state_id`，并引用 `yuanding-visual-bible.md` 的路径、project pack version、`project_pack_sha256` 和该事实文件在 `workflow_audit.files[]` 中的 SHA-256；不得复制鼎足、鼎耳、材质分区、尺度和状态规则形成第二份权威定义。
 
 如果是单集项目且没有角色设定表或 `asset_bible.md`，可以为主要人物补全可复用的全身装造和适度细节特征，但必须克制、稳定、符合分镜和题材常识；不要编造过度唯一化的脸谱。允许写“方脸、浓眉、短发、肩背宽厚、旧工装外套”等可控特征；避免无依据写“异色瞳、极罕见胎记、明星脸”等强设定。
 
@@ -101,6 +104,8 @@ node .\agent_skills\asset-extractor\scripts\extract-flat-storyboard-assets.mjs <
 Markdown 正文不输出 JSON，不输出代码块。
 
 `asset_bindings.json` 只表达逻辑资产与静态参考图职责，不记录本地文件、授权确认、Ark `assetId` 或 Ark 状态，也不能单独证明 Seedance 2.5 已具备真实多模态输入。对于 `seedance-2.5-live-vertical`，资产审核和机械校验通过后，再由确定性命令将它编译成 `seedance_material_requirements.json` 与 `seedance_local_materials.json`；不要由 asset worker 手写这两份文件。
+
+当 `storyboard_index.json` 为 schema v2 时，`assets-md-to-xlsx.mjs` 会把完整 `workflow_identity` 复制到 `asset_bindings.json` 和已有的 `asset_status.json`，并确定性生成 `asset_evidence`。`asset_evidence` 绑定当前 `final.txt`、`storyboard_index.json`、`assets.md`，以及 asset extractor、asset reviewer、转换器和机械 validator 的版本/hash。worker 不得手写、删减或重算这些 hash；转换后必须运行 validator。旧 index 没有 `workflow_identity` 时继续使用原结构，不伪造 v2 身份。
 所有资产表的提示词必须拆成四列：`静态生图提示词(中文)`、`负面提示词(中文)`、`静态生图提示词(英文)`、`负面提示词(英文)`。中文、英文内容要一致，但分别符合各自语言习惯。不要强制把负面词内联为 `--neg`；如果目标生产界面支持 `--neg`，可以在交付说明中说明可内联，否则负面词必须作为独立负面提示词字段使用。
 提示词生成时应直接完成优化，不保留“待优化”“粗稿”“占位提示词”。
 
@@ -325,7 +330,7 @@ Markdown 正文不输出 JSON，不输出代码块。
 - 关键人物、关键道具、关键服装状态应绑定到实际出现的 `cut_id`；普通背景杂物不需要绑定。
 - 如果基础资产无状态，`state_id` 写 `BASE`。
 - `use_for_video=yes` 的绑定必须指向可作为参考图或参考状态生成的资产，不要绑定“不建议入库元素”或纯文字说明。
-- 同步写出 `asset_bindings.json`，结构如下：
+- 第六表由转换器同步写出 `asset_bindings.json`；以下只展示逻辑绑定字段，v2 index 的 `workflow_identity` 和 `asset_evidence` 由转换器追加：
 
 ```json
 {
@@ -399,6 +404,8 @@ node .\agent_skills\asset-extractor\scripts\assets-md-to-xlsx.mjs <assets.md> <a
 
 episode 模式会从第六张表同步导出同目录 `asset_bindings.json`；如需指定路径，可追加 `--asset-bindings=<asset_bindings.json>`。
 
+如果 index 不在同目录，可追加 `--storyboard-index=<storyboard_index.json>`。schema v2 转换前，同目录必须已有当前 `final.txt`、`storyboard_index.json` 和已完成 reviewer 状态的 `asset_status.json`；转换器会刷新 bindings/status 的身份与证据，随后 validator 检查它们是否一致且未过期。
+
 全局资产库使用 registry 模式转换：
 
 ```powershell
@@ -431,7 +438,9 @@ python .\storyboard_agent_workspace.py export-seedance-material-requirements --e
   "reviewer_issues_count": 0,
   "reviewer_warnings_count": 0,
   "hard_issues_remaining": [],
-  "bible_update_candidates": []
+  "bible_update_candidates": [],
+  "workflow_identity": "由转换器复制 storyboard_index.workflow_identity",
+  "asset_evidence": "由转换器生成并与 asset_bindings.json 保持完全一致"
 }
 ```
 

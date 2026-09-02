@@ -23,10 +23,13 @@ dispatcher 必须创建 subagents/workers 并发分发，每个 worker 默认处
 2. `README_AGENT_WORKFLOW.md`
 3. 默认竖屏：`agent_skills/storyboard-generator/SKILL.md`
 4. 默认竖屏：`agent_skills/storyboard-reviewer/SKILL.md`
-5. 如果当前 run 的 `TASK.md` / `context.md` 标记 `Aspect: horizontal` 或 `storyboard_aspect=horizontal`，改读 `agent_skills/storyboard-horizontal-generator/SKILL.md` 和 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`，不要把横屏任务交给竖屏 skill。
+5. 如果当前 run 的 `TASK.md` / `context.md` 标记 `Aspect: horizontal` 或 `storyboard_aspect=horizontal`，且没有标记 `video_profile=seedance-2.5-horizontal-xianxia-3d-cg`，改读 `agent_skills/storyboard-horizontal-generator/SKILL.md` 和 `agent_skills/storyboard-horizontal-reviewer/SKILL.md`，不要把横屏任务交给竖屏 skill。新 Seedance 2.5 横屏仙侠 profile 改按第 7 项读取专属 skill，不能同时加载带旧时长合同的通用横屏 skill。
 6. 如果当前 run 标记 `Video profile: seedance-2.5-live-vertical` 或 `video_profile=seedance-2.5-live-vertical`，改读 `agent_skills/seedance-2-5-live-vertical-generator/SKILL.md`、`agent_skills/seedance-2-5-live-vertical-reviewer/SKILL.md` 和 `agent_skills/seedance-2-5-live-vertical/SKILL.md`；该 profile 只允许 `vertical` + `live-action` + `multimodal_generation`，真实调用至少绑定 1 项图片/视频/音频素材，禁止纯文本、参考生成、首尾帧/关键帧、编辑、延长/续写和轨道补全；不要再套用 2.0 的 6-15 秒、0.5 秒时间轴或固定大包 `--neg`。
-7. 其他 run 读取 `agent_skills/seedance-prompt-profile/SKILL.md`（Seedance 2.0 官方模板风格摘要，只做参考层，不得复制模板正文）。
-8. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`
+7. 如果当前 run 标记 `Video profile: seedance-2.5-horizontal-xianxia-3d-cg` 或 `video_profile=seedance-2.5-horizontal-xianxia-3d-cg`，改读 `agent_skills/seedance-2-5-horizontal-xianxia-3d-cg-generator/SKILL.md`、`agent_skills/seedance-2-5-horizontal-xianxia-3d-cg-reviewer/SKILL.md`、`agent_skills/seedance-2-5-horizontal-xianxia-3d-cg/SKILL.md` 及其 `references/`；显式启用 project pack 时还必须读 pack 的 `SKILL.md` 与其引用的事实源。该 profile 固定 `horizontal + 3d-cg`、`16:9`、720p、4-30 秒整数时长、原生音频和 reference-only provider 映射，首期只允许 `single`；不得回退到通用横屏 6-15 秒规则，也不得把离线 fixture 当成真实视频证据。
+8. 其他 run 读取 `agent_skills/seedance-prompt-profile/SKILL.md`（Seedance 2.0 官方模板风格摘要，只做参考层，不得复制模板正文）。
+9. 如需从分镜生成生图资产表，再读 `agent_skills/asset-extractor/SKILL.md` 和 `agent_skills/asset-reviewer/SKILL.md`
+10. 如需执行三类真实探针，再读 `docs/seedance25-real-probe-protocol.md`、`tests/fixtures/seedance25/probe-evidence/protocol-contract-v1.json` 和 `tests/fixtures/seedance25/probe-evidence/qa-rubric-v1.json`；这些是证据/审核合同，不授权真实付费提交。
+11. 三类探针先逐集运行 `workflow-status --episode-dir <episode-dir>`，再运行 `workflow-status --run-dir <run-dir>` 生成唯一 run/probe 汇总；缺可信 ManJuWeb verifier 时 run 命令返回 blocked 是正确结果，不得用本地 `lambda True` 或手写 run 文件解除门禁。
 
 ## 两种生产模式
 
@@ -151,7 +154,7 @@ worker 启动时必须完整读取当前 run 指定的两份标准 skill 和 pro
 
 普通空间 / 环境交代镜头通常 2 秒；只有原剧本明确存在连续动作时才可到 3 秒。不能用 3 秒环境镜头批量凑组时长。
 
-视频执行稳定性同样是质量底线：单个时间段默认只承载一个主动作目标；同一主体、同一空间、同一目标且顺序和结果清楚的紧凑动作链可在 2-3 秒完成，不按动词数量机械拆段。只有多个主体/目标争抢画面、关键状态不清、明显跨位移、重物搬运、多人协同或精细操作时，才按真实需求拆段或加时。保护型动作必须写清挡在谁前面；非主动作人物不能抢戏；关键道具要写清归属、位置和状态变化。外部事件进入（车辆抵达、门打开、人员下车、群众反应、主角对峙等）要按必要阶段拆开。高冲击打断（喝止、闯入、身份揭露、证据亮出等）后，先稳定打断/反应，再处理放下道具、跨位移、保护站位、团圆确认等归位动作；不能把这些压成一个短组。每个镜头都可以合理运镜，也可以固定机位，不设数量指标；运镜必须写清动机、主体、路径和落点，并与人物动作、竖屏构图和连续性兼容。复杂动作、保护站位或关键道具组可在 `final.txt` 写 `视频禁止项：...`，每组只写 2-5 个具体剧情错误，且每条必须锚定本组人物名、关键道具名、场景名，或本集全文已出现的人物/道具；收集阶段会并入该组 `--neg`。视频禁止项的少量全局模板词、上下文锚点停用词和数量限制由 `agent_skills/storyboard-quality-policy.json` 管理，不要为单个剧硬编码独立词表。
+视频执行稳定性同样是质量底线：单个时间段默认只承载一个主动作目标；同一主体、同一空间、同一目标且顺序和结果清楚的紧凑动作链可在 2-3 秒完成，不按动词数量机械拆段。只有多个主体/目标争抢画面、关键状态不清、明显跨位移、重物搬运、多人协同或精细操作时，才按真实需求拆段或加时。保护型动作必须写清挡在谁前面；非主动作人物不能抢戏；关键道具要写清归属、位置和状态变化。外部事件进入（车辆抵达、门打开、人员下车、群众反应、主角对峙等）要按必要阶段拆开。高冲击打断（喝止、闯入、身份揭露、证据亮出等）后，先稳定打断/反应，再处理放下道具、跨位移、保护站位、团圆确认等归位动作；不能把这些压成一个短组。普通竖屏/横屏规则下，每个镜头都可以合理运镜，也可以固定机位，不设数量指标；需要预写镜头运动时再写清动机、主体、路径和落点，并与人物动作、构图和连续性兼容。`seedance-2.5-horizontal-xianxia-3d-cg` 是例外：Seedance 2.5 可根据主体、动作、构图、空间关系和节奏自行选择运镜，不因没有显式运镜词判错，只有剧情、轴线、复杂位移或连续性确实需要锁定时才补充最少约束。复杂动作、保护站位或关键道具组可在 `final.txt` 写 `视频禁止项：...`，每组只写 2-5 个具体剧情错误，且每条必须锚定本组人物名、关键道具名、场景名，或本集全文已出现的人物/道具；收集阶段会并入该组 `--neg`。视频禁止项的少量全局模板词、上下文锚点停用词和数量限制由 `agent_skills/storyboard-quality-policy.json` 管理，不要为单个剧硬编码独立词表。
 
 ## 校验与收集
 

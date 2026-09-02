@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "official-documentation-contract-snapshot",
+  "observed_at": "2026-09-01",
+  "provider": {
+    "name": "Volcengine Ark",
+    "region": "cn-beijing",
+    "model_id": "doubao-seedance-2-5-260628",
+    "create_endpoint": "https://ark.cn-beijing.volces.com/api/v3/contents/generations/tasks",
+    "lifecycle_observation": "no_sunset_notice_found_as_of_observed_at"
+  },
+  "sources": [
+    {
+      "url": "https://docs.volcengine.com/docs/82379/2607688",
+      "purpose": "Seedance 2.5 tutorial and model capability"
+    },
+    {
+      "url": "https://docs.volcengine.com/docs/82379/1520757",
+      "purpose": "video generation create-task API"
+    },
+    {
+      "url": "https://docs.volcengine.com/docs/82379/2298881",
+      "purpose": "video generation guide and output behavior"
+    },
+    {
+      "url": "https://docs.volcengine.com/docs/82379/2637911",
+      "purpose": "model activation and lifecycle guidance"
+    }
+  ],
+  "official_capability": {
+    "ratios": ["16:9", "9:16", "1:1", "4:3", "3:4", "21:9"],
+    "resolutions": ["480p", "720p", "1080p"],
+    "resolution_pixels": {
+      "16:9": {
+        "720p": [1280, 720]
+      }
+    },
+    "duration_seconds": {
+      "minimum": 4,
+      "maximum": 30,
+      "auto": -1
+    },
+    "generate_audio": true,
+    "output_fps": 24,
+    "reference_roles": ["reference_image", "reference_video", "reference_audio"],
+    "material_limits": {
+      "image": 30,
+      "video": 10,
+      "audio": 10,
+      "total": 50
+    }
+  },
+  "product_profile": {
+    "profile_id": "seedance-2.5-horizontal-xianxia-3d-cg",
+    "ratio": "16:9",
+    "resolution": "720p",
+    "enabled_resolutions": ["720p"],
+    "duration_seconds": {
+      "minimum": 4,
+      "maximum": 30,
+      "integer_only": true
+    },
+    "allow_auto_duration": false,
+    "generate_audio": true,
+    "expected_output_fps": 24,
+    "minimum_reference_inputs": 1,
+    "task_mapping": {
+      "internal_task": "multimodal_generation",
+      "provider_field": "omni_reference_task_type",
+      "provider_value": "reference",
+      "required_reference_roles": ["reference_image", "reference_video", "reference_audio"]
+    },
+    "forbidden_create_fields": ["fps", "video_task_type"],
+    "forbidden_local_paths": [
+      "text_only_generation",
+      "first_last_frame_generation",
+      "keyframe_generation",
+      "video_edit",
+      "video_extend",
+      "track_completion"
+    ]
+  },
+  "fixture_security": {
+    "classification": "public-redacted-contract-snapshot",
+    "replayable": false,
+    "raw_capture_in_repository": false,
+    "contains_real_account_identifiers": false,
+    "contains_real_material_identifiers": false,
+    "contains_temporary_result_urls": false,
+    "excluded_runtime_fields": [
+      "Authorization header",
+      "cookies",
+      "query signing parameters",
+      "temporary result URLs",
+      "internal host names",
+      "real account IDs",
+      "real material IDs"
+    ]
+  }
+}

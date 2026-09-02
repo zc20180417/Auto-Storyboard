@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "extraction_contract_version": 1,
+  "extracted_at": "2026-09-01T00:00:00+08:00",
+  "source": {
+    "logical_name": "丹道仙途剧本全集.txt",
+    "sha256": "7dc05d7edd73e3ca603cf260d44ddb4c415b188bbef57a5d7c8c793f762bc5a3",
+    "line_count": 11182
+  },
+  "episodes": [
+    {
+      "episode_id": "EP003",
+      "fixture": "ep003.txt",
+      "title_heading": "第003集《废丹回春》",
+      "start_line": 87,
+      "end_line": 133,
+      "next_episode_heading_line": 135,
+      "line_count": 47,
+      "byte_count": 4193,
+      "sha256": "af1800d932d26f48d440ade22adb382cc014705234da84bf28f28f52c9fb1c3f",
+      "target_scene": "场3-3",
+      "probe_category": "failed-alchemy-rewind",
+      "observable_scope": "失败结果稳定、银光从鼎内触发、焦渣与药液逆过程、药材复原、银光收束"
+    },
+    {
+      "episode_id": "EP005",
+      "fixture": "ep005.txt",
+      "title_heading": "第005集《丹鼎坊》",
+      "start_line": 181,
+      "end_line": 225,
+      "next_episode_heading_line": 227,
+      "line_count": 45,
+      "byte_count": 3953,
+      "sha256": "d446e9869f8591b449607375ec4e0754647dc5241153ec283ba5f34df0dc5c7a",
+      "target_scene": "场5-5",
+      "probe_category": "ordinary-alchemy",
+      "observable_scope": "元鼎工作态、投药与山泉顺序、贴鼎灵火、禁制、药液由清转浊"
+    },
+    {
+      "episode_id": "EP028",
+      "fixture": "ep028.txt",
+      "title_heading": "第028集《练气中期》",
+      "start_line": 1148,
+      "end_line": 1181,
+      "next_episode_heading_line": 1183,
+      "line_count": 34,
+      "byte_count": 3090,
+      "sha256": "8bf7c3f294925f3f5c0289e358dbbcc38dd43e27c47cb54d968180df336bedf6",
+      "target_scene": "场28-2",
+      "probe_category": "yuanding-ability-reveal",
+      "observable_scope": "鼎纹逐段点亮、下品到中品、银光增强但限于鼎内、范围不扩张"
+    }
+  ]
+}

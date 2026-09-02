@@ -302,16 +302,21 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn("无来源大光球", topic_packs)
         self.assertIn("法阵文字", topic_packs)
 
-    def test_horizontal_3d_cg_fixed_style_tail_stays_generic(self):
+    def test_horizontal_3d_cg_fixed_style_tail_and_seedance_profile_guidance(self):
         generator = HORIZONTAL_GENERATOR_SKILL.read_text(encoding="utf-8")
         script = WORKSPACE_SCRIPT.read_text(encoding="utf-8")
         start = generator.index("**画面风格**：按当前 run 的视觉风格填写。")
         end = generator.index("**运镜强化词**", start)
         style_contract = generator[start:end]
 
+        # The generic horizontal skill keeps its legacy visual-peak fields;
+        # the Seedance 2.5 xianxia profile is routed through a separate
+        # timeline-only contract in the workspace task prompt.
         self.assertIn("按本组 `视觉峰值/特效重点` 使用剧情服务型动漫 CG 特效", style_contract)
         self.assertIn("特效必须绑定动作、道具、身份、权力、环境、心理或信息落点", style_contract)
-        self.assertIn("按本组视觉峰值/特效重点使用剧情服务型动漫 CG 特效", script)
+        self.assertIn("关键视觉事件必须直接进入实际时间轴", script)
+        self.assertIn("不设独立峰值字段", script)
+        self.assertIn("不要写 `**一句话概述**`、`**视觉峰值/特效重点**`", script)
         for forbidden in ("动作服务型大片特效", "冷冽刀光", "气流压迫", "碎石悬浮", "贴地冲击尘浪", "金属裂纹冷光"):
             self.assertNotIn(forbidden, style_contract)
         self.assertIn("**视觉峰值/特效重点**", generator)

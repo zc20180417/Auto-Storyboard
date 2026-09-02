@@ -19,9 +19,11 @@ param(
     [string]$Aspect = "vertical",
     [ValidateSet("live-action", "3d-cg")]
     [string]$VisualStyle = "live-action",
-    [ValidateSet("seedance-2.0", "seedance-2.5-live-vertical")]
+    [ValidateSet("seedance-2.0", "seedance-2.5-live-vertical", "seedance-2.5-horizontal-xianxia-3d-cg")]
     [string]$VideoProfile = "seedance-2.0",
     [string]$VideoResolution = "",
+    [string]$VisualStylePreset = "",
+    [string]$ProjectPackId = "",
     [switch]$Force
 )
 
@@ -63,6 +65,14 @@ if ($VideoResolution) {
     $cmdArgs += @("--video-resolution", $VideoResolution)
 }
 
+if ($VisualStylePreset) {
+    $cmdArgs += @("--visual-style-preset", $VisualStylePreset)
+}
+
+if ($ProjectPackId) {
+    $cmdArgs += @("--project-pack-id", $ProjectPackId)
+}
+
 if ($RunName) {
     $cmdArgs += @("--run-name", $RunName)
 }
@@ -82,11 +92,22 @@ Write-Host "[prepare-agent] video profile=$VideoProfile"
 if ($VideoResolution) {
     Write-Host "[prepare-agent] video resolution=$VideoResolution"
 }
+if ($VisualStylePreset) {
+    Write-Host "[prepare-agent] visual style preset=$VisualStylePreset"
+}
+if ($ProjectPackId) {
+    Write-Host "[prepare-agent] project pack=$ProjectPackId"
+}
 Write-Host "[prepare-agent] source=$Source"
 if ($Prompt -and $AllowPromptOverride) {
     Write-Host "[prepare-agent] prompt override=$Prompt"
 } else {
-    if ($VideoProfile -eq "seedance-2.5-live-vertical") {
+    if ($VideoProfile -eq "seedance-2.5-horizontal-xianxia-3d-cg") {
+        Write-Host "[prepare-agent] video task=multimodal_generation (provider reference mapping; actual image/video/audio required)"
+        Write-Host "[prepare-agent] generation skill=agent_skills/seedance-2-5-horizontal-xianxia-3d-cg-generator/SKILL.md"
+        Write-Host "[prepare-agent] review skill=agent_skills/seedance-2-5-horizontal-xianxia-3d-cg-reviewer/SKILL.md"
+        Write-Host "[prepare-agent] profile skill=agent_skills/seedance-2-5-horizontal-xianxia-3d-cg/SKILL.md"
+    } elseif ($VideoProfile -eq "seedance-2.5-live-vertical") {
         Write-Host "[prepare-agent] video task=multimodal_generation (only; actual image/video/audio required)"
         Write-Host "[prepare-agent] generation skill=agent_skills/seedance-2-5-live-vertical-generator/SKILL.md"
         Write-Host "[prepare-agent] review skill=agent_skills/seedance-2-5-live-vertical-reviewer/SKILL.md"

@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { createHash } from "node:crypto";
+import { fileURLToPath } from "node:url";
 
 const [episodeDirArg, ...optionArgs] = process.argv.slice(2);
 const options = Object.fromEntries(
@@ -18,6 +19,7 @@ if (!episodeDirArg) {
 }
 
 const episodeDir = path.resolve(episodeDirArg);
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const requiredFiles = {
   final: path.join(episodeDir, "final.txt"),
   assets: path.join(episodeDir, "assets.md"),
@@ -28,7 +30,9 @@ const requiredFiles = {
     : path.join(episodeDir, "storyboard_index.json"),
   review: path.join(episodeDir, "asset_review.json"),
   status: path.join(episodeDir, "asset_status.json"),
+  episode: path.join(episodeDir, "episode.json"),
 };
+const validationResultPath = path.join(episodeDir, "asset_validation.json");
 const handoffFiles = {
   requirements: path.join(episodeDir, "seedance_material_requirements.json"),
   localMaterials: path.join(episodeDir, "seedance_local_materials.json"),
@@ -188,6 +192,25 @@ async function readJson(filePath, label) {
 async function sha256File(filePath) {
   const content = await fs.readFile(filePath);
   return createHash("sha256").update(content).digest("hex");
+}
+
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map((item) => canonicalJson(item)).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`)
+      .join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function sameJson(left, right) {
+  return canonicalJson(left) === canonicalJson(right);
+}
+
+async function sha256CanonicalJson(payload) {
+  return createHash("sha256").update(canonicalJson(payload), "utf8").digest("hex");
 }
 
 function parseMarkdownRow(row) {
@@ -419,6 +442,159 @@ function validateAssetBindingsJson(bindingsPayload) {
   }
 }
 
+async function validateWorkflowIdentityAndAssetEvidence(bindingsPayload, statusPayload) {
+  const indexIdentity = storyboardIndex?.workflow_identity;
+  if (!indexIdentity) return;
+
+  if (storyboardIndex.schema_version !== 2) {
+    errors.push("storyboard_index.json with workflow_identity must use schema_version=2");
+  }
+  const identityWithoutHash = { ...indexIdentity };
+  delete identityWithoutHash.resolved_workflow_hash;
+  if (indexIdentity.resolved_workflow_hash !== (await sha256CanonicalJson(identityWithoutHash))) {
+    errors.push("storyboard_index.json resolved_workflow_hash is stale or invalid");
+  }
+  if (indexIdentity.workflow_audit?.schema_version !== 1) {
+    errors.push("storyboard_index.json workflow_audit.schema_version must be 1");
+  }
+  const workflowAuditFiles = Array.isArray(indexIdentity.workflow_audit?.files)
+    ? indexIdentity.workflow_audit.files
+    : [];
+  if (workflowAuditFiles.length === 0) {
+    errors.push("storyboard_index.json workflow_audit.files must not be empty");
+  }
+  for (const [index, file] of workflowAuditFiles.entries()) {
+    if (!file?.role || !file?.path || !file?.sha256) {
+      errors.push(`storyboard_index.json workflow_audit.files[${index}] is incomplete`);
+      continue;
+    }
+    if (path.isAbsolute(file.path) || file.path.split(/[\\/]/).includes("..")) {
+      errors.push(`storyboard_index.json workflow_audit.files[${index}].path must be project-relative`);
+      continue;
+    }
+    const currentPath = path.join(projectRoot, file.path);
+    if (!(await exists(currentPath))) {
+      errors.push(`storyboard workflow audit file missing: ${file.path}`);
+      continue;
+    }
+    if (file.sha256 !== (await sha256File(currentPath))) {
+      errors.push(`storyboard workflow identity is stale for ${file.role}`);
+    }
+  }
+
+  if (await exists(requiredFiles.episode)) {
+    const episode = await readJson(requiredFiles.episode, "episode.json");
+    const identityFields = [
+      "video_profile",
+      "video_profile_contract_version",
+      "provider_contract_version",
+      "storyboard_aspect",
+      "visual_style",
+      "visual_style_preset",
+      "visual_style_preset_version",
+      "visual_style_preset_sha256",
+      "project_pack_id",
+      "project_pack_version",
+      "project_pack_sha256",
+      "generator_skill_name",
+      "reviewer_skill_name",
+    ];
+    for (const field of identityFields) {
+      if ((episode?.[field] ?? null) !== (indexIdentity[field] ?? null)) {
+        errors.push(`episode.json ${field} does not match storyboard workflow_identity`);
+      }
+    }
+  }
+  if (!bindingsPayload?.workflow_identity) {
+    errors.push("asset_bindings.json missing workflow_identity required by storyboard_index v2");
+  } else if (!sameJson(bindingsPayload.workflow_identity, indexIdentity)) {
+    errors.push("asset_bindings.json workflow_identity does not match storyboard_index.json");
+  }
+  if (!statusPayload?.workflow_identity) {
+    errors.push("asset_status.json missing workflow_identity required by storyboard_index v2");
+  } else if (!sameJson(statusPayload.workflow_identity, indexIdentity)) {
+    errors.push("asset_status.json workflow_identity does not match storyboard_index.json");
+  }
+
+  const bindingEvidence = bindingsPayload?.asset_evidence;
+  const statusEvidence = statusPayload?.asset_evidence;
+  if (!bindingEvidence) {
+    errors.push("asset_bindings.json missing asset_evidence required by storyboard_index v2");
+    return;
+  }
+  if (!statusEvidence) {
+    errors.push("asset_status.json missing asset_evidence required by storyboard_index v2");
+    return;
+  }
+  if (!sameJson(bindingEvidence, statusEvidence)) {
+    errors.push("asset_status.json asset_evidence does not match asset_bindings.json");
+  }
+  if (bindingEvidence.asset_evidence_schema_version !== 1) {
+    errors.push("asset_evidence.asset_evidence_schema_version must be 1");
+  }
+  if (bindingEvidence.asset_contract_version !== 2) {
+    errors.push("asset_evidence.asset_contract_version must be 2");
+  }
+
+  const evidenceWithoutHash = { ...bindingEvidence };
+  delete evidenceWithoutHash.asset_evidence_hash;
+  const expectedEvidenceHash = await sha256CanonicalJson(evidenceWithoutHash);
+  if (bindingEvidence.asset_evidence_hash !== expectedEvidenceHash) {
+    errors.push("asset_evidence_hash is stale or invalid");
+  }
+
+  const currentSourceHashes = {
+    final_txt_sha256: await sha256File(requiredFiles.final),
+    storyboard_index_sha256: await sha256File(requiredFiles.storyboardIndex),
+    assets_md_sha256: await sha256File(requiredFiles.assets),
+  };
+  if (bindingEvidence.source_hashes?.asset_bible_sha256) {
+    const assetBiblePath = path.resolve(episodeDir, "../..", "asset_bible.md");
+    if (!(await exists(assetBiblePath))) {
+      errors.push("asset_evidence is stale: referenced asset_bible.md is missing");
+    } else if (bindingEvidence.source_hashes.asset_bible_sha256 !== (await sha256File(assetBiblePath))) {
+      errors.push("asset_evidence is stale for asset_bible");
+    }
+  }
+  for (const [field, currentHash] of Object.entries(currentSourceHashes)) {
+    if (bindingEvidence.source_hashes?.[field] !== currentHash) {
+      errors.push(`asset_evidence is stale for ${field.replace("_sha256", "")}`);
+    }
+  }
+  if (storyboardIndex.source_hashes?.final_txt_sha256 !== currentSourceHashes.final_txt_sha256) {
+    errors.push("storyboard_index.json is stale for current final.txt; re-export the storyboard index");
+  }
+
+  const requiredProducerFiles = new Map([
+    ["asset_extractor_skill", "agent_skills/asset-extractor/SKILL.md"],
+    ["asset_reviewer_skill", "agent_skills/asset-reviewer/SKILL.md"],
+    ["asset_converter", "agent_skills/asset-extractor/scripts/assets-md-to-xlsx.mjs"],
+    ["asset_validator", "agent_skills/asset-extractor/scripts/validate-assets.mjs"],
+  ]);
+  const producerFiles = Array.isArray(bindingEvidence.producer_files)
+    ? bindingEvidence.producer_files
+    : [];
+  for (const [role, expectedPath] of requiredProducerFiles) {
+    const producer = producerFiles.find((item) => item?.role === role);
+    if (!producer) {
+      errors.push(`asset_evidence producer_files missing role: ${role}`);
+      continue;
+    }
+    if (producer.path !== expectedPath) {
+      errors.push(`asset_evidence producer ${role} path mismatch: ${producer.path || "<empty>"}`);
+      continue;
+    }
+    const producerPath = path.join(projectRoot, expectedPath);
+    if (!(await exists(producerPath))) {
+      errors.push(`asset evidence producer file missing: ${expectedPath}`);
+      continue;
+    }
+    if (producer.sha256 !== (await sha256File(producerPath))) {
+      errors.push(`asset evidence producer is stale: ${role}`);
+    }
+  }
+}
+
 async function validateSeedanceHandoffContracts() {
   const hasRequirements = await exists(handoffFiles.requirements);
   const hasLocalMaterials = await exists(handoffFiles.localMaterials);
@@ -445,17 +621,30 @@ async function validateSeedanceHandoffContracts() {
     return;
   }
 
-  if (requirements.schema_version !== 1) {
-    errors.push("seedance_material_requirements.json schema_version must be 1");
-  }
-  if (requirements.profile !== "seedance-2.5-live-vertical") {
-    errors.push("seedance_material_requirements.json profile must be seedance-2.5-live-vertical");
+  const supportedHandoffProfiles = new Map([
+    ["seedance-2.5-live-vertical", 1],
+    ["seedance-2.5-horizontal-xianxia-3d-cg", 2],
+  ]);
+  const expectedSchema = supportedHandoffProfiles.get(requirements.profile);
+  if (!expectedSchema) {
+    errors.push("seedance_material_requirements.json has an unsupported profile");
+  } else if (requirements.schema_version !== expectedSchema) {
+    errors.push(`seedance_material_requirements.json schema_version must be ${expectedSchema} for ${requirements.profile}`);
   }
   if (requirements.episode_id !== storyboardIndex?.episode_id) {
     errors.push("seedance_material_requirements.json episode_id must match storyboard_index.json");
   }
-  if (localMaterials.schema_version !== 1) {
-    errors.push("seedance_local_materials.json schema_version must be 1");
+  if (expectedSchema && localMaterials.schema_version !== expectedSchema) {
+    errors.push(`seedance_local_materials.json schema_version must be ${expectedSchema}`);
+  }
+  if (expectedSchema === 2 && localMaterials.profile !== requirements.profile) {
+    errors.push("seedance_local_materials.json profile must match material requirements");
+  }
+  if (expectedSchema === 2 && !storyboardIndex?.workflow_identity) {
+    errors.push("horizontal xianxia material handoff requires storyboard workflow_identity");
+  }
+  if (expectedSchema === 2 && requirements.workflow_identity?.resolved_workflow_hash !== storyboardIndex?.workflow_identity?.resolved_workflow_hash) {
+    errors.push("seedance_material_requirements.json workflow_identity must match storyboard_index.json");
   }
   if (
     localMaterials.project !== requirements.project ||
@@ -545,6 +734,13 @@ function validateReview(review) {
       errors.push(`asset_review.audit_coverage.${key} must be "checked"`);
     }
   }
+  if (storyboardIndex?.workflow_identity) {
+    for (const key of ["visual_style_consistency", "workflow_identity_consistency"]) {
+      if (review.audit_coverage?.[key] !== "checked") {
+        errors.push(`asset_review.audit_coverage.${key} must be "checked" for storyboard index v2`);
+      }
+    }
+  }
 
   if (!Array.isArray(review.spot_checks) || review.spot_checks.length < 3) {
     errors.push("asset_review.spot_checks must contain at least 3 entries");
@@ -603,6 +799,7 @@ async function validateWorkbookFreshness() {
 }
 
 for (const [label, filePath] of Object.entries(requiredFiles)) {
+  if (label === "episode") continue;
   if (!(await exists(filePath))) errors.push(`Missing ${label}: ${filePath}`);
 }
 
@@ -628,13 +825,48 @@ if (await exists(requiredFiles.bindings)) bindings = await readJson(requiredFile
 validateReview(review);
 validateStatus(status, review);
 validateAssetBindingsJson(bindings);
+await validateWorkflowIdentityAndAssetEvidence(bindings, status);
 await validateSeedanceHandoffContracts();
 await validateWorkbookFreshness();
 
 if (errors.length > 0) {
+  const sourceHashes = {};
+  for (const [label, filePath] of Object.entries(requiredFiles)) {
+    if (label === "episode" || !(await exists(filePath))) continue;
+    sourceHashes[`${label}_sha256`] = await sha256File(filePath);
+  }
+  await fs.writeFile(
+    validationResultPath,
+    `${JSON.stringify({
+      schema_version: 1,
+      validator: "validate-assets.mjs",
+      validator_sha256: await sha256File(fileURLToPath(import.meta.url)),
+      valid: false,
+      source_hashes: sourceHashes,
+      issues: errors,
+    }, null, 2)}\n`,
+    "utf8",
+  );
   console.error(`Asset validation failed for ${episodeDir}`);
   for (const error of errors) console.error(`- ${error}`);
   process.exit(1);
 }
 
+const sourceHashes = {};
+for (const [label, filePath] of Object.entries(requiredFiles)) {
+  if (label === "episode" || !(await exists(filePath))) continue;
+  sourceHashes[`${label}_sha256`] = await sha256File(filePath);
+}
+await fs.writeFile(
+  validationResultPath,
+  `${JSON.stringify({
+    schema_version: 1,
+    validator: "validate-assets.mjs",
+    validator_sha256: await sha256File(fileURLToPath(import.meta.url)),
+    valid: true,
+    source_hashes: sourceHashes,
+    issues: [],
+  }, null, 2)}\n`,
+  "utf8",
+);
 console.log(`Asset validation passed for ${episodeDir}`);

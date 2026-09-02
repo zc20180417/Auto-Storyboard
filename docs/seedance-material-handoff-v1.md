@@ -1,5 +1,7 @@
 # Seedance 2.5 素材交接合同 v1
 
+> 历史兼容边界：本文件只定义 `seedance-2.5-live-vertical` 的 v1、9:16、`referenceImageSlots` 消费合同。横屏仙侠 profile 不使用本 schema；它使用 [Seedance 2.5 素材交接合同 v2](seedance-material-handoff-v2.md)。不得为了共享代码改变 v1 的字段名、请求形状或 9:16 行为。
+
 本合同连接 Auto-Storyboard 与 ManJuWeb，但不让两个仓库共同维护 Ark 状态。
 
 ## 职责边界

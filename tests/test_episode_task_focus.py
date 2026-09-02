@@ -75,6 +75,46 @@ class EpisodeTaskFocusTests(unittest.TestCase):
         self.assertNotIn("灵药/玄铁/真气/罡气/剑气题材的强节拍", task)
         self.assertNotIn("真人实拍短剧质感", task)
 
+    def test_seedance25_horizontal_xianxia_task_uses_timeline_only_contract(self):
+        task = saw.make_episode_task(
+            run_dir=Path("H:/run"),
+            episode_dir=Path("H:/run/episodes/ep01"),
+            episode=saw.EpisodeInput(
+                source_path=Path("H:/scripts/ep01.txt"),
+                episode_number=1,
+                display_name="ep01",
+                series_title="测试剧",
+                script_text="第1集\n",
+            ),
+            episode_id="ep01",
+            output_name="ep01-storyboard.txt",
+            generator_skill_path=Path(
+                "H:/project/agent_skills/seedance-2-5-horizontal-xianxia-3d-cg-generator/SKILL.md"
+            ),
+            reviewer_skill_path=Path(
+                "H:/project/agent_skills/seedance-2-5-horizontal-xianxia-3d-cg-reviewer/SKILL.md"
+            ),
+            seedance_profile_path=Path(
+                "H:/project/agent_skills/seedance-2-5-horizontal-xianxia-3d-cg/SKILL.md"
+            ),
+            cg_visual_style_skill_path=Path("H:/project/agent_skills/3d-cg-visual-style/SKILL.md"),
+            visual_style="3d-cg",
+            aspect="horizontal",
+            mode="single",
+            video_profile=saw.SEEDANCE25_HORIZONTAL_XIANXIA_PROFILE,
+        )
+
+        self.assertIn("Video profile: `seedance-2.5-horizontal-xianxia-3d-cg`", task)
+        self.assertIn("4 through 30 seconds", task)
+        self.assertIn("关键视觉事件必须直接进入实际时间轴", task)
+        self.assertIn("不设独立峰值字段", task)
+        self.assertIn("不要写 `**一句话概述**`、`**视觉峰值/特效重点**`", task)
+        self.assertIn("不再使用一句话概述或重复执行字段", task)
+        self.assertNotIn("视觉峰值不只来自打斗", task)
+        self.assertNotIn("beat/hero 级视觉峰值", task)
+        self.assertNotIn("Default groups should be 10-15 seconds", task)
+        self.assertNotIn("use 0.5 seconds", task)
+
     def test_seedance25_task_uses_compact_v3_review_and_long_group_priority(self):
         task = saw.make_episode_task(
             run_dir=Path("H:/run"),

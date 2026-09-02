@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "rubric_id": "dandao-xiantu-alchemy-probe-v1",
+  "allowed_results": ["pass", "fail", "not_reviewable"],
+  "required_common_checks": [
+    "character_face_identity",
+    "yuanding_geometry_scale",
+    "material_style_stability",
+    "horizontal_action_readability",
+    "dialogue_lipsync_object",
+    "native_audio_source_peak"
+  ],
+  "required_category_checks": {
+    "ordinary-alchemy": ["alchemy_state_chain"],
+    "failed-alchemy-rewind": ["rewind_five_stage_chain", "rewind_boundary"],
+    "yuanding-ability-reveal": ["yuanding_revival_state", "ability_scope_unchanged"]
+  },
+  "required_cross_probe_checks": [
+    "fangping_face_consistency",
+    "yuanding_model_consistency",
+    "pbr_handpainted_material_consistency",
+    "restrained_outline_consistency",
+    "oriental_low_saturation_palette_consistency"
+  ]
+}

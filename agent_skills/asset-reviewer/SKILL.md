@@ -17,6 +17,7 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - 同一 episode 的 `storyboard_index.json`
 - 当前 `assets.md`
 - 当前 `asset_bindings.json`
+- 同集 `episode.json`（存在时），用于和 index 的 profile、preset、project pack、generator/reviewer 身份交叉核对
 - run 级 `asset_bible.md`，多集项目必须存在；单集项目可以没有
 - `agent_skills/asset-extractor/SKILL.md`
 - `agent_skills/optimize-image-prompts/SKILL.md`
@@ -43,6 +44,7 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - `video_reference_readiness`：`use_for_video=yes` 的绑定是否指向适合生成或复用参考图的资产/状态，而不是纯文字说明或不建议入库元素。
 - `xlsx_readiness`：六个标准表是否存在，表头是否可转换 Excel，单元格内是否误用竖线 `|` 导致错列。
 - `visual_style_consistency`：资产提示词是否符合当前 run 的视觉风格。`live-action` 不应写成 3D 模型资产；`3d-cg` 不应写成真人演员定妆照，也不应在负面词中禁止 3D/CG、动漫、二次元或卡通渲染本身；动作特效资产应是动作服务型大片特效，不应写成法阵、游戏技能 UI、满屏粒子或遮脸光效。
+- `workflow_identity_consistency`：schema v2 index 的 profile/preset/project pack 与 episode、bindings 是否同源；元鼎等项目资产是否引用项目事实源而非在 `asset_bible.md` 复制第二套定义。reviewer 只检查语义和字段一致性，不手工认定 hash 当前或机械证据有效。
 
 ## 稳定 taxonomy
 
@@ -76,6 +78,8 @@ description: Review generated storyboard asset tables against final.txt, asset_b
 - `missing_key_prop_binding`：关键道具没有绑定到出现的 cut。
 - `unnecessary_video_reference`：不适合视频参考图的资产被标为 `use_for_video=yes`。
 - `visual_style_conflict`：资产提示词与当前视觉风格冲突，例如 3D CG run 中写真人实拍定妆照，缺少动漫3D/二次元角色/清晰轮廓线/卡通渲染/动作服务型大片特效等正向媒介锚点，负面词禁止“3D渲染/CG感/动画感/卡通/动漫/二次元”，或把动作特效写成法阵、游戏技能 UI、满屏粒子、遮脸光效、特效盖住主体。
+- `workflow_identity_mismatch`：episode、index、bindings 的 profile/preset/project pack 身份不一致，或 v2 资产缺失 index 的 identity；这是 hard issue，但文件 hash 是否当前仍由机械 validator 判定。
+- `project_fact_source_duplication`：`asset_bible.md` 复制/改写元鼎等项目专属权威定义，而非只登记资产 ID/state ID 并引用事实源版本/hash。
 
 ## 判断口径
 
@@ -111,6 +115,7 @@ JSON 结构如下：
     "binding_completeness": "checked",
     "video_reference_readiness": "checked",
     "visual_style_consistency": "checked",
+    "workflow_identity_consistency": "checked",
     "xlsx_readiness": "checked"
   },
   "spot_checks": [

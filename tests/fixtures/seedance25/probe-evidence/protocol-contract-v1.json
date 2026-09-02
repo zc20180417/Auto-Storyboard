@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "profile": "seedance-2.5-horizontal-xianxia-3d-cg",
+  "project_pack_id": "dandao-xiantu",
+  "validation_scope": "dandao-xiantu/alchemy",
+  "categories": {
+    "ordinary-alchemy": {"episode_id": "EP005", "target_scene": "场5-5"},
+    "failed-alchemy-rewind": {"episode_id": "EP003", "target_scene": "场3-3"},
+    "yuanding-ability-reveal": {"episode_id": "EP028", "target_scene": "场28-2"}
+  },
+  "preflight_ttl_hours": 24,
+  "provider_contract_version": 1,
+  "manjuweb_schema_version": 2,
+  "attempt_states": [
+    "prepared",
+    "submit_blocked",
+    "submitted",
+    "provider_running",
+    "provider_failed",
+    "download_pending",
+    "mechanical_qa_failed",
+    "semantic_qa_pending",
+    "signoff_pending",
+    "accepted",
+    "rejected",
+    "stale"
+  ],
+  "promotion_owner_role": "run_owner",
+  "signer_role": "probe_signer",
+  "reviewer_role": "probe_reviewer"
+}

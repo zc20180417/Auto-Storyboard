@@ -61,6 +61,17 @@
 
 该 profile 固定目标模型 `doubao-seedance-2-5-260628`，使用 9:16、24fps、原生音频、4-30 秒整数时间轴；当前只开放 480p/720p，默认 720p。唯一视频任务是 `multimodal_generation`，真实模型调用必须至少绑定 1 项图片、视频或音频素材；分镜母版本身不等于生成就绪。纯文本、参考生成、首尾帧/关键帧、视频编辑、视频延长/续写和轨道补全全部禁用。它会切换到独立生成器、审核器和收集尾部，且不会追加旧版大包通用 `--neg`。不传 `-VideoProfile` 时仍走原有 `seedance-2.0` 默认流程。
 
+如需 Seedance 2.5 横屏 3D CG 仙侠动漫，使用独立入口（首期只支持 `single`）：
+
+```powershell
+.\prepare-agent-dandao-xiantu.ps1 single <run-name> `
+  -Source .\tests\fixtures\dandao-xiantu `
+  -OutDir .\outputs_agent_<name> `
+  -Force
+```
+
+该入口固定 `seedance-2.5-horizontal-xianxia-3d-cg`、`horizontal`、`3d-cg`、`16:9`、720p、4-30 秒整数时长、原生音频和 `realistic-material-restrained-anime-outline` 画风，并显式加载 `dandao-xiantu` 项目包的炼丹/灵火/丹药/元鼎/回溯规则。其 v2 provider package 使用 reference content 映射，不在创建请求中发送 `fps`；24 fps 只用于结果媒体验收。没有经过认证的 ManJuWeb/CPA consumer 证据和授权 Active 素材时，状态必须保持 `submit_allowed=false`，不能把离线 fixture 当成真实视频验证。详见 [横屏仙侠操作状态](docs/seedance25-operator-status.md)、[真实探针协议](docs/seedance25-real-probe-protocol.md) 和 [v2 素材交接合同](docs/seedance-material-handoff-v2.md)。
+
 Seedance 2.5 校验会自动保留并收集 `storyboard_index.json` / `storyboard_index.xlsx`。资产表审核通过后，可编译素材交接清单；ManJuWeb 回写真实 Ark 结果后，再生成受哈希保护的可调用包：
 
 ```powershell

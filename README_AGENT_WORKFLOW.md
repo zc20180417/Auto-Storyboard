@@ -119,6 +119,17 @@
 
 该 profile 只允许 `vertical` + `live-action`，目标模型为 `doubao-seedance-2-5-260628`，唯一任务类型为 `multimodal_generation`。工作区会写出 `video_profile.json`，并把任务类型、至少 1 项真实图片/视频/音频素材要求、禁用任务模式、9:16、480p/720p、24fps、原生音频、4-30 秒整数时间轴写入 manifest、episode metadata、context 和 TASK；默认 720p。图片、视频、音频只是多模态输入素材，不代表独立“参考生成”模式；纯文本、参考生成、首尾帧/关键帧、编辑、延长/续写、轨道补全均禁用。不要与横屏或 3D CG 混用。不显式选择时，旧 `seedance-2.0` 仍是默认值，现有 run 不迁移。
 
+如果目标是《丹道仙途》的 Seedance 2.5 横屏 3D CG 仙侠动漫，使用独立项目入口：
+
+```powershell
+.\prepare-agent-dandao-xiantu.ps1 single dandao-probe `
+  -Source .\tests\fixtures\dandao-xiantu `
+  -OutDir .\outputs_agent_dandao_probe `
+  -Force
+```
+
+这个入口固定 `seedance-2.5-horizontal-xianxia-3d-cg`、`horizontal + 3d-cg`、`16:9`、720p、4-30 秒整数时长、原生音频和 `realistic-material-restrained-anime-outline`，并显式启用 `dandao-xiantu` pack。pack 默认关闭，通用 profile 不包含方平、元鼎或落阳宗设定；新 profile 首期只接受 `single`，不能把 `scene` 路由或离线 fixture 当作动态视频验证。外部 consumer/preflight、授权 Active 素材和签收证据未齐备前，v2 package 只能保持 `submit_allowed=false`。
+
 **仓库边界：** `final.txt` 仍是资产无关母版；`asset_bindings.json` 仍只是 `cut_id -> 逻辑静态资产`，单独存在不满足真实多模态输入。本仓库新增确定性素材交接层，负责编译逻辑需求、登记本地文件、校验 ManJuWeb 回写并生成受哈希保护的请求包；ManJuWeb 是 Ark 上传、轮询、`assetId` 和状态的唯一权威来源。本仓库不复制 Ark 密钥和状态机。详见 `agent_skills/seedance-2-5-live-vertical/SKILL.md` 与 `docs/seedance-material-handoff-v1.md`。
 
 生成后会得到：

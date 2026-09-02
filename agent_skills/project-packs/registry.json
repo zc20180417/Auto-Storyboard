@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "packs": {
+    "dandao-xiantu": {
+      "version": 1,
+      "path": "agent_skills/project-packs/dandao-xiantu/pack.json",
+      "compatible_video_profiles": [
+        "seedance-2.5-horizontal-xianxia-3d-cg"
+      ],
+      "required_visual_style_preset": "realistic-material-restrained-anime-outline",
+      "exclusive_markers": [
+        "方平",
+        "元鼎",
+        "落阳宗",
+        "每日九次"
+      ]
+    }
+  }
+}

@@ -2,7 +2,8 @@ import fs from "node:fs/promises";
 import { createRequire } from "node:module";
 import os from "node:os";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { createHash } from "node:crypto";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const [inputPath, outputPath, ...optionArgs] = process.argv.slice(2);
 const options = Object.fromEntries(
@@ -14,6 +15,8 @@ const options = Object.fromEntries(
     }),
 );
 const mode = options.mode || "episode";
+const scriptPath = fileURLToPath(import.meta.url);
+const projectRoot = path.resolve(path.dirname(scriptPath), "../../..");
 
 if (!inputPath || !outputPath) {
   console.error("Usage: node assets-md-to-xlsx.mjs <assets.md> <assets.xlsx> [--mode=episode|registry]");
@@ -205,14 +208,67 @@ function rowsBySheet(sheetName) {
   return dataRows.map((row) => Object.fromEntries(header.map((column, index) => [column, row[index] || ""])));
 }
 
-function buildAssetBindingsPayload() {
+async function sha256File(filePath) {
+  const content = await fs.readFile(filePath);
+  return createHash("sha256").update(content).digest("hex");
+}
+
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map((item) => canonicalJson(item)).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`)
+      .join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+async function buildAssetEvidence(indexPath) {
+  const outputDir = path.dirname(path.resolve(outputPath));
+  const assetBiblePath = path.resolve(outputDir, "../..", "asset_bible.md");
+  const producerSpecs = [
+    ["asset_extractor_skill", "agent_skills/asset-extractor/SKILL.md"],
+    ["asset_reviewer_skill", "agent_skills/asset-reviewer/SKILL.md"],
+    ["asset_converter", "agent_skills/asset-extractor/scripts/assets-md-to-xlsx.mjs"],
+    ["asset_validator", "agent_skills/asset-extractor/scripts/validate-assets.mjs"],
+  ];
+  const evidence = {
+    asset_evidence_schema_version: 1,
+    asset_contract_version: 2,
+    source_hashes: {
+      final_txt_sha256: await sha256File(path.join(outputDir, "final.txt")),
+      storyboard_index_sha256: await sha256File(indexPath),
+      assets_md_sha256: await sha256File(path.resolve(inputPath)),
+    },
+    producer_files: await Promise.all(
+      producerSpecs.map(async ([role, relativePath]) => ({
+        role,
+        path: relativePath,
+        sha256: await sha256File(path.join(projectRoot, relativePath)),
+      })),
+    ),
+  };
+  try {
+    await fs.access(assetBiblePath);
+    evidence.source_hashes.asset_bible_sha256 = await sha256File(assetBiblePath);
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+  evidence.asset_evidence_hash = createHash("sha256")
+    .update(canonicalJson(evidence), "utf8")
+    .digest("hex");
+  return evidence;
+}
+
+async function buildAssetBindingsPayload() {
   const rows = rowsBySheet("分镜资产绑定索引");
   const episodeId = options.episode || rows.find((row) => row.episode_id)?.episode_id || "";
   const project =
     options.project ||
     path.basename(path.dirname(path.resolve(outputPath))) ||
     path.basename(path.dirname(path.resolve(inputPath)));
-  return {
+  const payload = {
     project,
     episode_id: episodeId,
     bindings: rows.map((row) => ({
@@ -229,6 +285,33 @@ function buildAssetBindingsPayload() {
       note: row.note || "",
     })),
   };
+  const indexPath = options["storyboard-index"]
+    ? path.resolve(options["storyboard-index"])
+    : path.join(path.dirname(path.resolve(outputPath)), "storyboard_index.json");
+  try {
+    const storyboardIndex = JSON.parse((await fs.readFile(indexPath, "utf8")).replace(/^\uFEFF/u, ""));
+    if (storyboardIndex.workflow_identity) {
+      payload.workflow_identity = storyboardIndex.workflow_identity;
+      payload.asset_evidence = await buildAssetEvidence(indexPath);
+    }
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+  return payload;
+}
+
+async function syncAssetStatusContract(bindingsPayload) {
+  if (!bindingsPayload.workflow_identity || !bindingsPayload.asset_evidence) return;
+  const statusPath = path.join(path.dirname(path.resolve(outputPath)), "asset_status.json");
+  try {
+    const status = JSON.parse((await fs.readFile(statusPath, "utf8")).replace(/^\uFEFF/u, ""));
+    status.workflow_identity = bindingsPayload.workflow_identity;
+    status.asset_evidence = bindingsPayload.asset_evidence;
+    await fs.writeFile(statusPath, `${JSON.stringify(status, null, 2)}\n`, "utf8");
+    console.log(`updated ${statusPath}`);
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
 }
 
 function columnName(colCount) {
@@ -306,7 +389,9 @@ if (mode === "episode") {
   const bindingsPath = options["asset-bindings"]
     ? path.resolve(options["asset-bindings"])
     : path.join(path.dirname(path.resolve(outputPath)), "asset_bindings.json");
-  await fs.writeFile(bindingsPath, `${JSON.stringify(buildAssetBindingsPayload(), null, 2)}\n`, "utf8");
+  const bindingsPayload = await buildAssetBindingsPayload();
+  await fs.writeFile(bindingsPath, `${JSON.stringify(bindingsPayload, null, 2)}\n`, "utf8");
+  await syncAssetStatusContract(bindingsPayload);
   console.log(`saved ${bindingsPath}`);
 }
 

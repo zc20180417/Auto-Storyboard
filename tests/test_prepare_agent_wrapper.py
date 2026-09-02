@@ -9,6 +9,8 @@ from tempfile import TemporaryDirectory
 ROOT = Path(__file__).resolve().parents[1]
 PREPARE_AGENT = ROOT / "prepare-agent.ps1"
 PREPARE_SEEDANCE25 = ROOT / "prepare-agent-seedance25.ps1"
+PREPARE_SEEDANCE25_XIANXIA = ROOT / "prepare-agent-seedance25-xianxia.ps1"
+PREPARE_DANDAO_XIANTU = ROOT / "prepare-agent-dandao-xiantu.ps1"
 
 
 def ps_quote(value: str) -> str:
@@ -130,6 +132,83 @@ function global:python {{
             self.assertEqual(args[args.index("--aspect") + 1], "vertical")
             self.assertEqual(args[args.index("--visual-style") + 1], "live-action")
             self.assertEqual(args[args.index("--video-resolution") + 1], "480p")
+
+    def test_fixed_xianxia_entrypoint_pins_horizontal_profile_style_and_preset(self):
+        if shutil.which("powershell") is None:
+            self.skipTest("PowerShell is required for wrapper coverage")
+
+        with TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            source = tmp_path / "script.txt"
+            capture = tmp_path / "python-args.json"
+            source.write_text("第1集\n测试剧情。", encoding="utf-8")
+
+            command = f"""
+$ErrorActionPreference = "Stop"
+function global:python {{
+    $args | ConvertTo-Json -Compress | Set-Content -Encoding UTF8 -LiteralPath {ps_quote(str(capture))}
+}}
+& {ps_quote(str(PREPARE_SEEDANCE25_XIANXIA))} `
+    -Mode single `
+    -RunName demo-fixed-xianxia `
+    -Source {ps_quote(str(source))} `
+    -OutDir {ps_quote(str(tmp_path / "outputs"))} `
+    -WorkspaceDir {ps_quote(str(tmp_path / "agent_runs"))} `
+    -Force
+"""
+            result = subprocess.run(
+                ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", command],
+                cwd=ROOT,
+                text=True,
+                capture_output=True,
+            )
+
+            self.assertEqual(result.returncode, 0, msg=result.stderr + result.stdout)
+            args = json.loads(capture.read_text(encoding="utf-8-sig"))
+            self.assertEqual(args[args.index("--video-profile") + 1], "seedance-2.5-horizontal-xianxia-3d-cg")
+            self.assertEqual(args[args.index("--aspect") + 1], "horizontal")
+            self.assertEqual(args[args.index("--visual-style") + 1], "3d-cg")
+            self.assertEqual(args[args.index("--video-resolution") + 1], "720p")
+            self.assertEqual(
+                args[args.index("--visual-style-preset") + 1],
+                "realistic-material-restrained-anime-outline",
+            )
+
+    def test_dandao_entrypoint_adds_explicit_project_pack(self):
+        if shutil.which("powershell") is None:
+            self.skipTest("PowerShell is required for wrapper coverage")
+
+        with TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            source = tmp_path / "script.txt"
+            capture = tmp_path / "python-args.json"
+            source.write_text("第1集\n测试剧情。", encoding="utf-8")
+
+            command = f"""
+$ErrorActionPreference = "Stop"
+function global:python {{
+    $args | ConvertTo-Json -Compress | Set-Content -Encoding UTF8 -LiteralPath {ps_quote(str(capture))}
+}}
+& {ps_quote(str(PREPARE_DANDAO_XIANTU))} `
+    -Mode single `
+    -RunName demo-dandao `
+    -Source {ps_quote(str(source))} `
+    -OutDir {ps_quote(str(tmp_path / "outputs"))} `
+    -WorkspaceDir {ps_quote(str(tmp_path / "agent_runs"))} `
+    -Force
+"""
+            result = subprocess.run(
+                ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", command],
+                cwd=ROOT,
+                text=True,
+                capture_output=True,
+            )
+
+            self.assertEqual(result.returncode, 0, msg=result.stderr + result.stdout)
+            args = json.loads(capture.read_text(encoding="utf-8-sig"))
+            self.assertEqual(args[args.index("--project-pack-id") + 1], "dandao-xiantu")
+            self.assertEqual(args[args.index("--video-profile") + 1], "seedance-2.5-horizontal-xianxia-3d-cg")
+            self.assertEqual(args[args.index("--visual-style-preset") + 1], "realistic-material-restrained-anime-outline")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "dandao-xiantu",
+  "version": 1,
+  "name": "丹道仙途",
+  "enabled_by_default": false,
+  "compatible_video_profiles": [
+    "seedance-2.5-horizontal-xianxia-3d-cg"
+  ],
+  "supported_aspects": [
+    "horizontal"
+  ],
+  "supported_visual_styles": [
+    "3d-cg"
+  ],
+  "supported_modes": [
+    "single"
+  ],
+  "required_visual_style_preset": "realistic-material-restrained-anime-outline",
+  "entry_skill": "agent_skills/project-packs/dandao-xiantu/SKILL.md",
+  "references": [
+    "agent_skills/project-packs/dandao-xiantu/references/alchemy-system.md",
+    "agent_skills/project-packs/dandao-xiantu/references/yuanding-visual-bible.md"
+  ],
+  "source_provenance": {
+    "source_path_label": "丹道仙途剧本全集.txt",
+    "source_sha256": "7dc05d7edd73e3ca603cf260d44ddb4c415b188bbef57a5d7c8c793f762bc5a3",
+    "contract_snapshot": "2026-09-01"
+  }
+}
