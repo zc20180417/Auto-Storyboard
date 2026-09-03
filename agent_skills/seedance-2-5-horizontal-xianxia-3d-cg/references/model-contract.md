@@ -25,6 +25,7 @@ No Seedance 2.5 sunset or deprecation notice was found on the cited model lifecy
 - Duration: explicit integer `4`–`30`; `-1` is deliberately disabled
 - Native audio: required
 - Input: at least one actually serialized image/video/audio reference
+- Media QA: a result advertised as `720p` must be checked at `1280×720`; a `480p` preview or transcode is not sufficient evidence for the profile contract
 - Internal task name: `multimodal_generation`
 - Provider mapping: at least one reference content item plus `omni_reference_task_type=reference`
 - Create body must not contain `fps` or the internal `video_task_type`

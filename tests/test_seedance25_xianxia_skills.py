@@ -87,11 +87,21 @@ class Seedance25XianxiaSkillContractTests(unittest.TestCase):
 
     def test_timing_is_natural_capacity_not_fixed_duration_bins(self):
         generator = self.read(GENERATOR)
+        reviewer = self.read(REVIEWER)
+        vfx = self.read(VFX)
 
         self.assertIn("4–30 秒只是模型合同范围，不是每组要命中的时长档位", generator)
         self.assertIn("景别和镜头运动均按信息量自主选择", generator)
         self.assertNotIn("4–7 秒：独立反应", generator)
         self.assertNotIn("新场景建立通常 2 秒", generator)
+        self.assertIn("三段动作目标通常先试 3+3+4/5 秒", generator)
+        self.assertIn("无对白的高冲击纯动作若超过约 12 秒", reviewer)
+        self.assertIn("通常先按约 10–11 秒试生成", vfx)
+        self.assertIn("一个生成单元默认只承载一次主要空间跃迁", generator)
+        self.assertIn("动作必须匹配所绑定资产的状态和尺度", generator)
+        self.assertIn("固定图标、额头印记、可读符文", generator)
+        self.assertIn("两个以上空间/意识层", reviewer)
+        self.assertIn("工作态大件直接写成手持", reviewer)
 
     def test_reviewer_requires_real_script_comparison_vfx_provenance_and_audio(self):
         text = self.read(REVIEWER)
