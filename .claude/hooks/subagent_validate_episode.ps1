@@ -118,23 +118,6 @@ function Get-EpisodeDirsFromPayload {
     return @($found.Values)
 }
 
-function Get-RecentlyModifiedEpisodes {
-    param([string]$RunDir)
-    $episodesDir = Join-Path $RunDir "episodes"
-    if (-not (Test-Path -LiteralPath $episodesDir)) {
-        return @()
-    }
-    # Return episodes that have review.txt (indicating work was done),
-    # sorted by most recently modified
-    return @(Get-ChildItem -LiteralPath $episodesDir -Directory |
-        Where-Object {
-            Test-Path -LiteralPath (Join-Path $_.FullName "review.txt")
-        } |
-        Sort-Object LastWriteTimeUtc -Descending |
-        Select-Object -First 5 |
-        ForEach-Object { $_.FullName })
-}
-
 function Get-TailText {
     param([object[]]$Lines)
     $text = (($Lines | Out-String).Trim())
@@ -157,10 +140,11 @@ if (-not $runDir) {
 # Try to identify episode dirs from the hook payload
 $episodeDirs = @(Get-EpisodeDirsFromPayload -Payload $payload -RunDir $runDir)
 
-# Fallback: if payload didn't contain episode paths, use recently modified episodes
-if ($episodeDirs.Count -eq 0) {
-    $episodeDirs = @(Get-RecentlyModifiedEpisodes -RunDir $runDir)
-}
+# Deliberately no "recently modified episodes" fallback. A worker owns exactly the episode
+# it was dispatched, and recency cannot establish ownership: with several workers running
+# concurrently the most recently touched episodes belong to *other* workers. Validating
+# those hands this worker failures it is not allowed to fix and invites it to edit files
+# another worker is still writing. If the payload does not name an episode, ask for it.
 
 if ($episodeDirs.Count -eq 0) {
     # Mirror Codex's gate: an active storyboard run exists but we could not tie this
@@ -174,15 +158,22 @@ if ($episodeDirs.Count -eq 0) {
         exit 0
     }
     Write-HookLog @{ event = "SubagentStop"; result = "fail"; run = $runDir; reason = "episode not identified" }
-    $reason = "SubagentStop could not identify which Auto-Storyboard episode this worker completed, and no validated episode output (review.txt) was found under the active run. If this subagent was a storyboard worker, state the exact episode_dir path and finish only that episode. If it was not a storyboard task, simply stop again to continue."
+    $reason = "SubagentStop could not identify which Auto-Storyboard episode this worker completed, If this subagent was a storyboard worker, state the exact episode_dir path and finish only that episode. If it was not a storyboard task, simply stop again to continue."
     @{ decision = "block"; reason = $reason } | ConvertTo-Json -Compress
     exit 0
 }
 
 $failures = @()
 foreach ($episodeDir in $episodeDirs) {
+    # $ErrorActionPreference = "Stop" turns any stderr writes from a native command into a
+    # terminating NativeCommandError. validate-episode/check-agent-run legitimately write to
+    # stderr, which killed this hook before it emitted any JSON -- i.e. no gate at all.
+    # Relax it around the call and rely on the exit code instead.
+    $previousEap = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
     $output = & python (Join-Path $workspace "storyboard_agent_workspace.py") validate-episode --episode-dir $episodeDir 2>&1
     $exitCode = $LASTEXITCODE
+    $ErrorActionPreference = $previousEap
     if ($exitCode -ne 0) {
         $failures += [ordered]@{
             episode = Split-Path -Leaf $episodeDir

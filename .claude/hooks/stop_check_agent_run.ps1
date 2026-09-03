@@ -38,33 +38,27 @@ function Read-HookPayload {
 }
 
 function Get-RunDir {
-    # Check hint files: .claude/storyboard-hook-run.txt, then .codex/storyboard-hook-run.txt
+    # Explicit binding only. This is a DELIVERY gate: falling back to "the most recently
+    # touched run under agent_runs" made it block sessions that never worked on that run,
+    # over failures they did not cause and are not scoped to fix. A gate that picks its own
+    # target is worse than no gate. Bind a run by writing its path into
+    # .claude/storyboard-hook-run.txt (or .codex/storyboard-hook-run.txt).
     foreach ($hintDir in @($hookRoot, (Join-Path $workspace ".codex"))) {
         $hintPath = Join-Path $hintDir "storyboard-hook-run.txt"
-        if (Test-Path -LiteralPath $hintPath) {
-            $hint = (Get-Content -LiteralPath $hintPath -Raw).Trim()
-            if ($hint) {
-                $candidate = if ([System.IO.Path]::IsPathRooted($hint)) { $hint } else { Join-Path $workspace $hint }
-                if (Test-Path -LiteralPath $candidate) {
-                    return (Resolve-Path -LiteralPath $candidate).Path
-                }
-            }
+        if (-not (Test-Path -LiteralPath $hintPath)) {
+            continue
+        }
+        $hint = (Get-Content -LiteralPath $hintPath -Raw).Trim()
+        if (-not $hint) {
+            continue
+        }
+        $candidate = if ([System.IO.Path]::IsPathRooted($hint)) { $hint } else { Join-Path $workspace $hint }
+        if (Test-Path -LiteralPath (Join-Path $candidate "manifest.json")) {
+            return (Resolve-Path -LiteralPath $candidate).Path
         }
     }
 
-    $agentRuns = Join-Path $workspace "agent_runs"
-    if (-not (Test-Path -LiteralPath $agentRuns)) {
-        return $null
-    }
-
-    $latest = Get-ChildItem -LiteralPath $agentRuns -Directory |
-        Where-Object { Test-Path -LiteralPath (Join-Path $_.FullName "manifest.json") } |
-        Sort-Object LastWriteTimeUtc -Descending |
-        Select-Object -First 1
-    if ($null -eq $latest) {
-        return $null
-    }
-    return $latest.FullName
+    return $null
 }
 
 function Get-FailureSummary {
@@ -127,8 +121,15 @@ if (-not $runDir) {
 }
 
 $checker = Join-Path (Join-Path $workspace "tools") "check-agent-run.ps1"
+# $ErrorActionPreference = "Stop" turns any stderr writes from a native command into a
+# terminating NativeCommandError. validate-episode/check-agent-run legitimately write to
+# stderr, which killed this hook before it emitted any JSON -- i.e. no gate at all.
+# Relax it around the call and rely on the exit code instead.
+$previousEap = $ErrorActionPreference
+$ErrorActionPreference = "Continue"
 $checkerOutput = & powershell -NoProfile -ExecutionPolicy Bypass -File $checker -RunDir $runDir -Json 2>&1
 $checkerExit = $LASTEXITCODE
+$ErrorActionPreference = $previousEap
 $checkerText = ($checkerOutput | Out-String).Trim()
 $checkerResult = $null
 try {
