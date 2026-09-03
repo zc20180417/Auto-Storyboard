@@ -119,6 +119,10 @@ def valid_v3_payload(content=CONTENT, *, require_cross_episode_boundary=False):
             3,
         )
     }
+    # Without a boundary input there is no predecessor state to compare against, so v3
+    # requires this key to say so instead of claiming a check it could not perform.
+    if not require_cross_episode_boundary:
+        payload["audit_coverage"][saw.CROSS_EPISODE_COVERAGE_KEY] = "not_applicable"
     payload["mechanical_evidence"] = saw.build_vertical_review_facts(
         content,
         review_contract_version=3,
@@ -130,6 +134,51 @@ def valid_v3_payload(content=CONTENT, *, require_cross_episode_boundary=False):
         content,
         require_cross_episode_boundary=require_cross_episode_boundary,
     )
+    if require_cross_episode_boundary:
+        payload["semantic_checks"].append(
+            {
+                "group": "第1组",
+                "type": "cross_episode_continuity",
+                "result": "pass",
+                "evidence": "已对照上一集实际末组的人物、钥匙、车门和日光状态。",
+                "fix_instruction": "失败时按上一集实际末态局部修正第1组首帧。",
+            }
+        )
+    return payload
+
+
+def valid_v4_payload(content=CONTENT, *, require_cross_episode_boundary=False):
+    payload = valid_payload()
+    for key in ("dialogue_checks", "handoff_checks", "camera_motion_checks"):
+        payload.pop(key)
+    payload["audit_coverage"] = {
+        key: "checked"
+        for key in saw._required_audit_coverage_keys(
+            "seedance-2-5-live-vertical-reviewer",
+            4,
+        )
+    }
+    if not require_cross_episode_boundary:
+        payload["audit_coverage"][saw.CROSS_EPISODE_COVERAGE_KEY] = "not_applicable"
+    payload["mechanical_evidence"] = saw.build_vertical_review_facts(
+        content,
+        review_contract_version=4,
+        require_cross_episode_boundary=require_cross_episode_boundary,
+        previous_episode_id="ep00" if require_cross_episode_boundary else None,
+        previous_final_content=PREVIOUS_CONTENT if require_cross_episode_boundary else None,
+    )["mechanical_evidence"]
+    payload["group_reviews"] = [
+        {
+            "group": "第1组",
+            "result": "pass",
+            "evidence": "甲对乙现场说出原台词，钥匙从甲右手可见地交到乙右手，跟拍不遮挡交接。",
+        },
+        {
+            "group": "第2组",
+            "result": "pass",
+            "evidence": "乙延续右手持钥匙并打开车门，人物、道具和日间光线承接自然。",
+        },
+    ]
     if require_cross_episode_boundary:
         payload["semantic_checks"].append(
             {
@@ -246,6 +295,103 @@ class VerticalReviewContractTests(unittest.TestCase):
             )
 
         self.assertIn("semantic_coverage", error)
+
+    def test_v4_uses_model_authored_group_reviews_without_script_semantic_coverage(self):
+        payload = valid_v4_payload()
+
+        self.assertNotIn("semantic_coverage", payload)
+        self.assertEqual(
+            set(payload["mechanical_evidence"]),
+            {"final_sha256", "group_count"},
+        )
+        self.assertEqual(
+            saw.validate_vertical_review_evidence(
+                payload,
+                CONTENT,
+                "review.txt",
+                review_contract_version=4,
+            ),
+            [],
+        )
+
+    def test_v4_json_schema_requires_model_authored_group_reviews(self):
+        payload = valid_v4_payload()
+        payload.pop("group_reviews")
+        with TemporaryDirectory() as tmp:
+            review = Path(tmp) / "review.txt"
+            review.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+
+            _result, error = saw._read_review_json(
+                review,
+                reviewer_source="seedance-2-5-live-vertical-reviewer",
+                review_contract_version=4,
+            )
+
+        self.assertIn("group_reviews", error)
+
+    def test_v4_rejects_script_generated_semantic_coverage(self):
+        payload = valid_v4_payload()
+        payload["semantic_coverage"] = saw.build_vertical_semantic_coverage(CONTENT)
+        with TemporaryDirectory() as tmp:
+            review = Path(tmp) / "review.txt"
+            review.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+
+            _result, error = saw._read_review_json(
+                review,
+                reviewer_source="seedance-2-5-live-vertical-reviewer",
+                review_contract_version=4,
+            )
+
+        self.assertIn("must not use script-generated", error)
+
+    def test_v4_group_reviews_must_cover_every_actual_group(self):
+        payload = valid_v4_payload()
+        payload["group_reviews"] = payload["group_reviews"][:1]
+
+        issues = saw.validate_vertical_review_evidence(
+            payload,
+            CONTENT,
+            "review.txt",
+            review_contract_version=4,
+        )
+
+        self.assertTrue(any("group_reviews missing groups" in issue for issue in issues))
+
+    def test_v4_failed_review_must_mark_an_issue_in_model_authored_group_reviews(self):
+        payload = valid_v4_payload()
+        payload["pass"] = False
+        payload["issues"] = [
+            {
+                "severity": "hard",
+                "group": "第2组",
+                "rule": "prop_continuity",
+                "problem": "钥匙跳手。",
+                "evidence": "第1组组尾在乙手中，第2组首帧写在甲手中。",
+                "fix": "修正第2组首帧钥匙归属。",
+            }
+        ]
+        payload["issue_instances_total"] = 1
+        payload["affected_groups"] = ["第2组"]
+        with TemporaryDirectory() as tmp:
+            review = Path(tmp) / "review.txt"
+            review.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+
+            _result, error = saw._read_review_json(
+                review,
+                reviewer_source="seedance-2-5-live-vertical-reviewer",
+                review_contract_version=4,
+            )
+
+        self.assertIn("group_reviews contains no issue", error)
+
+    def test_v4_review_facts_contain_no_semantic_candidate_counts(self):
+        facts = saw.build_vertical_review_facts(CONTENT, review_contract_version=4)
+
+        self.assertEqual(
+            set(facts["mechanical_evidence"]),
+            {"final_sha256", "group_count"},
+        )
+        self.assertNotIn("semantic_coverage", facts)
 
     def test_v3_segment_review_does_not_require_episode_mechanical_evidence(self):
         payload = valid_v3_payload()
@@ -520,6 +666,134 @@ class VerticalReviewContractTests(unittest.TestCase):
         )
 
         self.assertEqual(saw.validate_vertical_space_lock_contract(content), [])
+
+    def _write_v3_review(self, tmp, coverage_value):
+        path = Path(tmp) / "review.txt"
+        payload = valid_v3_payload()
+        payload["audit_coverage"][saw.CROSS_EPISODE_COVERAGE_KEY] = coverage_value
+        path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+        return path
+
+    def test_v3_without_boundary_rejects_claimed_cross_episode_check(self):
+        # The old gate required "checked" unconditionally, so a standalone episode could
+        # only pass by claiming a cross-episode check it had no input for.
+        with TemporaryDirectory() as tmp:
+            path = self._write_v3_review(tmp, "checked")
+            _payload, error = saw._read_review_json(
+                path,
+                reviewer_source="seedance-2-5-live-vertical-reviewer",
+                review_contract_version=3,
+                boundary_present=False,
+            )
+            self.assertIsNotNone(error)
+            self.assertIn("not_applicable", error)
+
+    def test_v3_without_boundary_accepts_not_applicable(self):
+        with TemporaryDirectory() as tmp:
+            path = self._write_v3_review(tmp, "not_applicable")
+            _payload, error = saw._read_review_json(
+                path,
+                reviewer_source="seedance-2-5-live-vertical-reviewer",
+                review_contract_version=3,
+                boundary_present=False,
+            )
+            self.assertIsNone(error)
+
+    def test_v3_with_boundary_still_requires_checked(self):
+        with TemporaryDirectory() as tmp:
+            path = self._write_v3_review(tmp, "not_applicable")
+            _payload, error = saw._read_review_json(
+                path,
+                reviewer_source="seedance-2-5-live-vertical-reviewer",
+                review_contract_version=3,
+                boundary_present=True,
+            )
+            self.assertIsNotNone(error)
+            self.assertIn("cross_episode_continuity", error)
+
+    def test_v2_without_boundary_keeps_legacy_checked_requirement(self):
+        # Already-delivered v2 runs must keep validating exactly as before.
+        with TemporaryDirectory() as tmp:
+            path = Path(tmp) / "review.txt"
+            payload = valid_payload()
+            payload["audit_coverage"] = {
+                key: "checked"
+                for key in saw._required_audit_coverage_keys(
+                    "seedance-2-5-live-vertical-reviewer",
+                    2,
+                )
+            }
+            path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+            _payload, error = saw._read_review_json(
+                path,
+                reviewer_source="seedance-2-5-live-vertical-reviewer",
+                review_contract_version=2,
+                boundary_present=False,
+            )
+            self.assertIsNone(error)
+
+    def _space_lock(self, lock_value, characters="甲、乙"):
+        return (
+            "=== [cut_id: EP01-G01] 第1组：对峙（总时长：6秒，镜头数：1个） ===\n\n"
+            f"**人物**：{characters}\n**场景**：路肩\n**道具**：无\n\n"
+            "组首空间锁定（仅作空间连续性约束，不作为独立镜头生成）："
+            f"{lock_value}\n\n"
+            "0-6秒：\n镜头描述：中景，甲对乙说话。\n光影设计：日间自然光。\n\n"
+            "组尾衔接：乙在画面右侧。\n\n=== 第1组结束 ===\n"
+        )
+
+    def test_space_lock_rejects_comma_separated_characters(self):
+        # `，` is not a clause separator, so both names matched one clause and inherited a
+        # single position/orientation pair -- the per-character checks passed vacuously.
+        content = self._space_lock("甲位于画面左侧，侧对镜头，乙位于画面右侧，侧对镜头")
+
+        issues = saw.validate_vertical_space_lock_contract(content)
+
+        self.assertTrue(issues)
+        self.assertIn("合在同一分句", issues[0])
+
+    def test_space_lock_allows_protective_reference_to_another_character(self):
+        # The carrier clause names 乙; 乙 still has its own subject clause and must be judged
+        # on that one, not on the first clause its name happens to appear in.
+        content = self._space_lock(
+            "甲位于画面中央，侧对镜头，左手护着乙退到身后；乙位于画面左后方，侧对镜头"
+        )
+
+        self.assertEqual(saw.validate_vertical_space_lock_contract(content), [])
+
+    def test_space_lock_exempts_character_carried_by_another(self):
+        content = self._space_lock(
+            "甲位于画面中央，侧对镜头，背着乙；乙伏在他背上，侧对镜头，脸朝画右"
+        )
+
+        self.assertEqual(saw.validate_vertical_space_lock_contract(content), [])
+
+    def test_space_lock_still_requires_position_when_leaning_on_scenery(self):
+        content = self._space_lock("甲位于画面中央，侧对镜头；乙靠在墙上，侧对镜头")
+
+        issues = saw.validate_vertical_space_lock_contract(content)
+
+        self.assertTrue(issues)
+        self.assertIn("缺少画面位置", issues[0])
+
+    def test_space_lock_carried_character_still_needs_orientation(self):
+        content = self._space_lock("甲位于画面中央，侧对镜头，背着乙；乙伏在他背上，脸朝画右")
+
+        issues = saw.validate_vertical_space_lock_contract(content)
+
+        self.assertTrue(issues)
+        self.assertIn("缺少相对镜头朝向", issues[0])
+
+    def test_space_lock_position_error_lists_accepted_vocabulary(self):
+        # The accepted position words appear nowhere else, so this message is the only place
+        # a worker can learn them in one pass.
+        content = self._space_lock("甲位于左侧，侧对镜头；乙位于右侧，侧对镜头")
+
+        issues = saw.validate_vertical_space_lock_contract(content)
+
+        self.assertTrue(issues)
+        self.assertIn("画面左", issues[0])
+        self.assertIn("画幅中央", issues[0])
 
 
 if __name__ == "__main__":

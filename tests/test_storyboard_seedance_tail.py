@@ -152,6 +152,34 @@ class SeedanceTailTests(unittest.TestCase):
         finally:
             saw._STORYBOARD_QUALITY_POLICY_CACHE = original_policy_cache
 
+    def test_clean_validator_rejects_hint_anchored_only_to_incidental_episode_text(self):
+        # The episode-wide anchor used to be a 2-character n-gram scan over the whole
+        # final.txt, so an invented item passed as long as any 2 of its characters appeared
+        # anywhere. Episode-wide anchoring now needs a real 人物/道具/场景 name.
+        with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n"
+            "视频禁止项：出现第二台无人机编队",
+        )
+
+        issues = saw.validate_clean_storyboard_format(with_hint)
+
+        self.assertTrue(any("缺少本组具体人物、道具或场景锚点" in issue for issue in issues))
+
+    def test_clean_validator_accepts_hint_naming_this_group_character(self):
+        with_hint = MINIMAL_GROUP_WITHOUT_TAIL.replace(
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。",
+            "组尾衔接：该组以林远握紧成绩单的状态自然收尾。不强制静止。\n\n"
+            "视频禁止项：林远提前离场",
+        )
+
+        self.assertEqual(saw.validate_clean_storyboard_format(with_hint), [])
+
+    def test_anchor_labels_are_read_from_the_policy_file(self):
+        # `anchor_labels` was declared in storyboard-quality-policy.json but no accessor read
+        # it, so editing the file silently did nothing.
+        self.assertEqual(saw._video_negative_anchor_labels(), ["人物", "道具", "场景"])
+
 
 if __name__ == "__main__":
     unittest.main()

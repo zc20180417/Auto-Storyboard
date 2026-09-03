@@ -13,6 +13,9 @@ CRAFT_PASS_SKILL = ROOT / "agent_skills" / "storyboard-craft-pass" / "SKILL.md"
 QUALITY_POLICY = ROOT / "agent_skills" / "storyboard-quality-policy.json"
 DIALOGUE_PROMPT = ROOT / "竖屏分镜规则_对话版.txt"
 WORKSPACE_SCRIPT = ROOT / "storyboard_agent_workspace.py"
+SEEDANCE25_VERTICAL_GENERATOR_SKILL = (
+    ROOT / "agent_skills" / "seedance-2-5-live-vertical-generator" / "SKILL.md"
+)
 
 
 class StoryboardSkillContractTests(unittest.TestCase):
@@ -484,6 +487,32 @@ class StoryboardSkillContractTests(unittest.TestCase):
         self.assertIn("Hard issue：当前剧本已判定需要强特效的动作", reviewer)
         self.assertIn("visual_peak_too_weak", reviewer)
         self.assertIn("Warning：身份揭示、竞价压制、强者压场", reviewer)
+
+    def test_vertical_generator_documents_every_banned_video_negative_term(self):
+        # The validator matches these literally. When the skill did not list them the model
+        # could not know them, and `本组关键道具消失` -- a banned placeholder -- is exactly the
+        # phrasing the abstract instruction invites.
+        import storyboard_agent_workspace as saw
+
+        text = SEEDANCE25_VERTICAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+        policy = saw._video_negative_policy()
+
+        for term in policy["generic_terms"]:
+            self.assertIn(term, text, f"generic term {term} is enforced but undocumented")
+        for term in policy["placeholder_terms"]:
+            self.assertIn(term, text, f"placeholder term {term} is enforced but undocumented")
+
+    def test_vertical_generator_documents_closed_space_lock_vocabulary(self):
+        # 848 of 887 first-round pre-check failures in a real 20-episode run were space-lock
+        # format. The validator uses closed vocabularies that appeared nowhere in the skill.
+        text = SEEDANCE25_VERTICAL_GENERATOR_SKILL.read_text(encoding="utf-8")
+
+        for word in ("画面左", "画面右", "画面中央", "画面中间", "画幅左", "画幅右", "画幅中央"):
+            self.assertIn(word, text)
+        for word in ("面向镜头", "背对镜头", "侧对镜头"):
+            self.assertIn(word, text)
+        self.assertIn("分号 `；`", text)
+        self.assertIn("`，` 分隔两个人物", text)
 
 
 if __name__ == "__main__":

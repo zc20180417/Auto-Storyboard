@@ -5,9 +5,9 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
 
 # Seedance 2.5 真人竖屏短剧审核器
 
-只审稿，不润色，不全量重写。worker 启动时完整读取本 reviewer、`seedance-2-5-live-vertical-generator/SKILL.md` 和 `seedance-2-5-live-vertical/SKILL.md` 一次；同一 worker、同一 run 内文件未变化时直接复用，不在生成、审核、修复复审之间重复加载。每次审核仍必须重新读取同一 episode 的 `script.txt`、当前待审 draft/final，以及存在时的 `boundary_context.md` 和上一集实际末组。只有组装后的 v3 整集 `final.txt` 审核额外读取预检生成的 `review_facts.json`；scene 的 segment 草稿/成稿审核不读取该文件。不得用已有 review、status、校验器或生成者自评代替真实语义审核。
+只审稿，不润色，不全量重写。worker 启动时完整读取本 reviewer、`seedance-2-5-live-vertical-generator/SKILL.md` 和 `seedance-2-5-live-vertical/SKILL.md` 一次；同一 worker、同一 run 内文件未变化时直接复用，不在生成、审核、修复复审之间重复加载。每次审核仍必须重新读取同一 episode 的 `script.txt`、当前待审 draft/final，以及存在时的 `boundary_context.md` 和上一集实际末组。组装后的 v3/v4 整集 `final.txt` 审核额外读取预检生成的 `review_facts.json`；scene 的 segment 草稿/成稿审核不读取该文件。不得用已有 review、status、校验器或生成者自评代替真实语义审核。
 
-`review_facts.json` 只提供当前 `final.txt` 的 SHA-256 和机械计数；跨集连续时还绑定上一集实际 `final.txt` 的集号与 SHA-256。它能证明审的是哪一版正文，也能替代重复输出逐镜数字数组，但不能判断剧情忠实、说话对象、动作可演性、道具接续或空间连续性。
+v4 的 `review_facts.json` 只提供当前 `final.txt` 的 SHA-256 和组数；跨集连续时还绑定上一集实际 `final.txt` 的集号与 SHA-256。它只证明审的是哪一版正文，不生成空间锁定、对白、handoff、运镜候选或任何 `checked/pass` 语义结论。剧情忠实、说话对象、动作可演性、道具接续、空间连续性与运镜合理性全部由 reviewer 自己识别和判断。
 
 ## 判定原则
 
@@ -89,10 +89,11 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
 - `audit_coverage.multimodal_task_scope=checked`，明确检查正文没有其他任务模式，并确认分镜母版只等待真实多模态素材绑定。
 - `spot_checks` 至少 3 条，引用具体台词、人物、道具、空间或动作。
 - `semantic_checks` 至少 3 条，每条含 `group/type/result/evidence/fix_instruction`。
-- v3 整集 `review.txt` 先运行 `validate-episode --pre-check`，把 `review_facts.json.mechanical_evidence` 原样复制到审核 JSON；不得自行改哈希或计数。审核当前 `final.txt` 后，再按正文顺序把全部已核对项目的原文标签写入紧凑 `semantic_coverage`：全部对白镜头、全部相邻组接缝、跨集连续时的 `上一集实际末组->第1组`、全部明确运镜镜头；只写标签，不展开通过项长证据。多 segment 的 `segments/segXX/review.md` 不写 `mechanical_evidence` 或 `semantic_coverage`，两者由组装后的整集审核统一绑定。
-- 仍逐镜检查全部对白/旁白/心声的声音类型、对象、口型和可表演性，逐接缝检查人物/道具/门车/光线，逐个明确运镜检查动机、主体、路径、落点和动作兼容性；通过项不再展开成 `dialogue_checks`、`handoff_checks`、`camera_motion_checks` 数组。
+- v4 整集 `review.txt` 先运行 `validate-episode --pre-check`，把 `review_facts.json.mechanical_evidence` 原样复制到审核 JSON；不得自行改哈希或组数。多 segment 的 `segments/segXX/review.md` 不写 `mechanical_evidence`，由组装后的整集审核统一绑定。
+- reviewer 必须自己识别并逐镜检查全部对白/旁白/心声的声音类型、对象、口型和可表演性，逐接缝检查人物/道具/门车/光线，逐个明确运镜检查动机、主体、路径、落点和动作兼容性。不得依赖 Python 生成对白、handoff、运镜或空间锁定清单，也不得输出或复制 `semantic_coverage`。
+- v4 `group_reviews` 必须由 reviewer 在完成语义审查后亲自撰写，按正文顺序每组恰好一条；每条含 `group/result/evidence`。`evidence` 用自然语言概括该组最关键的剧本忠实、首帧与组尾、对白声音、动作可演性、关键道具或运镜判断，不能写“已检查”“符合要求”这类空话。异常组必须给具体原文/镜头证据，并同步进入 `semantic_checks` 及对应的 `issues` 或 `warnings`。
 - 存在 `boundary_context.md` 时，`semantic_checks` 必须有一条 `type=cross_episode_continuity`、`group=第1组` 的具体证据，明确对照上一集实际末态与本集首帧；仅写 `handoff_count` 或覆盖标签不能替代这条语义证据。
-- 跨集 v3 预检若提示上一集 `final.txt` 不存在，必须等待前集完成；审核后若上一集哈希变化，本集必须重新 pre-check、重新审核，不能沿用旧 `review.txt`。
+- 跨集 v3/v4 预检若提示上一集 `final.txt` 不存在，必须等待前集完成；审核后若上一集哈希变化，本集必须重新 pre-check、重新审核，不能沿用旧 `review.txt`。
 - 任何机械计数对应内容里的语义异常，都写进 `semantic_checks`，并按严重性同步进入 `issues` 或 `warnings`；不能因为 Python 预检通过就跳过人工语义核对。
 - `issue_instances_total` 记录实际 hard 证据点总数；`affected_groups` 列全受影响组，不能被最多 5 条展示限制掩盖。
 
@@ -141,16 +142,12 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
   ],
   "mechanical_evidence": {
     "final_sha256": "从 review_facts.json 原样复制的64位小写哈希",
-    "group_count": 2,
-    "dialogue_shot_count": 1,
-    "handoff_count": 1,
-    "camera_motion_shot_count": 1
+    "group_count": 2
   },
-  "semantic_coverage": {
-    "dialogue_shots_checked": ["第1组 0-3秒"],
-    "handoffs_checked": ["第1组->第2组"],
-    "camera_motion_shots_checked": ["第1组 3-7秒"]
-  },
+  "group_reviews": [
+    {"group": "第1组", "result": "pass", "evidence": "甲对乙的现场对白对象明确，钥匙从甲右手递到乙右手，跟拍路径未遮挡口型和交接。"},
+    {"group": "第2组", "result": "issue", "evidence": "第1组组尾钥匙在乙右手，但第2组首帧把钥匙写回甲手，形成道具跳手。"}
+  ],
   "issue_instances_total": 1,
   "affected_groups": ["第2组"],
   "issues": [
@@ -164,4 +161,4 @@ description: Review Auto-Storyboard live-action 9:16 short-drama drafts made for
 
 `issues` 和 `warnings` 各最多展示 5 条代表项；`issue_instances_total` 与 `affected_groups` 仍必须覆盖全部实际 hard 问题。
 
-兼容旧 run：若 `episode.json.vertical_review_contract_version=2`，仍按该 run 已生成的 `TASK.md` 输出完整 `dialogue_checks`、`handoff_checks`、`camera_motion_checks`；只有 v3 使用 `review_facts.json`、紧凑 `mechanical_evidence` 和条目标识式 `semantic_coverage`。
+兼容旧 run：`vertical_review_contract_version=2` 仍输出完整 `dialogue_checks`、`handoff_checks`、`camera_motion_checks`；v3 仍使用旧的 `mechanical_evidence + semantic_coverage` 合同；只有 v4 使用“纯机械绑定 + reviewer 自主 `group_reviews`”，不得把 v3 的自动覆盖列表带进 v4。

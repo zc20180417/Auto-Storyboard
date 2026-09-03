@@ -208,6 +208,8 @@ agent_runs\<run-name>\
 
 `review.txt` 和 `segments/segXX/review.md` 必须是 `storyboard-reviewer` 返回的原始 JSON。`validate-episode` 会检查 reviewer 证据；clean-format 校验不能替代审稿，占位 review 会导致校验失败。
 
+Seedance 2.5 真人竖屏的新 run 使用 vertical review contract v4：pre-check 生成的 `review_facts.json` 只绑定最终稿 SHA-256、组数和可选的上一集最终稿哈希，不生成空间锁定、对白、handoff、运镜清单或任何 `checked/pass` 结论。Reviewer 必须自行读取剧本与当前分镜，按正文顺序亲自写出每组一条 `group_reviews` 自然语言语义证据；v4 不接受脚本生成的 `semantic_coverage`。旧 v2/v3 run 继续按原合同验证。
+
 横屏 run 中，`reviewer_source` 必须是 `storyboard-horizontal-reviewer`，`review.txt` 和 `segments/segXX/review.md` 必须来自横屏 reviewer 的 raw JSON。横屏最终 `final.txt` 仍是自然分镜正文，不输出 JSON；只有审核文件是 JSON。
 
 完整生产审核必须提供同一 episode 的原剧本、当前分镜和当前 run 指定的 skill。若只提供分镜稿而没有原剧本，横屏 reviewer 只能做 `technical_review_only`，不得声称 `script_fidelity` 已通过，也不能把技术审核包装成生产审核通过。

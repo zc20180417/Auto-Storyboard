@@ -103,7 +103,7 @@ worker 启动时必须完整读取当前 run 指定的两份标准 skill 和 pro
 - `review.txt`
 - `status.json`
 
-仅当当前 run 的 `TASK.md` / `episode.json` 标记 `vertical_review_contract_version >= 3` 时，整集 `final.txt` 通过 pre-check 后还会生成 `review_facts.json`；它不是 v2 或横屏 run 的必需输出，也不得手写。`scene` 的 segment 审核发生在整集事实文件生成之前，不读取或输出该文件。
+仅当当前 run 的 `TASK.md` / `episode.json` 标记 `vertical_review_contract_version >= 3` 时，整集 `final.txt` 通过 pre-check 后还会生成 `review_facts.json`；它不是 v2 或横屏 run 的必需输出，也不得手写。v4 中它只绑定当前 final 的哈希与组数，以及跨集时上一集 final 的集号与哈希，不生成任何空间、对白、handoff、运镜或通过结论。`scene` 的 segment 审核发生在整集事实文件生成之前，不读取或输出该文件。
 
 ### Reviewer 硬门槛
 
@@ -111,9 +111,9 @@ worker 启动时必须完整读取当前 run 指定的两份标准 skill 和 pro
 
 真实审核必须满足以下证据要求：
 
-- reviewer 必须读取并对照同一 episode 的 `script.txt` 和当前待审 draft/final；只有 vertical review contract v3 的整集审核额外读取 pre-check 生成的 `review_facts.json`。当前 run 指定的标准 skill 可复用本 worker 已完整加载且未变化的版本，不能用已有 review/status 代替。
-- vertical review contract v3 的整集审核必须用紧凑 `semantic_coverage` 列出实际逐项核对的对白镜头、相邻组/跨集接缝和明确运镜；存在跨集边界时，还必须在 `semantic_checks` 写出第1组与上一集实际末态的具体连续性证据。
-- vertical review contract v3 的跨集 pre-check 会把上一集实际 `final.txt` 的集号和哈希绑定到 `review_facts.json`；上一集不存在时不得先审本集，上一集后续有修改时本集必须重新 pre-check 和复审。
+- reviewer 必须读取并对照同一 episode 的 `script.txt` 和当前待审 draft/final；vertical review contract v3/v4 的整集审核额外读取 pre-check 生成的 `review_facts.json`。当前 run 指定的标准 skill 可复用本 worker 已完整加载且未变化的版本，不能用已有 review/status 代替。
+- vertical review contract v4 的整集审核不得使用脚本生成的 `semantic_coverage`。reviewer 必须自己识别对白、相邻组/跨集接缝、明确运镜与空间关系，并按正文顺序为每组亲自写一条含 `group/result/evidence` 的 `group_reviews`；证据必须是自然语言具体判断，不能只是复制标签或写空泛通过。v3 旧 run 继续按其原合同验证。
+- vertical review contract v3/v4 的跨集 pre-check 会把上一集实际 `final.txt` 的集号和哈希绑定到 `review_facts.json`；上一集不存在时不得先审本集，上一集后续有修改时本集必须重新 pre-check 和复审。v4 存在跨集边界时，还必须在 `semantic_checks` 写出第1组与上一集实际末态的具体连续性证据。
 - `scene` 模式下，每个 `segments/segXX/review.md` 必须是该 segment 草稿的真实 reviewer JSON；整集 `review.txt` 必须是组装后 `final.txt` 的真实 reviewer JSON。
 - reviewer 至少检查：原剧本台词是否漏删改、人物关系是否错置、对话对象是否明确、组首空间锁定是否完整、组尾衔接是否自然、组时长和镜头时长是否符合规则、是否新增剧情或模板化描述。
 - 如果 reviewer 没有逐项审查，不允许写 `pass: true`；应写 `status: "needs_review"`，并在 `hard_issues_remaining` 中说明“reviewer 未完成”。
@@ -128,7 +128,7 @@ worker 启动时必须完整读取当前 run 指定的两份标准 skill 和 pro
 - 准备工作区。
 - 拆分或镜像输入文件。
 - clean-format / reviewer 证据校验。
-- 为 vertical review contract v3 生成只含当前 final 哈希、机械计数，以及跨集时上一集 final 绑定信息的 `review_facts.json`。
+- 为 vertical review contract v3/v4 生成当前 final 的机械绑定信息；v4 只允许哈希、组数及跨集前稿绑定，不得生成语义候选、空间锁定、对白/handoff/运镜审核结论或 `checked/pass` 状态。
 - 收集结果。
 - 统计 SUMMARY。
 
